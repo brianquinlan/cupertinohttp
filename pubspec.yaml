@@ -1,0 +1,21 @@
+name: cupertinohttp
+description: >
+  A macOS/iOS Flutter plugin that provides access to the Foundation URL
+  Loading System.
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ">=2.16.0<3.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  ffi: ">=1.2.1<2.0.0"
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  ffigen: ">=5.0.0<6.0.0"
+  flutter_test:
+    sdk: flutter
+  test: ">=1.21.1<2.0.0"
