@@ -5,17 +5,8 @@
 /// A macOS/iOS Flutter plugin that provides access to the
 /// [Foundation URL Loading System](https://developer.apple.com/documentation/foundation/url_loading_system).
 
-import 'dart:ffi';
-
 import 'src/native_cupertino_bindings.dart' as ncb;
-
-// Access to symbols that are linked into the process. The "Foundation"
-// framework is linked to Dart so no additional libraries need to be loaded
-// to access those symbols.
-late ncb.NativeCupertinoHttp _linkedLibs = () {
-  final lib = DynamicLibrary.process();
-  return ncb.NativeCupertinoHttp(lib);
-}();
+import 'src/utils.dart';
 
 abstract class _ObjectHolder<T extends ncb.NSObject> {
   final T _nsObject;
@@ -46,7 +37,7 @@ class URLSessionConfiguration
   factory URLSessionConfiguration.backgroundSession(String identifier) {
     return URLSessionConfiguration._(ncb.NSURLSessionConfiguration
         .backgroundSessionConfigurationWithIdentifier_(
-            _linkedLibs, identifier.toNSString(_linkedLibs)));
+            linkedLibs, identifier.toNSString(linkedLibs)));
   }
 
   /// A configuration that uses caching and saves cookies and credentials.
@@ -55,7 +46,7 @@ class URLSessionConfiguration
   factory URLSessionConfiguration.defaultSessionConfiguration() {
     return URLSessionConfiguration._(ncb.NSURLSessionConfiguration.castFrom(
         ncb.NSURLSessionConfiguration.getDefaultSessionConfiguration(
-            _linkedLibs)!));
+            linkedLibs)!));
   }
 
   /// A configuration that uses caching and saves cookies and credentials.
@@ -64,7 +55,7 @@ class URLSessionConfiguration
   factory URLSessionConfiguration.ephemeralSessionConfiguration() {
     return URLSessionConfiguration._(ncb.NSURLSessionConfiguration.castFrom(
         ncb.NSURLSessionConfiguration.getEphemeralSessionConfiguration(
-            _linkedLibs)!));
+            linkedLibs)!));
   }
 
   /// Whether connections over a cellular network are allowed.
@@ -170,5 +161,211 @@ class URLSessionConfiguration
         "timeoutIntervalForRequest=$timeoutIntervalForRequest "
         "waitsForConnectivity=$waitsForConnectivity"
         "]";
+  }
+}
+
+/// The response associated with loading an URL.
+///
+/// See [NSURLResponse](https://developer.apple.com/documentation/foundation/nsurlresponse)
+class URLResponse extends _ObjectHolder<ncb.NSURLResponse> {
+  URLResponse._(ncb.NSURLResponse c) : super(c);
+
+  /// The expected amount of data returned with the response.
+  ///
+  /// See [NSURLResponse.expectedContentLength](https://developer.apple.com/documentation/foundation/nsurlresponse/1413507-expectedcontentlength)
+  int get expectedContentLength => _nsObject.expectedContentLength;
+
+  /// The MIME type of the response.
+  ///
+  /// See [NSURLResponse.MIMEType](https://developer.apple.com/documentation/foundation/nsurlresponse/1411613-mimetype)
+  String? get mimeType => toStringOrNull(_nsObject.MIMEType);
+}
+
+/// The response associated with loading a HTTP URL.
+///
+/// See [NSHTTPURLResponse](https://developer.apple.com/documentation/foundation/nshttpurlresponse)
+class HTTPURLResponse extends URLResponse {
+  final ncb.NSHTTPURLResponse _httpUrlResponse;
+
+  HTTPURLResponse._(ncb.NSHTTPURLResponse c)
+      : _httpUrlResponse = c,
+        super._(c);
+
+  /// The HTTP status code of the response (e.g. 200).
+  ///
+  /// See [HTTPURLResponse.statusCode](https://developer.apple.com/documentation/foundation/nshttpurlresponse/1409395-statuscode)
+  int get statusCode => _httpUrlResponse.statusCode;
+
+  /// The HTTP headers of the response.
+  ///
+  /// See [HTTPURLResponse.allHeaderFields](https://developer.apple.com/documentation/foundation/nshttpurlresponse/1417930-allheaderfields)
+  Map<String, String> get allHeaderFields {
+    final headers =
+        ncb.NSDictionary.castFrom(_httpUrlResponse.allHeaderFields!);
+    return (stringDictToMap(headers));
+  }
+
+  @override
+  String toString() {
+    return "[HTTPURLResponse " +
+        "statusCode=$statusCode " +
+        "mimeType=$mimeType " +
+        "expectedContentLength=$expectedContentLength" +
+        "]";
+  }
+}
+
+/// The possible states of a [URLSessionTask].
+///
+/// See [NSURLSessionTaskState](https://developer.apple.com/documentation/foundation/nsurlsessiontaskstate)
+enum URLSessionTaskState {
+  urlSessionTaskStateRunning,
+  urlSessionTaskStateSuspended,
+  urlSessionTaskStateCanceling,
+  urlSessionTaskStateCompleted,
+}
+
+/// A task associated with downloading a URI.
+///
+/// See [NSURLSessionTask](https://developer.apple.com/documentation/foundation/nsurlsessiontask)
+class URLSessionTask extends _ObjectHolder<ncb.NSURLSessionTask> {
+  URLSessionTask._(ncb.NSURLSessionTask c) : super(c);
+
+  /// Cancels the task.
+  ///
+  /// See [NSURLSessionTask cancel](https://developer.apple.com/documentation/foundation/nsurlsessiontask/1411591-cancel)
+  void cancel() {
+    this._nsObject.cancel();
+  }
+
+  /// Resumes a suspended task (new tasks start as suspended).
+  ///
+  /// See [NSURLSessionTask resume](https://developer.apple.com/documentation/foundation/nsurlsessiontask/1411121-resume)
+  void resume() {
+    this._nsObject.resume();
+  }
+
+  /// Suspends a task (prevents it from transfering data).
+  ///
+  /// See [NSURLSessionTask suspend](https://developer.apple.com/documentation/foundation/nsurlsessiontask/1411565-suspend)
+  void suspend() {
+    this._nsObject.suspend();
+  }
+
+  /// The current state of the task.
+  ///
+  /// See [NSURLSessionTask.state](https://developer.apple.com/documentation/foundation/nsurlsessiontask/1409888-state)
+  URLSessionTaskState get state => URLSessionTaskState.values[_nsObject.state];
+
+  /// The server response to the request associated with this task.
+  ///
+  /// See [NSURLSessionTask.response](https://developer.apple.com/documentation/foundation/nsurlsessiontask/1410586-response)
+  URLResponse? get response {
+    if (_nsObject.response == null) {
+      return null;
+    } else {
+      // TODO(https://github.com/dart-lang/ffigen/issues/374): Check the actual
+      // type of the response instead of assuming that it is a
+      // NSHTTPURLResponse.
+      return HTTPURLResponse._(
+          ncb.NSHTTPURLResponse.castFrom(_nsObject.response!));
+    }
+  }
+
+  /// The number of content bytes that have been received from the server.
+  ///
+  /// [NSURLSessionTask.countOfBytesReceived](https://developer.apple.com/documentation/foundation/nsurlsessiontask/1411581-countofbytesreceived)
+  int get countOfBytesReceived => _nsObject.countOfBytesReceived;
+
+  /// The number of content bytes that are expected to be received from the server.
+  ///
+  /// [NSURLSessionTask.countOfBytesReceived](https://developer.apple.com/documentation/foundation/nsurlsessiontask/1410663-countofbytesexpectedtoreceive)
+  int get countOfBytesExpectedToReceive =>
+      _nsObject.countOfBytesExpectedToReceive;
+
+  @override
+  String toString() {
+    return "[URLSessionTask "
+        "countOfBytesExpectedToReceive=$countOfBytesExpectedToReceive "
+        "countOfBytesReceived=$countOfBytesReceived "
+        "state=$state"
+        "]";
+  }
+}
+
+/// A request to load a URL.
+///
+/// See [NSURLRequest](https://developer.apple.com/documentation/foundation/nsurlrequest)
+class URLRequest extends _ObjectHolder<ncb.NSURLRequest> {
+  URLRequest._(ncb.NSURLRequest c) : super(c);
+
+  /// The HTTP request method (e.g. 'GET').
+  ///
+  /// See [URLRequest.HTTPMethod](https://developer.apple.com/documentation/foundation/nsurlrequest/1413030-httpmethod)
+  String? get httpMethod {
+    return toStringOrNull(_nsObject.HTTPMethod);
+  }
+
+  /// The requested URL.
+  ///
+  /// See [URLRequest.URL](https://developer.apple.com/documentation/foundation/nsurlrequest/1408996-url)
+  Uri? get url {
+    final nsUrl = _nsObject.URL;
+    if (nsUrl == null) {
+      return null;
+    }
+    // TODO(https://github.com/dart-lang/ffigen/issues/373): remove NSObject
+    // cast when precise type signatures are generated.
+    return Uri.parse(toStringOrNull(ncb.NSURL.castFrom(nsUrl).absoluteString)!);
+  }
+
+  /// Creates a request for a URL.
+  ///
+  /// See [NSURLRequest.requestWithURL:](https://developer.apple.com/documentation/foundation/nsurlrequest/1528603-requestwithurl)
+  factory URLRequest.fromUrl(Uri uri) {
+    // TODO(https://github.com/dart-lang/ffigen/issues/373): remove NSObject
+    // cast when precise type signatures are generated.
+    final url = ncb.NSURL.URLWithString_(linkedLibs,
+        ncb.NSObject.castFrom(uri.toString().toNSString(linkedLibs)));
+    return URLRequest._(ncb.NSURLRequest.requestWithURL_(linkedLibs, url));
+  }
+}
+
+/// A client that can make network requests to a server.
+///
+/// See [NSURLSession](https://developer.apple.com/documentation/foundation/nsurlsession)
+class URLSession extends _ObjectHolder<ncb.NSURLSession> {
+  URLSession._(ncb.NSURLSession c) : super(c);
+
+  /// A client with reasonable default behavior.
+  ///
+  /// See [NSURLSession.sharedSession](https://developer.apple.com/documentation/foundation/nsurlsession/1409000-sharedsession)
+  factory URLSession.sharedSession() {
+    return URLSession._(ncb.NSURLSession.castFrom(
+        ncb.NSURLSession.getSharedSession(linkedLibs)!));
+  }
+
+  /// A client with a given configuration.
+  ///
+  /// See [NSURLSession sessionWithConfiguration:](https://developer.apple.com/documentation/foundation/nsurlsession/1411474-sessionwithconfiguration)
+  factory URLSession.sessionWithConfiguration(URLSessionConfiguration config) {
+    return URLSession._(ncb.NSURLSession.sessionWithConfiguration_(
+        linkedLibs, config._nsObject));
+  }
+
+  // A **copy** of the configuration for this sesion.
+  //
+  // See [NSURLSession.configuration](https://developer.apple.com/documentation/foundation/nsurlsession/1411477-configuration)
+  URLSessionConfiguration get configuration {
+    return URLSessionConfiguration._(
+        ncb.NSURLSessionConfiguration.castFrom(_nsObject.configuration!));
+  }
+
+  // Create a [URLSessionTask] that acccess a server URL.
+  //
+  // See [NSURLSession dataTaskWithRequest:](https://developer.apple.com/documentation/foundation/nsurlsession/1410592-datataskwithrequest)
+  URLSessionTask dataTaskWithRequest(URLRequest request) {
+    final task = _nsObject.dataTaskWithRequest_(request._nsObject);
+    return URLSessionTask._(task);
   }
 }
