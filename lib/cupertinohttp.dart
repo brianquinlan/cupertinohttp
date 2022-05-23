@@ -5,6 +5,12 @@
 /// A macOS/iOS Flutter plugin that provides access to the
 /// [Foundation URL Loading System](https://developer.apple.com/documentation/foundation/url_loading_system).
 
+import 'dart:ffi';
+import 'dart:math';
+import 'dart:typed_data';
+
+import 'package:ffi/ffi.dart';
+
 import 'src/native_cupertino_bindings.dart' as ncb;
 import 'src/utils.dart';
 
@@ -164,6 +170,55 @@ class URLSessionConfiguration
   }
 }
 
+/// A container for byte data.
+///
+/// See [NSData](https://developer.apple.com/documentation/foundation/nsdata)
+class Data extends _ObjectHolder<ncb.NSData> {
+  Data._(ncb.NSData c) : super(c);
+
+  /// A new [Data] object containing the given bytes.
+  factory Data.fromUint8List(Uint8List l) {
+    final f = calloc<Uint8>(l.length);
+    try {
+      f.asTypedList(l.length).setAll(0, l);
+
+      final data =
+          ncb.NSData.dataWithBytes_length_(linkedLibs, f.cast(), l.length);
+      return Data._(data);
+    } finally {
+      calloc.free(f);
+    }
+  }
+
+  /// The number of bytes contained in the object.
+  ///
+  /// See [NSData.length](https://developer.apple.com/documentation/foundation/nsdata/1416769-length)
+  int get length => _nsObject.length;
+
+  /// The data contained in the object.
+  ///
+  /// See [NSData.bytes](https://developer.apple.com/documentation/foundation/nsdata/1410616-bytes)
+  Uint8List get bytes {
+    final bytes = _nsObject.bytes;
+    if (bytes.address == 0) {
+      return Uint8List(0);
+    } else {
+      // `NSData.byte` has the same lifetime as the `NSData` so make a copy to
+      // ensure memory safety.
+      // TODO(https://github.com/dart-lang/ffigen/issues/375): Remove copy.
+      return Uint8List.fromList(bytes.cast<Uint8>().asTypedList(length));
+    }
+  }
+
+  @override
+  String toString() {
+    final subrange =
+        length == 0 ? Uint8List(0) : bytes.sublist(0, min(length - 1, 20));
+    final b = subrange.map((e) => e.toRadixString(16)).join();
+    return "[Data " + "length=$length " + "bytes=0x$b..." + "]";
+  }
+}
+
 /// The response associated with loading an URL.
 ///
 /// See [NSURLResponse](https://developer.apple.com/documentation/foundation/nsurlresponse)
@@ -299,11 +354,49 @@ class URLSessionTask extends _ObjectHolder<ncb.NSURLSessionTask> {
 class URLRequest extends _ObjectHolder<ncb.NSURLRequest> {
   URLRequest._(ncb.NSURLRequest c) : super(c);
 
+  /// Creates a request for a URL.
+  ///
+  /// See [NSURLRequest.requestWithURL:](https://developer.apple.com/documentation/foundation/nsurlrequest/1528603-requestwithurl)
+  factory URLRequest.fromUrl(Uri uri) {
+    // TODO(https://github.com/dart-lang/ffigen/issues/373): remove NSObject
+    // cast when precise type signatures are generated.
+    final url = ncb.NSURL.URLWithString_(linkedLibs,
+        ncb.NSObject.castFrom(uri.toString().toNSString(linkedLibs)));
+    return URLRequest._(ncb.NSURLRequest.requestWithURL_(linkedLibs, url));
+  }
+
+  /// Returns all of the HTTP headers for the request.
+  ///
+  /// See [NSURLRequest.allHTTPHeaderFields](https://developer.apple.com/documentation/foundation/nsurlrequest/1418477-allhttpheaderfields)
+  Map<String, String>? get allHttpHeaderFields {
+    if (_nsObject.allHTTPHeaderFields == null) {
+      return null;
+    } else {
+      final headers = ncb.NSDictionary.castFrom(_nsObject.allHTTPHeaderFields!);
+      return stringDictToMap(headers);
+    }
+  }
+
+  /// The body of the request.
+  ///
+  /// See [NSURLRequest.HTTPBody](https://developer.apple.com/documentation/foundation/nsurlrequest/1411317-httpbody)
+  Data? get httpBody {
+    final body = _nsObject.HTTPBody;
+    if (body == null) {
+      return null;
+    }
+    return Data._(ncb.NSData.castFrom(body));
+  }
+
   /// The HTTP request method (e.g. 'GET').
   ///
-  /// See [URLRequest.HTTPMethod](https://developer.apple.com/documentation/foundation/nsurlrequest/1413030-httpmethod)
-  String? get httpMethod {
-    return toStringOrNull(_nsObject.HTTPMethod);
+  /// See [NSURLRequest.HTTPMethod](https://developer.apple.com/documentation/foundation/nsurlrequest/1413030-httpmethod)
+  ///
+  /// NOTE: The documentation for `NSURLRequest.HTTPMethod` says that the
+  /// property is nullable but, in practice, assigning it to null will produce
+  /// an error.
+  String get httpMethod {
+    return toStringOrNull(_nsObject.HTTPMethod)!;
   }
 
   /// The requested URL.
@@ -319,15 +412,59 @@ class URLRequest extends _ObjectHolder<ncb.NSURLRequest> {
     return Uri.parse(toStringOrNull(ncb.NSURL.castFrom(nsUrl).absoluteString)!);
   }
 
+  @override
+  String toString() {
+    return "[URLRequest "
+        "allHttpHeaderFields=$allHttpHeaderFields "
+        "httpBody=$httpBody "
+        "httpMethod=$httpMethod "
+        "]";
+  }
+}
+
+/// A mutable request to load a URL.
+///
+/// See [NSMutableURLRequest](https://developer.apple.com/documentation/foundation/nsmutableurlrequest)
+class MutableURLRequest extends URLRequest {
+  final ncb.NSMutableURLRequest _mutableUrlRequest;
+
+  MutableURLRequest._(ncb.NSMutableURLRequest c)
+      : _mutableUrlRequest = c,
+        super._(c);
+
   /// Creates a request for a URL.
   ///
-  /// See [NSURLRequest.requestWithURL:](https://developer.apple.com/documentation/foundation/nsurlrequest/1528603-requestwithurl)
-  factory URLRequest.fromUrl(Uri uri) {
-    // TODO(https://github.com/dart-lang/ffigen/issues/373): remove NSObject
-    // cast when precise type signatures are generated.
-    final url = ncb.NSURL.URLWithString_(linkedLibs,
-        ncb.NSObject.castFrom(uri.toString().toNSString(linkedLibs)));
-    return URLRequest._(ncb.NSURLRequest.requestWithURL_(linkedLibs, url));
+  /// See [NSMutableURLRequest.requestWithURL:](https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1414617-allhttpheaderfields)
+  factory MutableURLRequest.fromUrl(Uri uri) {
+    final url = ncb.NSURL
+        .URLWithString_(linkedLibs, uri.toString().toNSString(linkedLibs));
+    return MutableURLRequest._(
+        ncb.NSMutableURLRequest.requestWithURL_(linkedLibs, url));
+  }
+
+  set httpBody(Data? data) {
+    _mutableUrlRequest.HTTPBody = data?._nsObject;
+  }
+
+  set httpMethod(String method) {
+    _mutableUrlRequest.HTTPMethod = method.toNSString(linkedLibs);
+  }
+
+  /// Set the value of a header field.
+  ///
+  /// See [NSMutableURLRequest setValue:forHTTPHeaderField:](https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1408793-setvalue)
+  void setValueForHttpHeaderField(String value, String field) {
+    _mutableUrlRequest.setValue_forHTTPHeaderField_(
+        field.toNSString(linkedLibs), value.toNSString(linkedLibs));
+  }
+
+  @override
+  String toString() {
+    return "[MutableURLRequest "
+        "allHttpHeaderFields=$allHttpHeaderFields "
+        "httpBody=$httpBody "
+        "httpMethod=$httpMethod "
+        "]";
   }
 }
 

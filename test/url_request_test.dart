@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:test/test.dart';
+
 import 'package:cupertinohttp/cupertinohttp.dart';
 
 void main() {
@@ -12,6 +13,8 @@ void main() {
       final request = URLRequest.fromUrl(uri);
       expect(request.url, uri);
       expect(request.httpMethod, 'GET');
+      expect(request.allHttpHeaderFields, null);
+      expect(request.httpBody, null);
       request.toString(); // Just verify that there is no crash.
     });
 
@@ -20,6 +23,8 @@ void main() {
       final request = URLRequest.fromUrl(uri);
       expect(request.url, uri);
       expect(request.httpMethod, 'GET');
+      expect(request.allHttpHeaderFields, null);
+      expect(request.httpBody, null);
       request.toString(); // Just verify that there is no crash.
     });
 
@@ -28,6 +33,8 @@ void main() {
       final request = URLRequest.fromUrl(uri);
       expect(request.url, uri);
       expect(request.httpMethod, 'GET');
+      expect(request.allHttpHeaderFields, null);
+      expect(request.httpBody, null);
       request.toString(); // Just verify that there is no crash.
     });
   });
