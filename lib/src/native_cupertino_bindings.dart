@@ -44732,6 +44732,893 @@ class NativeCupertinoHttp {
           'NSExtraRefCount');
   late final _NSExtraRefCount11 =
       _NSExtraRefCount11Ptr.asFunction<int Function(ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ObjCObject> NSStringFromSelector12(
+    ffi.Pointer<ObjCSel> aSelector,
+  ) {
+    return _NSStringFromSelector12(
+      aSelector,
+    );
+  }
+
+  late final _NSStringFromSelector12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(
+              ffi.Pointer<ObjCSel>)>>('NSStringFromSelector');
+  late final _NSStringFromSelector12 = _NSStringFromSelector12Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCSel>)>();
+
+  ffi.Pointer<ObjCSel> NSSelectorFromString12(
+    ffi.Pointer<ObjCObject> aSelectorName,
+  ) {
+    return _NSSelectorFromString12(
+      aSelectorName,
+    );
+  }
+
+  late final _NSSelectorFromString12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCSel> Function(
+              ffi.Pointer<ObjCObject>)>>('NSSelectorFromString');
+  late final _NSSelectorFromString12 = _NSSelectorFromString12Ptr.asFunction<
+      ffi.Pointer<ObjCSel> Function(ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ObjCObject> NSStringFromClass12(
+    ffi.Pointer<ObjCObject> aClass,
+  ) {
+    return _NSStringFromClass12(
+      aClass,
+    );
+  }
+
+  late final _NSStringFromClass12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(
+              ffi.Pointer<ObjCObject>)>>('NSStringFromClass');
+  late final _NSStringFromClass12 = _NSStringFromClass12Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ObjCObject> NSClassFromString12(
+    ffi.Pointer<ObjCObject> aClassName,
+  ) {
+    return _NSClassFromString12(
+      aClassName,
+    );
+  }
+
+  late final _NSClassFromString12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(
+              ffi.Pointer<ObjCObject>)>>('NSClassFromString');
+  late final _NSClassFromString12 = _NSClassFromString12Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ObjCObject> NSStringFromProtocol12(
+    ffi.Pointer<ObjCObject> proto,
+  ) {
+    return _NSStringFromProtocol12(
+      proto,
+    );
+  }
+
+  late final _NSStringFromProtocol12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(
+              ffi.Pointer<ObjCObject>)>>('NSStringFromProtocol');
+  late final _NSStringFromProtocol12 = _NSStringFromProtocol12Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ObjCObject> NSProtocolFromString12(
+    ffi.Pointer<ObjCObject> namestr,
+  ) {
+    return _NSProtocolFromString12(
+      namestr,
+    );
+  }
+
+  late final _NSProtocolFromString12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(
+              ffi.Pointer<ObjCObject>)>>('NSProtocolFromString');
+  late final _NSProtocolFromString12 = _NSProtocolFromString12Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ffi.Char> NSGetSizeAndAlignment12(
+    ffi.Pointer<ffi.Char> typePtr,
+    ffi.Pointer<NSUInteger> sizep,
+    ffi.Pointer<NSUInteger> alignp,
+  ) {
+    return _NSGetSizeAndAlignment12(
+      typePtr,
+      sizep,
+      alignp,
+    );
+  }
+
+  late final _NSGetSizeAndAlignment12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<NSUInteger>,
+              ffi.Pointer<NSUInteger>)>>('NSGetSizeAndAlignment');
+  late final _NSGetSizeAndAlignment12 = _NSGetSizeAndAlignment12Ptr.asFunction<
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+          ffi.Pointer<NSUInteger>, ffi.Pointer<NSUInteger>)>();
+
+  void NSLog12(
+    ffi.Pointer<ObjCObject> format,
+  ) {
+    return _NSLog12(
+      format,
+    );
+  }
+
+  late final _NSLog12Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ObjCObject>)>>(
+          'NSLog');
+  late final _NSLog12 =
+      _NSLog12Ptr.asFunction<void Function(ffi.Pointer<ObjCObject>)>();
+
+  void NSLogv12(
+    ffi.Pointer<ObjCObject> format,
+    va_list args,
+  ) {
+    return _NSLogv12(
+      format,
+      args,
+    );
+  }
+
+  late final _NSLogv12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ObjCObject>, va_list)>>('NSLogv');
+  late final _NSLogv12 = _NSLogv12Ptr.asFunction<
+      void Function(ffi.Pointer<ObjCObject>, va_list)>();
+
+  CFRange __CFRangeMake12(
+    int loc,
+    int len,
+  ) {
+    return ___CFRangeMake12(
+      loc,
+      len,
+    );
+  }
+
+  late final ___CFRangeMake12Ptr =
+      _lookup<ffi.NativeFunction<CFRange Function(CFIndex, CFIndex)>>(
+          '__CFRangeMake');
+  late final ___CFRangeMake12 =
+      ___CFRangeMake12Ptr.asFunction<CFRange Function(int, int)>();
+
+  int CFNullGetTypeID12() {
+    return _CFNullGetTypeID12();
+  }
+
+  late final _CFNullGetTypeID12Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFNullGetTypeID');
+  late final _CFNullGetTypeID12 =
+      _CFNullGetTypeID12Ptr.asFunction<int Function()>();
+
+  int CFAllocatorGetTypeID12() {
+    return _CFAllocatorGetTypeID12();
+  }
+
+  late final _CFAllocatorGetTypeID12Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFAllocatorGetTypeID');
+  late final _CFAllocatorGetTypeID12 =
+      _CFAllocatorGetTypeID12Ptr.asFunction<int Function()>();
+
+  void CFAllocatorSetDefault12(
+    CFAllocatorRef allocator,
+  ) {
+    return _CFAllocatorSetDefault12(
+      allocator,
+    );
+  }
+
+  late final _CFAllocatorSetDefault12Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFAllocatorRef)>>(
+          'CFAllocatorSetDefault');
+  late final _CFAllocatorSetDefault12 =
+      _CFAllocatorSetDefault12Ptr.asFunction<void Function(CFAllocatorRef)>();
+
+  CFAllocatorRef CFAllocatorGetDefault12() {
+    return _CFAllocatorGetDefault12();
+  }
+
+  late final _CFAllocatorGetDefault12Ptr =
+      _lookup<ffi.NativeFunction<CFAllocatorRef Function()>>(
+          'CFAllocatorGetDefault');
+  late final _CFAllocatorGetDefault12 =
+      _CFAllocatorGetDefault12Ptr.asFunction<CFAllocatorRef Function()>();
+
+  CFAllocatorRef CFAllocatorCreate12(
+    CFAllocatorRef allocator,
+    ffi.Pointer<CFAllocatorContext> context,
+  ) {
+    return _CFAllocatorCreate12(
+      allocator,
+      context,
+    );
+  }
+
+  late final _CFAllocatorCreate12Ptr = _lookup<
+      ffi.NativeFunction<
+          CFAllocatorRef Function(CFAllocatorRef,
+              ffi.Pointer<CFAllocatorContext>)>>('CFAllocatorCreate');
+  late final _CFAllocatorCreate12 = _CFAllocatorCreate12Ptr.asFunction<
+      CFAllocatorRef Function(
+          CFAllocatorRef, ffi.Pointer<CFAllocatorContext>)>();
+
+  ffi.Pointer<ffi.Void> CFAllocatorAllocate12(
+    CFAllocatorRef allocator,
+    int size,
+    int hint,
+  ) {
+    return _CFAllocatorAllocate12(
+      allocator,
+      size,
+      hint,
+    );
+  }
+
+  late final _CFAllocatorAllocate12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              CFAllocatorRef, CFIndex, CFOptionFlags)>>('CFAllocatorAllocate');
+  late final _CFAllocatorAllocate12 = _CFAllocatorAllocate12Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(CFAllocatorRef, int, int)>();
+
+  ffi.Pointer<ffi.Void> CFAllocatorReallocate12(
+    CFAllocatorRef allocator,
+    ffi.Pointer<ffi.Void> ptr,
+    int newsize,
+    int hint,
+  ) {
+    return _CFAllocatorReallocate12(
+      allocator,
+      ptr,
+      newsize,
+      hint,
+    );
+  }
+
+  late final _CFAllocatorReallocate12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(CFAllocatorRef, ffi.Pointer<ffi.Void>,
+              CFIndex, CFOptionFlags)>>('CFAllocatorReallocate');
+  late final _CFAllocatorReallocate12 = _CFAllocatorReallocate12Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          CFAllocatorRef, ffi.Pointer<ffi.Void>, int, int)>();
+
+  void CFAllocatorDeallocate12(
+    CFAllocatorRef allocator,
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _CFAllocatorDeallocate12(
+      allocator,
+      ptr,
+    );
+  }
+
+  late final _CFAllocatorDeallocate12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFAllocatorRef, ffi.Pointer<ffi.Void>)>>('CFAllocatorDeallocate');
+  late final _CFAllocatorDeallocate12 = _CFAllocatorDeallocate12Ptr.asFunction<
+      void Function(CFAllocatorRef, ffi.Pointer<ffi.Void>)>();
+
+  int CFAllocatorGetPreferredSizeForSize12(
+    CFAllocatorRef allocator,
+    int size,
+    int hint,
+  ) {
+    return _CFAllocatorGetPreferredSizeForSize12(
+      allocator,
+      size,
+      hint,
+    );
+  }
+
+  late final _CFAllocatorGetPreferredSizeForSize12Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFAllocatorRef, CFIndex,
+              CFOptionFlags)>>('CFAllocatorGetPreferredSizeForSize');
+  late final _CFAllocatorGetPreferredSizeForSize12 =
+      _CFAllocatorGetPreferredSizeForSize12Ptr.asFunction<
+          int Function(CFAllocatorRef, int, int)>();
+
+  void CFAllocatorGetContext12(
+    CFAllocatorRef allocator,
+    ffi.Pointer<CFAllocatorContext> context,
+  ) {
+    return _CFAllocatorGetContext12(
+      allocator,
+      context,
+    );
+  }
+
+  late final _CFAllocatorGetContext12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFAllocatorRef,
+              ffi.Pointer<CFAllocatorContext>)>>('CFAllocatorGetContext');
+  late final _CFAllocatorGetContext12 = _CFAllocatorGetContext12Ptr.asFunction<
+      void Function(CFAllocatorRef, ffi.Pointer<CFAllocatorContext>)>();
+
+  int CFGetTypeID12(
+    CFTypeRef cf,
+  ) {
+    return _CFGetTypeID12(
+      cf,
+    );
+  }
+
+  late final _CFGetTypeID12Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function(CFTypeRef)>>('CFGetTypeID');
+  late final _CFGetTypeID12 =
+      _CFGetTypeID12Ptr.asFunction<int Function(CFTypeRef)>();
+
+  CFStringRef CFCopyTypeIDDescription12(
+    int type_id,
+  ) {
+    return _CFCopyTypeIDDescription12(
+      type_id,
+    );
+  }
+
+  late final _CFCopyTypeIDDescription12Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFTypeID)>>(
+          'CFCopyTypeIDDescription');
+  late final _CFCopyTypeIDDescription12 =
+      _CFCopyTypeIDDescription12Ptr.asFunction<CFStringRef Function(int)>();
+
+  CFTypeRef CFRetain12(
+    CFTypeRef cf,
+  ) {
+    return _CFRetain12(
+      cf,
+    );
+  }
+
+  late final _CFRetain12Ptr =
+      _lookup<ffi.NativeFunction<CFTypeRef Function(CFTypeRef)>>('CFRetain');
+  late final _CFRetain12 =
+      _CFRetain12Ptr.asFunction<CFTypeRef Function(CFTypeRef)>();
+
+  void CFRelease12(
+    CFTypeRef cf,
+  ) {
+    return _CFRelease12(
+      cf,
+    );
+  }
+
+  late final _CFRelease12Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFTypeRef)>>('CFRelease');
+  late final _CFRelease12 =
+      _CFRelease12Ptr.asFunction<void Function(CFTypeRef)>();
+
+  CFTypeRef CFAutorelease12(
+    CFTypeRef arg,
+  ) {
+    return _CFAutorelease12(
+      arg,
+    );
+  }
+
+  late final _CFAutorelease12Ptr =
+      _lookup<ffi.NativeFunction<CFTypeRef Function(CFTypeRef)>>(
+          'CFAutorelease');
+  late final _CFAutorelease12 =
+      _CFAutorelease12Ptr.asFunction<CFTypeRef Function(CFTypeRef)>();
+
+  int CFGetRetainCount12(
+    CFTypeRef cf,
+  ) {
+    return _CFGetRetainCount12(
+      cf,
+    );
+  }
+
+  late final _CFGetRetainCount12Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFTypeRef)>>(
+          'CFGetRetainCount');
+  late final _CFGetRetainCount12 =
+      _CFGetRetainCount12Ptr.asFunction<int Function(CFTypeRef)>();
+
+  int CFEqual12(
+    CFTypeRef cf1,
+    CFTypeRef cf2,
+  ) {
+    return _CFEqual12(
+      cf1,
+      cf2,
+    );
+  }
+
+  late final _CFEqual12Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFTypeRef, CFTypeRef)>>(
+          'CFEqual');
+  late final _CFEqual12 =
+      _CFEqual12Ptr.asFunction<int Function(CFTypeRef, CFTypeRef)>();
+
+  int CFHash12(
+    CFTypeRef cf,
+  ) {
+    return _CFHash12(
+      cf,
+    );
+  }
+
+  late final _CFHash12Ptr =
+      _lookup<ffi.NativeFunction<CFHashCode Function(CFTypeRef)>>('CFHash');
+  late final _CFHash12 = _CFHash12Ptr.asFunction<int Function(CFTypeRef)>();
+
+  CFStringRef CFCopyDescription12(
+    CFTypeRef cf,
+  ) {
+    return _CFCopyDescription12(
+      cf,
+    );
+  }
+
+  late final _CFCopyDescription12Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFTypeRef)>>(
+          'CFCopyDescription');
+  late final _CFCopyDescription12 =
+      _CFCopyDescription12Ptr.asFunction<CFStringRef Function(CFTypeRef)>();
+
+  CFAllocatorRef CFGetAllocator12(
+    CFTypeRef cf,
+  ) {
+    return _CFGetAllocator12(
+      cf,
+    );
+  }
+
+  late final _CFGetAllocator12Ptr =
+      _lookup<ffi.NativeFunction<CFAllocatorRef Function(CFTypeRef)>>(
+          'CFGetAllocator');
+  late final _CFGetAllocator12 =
+      _CFGetAllocator12Ptr.asFunction<CFAllocatorRef Function(CFTypeRef)>();
+
+  CFTypeRef CFMakeCollectable12(
+    CFTypeRef cf,
+  ) {
+    return _CFMakeCollectable12(
+      cf,
+    );
+  }
+
+  late final _CFMakeCollectable12Ptr =
+      _lookup<ffi.NativeFunction<CFTypeRef Function(CFTypeRef)>>(
+          'CFMakeCollectable');
+  late final _CFMakeCollectable12 =
+      _CFMakeCollectable12Ptr.asFunction<CFTypeRef Function(CFTypeRef)>();
+
+  ffi.Pointer<NSZone> NSDefaultMallocZone12() {
+    return _NSDefaultMallocZone12();
+  }
+
+  late final _NSDefaultMallocZone12Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<NSZone> Function()>>(
+          'NSDefaultMallocZone');
+  late final _NSDefaultMallocZone12 =
+      _NSDefaultMallocZone12Ptr.asFunction<ffi.Pointer<NSZone> Function()>();
+
+  ffi.Pointer<NSZone> NSCreateZone12(
+    int startSize,
+    int granularity,
+    bool canFree,
+  ) {
+    return _NSCreateZone12(
+      startSize,
+      granularity,
+      canFree ? 1 : 0,
+    );
+  }
+
+  late final _NSCreateZone12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<NSZone> Function(
+              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+  late final _NSCreateZone12 = _NSCreateZone12Ptr.asFunction<
+      ffi.Pointer<NSZone> Function(int, int, int)>();
+
+  void NSRecycleZone12(
+    ffi.Pointer<NSZone> zone,
+  ) {
+    return _NSRecycleZone12(
+      zone,
+    );
+  }
+
+  late final _NSRecycleZone12Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<NSZone>)>>(
+          'NSRecycleZone');
+  late final _NSRecycleZone12 =
+      _NSRecycleZone12Ptr.asFunction<void Function(ffi.Pointer<NSZone>)>();
+
+  void NSSetZoneName12(
+    ffi.Pointer<NSZone> zone,
+    ffi.Pointer<ObjCObject> name,
+  ) {
+    return _NSSetZoneName12(
+      zone,
+      name,
+    );
+  }
+
+  late final _NSSetZoneName12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<NSZone>, ffi.Pointer<ObjCObject>)>>('NSSetZoneName');
+  late final _NSSetZoneName12 = _NSSetZoneName12Ptr.asFunction<
+      void Function(ffi.Pointer<NSZone>, ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ObjCObject> NSZoneName12(
+    ffi.Pointer<NSZone> zone,
+  ) {
+    return _NSZoneName12(
+      zone,
+    );
+  }
+
+  late final _NSZoneName12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(ffi.Pointer<NSZone>)>>('NSZoneName');
+  late final _NSZoneName12 = _NSZoneName12Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<NSZone>)>();
+
+  ffi.Pointer<NSZone> NSZoneFromPointer12(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _NSZoneFromPointer12(
+      ptr,
+    );
+  }
+
+  late final _NSZoneFromPointer12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<NSZone> Function(
+              ffi.Pointer<ffi.Void>)>>('NSZoneFromPointer');
+  late final _NSZoneFromPointer12 = _NSZoneFromPointer12Ptr.asFunction<
+      ffi.Pointer<NSZone> Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> NSZoneMalloc12(
+    ffi.Pointer<NSZone> zone,
+    int size,
+  ) {
+    return _NSZoneMalloc12(
+      zone,
+      size,
+    );
+  }
+
+  late final _NSZoneMalloc12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<NSZone>, NSUInteger)>>('NSZoneMalloc');
+  late final _NSZoneMalloc12 = _NSZoneMalloc12Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<NSZone>, int)>();
+
+  ffi.Pointer<ffi.Void> NSZoneCalloc12(
+    ffi.Pointer<NSZone> zone,
+    int numElems,
+    int byteSize,
+  ) {
+    return _NSZoneCalloc12(
+      zone,
+      numElems,
+      byteSize,
+    );
+  }
+
+  late final _NSZoneCalloc12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<NSZone>, NSUInteger, NSUInteger)>>('NSZoneCalloc');
+  late final _NSZoneCalloc12 = _NSZoneCalloc12Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<NSZone>, int, int)>();
+
+  ffi.Pointer<ffi.Void> NSZoneRealloc12(
+    ffi.Pointer<NSZone> zone,
+    ffi.Pointer<ffi.Void> ptr,
+    int size,
+  ) {
+    return _NSZoneRealloc12(
+      zone,
+      ptr,
+      size,
+    );
+  }
+
+  late final _NSZoneRealloc12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<NSZone>,
+              ffi.Pointer<ffi.Void>, NSUInteger)>>('NSZoneRealloc');
+  late final _NSZoneRealloc12 = _NSZoneRealloc12Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<NSZone>, ffi.Pointer<ffi.Void>, int)>();
+
+  void NSZoneFree12(
+    ffi.Pointer<NSZone> zone,
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _NSZoneFree12(
+      zone,
+      ptr,
+    );
+  }
+
+  late final _NSZoneFree12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<NSZone>, ffi.Pointer<ffi.Void>)>>('NSZoneFree');
+  late final _NSZoneFree12 = _NSZoneFree12Ptr.asFunction<
+      void Function(ffi.Pointer<NSZone>, ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> NSAllocateCollectable12(
+    int size,
+    int options,
+  ) {
+    return _NSAllocateCollectable12(
+      size,
+      options,
+    );
+  }
+
+  late final _NSAllocateCollectable12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              NSUInteger, NSUInteger)>>('NSAllocateCollectable');
+  late final _NSAllocateCollectable12 = _NSAllocateCollectable12Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(int, int)>();
+
+  ffi.Pointer<ffi.Void> NSReallocateCollectable12(
+    ffi.Pointer<ffi.Void> ptr,
+    int size,
+    int options,
+  ) {
+    return _NSReallocateCollectable12(
+      ptr,
+      size,
+      options,
+    );
+  }
+
+  late final _NSReallocateCollectable12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, NSUInteger,
+              NSUInteger)>>('NSReallocateCollectable');
+  late final _NSReallocateCollectable12 =
+      _NSReallocateCollectable12Ptr.asFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, int, int)>();
+
+  int NSPageSize12() {
+    return _NSPageSize12();
+  }
+
+  late final _NSPageSize12Ptr =
+      _lookup<ffi.NativeFunction<NSUInteger Function()>>('NSPageSize');
+  late final _NSPageSize12 = _NSPageSize12Ptr.asFunction<int Function()>();
+
+  int NSLogPageSize12() {
+    return _NSLogPageSize12();
+  }
+
+  late final _NSLogPageSize12Ptr =
+      _lookup<ffi.NativeFunction<NSUInteger Function()>>('NSLogPageSize');
+  late final _NSLogPageSize12 =
+      _NSLogPageSize12Ptr.asFunction<int Function()>();
+
+  int NSRoundUpToMultipleOfPageSize12(
+    int bytes,
+  ) {
+    return _NSRoundUpToMultipleOfPageSize12(
+      bytes,
+    );
+  }
+
+  late final _NSRoundUpToMultipleOfPageSize12Ptr =
+      _lookup<ffi.NativeFunction<NSUInteger Function(NSUInteger)>>(
+          'NSRoundUpToMultipleOfPageSize');
+  late final _NSRoundUpToMultipleOfPageSize12 =
+      _NSRoundUpToMultipleOfPageSize12Ptr.asFunction<int Function(int)>();
+
+  int NSRoundDownToMultipleOfPageSize12(
+    int bytes,
+  ) {
+    return _NSRoundDownToMultipleOfPageSize12(
+      bytes,
+    );
+  }
+
+  late final _NSRoundDownToMultipleOfPageSize12Ptr =
+      _lookup<ffi.NativeFunction<NSUInteger Function(NSUInteger)>>(
+          'NSRoundDownToMultipleOfPageSize');
+  late final _NSRoundDownToMultipleOfPageSize12 =
+      _NSRoundDownToMultipleOfPageSize12Ptr.asFunction<int Function(int)>();
+
+  ffi.Pointer<ffi.Void> NSAllocateMemoryPages12(
+    int bytes,
+  ) {
+    return _NSAllocateMemoryPages12(
+      bytes,
+    );
+  }
+
+  late final _NSAllocateMemoryPages12Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(NSUInteger)>>(
+          'NSAllocateMemoryPages');
+  late final _NSAllocateMemoryPages12 = _NSAllocateMemoryPages12Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(int)>();
+
+  void NSDeallocateMemoryPages12(
+    ffi.Pointer<ffi.Void> ptr,
+    int bytes,
+  ) {
+    return _NSDeallocateMemoryPages12(
+      ptr,
+      bytes,
+    );
+  }
+
+  late final _NSDeallocateMemoryPages12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<ffi.Void>, NSUInteger)>>('NSDeallocateMemoryPages');
+  late final _NSDeallocateMemoryPages12 = _NSDeallocateMemoryPages12Ptr
+      .asFunction<void Function(ffi.Pointer<ffi.Void>, int)>();
+
+  void NSCopyMemoryPages12(
+    ffi.Pointer<ffi.Void> source,
+    ffi.Pointer<ffi.Void> dest,
+    int bytes,
+  ) {
+    return _NSCopyMemoryPages12(
+      source,
+      dest,
+      bytes,
+    );
+  }
+
+  late final _NSCopyMemoryPages12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
+              NSUInteger)>>('NSCopyMemoryPages');
+  late final _NSCopyMemoryPages12 = _NSCopyMemoryPages12Ptr.asFunction<
+      void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  int NSRealMemoryAvailable12() {
+    return _NSRealMemoryAvailable12();
+  }
+
+  late final _NSRealMemoryAvailable12Ptr =
+      _lookup<ffi.NativeFunction<NSUInteger Function()>>(
+          'NSRealMemoryAvailable');
+  late final _NSRealMemoryAvailable12 =
+      _NSRealMemoryAvailable12Ptr.asFunction<int Function()>();
+
+  ffi.Pointer<ObjCObject> NSAllocateObject12(
+    ffi.Pointer<ObjCObject> aClass,
+    int extraBytes,
+    ffi.Pointer<NSZone> zone,
+  ) {
+    return _NSAllocateObject12(
+      aClass,
+      extraBytes,
+      zone,
+    );
+  }
+
+  late final _NSAllocateObject12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>, NSUInteger,
+              ffi.Pointer<NSZone>)>>('NSAllocateObject');
+  late final _NSAllocateObject12 = _NSAllocateObject12Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(
+          ffi.Pointer<ObjCObject>, int, ffi.Pointer<NSZone>)>();
+
+  void NSDeallocateObject12(
+    ffi.Pointer<ObjCObject> object,
+  ) {
+    return _NSDeallocateObject12(
+      object,
+    );
+  }
+
+  late final _NSDeallocateObject12Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ObjCObject>)>>(
+          'NSDeallocateObject');
+  late final _NSDeallocateObject12 = _NSDeallocateObject12Ptr.asFunction<
+      void Function(ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ObjCObject> NSCopyObject12(
+    ffi.Pointer<ObjCObject> object,
+    int extraBytes,
+    ffi.Pointer<NSZone> zone,
+  ) {
+    return _NSCopyObject12(
+      object,
+      extraBytes,
+      zone,
+    );
+  }
+
+  late final _NSCopyObject12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>, NSUInteger,
+              ffi.Pointer<NSZone>)>>('NSCopyObject');
+  late final _NSCopyObject12 = _NSCopyObject12Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(
+          ffi.Pointer<ObjCObject>, int, ffi.Pointer<NSZone>)>();
+
+  bool NSShouldRetainWithZone12(
+    ffi.Pointer<ObjCObject> anObject,
+    ffi.Pointer<NSZone> requestedZone,
+  ) {
+    return _NSShouldRetainWithZone12(
+          anObject,
+          requestedZone,
+        ) !=
+        0;
+  }
+
+  late final _NSShouldRetainWithZone12Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+              ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
+  late final _NSShouldRetainWithZone12 = _NSShouldRetainWithZone12Ptr
+      .asFunction<int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+
+  void NSIncrementExtraRefCount12(
+    ffi.Pointer<ObjCObject> object,
+  ) {
+    return _NSIncrementExtraRefCount12(
+      object,
+    );
+  }
+
+  late final _NSIncrementExtraRefCount12Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ObjCObject>)>>(
+          'NSIncrementExtraRefCount');
+  late final _NSIncrementExtraRefCount12 = _NSIncrementExtraRefCount12Ptr
+      .asFunction<void Function(ffi.Pointer<ObjCObject>)>();
+
+  bool NSDecrementExtraRefCountWasZero12(
+    ffi.Pointer<ObjCObject> object,
+  ) {
+    return _NSDecrementExtraRefCountWasZero12(
+          object,
+        ) !=
+        0;
+  }
+
+  late final _NSDecrementExtraRefCountWasZero12Ptr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+          'NSDecrementExtraRefCountWasZero');
+  late final _NSDecrementExtraRefCountWasZero12 =
+      _NSDecrementExtraRefCountWasZero12Ptr.asFunction<
+          int Function(ffi.Pointer<ObjCObject>)>();
+
+  int NSExtraRefCount12(
+    ffi.Pointer<ObjCObject> object,
+  ) {
+    return _NSExtraRefCount12(
+      object,
+    );
+  }
+
+  late final _NSExtraRefCount12Ptr =
+      _lookup<ffi.NativeFunction<NSUInteger Function(ffi.Pointer<ObjCObject>)>>(
+          'NSExtraRefCount');
+  late final _NSExtraRefCount12 =
+      _NSExtraRefCount12Ptr.asFunction<int Function(ffi.Pointer<ObjCObject>)>();
+
+  late final ffi.Pointer<ObjCObject> _class_CUPHTTPClientDelegate1 =
+      _getClass1("CUPHTTPClientDelegate");
 }
 
 class ObjCObject extends ffi.Opaque {}
@@ -60865,6 +61752,32 @@ class ObjCBlock31 {
                 .cast(),
             ptr.cast());
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
+}
+
+class CUPHTTPClientDelegate extends NSObject {
+  CUPHTTPClientDelegate._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
+      : super._(id, lib);
+
+  static CUPHTTPClientDelegate castFrom<T extends _ObjCWrapper>(T other) {
+    return CUPHTTPClientDelegate._(other._id, other._lib);
+  }
+
+  static CUPHTTPClientDelegate castFromPointer(
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
+    return CUPHTTPClientDelegate._(other, lib);
+  }
+
+  static CUPHTTPClientDelegate new1(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPClientDelegate1, _lib._sel_new1);
+    return CUPHTTPClientDelegate._(_ret, _lib);
+  }
+
+  static CUPHTTPClientDelegate alloc(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPClientDelegate1, _lib._sel_alloc1);
+    return CUPHTTPClientDelegate._(_ret, _lib);
+  }
 }
 
 const int NSScannedOption = 1;
