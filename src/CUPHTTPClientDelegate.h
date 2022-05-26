@@ -6,7 +6,52 @@
 // but that would mean that ffigen would process every file in the Foundation
 // framework, which is huge. So just import the headers that we need.
 #import <Foundation/NSObject.h>
+#import <Foundation/NSURLSession.h>
 
+#include "dart-sdk/include/dart_api_dl.h"
+
+/**
+ * The type of message being sent to a Dart port. See CUPHTTPClientDelegate.
+ */
+typedef NS_ENUM(NSInteger, MessageType) {
+  ResponseMessage = 0,
+  DataMessage = 1,
+  CompletedMessage = 2,
+};
+
+/**
+ * The configuration associated with a NSURLSessionTask.
+ * See CUPHTTPClientDelegate.
+ */
+@interface CUPHTTPTaskConfiguration : NSObject
+
+- (id) initWithPort:(Dart_Port)sendPort;
+
+@property (readonly) Dart_Port sendPort;
+
+@end
+
+/**
+ * A delegate for NSURLSession that forwards events for registered
+ * NSURLSessionTasks and forwards them to a port for consumption in Dart.
+ *
+ * The messages sent to the port are contained in a List with one of 3
+ * possible formats:
+ *
+ * 1. When the delegate receives a HTTP response:
+ *    [MessageType::ResponseMessage, <int: pointer to NSURLResponse>]
+ *
+ * 2. When the delegate receives some HTTP data:
+ *    [MessageType::DataMessage, <Uint8List: the received data>]
+  *
+ * 3. When the delegate is informed that the response is complete:
+ *    [MessageType::CompletedMessage, <int: pointer to NSError> | null]
+ */
 @interface CUPHTTPClientDelegate : NSObject
-  // TODO: Implement this!
+
+/**
+ * Instruct the delegate to forward events for the given task to the port
+ * specified in the configuration.
+ */
+- (void)registerTask:(NSURLSessionTask *) task withConfiguration:(CUPHTTPTaskConfiguration *)config;
 @end
