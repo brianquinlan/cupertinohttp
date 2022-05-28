@@ -23,8 +23,7 @@ void main() {
       final data = MutableData.empty();
       data.appendBytes(Uint8List(0));
       expect(data.bytes, Uint8List(0));
-      test('toString',
-          () => data.toString()); // Just verify that there is no crash.
+      data.toString(); // Just verify that there is no crash.
     });
 
     test('append some bytes', () {
@@ -33,8 +32,7 @@ void main() {
       expect(data.bytes, Uint8List.fromList([1, 2, 3, 4, 5]));
       data.appendBytes(Uint8List.fromList([6, 7, 8, 9, 10]));
       expect(data.bytes, Uint8List.fromList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
-      test('toString',
-          () => data.toString()); // Just verify that there is no crash.
+      data.toString(); // Just verify that there is no crash.
     });
   });
 }
