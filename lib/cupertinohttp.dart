@@ -4,8 +4,28 @@
 
 /// A macOS/iOS Flutter plugin that provides access to the
 /// [Foundation URL Loading System](https://developer.apple.com/documentation/foundation/url_loading_system).
+///
+/// For example:
+/// ```
+/// void main() {
+///   final url = Uri.https('www.example.com', '/');
+///   final session = URLSession.sharedSession();
+///   final task = session.dataTaskWithCompletionHandler(URLRequest.fromUrl(url),
+///       (data, response, error) {
+///     if (error == null) {
+///       if (response != null && response.statusCode == 200) {
+///         print(response);  // Do something with the response.
+///         return;
+///       }
+///     }
+///     print(error);  // Handle errors.
+///   });
+///   task.resume();
+/// }
+/// ```
 
 import 'dart:ffi';
+import 'dart:isolate';
 import 'dart:math';
 import 'dart:typed_data';
 
@@ -27,6 +47,54 @@ enum HTTPCookieAcceptPolicy {
   httpCookieAcceptPolicyAlways,
   httpCookieAcceptPolicyNever,
   httpCookieAcceptPolicyOnlyFromMainDocumentDomain,
+}
+
+/// Information about a failure.
+///
+/// See [NSError](https://developer.apple.com/documentation/foundation/nserror)
+class Error extends _ObjectHolder<ncb.NSError> {
+  Error._(ncb.NSError c) : super(c);
+
+  /// The numeric code for the error e.g. -1003 (kCFURLErrorCannotFindHost).
+  ///
+  /// The interpretation of this code will depend on the domain of the error
+  /// which, for URL loading, will usually be
+  /// [`kCFErrorDomainCFNetwork`](https://developer.apple.com/documentation/cfnetwork/kcferrordomaincfnetwork).
+  ///
+  /// See [NSError.code](https://developer.apple.com/documentation/foundation/nserror/1409165-code)
+  int get code => this._nsObject.code;
+
+  // TODO(https://github.com/dart-lang/ffigen/issues/386): expose
+  // `NSError.domain` when correct type aliases are available.
+
+  /// A description of the error in the current locale e.g.
+  /// 'A server with the specified hostname could not be found.'
+  ///
+  /// See [NSError.locaizedDescription](https://developer.apple.com/documentation/foundation/nserror/1414418-localizeddescription)
+  String? get localizedDescription =>
+      toStringOrNull(_nsObject.localizedDescription);
+
+  /// An explanation of the reason for the error in the current locale.
+  ///
+  /// See [NSError.localizedFailureReason](https://developer.apple.com/documentation/foundation/nserror/1412752-localizedfailurereason)
+  String? get localizedFailureReason =>
+      toStringOrNull(_nsObject.localizedFailureReason);
+
+  /// An explanation of how to fix the error in the current locale.
+  ///
+  /// See [NSError.localizedRecoverySuggestion](https://developer.apple.com/documentation/foundation/nserror/1407500-localizedrecoverysuggestion)
+  String? get localizedRecoverySuggestion =>
+      toStringOrNull(_nsObject.localizedRecoverySuggestion);
+
+  @override
+  String toString() {
+    return "[Error "
+        "code=$code "
+        "localizedDescription=$localizedDescription "
+        "localizedFailureReason=$localizedFailureReason "
+        "localizedRecoverySuggestion=$localizedRecoverySuggestion "
+        "]";
+  }
 }
 
 /// Controls the behavior of a URLSession.
@@ -176,6 +244,13 @@ class URLSessionConfiguration
 class Data extends _ObjectHolder<ncb.NSData> {
   Data._(ncb.NSData c) : super(c);
 
+  // A new [Data] from an existing one.
+  //
+  // See [NSData dataWithData:](https://developer.apple.com/documentation/foundation/nsdata/1547230-datawithdata)
+  factory Data.fromData(Data d) {
+    return Data._(ncb.NSData.dataWithData_(linkedLibs, d._nsObject));
+  }
+
   /// A new [Data] object containing the given bytes.
   factory Data.fromUint8List(Uint8List l) {
     final f = calloc<Uint8>(l.length);
@@ -216,6 +291,43 @@ class Data extends _ObjectHolder<ncb.NSData> {
         length == 0 ? Uint8List(0) : bytes.sublist(0, min(length - 1, 20));
     final b = subrange.map((e) => e.toRadixString(16)).join();
     return "[Data " + "length=$length " + "bytes=0x$b..." + "]";
+  }
+}
+
+/// A container for byte data.
+///
+/// See [NSMutableData](https://developer.apple.com/documentation/foundation/nsmutabledata)
+class MutableData extends Data {
+  final ncb.NSMutableData _mutableData;
+
+  MutableData._(ncb.NSMutableData c)
+      : _mutableData = c,
+        super._(c);
+
+  /// A new empty [MutableData].
+  factory MutableData.empty() {
+    return MutableData._(ncb.NSMutableData.dataWithCapacity_(linkedLibs, 0));
+  }
+
+  /// Appends the given data.
+  ///
+  /// See [NSMutableData appendBytes:length:](https://developer.apple.com/documentation/foundation/nsmutabledata/1407704-appendbytes)
+  void appendBytes(Uint8List l) {
+    final f = calloc<Uint8>(l.length);
+    try {
+      f.asTypedList(l.length).setAll(0, l);
+
+      _mutableData.appendBytes_length_(f.cast(), l.length);
+    } finally {
+      calloc.free(f);
+    }
+  }
+
+  String toString() {
+    final subrange =
+        length == 0 ? Uint8List(0) : bytes.sublist(0, min(length - 1, 20));
+    final b = subrange.map((e) => e.toRadixString(16)).join();
+    return "[MutableData " + "length=$length " + "bytes=0x$b..." + "]";
   }
 }
 
@@ -472,22 +584,28 @@ class MutableURLRequest extends URLRequest {
 ///
 /// See [NSURLSession](https://developer.apple.com/documentation/foundation/nsurlsession)
 class URLSession extends _ObjectHolder<ncb.NSURLSession> {
+  // Provide our own native delegate to `NSURLSession` because delegates can be
+  // called on arbitrary threads and Dart code cannot be.
+  static late ncb.CUPHTTPClientDelegate _delegate =
+      ncb.CUPHTTPClientDelegate.new1(helperLibs);
+
   URLSession._(ncb.NSURLSession c) : super(c);
 
   /// A client with reasonable default behavior.
   ///
   /// See [NSURLSession.sharedSession](https://developer.apple.com/documentation/foundation/nsurlsession/1409000-sharedsession)
   factory URLSession.sharedSession() {
-    return URLSession._(ncb.NSURLSession.castFrom(
-        ncb.NSURLSession.getSharedSession(linkedLibs)!));
+    return URLSession.sessionWithConfiguration(
+        URLSessionConfiguration.defaultSessionConfiguration());
   }
 
   /// A client with a given configuration.
   ///
   /// See [NSURLSession sessionWithConfiguration:](https://developer.apple.com/documentation/foundation/nsurlsession/1411474-sessionwithconfiguration)
   factory URLSession.sessionWithConfiguration(URLSessionConfiguration config) {
-    return URLSession._(ncb.NSURLSession.sessionWithConfiguration_(
-        linkedLibs, config._nsObject));
+    return URLSession._(
+        ncb.NSURLSession.sessionWithConfiguration_delegate_delegateQueue_(
+            linkedLibs, config._nsObject, _delegate, null));
   }
 
   // A **copy** of the configuration for this sesion.
@@ -498,11 +616,81 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
         ncb.NSURLSessionConfiguration.castFrom(_nsObject.configuration!));
   }
 
-  // Create a [URLSessionTask] that acccess a server URL.
+  // Create a [URLSessionTask] that accesses a server URL.
   //
   // See [NSURLSession dataTaskWithRequest:](https://developer.apple.com/documentation/foundation/nsurlsession/1410592-datataskwithrequest)
   URLSessionTask dataTaskWithRequest(URLRequest request) {
     final task = _nsObject.dataTaskWithRequest_(request._nsObject);
+    return URLSessionTask._(task);
+  }
+
+  /// Creates a [URLSessionTask] accesses a server URL and calls [completion]
+  /// when done.
+  ///
+  /// See [NSURLSession dataTaskWithRequest:completionHandler:](https://developer.apple.com/documentation/foundation/nsurlsession/1407613-datataskwithrequest)
+  URLSessionTask dataTaskWithCompletionHandler(
+      URLRequest request,
+      void Function(Data? data, HTTPURLResponse? response, Error? error)
+          completion) {
+    // This method cannot be implemented by simply calling
+    // `dataTaskWithRequest:completionHandler:` because the completion handler
+    // will invoke the Dart callback on an arbitrary thread and Dart code
+    // cannot be run that way
+    // (see https://github.com/dart-lang/sdk/issues/37022).
+    //
+    // Instead, we use `dataTaskWithRequest:` and:
+    // 1. create a port to receive information about the request.
+    // 2. use a delegate to send information about the task to the port
+    // 3. call the user-provided completion function when we receive the
+    //    `CompletedMessage` message type.
+    final task = _nsObject.dataTaskWithRequest_(request._nsObject);
+
+    final responsePort = ReceivePort();
+    HTTPURLResponse? response;
+    MutableData? data;
+    responsePort.listen((message) {
+      final messageType = message[0];
+      final payload = message[1];
+
+      switch (messageType) {
+        case ncb.MessageType.ResponseMessage:
+          final rp = Pointer<ncb.ObjCObject>.fromAddress(payload);
+          // TODO(https://github.com/dart-lang/ffigen/issues/374): Check the
+          // actual type of the response instead of assuming that it is a
+          // NSHTTPURLResponse.
+          // TODO(https://github.com/dart-lang/ffigen/issues/387): Indicate that
+          // the reference should be released but not retained in
+          // castFromPointer.
+          response = HTTPURLResponse._(
+              ncb.NSHTTPURLResponse.castFromPointer(helperLibs, rp));
+          break;
+        case ncb.MessageType.DataMessage:
+          if (data == null) {
+            data = MutableData.empty();
+          }
+          data!.appendBytes(payload);
+          break;
+        case ncb.MessageType.CompletedMessage:
+          Error? error;
+          if (payload != null) {
+            final ep = Pointer<ncb.ObjCObject>.fromAddress(payload);
+            // TODO(https://github.com/dart-lang/ffigen/issues/387): Indicate
+            // that the reference should be released but not retained in
+            // castFromPointer.
+            error = Error._(ncb.NSError.castFromPointer(helperLibs, ep));
+          }
+          completion(
+              data == null ? null : Data.fromData(data!), response, error);
+          responsePort.close();
+          break;
+      }
+    });
+
+    final config = ncb.CUPHTTPTaskConfiguration.castFrom(
+        ncb.CUPHTTPTaskConfiguration.alloc(helperLibs)
+            .initWithPort_(responsePort.sendPort.nativePort));
+
+    _delegate.registerTask_withConfiguration_(task, config);
     return URLSessionTask._(task);
   }
 }

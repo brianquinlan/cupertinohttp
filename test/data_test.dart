@@ -26,4 +26,16 @@ void main() {
     test('toString',
         () => data.toString()); // Just verify that there is no crash.
   });
+
+  group('Data.fromData', () {
+    test('from empty', () {
+      final from = Data.fromUint8List(Uint8List(0));
+      expect(Data.fromData(from).bytes, Uint8List.fromList([]));
+    });
+
+    test('from non-empty', () {
+      final from = Data.fromUint8List(Uint8List.fromList([1, 2, 3, 4, 5]));
+      expect(Data.fromData(from).bytes, Uint8List.fromList([1, 2, 3, 4, 5]));
+    });
+  });
 }
