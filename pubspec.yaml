@@ -13,6 +13,8 @@ dependencies:
   ffi: ">=1.2.1<2.0.0"
   flutter:
     sdk: flutter
+  http: ^0.13.4
+  meta: ^1.7.0
   native_library:
     path: third_party/native_library
 

@@ -530,6 +530,7 @@ class URLRequest extends _ObjectHolder<ncb.NSURLRequest> {
         "allHttpHeaderFields=$allHttpHeaderFields "
         "httpBody=$httpBody "
         "httpMethod=$httpMethod "
+        "url=$url "
         "]";
   }
 }
@@ -589,7 +590,9 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
   static late ncb.CUPHTTPClientDelegate _delegate =
       ncb.CUPHTTPClientDelegate.new1(helperLibs);
 
-  URLSession._(ncb.NSURLSession c) : super(c);
+  URLRequest? Function(URLSession session, URLSessionTask task,
+      HTTPURLResponse response, URLRequest newRequest)? httpRedirection;
+  URLSession._(ncb.NSURLSession c, {this.httpRedirection}) : super(c);
 
   /// A client with reasonable default behavior.
   ///
@@ -601,11 +604,24 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
 
   /// A client with a given configuration.
   ///
+  /// If [httpRedirection] is set then it will be called whenever a HTTP
+  /// request returns a redirect response (e.g. 302). The `response` parameter
+  /// contains the response from the server. The `newRequest` parameter contains
+  /// a follow-up request that would honor the server's redirect. If the return
+  /// value of this function is `null` then the redirect will not occur.
+  /// Otherwise, the returned [URLRequest] (usually `newRequest`) will be
+  /// executed. See
+  /// [URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:](https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411626-urlsession)
+  ///
   /// See [NSURLSession sessionWithConfiguration:](https://developer.apple.com/documentation/foundation/nsurlsession/1411474-sessionwithconfiguration)
-  factory URLSession.sessionWithConfiguration(URLSessionConfiguration config) {
+  factory URLSession.sessionWithConfiguration(URLSessionConfiguration config,
+      {URLRequest? Function(URLSession session, URLSessionTask task,
+              HTTPURLResponse response, URLRequest newRequest)?
+          httpRedirection}) {
     return URLSession._(
         ncb.NSURLSession.sessionWithConfiguration_delegate_delegateQueue_(
-            linkedLibs, config._nsObject, _delegate, null));
+            linkedLibs, config._nsObject, _delegate, null),
+        httpRedirection: httpRedirection);
   }
 
   // A **copy** of the configuration for this sesion.
@@ -683,6 +699,38 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
               data == null ? null : Data.fromData(data!), response, error);
           responsePort.close();
           break;
+        case ncb.MessageType.RedirectMessage:
+          final rp = Pointer<ncb.ObjCObject>.fromAddress(payload);
+          final redirect = ncb.CUPHTTPRedirect.castFromPointer(helperLibs, rp);
+
+          if (httpRedirection == null) {
+            redirect.continueWithRequest_(redirect.request);
+          } else {
+            final session =
+                URLSession._(ncb.NSURLSession.castFrom(redirect.session!));
+            final task =
+                URLSessionTask._(ncb.NSURLSessionTask.castFrom(redirect.task!));
+            final response = HTTPURLResponse._(
+                ncb.NSHTTPURLResponse.castFrom(redirect.response!));
+            final request =
+                URLRequest._(ncb.NSURLRequest.castFrom(redirect.request!));
+
+            URLRequest? redirectRequest;
+            try {
+              redirectRequest =
+                  httpRedirection!(session, task, response, request);
+            } catch (e) {
+              // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
+              // this exception as an `Error` and call the completion function
+              // with it.
+            } finally {
+              // [CUPHTTPClientDelegate
+              //    URLSession: task: willPerformHTTPRedirection: ...]
+              // will wait on a lock until `continueWithRequest_` is called, so
+              // ensure that it is called even if `httpRedirection` throws.
+              redirect.continueWithRequest_(redirectRequest?._nsObject);
+            }
+          }
       }
     });
 
