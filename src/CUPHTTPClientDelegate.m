@@ -145,7 +145,11 @@ willPerformHTTPRedirection:(NSHTTPURLResponse *)response
     completionHandler(nil);
     return;
   }
-  [redirect.lock lock];  // Wait until CUPHTTPRedirect is done.
+  // Will be unlocked by [CUPHTTPRedirect continueWithRequest:], which will
+  // set `redirect.redirectRequest`.
+  //
+  // See the @interface description for CUPHTTPRedirect.
+  [redirect.lock lock];
 
   completionHandler(redirect.redirectRequest);
 }
