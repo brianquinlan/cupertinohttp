@@ -69890,6 +69890,15 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
   late final ffi.Pointer<ObjCSel> _sel_sendPort1 = _registerName1("sendPort");
+  late final ffi.Pointer<ObjCObject> _class_CUPHTTPRedirect1 =
+      _getClass1("CUPHTTPRedirect");
+  late final ffi.Pointer<ObjCSel> _sel_continueWithRequest_1 =
+      _registerName1("continueWithRequest:");
+  late final ffi.Pointer<ObjCSel> _sel_session1 = _registerName1("session");
+  late final ffi.Pointer<ObjCSel> _sel_task1 = _registerName1("task");
+  late final ffi.Pointer<ObjCSel> _sel_lock1 = _registerName1("lock");
+  late final ffi.Pointer<ObjCSel> _sel_redirectRequest1 =
+      _registerName1("redirectRequest");
   late final ffi.Pointer<ObjCObject> _class_CUPHTTPClientDelegate1 =
       _getClass1("CUPHTTPClientDelegate");
   late final ffi.Pointer<ObjCSel> _sel_registerTask_withConfiguration_1 =
@@ -86855,6 +86864,7 @@ abstract class MessageType {
   static const int ResponseMessage = 0;
   static const int DataMessage = 1;
   static const int CompletedMessage = 2;
+  static const int RedirectMessage = 3;
 }
 
 /// The configuration associated with a NSURLSessionTask.
@@ -86893,6 +86903,67 @@ class CUPHTTPTaskConfiguration extends NSObject {
     final _ret = _lib._objc_msgSend_1(
         _lib._class_CUPHTTPTaskConfiguration1, _lib._sel_alloc1);
     return CUPHTTPTaskConfiguration._(_ret, _lib);
+  }
+}
+
+class CUPHTTPRedirect extends NSObject {
+  CUPHTTPRedirect._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
+      : super._(id, lib);
+
+  static CUPHTTPRedirect castFrom<T extends _ObjCWrapper>(T other) {
+    return CUPHTTPRedirect._(other._id, other._lib);
+  }
+
+  static CUPHTTPRedirect castFromPointer(
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
+    return CUPHTTPRedirect._(other, lib);
+  }
+
+  void continueWithRequest_(NSObject? request) {
+    _lib._objc_msgSend_8(
+        _id, _lib._sel_continueWithRequest_1, request?._id ?? ffi.nullptr);
+  }
+
+  NSObject? get session {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_session1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  NSObject? get task {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_task1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  NSObject? get response {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_response1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  NSObject? get request {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_request1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  NSObject? get lock {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_lock1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  NSObject? get redirectRequest {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_redirectRequest1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  static CUPHTTPRedirect new1(NativeCupertinoHttp _lib) {
+    final _ret =
+        _lib._objc_msgSend_1(_lib._class_CUPHTTPRedirect1, _lib._sel_new1);
+    return CUPHTTPRedirect._(_ret, _lib);
+  }
+
+  static CUPHTTPRedirect alloc(NativeCupertinoHttp _lib) {
+    final _ret =
+        _lib._objc_msgSend_1(_lib._class_CUPHTTPRedirect1, _lib._sel_alloc1);
+    return CUPHTTPRedirect._(_ret, _lib);
   }
 }
 
