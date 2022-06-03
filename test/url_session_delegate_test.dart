@@ -2,10 +2,190 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:cupertinohttp/cupertinohttp.dart';
+import 'package:cupertinohttp/src/native_cupertino_bindings.dart';
 import 'package:test/test.dart';
 
-void testHttpRedirection() {
-  group('httpRedirection', () {
+void testOnComplete() {
+  group('onComplete', () {
+    late HttpServer server;
+
+    setUp(() async {
+      server = (await HttpServer.bind('localhost', 0))
+        ..listen((request) async {
+          request.drain();
+          request.response.headers.set('Content-Type', 'text/plain');
+          request.response.write("Hello World");
+          await request.response.close();
+        });
+    });
+    tearDown(() {
+      server.close();
+    });
+
+    test('success', () async {
+      final c = Completer();
+      Error? actualError;
+      late URLSession actualSession;
+      late URLSessionTask actualTask;
+
+      late URLSession session = URLSession.sessionWithConfiguration(
+          URLSessionConfiguration.defaultSessionConfiguration(),
+          onComplete: (s, t, e) {
+        actualSession = s;
+        actualTask = t;
+        actualError = e;
+        c.complete();
+      });
+
+      final task = session.dataTaskWithRequest(
+          URLRequest.fromUrl(Uri.parse('http://localhost:${server.port}')));
+
+      task.resume();
+      await c.future;
+      expect(actualSession, session);
+      expect(actualTask, task);
+      expect(actualError, null);
+    });
+
+    test('bad host', () async {
+      final c = Completer();
+      Error? actualError;
+      late URLSession actualSession;
+      late URLSessionTask actualTask;
+
+      late URLSession session = URLSession.sessionWithConfiguration(
+          URLSessionConfiguration.defaultSessionConfiguration(),
+          onComplete: (s, t, e) {
+        actualSession = s;
+        actualTask = t;
+        actualError = e;
+        c.complete();
+      });
+
+      final task = session.dataTaskWithRequest(
+          URLRequest.fromUrl(Uri.https('does-not-exist', '')));
+
+      task.resume();
+      await c.future;
+      expect(actualSession, session);
+      expect(actualTask, task);
+      expect(actualError!.code, -1003); // kCFURLErrorCannotFindHost
+    });
+  });
+}
+
+void testOnResponse() {
+  group('onResponse', () {
+    late HttpServer server;
+
+    setUp(() async {
+      server = (await HttpServer.bind('localhost', 0))
+        ..listen((request) async {
+          request.drain();
+          request.response.headers.set('Content-Type', 'text/plain');
+          request.response.write("Hello World");
+          await request.response.close();
+        });
+    });
+    tearDown(() {
+      server.close();
+    });
+
+    test('success', () async {
+      final c = Completer();
+      late HTTPURLResponse actualResponse;
+      late URLSession actualSession;
+      late URLSessionTask actualTask;
+
+      late URLSession session = URLSession.sessionWithConfiguration(
+          URLSessionConfiguration.defaultSessionConfiguration(),
+          onResponse: (s, t, r) {
+        actualSession = s;
+        actualTask = t;
+        actualResponse = r as HTTPURLResponse;
+        c.complete();
+        return URLSessionResponseDisposition.urlSessionResponseAllow;
+      });
+
+      final task = session.dataTaskWithRequest(
+          URLRequest.fromUrl(Uri.parse('http://localhost:${server.port}')));
+
+      task.resume();
+      await c.future;
+      expect(actualSession, session);
+      expect(actualTask, task);
+      expect(actualResponse.statusCode, 200);
+    });
+
+    test('bad host', () async {
+      // `onResponse` should not be called because there was no valid response.
+      final c = Completer();
+      var called = false;
+
+      late URLSession session = URLSession.sessionWithConfiguration(
+          URLSessionConfiguration.defaultSessionConfiguration(),
+          onComplete: (session, task, error) => c.complete(),
+          onResponse: (s, t, r) {
+            called = true;
+            return URLSessionResponseDisposition.urlSessionResponseAllow;
+          });
+
+      final task = session.dataTaskWithRequest(
+          URLRequest.fromUrl(Uri.https('does-not-exist', '')));
+
+      task.resume();
+      await c.future;
+      expect(called, false);
+    });
+  });
+}
+
+void testOnData() {
+  group('onData', () {
+    late HttpServer server;
+
+    setUp(() async {
+      server = (await HttpServer.bind('localhost', 0))
+        ..listen((request) async {
+          request.drain();
+          request.response.headers.set('Content-Type', 'text/plain');
+          request.response.write("Hello World");
+          await request.response.close();
+        });
+    });
+    tearDown(() {
+      server.close();
+    });
+
+    test('success', () async {
+      final c = Completer();
+      final actualData = MutableData.empty();
+      late URLSession actualSession;
+      late URLSessionTask actualTask;
+
+      late URLSession session = URLSession.sessionWithConfiguration(
+          URLSessionConfiguration.defaultSessionConfiguration(),
+          onComplete: (s, t, r) => c.complete(),
+          onData: (s, t, d) {
+            actualSession = s;
+            actualTask = t;
+            actualData.appendBytes(d.bytes);
+          });
+
+      final task = session.dataTaskWithRequest(
+          URLRequest.fromUrl(Uri.parse('http://localhost:${server.port}')));
+
+      task.resume();
+      await c.future;
+      expect(actualSession, session);
+      expect(actualTask, task);
+      expect(actualData.bytes, "Hello World".codeUnits);
+    });
+  });
+}
+
+void testOnRedirect() {
+  group('onRedirect', () {
     late HttpServer redirectServer;
 
     setUp(() async {
@@ -238,5 +418,8 @@ void testHttpRedirection() {
 }
 
 void main() {
-  testHttpRedirection();
+  testOnComplete();
+  testOnResponse();
+  testOnData();
+  testOnRedirect();
 }

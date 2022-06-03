@@ -49,6 +49,17 @@ enum HTTPCookieAcceptPolicy {
   httpCookieAcceptPolicyOnlyFromMainDocumentDomain,
 }
 
+// Controls how [URLSessionTask] execute will proceed after the response is
+// received.
+//
+// See [NSURLSessionResponseDisposition](https://developer.apple.com/documentation/foundation/nsurlsessionresponsedisposition).
+enum URLSessionResponseDisposition {
+  urlSessionResponseCancel,
+  urlSessionResponseAllow,
+  urlSessionResponseBecomeDownload,
+  urlSessionResponseBecomeStream
+}
+
 /// Information about a failure.
 ///
 /// See [NSError](https://developer.apple.com/documentation/foundation/nserror)
@@ -581,14 +592,8 @@ class MutableURLRequest extends URLRequest {
   }
 }
 
-enum URLSessionResponseDisposition {
-  NSURLSessionResponseCancel,
-  NSURLSessionResponseAllow,
-  NSURLSessionResponseBecomeDownload,
-  NSURLSessionResponseBecomeStream
-}
-
-void _setupDelegation(ncb.CUPHTTPClientDelegate delegate, URLSessionTask task,
+void _setupDelegation(
+    ncb.CUPHTTPClientDelegate delegate, URLSession session, URLSessionTask task,
     {URLRequest? Function(URLSession session, URLSessionTask task,
             HTTPURLResponse response, URLRequest newRequest)?
         onRedirect,
@@ -608,10 +613,6 @@ void _setupDelegation(ncb.CUPHTTPClientDelegate delegate, URLSessionTask task,
     // castFromPointer.
     final forwardedDelegate =
         ncb.CUPHTTPForwardedDelegate.castFromPointer(helperLibs, dp);
-    final session =
-        URLSession._(ncb.NSURLSession.castFrom(forwardedDelegate.session!));
-    final task = URLSessionTask._(
-        ncb.NSURLSessionTask.castFrom(forwardedDelegate.task!));
 
     switch (messageType) {
       case ncb.MessageType.RedirectMessage:
@@ -644,14 +645,16 @@ void _setupDelegation(ncb.CUPHTTPClientDelegate delegate, URLSessionTask task,
         final forwardedResponse =
             ncb.CUPHTTPForwardedResponse.castFrom(forwardedDelegate);
         var disposition =
-            URLSessionResponseDisposition.NSURLSessionResponseCancel;
+            URLSessionResponseDisposition.urlSessionResponseCancel;
 
         try {
           if (onResponse == null) {
-            disposition =
-                URLSessionResponseDisposition.NSURLSessionResponseAllow;
+            disposition = URLSessionResponseDisposition.urlSessionResponseAllow;
           } else {
-            final response = URLResponse._(
+            // TODO(https://github.com/dart-lang/ffigen/issues/374): Check the
+            // actual type of the response instead of assuming that it is a
+            // NSHTTPURLResponse.
+            final response = HTTPURLResponse._(
                 ncb.NSHTTPURLResponse.castFrom(forwardedResponse.response!));
 
             try {
@@ -771,7 +774,21 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
   /// executed. See
   /// [URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:](https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411626-urlsession)
   ///
-  /// See [NSURLSession sessionWithConfiguration:](https://developer.apple.com/documentation/foundation/nsurlsession/1411474-sessionwithconfiguration)
+  /// If [onResponse] is set then it will be called whenever a valid response
+  /// is received. The returned [URLSessionResponseDisposition] will decide
+  /// how the content of the response is processed. See
+  /// [URLSession:dataTask:didReceiveResponse:completionHandler:](https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1410027-urlsession)
+  ///
+  /// If [onData] is set then it will be called whenever response data is
+  /// received. If the amount of received data is large, then it may be
+  /// called more than once. See
+  /// [URLSession:dataTask:didReceiveData:](https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1411528-urlsession)
+  ///
+  /// If [onComplete] is set then it will be called when a task completes. If
+  /// `error` is `null` then the request completed successfully. See
+  /// [URLSession:task:didCompleteWithError:](https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411610-urlsession)
+  ///
+  /// See [sessionWithConfiguration:delegate:delegateQueue:](https://developer.apple.com/documentation/foundation/nsurlsession/1411597-sessionwithconfiguration)
   factory URLSession.sessionWithConfiguration(URLSessionConfiguration config,
       {URLRequest? Function(URLSession session, URLSessionTask task,
               HTTPURLResponse response, URLRequest newRequest)?
@@ -806,7 +823,7 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
   URLSessionTask dataTaskWithRequest(URLRequest request) {
     final task =
         URLSessionTask._(_nsObject.dataTaskWithRequest_(request._nsObject));
-    _setupDelegation(_delegate, task,
+    _setupDelegation(_delegate, this, task,
         onComplete: _onComplete,
         onData: _onData,
         onRedirect: _onRedirect,
@@ -839,11 +856,11 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
     HTTPURLResponse? finalResponse;
     MutableData? allData;
 
-    _setupDelegation(_delegate, task, onRedirect: _onRedirect, onResponse:
+    _setupDelegation(_delegate, this, task, onRedirect: _onRedirect, onResponse:
         (URLSession session, URLSessionTask task, URLResponse response) {
       finalResponse =
           HTTPURLResponse._(ncb.NSHTTPURLResponse.castFrom(response._nsObject));
-      return URLSessionResponseDisposition.NSURLSessionResponseAllow;
+      return URLSessionResponseDisposition.urlSessionResponseAllow;
     }, onData: (URLSession session, URLSessionTask task, Data data) {
       if (allData == null) {
         allData = MutableData.empty();
