@@ -69890,20 +69890,18894 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
   late final ffi.Pointer<ObjCSel> _sel_sendPort1 = _registerName1("sendPort");
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPDelegateData1 =
-      _getClass1("CUPHTTPDelegateData");
+  late final ffi.Pointer<ObjCObject> _class_CUPHTTPClientDelegate1 =
+      _getClass1("CUPHTTPClientDelegate");
+  late final ffi.Pointer<ObjCSel> _sel_registerTask_withConfiguration_1 =
+      _registerName1("registerTask:withConfiguration:");
+  ffi.Pointer<ObjCObject> NSStringFromSelector13(
+    ffi.Pointer<ObjCSel> aSelector,
+  ) {
+    return _NSStringFromSelector13(
+      aSelector,
+    );
+  }
+
+  late final _NSStringFromSelector13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(
+              ffi.Pointer<ObjCSel>)>>('NSStringFromSelector');
+  late final _NSStringFromSelector13 = _NSStringFromSelector13Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCSel>)>();
+
+  ffi.Pointer<ObjCSel> NSSelectorFromString13(
+    ffi.Pointer<ObjCObject> aSelectorName,
+  ) {
+    return _NSSelectorFromString13(
+      aSelectorName,
+    );
+  }
+
+  late final _NSSelectorFromString13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCSel> Function(
+              ffi.Pointer<ObjCObject>)>>('NSSelectorFromString');
+  late final _NSSelectorFromString13 = _NSSelectorFromString13Ptr.asFunction<
+      ffi.Pointer<ObjCSel> Function(ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ObjCObject> NSStringFromClass13(
+    ffi.Pointer<ObjCObject> aClass,
+  ) {
+    return _NSStringFromClass13(
+      aClass,
+    );
+  }
+
+  late final _NSStringFromClass13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(
+              ffi.Pointer<ObjCObject>)>>('NSStringFromClass');
+  late final _NSStringFromClass13 = _NSStringFromClass13Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ObjCObject> NSClassFromString13(
+    ffi.Pointer<ObjCObject> aClassName,
+  ) {
+    return _NSClassFromString13(
+      aClassName,
+    );
+  }
+
+  late final _NSClassFromString13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(
+              ffi.Pointer<ObjCObject>)>>('NSClassFromString');
+  late final _NSClassFromString13 = _NSClassFromString13Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ObjCObject> NSStringFromProtocol13(
+    ffi.Pointer<ObjCObject> proto,
+  ) {
+    return _NSStringFromProtocol13(
+      proto,
+    );
+  }
+
+  late final _NSStringFromProtocol13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(
+              ffi.Pointer<ObjCObject>)>>('NSStringFromProtocol');
+  late final _NSStringFromProtocol13 = _NSStringFromProtocol13Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ObjCObject> NSProtocolFromString13(
+    ffi.Pointer<ObjCObject> namestr,
+  ) {
+    return _NSProtocolFromString13(
+      namestr,
+    );
+  }
+
+  late final _NSProtocolFromString13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(
+              ffi.Pointer<ObjCObject>)>>('NSProtocolFromString');
+  late final _NSProtocolFromString13 = _NSProtocolFromString13Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ffi.Char> NSGetSizeAndAlignment13(
+    ffi.Pointer<ffi.Char> typePtr,
+    ffi.Pointer<NSUInteger> sizep,
+    ffi.Pointer<NSUInteger> alignp,
+  ) {
+    return _NSGetSizeAndAlignment13(
+      typePtr,
+      sizep,
+      alignp,
+    );
+  }
+
+  late final _NSGetSizeAndAlignment13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<NSUInteger>,
+              ffi.Pointer<NSUInteger>)>>('NSGetSizeAndAlignment');
+  late final _NSGetSizeAndAlignment13 = _NSGetSizeAndAlignment13Ptr.asFunction<
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+          ffi.Pointer<NSUInteger>, ffi.Pointer<NSUInteger>)>();
+
+  void NSLog13(
+    ffi.Pointer<ObjCObject> format,
+  ) {
+    return _NSLog13(
+      format,
+    );
+  }
+
+  late final _NSLog13Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ObjCObject>)>>(
+          'NSLog');
+  late final _NSLog13 =
+      _NSLog13Ptr.asFunction<void Function(ffi.Pointer<ObjCObject>)>();
+
+  void NSLogv13(
+    ffi.Pointer<ObjCObject> format,
+    va_list args,
+  ) {
+    return _NSLogv13(
+      format,
+      args,
+    );
+  }
+
+  late final _NSLogv13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ObjCObject>, va_list)>>('NSLogv');
+  late final _NSLogv13 = _NSLogv13Ptr.asFunction<
+      void Function(ffi.Pointer<ObjCObject>, va_list)>();
+
+  CFRange __CFRangeMake13(
+    int loc,
+    int len,
+  ) {
+    return ___CFRangeMake13(
+      loc,
+      len,
+    );
+  }
+
+  late final ___CFRangeMake13Ptr =
+      _lookup<ffi.NativeFunction<CFRange Function(CFIndex, CFIndex)>>(
+          '__CFRangeMake');
+  late final ___CFRangeMake13 =
+      ___CFRangeMake13Ptr.asFunction<CFRange Function(int, int)>();
+
+  int CFNullGetTypeID13() {
+    return _CFNullGetTypeID13();
+  }
+
+  late final _CFNullGetTypeID13Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFNullGetTypeID');
+  late final _CFNullGetTypeID13 =
+      _CFNullGetTypeID13Ptr.asFunction<int Function()>();
+
+  int CFAllocatorGetTypeID13() {
+    return _CFAllocatorGetTypeID13();
+  }
+
+  late final _CFAllocatorGetTypeID13Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFAllocatorGetTypeID');
+  late final _CFAllocatorGetTypeID13 =
+      _CFAllocatorGetTypeID13Ptr.asFunction<int Function()>();
+
+  void CFAllocatorSetDefault13(
+    CFAllocatorRef allocator,
+  ) {
+    return _CFAllocatorSetDefault13(
+      allocator,
+    );
+  }
+
+  late final _CFAllocatorSetDefault13Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFAllocatorRef)>>(
+          'CFAllocatorSetDefault');
+  late final _CFAllocatorSetDefault13 =
+      _CFAllocatorSetDefault13Ptr.asFunction<void Function(CFAllocatorRef)>();
+
+  CFAllocatorRef CFAllocatorGetDefault13() {
+    return _CFAllocatorGetDefault13();
+  }
+
+  late final _CFAllocatorGetDefault13Ptr =
+      _lookup<ffi.NativeFunction<CFAllocatorRef Function()>>(
+          'CFAllocatorGetDefault');
+  late final _CFAllocatorGetDefault13 =
+      _CFAllocatorGetDefault13Ptr.asFunction<CFAllocatorRef Function()>();
+
+  CFAllocatorRef CFAllocatorCreate13(
+    CFAllocatorRef allocator,
+    ffi.Pointer<CFAllocatorContext> context,
+  ) {
+    return _CFAllocatorCreate13(
+      allocator,
+      context,
+    );
+  }
+
+  late final _CFAllocatorCreate13Ptr = _lookup<
+      ffi.NativeFunction<
+          CFAllocatorRef Function(CFAllocatorRef,
+              ffi.Pointer<CFAllocatorContext>)>>('CFAllocatorCreate');
+  late final _CFAllocatorCreate13 = _CFAllocatorCreate13Ptr.asFunction<
+      CFAllocatorRef Function(
+          CFAllocatorRef, ffi.Pointer<CFAllocatorContext>)>();
+
+  ffi.Pointer<ffi.Void> CFAllocatorAllocate13(
+    CFAllocatorRef allocator,
+    int size,
+    int hint,
+  ) {
+    return _CFAllocatorAllocate13(
+      allocator,
+      size,
+      hint,
+    );
+  }
+
+  late final _CFAllocatorAllocate13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              CFAllocatorRef, CFIndex, CFOptionFlags)>>('CFAllocatorAllocate');
+  late final _CFAllocatorAllocate13 = _CFAllocatorAllocate13Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(CFAllocatorRef, int, int)>();
+
+  ffi.Pointer<ffi.Void> CFAllocatorReallocate13(
+    CFAllocatorRef allocator,
+    ffi.Pointer<ffi.Void> ptr,
+    int newsize,
+    int hint,
+  ) {
+    return _CFAllocatorReallocate13(
+      allocator,
+      ptr,
+      newsize,
+      hint,
+    );
+  }
+
+  late final _CFAllocatorReallocate13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(CFAllocatorRef, ffi.Pointer<ffi.Void>,
+              CFIndex, CFOptionFlags)>>('CFAllocatorReallocate');
+  late final _CFAllocatorReallocate13 = _CFAllocatorReallocate13Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          CFAllocatorRef, ffi.Pointer<ffi.Void>, int, int)>();
+
+  void CFAllocatorDeallocate13(
+    CFAllocatorRef allocator,
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _CFAllocatorDeallocate13(
+      allocator,
+      ptr,
+    );
+  }
+
+  late final _CFAllocatorDeallocate13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFAllocatorRef, ffi.Pointer<ffi.Void>)>>('CFAllocatorDeallocate');
+  late final _CFAllocatorDeallocate13 = _CFAllocatorDeallocate13Ptr.asFunction<
+      void Function(CFAllocatorRef, ffi.Pointer<ffi.Void>)>();
+
+  int CFAllocatorGetPreferredSizeForSize13(
+    CFAllocatorRef allocator,
+    int size,
+    int hint,
+  ) {
+    return _CFAllocatorGetPreferredSizeForSize13(
+      allocator,
+      size,
+      hint,
+    );
+  }
+
+  late final _CFAllocatorGetPreferredSizeForSize13Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFAllocatorRef, CFIndex,
+              CFOptionFlags)>>('CFAllocatorGetPreferredSizeForSize');
+  late final _CFAllocatorGetPreferredSizeForSize13 =
+      _CFAllocatorGetPreferredSizeForSize13Ptr.asFunction<
+          int Function(CFAllocatorRef, int, int)>();
+
+  void CFAllocatorGetContext13(
+    CFAllocatorRef allocator,
+    ffi.Pointer<CFAllocatorContext> context,
+  ) {
+    return _CFAllocatorGetContext13(
+      allocator,
+      context,
+    );
+  }
+
+  late final _CFAllocatorGetContext13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFAllocatorRef,
+              ffi.Pointer<CFAllocatorContext>)>>('CFAllocatorGetContext');
+  late final _CFAllocatorGetContext13 = _CFAllocatorGetContext13Ptr.asFunction<
+      void Function(CFAllocatorRef, ffi.Pointer<CFAllocatorContext>)>();
+
+  int CFGetTypeID13(
+    CFTypeRef cf,
+  ) {
+    return _CFGetTypeID13(
+      cf,
+    );
+  }
+
+  late final _CFGetTypeID13Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function(CFTypeRef)>>('CFGetTypeID');
+  late final _CFGetTypeID13 =
+      _CFGetTypeID13Ptr.asFunction<int Function(CFTypeRef)>();
+
+  CFStringRef CFCopyTypeIDDescription13(
+    int type_id,
+  ) {
+    return _CFCopyTypeIDDescription13(
+      type_id,
+    );
+  }
+
+  late final _CFCopyTypeIDDescription13Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFTypeID)>>(
+          'CFCopyTypeIDDescription');
+  late final _CFCopyTypeIDDescription13 =
+      _CFCopyTypeIDDescription13Ptr.asFunction<CFStringRef Function(int)>();
+
+  CFTypeRef CFRetain13(
+    CFTypeRef cf,
+  ) {
+    return _CFRetain13(
+      cf,
+    );
+  }
+
+  late final _CFRetain13Ptr =
+      _lookup<ffi.NativeFunction<CFTypeRef Function(CFTypeRef)>>('CFRetain');
+  late final _CFRetain13 =
+      _CFRetain13Ptr.asFunction<CFTypeRef Function(CFTypeRef)>();
+
+  void CFRelease13(
+    CFTypeRef cf,
+  ) {
+    return _CFRelease13(
+      cf,
+    );
+  }
+
+  late final _CFRelease13Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFTypeRef)>>('CFRelease');
+  late final _CFRelease13 =
+      _CFRelease13Ptr.asFunction<void Function(CFTypeRef)>();
+
+  CFTypeRef CFAutorelease13(
+    CFTypeRef arg,
+  ) {
+    return _CFAutorelease13(
+      arg,
+    );
+  }
+
+  late final _CFAutorelease13Ptr =
+      _lookup<ffi.NativeFunction<CFTypeRef Function(CFTypeRef)>>(
+          'CFAutorelease');
+  late final _CFAutorelease13 =
+      _CFAutorelease13Ptr.asFunction<CFTypeRef Function(CFTypeRef)>();
+
+  int CFGetRetainCount13(
+    CFTypeRef cf,
+  ) {
+    return _CFGetRetainCount13(
+      cf,
+    );
+  }
+
+  late final _CFGetRetainCount13Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFTypeRef)>>(
+          'CFGetRetainCount');
+  late final _CFGetRetainCount13 =
+      _CFGetRetainCount13Ptr.asFunction<int Function(CFTypeRef)>();
+
+  int CFEqual13(
+    CFTypeRef cf1,
+    CFTypeRef cf2,
+  ) {
+    return _CFEqual13(
+      cf1,
+      cf2,
+    );
+  }
+
+  late final _CFEqual13Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFTypeRef, CFTypeRef)>>(
+          'CFEqual');
+  late final _CFEqual13 =
+      _CFEqual13Ptr.asFunction<int Function(CFTypeRef, CFTypeRef)>();
+
+  int CFHash13(
+    CFTypeRef cf,
+  ) {
+    return _CFHash13(
+      cf,
+    );
+  }
+
+  late final _CFHash13Ptr =
+      _lookup<ffi.NativeFunction<CFHashCode Function(CFTypeRef)>>('CFHash');
+  late final _CFHash13 = _CFHash13Ptr.asFunction<int Function(CFTypeRef)>();
+
+  CFStringRef CFCopyDescription13(
+    CFTypeRef cf,
+  ) {
+    return _CFCopyDescription13(
+      cf,
+    );
+  }
+
+  late final _CFCopyDescription13Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFTypeRef)>>(
+          'CFCopyDescription');
+  late final _CFCopyDescription13 =
+      _CFCopyDescription13Ptr.asFunction<CFStringRef Function(CFTypeRef)>();
+
+  CFAllocatorRef CFGetAllocator13(
+    CFTypeRef cf,
+  ) {
+    return _CFGetAllocator13(
+      cf,
+    );
+  }
+
+  late final _CFGetAllocator13Ptr =
+      _lookup<ffi.NativeFunction<CFAllocatorRef Function(CFTypeRef)>>(
+          'CFGetAllocator');
+  late final _CFGetAllocator13 =
+      _CFGetAllocator13Ptr.asFunction<CFAllocatorRef Function(CFTypeRef)>();
+
+  CFTypeRef CFMakeCollectable13(
+    CFTypeRef cf,
+  ) {
+    return _CFMakeCollectable13(
+      cf,
+    );
+  }
+
+  late final _CFMakeCollectable13Ptr =
+      _lookup<ffi.NativeFunction<CFTypeRef Function(CFTypeRef)>>(
+          'CFMakeCollectable');
+  late final _CFMakeCollectable13 =
+      _CFMakeCollectable13Ptr.asFunction<CFTypeRef Function(CFTypeRef)>();
+
+  ffi.Pointer<NSZone> NSDefaultMallocZone13() {
+    return _NSDefaultMallocZone13();
+  }
+
+  late final _NSDefaultMallocZone13Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<NSZone> Function()>>(
+          'NSDefaultMallocZone');
+  late final _NSDefaultMallocZone13 =
+      _NSDefaultMallocZone13Ptr.asFunction<ffi.Pointer<NSZone> Function()>();
+
+  ffi.Pointer<NSZone> NSCreateZone13(
+    int startSize,
+    int granularity,
+    bool canFree,
+  ) {
+    return _NSCreateZone13(
+      startSize,
+      granularity,
+      canFree ? 1 : 0,
+    );
+  }
+
+  late final _NSCreateZone13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<NSZone> Function(
+              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+  late final _NSCreateZone13 = _NSCreateZone13Ptr.asFunction<
+      ffi.Pointer<NSZone> Function(int, int, int)>();
+
+  void NSRecycleZone13(
+    ffi.Pointer<NSZone> zone,
+  ) {
+    return _NSRecycleZone13(
+      zone,
+    );
+  }
+
+  late final _NSRecycleZone13Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<NSZone>)>>(
+          'NSRecycleZone');
+  late final _NSRecycleZone13 =
+      _NSRecycleZone13Ptr.asFunction<void Function(ffi.Pointer<NSZone>)>();
+
+  void NSSetZoneName13(
+    ffi.Pointer<NSZone> zone,
+    ffi.Pointer<ObjCObject> name,
+  ) {
+    return _NSSetZoneName13(
+      zone,
+      name,
+    );
+  }
+
+  late final _NSSetZoneName13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<NSZone>, ffi.Pointer<ObjCObject>)>>('NSSetZoneName');
+  late final _NSSetZoneName13 = _NSSetZoneName13Ptr.asFunction<
+      void Function(ffi.Pointer<NSZone>, ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ObjCObject> NSZoneName13(
+    ffi.Pointer<NSZone> zone,
+  ) {
+    return _NSZoneName13(
+      zone,
+    );
+  }
+
+  late final _NSZoneName13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(ffi.Pointer<NSZone>)>>('NSZoneName');
+  late final _NSZoneName13 = _NSZoneName13Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<NSZone>)>();
+
+  ffi.Pointer<NSZone> NSZoneFromPointer13(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _NSZoneFromPointer13(
+      ptr,
+    );
+  }
+
+  late final _NSZoneFromPointer13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<NSZone> Function(
+              ffi.Pointer<ffi.Void>)>>('NSZoneFromPointer');
+  late final _NSZoneFromPointer13 = _NSZoneFromPointer13Ptr.asFunction<
+      ffi.Pointer<NSZone> Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> NSZoneMalloc13(
+    ffi.Pointer<NSZone> zone,
+    int size,
+  ) {
+    return _NSZoneMalloc13(
+      zone,
+      size,
+    );
+  }
+
+  late final _NSZoneMalloc13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<NSZone>, NSUInteger)>>('NSZoneMalloc');
+  late final _NSZoneMalloc13 = _NSZoneMalloc13Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<NSZone>, int)>();
+
+  ffi.Pointer<ffi.Void> NSZoneCalloc13(
+    ffi.Pointer<NSZone> zone,
+    int numElems,
+    int byteSize,
+  ) {
+    return _NSZoneCalloc13(
+      zone,
+      numElems,
+      byteSize,
+    );
+  }
+
+  late final _NSZoneCalloc13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<NSZone>, NSUInteger, NSUInteger)>>('NSZoneCalloc');
+  late final _NSZoneCalloc13 = _NSZoneCalloc13Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<NSZone>, int, int)>();
+
+  ffi.Pointer<ffi.Void> NSZoneRealloc13(
+    ffi.Pointer<NSZone> zone,
+    ffi.Pointer<ffi.Void> ptr,
+    int size,
+  ) {
+    return _NSZoneRealloc13(
+      zone,
+      ptr,
+      size,
+    );
+  }
+
+  late final _NSZoneRealloc13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<NSZone>,
+              ffi.Pointer<ffi.Void>, NSUInteger)>>('NSZoneRealloc');
+  late final _NSZoneRealloc13 = _NSZoneRealloc13Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<NSZone>, ffi.Pointer<ffi.Void>, int)>();
+
+  void NSZoneFree13(
+    ffi.Pointer<NSZone> zone,
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _NSZoneFree13(
+      zone,
+      ptr,
+    );
+  }
+
+  late final _NSZoneFree13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<NSZone>, ffi.Pointer<ffi.Void>)>>('NSZoneFree');
+  late final _NSZoneFree13 = _NSZoneFree13Ptr.asFunction<
+      void Function(ffi.Pointer<NSZone>, ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> NSAllocateCollectable13(
+    int size,
+    int options,
+  ) {
+    return _NSAllocateCollectable13(
+      size,
+      options,
+    );
+  }
+
+  late final _NSAllocateCollectable13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              NSUInteger, NSUInteger)>>('NSAllocateCollectable');
+  late final _NSAllocateCollectable13 = _NSAllocateCollectable13Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(int, int)>();
+
+  ffi.Pointer<ffi.Void> NSReallocateCollectable13(
+    ffi.Pointer<ffi.Void> ptr,
+    int size,
+    int options,
+  ) {
+    return _NSReallocateCollectable13(
+      ptr,
+      size,
+      options,
+    );
+  }
+
+  late final _NSReallocateCollectable13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, NSUInteger,
+              NSUInteger)>>('NSReallocateCollectable');
+  late final _NSReallocateCollectable13 =
+      _NSReallocateCollectable13Ptr.asFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, int, int)>();
+
+  int NSPageSize13() {
+    return _NSPageSize13();
+  }
+
+  late final _NSPageSize13Ptr =
+      _lookup<ffi.NativeFunction<NSUInteger Function()>>('NSPageSize');
+  late final _NSPageSize13 = _NSPageSize13Ptr.asFunction<int Function()>();
+
+  int NSLogPageSize13() {
+    return _NSLogPageSize13();
+  }
+
+  late final _NSLogPageSize13Ptr =
+      _lookup<ffi.NativeFunction<NSUInteger Function()>>('NSLogPageSize');
+  late final _NSLogPageSize13 =
+      _NSLogPageSize13Ptr.asFunction<int Function()>();
+
+  int NSRoundUpToMultipleOfPageSize13(
+    int bytes,
+  ) {
+    return _NSRoundUpToMultipleOfPageSize13(
+      bytes,
+    );
+  }
+
+  late final _NSRoundUpToMultipleOfPageSize13Ptr =
+      _lookup<ffi.NativeFunction<NSUInteger Function(NSUInteger)>>(
+          'NSRoundUpToMultipleOfPageSize');
+  late final _NSRoundUpToMultipleOfPageSize13 =
+      _NSRoundUpToMultipleOfPageSize13Ptr.asFunction<int Function(int)>();
+
+  int NSRoundDownToMultipleOfPageSize13(
+    int bytes,
+  ) {
+    return _NSRoundDownToMultipleOfPageSize13(
+      bytes,
+    );
+  }
+
+  late final _NSRoundDownToMultipleOfPageSize13Ptr =
+      _lookup<ffi.NativeFunction<NSUInteger Function(NSUInteger)>>(
+          'NSRoundDownToMultipleOfPageSize');
+  late final _NSRoundDownToMultipleOfPageSize13 =
+      _NSRoundDownToMultipleOfPageSize13Ptr.asFunction<int Function(int)>();
+
+  ffi.Pointer<ffi.Void> NSAllocateMemoryPages13(
+    int bytes,
+  ) {
+    return _NSAllocateMemoryPages13(
+      bytes,
+    );
+  }
+
+  late final _NSAllocateMemoryPages13Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(NSUInteger)>>(
+          'NSAllocateMemoryPages');
+  late final _NSAllocateMemoryPages13 = _NSAllocateMemoryPages13Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(int)>();
+
+  void NSDeallocateMemoryPages13(
+    ffi.Pointer<ffi.Void> ptr,
+    int bytes,
+  ) {
+    return _NSDeallocateMemoryPages13(
+      ptr,
+      bytes,
+    );
+  }
+
+  late final _NSDeallocateMemoryPages13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<ffi.Void>, NSUInteger)>>('NSDeallocateMemoryPages');
+  late final _NSDeallocateMemoryPages13 = _NSDeallocateMemoryPages13Ptr
+      .asFunction<void Function(ffi.Pointer<ffi.Void>, int)>();
+
+  void NSCopyMemoryPages13(
+    ffi.Pointer<ffi.Void> source,
+    ffi.Pointer<ffi.Void> dest,
+    int bytes,
+  ) {
+    return _NSCopyMemoryPages13(
+      source,
+      dest,
+      bytes,
+    );
+  }
+
+  late final _NSCopyMemoryPages13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
+              NSUInteger)>>('NSCopyMemoryPages');
+  late final _NSCopyMemoryPages13 = _NSCopyMemoryPages13Ptr.asFunction<
+      void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  int NSRealMemoryAvailable13() {
+    return _NSRealMemoryAvailable13();
+  }
+
+  late final _NSRealMemoryAvailable13Ptr =
+      _lookup<ffi.NativeFunction<NSUInteger Function()>>(
+          'NSRealMemoryAvailable');
+  late final _NSRealMemoryAvailable13 =
+      _NSRealMemoryAvailable13Ptr.asFunction<int Function()>();
+
+  ffi.Pointer<ObjCObject> NSAllocateObject13(
+    ffi.Pointer<ObjCObject> aClass,
+    int extraBytes,
+    ffi.Pointer<NSZone> zone,
+  ) {
+    return _NSAllocateObject13(
+      aClass,
+      extraBytes,
+      zone,
+    );
+  }
+
+  late final _NSAllocateObject13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>, NSUInteger,
+              ffi.Pointer<NSZone>)>>('NSAllocateObject');
+  late final _NSAllocateObject13 = _NSAllocateObject13Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(
+          ffi.Pointer<ObjCObject>, int, ffi.Pointer<NSZone>)>();
+
+  void NSDeallocateObject13(
+    ffi.Pointer<ObjCObject> object,
+  ) {
+    return _NSDeallocateObject13(
+      object,
+    );
+  }
+
+  late final _NSDeallocateObject13Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ObjCObject>)>>(
+          'NSDeallocateObject');
+  late final _NSDeallocateObject13 = _NSDeallocateObject13Ptr.asFunction<
+      void Function(ffi.Pointer<ObjCObject>)>();
+
+  ffi.Pointer<ObjCObject> NSCopyObject13(
+    ffi.Pointer<ObjCObject> object,
+    int extraBytes,
+    ffi.Pointer<NSZone> zone,
+  ) {
+    return _NSCopyObject13(
+      object,
+      extraBytes,
+      zone,
+    );
+  }
+
+  late final _NSCopyObject13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>, NSUInteger,
+              ffi.Pointer<NSZone>)>>('NSCopyObject');
+  late final _NSCopyObject13 = _NSCopyObject13Ptr.asFunction<
+      ffi.Pointer<ObjCObject> Function(
+          ffi.Pointer<ObjCObject>, int, ffi.Pointer<NSZone>)>();
+
+  bool NSShouldRetainWithZone13(
+    ffi.Pointer<ObjCObject> anObject,
+    ffi.Pointer<NSZone> requestedZone,
+  ) {
+    return _NSShouldRetainWithZone13(
+          anObject,
+          requestedZone,
+        ) !=
+        0;
+  }
+
+  late final _NSShouldRetainWithZone13Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+              ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
+  late final _NSShouldRetainWithZone13 = _NSShouldRetainWithZone13Ptr
+      .asFunction<int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+
+  void NSIncrementExtraRefCount13(
+    ffi.Pointer<ObjCObject> object,
+  ) {
+    return _NSIncrementExtraRefCount13(
+      object,
+    );
+  }
+
+  late final _NSIncrementExtraRefCount13Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ObjCObject>)>>(
+          'NSIncrementExtraRefCount');
+  late final _NSIncrementExtraRefCount13 = _NSIncrementExtraRefCount13Ptr
+      .asFunction<void Function(ffi.Pointer<ObjCObject>)>();
+
+  bool NSDecrementExtraRefCountWasZero13(
+    ffi.Pointer<ObjCObject> object,
+  ) {
+    return _NSDecrementExtraRefCountWasZero13(
+          object,
+        ) !=
+        0;
+  }
+
+  late final _NSDecrementExtraRefCountWasZero13Ptr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+          'NSDecrementExtraRefCountWasZero');
+  late final _NSDecrementExtraRefCountWasZero13 =
+      _NSDecrementExtraRefCountWasZero13Ptr.asFunction<
+          int Function(ffi.Pointer<ObjCObject>)>();
+
+  int NSExtraRefCount13(
+    ffi.Pointer<ObjCObject> object,
+  ) {
+    return _NSExtraRefCount13(
+      object,
+    );
+  }
+
+  late final _NSExtraRefCount13Ptr =
+      _lookup<ffi.NativeFunction<NSUInteger Function(ffi.Pointer<ObjCObject>)>>(
+          'NSExtraRefCount');
+  late final _NSExtraRefCount13 =
+      _NSExtraRefCount13Ptr.asFunction<int Function(ffi.Pointer<ObjCObject>)>();
+
+  int CFArrayGetTypeID2() {
+    return _CFArrayGetTypeID2();
+  }
+
+  late final _CFArrayGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFArrayGetTypeID');
+  late final _CFArrayGetTypeID2 =
+      _CFArrayGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFArrayRef CFArrayCreate2(
+    CFAllocatorRef allocator,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> values,
+    int numValues,
+    ffi.Pointer<CFArrayCallBacks> callBacks,
+  ) {
+    return _CFArrayCreate2(
+      allocator,
+      values,
+      numValues,
+      callBacks,
+    );
+  }
+
+  late final _CFArrayCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFArrayRef Function(
+              CFAllocatorRef,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              CFIndex,
+              ffi.Pointer<CFArrayCallBacks>)>>('CFArrayCreate');
+  late final _CFArrayCreate2 = _CFArrayCreate2Ptr.asFunction<
+      CFArrayRef Function(CFAllocatorRef, ffi.Pointer<ffi.Pointer<ffi.Void>>,
+          int, ffi.Pointer<CFArrayCallBacks>)>();
+
+  CFArrayRef CFArrayCreateCopy2(
+    CFAllocatorRef allocator,
+    CFArrayRef theArray,
+  ) {
+    return _CFArrayCreateCopy2(
+      allocator,
+      theArray,
+    );
+  }
+
+  late final _CFArrayCreateCopy2Ptr = _lookup<
+          ffi.NativeFunction<CFArrayRef Function(CFAllocatorRef, CFArrayRef)>>(
+      'CFArrayCreateCopy');
+  late final _CFArrayCreateCopy2 = _CFArrayCreateCopy2Ptr.asFunction<
+      CFArrayRef Function(CFAllocatorRef, CFArrayRef)>();
+
+  CFMutableArrayRef CFArrayCreateMutable2(
+    CFAllocatorRef allocator,
+    int capacity,
+    ffi.Pointer<CFArrayCallBacks> callBacks,
+  ) {
+    return _CFArrayCreateMutable2(
+      allocator,
+      capacity,
+      callBacks,
+    );
+  }
+
+  late final _CFArrayCreateMutable2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableArrayRef Function(CFAllocatorRef, CFIndex,
+              ffi.Pointer<CFArrayCallBacks>)>>('CFArrayCreateMutable');
+  late final _CFArrayCreateMutable2 = _CFArrayCreateMutable2Ptr.asFunction<
+      CFMutableArrayRef Function(
+          CFAllocatorRef, int, ffi.Pointer<CFArrayCallBacks>)>();
+
+  CFMutableArrayRef CFArrayCreateMutableCopy2(
+    CFAllocatorRef allocator,
+    int capacity,
+    CFArrayRef theArray,
+  ) {
+    return _CFArrayCreateMutableCopy2(
+      allocator,
+      capacity,
+      theArray,
+    );
+  }
+
+  late final _CFArrayCreateMutableCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableArrayRef Function(CFAllocatorRef, CFIndex,
+              CFArrayRef)>>('CFArrayCreateMutableCopy');
+  late final _CFArrayCreateMutableCopy2 =
+      _CFArrayCreateMutableCopy2Ptr.asFunction<
+          CFMutableArrayRef Function(CFAllocatorRef, int, CFArrayRef)>();
+
+  int CFArrayGetCount2(
+    CFArrayRef theArray,
+  ) {
+    return _CFArrayGetCount2(
+      theArray,
+    );
+  }
+
+  late final _CFArrayGetCount2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFArrayRef)>>(
+          'CFArrayGetCount');
+  late final _CFArrayGetCount2 =
+      _CFArrayGetCount2Ptr.asFunction<int Function(CFArrayRef)>();
+
+  int CFArrayGetCountOfValue2(
+    CFArrayRef theArray,
+    CFRange range,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFArrayGetCountOfValue2(
+      theArray,
+      range,
+      value,
+    );
+  }
+
+  late final _CFArrayGetCountOfValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFArrayRef, CFRange,
+              ffi.Pointer<ffi.Void>)>>('CFArrayGetCountOfValue');
+  late final _CFArrayGetCountOfValue2 = _CFArrayGetCountOfValue2Ptr.asFunction<
+      int Function(CFArrayRef, CFRange, ffi.Pointer<ffi.Void>)>();
+
+  int CFArrayContainsValue2(
+    CFArrayRef theArray,
+    CFRange range,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFArrayContainsValue2(
+      theArray,
+      range,
+      value,
+    );
+  }
+
+  late final _CFArrayContainsValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFArrayRef, CFRange,
+              ffi.Pointer<ffi.Void>)>>('CFArrayContainsValue');
+  late final _CFArrayContainsValue2 = _CFArrayContainsValue2Ptr.asFunction<
+      int Function(CFArrayRef, CFRange, ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> CFArrayGetValueAtIndex2(
+    CFArrayRef theArray,
+    int idx,
+  ) {
+    return _CFArrayGetValueAtIndex2(
+      theArray,
+      idx,
+    );
+  }
+
+  late final _CFArrayGetValueAtIndex2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              CFArrayRef, CFIndex)>>('CFArrayGetValueAtIndex');
+  late final _CFArrayGetValueAtIndex2 = _CFArrayGetValueAtIndex2Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(CFArrayRef, int)>();
+
+  void CFArrayGetValues2(
+    CFArrayRef theArray,
+    CFRange range,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> values,
+  ) {
+    return _CFArrayGetValues2(
+      theArray,
+      range,
+      values,
+    );
+  }
+
+  late final _CFArrayGetValues2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFArrayRef, CFRange,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>)>>('CFArrayGetValues');
+  late final _CFArrayGetValues2 = _CFArrayGetValues2Ptr.asFunction<
+      void Function(CFArrayRef, CFRange, ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  void CFArrayApplyFunction2(
+    CFArrayRef theArray,
+    CFRange range,
+    CFArrayApplierFunction applier,
+    ffi.Pointer<ffi.Void> context,
+  ) {
+    return _CFArrayApplyFunction2(
+      theArray,
+      range,
+      applier,
+      context,
+    );
+  }
+
+  late final _CFArrayApplyFunction2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFArrayRef, CFRange, CFArrayApplierFunction,
+              ffi.Pointer<ffi.Void>)>>('CFArrayApplyFunction');
+  late final _CFArrayApplyFunction2 = _CFArrayApplyFunction2Ptr.asFunction<
+      void Function(CFArrayRef, CFRange, CFArrayApplierFunction,
+          ffi.Pointer<ffi.Void>)>();
+
+  int CFArrayGetFirstIndexOfValue2(
+    CFArrayRef theArray,
+    CFRange range,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFArrayGetFirstIndexOfValue2(
+      theArray,
+      range,
+      value,
+    );
+  }
+
+  late final _CFArrayGetFirstIndexOfValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFArrayRef, CFRange,
+              ffi.Pointer<ffi.Void>)>>('CFArrayGetFirstIndexOfValue');
+  late final _CFArrayGetFirstIndexOfValue2 = _CFArrayGetFirstIndexOfValue2Ptr
+      .asFunction<int Function(CFArrayRef, CFRange, ffi.Pointer<ffi.Void>)>();
+
+  int CFArrayGetLastIndexOfValue2(
+    CFArrayRef theArray,
+    CFRange range,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFArrayGetLastIndexOfValue2(
+      theArray,
+      range,
+      value,
+    );
+  }
+
+  late final _CFArrayGetLastIndexOfValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFArrayRef, CFRange,
+              ffi.Pointer<ffi.Void>)>>('CFArrayGetLastIndexOfValue');
+  late final _CFArrayGetLastIndexOfValue2 = _CFArrayGetLastIndexOfValue2Ptr
+      .asFunction<int Function(CFArrayRef, CFRange, ffi.Pointer<ffi.Void>)>();
+
+  int CFArrayBSearchValues2(
+    CFArrayRef theArray,
+    CFRange range,
+    ffi.Pointer<ffi.Void> value,
+    CFComparatorFunction comparator,
+    ffi.Pointer<ffi.Void> context,
+  ) {
+    return _CFArrayBSearchValues2(
+      theArray,
+      range,
+      value,
+      comparator,
+      context,
+    );
+  }
+
+  late final _CFArrayBSearchValues2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(
+              CFArrayRef,
+              CFRange,
+              ffi.Pointer<ffi.Void>,
+              CFComparatorFunction,
+              ffi.Pointer<ffi.Void>)>>('CFArrayBSearchValues');
+  late final _CFArrayBSearchValues2 = _CFArrayBSearchValues2Ptr.asFunction<
+      int Function(CFArrayRef, CFRange, ffi.Pointer<ffi.Void>,
+          CFComparatorFunction, ffi.Pointer<ffi.Void>)>();
+
+  void CFArrayAppendValue2(
+    CFMutableArrayRef theArray,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFArrayAppendValue2(
+      theArray,
+      value,
+    );
+  }
+
+  late final _CFArrayAppendValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableArrayRef, ffi.Pointer<ffi.Void>)>>('CFArrayAppendValue');
+  late final _CFArrayAppendValue2 = _CFArrayAppendValue2Ptr.asFunction<
+      void Function(CFMutableArrayRef, ffi.Pointer<ffi.Void>)>();
+
+  void CFArrayInsertValueAtIndex2(
+    CFMutableArrayRef theArray,
+    int idx,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFArrayInsertValueAtIndex2(
+      theArray,
+      idx,
+      value,
+    );
+  }
+
+  late final _CFArrayInsertValueAtIndex2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableArrayRef, CFIndex,
+              ffi.Pointer<ffi.Void>)>>('CFArrayInsertValueAtIndex');
+  late final _CFArrayInsertValueAtIndex2 =
+      _CFArrayInsertValueAtIndex2Ptr.asFunction<
+          void Function(CFMutableArrayRef, int, ffi.Pointer<ffi.Void>)>();
+
+  void CFArraySetValueAtIndex2(
+    CFMutableArrayRef theArray,
+    int idx,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFArraySetValueAtIndex2(
+      theArray,
+      idx,
+      value,
+    );
+  }
+
+  late final _CFArraySetValueAtIndex2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableArrayRef, CFIndex,
+              ffi.Pointer<ffi.Void>)>>('CFArraySetValueAtIndex');
+  late final _CFArraySetValueAtIndex2 = _CFArraySetValueAtIndex2Ptr.asFunction<
+      void Function(CFMutableArrayRef, int, ffi.Pointer<ffi.Void>)>();
+
+  void CFArrayRemoveValueAtIndex2(
+    CFMutableArrayRef theArray,
+    int idx,
+  ) {
+    return _CFArrayRemoveValueAtIndex2(
+      theArray,
+      idx,
+    );
+  }
+
+  late final _CFArrayRemoveValueAtIndex2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(CFMutableArrayRef, CFIndex)>>(
+      'CFArrayRemoveValueAtIndex');
+  late final _CFArrayRemoveValueAtIndex2 = _CFArrayRemoveValueAtIndex2Ptr
+      .asFunction<void Function(CFMutableArrayRef, int)>();
+
+  void CFArrayRemoveAllValues2(
+    CFMutableArrayRef theArray,
+  ) {
+    return _CFArrayRemoveAllValues2(
+      theArray,
+    );
+  }
+
+  late final _CFArrayRemoveAllValues2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFMutableArrayRef)>>(
+          'CFArrayRemoveAllValues');
+  late final _CFArrayRemoveAllValues2 = _CFArrayRemoveAllValues2Ptr.asFunction<
+      void Function(CFMutableArrayRef)>();
+
+  void CFArrayReplaceValues2(
+    CFMutableArrayRef theArray,
+    CFRange range,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> newValues,
+    int newCount,
+  ) {
+    return _CFArrayReplaceValues2(
+      theArray,
+      range,
+      newValues,
+      newCount,
+    );
+  }
+
+  late final _CFArrayReplaceValues2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableArrayRef,
+              CFRange,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              CFIndex)>>('CFArrayReplaceValues');
+  late final _CFArrayReplaceValues2 = _CFArrayReplaceValues2Ptr.asFunction<
+      void Function(CFMutableArrayRef, CFRange,
+          ffi.Pointer<ffi.Pointer<ffi.Void>>, int)>();
+
+  void CFArrayExchangeValuesAtIndices2(
+    CFMutableArrayRef theArray,
+    int idx1,
+    int idx2,
+  ) {
+    return _CFArrayExchangeValuesAtIndices2(
+      theArray,
+      idx1,
+      idx2,
+    );
+  }
+
+  late final _CFArrayExchangeValuesAtIndices2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableArrayRef, CFIndex,
+              CFIndex)>>('CFArrayExchangeValuesAtIndices');
+  late final _CFArrayExchangeValuesAtIndices2 =
+      _CFArrayExchangeValuesAtIndices2Ptr.asFunction<
+          void Function(CFMutableArrayRef, int, int)>();
+
+  void CFArraySortValues2(
+    CFMutableArrayRef theArray,
+    CFRange range,
+    CFComparatorFunction comparator,
+    ffi.Pointer<ffi.Void> context,
+  ) {
+    return _CFArraySortValues2(
+      theArray,
+      range,
+      comparator,
+      context,
+    );
+  }
+
+  late final _CFArraySortValues2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableArrayRef, CFRange, CFComparatorFunction,
+              ffi.Pointer<ffi.Void>)>>('CFArraySortValues');
+  late final _CFArraySortValues2 = _CFArraySortValues2Ptr.asFunction<
+      void Function(CFMutableArrayRef, CFRange, CFComparatorFunction,
+          ffi.Pointer<ffi.Void>)>();
+
+  void CFArrayAppendArray2(
+    CFMutableArrayRef theArray,
+    CFArrayRef otherArray,
+    CFRange otherRange,
+  ) {
+    return _CFArrayAppendArray2(
+      theArray,
+      otherArray,
+      otherRange,
+    );
+  }
+
+  late final _CFArrayAppendArray2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableArrayRef, CFArrayRef, CFRange)>>('CFArrayAppendArray');
+  late final _CFArrayAppendArray2 = _CFArrayAppendArray2Ptr.asFunction<
+      void Function(CFMutableArrayRef, CFArrayRef, CFRange)>();
+
+  ffi.Pointer<ffi.Void> sec_retain2(
+    ffi.Pointer<ffi.Void> obj,
+  ) {
+    return _sec_retain2(
+      obj,
+    );
+  }
+
+  late final _sec_retain2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>('sec_retain');
+  late final _sec_retain2 = _sec_retain2Ptr
+      .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void sec_release2(
+    ffi.Pointer<ffi.Void> obj,
+  ) {
+    return _sec_release2(
+      obj,
+    );
+  }
+
+  late final _sec_release2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'sec_release');
+  late final _sec_release2 =
+      _sec_release2Ptr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  CFStringRef SecCopyErrorMessageString2(
+    int status,
+    ffi.Pointer<ffi.Void> reserved,
+  ) {
+    return _SecCopyErrorMessageString2(
+      status,
+      reserved,
+    );
+  }
+
+  late final _SecCopyErrorMessageString2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(
+              OSStatus, ffi.Pointer<ffi.Void>)>>('SecCopyErrorMessageString');
+  late final _SecCopyErrorMessageString2 = _SecCopyErrorMessageString2Ptr
+      .asFunction<CFStringRef Function(int, ffi.Pointer<ffi.Void>)>();
+
+  int CFBagGetTypeID2() {
+    return _CFBagGetTypeID2();
+  }
+
+  late final _CFBagGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFBagGetTypeID');
+  late final _CFBagGetTypeID2 =
+      _CFBagGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFBagRef CFBagCreate2(
+    CFAllocatorRef allocator,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> values,
+    int numValues,
+    ffi.Pointer<CFBagCallBacks> callBacks,
+  ) {
+    return _CFBagCreate2(
+      allocator,
+      values,
+      numValues,
+      callBacks,
+    );
+  }
+
+  late final _CFBagCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFBagRef Function(CFAllocatorRef, ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              CFIndex, ffi.Pointer<CFBagCallBacks>)>>('CFBagCreate');
+  late final _CFBagCreate2 = _CFBagCreate2Ptr.asFunction<
+      CFBagRef Function(CFAllocatorRef, ffi.Pointer<ffi.Pointer<ffi.Void>>, int,
+          ffi.Pointer<CFBagCallBacks>)>();
+
+  CFBagRef CFBagCreateCopy2(
+    CFAllocatorRef allocator,
+    CFBagRef theBag,
+  ) {
+    return _CFBagCreateCopy2(
+      allocator,
+      theBag,
+    );
+  }
+
+  late final _CFBagCreateCopy2Ptr =
+      _lookup<ffi.NativeFunction<CFBagRef Function(CFAllocatorRef, CFBagRef)>>(
+          'CFBagCreateCopy');
+  late final _CFBagCreateCopy2 = _CFBagCreateCopy2Ptr.asFunction<
+      CFBagRef Function(CFAllocatorRef, CFBagRef)>();
+
+  CFMutableBagRef CFBagCreateMutable2(
+    CFAllocatorRef allocator,
+    int capacity,
+    ffi.Pointer<CFBagCallBacks> callBacks,
+  ) {
+    return _CFBagCreateMutable2(
+      allocator,
+      capacity,
+      callBacks,
+    );
+  }
+
+  late final _CFBagCreateMutable2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableBagRef Function(CFAllocatorRef, CFIndex,
+              ffi.Pointer<CFBagCallBacks>)>>('CFBagCreateMutable');
+  late final _CFBagCreateMutable2 = _CFBagCreateMutable2Ptr.asFunction<
+      CFMutableBagRef Function(
+          CFAllocatorRef, int, ffi.Pointer<CFBagCallBacks>)>();
+
+  CFMutableBagRef CFBagCreateMutableCopy2(
+    CFAllocatorRef allocator,
+    int capacity,
+    CFBagRef theBag,
+  ) {
+    return _CFBagCreateMutableCopy2(
+      allocator,
+      capacity,
+      theBag,
+    );
+  }
+
+  late final _CFBagCreateMutableCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableBagRef Function(
+              CFAllocatorRef, CFIndex, CFBagRef)>>('CFBagCreateMutableCopy');
+  late final _CFBagCreateMutableCopy2 = _CFBagCreateMutableCopy2Ptr.asFunction<
+      CFMutableBagRef Function(CFAllocatorRef, int, CFBagRef)>();
+
+  int CFBagGetCount2(
+    CFBagRef theBag,
+  ) {
+    return _CFBagGetCount2(
+      theBag,
+    );
+  }
+
+  late final _CFBagGetCount2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFBagRef)>>('CFBagGetCount');
+  late final _CFBagGetCount2 =
+      _CFBagGetCount2Ptr.asFunction<int Function(CFBagRef)>();
+
+  int CFBagGetCountOfValue2(
+    CFBagRef theBag,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFBagGetCountOfValue2(
+      theBag,
+      value,
+    );
+  }
+
+  late final _CFBagGetCountOfValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(
+              CFBagRef, ffi.Pointer<ffi.Void>)>>('CFBagGetCountOfValue');
+  late final _CFBagGetCountOfValue2 = _CFBagGetCountOfValue2Ptr.asFunction<
+      int Function(CFBagRef, ffi.Pointer<ffi.Void>)>();
+
+  int CFBagContainsValue2(
+    CFBagRef theBag,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFBagContainsValue2(
+      theBag,
+      value,
+    );
+  }
+
+  late final _CFBagContainsValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(
+              CFBagRef, ffi.Pointer<ffi.Void>)>>('CFBagContainsValue');
+  late final _CFBagContainsValue2 = _CFBagContainsValue2Ptr.asFunction<
+      int Function(CFBagRef, ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> CFBagGetValue2(
+    CFBagRef theBag,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFBagGetValue2(
+      theBag,
+      value,
+    );
+  }
+
+  late final _CFBagGetValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              CFBagRef, ffi.Pointer<ffi.Void>)>>('CFBagGetValue');
+  late final _CFBagGetValue2 = _CFBagGetValue2Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(CFBagRef, ffi.Pointer<ffi.Void>)>();
+
+  int CFBagGetValueIfPresent2(
+    CFBagRef theBag,
+    ffi.Pointer<ffi.Void> candidate,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> value,
+  ) {
+    return _CFBagGetValueIfPresent2(
+      theBag,
+      candidate,
+      value,
+    );
+  }
+
+  late final _CFBagGetValueIfPresent2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFBagRef, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>)>>('CFBagGetValueIfPresent');
+  late final _CFBagGetValueIfPresent2 = _CFBagGetValueIfPresent2Ptr.asFunction<
+      int Function(CFBagRef, ffi.Pointer<ffi.Void>,
+          ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  void CFBagGetValues2(
+    CFBagRef theBag,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> values,
+  ) {
+    return _CFBagGetValues2(
+      theBag,
+      values,
+    );
+  }
+
+  late final _CFBagGetValues2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFBagRef, ffi.Pointer<ffi.Pointer<ffi.Void>>)>>('CFBagGetValues');
+  late final _CFBagGetValues2 = _CFBagGetValues2Ptr.asFunction<
+      void Function(CFBagRef, ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  void CFBagApplyFunction2(
+    CFBagRef theBag,
+    CFBagApplierFunction applier,
+    ffi.Pointer<ffi.Void> context,
+  ) {
+    return _CFBagApplyFunction2(
+      theBag,
+      applier,
+      context,
+    );
+  }
+
+  late final _CFBagApplyFunction2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFBagRef, CFBagApplierFunction,
+              ffi.Pointer<ffi.Void>)>>('CFBagApplyFunction');
+  late final _CFBagApplyFunction2 = _CFBagApplyFunction2Ptr.asFunction<
+      void Function(CFBagRef, CFBagApplierFunction, ffi.Pointer<ffi.Void>)>();
+
+  void CFBagAddValue2(
+    CFMutableBagRef theBag,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFBagAddValue2(
+      theBag,
+      value,
+    );
+  }
+
+  late final _CFBagAddValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableBagRef, ffi.Pointer<ffi.Void>)>>('CFBagAddValue');
+  late final _CFBagAddValue2 = _CFBagAddValue2Ptr.asFunction<
+      void Function(CFMutableBagRef, ffi.Pointer<ffi.Void>)>();
+
+  void CFBagReplaceValue2(
+    CFMutableBagRef theBag,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFBagReplaceValue2(
+      theBag,
+      value,
+    );
+  }
+
+  late final _CFBagReplaceValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableBagRef, ffi.Pointer<ffi.Void>)>>('CFBagReplaceValue');
+  late final _CFBagReplaceValue2 = _CFBagReplaceValue2Ptr.asFunction<
+      void Function(CFMutableBagRef, ffi.Pointer<ffi.Void>)>();
+
+  void CFBagSetValue2(
+    CFMutableBagRef theBag,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFBagSetValue2(
+      theBag,
+      value,
+    );
+  }
+
+  late final _CFBagSetValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableBagRef, ffi.Pointer<ffi.Void>)>>('CFBagSetValue');
+  late final _CFBagSetValue2 = _CFBagSetValue2Ptr.asFunction<
+      void Function(CFMutableBagRef, ffi.Pointer<ffi.Void>)>();
+
+  void CFBagRemoveValue2(
+    CFMutableBagRef theBag,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFBagRemoveValue2(
+      theBag,
+      value,
+    );
+  }
+
+  late final _CFBagRemoveValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableBagRef, ffi.Pointer<ffi.Void>)>>('CFBagRemoveValue');
+  late final _CFBagRemoveValue2 = _CFBagRemoveValue2Ptr.asFunction<
+      void Function(CFMutableBagRef, ffi.Pointer<ffi.Void>)>();
+
+  void CFBagRemoveAllValues2(
+    CFMutableBagRef theBag,
+  ) {
+    return _CFBagRemoveAllValues2(
+      theBag,
+    );
+  }
+
+  late final _CFBagRemoveAllValues2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFMutableBagRef)>>(
+          'CFBagRemoveAllValues');
+  late final _CFBagRemoveAllValues2 =
+      _CFBagRemoveAllValues2Ptr.asFunction<void Function(CFMutableBagRef)>();
+
+  int CFBinaryHeapGetTypeID2() {
+    return _CFBinaryHeapGetTypeID2();
+  }
+
+  late final _CFBinaryHeapGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFBinaryHeapGetTypeID');
+  late final _CFBinaryHeapGetTypeID2 =
+      _CFBinaryHeapGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFBinaryHeapRef CFBinaryHeapCreate2(
+    CFAllocatorRef allocator,
+    int capacity,
+    ffi.Pointer<CFBinaryHeapCallBacks> callBacks,
+    ffi.Pointer<CFBinaryHeapCompareContext> compareContext,
+  ) {
+    return _CFBinaryHeapCreate2(
+      allocator,
+      capacity,
+      callBacks,
+      compareContext,
+    );
+  }
+
+  late final _CFBinaryHeapCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFBinaryHeapRef Function(
+              CFAllocatorRef,
+              CFIndex,
+              ffi.Pointer<CFBinaryHeapCallBacks>,
+              ffi.Pointer<CFBinaryHeapCompareContext>)>>('CFBinaryHeapCreate');
+  late final _CFBinaryHeapCreate2 = _CFBinaryHeapCreate2Ptr.asFunction<
+      CFBinaryHeapRef Function(
+          CFAllocatorRef,
+          int,
+          ffi.Pointer<CFBinaryHeapCallBacks>,
+          ffi.Pointer<CFBinaryHeapCompareContext>)>();
+
+  CFBinaryHeapRef CFBinaryHeapCreateCopy2(
+    CFAllocatorRef allocator,
+    int capacity,
+    CFBinaryHeapRef heap,
+  ) {
+    return _CFBinaryHeapCreateCopy2(
+      allocator,
+      capacity,
+      heap,
+    );
+  }
+
+  late final _CFBinaryHeapCreateCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFBinaryHeapRef Function(CFAllocatorRef, CFIndex,
+              CFBinaryHeapRef)>>('CFBinaryHeapCreateCopy');
+  late final _CFBinaryHeapCreateCopy2 = _CFBinaryHeapCreateCopy2Ptr.asFunction<
+      CFBinaryHeapRef Function(CFAllocatorRef, int, CFBinaryHeapRef)>();
+
+  int CFBinaryHeapGetCount2(
+    CFBinaryHeapRef heap,
+  ) {
+    return _CFBinaryHeapGetCount2(
+      heap,
+    );
+  }
+
+  late final _CFBinaryHeapGetCount2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFBinaryHeapRef)>>(
+          'CFBinaryHeapGetCount');
+  late final _CFBinaryHeapGetCount2 =
+      _CFBinaryHeapGetCount2Ptr.asFunction<int Function(CFBinaryHeapRef)>();
+
+  int CFBinaryHeapGetCountOfValue2(
+    CFBinaryHeapRef heap,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFBinaryHeapGetCountOfValue2(
+      heap,
+      value,
+    );
+  }
+
+  late final _CFBinaryHeapGetCountOfValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFBinaryHeapRef,
+              ffi.Pointer<ffi.Void>)>>('CFBinaryHeapGetCountOfValue');
+  late final _CFBinaryHeapGetCountOfValue2 = _CFBinaryHeapGetCountOfValue2Ptr
+      .asFunction<int Function(CFBinaryHeapRef, ffi.Pointer<ffi.Void>)>();
+
+  int CFBinaryHeapContainsValue2(
+    CFBinaryHeapRef heap,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFBinaryHeapContainsValue2(
+      heap,
+      value,
+    );
+  }
+
+  late final _CFBinaryHeapContainsValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFBinaryHeapRef,
+              ffi.Pointer<ffi.Void>)>>('CFBinaryHeapContainsValue');
+  late final _CFBinaryHeapContainsValue2 = _CFBinaryHeapContainsValue2Ptr
+      .asFunction<int Function(CFBinaryHeapRef, ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> CFBinaryHeapGetMinimum2(
+    CFBinaryHeapRef heap,
+  ) {
+    return _CFBinaryHeapGetMinimum2(
+      heap,
+    );
+  }
+
+  late final _CFBinaryHeapGetMinimum2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(CFBinaryHeapRef)>>(
+      'CFBinaryHeapGetMinimum');
+  late final _CFBinaryHeapGetMinimum2 = _CFBinaryHeapGetMinimum2Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(CFBinaryHeapRef)>();
+
+  int CFBinaryHeapGetMinimumIfPresent2(
+    CFBinaryHeapRef heap,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> value,
+  ) {
+    return _CFBinaryHeapGetMinimumIfPresent2(
+      heap,
+      value,
+    );
+  }
+
+  late final _CFBinaryHeapGetMinimumIfPresent2Ptr = _lookup<
+          ffi.NativeFunction<
+              Boolean Function(
+                  CFBinaryHeapRef, ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
+      'CFBinaryHeapGetMinimumIfPresent');
+  late final _CFBinaryHeapGetMinimumIfPresent2 =
+      _CFBinaryHeapGetMinimumIfPresent2Ptr.asFunction<
+          int Function(CFBinaryHeapRef, ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  void CFBinaryHeapGetValues2(
+    CFBinaryHeapRef heap,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> values,
+  ) {
+    return _CFBinaryHeapGetValues2(
+      heap,
+      values,
+    );
+  }
+
+  late final _CFBinaryHeapGetValues2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFBinaryHeapRef,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>)>>('CFBinaryHeapGetValues');
+  late final _CFBinaryHeapGetValues2 = _CFBinaryHeapGetValues2Ptr.asFunction<
+      void Function(CFBinaryHeapRef, ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  void CFBinaryHeapApplyFunction2(
+    CFBinaryHeapRef heap,
+    CFBinaryHeapApplierFunction applier,
+    ffi.Pointer<ffi.Void> context,
+  ) {
+    return _CFBinaryHeapApplyFunction2(
+      heap,
+      applier,
+      context,
+    );
+  }
+
+  late final _CFBinaryHeapApplyFunction2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFBinaryHeapRef, CFBinaryHeapApplierFunction,
+              ffi.Pointer<ffi.Void>)>>('CFBinaryHeapApplyFunction');
+  late final _CFBinaryHeapApplyFunction2 =
+      _CFBinaryHeapApplyFunction2Ptr.asFunction<
+          void Function(CFBinaryHeapRef, CFBinaryHeapApplierFunction,
+              ffi.Pointer<ffi.Void>)>();
+
+  void CFBinaryHeapAddValue2(
+    CFBinaryHeapRef heap,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFBinaryHeapAddValue2(
+      heap,
+      value,
+    );
+  }
+
+  late final _CFBinaryHeapAddValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFBinaryHeapRef, ffi.Pointer<ffi.Void>)>>('CFBinaryHeapAddValue');
+  late final _CFBinaryHeapAddValue2 = _CFBinaryHeapAddValue2Ptr.asFunction<
+      void Function(CFBinaryHeapRef, ffi.Pointer<ffi.Void>)>();
+
+  void CFBinaryHeapRemoveMinimumValue2(
+    CFBinaryHeapRef heap,
+  ) {
+    return _CFBinaryHeapRemoveMinimumValue2(
+      heap,
+    );
+  }
+
+  late final _CFBinaryHeapRemoveMinimumValue2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFBinaryHeapRef)>>(
+          'CFBinaryHeapRemoveMinimumValue');
+  late final _CFBinaryHeapRemoveMinimumValue2 =
+      _CFBinaryHeapRemoveMinimumValue2Ptr.asFunction<
+          void Function(CFBinaryHeapRef)>();
+
+  void CFBinaryHeapRemoveAllValues2(
+    CFBinaryHeapRef heap,
+  ) {
+    return _CFBinaryHeapRemoveAllValues2(
+      heap,
+    );
+  }
+
+  late final _CFBinaryHeapRemoveAllValues2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFBinaryHeapRef)>>(
+          'CFBinaryHeapRemoveAllValues');
+  late final _CFBinaryHeapRemoveAllValues2 = _CFBinaryHeapRemoveAllValues2Ptr
+      .asFunction<void Function(CFBinaryHeapRef)>();
+
+  int CFBitVectorGetTypeID2() {
+    return _CFBitVectorGetTypeID2();
+  }
+
+  late final _CFBitVectorGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFBitVectorGetTypeID');
+  late final _CFBitVectorGetTypeID2 =
+      _CFBitVectorGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFBitVectorRef CFBitVectorCreate2(
+    CFAllocatorRef allocator,
+    ffi.Pointer<UInt8> bytes,
+    int numBits,
+  ) {
+    return _CFBitVectorCreate2(
+      allocator,
+      bytes,
+      numBits,
+    );
+  }
+
+  late final _CFBitVectorCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFBitVectorRef Function(CFAllocatorRef, ffi.Pointer<UInt8>,
+              CFIndex)>>('CFBitVectorCreate');
+  late final _CFBitVectorCreate2 = _CFBitVectorCreate2Ptr.asFunction<
+      CFBitVectorRef Function(CFAllocatorRef, ffi.Pointer<UInt8>, int)>();
+
+  CFBitVectorRef CFBitVectorCreateCopy2(
+    CFAllocatorRef allocator,
+    CFBitVectorRef bv,
+  ) {
+    return _CFBitVectorCreateCopy2(
+      allocator,
+      bv,
+    );
+  }
+
+  late final _CFBitVectorCreateCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFBitVectorRef Function(
+              CFAllocatorRef, CFBitVectorRef)>>('CFBitVectorCreateCopy');
+  late final _CFBitVectorCreateCopy2 = _CFBitVectorCreateCopy2Ptr.asFunction<
+      CFBitVectorRef Function(CFAllocatorRef, CFBitVectorRef)>();
+
+  CFMutableBitVectorRef CFBitVectorCreateMutable2(
+    CFAllocatorRef allocator,
+    int capacity,
+  ) {
+    return _CFBitVectorCreateMutable2(
+      allocator,
+      capacity,
+    );
+  }
+
+  late final _CFBitVectorCreateMutable2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableBitVectorRef Function(
+              CFAllocatorRef, CFIndex)>>('CFBitVectorCreateMutable');
+  late final _CFBitVectorCreateMutable2 = _CFBitVectorCreateMutable2Ptr
+      .asFunction<CFMutableBitVectorRef Function(CFAllocatorRef, int)>();
+
+  CFMutableBitVectorRef CFBitVectorCreateMutableCopy2(
+    CFAllocatorRef allocator,
+    int capacity,
+    CFBitVectorRef bv,
+  ) {
+    return _CFBitVectorCreateMutableCopy2(
+      allocator,
+      capacity,
+      bv,
+    );
+  }
+
+  late final _CFBitVectorCreateMutableCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableBitVectorRef Function(CFAllocatorRef, CFIndex,
+              CFBitVectorRef)>>('CFBitVectorCreateMutableCopy');
+  late final _CFBitVectorCreateMutableCopy2 =
+      _CFBitVectorCreateMutableCopy2Ptr.asFunction<
+          CFMutableBitVectorRef Function(
+              CFAllocatorRef, int, CFBitVectorRef)>();
+
+  int CFBitVectorGetCount2(
+    CFBitVectorRef bv,
+  ) {
+    return _CFBitVectorGetCount2(
+      bv,
+    );
+  }
+
+  late final _CFBitVectorGetCount2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFBitVectorRef)>>(
+          'CFBitVectorGetCount');
+  late final _CFBitVectorGetCount2 =
+      _CFBitVectorGetCount2Ptr.asFunction<int Function(CFBitVectorRef)>();
+
+  int CFBitVectorGetCountOfBit2(
+    CFBitVectorRef bv,
+    CFRange range,
+    int value,
+  ) {
+    return _CFBitVectorGetCountOfBit2(
+      bv,
+      range,
+      value,
+    );
+  }
+
+  late final _CFBitVectorGetCountOfBit2Ptr = _lookup<
+          ffi.NativeFunction<CFIndex Function(CFBitVectorRef, CFRange, CFBit)>>(
+      'CFBitVectorGetCountOfBit');
+  late final _CFBitVectorGetCountOfBit2 = _CFBitVectorGetCountOfBit2Ptr
+      .asFunction<int Function(CFBitVectorRef, CFRange, int)>();
+
+  int CFBitVectorContainsBit2(
+    CFBitVectorRef bv,
+    CFRange range,
+    int value,
+  ) {
+    return _CFBitVectorContainsBit2(
+      bv,
+      range,
+      value,
+    );
+  }
+
+  late final _CFBitVectorContainsBit2Ptr = _lookup<
+          ffi.NativeFunction<Boolean Function(CFBitVectorRef, CFRange, CFBit)>>(
+      'CFBitVectorContainsBit');
+  late final _CFBitVectorContainsBit2 = _CFBitVectorContainsBit2Ptr.asFunction<
+      int Function(CFBitVectorRef, CFRange, int)>();
+
+  int CFBitVectorGetBitAtIndex2(
+    CFBitVectorRef bv,
+    int idx,
+  ) {
+    return _CFBitVectorGetBitAtIndex2(
+      bv,
+      idx,
+    );
+  }
+
+  late final _CFBitVectorGetBitAtIndex2Ptr =
+      _lookup<ffi.NativeFunction<CFBit Function(CFBitVectorRef, CFIndex)>>(
+          'CFBitVectorGetBitAtIndex');
+  late final _CFBitVectorGetBitAtIndex2 = _CFBitVectorGetBitAtIndex2Ptr
+      .asFunction<int Function(CFBitVectorRef, int)>();
+
+  void CFBitVectorGetBits2(
+    CFBitVectorRef bv,
+    CFRange range,
+    ffi.Pointer<UInt8> bytes,
+  ) {
+    return _CFBitVectorGetBits2(
+      bv,
+      range,
+      bytes,
+    );
+  }
+
+  late final _CFBitVectorGetBits2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFBitVectorRef, CFRange,
+              ffi.Pointer<UInt8>)>>('CFBitVectorGetBits');
+  late final _CFBitVectorGetBits2 = _CFBitVectorGetBits2Ptr.asFunction<
+      void Function(CFBitVectorRef, CFRange, ffi.Pointer<UInt8>)>();
+
+  int CFBitVectorGetFirstIndexOfBit2(
+    CFBitVectorRef bv,
+    CFRange range,
+    int value,
+  ) {
+    return _CFBitVectorGetFirstIndexOfBit2(
+      bv,
+      range,
+      value,
+    );
+  }
+
+  late final _CFBitVectorGetFirstIndexOfBit2Ptr = _lookup<
+          ffi.NativeFunction<CFIndex Function(CFBitVectorRef, CFRange, CFBit)>>(
+      'CFBitVectorGetFirstIndexOfBit');
+  late final _CFBitVectorGetFirstIndexOfBit2 =
+      _CFBitVectorGetFirstIndexOfBit2Ptr.asFunction<
+          int Function(CFBitVectorRef, CFRange, int)>();
+
+  int CFBitVectorGetLastIndexOfBit2(
+    CFBitVectorRef bv,
+    CFRange range,
+    int value,
+  ) {
+    return _CFBitVectorGetLastIndexOfBit2(
+      bv,
+      range,
+      value,
+    );
+  }
+
+  late final _CFBitVectorGetLastIndexOfBit2Ptr = _lookup<
+          ffi.NativeFunction<CFIndex Function(CFBitVectorRef, CFRange, CFBit)>>(
+      'CFBitVectorGetLastIndexOfBit');
+  late final _CFBitVectorGetLastIndexOfBit2 = _CFBitVectorGetLastIndexOfBit2Ptr
+      .asFunction<int Function(CFBitVectorRef, CFRange, int)>();
+
+  void CFBitVectorSetCount2(
+    CFMutableBitVectorRef bv,
+    int count,
+  ) {
+    return _CFBitVectorSetCount2(
+      bv,
+      count,
+    );
+  }
+
+  late final _CFBitVectorSetCount2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableBitVectorRef, CFIndex)>>('CFBitVectorSetCount');
+  late final _CFBitVectorSetCount2 = _CFBitVectorSetCount2Ptr.asFunction<
+      void Function(CFMutableBitVectorRef, int)>();
+
+  void CFBitVectorFlipBitAtIndex2(
+    CFMutableBitVectorRef bv,
+    int idx,
+  ) {
+    return _CFBitVectorFlipBitAtIndex2(
+      bv,
+      idx,
+    );
+  }
+
+  late final _CFBitVectorFlipBitAtIndex2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableBitVectorRef, CFIndex)>>('CFBitVectorFlipBitAtIndex');
+  late final _CFBitVectorFlipBitAtIndex2 = _CFBitVectorFlipBitAtIndex2Ptr
+      .asFunction<void Function(CFMutableBitVectorRef, int)>();
+
+  void CFBitVectorFlipBits2(
+    CFMutableBitVectorRef bv,
+    CFRange range,
+  ) {
+    return _CFBitVectorFlipBits2(
+      bv,
+      range,
+    );
+  }
+
+  late final _CFBitVectorFlipBits2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableBitVectorRef, CFRange)>>('CFBitVectorFlipBits');
+  late final _CFBitVectorFlipBits2 = _CFBitVectorFlipBits2Ptr.asFunction<
+      void Function(CFMutableBitVectorRef, CFRange)>();
+
+  void CFBitVectorSetBitAtIndex2(
+    CFMutableBitVectorRef bv,
+    int idx,
+    int value,
+  ) {
+    return _CFBitVectorSetBitAtIndex2(
+      bv,
+      idx,
+      value,
+    );
+  }
+
+  late final _CFBitVectorSetBitAtIndex2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableBitVectorRef, CFIndex,
+              CFBit)>>('CFBitVectorSetBitAtIndex');
+  late final _CFBitVectorSetBitAtIndex2 = _CFBitVectorSetBitAtIndex2Ptr
+      .asFunction<void Function(CFMutableBitVectorRef, int, int)>();
+
+  void CFBitVectorSetBits2(
+    CFMutableBitVectorRef bv,
+    CFRange range,
+    int value,
+  ) {
+    return _CFBitVectorSetBits2(
+      bv,
+      range,
+      value,
+    );
+  }
+
+  late final _CFBitVectorSetBits2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableBitVectorRef, CFRange, CFBit)>>('CFBitVectorSetBits');
+  late final _CFBitVectorSetBits2 = _CFBitVectorSetBits2Ptr.asFunction<
+      void Function(CFMutableBitVectorRef, CFRange, int)>();
+
+  void CFBitVectorSetAllBits2(
+    CFMutableBitVectorRef bv,
+    int value,
+  ) {
+    return _CFBitVectorSetAllBits2(
+      bv,
+      value,
+    );
+  }
+
+  late final _CFBitVectorSetAllBits2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(CFMutableBitVectorRef, CFBit)>>(
+      'CFBitVectorSetAllBits');
+  late final _CFBitVectorSetAllBits2 = _CFBitVectorSetAllBits2Ptr.asFunction<
+      void Function(CFMutableBitVectorRef, int)>();
+
+  int CFDictionaryGetTypeID2() {
+    return _CFDictionaryGetTypeID2();
+  }
+
+  late final _CFDictionaryGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFDictionaryGetTypeID');
+  late final _CFDictionaryGetTypeID2 =
+      _CFDictionaryGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFDictionaryRef CFDictionaryCreate2(
+    CFAllocatorRef allocator,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> keys,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> values,
+    int numValues,
+    ffi.Pointer<CFDictionaryKeyCallBacks> keyCallBacks,
+    ffi.Pointer<CFDictionaryValueCallBacks> valueCallBacks,
+  ) {
+    return _CFDictionaryCreate2(
+      allocator,
+      keys,
+      values,
+      numValues,
+      keyCallBacks,
+      valueCallBacks,
+    );
+  }
+
+  late final _CFDictionaryCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDictionaryRef Function(
+              CFAllocatorRef,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              CFIndex,
+              ffi.Pointer<CFDictionaryKeyCallBacks>,
+              ffi.Pointer<CFDictionaryValueCallBacks>)>>('CFDictionaryCreate');
+  late final _CFDictionaryCreate2 = _CFDictionaryCreate2Ptr.asFunction<
+      CFDictionaryRef Function(
+          CFAllocatorRef,
+          ffi.Pointer<ffi.Pointer<ffi.Void>>,
+          ffi.Pointer<ffi.Pointer<ffi.Void>>,
+          int,
+          ffi.Pointer<CFDictionaryKeyCallBacks>,
+          ffi.Pointer<CFDictionaryValueCallBacks>)>();
+
+  CFDictionaryRef CFDictionaryCreateCopy2(
+    CFAllocatorRef allocator,
+    CFDictionaryRef theDict,
+  ) {
+    return _CFDictionaryCreateCopy2(
+      allocator,
+      theDict,
+    );
+  }
+
+  late final _CFDictionaryCreateCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDictionaryRef Function(
+              CFAllocatorRef, CFDictionaryRef)>>('CFDictionaryCreateCopy');
+  late final _CFDictionaryCreateCopy2 = _CFDictionaryCreateCopy2Ptr.asFunction<
+      CFDictionaryRef Function(CFAllocatorRef, CFDictionaryRef)>();
+
+  CFMutableDictionaryRef CFDictionaryCreateMutable2(
+    CFAllocatorRef allocator,
+    int capacity,
+    ffi.Pointer<CFDictionaryKeyCallBacks> keyCallBacks,
+    ffi.Pointer<CFDictionaryValueCallBacks> valueCallBacks,
+  ) {
+    return _CFDictionaryCreateMutable2(
+      allocator,
+      capacity,
+      keyCallBacks,
+      valueCallBacks,
+    );
+  }
+
+  late final _CFDictionaryCreateMutable2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFMutableDictionaryRef Function(
+                  CFAllocatorRef,
+                  CFIndex,
+                  ffi.Pointer<CFDictionaryKeyCallBacks>,
+                  ffi.Pointer<CFDictionaryValueCallBacks>)>>(
+      'CFDictionaryCreateMutable');
+  late final _CFDictionaryCreateMutable2 =
+      _CFDictionaryCreateMutable2Ptr.asFunction<
+          CFMutableDictionaryRef Function(
+              CFAllocatorRef,
+              int,
+              ffi.Pointer<CFDictionaryKeyCallBacks>,
+              ffi.Pointer<CFDictionaryValueCallBacks>)>();
+
+  CFMutableDictionaryRef CFDictionaryCreateMutableCopy2(
+    CFAllocatorRef allocator,
+    int capacity,
+    CFDictionaryRef theDict,
+  ) {
+    return _CFDictionaryCreateMutableCopy2(
+      allocator,
+      capacity,
+      theDict,
+    );
+  }
+
+  late final _CFDictionaryCreateMutableCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableDictionaryRef Function(CFAllocatorRef, CFIndex,
+              CFDictionaryRef)>>('CFDictionaryCreateMutableCopy');
+  late final _CFDictionaryCreateMutableCopy2 =
+      _CFDictionaryCreateMutableCopy2Ptr.asFunction<
+          CFMutableDictionaryRef Function(
+              CFAllocatorRef, int, CFDictionaryRef)>();
+
+  int CFDictionaryGetCount2(
+    CFDictionaryRef theDict,
+  ) {
+    return _CFDictionaryGetCount2(
+      theDict,
+    );
+  }
+
+  late final _CFDictionaryGetCount2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFDictionaryRef)>>(
+          'CFDictionaryGetCount');
+  late final _CFDictionaryGetCount2 =
+      _CFDictionaryGetCount2Ptr.asFunction<int Function(CFDictionaryRef)>();
+
+  int CFDictionaryGetCountOfKey2(
+    CFDictionaryRef theDict,
+    ffi.Pointer<ffi.Void> key,
+  ) {
+    return _CFDictionaryGetCountOfKey2(
+      theDict,
+      key,
+    );
+  }
+
+  late final _CFDictionaryGetCountOfKey2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFDictionaryRef,
+              ffi.Pointer<ffi.Void>)>>('CFDictionaryGetCountOfKey');
+  late final _CFDictionaryGetCountOfKey2 = _CFDictionaryGetCountOfKey2Ptr
+      .asFunction<int Function(CFDictionaryRef, ffi.Pointer<ffi.Void>)>();
+
+  int CFDictionaryGetCountOfValue2(
+    CFDictionaryRef theDict,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFDictionaryGetCountOfValue2(
+      theDict,
+      value,
+    );
+  }
+
+  late final _CFDictionaryGetCountOfValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFDictionaryRef,
+              ffi.Pointer<ffi.Void>)>>('CFDictionaryGetCountOfValue');
+  late final _CFDictionaryGetCountOfValue2 = _CFDictionaryGetCountOfValue2Ptr
+      .asFunction<int Function(CFDictionaryRef, ffi.Pointer<ffi.Void>)>();
+
+  int CFDictionaryContainsKey2(
+    CFDictionaryRef theDict,
+    ffi.Pointer<ffi.Void> key,
+  ) {
+    return _CFDictionaryContainsKey2(
+      theDict,
+      key,
+    );
+  }
+
+  late final _CFDictionaryContainsKey2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFDictionaryRef,
+              ffi.Pointer<ffi.Void>)>>('CFDictionaryContainsKey');
+  late final _CFDictionaryContainsKey2 = _CFDictionaryContainsKey2Ptr
+      .asFunction<int Function(CFDictionaryRef, ffi.Pointer<ffi.Void>)>();
+
+  int CFDictionaryContainsValue2(
+    CFDictionaryRef theDict,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFDictionaryContainsValue2(
+      theDict,
+      value,
+    );
+  }
+
+  late final _CFDictionaryContainsValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFDictionaryRef,
+              ffi.Pointer<ffi.Void>)>>('CFDictionaryContainsValue');
+  late final _CFDictionaryContainsValue2 = _CFDictionaryContainsValue2Ptr
+      .asFunction<int Function(CFDictionaryRef, ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> CFDictionaryGetValue2(
+    CFDictionaryRef theDict,
+    ffi.Pointer<ffi.Void> key,
+  ) {
+    return _CFDictionaryGetValue2(
+      theDict,
+      key,
+    );
+  }
+
+  late final _CFDictionaryGetValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              CFDictionaryRef, ffi.Pointer<ffi.Void>)>>('CFDictionaryGetValue');
+  late final _CFDictionaryGetValue2 = _CFDictionaryGetValue2Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(CFDictionaryRef, ffi.Pointer<ffi.Void>)>();
+
+  int CFDictionaryGetValueIfPresent2(
+    CFDictionaryRef theDict,
+    ffi.Pointer<ffi.Void> key,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> value,
+  ) {
+    return _CFDictionaryGetValueIfPresent2(
+      theDict,
+      key,
+      value,
+    );
+  }
+
+  late final _CFDictionaryGetValueIfPresent2Ptr = _lookup<
+          ffi.NativeFunction<
+              Boolean Function(CFDictionaryRef, ffi.Pointer<ffi.Void>,
+                  ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
+      'CFDictionaryGetValueIfPresent');
+  late final _CFDictionaryGetValueIfPresent2 =
+      _CFDictionaryGetValueIfPresent2Ptr.asFunction<
+          int Function(CFDictionaryRef, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  void CFDictionaryGetKeysAndValues2(
+    CFDictionaryRef theDict,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> keys,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> values,
+  ) {
+    return _CFDictionaryGetKeysAndValues2(
+      theDict,
+      keys,
+      values,
+    );
+  }
+
+  late final _CFDictionaryGetKeysAndValues2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  CFDictionaryRef,
+                  ffi.Pointer<ffi.Pointer<ffi.Void>>,
+                  ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
+      'CFDictionaryGetKeysAndValues');
+  late final _CFDictionaryGetKeysAndValues2 =
+      _CFDictionaryGetKeysAndValues2Ptr.asFunction<
+          void Function(CFDictionaryRef, ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  void CFDictionaryApplyFunction2(
+    CFDictionaryRef theDict,
+    CFDictionaryApplierFunction applier,
+    ffi.Pointer<ffi.Void> context,
+  ) {
+    return _CFDictionaryApplyFunction2(
+      theDict,
+      applier,
+      context,
+    );
+  }
+
+  late final _CFDictionaryApplyFunction2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFDictionaryRef, CFDictionaryApplierFunction,
+              ffi.Pointer<ffi.Void>)>>('CFDictionaryApplyFunction');
+  late final _CFDictionaryApplyFunction2 =
+      _CFDictionaryApplyFunction2Ptr.asFunction<
+          void Function(CFDictionaryRef, CFDictionaryApplierFunction,
+              ffi.Pointer<ffi.Void>)>();
+
+  void CFDictionaryAddValue2(
+    CFMutableDictionaryRef theDict,
+    ffi.Pointer<ffi.Void> key,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFDictionaryAddValue2(
+      theDict,
+      key,
+      value,
+    );
+  }
+
+  late final _CFDictionaryAddValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableDictionaryRef, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>)>>('CFDictionaryAddValue');
+  late final _CFDictionaryAddValue2 = _CFDictionaryAddValue2Ptr.asFunction<
+      void Function(CFMutableDictionaryRef, ffi.Pointer<ffi.Void>,
+          ffi.Pointer<ffi.Void>)>();
+
+  void CFDictionarySetValue2(
+    CFMutableDictionaryRef theDict,
+    ffi.Pointer<ffi.Void> key,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFDictionarySetValue2(
+      theDict,
+      key,
+      value,
+    );
+  }
+
+  late final _CFDictionarySetValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableDictionaryRef, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>)>>('CFDictionarySetValue');
+  late final _CFDictionarySetValue2 = _CFDictionarySetValue2Ptr.asFunction<
+      void Function(CFMutableDictionaryRef, ffi.Pointer<ffi.Void>,
+          ffi.Pointer<ffi.Void>)>();
+
+  void CFDictionaryReplaceValue2(
+    CFMutableDictionaryRef theDict,
+    ffi.Pointer<ffi.Void> key,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFDictionaryReplaceValue2(
+      theDict,
+      key,
+      value,
+    );
+  }
+
+  late final _CFDictionaryReplaceValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableDictionaryRef, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>)>>('CFDictionaryReplaceValue');
+  late final _CFDictionaryReplaceValue2 =
+      _CFDictionaryReplaceValue2Ptr.asFunction<
+          void Function(CFMutableDictionaryRef, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>)>();
+
+  void CFDictionaryRemoveValue2(
+    CFMutableDictionaryRef theDict,
+    ffi.Pointer<ffi.Void> key,
+  ) {
+    return _CFDictionaryRemoveValue2(
+      theDict,
+      key,
+    );
+  }
+
+  late final _CFDictionaryRemoveValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableDictionaryRef,
+              ffi.Pointer<ffi.Void>)>>('CFDictionaryRemoveValue');
+  late final _CFDictionaryRemoveValue2 =
+      _CFDictionaryRemoveValue2Ptr.asFunction<
+          void Function(CFMutableDictionaryRef, ffi.Pointer<ffi.Void>)>();
+
+  void CFDictionaryRemoveAllValues2(
+    CFMutableDictionaryRef theDict,
+  ) {
+    return _CFDictionaryRemoveAllValues2(
+      theDict,
+    );
+  }
+
+  late final _CFDictionaryRemoveAllValues2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFMutableDictionaryRef)>>(
+          'CFDictionaryRemoveAllValues');
+  late final _CFDictionaryRemoveAllValues2 = _CFDictionaryRemoveAllValues2Ptr
+      .asFunction<void Function(CFMutableDictionaryRef)>();
+
+  int CFNotificationCenterGetTypeID2() {
+    return _CFNotificationCenterGetTypeID2();
+  }
+
+  late final _CFNotificationCenterGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFNotificationCenterGetTypeID');
+  late final _CFNotificationCenterGetTypeID2 =
+      _CFNotificationCenterGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFNotificationCenterRef CFNotificationCenterGetLocalCenter2() {
+    return _CFNotificationCenterGetLocalCenter2();
+  }
+
+  late final _CFNotificationCenterGetLocalCenter2Ptr =
+      _lookup<ffi.NativeFunction<CFNotificationCenterRef Function()>>(
+          'CFNotificationCenterGetLocalCenter');
+  late final _CFNotificationCenterGetLocalCenter2 =
+      _CFNotificationCenterGetLocalCenter2Ptr.asFunction<
+          CFNotificationCenterRef Function()>();
+
+  CFNotificationCenterRef CFNotificationCenterGetDistributedCenter2() {
+    return _CFNotificationCenterGetDistributedCenter2();
+  }
+
+  late final _CFNotificationCenterGetDistributedCenter2Ptr =
+      _lookup<ffi.NativeFunction<CFNotificationCenterRef Function()>>(
+          'CFNotificationCenterGetDistributedCenter');
+  late final _CFNotificationCenterGetDistributedCenter2 =
+      _CFNotificationCenterGetDistributedCenter2Ptr.asFunction<
+          CFNotificationCenterRef Function()>();
+
+  CFNotificationCenterRef CFNotificationCenterGetDarwinNotifyCenter2() {
+    return _CFNotificationCenterGetDarwinNotifyCenter2();
+  }
+
+  late final _CFNotificationCenterGetDarwinNotifyCenter2Ptr =
+      _lookup<ffi.NativeFunction<CFNotificationCenterRef Function()>>(
+          'CFNotificationCenterGetDarwinNotifyCenter');
+  late final _CFNotificationCenterGetDarwinNotifyCenter2 =
+      _CFNotificationCenterGetDarwinNotifyCenter2Ptr.asFunction<
+          CFNotificationCenterRef Function()>();
+
+  void CFNotificationCenterAddObserver2(
+    CFNotificationCenterRef center,
+    ffi.Pointer<ffi.Void> observer,
+    CFNotificationCallback callBack,
+    CFStringRef name,
+    ffi.Pointer<ffi.Void> object,
+    int suspensionBehavior,
+  ) {
+    return _CFNotificationCenterAddObserver2(
+      center,
+      observer,
+      callBack,
+      name,
+      object,
+      suspensionBehavior,
+    );
+  }
+
+  late final _CFNotificationCenterAddObserver2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFNotificationCenterRef,
+              ffi.Pointer<ffi.Void>,
+              CFNotificationCallback,
+              CFStringRef,
+              ffi.Pointer<ffi.Void>,
+              ffi.Int32)>>('CFNotificationCenterAddObserver');
+  late final _CFNotificationCenterAddObserver2 =
+      _CFNotificationCenterAddObserver2Ptr.asFunction<
+          void Function(
+              CFNotificationCenterRef,
+              ffi.Pointer<ffi.Void>,
+              CFNotificationCallback,
+              CFStringRef,
+              ffi.Pointer<ffi.Void>,
+              int)>();
+
+  void CFNotificationCenterRemoveObserver2(
+    CFNotificationCenterRef center,
+    ffi.Pointer<ffi.Void> observer,
+    CFNotificationName name,
+    ffi.Pointer<ffi.Void> object,
+  ) {
+    return _CFNotificationCenterRemoveObserver2(
+      center,
+      observer,
+      name,
+      object,
+    );
+  }
+
+  late final _CFNotificationCenterRemoveObserver2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFNotificationCenterRef,
+              ffi.Pointer<ffi.Void>,
+              CFNotificationName,
+              ffi.Pointer<ffi.Void>)>>('CFNotificationCenterRemoveObserver');
+  late final _CFNotificationCenterRemoveObserver2 =
+      _CFNotificationCenterRemoveObserver2Ptr.asFunction<
+          void Function(CFNotificationCenterRef, ffi.Pointer<ffi.Void>,
+              CFNotificationName, ffi.Pointer<ffi.Void>)>();
+
+  void CFNotificationCenterRemoveEveryObserver2(
+    CFNotificationCenterRef center,
+    ffi.Pointer<ffi.Void> observer,
+  ) {
+    return _CFNotificationCenterRemoveEveryObserver2(
+      center,
+      observer,
+    );
+  }
+
+  late final _CFNotificationCenterRemoveEveryObserver2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  CFNotificationCenterRef, ffi.Pointer<ffi.Void>)>>(
+      'CFNotificationCenterRemoveEveryObserver');
+  late final _CFNotificationCenterRemoveEveryObserver2 =
+      _CFNotificationCenterRemoveEveryObserver2Ptr.asFunction<
+          void Function(CFNotificationCenterRef, ffi.Pointer<ffi.Void>)>();
+
+  void CFNotificationCenterPostNotification2(
+    CFNotificationCenterRef center,
+    CFNotificationName name,
+    ffi.Pointer<ffi.Void> object,
+    CFDictionaryRef userInfo,
+    int deliverImmediately,
+  ) {
+    return _CFNotificationCenterPostNotification2(
+      center,
+      name,
+      object,
+      userInfo,
+      deliverImmediately,
+    );
+  }
+
+  late final _CFNotificationCenterPostNotification2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFNotificationCenterRef,
+              CFNotificationName,
+              ffi.Pointer<ffi.Void>,
+              CFDictionaryRef,
+              Boolean)>>('CFNotificationCenterPostNotification');
+  late final _CFNotificationCenterPostNotification2 =
+      _CFNotificationCenterPostNotification2Ptr.asFunction<
+          void Function(CFNotificationCenterRef, CFNotificationName,
+              ffi.Pointer<ffi.Void>, CFDictionaryRef, int)>();
+
+  void CFNotificationCenterPostNotificationWithOptions2(
+    CFNotificationCenterRef center,
+    CFNotificationName name,
+    ffi.Pointer<ffi.Void> object,
+    CFDictionaryRef userInfo,
+    int options,
+  ) {
+    return _CFNotificationCenterPostNotificationWithOptions2(
+      center,
+      name,
+      object,
+      userInfo,
+      options,
+    );
+  }
+
+  late final _CFNotificationCenterPostNotificationWithOptions2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(CFNotificationCenterRef, CFNotificationName,
+                  ffi.Pointer<ffi.Void>, CFDictionaryRef, CFOptionFlags)>>(
+      'CFNotificationCenterPostNotificationWithOptions');
+  late final _CFNotificationCenterPostNotificationWithOptions2 =
+      _CFNotificationCenterPostNotificationWithOptions2Ptr.asFunction<
+          void Function(CFNotificationCenterRef, CFNotificationName,
+              ffi.Pointer<ffi.Void>, CFDictionaryRef, int)>();
+
+  int CFLocaleGetTypeID2() {
+    return _CFLocaleGetTypeID2();
+  }
+
+  late final _CFLocaleGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFLocaleGetTypeID');
+  late final _CFLocaleGetTypeID2 =
+      _CFLocaleGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFLocaleRef CFLocaleGetSystem2() {
+    return _CFLocaleGetSystem2();
+  }
+
+  late final _CFLocaleGetSystem2Ptr =
+      _lookup<ffi.NativeFunction<CFLocaleRef Function()>>('CFLocaleGetSystem');
+  late final _CFLocaleGetSystem2 =
+      _CFLocaleGetSystem2Ptr.asFunction<CFLocaleRef Function()>();
+
+  CFLocaleRef CFLocaleCopyCurrent2() {
+    return _CFLocaleCopyCurrent2();
+  }
+
+  late final _CFLocaleCopyCurrent2Ptr =
+      _lookup<ffi.NativeFunction<CFLocaleRef Function()>>(
+          'CFLocaleCopyCurrent');
+  late final _CFLocaleCopyCurrent2 =
+      _CFLocaleCopyCurrent2Ptr.asFunction<CFLocaleRef Function()>();
+
+  CFArrayRef CFLocaleCopyAvailableLocaleIdentifiers2() {
+    return _CFLocaleCopyAvailableLocaleIdentifiers2();
+  }
+
+  late final _CFLocaleCopyAvailableLocaleIdentifiers2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function()>>(
+          'CFLocaleCopyAvailableLocaleIdentifiers');
+  late final _CFLocaleCopyAvailableLocaleIdentifiers2 =
+      _CFLocaleCopyAvailableLocaleIdentifiers2Ptr.asFunction<
+          CFArrayRef Function()>();
+
+  CFArrayRef CFLocaleCopyISOLanguageCodes2() {
+    return _CFLocaleCopyISOLanguageCodes2();
+  }
+
+  late final _CFLocaleCopyISOLanguageCodes2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function()>>(
+          'CFLocaleCopyISOLanguageCodes');
+  late final _CFLocaleCopyISOLanguageCodes2 =
+      _CFLocaleCopyISOLanguageCodes2Ptr.asFunction<CFArrayRef Function()>();
+
+  CFArrayRef CFLocaleCopyISOCountryCodes2() {
+    return _CFLocaleCopyISOCountryCodes2();
+  }
+
+  late final _CFLocaleCopyISOCountryCodes2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function()>>(
+          'CFLocaleCopyISOCountryCodes');
+  late final _CFLocaleCopyISOCountryCodes2 =
+      _CFLocaleCopyISOCountryCodes2Ptr.asFunction<CFArrayRef Function()>();
+
+  CFArrayRef CFLocaleCopyISOCurrencyCodes2() {
+    return _CFLocaleCopyISOCurrencyCodes2();
+  }
+
+  late final _CFLocaleCopyISOCurrencyCodes2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function()>>(
+          'CFLocaleCopyISOCurrencyCodes');
+  late final _CFLocaleCopyISOCurrencyCodes2 =
+      _CFLocaleCopyISOCurrencyCodes2Ptr.asFunction<CFArrayRef Function()>();
+
+  CFArrayRef CFLocaleCopyCommonISOCurrencyCodes2() {
+    return _CFLocaleCopyCommonISOCurrencyCodes2();
+  }
+
+  late final _CFLocaleCopyCommonISOCurrencyCodes2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function()>>(
+          'CFLocaleCopyCommonISOCurrencyCodes');
+  late final _CFLocaleCopyCommonISOCurrencyCodes2 =
+      _CFLocaleCopyCommonISOCurrencyCodes2Ptr.asFunction<
+          CFArrayRef Function()>();
+
+  CFArrayRef CFLocaleCopyPreferredLanguages2() {
+    return _CFLocaleCopyPreferredLanguages2();
+  }
+
+  late final _CFLocaleCopyPreferredLanguages2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function()>>(
+          'CFLocaleCopyPreferredLanguages');
+  late final _CFLocaleCopyPreferredLanguages2 =
+      _CFLocaleCopyPreferredLanguages2Ptr.asFunction<CFArrayRef Function()>();
+
+  CFLocaleIdentifier CFLocaleCreateCanonicalLanguageIdentifierFromString2(
+    CFAllocatorRef allocator,
+    CFStringRef localeIdentifier,
+  ) {
+    return _CFLocaleCreateCanonicalLanguageIdentifierFromString2(
+      allocator,
+      localeIdentifier,
+    );
+  }
+
+  late final _CFLocaleCreateCanonicalLanguageIdentifierFromString2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFLocaleIdentifier Function(CFAllocatorRef, CFStringRef)>>(
+      'CFLocaleCreateCanonicalLanguageIdentifierFromString');
+  late final _CFLocaleCreateCanonicalLanguageIdentifierFromString2 =
+      _CFLocaleCreateCanonicalLanguageIdentifierFromString2Ptr.asFunction<
+          CFLocaleIdentifier Function(CFAllocatorRef, CFStringRef)>();
+
+  CFLocaleIdentifier CFLocaleCreateCanonicalLocaleIdentifierFromString2(
+    CFAllocatorRef allocator,
+    CFStringRef localeIdentifier,
+  ) {
+    return _CFLocaleCreateCanonicalLocaleIdentifierFromString2(
+      allocator,
+      localeIdentifier,
+    );
+  }
+
+  late final _CFLocaleCreateCanonicalLocaleIdentifierFromString2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFLocaleIdentifier Function(CFAllocatorRef, CFStringRef)>>(
+      'CFLocaleCreateCanonicalLocaleIdentifierFromString');
+  late final _CFLocaleCreateCanonicalLocaleIdentifierFromString2 =
+      _CFLocaleCreateCanonicalLocaleIdentifierFromString2Ptr.asFunction<
+          CFLocaleIdentifier Function(CFAllocatorRef, CFStringRef)>();
+
+  CFLocaleIdentifier
+      CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes2(
+    CFAllocatorRef allocator,
+    int lcode,
+    int rcode,
+  ) {
+    return _CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes2(
+      allocator,
+      lcode,
+      rcode,
+    );
+  }
+
+  late final _CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  CFLocaleIdentifier Function(
+                      CFAllocatorRef, LangCode, RegionCode)>>(
+          'CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes');
+  late final _CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes2 =
+      _CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes2Ptr
+          .asFunction<CFLocaleIdentifier Function(CFAllocatorRef, int, int)>();
+
+  CFLocaleIdentifier CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode2(
+    CFAllocatorRef allocator,
+    int lcid,
+  ) {
+    return _CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode2(
+      allocator,
+      lcid,
+    );
+  }
+
+  late final _CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFLocaleIdentifier Function(CFAllocatorRef, ffi.Uint32)>>(
+      'CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode');
+  late final _CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode2 =
+      _CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode2Ptr.asFunction<
+          CFLocaleIdentifier Function(CFAllocatorRef, int)>();
+
+  int CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier2(
+    CFLocaleIdentifier localeIdentifier,
+  ) {
+    return _CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier2(
+      localeIdentifier,
+    );
+  }
+
+  late final _CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Uint32 Function(CFLocaleIdentifier)>>(
+          'CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier');
+  late final _CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier2 =
+      _CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier2Ptr.asFunction<
+          int Function(CFLocaleIdentifier)>();
+
+  int CFLocaleGetLanguageCharacterDirection2(
+    CFStringRef isoLangCode,
+  ) {
+    return _CFLocaleGetLanguageCharacterDirection2(
+      isoLangCode,
+    );
+  }
+
+  late final _CFLocaleGetLanguageCharacterDirection2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(CFStringRef)>>(
+          'CFLocaleGetLanguageCharacterDirection');
+  late final _CFLocaleGetLanguageCharacterDirection2 =
+      _CFLocaleGetLanguageCharacterDirection2Ptr.asFunction<
+          int Function(CFStringRef)>();
+
+  int CFLocaleGetLanguageLineDirection2(
+    CFStringRef isoLangCode,
+  ) {
+    return _CFLocaleGetLanguageLineDirection2(
+      isoLangCode,
+    );
+  }
+
+  late final _CFLocaleGetLanguageLineDirection2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(CFStringRef)>>(
+          'CFLocaleGetLanguageLineDirection');
+  late final _CFLocaleGetLanguageLineDirection2 =
+      _CFLocaleGetLanguageLineDirection2Ptr.asFunction<
+          int Function(CFStringRef)>();
+
+  CFDictionaryRef CFLocaleCreateComponentsFromLocaleIdentifier2(
+    CFAllocatorRef allocator,
+    CFLocaleIdentifier localeID,
+  ) {
+    return _CFLocaleCreateComponentsFromLocaleIdentifier2(
+      allocator,
+      localeID,
+    );
+  }
+
+  late final _CFLocaleCreateComponentsFromLocaleIdentifier2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFDictionaryRef Function(CFAllocatorRef, CFLocaleIdentifier)>>(
+      'CFLocaleCreateComponentsFromLocaleIdentifier');
+  late final _CFLocaleCreateComponentsFromLocaleIdentifier2 =
+      _CFLocaleCreateComponentsFromLocaleIdentifier2Ptr.asFunction<
+          CFDictionaryRef Function(CFAllocatorRef, CFLocaleIdentifier)>();
+
+  CFLocaleIdentifier CFLocaleCreateLocaleIdentifierFromComponents2(
+    CFAllocatorRef allocator,
+    CFDictionaryRef dictionary,
+  ) {
+    return _CFLocaleCreateLocaleIdentifierFromComponents2(
+      allocator,
+      dictionary,
+    );
+  }
+
+  late final _CFLocaleCreateLocaleIdentifierFromComponents2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFLocaleIdentifier Function(CFAllocatorRef, CFDictionaryRef)>>(
+      'CFLocaleCreateLocaleIdentifierFromComponents');
+  late final _CFLocaleCreateLocaleIdentifierFromComponents2 =
+      _CFLocaleCreateLocaleIdentifierFromComponents2Ptr.asFunction<
+          CFLocaleIdentifier Function(CFAllocatorRef, CFDictionaryRef)>();
+
+  CFLocaleRef CFLocaleCreate2(
+    CFAllocatorRef allocator,
+    CFLocaleIdentifier localeIdentifier,
+  ) {
+    return _CFLocaleCreate2(
+      allocator,
+      localeIdentifier,
+    );
+  }
+
+  late final _CFLocaleCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFLocaleRef Function(
+              CFAllocatorRef, CFLocaleIdentifier)>>('CFLocaleCreate');
+  late final _CFLocaleCreate2 = _CFLocaleCreate2Ptr.asFunction<
+      CFLocaleRef Function(CFAllocatorRef, CFLocaleIdentifier)>();
+
+  CFLocaleRef CFLocaleCreateCopy2(
+    CFAllocatorRef allocator,
+    CFLocaleRef locale,
+  ) {
+    return _CFLocaleCreateCopy2(
+      allocator,
+      locale,
+    );
+  }
+
+  late final _CFLocaleCreateCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFLocaleRef Function(
+              CFAllocatorRef, CFLocaleRef)>>('CFLocaleCreateCopy');
+  late final _CFLocaleCreateCopy2 = _CFLocaleCreateCopy2Ptr.asFunction<
+      CFLocaleRef Function(CFAllocatorRef, CFLocaleRef)>();
+
+  CFLocaleIdentifier CFLocaleGetIdentifier2(
+    CFLocaleRef locale,
+  ) {
+    return _CFLocaleGetIdentifier2(
+      locale,
+    );
+  }
+
+  late final _CFLocaleGetIdentifier2Ptr =
+      _lookup<ffi.NativeFunction<CFLocaleIdentifier Function(CFLocaleRef)>>(
+          'CFLocaleGetIdentifier');
+  late final _CFLocaleGetIdentifier2 = _CFLocaleGetIdentifier2Ptr.asFunction<
+      CFLocaleIdentifier Function(CFLocaleRef)>();
+
+  CFTypeRef CFLocaleGetValue2(
+    CFLocaleRef locale,
+    CFLocaleKey key,
+  ) {
+    return _CFLocaleGetValue2(
+      locale,
+      key,
+    );
+  }
+
+  late final _CFLocaleGetValue2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeRef Function(CFLocaleRef, CFLocaleKey)>>(
+          'CFLocaleGetValue');
+  late final _CFLocaleGetValue2 = _CFLocaleGetValue2Ptr.asFunction<
+      CFTypeRef Function(CFLocaleRef, CFLocaleKey)>();
+
+  CFStringRef CFLocaleCopyDisplayNameForPropertyValue2(
+    CFLocaleRef displayLocale,
+    CFLocaleKey key,
+    CFStringRef value,
+  ) {
+    return _CFLocaleCopyDisplayNameForPropertyValue2(
+      displayLocale,
+      key,
+      value,
+    );
+  }
+
+  late final _CFLocaleCopyDisplayNameForPropertyValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFLocaleRef, CFLocaleKey,
+              CFStringRef)>>('CFLocaleCopyDisplayNameForPropertyValue');
+  late final _CFLocaleCopyDisplayNameForPropertyValue2 =
+      _CFLocaleCopyDisplayNameForPropertyValue2Ptr.asFunction<
+          CFStringRef Function(CFLocaleRef, CFLocaleKey, CFStringRef)>();
+
+  double CFAbsoluteTimeGetCurrent2() {
+    return _CFAbsoluteTimeGetCurrent2();
+  }
+
+  late final _CFAbsoluteTimeGetCurrent2Ptr =
+      _lookup<ffi.NativeFunction<CFAbsoluteTime Function()>>(
+          'CFAbsoluteTimeGetCurrent');
+  late final _CFAbsoluteTimeGetCurrent2 =
+      _CFAbsoluteTimeGetCurrent2Ptr.asFunction<double Function()>();
+
+  int CFDateGetTypeID2() {
+    return _CFDateGetTypeID2();
+  }
+
+  late final _CFDateGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFDateGetTypeID');
+  late final _CFDateGetTypeID2 =
+      _CFDateGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFDateRef CFDateCreate2(
+    CFAllocatorRef allocator,
+    double at,
+  ) {
+    return _CFDateCreate2(
+      allocator,
+      at,
+    );
+  }
+
+  late final _CFDateCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDateRef Function(CFAllocatorRef, CFAbsoluteTime)>>('CFDateCreate');
+  late final _CFDateCreate2 = _CFDateCreate2Ptr.asFunction<
+      CFDateRef Function(CFAllocatorRef, double)>();
+
+  double CFDateGetAbsoluteTime2(
+    CFDateRef theDate,
+  ) {
+    return _CFDateGetAbsoluteTime2(
+      theDate,
+    );
+  }
+
+  late final _CFDateGetAbsoluteTime2Ptr =
+      _lookup<ffi.NativeFunction<CFAbsoluteTime Function(CFDateRef)>>(
+          'CFDateGetAbsoluteTime');
+  late final _CFDateGetAbsoluteTime2 =
+      _CFDateGetAbsoluteTime2Ptr.asFunction<double Function(CFDateRef)>();
+
+  double CFDateGetTimeIntervalSinceDate2(
+    CFDateRef theDate,
+    CFDateRef otherDate,
+  ) {
+    return _CFDateGetTimeIntervalSinceDate2(
+      theDate,
+      otherDate,
+    );
+  }
+
+  late final _CFDateGetTimeIntervalSinceDate2Ptr = _lookup<
+          ffi.NativeFunction<CFTimeInterval Function(CFDateRef, CFDateRef)>>(
+      'CFDateGetTimeIntervalSinceDate');
+  late final _CFDateGetTimeIntervalSinceDate2 =
+      _CFDateGetTimeIntervalSinceDate2Ptr.asFunction<
+          double Function(CFDateRef, CFDateRef)>();
+
+  int CFDateCompare2(
+    CFDateRef theDate,
+    CFDateRef otherDate,
+    ffi.Pointer<ffi.Void> context,
+  ) {
+    return _CFDateCompare2(
+      theDate,
+      otherDate,
+      context,
+    );
+  }
+
+  late final _CFDateCompare2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              CFDateRef, CFDateRef, ffi.Pointer<ffi.Void>)>>('CFDateCompare');
+  late final _CFDateCompare2 = _CFDateCompare2Ptr.asFunction<
+      int Function(CFDateRef, CFDateRef, ffi.Pointer<ffi.Void>)>();
+
+  int CFGregorianDateIsValid2(
+    CFGregorianDate gdate,
+    int unitFlags,
+  ) {
+    return _CFGregorianDateIsValid2(
+      gdate,
+      unitFlags,
+    );
+  }
+
+  late final _CFGregorianDateIsValid2Ptr = _lookup<
+          ffi.NativeFunction<Boolean Function(CFGregorianDate, CFOptionFlags)>>(
+      'CFGregorianDateIsValid');
+  late final _CFGregorianDateIsValid2 = _CFGregorianDateIsValid2Ptr.asFunction<
+      int Function(CFGregorianDate, int)>();
+
+  double CFGregorianDateGetAbsoluteTime2(
+    CFGregorianDate gdate,
+    CFTimeZoneRef tz,
+  ) {
+    return _CFGregorianDateGetAbsoluteTime2(
+      gdate,
+      tz,
+    );
+  }
+
+  late final _CFGregorianDateGetAbsoluteTime2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFAbsoluteTime Function(CFGregorianDate,
+              CFTimeZoneRef)>>('CFGregorianDateGetAbsoluteTime');
+  late final _CFGregorianDateGetAbsoluteTime2 =
+      _CFGregorianDateGetAbsoluteTime2Ptr.asFunction<
+          double Function(CFGregorianDate, CFTimeZoneRef)>();
+
+  CFGregorianDate CFAbsoluteTimeGetGregorianDate2(
+    double at,
+    CFTimeZoneRef tz,
+  ) {
+    return _CFAbsoluteTimeGetGregorianDate2(
+      at,
+      tz,
+    );
+  }
+
+  late final _CFAbsoluteTimeGetGregorianDate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFGregorianDate Function(CFAbsoluteTime,
+              CFTimeZoneRef)>>('CFAbsoluteTimeGetGregorianDate');
+  late final _CFAbsoluteTimeGetGregorianDate2 =
+      _CFAbsoluteTimeGetGregorianDate2Ptr.asFunction<
+          CFGregorianDate Function(double, CFTimeZoneRef)>();
+
+  double CFAbsoluteTimeAddGregorianUnits2(
+    double at,
+    CFTimeZoneRef tz,
+    CFGregorianUnits units,
+  ) {
+    return _CFAbsoluteTimeAddGregorianUnits2(
+      at,
+      tz,
+      units,
+    );
+  }
+
+  late final _CFAbsoluteTimeAddGregorianUnits2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFAbsoluteTime Function(CFAbsoluteTime, CFTimeZoneRef,
+              CFGregorianUnits)>>('CFAbsoluteTimeAddGregorianUnits');
+  late final _CFAbsoluteTimeAddGregorianUnits2 =
+      _CFAbsoluteTimeAddGregorianUnits2Ptr.asFunction<
+          double Function(double, CFTimeZoneRef, CFGregorianUnits)>();
+
+  CFGregorianUnits CFAbsoluteTimeGetDifferenceAsGregorianUnits2(
+    double at1,
+    double at2,
+    CFTimeZoneRef tz,
+    int unitFlags,
+  ) {
+    return _CFAbsoluteTimeGetDifferenceAsGregorianUnits2(
+      at1,
+      at2,
+      tz,
+      unitFlags,
+    );
+  }
+
+  late final _CFAbsoluteTimeGetDifferenceAsGregorianUnits2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFGregorianUnits Function(
+              CFAbsoluteTime,
+              CFAbsoluteTime,
+              CFTimeZoneRef,
+              CFOptionFlags)>>('CFAbsoluteTimeGetDifferenceAsGregorianUnits');
+  late final _CFAbsoluteTimeGetDifferenceAsGregorianUnits2 =
+      _CFAbsoluteTimeGetDifferenceAsGregorianUnits2Ptr.asFunction<
+          CFGregorianUnits Function(double, double, CFTimeZoneRef, int)>();
+
+  int CFAbsoluteTimeGetDayOfWeek2(
+    double at,
+    CFTimeZoneRef tz,
+  ) {
+    return _CFAbsoluteTimeGetDayOfWeek2(
+      at,
+      tz,
+    );
+  }
+
+  late final _CFAbsoluteTimeGetDayOfWeek2Ptr = _lookup<
+          ffi.NativeFunction<SInt32 Function(CFAbsoluteTime, CFTimeZoneRef)>>(
+      'CFAbsoluteTimeGetDayOfWeek');
+  late final _CFAbsoluteTimeGetDayOfWeek2 = _CFAbsoluteTimeGetDayOfWeek2Ptr
+      .asFunction<int Function(double, CFTimeZoneRef)>();
+
+  int CFAbsoluteTimeGetDayOfYear2(
+    double at,
+    CFTimeZoneRef tz,
+  ) {
+    return _CFAbsoluteTimeGetDayOfYear2(
+      at,
+      tz,
+    );
+  }
+
+  late final _CFAbsoluteTimeGetDayOfYear2Ptr = _lookup<
+          ffi.NativeFunction<SInt32 Function(CFAbsoluteTime, CFTimeZoneRef)>>(
+      'CFAbsoluteTimeGetDayOfYear');
+  late final _CFAbsoluteTimeGetDayOfYear2 = _CFAbsoluteTimeGetDayOfYear2Ptr
+      .asFunction<int Function(double, CFTimeZoneRef)>();
+
+  int CFAbsoluteTimeGetWeekOfYear2(
+    double at,
+    CFTimeZoneRef tz,
+  ) {
+    return _CFAbsoluteTimeGetWeekOfYear2(
+      at,
+      tz,
+    );
+  }
+
+  late final _CFAbsoluteTimeGetWeekOfYear2Ptr = _lookup<
+          ffi.NativeFunction<SInt32 Function(CFAbsoluteTime, CFTimeZoneRef)>>(
+      'CFAbsoluteTimeGetWeekOfYear');
+  late final _CFAbsoluteTimeGetWeekOfYear2 = _CFAbsoluteTimeGetWeekOfYear2Ptr
+      .asFunction<int Function(double, CFTimeZoneRef)>();
+
+  int CFDataGetTypeID3() {
+    return _CFDataGetTypeID3();
+  }
+
+  late final _CFDataGetTypeID3Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFDataGetTypeID');
+  late final _CFDataGetTypeID3 =
+      _CFDataGetTypeID3Ptr.asFunction<int Function()>();
+
+  CFDataRef CFDataCreate3(
+    CFAllocatorRef allocator,
+    ffi.Pointer<UInt8> bytes,
+    int length,
+  ) {
+    return _CFDataCreate3(
+      allocator,
+      bytes,
+      length,
+    );
+  }
+
+  late final _CFDataCreate3Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDataRef Function(
+              CFAllocatorRef, ffi.Pointer<UInt8>, CFIndex)>>('CFDataCreate');
+  late final _CFDataCreate3 = _CFDataCreate3Ptr.asFunction<
+      CFDataRef Function(CFAllocatorRef, ffi.Pointer<UInt8>, int)>();
+
+  CFDataRef CFDataCreateWithBytesNoCopy3(
+    CFAllocatorRef allocator,
+    ffi.Pointer<UInt8> bytes,
+    int length,
+    CFAllocatorRef bytesDeallocator,
+  ) {
+    return _CFDataCreateWithBytesNoCopy3(
+      allocator,
+      bytes,
+      length,
+      bytesDeallocator,
+    );
+  }
+
+  late final _CFDataCreateWithBytesNoCopy3Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDataRef Function(CFAllocatorRef, ffi.Pointer<UInt8>, CFIndex,
+              CFAllocatorRef)>>('CFDataCreateWithBytesNoCopy');
+  late final _CFDataCreateWithBytesNoCopy3 =
+      _CFDataCreateWithBytesNoCopy3Ptr.asFunction<
+          CFDataRef Function(
+              CFAllocatorRef, ffi.Pointer<UInt8>, int, CFAllocatorRef)>();
+
+  CFDataRef CFDataCreateCopy3(
+    CFAllocatorRef allocator,
+    CFDataRef theData,
+  ) {
+    return _CFDataCreateCopy3(
+      allocator,
+      theData,
+    );
+  }
+
+  late final _CFDataCreateCopy3Ptr = _lookup<
+          ffi.NativeFunction<CFDataRef Function(CFAllocatorRef, CFDataRef)>>(
+      'CFDataCreateCopy');
+  late final _CFDataCreateCopy3 = _CFDataCreateCopy3Ptr.asFunction<
+      CFDataRef Function(CFAllocatorRef, CFDataRef)>();
+
+  CFMutableDataRef CFDataCreateMutable3(
+    CFAllocatorRef allocator,
+    int capacity,
+  ) {
+    return _CFDataCreateMutable3(
+      allocator,
+      capacity,
+    );
+  }
+
+  late final _CFDataCreateMutable3Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableDataRef Function(
+              CFAllocatorRef, CFIndex)>>('CFDataCreateMutable');
+  late final _CFDataCreateMutable3 = _CFDataCreateMutable3Ptr.asFunction<
+      CFMutableDataRef Function(CFAllocatorRef, int)>();
+
+  CFMutableDataRef CFDataCreateMutableCopy3(
+    CFAllocatorRef allocator,
+    int capacity,
+    CFDataRef theData,
+  ) {
+    return _CFDataCreateMutableCopy3(
+      allocator,
+      capacity,
+      theData,
+    );
+  }
+
+  late final _CFDataCreateMutableCopy3Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableDataRef Function(
+              CFAllocatorRef, CFIndex, CFDataRef)>>('CFDataCreateMutableCopy');
+  late final _CFDataCreateMutableCopy3 = _CFDataCreateMutableCopy3Ptr
+      .asFunction<CFMutableDataRef Function(CFAllocatorRef, int, CFDataRef)>();
+
+  int CFDataGetLength3(
+    CFDataRef theData,
+  ) {
+    return _CFDataGetLength3(
+      theData,
+    );
+  }
+
+  late final _CFDataGetLength3Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFDataRef)>>(
+          'CFDataGetLength');
+  late final _CFDataGetLength3 =
+      _CFDataGetLength3Ptr.asFunction<int Function(CFDataRef)>();
+
+  ffi.Pointer<UInt8> CFDataGetBytePtr3(
+    CFDataRef theData,
+  ) {
+    return _CFDataGetBytePtr3(
+      theData,
+    );
+  }
+
+  late final _CFDataGetBytePtr3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<UInt8> Function(CFDataRef)>>(
+          'CFDataGetBytePtr');
+  late final _CFDataGetBytePtr3 = _CFDataGetBytePtr3Ptr.asFunction<
+      ffi.Pointer<UInt8> Function(CFDataRef)>();
+
+  ffi.Pointer<UInt8> CFDataGetMutableBytePtr3(
+    CFMutableDataRef theData,
+  ) {
+    return _CFDataGetMutableBytePtr3(
+      theData,
+    );
+  }
+
+  late final _CFDataGetMutableBytePtr3Ptr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<UInt8> Function(CFMutableDataRef)>>(
+      'CFDataGetMutableBytePtr');
+  late final _CFDataGetMutableBytePtr3 = _CFDataGetMutableBytePtr3Ptr
+      .asFunction<ffi.Pointer<UInt8> Function(CFMutableDataRef)>();
+
+  void CFDataGetBytes3(
+    CFDataRef theData,
+    CFRange range,
+    ffi.Pointer<UInt8> buffer,
+  ) {
+    return _CFDataGetBytes3(
+      theData,
+      range,
+      buffer,
+    );
+  }
+
+  late final _CFDataGetBytes3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFDataRef, CFRange, ffi.Pointer<UInt8>)>>('CFDataGetBytes');
+  late final _CFDataGetBytes3 = _CFDataGetBytes3Ptr.asFunction<
+      void Function(CFDataRef, CFRange, ffi.Pointer<UInt8>)>();
+
+  void CFDataSetLength3(
+    CFMutableDataRef theData,
+    int length,
+  ) {
+    return _CFDataSetLength3(
+      theData,
+      length,
+    );
+  }
+
+  late final _CFDataSetLength3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFMutableDataRef, CFIndex)>>(
+          'CFDataSetLength');
+  late final _CFDataSetLength3 =
+      _CFDataSetLength3Ptr.asFunction<void Function(CFMutableDataRef, int)>();
+
+  void CFDataIncreaseLength3(
+    CFMutableDataRef theData,
+    int extraLength,
+  ) {
+    return _CFDataIncreaseLength3(
+      theData,
+      extraLength,
+    );
+  }
+
+  late final _CFDataIncreaseLength3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFMutableDataRef, CFIndex)>>(
+          'CFDataIncreaseLength');
+  late final _CFDataIncreaseLength3 = _CFDataIncreaseLength3Ptr.asFunction<
+      void Function(CFMutableDataRef, int)>();
+
+  void CFDataAppendBytes3(
+    CFMutableDataRef theData,
+    ffi.Pointer<UInt8> bytes,
+    int length,
+  ) {
+    return _CFDataAppendBytes3(
+      theData,
+      bytes,
+      length,
+    );
+  }
+
+  late final _CFDataAppendBytes3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableDataRef, ffi.Pointer<UInt8>,
+              CFIndex)>>('CFDataAppendBytes');
+  late final _CFDataAppendBytes3 = _CFDataAppendBytes3Ptr.asFunction<
+      void Function(CFMutableDataRef, ffi.Pointer<UInt8>, int)>();
+
+  void CFDataReplaceBytes3(
+    CFMutableDataRef theData,
+    CFRange range,
+    ffi.Pointer<UInt8> newBytes,
+    int newLength,
+  ) {
+    return _CFDataReplaceBytes3(
+      theData,
+      range,
+      newBytes,
+      newLength,
+    );
+  }
+
+  late final _CFDataReplaceBytes3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableDataRef, CFRange, ffi.Pointer<UInt8>,
+              CFIndex)>>('CFDataReplaceBytes');
+  late final _CFDataReplaceBytes3 = _CFDataReplaceBytes3Ptr.asFunction<
+      void Function(CFMutableDataRef, CFRange, ffi.Pointer<UInt8>, int)>();
+
+  void CFDataDeleteBytes3(
+    CFMutableDataRef theData,
+    CFRange range,
+  ) {
+    return _CFDataDeleteBytes3(
+      theData,
+      range,
+    );
+  }
+
+  late final _CFDataDeleteBytes3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFMutableDataRef, CFRange)>>(
+          'CFDataDeleteBytes');
+  late final _CFDataDeleteBytes3 = _CFDataDeleteBytes3Ptr.asFunction<
+      void Function(CFMutableDataRef, CFRange)>();
+
+  CFRange CFDataFind3(
+    CFDataRef theData,
+    CFDataRef dataToFind,
+    CFRange searchRange,
+    int compareOptions,
+  ) {
+    return _CFDataFind3(
+      theData,
+      dataToFind,
+      searchRange,
+      compareOptions,
+    );
+  }
+
+  late final _CFDataFind3Ptr = _lookup<
+      ffi.NativeFunction<
+          CFRange Function(
+              CFDataRef, CFDataRef, CFRange, ffi.Int32)>>('CFDataFind');
+  late final _CFDataFind3 = _CFDataFind3Ptr.asFunction<
+      CFRange Function(CFDataRef, CFDataRef, CFRange, int)>();
+
+  int CFCharacterSetGetTypeID3() {
+    return _CFCharacterSetGetTypeID3();
+  }
+
+  late final _CFCharacterSetGetTypeID3Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFCharacterSetGetTypeID');
+  late final _CFCharacterSetGetTypeID3 =
+      _CFCharacterSetGetTypeID3Ptr.asFunction<int Function()>();
+
+  CFCharacterSetRef CFCharacterSetGetPredefined3(
+    int theSetIdentifier,
+  ) {
+    return _CFCharacterSetGetPredefined3(
+      theSetIdentifier,
+    );
+  }
+
+  late final _CFCharacterSetGetPredefined3Ptr =
+      _lookup<ffi.NativeFunction<CFCharacterSetRef Function(ffi.Int32)>>(
+          'CFCharacterSetGetPredefined');
+  late final _CFCharacterSetGetPredefined3 = _CFCharacterSetGetPredefined3Ptr
+      .asFunction<CFCharacterSetRef Function(int)>();
+
+  CFCharacterSetRef CFCharacterSetCreateWithCharactersInRange3(
+    CFAllocatorRef alloc,
+    CFRange theRange,
+  ) {
+    return _CFCharacterSetCreateWithCharactersInRange3(
+      alloc,
+      theRange,
+    );
+  }
+
+  late final _CFCharacterSetCreateWithCharactersInRange3Ptr = _lookup<
+      ffi.NativeFunction<
+          CFCharacterSetRef Function(CFAllocatorRef,
+              CFRange)>>('CFCharacterSetCreateWithCharactersInRange');
+  late final _CFCharacterSetCreateWithCharactersInRange3 =
+      _CFCharacterSetCreateWithCharactersInRange3Ptr.asFunction<
+          CFCharacterSetRef Function(CFAllocatorRef, CFRange)>();
+
+  CFCharacterSetRef CFCharacterSetCreateWithCharactersInString3(
+    CFAllocatorRef alloc,
+    CFStringRef theString,
+  ) {
+    return _CFCharacterSetCreateWithCharactersInString3(
+      alloc,
+      theString,
+    );
+  }
+
+  late final _CFCharacterSetCreateWithCharactersInString3Ptr = _lookup<
+      ffi.NativeFunction<
+          CFCharacterSetRef Function(CFAllocatorRef,
+              CFStringRef)>>('CFCharacterSetCreateWithCharactersInString');
+  late final _CFCharacterSetCreateWithCharactersInString3 =
+      _CFCharacterSetCreateWithCharactersInString3Ptr.asFunction<
+          CFCharacterSetRef Function(CFAllocatorRef, CFStringRef)>();
+
+  CFCharacterSetRef CFCharacterSetCreateWithBitmapRepresentation3(
+    CFAllocatorRef alloc,
+    CFDataRef theData,
+  ) {
+    return _CFCharacterSetCreateWithBitmapRepresentation3(
+      alloc,
+      theData,
+    );
+  }
+
+  late final _CFCharacterSetCreateWithBitmapRepresentation3Ptr = _lookup<
+      ffi.NativeFunction<
+          CFCharacterSetRef Function(CFAllocatorRef,
+              CFDataRef)>>('CFCharacterSetCreateWithBitmapRepresentation');
+  late final _CFCharacterSetCreateWithBitmapRepresentation3 =
+      _CFCharacterSetCreateWithBitmapRepresentation3Ptr.asFunction<
+          CFCharacterSetRef Function(CFAllocatorRef, CFDataRef)>();
+
+  CFCharacterSetRef CFCharacterSetCreateInvertedSet3(
+    CFAllocatorRef alloc,
+    CFCharacterSetRef theSet,
+  ) {
+    return _CFCharacterSetCreateInvertedSet3(
+      alloc,
+      theSet,
+    );
+  }
+
+  late final _CFCharacterSetCreateInvertedSet3Ptr = _lookup<
+      ffi.NativeFunction<
+          CFCharacterSetRef Function(CFAllocatorRef,
+              CFCharacterSetRef)>>('CFCharacterSetCreateInvertedSet');
+  late final _CFCharacterSetCreateInvertedSet3 =
+      _CFCharacterSetCreateInvertedSet3Ptr.asFunction<
+          CFCharacterSetRef Function(CFAllocatorRef, CFCharacterSetRef)>();
+
+  int CFCharacterSetIsSupersetOfSet3(
+    CFCharacterSetRef theSet,
+    CFCharacterSetRef theOtherset,
+  ) {
+    return _CFCharacterSetIsSupersetOfSet3(
+      theSet,
+      theOtherset,
+    );
+  }
+
+  late final _CFCharacterSetIsSupersetOfSet3Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFCharacterSetRef,
+              CFCharacterSetRef)>>('CFCharacterSetIsSupersetOfSet');
+  late final _CFCharacterSetIsSupersetOfSet3 =
+      _CFCharacterSetIsSupersetOfSet3Ptr.asFunction<
+          int Function(CFCharacterSetRef, CFCharacterSetRef)>();
+
+  int CFCharacterSetHasMemberInPlane3(
+    CFCharacterSetRef theSet,
+    int thePlane,
+  ) {
+    return _CFCharacterSetHasMemberInPlane3(
+      theSet,
+      thePlane,
+    );
+  }
+
+  late final _CFCharacterSetHasMemberInPlane3Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFCharacterSetRef, CFIndex)>>(
+          'CFCharacterSetHasMemberInPlane');
+  late final _CFCharacterSetHasMemberInPlane3 =
+      _CFCharacterSetHasMemberInPlane3Ptr.asFunction<
+          int Function(CFCharacterSetRef, int)>();
+
+  CFMutableCharacterSetRef CFCharacterSetCreateMutable3(
+    CFAllocatorRef alloc,
+  ) {
+    return _CFCharacterSetCreateMutable3(
+      alloc,
+    );
+  }
+
+  late final _CFCharacterSetCreateMutable3Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableCharacterSetRef Function(
+              CFAllocatorRef)>>('CFCharacterSetCreateMutable');
+  late final _CFCharacterSetCreateMutable3 = _CFCharacterSetCreateMutable3Ptr
+      .asFunction<CFMutableCharacterSetRef Function(CFAllocatorRef)>();
+
+  CFCharacterSetRef CFCharacterSetCreateCopy3(
+    CFAllocatorRef alloc,
+    CFCharacterSetRef theSet,
+  ) {
+    return _CFCharacterSetCreateCopy3(
+      alloc,
+      theSet,
+    );
+  }
+
+  late final _CFCharacterSetCreateCopy3Ptr = _lookup<
+      ffi.NativeFunction<
+          CFCharacterSetRef Function(
+              CFAllocatorRef, CFCharacterSetRef)>>('CFCharacterSetCreateCopy');
+  late final _CFCharacterSetCreateCopy3 =
+      _CFCharacterSetCreateCopy3Ptr.asFunction<
+          CFCharacterSetRef Function(CFAllocatorRef, CFCharacterSetRef)>();
+
+  CFMutableCharacterSetRef CFCharacterSetCreateMutableCopy3(
+    CFAllocatorRef alloc,
+    CFCharacterSetRef theSet,
+  ) {
+    return _CFCharacterSetCreateMutableCopy3(
+      alloc,
+      theSet,
+    );
+  }
+
+  late final _CFCharacterSetCreateMutableCopy3Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableCharacterSetRef Function(CFAllocatorRef,
+              CFCharacterSetRef)>>('CFCharacterSetCreateMutableCopy');
+  late final _CFCharacterSetCreateMutableCopy3 =
+      _CFCharacterSetCreateMutableCopy3Ptr.asFunction<
+          CFMutableCharacterSetRef Function(
+              CFAllocatorRef, CFCharacterSetRef)>();
+
+  int CFCharacterSetIsCharacterMember3(
+    CFCharacterSetRef theSet,
+    int theChar,
+  ) {
+    return _CFCharacterSetIsCharacterMember3(
+      theSet,
+      theChar,
+    );
+  }
+
+  late final _CFCharacterSetIsCharacterMember3Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFCharacterSetRef, UniChar)>>(
+          'CFCharacterSetIsCharacterMember');
+  late final _CFCharacterSetIsCharacterMember3 =
+      _CFCharacterSetIsCharacterMember3Ptr.asFunction<
+          int Function(CFCharacterSetRef, int)>();
+
+  int CFCharacterSetIsLongCharacterMember3(
+    CFCharacterSetRef theSet,
+    int theChar,
+  ) {
+    return _CFCharacterSetIsLongCharacterMember3(
+      theSet,
+      theChar,
+    );
+  }
+
+  late final _CFCharacterSetIsLongCharacterMember3Ptr = _lookup<
+          ffi.NativeFunction<Boolean Function(CFCharacterSetRef, UTF32Char)>>(
+      'CFCharacterSetIsLongCharacterMember');
+  late final _CFCharacterSetIsLongCharacterMember3 =
+      _CFCharacterSetIsLongCharacterMember3Ptr.asFunction<
+          int Function(CFCharacterSetRef, int)>();
+
+  CFDataRef CFCharacterSetCreateBitmapRepresentation3(
+    CFAllocatorRef alloc,
+    CFCharacterSetRef theSet,
+  ) {
+    return _CFCharacterSetCreateBitmapRepresentation3(
+      alloc,
+      theSet,
+    );
+  }
+
+  late final _CFCharacterSetCreateBitmapRepresentation3Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDataRef Function(CFAllocatorRef,
+              CFCharacterSetRef)>>('CFCharacterSetCreateBitmapRepresentation');
+  late final _CFCharacterSetCreateBitmapRepresentation3 =
+      _CFCharacterSetCreateBitmapRepresentation3Ptr.asFunction<
+          CFDataRef Function(CFAllocatorRef, CFCharacterSetRef)>();
+
+  void CFCharacterSetAddCharactersInRange3(
+    CFMutableCharacterSetRef theSet,
+    CFRange theRange,
+  ) {
+    return _CFCharacterSetAddCharactersInRange3(
+      theSet,
+      theRange,
+    );
+  }
+
+  late final _CFCharacterSetAddCharactersInRange3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableCharacterSetRef,
+              CFRange)>>('CFCharacterSetAddCharactersInRange');
+  late final _CFCharacterSetAddCharactersInRange3 =
+      _CFCharacterSetAddCharactersInRange3Ptr.asFunction<
+          void Function(CFMutableCharacterSetRef, CFRange)>();
+
+  void CFCharacterSetRemoveCharactersInRange3(
+    CFMutableCharacterSetRef theSet,
+    CFRange theRange,
+  ) {
+    return _CFCharacterSetRemoveCharactersInRange3(
+      theSet,
+      theRange,
+    );
+  }
+
+  late final _CFCharacterSetRemoveCharactersInRange3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableCharacterSetRef,
+              CFRange)>>('CFCharacterSetRemoveCharactersInRange');
+  late final _CFCharacterSetRemoveCharactersInRange3 =
+      _CFCharacterSetRemoveCharactersInRange3Ptr.asFunction<
+          void Function(CFMutableCharacterSetRef, CFRange)>();
+
+  void CFCharacterSetAddCharactersInString3(
+    CFMutableCharacterSetRef theSet,
+    CFStringRef theString,
+  ) {
+    return _CFCharacterSetAddCharactersInString3(
+      theSet,
+      theString,
+    );
+  }
+
+  late final _CFCharacterSetAddCharactersInString3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableCharacterSetRef,
+              CFStringRef)>>('CFCharacterSetAddCharactersInString');
+  late final _CFCharacterSetAddCharactersInString3 =
+      _CFCharacterSetAddCharactersInString3Ptr.asFunction<
+          void Function(CFMutableCharacterSetRef, CFStringRef)>();
+
+  void CFCharacterSetRemoveCharactersInString3(
+    CFMutableCharacterSetRef theSet,
+    CFStringRef theString,
+  ) {
+    return _CFCharacterSetRemoveCharactersInString3(
+      theSet,
+      theString,
+    );
+  }
+
+  late final _CFCharacterSetRemoveCharactersInString3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableCharacterSetRef,
+              CFStringRef)>>('CFCharacterSetRemoveCharactersInString');
+  late final _CFCharacterSetRemoveCharactersInString3 =
+      _CFCharacterSetRemoveCharactersInString3Ptr.asFunction<
+          void Function(CFMutableCharacterSetRef, CFStringRef)>();
+
+  void CFCharacterSetUnion3(
+    CFMutableCharacterSetRef theSet,
+    CFCharacterSetRef theOtherSet,
+  ) {
+    return _CFCharacterSetUnion3(
+      theSet,
+      theOtherSet,
+    );
+  }
+
+  late final _CFCharacterSetUnion3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableCharacterSetRef,
+              CFCharacterSetRef)>>('CFCharacterSetUnion');
+  late final _CFCharacterSetUnion3 = _CFCharacterSetUnion3Ptr.asFunction<
+      void Function(CFMutableCharacterSetRef, CFCharacterSetRef)>();
+
+  void CFCharacterSetIntersect3(
+    CFMutableCharacterSetRef theSet,
+    CFCharacterSetRef theOtherSet,
+  ) {
+    return _CFCharacterSetIntersect3(
+      theSet,
+      theOtherSet,
+    );
+  }
+
+  late final _CFCharacterSetIntersect3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableCharacterSetRef,
+              CFCharacterSetRef)>>('CFCharacterSetIntersect');
+  late final _CFCharacterSetIntersect3 = _CFCharacterSetIntersect3Ptr
+      .asFunction<void Function(CFMutableCharacterSetRef, CFCharacterSetRef)>();
+
+  void CFCharacterSetInvert3(
+    CFMutableCharacterSetRef theSet,
+  ) {
+    return _CFCharacterSetInvert3(
+      theSet,
+    );
+  }
+
+  late final _CFCharacterSetInvert3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFMutableCharacterSetRef)>>(
+          'CFCharacterSetInvert');
+  late final _CFCharacterSetInvert3 = _CFCharacterSetInvert3Ptr.asFunction<
+      void Function(CFMutableCharacterSetRef)>();
+
+  int CFStringGetTypeID2() {
+    return _CFStringGetTypeID2();
+  }
+
+  late final _CFStringGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFStringGetTypeID');
+  late final _CFStringGetTypeID2 =
+      _CFStringGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFStringRef CFStringCreateWithPascalString2(
+    CFAllocatorRef alloc,
+    ConstStr255Param pStr,
+    int encoding,
+  ) {
+    return _CFStringCreateWithPascalString2(
+      alloc,
+      pStr,
+      encoding,
+    );
+  }
+
+  late final _CFStringCreateWithPascalString2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, ConstStr255Param,
+              CFStringEncoding)>>('CFStringCreateWithPascalString');
+  late final _CFStringCreateWithPascalString2 =
+      _CFStringCreateWithPascalString2Ptr.asFunction<
+          CFStringRef Function(CFAllocatorRef, ConstStr255Param, int)>();
+
+  CFStringRef CFStringCreateWithCString2(
+    CFAllocatorRef alloc,
+    ffi.Pointer<ffi.Char> cStr,
+    int encoding,
+  ) {
+    return _CFStringCreateWithCString2(
+      alloc,
+      cStr,
+      encoding,
+    );
+  }
+
+  late final _CFStringCreateWithCString2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, ffi.Pointer<ffi.Char>,
+              CFStringEncoding)>>('CFStringCreateWithCString');
+  late final _CFStringCreateWithCString2 =
+      _CFStringCreateWithCString2Ptr.asFunction<
+          CFStringRef Function(CFAllocatorRef, ffi.Pointer<ffi.Char>, int)>();
+
+  CFStringRef CFStringCreateWithBytes2(
+    CFAllocatorRef alloc,
+    ffi.Pointer<UInt8> bytes,
+    int numBytes,
+    int encoding,
+    int isExternalRepresentation,
+  ) {
+    return _CFStringCreateWithBytes2(
+      alloc,
+      bytes,
+      numBytes,
+      encoding,
+      isExternalRepresentation,
+    );
+  }
+
+  late final _CFStringCreateWithBytes2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, ffi.Pointer<UInt8>, CFIndex,
+              CFStringEncoding, Boolean)>>('CFStringCreateWithBytes');
+  late final _CFStringCreateWithBytes2 =
+      _CFStringCreateWithBytes2Ptr.asFunction<
+          CFStringRef Function(
+              CFAllocatorRef, ffi.Pointer<UInt8>, int, int, int)>();
+
+  CFStringRef CFStringCreateWithCharacters2(
+    CFAllocatorRef alloc,
+    ffi.Pointer<UniChar> chars,
+    int numChars,
+  ) {
+    return _CFStringCreateWithCharacters2(
+      alloc,
+      chars,
+      numChars,
+    );
+  }
+
+  late final _CFStringCreateWithCharacters2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, ffi.Pointer<UniChar>,
+              CFIndex)>>('CFStringCreateWithCharacters');
+  late final _CFStringCreateWithCharacters2 =
+      _CFStringCreateWithCharacters2Ptr.asFunction<
+          CFStringRef Function(CFAllocatorRef, ffi.Pointer<UniChar>, int)>();
+
+  CFStringRef CFStringCreateWithPascalStringNoCopy2(
+    CFAllocatorRef alloc,
+    ConstStr255Param pStr,
+    int encoding,
+    CFAllocatorRef contentsDeallocator,
+  ) {
+    return _CFStringCreateWithPascalStringNoCopy2(
+      alloc,
+      pStr,
+      encoding,
+      contentsDeallocator,
+    );
+  }
+
+  late final _CFStringCreateWithPascalStringNoCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(
+              CFAllocatorRef,
+              ConstStr255Param,
+              CFStringEncoding,
+              CFAllocatorRef)>>('CFStringCreateWithPascalStringNoCopy');
+  late final _CFStringCreateWithPascalStringNoCopy2 =
+      _CFStringCreateWithPascalStringNoCopy2Ptr.asFunction<
+          CFStringRef Function(
+              CFAllocatorRef, ConstStr255Param, int, CFAllocatorRef)>();
+
+  CFStringRef CFStringCreateWithCStringNoCopy2(
+    CFAllocatorRef alloc,
+    ffi.Pointer<ffi.Char> cStr,
+    int encoding,
+    CFAllocatorRef contentsDeallocator,
+  ) {
+    return _CFStringCreateWithCStringNoCopy2(
+      alloc,
+      cStr,
+      encoding,
+      contentsDeallocator,
+    );
+  }
+
+  late final _CFStringCreateWithCStringNoCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(
+              CFAllocatorRef,
+              ffi.Pointer<ffi.Char>,
+              CFStringEncoding,
+              CFAllocatorRef)>>('CFStringCreateWithCStringNoCopy');
+  late final _CFStringCreateWithCStringNoCopy2 =
+      _CFStringCreateWithCStringNoCopy2Ptr.asFunction<
+          CFStringRef Function(
+              CFAllocatorRef, ffi.Pointer<ffi.Char>, int, CFAllocatorRef)>();
+
+  CFStringRef CFStringCreateWithBytesNoCopy2(
+    CFAllocatorRef alloc,
+    ffi.Pointer<UInt8> bytes,
+    int numBytes,
+    int encoding,
+    int isExternalRepresentation,
+    CFAllocatorRef contentsDeallocator,
+  ) {
+    return _CFStringCreateWithBytesNoCopy2(
+      alloc,
+      bytes,
+      numBytes,
+      encoding,
+      isExternalRepresentation,
+      contentsDeallocator,
+    );
+  }
+
+  late final _CFStringCreateWithBytesNoCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(
+              CFAllocatorRef,
+              ffi.Pointer<UInt8>,
+              CFIndex,
+              CFStringEncoding,
+              Boolean,
+              CFAllocatorRef)>>('CFStringCreateWithBytesNoCopy');
+  late final _CFStringCreateWithBytesNoCopy2 =
+      _CFStringCreateWithBytesNoCopy2Ptr.asFunction<
+          CFStringRef Function(CFAllocatorRef, ffi.Pointer<UInt8>, int, int,
+              int, CFAllocatorRef)>();
+
+  CFStringRef CFStringCreateWithCharactersNoCopy2(
+    CFAllocatorRef alloc,
+    ffi.Pointer<UniChar> chars,
+    int numChars,
+    CFAllocatorRef contentsDeallocator,
+  ) {
+    return _CFStringCreateWithCharactersNoCopy2(
+      alloc,
+      chars,
+      numChars,
+      contentsDeallocator,
+    );
+  }
+
+  late final _CFStringCreateWithCharactersNoCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, ffi.Pointer<UniChar>, CFIndex,
+              CFAllocatorRef)>>('CFStringCreateWithCharactersNoCopy');
+  late final _CFStringCreateWithCharactersNoCopy2 =
+      _CFStringCreateWithCharactersNoCopy2Ptr.asFunction<
+          CFStringRef Function(
+              CFAllocatorRef, ffi.Pointer<UniChar>, int, CFAllocatorRef)>();
+
+  CFStringRef CFStringCreateWithSubstring2(
+    CFAllocatorRef alloc,
+    CFStringRef str,
+    CFRange range,
+  ) {
+    return _CFStringCreateWithSubstring2(
+      alloc,
+      str,
+      range,
+    );
+  }
+
+  late final _CFStringCreateWithSubstring2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, CFStringRef,
+              CFRange)>>('CFStringCreateWithSubstring');
+  late final _CFStringCreateWithSubstring2 = _CFStringCreateWithSubstring2Ptr
+      .asFunction<CFStringRef Function(CFAllocatorRef, CFStringRef, CFRange)>();
+
+  CFStringRef CFStringCreateCopy2(
+    CFAllocatorRef alloc,
+    CFStringRef theString,
+  ) {
+    return _CFStringCreateCopy2(
+      alloc,
+      theString,
+    );
+  }
+
+  late final _CFStringCreateCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(
+              CFAllocatorRef, CFStringRef)>>('CFStringCreateCopy');
+  late final _CFStringCreateCopy2 = _CFStringCreateCopy2Ptr.asFunction<
+      CFStringRef Function(CFAllocatorRef, CFStringRef)>();
+
+  CFStringRef CFStringCreateWithFormat2(
+    CFAllocatorRef alloc,
+    CFDictionaryRef formatOptions,
+    CFStringRef format,
+  ) {
+    return _CFStringCreateWithFormat2(
+      alloc,
+      formatOptions,
+      format,
+    );
+  }
+
+  late final _CFStringCreateWithFormat2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, CFDictionaryRef,
+              CFStringRef)>>('CFStringCreateWithFormat');
+  late final _CFStringCreateWithFormat2 =
+      _CFStringCreateWithFormat2Ptr.asFunction<
+          CFStringRef Function(CFAllocatorRef, CFDictionaryRef, CFStringRef)>();
+
+  CFStringRef CFStringCreateWithFormatAndArguments2(
+    CFAllocatorRef alloc,
+    CFDictionaryRef formatOptions,
+    CFStringRef format,
+    va_list arguments,
+  ) {
+    return _CFStringCreateWithFormatAndArguments2(
+      alloc,
+      formatOptions,
+      format,
+      arguments,
+    );
+  }
+
+  late final _CFStringCreateWithFormatAndArguments2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, CFDictionaryRef, CFStringRef,
+              va_list)>>('CFStringCreateWithFormatAndArguments');
+  late final _CFStringCreateWithFormatAndArguments2 =
+      _CFStringCreateWithFormatAndArguments2Ptr.asFunction<
+          CFStringRef Function(
+              CFAllocatorRef, CFDictionaryRef, CFStringRef, va_list)>();
+
+  CFMutableStringRef CFStringCreateMutable2(
+    CFAllocatorRef alloc,
+    int maxLength,
+  ) {
+    return _CFStringCreateMutable2(
+      alloc,
+      maxLength,
+    );
+  }
+
+  late final _CFStringCreateMutable2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableStringRef Function(
+              CFAllocatorRef, CFIndex)>>('CFStringCreateMutable');
+  late final _CFStringCreateMutable2 = _CFStringCreateMutable2Ptr.asFunction<
+      CFMutableStringRef Function(CFAllocatorRef, int)>();
+
+  CFMutableStringRef CFStringCreateMutableCopy2(
+    CFAllocatorRef alloc,
+    int maxLength,
+    CFStringRef theString,
+  ) {
+    return _CFStringCreateMutableCopy2(
+      alloc,
+      maxLength,
+      theString,
+    );
+  }
+
+  late final _CFStringCreateMutableCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableStringRef Function(CFAllocatorRef, CFIndex,
+              CFStringRef)>>('CFStringCreateMutableCopy');
+  late final _CFStringCreateMutableCopy2 =
+      _CFStringCreateMutableCopy2Ptr.asFunction<
+          CFMutableStringRef Function(CFAllocatorRef, int, CFStringRef)>();
+
+  CFMutableStringRef CFStringCreateMutableWithExternalCharactersNoCopy2(
+    CFAllocatorRef alloc,
+    ffi.Pointer<UniChar> chars,
+    int numChars,
+    int capacity,
+    CFAllocatorRef externalCharactersAllocator,
+  ) {
+    return _CFStringCreateMutableWithExternalCharactersNoCopy2(
+      alloc,
+      chars,
+      numChars,
+      capacity,
+      externalCharactersAllocator,
+    );
+  }
+
+  late final _CFStringCreateMutableWithExternalCharactersNoCopy2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFMutableStringRef Function(CFAllocatorRef, ffi.Pointer<UniChar>,
+                  CFIndex, CFIndex, CFAllocatorRef)>>(
+      'CFStringCreateMutableWithExternalCharactersNoCopy');
+  late final _CFStringCreateMutableWithExternalCharactersNoCopy2 =
+      _CFStringCreateMutableWithExternalCharactersNoCopy2Ptr.asFunction<
+          CFMutableStringRef Function(CFAllocatorRef, ffi.Pointer<UniChar>, int,
+              int, CFAllocatorRef)>();
+
+  int CFStringGetLength2(
+    CFStringRef theString,
+  ) {
+    return _CFStringGetLength2(
+      theString,
+    );
+  }
+
+  late final _CFStringGetLength2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFStringRef)>>(
+          'CFStringGetLength');
+  late final _CFStringGetLength2 =
+      _CFStringGetLength2Ptr.asFunction<int Function(CFStringRef)>();
+
+  int CFStringGetCharacterAtIndex2(
+    CFStringRef theString,
+    int idx,
+  ) {
+    return _CFStringGetCharacterAtIndex2(
+      theString,
+      idx,
+    );
+  }
+
+  late final _CFStringGetCharacterAtIndex2Ptr =
+      _lookup<ffi.NativeFunction<UniChar Function(CFStringRef, CFIndex)>>(
+          'CFStringGetCharacterAtIndex');
+  late final _CFStringGetCharacterAtIndex2 = _CFStringGetCharacterAtIndex2Ptr
+      .asFunction<int Function(CFStringRef, int)>();
+
+  void CFStringGetCharacters2(
+    CFStringRef theString,
+    CFRange range,
+    ffi.Pointer<UniChar> buffer,
+  ) {
+    return _CFStringGetCharacters2(
+      theString,
+      range,
+      buffer,
+    );
+  }
+
+  late final _CFStringGetCharacters2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFStringRef, CFRange,
+              ffi.Pointer<UniChar>)>>('CFStringGetCharacters');
+  late final _CFStringGetCharacters2 = _CFStringGetCharacters2Ptr.asFunction<
+      void Function(CFStringRef, CFRange, ffi.Pointer<UniChar>)>();
+
+  int CFStringGetPascalString2(
+    CFStringRef theString,
+    StringPtr buffer,
+    int bufferSize,
+    int encoding,
+  ) {
+    return _CFStringGetPascalString2(
+      theString,
+      buffer,
+      bufferSize,
+      encoding,
+    );
+  }
+
+  late final _CFStringGetPascalString2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFStringRef, StringPtr, CFIndex,
+              CFStringEncoding)>>('CFStringGetPascalString');
+  late final _CFStringGetPascalString2 = _CFStringGetPascalString2Ptr
+      .asFunction<int Function(CFStringRef, StringPtr, int, int)>();
+
+  int CFStringGetCString2(
+    CFStringRef theString,
+    ffi.Pointer<ffi.Char> buffer,
+    int bufferSize,
+    int encoding,
+  ) {
+    return _CFStringGetCString2(
+      theString,
+      buffer,
+      bufferSize,
+      encoding,
+    );
+  }
+
+  late final _CFStringGetCString2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFStringRef, ffi.Pointer<ffi.Char>, CFIndex,
+              CFStringEncoding)>>('CFStringGetCString');
+  late final _CFStringGetCString2 = _CFStringGetCString2Ptr.asFunction<
+      int Function(CFStringRef, ffi.Pointer<ffi.Char>, int, int)>();
+
+  ConstStringPtr CFStringGetPascalStringPtr2(
+    CFStringRef theString,
+    int encoding,
+  ) {
+    return _CFStringGetPascalStringPtr2(
+      theString,
+      encoding,
+    );
+  }
+
+  late final _CFStringGetPascalStringPtr2Ptr = _lookup<
+      ffi.NativeFunction<
+          ConstStringPtr Function(
+              CFStringRef, CFStringEncoding)>>('CFStringGetPascalStringPtr');
+  late final _CFStringGetPascalStringPtr2 = _CFStringGetPascalStringPtr2Ptr
+      .asFunction<ConstStringPtr Function(CFStringRef, int)>();
+
+  ffi.Pointer<ffi.Char> CFStringGetCStringPtr2(
+    CFStringRef theString,
+    int encoding,
+  ) {
+    return _CFStringGetCStringPtr2(
+      theString,
+      encoding,
+    );
+  }
+
+  late final _CFStringGetCStringPtr2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              CFStringRef, CFStringEncoding)>>('CFStringGetCStringPtr');
+  late final _CFStringGetCStringPtr2 = _CFStringGetCStringPtr2Ptr.asFunction<
+      ffi.Pointer<ffi.Char> Function(CFStringRef, int)>();
+
+  ffi.Pointer<UniChar> CFStringGetCharactersPtr2(
+    CFStringRef theString,
+  ) {
+    return _CFStringGetCharactersPtr2(
+      theString,
+    );
+  }
+
+  late final _CFStringGetCharactersPtr2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<UniChar> Function(CFStringRef)>>(
+          'CFStringGetCharactersPtr');
+  late final _CFStringGetCharactersPtr2 = _CFStringGetCharactersPtr2Ptr
+      .asFunction<ffi.Pointer<UniChar> Function(CFStringRef)>();
+
+  int CFStringGetBytes2(
+    CFStringRef theString,
+    CFRange range,
+    int encoding,
+    int lossByte,
+    int isExternalRepresentation,
+    ffi.Pointer<UInt8> buffer,
+    int maxBufLen,
+    ffi.Pointer<CFIndex> usedBufLen,
+  ) {
+    return _CFStringGetBytes2(
+      theString,
+      range,
+      encoding,
+      lossByte,
+      isExternalRepresentation,
+      buffer,
+      maxBufLen,
+      usedBufLen,
+    );
+  }
+
+  late final _CFStringGetBytes2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(
+              CFStringRef,
+              CFRange,
+              CFStringEncoding,
+              UInt8,
+              Boolean,
+              ffi.Pointer<UInt8>,
+              CFIndex,
+              ffi.Pointer<CFIndex>)>>('CFStringGetBytes');
+  late final _CFStringGetBytes2 = _CFStringGetBytes2Ptr.asFunction<
+      int Function(CFStringRef, CFRange, int, int, int, ffi.Pointer<UInt8>, int,
+          ffi.Pointer<CFIndex>)>();
+
+  CFStringRef CFStringCreateFromExternalRepresentation2(
+    CFAllocatorRef alloc,
+    CFDataRef data,
+    int encoding,
+  ) {
+    return _CFStringCreateFromExternalRepresentation2(
+      alloc,
+      data,
+      encoding,
+    );
+  }
+
+  late final _CFStringCreateFromExternalRepresentation2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, CFDataRef,
+              CFStringEncoding)>>('CFStringCreateFromExternalRepresentation');
+  late final _CFStringCreateFromExternalRepresentation2 =
+      _CFStringCreateFromExternalRepresentation2Ptr.asFunction<
+          CFStringRef Function(CFAllocatorRef, CFDataRef, int)>();
+
+  CFDataRef CFStringCreateExternalRepresentation2(
+    CFAllocatorRef alloc,
+    CFStringRef theString,
+    int encoding,
+    int lossByte,
+  ) {
+    return _CFStringCreateExternalRepresentation2(
+      alloc,
+      theString,
+      encoding,
+      lossByte,
+    );
+  }
+
+  late final _CFStringCreateExternalRepresentation2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDataRef Function(CFAllocatorRef, CFStringRef, CFStringEncoding,
+              UInt8)>>('CFStringCreateExternalRepresentation');
+  late final _CFStringCreateExternalRepresentation2 =
+      _CFStringCreateExternalRepresentation2Ptr.asFunction<
+          CFDataRef Function(CFAllocatorRef, CFStringRef, int, int)>();
+
+  int CFStringGetSmallestEncoding2(
+    CFStringRef theString,
+  ) {
+    return _CFStringGetSmallestEncoding2(
+      theString,
+    );
+  }
+
+  late final _CFStringGetSmallestEncoding2Ptr =
+      _lookup<ffi.NativeFunction<CFStringEncoding Function(CFStringRef)>>(
+          'CFStringGetSmallestEncoding');
+  late final _CFStringGetSmallestEncoding2 =
+      _CFStringGetSmallestEncoding2Ptr.asFunction<int Function(CFStringRef)>();
+
+  int CFStringGetFastestEncoding2(
+    CFStringRef theString,
+  ) {
+    return _CFStringGetFastestEncoding2(
+      theString,
+    );
+  }
+
+  late final _CFStringGetFastestEncoding2Ptr =
+      _lookup<ffi.NativeFunction<CFStringEncoding Function(CFStringRef)>>(
+          'CFStringGetFastestEncoding');
+  late final _CFStringGetFastestEncoding2 =
+      _CFStringGetFastestEncoding2Ptr.asFunction<int Function(CFStringRef)>();
+
+  int CFStringGetSystemEncoding2() {
+    return _CFStringGetSystemEncoding2();
+  }
+
+  late final _CFStringGetSystemEncoding2Ptr =
+      _lookup<ffi.NativeFunction<CFStringEncoding Function()>>(
+          'CFStringGetSystemEncoding');
+  late final _CFStringGetSystemEncoding2 =
+      _CFStringGetSystemEncoding2Ptr.asFunction<int Function()>();
+
+  int CFStringGetMaximumSizeForEncoding2(
+    int length,
+    int encoding,
+  ) {
+    return _CFStringGetMaximumSizeForEncoding2(
+      length,
+      encoding,
+    );
+  }
+
+  late final _CFStringGetMaximumSizeForEncoding2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFIndex, CFStringEncoding)>>(
+          'CFStringGetMaximumSizeForEncoding');
+  late final _CFStringGetMaximumSizeForEncoding2 =
+      _CFStringGetMaximumSizeForEncoding2Ptr.asFunction<
+          int Function(int, int)>();
+
+  int CFStringGetFileSystemRepresentation2(
+    CFStringRef string,
+    ffi.Pointer<ffi.Char> buffer,
+    int maxBufLen,
+  ) {
+    return _CFStringGetFileSystemRepresentation2(
+      string,
+      buffer,
+      maxBufLen,
+    );
+  }
+
+  late final _CFStringGetFileSystemRepresentation2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFStringRef, ffi.Pointer<ffi.Char>,
+              CFIndex)>>('CFStringGetFileSystemRepresentation');
+  late final _CFStringGetFileSystemRepresentation2 =
+      _CFStringGetFileSystemRepresentation2Ptr.asFunction<
+          int Function(CFStringRef, ffi.Pointer<ffi.Char>, int)>();
+
+  int CFStringGetMaximumSizeOfFileSystemRepresentation2(
+    CFStringRef string,
+  ) {
+    return _CFStringGetMaximumSizeOfFileSystemRepresentation2(
+      string,
+    );
+  }
+
+  late final _CFStringGetMaximumSizeOfFileSystemRepresentation2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFStringRef)>>(
+          'CFStringGetMaximumSizeOfFileSystemRepresentation');
+  late final _CFStringGetMaximumSizeOfFileSystemRepresentation2 =
+      _CFStringGetMaximumSizeOfFileSystemRepresentation2Ptr.asFunction<
+          int Function(CFStringRef)>();
+
+  CFStringRef CFStringCreateWithFileSystemRepresentation2(
+    CFAllocatorRef alloc,
+    ffi.Pointer<ffi.Char> buffer,
+  ) {
+    return _CFStringCreateWithFileSystemRepresentation2(
+      alloc,
+      buffer,
+    );
+  }
+
+  late final _CFStringCreateWithFileSystemRepresentation2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFStringRef Function(CFAllocatorRef, ffi.Pointer<ffi.Char>)>>(
+      'CFStringCreateWithFileSystemRepresentation');
+  late final _CFStringCreateWithFileSystemRepresentation2 =
+      _CFStringCreateWithFileSystemRepresentation2Ptr.asFunction<
+          CFStringRef Function(CFAllocatorRef, ffi.Pointer<ffi.Char>)>();
+
+  int CFStringCompareWithOptionsAndLocale2(
+    CFStringRef theString1,
+    CFStringRef theString2,
+    CFRange rangeToCompare,
+    int compareOptions,
+    CFLocaleRef locale,
+  ) {
+    return _CFStringCompareWithOptionsAndLocale2(
+      theString1,
+      theString2,
+      rangeToCompare,
+      compareOptions,
+      locale,
+    );
+  }
+
+  late final _CFStringCompareWithOptionsAndLocale2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(CFStringRef, CFStringRef, CFRange, ffi.Int32,
+              CFLocaleRef)>>('CFStringCompareWithOptionsAndLocale');
+  late final _CFStringCompareWithOptionsAndLocale2 =
+      _CFStringCompareWithOptionsAndLocale2Ptr.asFunction<
+          int Function(CFStringRef, CFStringRef, CFRange, int, CFLocaleRef)>();
+
+  int CFStringCompareWithOptions2(
+    CFStringRef theString1,
+    CFStringRef theString2,
+    CFRange rangeToCompare,
+    int compareOptions,
+  ) {
+    return _CFStringCompareWithOptions2(
+      theString1,
+      theString2,
+      rangeToCompare,
+      compareOptions,
+    );
+  }
+
+  late final _CFStringCompareWithOptions2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(CFStringRef, CFStringRef, CFRange,
+              ffi.Int32)>>('CFStringCompareWithOptions');
+  late final _CFStringCompareWithOptions2 = _CFStringCompareWithOptions2Ptr
+      .asFunction<int Function(CFStringRef, CFStringRef, CFRange, int)>();
+
+  int CFStringCompare2(
+    CFStringRef theString1,
+    CFStringRef theString2,
+    int compareOptions,
+  ) {
+    return _CFStringCompare2(
+      theString1,
+      theString2,
+      compareOptions,
+    );
+  }
+
+  late final _CFStringCompare2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              CFStringRef, CFStringRef, ffi.Int32)>>('CFStringCompare');
+  late final _CFStringCompare2 = _CFStringCompare2Ptr.asFunction<
+      int Function(CFStringRef, CFStringRef, int)>();
+
+  int CFStringFindWithOptionsAndLocale2(
+    CFStringRef theString,
+    CFStringRef stringToFind,
+    CFRange rangeToSearch,
+    int searchOptions,
+    CFLocaleRef locale,
+    ffi.Pointer<CFRange> result,
+  ) {
+    return _CFStringFindWithOptionsAndLocale2(
+      theString,
+      stringToFind,
+      rangeToSearch,
+      searchOptions,
+      locale,
+      result,
+    );
+  }
+
+  late final _CFStringFindWithOptionsAndLocale2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(
+              CFStringRef,
+              CFStringRef,
+              CFRange,
+              ffi.Int32,
+              CFLocaleRef,
+              ffi.Pointer<CFRange>)>>('CFStringFindWithOptionsAndLocale');
+  late final _CFStringFindWithOptionsAndLocale2 =
+      _CFStringFindWithOptionsAndLocale2Ptr.asFunction<
+          int Function(CFStringRef, CFStringRef, CFRange, int, CFLocaleRef,
+              ffi.Pointer<CFRange>)>();
+
+  int CFStringFindWithOptions2(
+    CFStringRef theString,
+    CFStringRef stringToFind,
+    CFRange rangeToSearch,
+    int searchOptions,
+    ffi.Pointer<CFRange> result,
+  ) {
+    return _CFStringFindWithOptions2(
+      theString,
+      stringToFind,
+      rangeToSearch,
+      searchOptions,
+      result,
+    );
+  }
+
+  late final _CFStringFindWithOptions2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFStringRef, CFStringRef, CFRange, ffi.Int32,
+              ffi.Pointer<CFRange>)>>('CFStringFindWithOptions');
+  late final _CFStringFindWithOptions2 =
+      _CFStringFindWithOptions2Ptr.asFunction<
+          int Function(
+              CFStringRef, CFStringRef, CFRange, int, ffi.Pointer<CFRange>)>();
+
+  CFArrayRef CFStringCreateArrayWithFindResults2(
+    CFAllocatorRef alloc,
+    CFStringRef theString,
+    CFStringRef stringToFind,
+    CFRange rangeToSearch,
+    int compareOptions,
+  ) {
+    return _CFStringCreateArrayWithFindResults2(
+      alloc,
+      theString,
+      stringToFind,
+      rangeToSearch,
+      compareOptions,
+    );
+  }
+
+  late final _CFStringCreateArrayWithFindResults2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFArrayRef Function(CFAllocatorRef, CFStringRef, CFStringRef, CFRange,
+              ffi.Int32)>>('CFStringCreateArrayWithFindResults');
+  late final _CFStringCreateArrayWithFindResults2 =
+      _CFStringCreateArrayWithFindResults2Ptr.asFunction<
+          CFArrayRef Function(
+              CFAllocatorRef, CFStringRef, CFStringRef, CFRange, int)>();
+
+  CFRange CFStringFind2(
+    CFStringRef theString,
+    CFStringRef stringToFind,
+    int compareOptions,
+  ) {
+    return _CFStringFind2(
+      theString,
+      stringToFind,
+      compareOptions,
+    );
+  }
+
+  late final _CFStringFind2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFRange Function(
+              CFStringRef, CFStringRef, ffi.Int32)>>('CFStringFind');
+  late final _CFStringFind2 = _CFStringFind2Ptr.asFunction<
+      CFRange Function(CFStringRef, CFStringRef, int)>();
+
+  int CFStringHasPrefix2(
+    CFStringRef theString,
+    CFStringRef prefix,
+  ) {
+    return _CFStringHasPrefix2(
+      theString,
+      prefix,
+    );
+  }
+
+  late final _CFStringHasPrefix2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFStringRef, CFStringRef)>>(
+          'CFStringHasPrefix');
+  late final _CFStringHasPrefix2 = _CFStringHasPrefix2Ptr.asFunction<
+      int Function(CFStringRef, CFStringRef)>();
+
+  int CFStringHasSuffix2(
+    CFStringRef theString,
+    CFStringRef suffix,
+  ) {
+    return _CFStringHasSuffix2(
+      theString,
+      suffix,
+    );
+  }
+
+  late final _CFStringHasSuffix2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFStringRef, CFStringRef)>>(
+          'CFStringHasSuffix');
+  late final _CFStringHasSuffix2 = _CFStringHasSuffix2Ptr.asFunction<
+      int Function(CFStringRef, CFStringRef)>();
+
+  CFRange CFStringGetRangeOfComposedCharactersAtIndex2(
+    CFStringRef theString,
+    int theIndex,
+  ) {
+    return _CFStringGetRangeOfComposedCharactersAtIndex2(
+      theString,
+      theIndex,
+    );
+  }
+
+  late final _CFStringGetRangeOfComposedCharactersAtIndex2Ptr =
+      _lookup<ffi.NativeFunction<CFRange Function(CFStringRef, CFIndex)>>(
+          'CFStringGetRangeOfComposedCharactersAtIndex');
+  late final _CFStringGetRangeOfComposedCharactersAtIndex2 =
+      _CFStringGetRangeOfComposedCharactersAtIndex2Ptr.asFunction<
+          CFRange Function(CFStringRef, int)>();
+
+  int CFStringFindCharacterFromSet2(
+    CFStringRef theString,
+    CFCharacterSetRef theSet,
+    CFRange rangeToSearch,
+    int searchOptions,
+    ffi.Pointer<CFRange> result,
+  ) {
+    return _CFStringFindCharacterFromSet2(
+      theString,
+      theSet,
+      rangeToSearch,
+      searchOptions,
+      result,
+    );
+  }
+
+  late final _CFStringFindCharacterFromSet2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFStringRef, CFCharacterSetRef, CFRange, ffi.Int32,
+              ffi.Pointer<CFRange>)>>('CFStringFindCharacterFromSet');
+  late final _CFStringFindCharacterFromSet2 =
+      _CFStringFindCharacterFromSet2Ptr.asFunction<
+          int Function(CFStringRef, CFCharacterSetRef, CFRange, int,
+              ffi.Pointer<CFRange>)>();
+
+  void CFStringGetLineBounds2(
+    CFStringRef theString,
+    CFRange range,
+    ffi.Pointer<CFIndex> lineBeginIndex,
+    ffi.Pointer<CFIndex> lineEndIndex,
+    ffi.Pointer<CFIndex> contentsEndIndex,
+  ) {
+    return _CFStringGetLineBounds2(
+      theString,
+      range,
+      lineBeginIndex,
+      lineEndIndex,
+      contentsEndIndex,
+    );
+  }
+
+  late final _CFStringGetLineBounds2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFStringRef,
+              CFRange,
+              ffi.Pointer<CFIndex>,
+              ffi.Pointer<CFIndex>,
+              ffi.Pointer<CFIndex>)>>('CFStringGetLineBounds');
+  late final _CFStringGetLineBounds2 = _CFStringGetLineBounds2Ptr.asFunction<
+      void Function(CFStringRef, CFRange, ffi.Pointer<CFIndex>,
+          ffi.Pointer<CFIndex>, ffi.Pointer<CFIndex>)>();
+
+  void CFStringGetParagraphBounds2(
+    CFStringRef string,
+    CFRange range,
+    ffi.Pointer<CFIndex> parBeginIndex,
+    ffi.Pointer<CFIndex> parEndIndex,
+    ffi.Pointer<CFIndex> contentsEndIndex,
+  ) {
+    return _CFStringGetParagraphBounds2(
+      string,
+      range,
+      parBeginIndex,
+      parEndIndex,
+      contentsEndIndex,
+    );
+  }
+
+  late final _CFStringGetParagraphBounds2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFStringRef,
+              CFRange,
+              ffi.Pointer<CFIndex>,
+              ffi.Pointer<CFIndex>,
+              ffi.Pointer<CFIndex>)>>('CFStringGetParagraphBounds');
+  late final _CFStringGetParagraphBounds2 =
+      _CFStringGetParagraphBounds2Ptr.asFunction<
+          void Function(CFStringRef, CFRange, ffi.Pointer<CFIndex>,
+              ffi.Pointer<CFIndex>, ffi.Pointer<CFIndex>)>();
+
+  int CFStringGetHyphenationLocationBeforeIndex2(
+    CFStringRef string,
+    int location,
+    CFRange limitRange,
+    int options,
+    CFLocaleRef locale,
+    ffi.Pointer<UTF32Char> character,
+  ) {
+    return _CFStringGetHyphenationLocationBeforeIndex2(
+      string,
+      location,
+      limitRange,
+      options,
+      locale,
+      character,
+    );
+  }
+
+  late final _CFStringGetHyphenationLocationBeforeIndex2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFIndex Function(CFStringRef, CFIndex, CFRange, CFOptionFlags,
+                  CFLocaleRef, ffi.Pointer<UTF32Char>)>>(
+      'CFStringGetHyphenationLocationBeforeIndex');
+  late final _CFStringGetHyphenationLocationBeforeIndex2 =
+      _CFStringGetHyphenationLocationBeforeIndex2Ptr.asFunction<
+          int Function(CFStringRef, int, CFRange, int, CFLocaleRef,
+              ffi.Pointer<UTF32Char>)>();
+
+  int CFStringIsHyphenationAvailableForLocale2(
+    CFLocaleRef locale,
+  ) {
+    return _CFStringIsHyphenationAvailableForLocale2(
+      locale,
+    );
+  }
+
+  late final _CFStringIsHyphenationAvailableForLocale2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFLocaleRef)>>(
+          'CFStringIsHyphenationAvailableForLocale');
+  late final _CFStringIsHyphenationAvailableForLocale2 =
+      _CFStringIsHyphenationAvailableForLocale2Ptr.asFunction<
+          int Function(CFLocaleRef)>();
+
+  CFStringRef CFStringCreateByCombiningStrings2(
+    CFAllocatorRef alloc,
+    CFArrayRef theArray,
+    CFStringRef separatorString,
+  ) {
+    return _CFStringCreateByCombiningStrings2(
+      alloc,
+      theArray,
+      separatorString,
+    );
+  }
+
+  late final _CFStringCreateByCombiningStrings2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, CFArrayRef,
+              CFStringRef)>>('CFStringCreateByCombiningStrings');
+  late final _CFStringCreateByCombiningStrings2 =
+      _CFStringCreateByCombiningStrings2Ptr.asFunction<
+          CFStringRef Function(CFAllocatorRef, CFArrayRef, CFStringRef)>();
+
+  CFArrayRef CFStringCreateArrayBySeparatingStrings2(
+    CFAllocatorRef alloc,
+    CFStringRef theString,
+    CFStringRef separatorString,
+  ) {
+    return _CFStringCreateArrayBySeparatingStrings2(
+      alloc,
+      theString,
+      separatorString,
+    );
+  }
+
+  late final _CFStringCreateArrayBySeparatingStrings2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFArrayRef Function(CFAllocatorRef, CFStringRef,
+              CFStringRef)>>('CFStringCreateArrayBySeparatingStrings');
+  late final _CFStringCreateArrayBySeparatingStrings2 =
+      _CFStringCreateArrayBySeparatingStrings2Ptr.asFunction<
+          CFArrayRef Function(CFAllocatorRef, CFStringRef, CFStringRef)>();
+
+  int CFStringGetIntValue2(
+    CFStringRef str,
+  ) {
+    return _CFStringGetIntValue2(
+      str,
+    );
+  }
+
+  late final _CFStringGetIntValue2Ptr =
+      _lookup<ffi.NativeFunction<SInt32 Function(CFStringRef)>>(
+          'CFStringGetIntValue');
+  late final _CFStringGetIntValue2 =
+      _CFStringGetIntValue2Ptr.asFunction<int Function(CFStringRef)>();
+
+  double CFStringGetDoubleValue2(
+    CFStringRef str,
+  ) {
+    return _CFStringGetDoubleValue2(
+      str,
+    );
+  }
+
+  late final _CFStringGetDoubleValue2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(CFStringRef)>>(
+          'CFStringGetDoubleValue');
+  late final _CFStringGetDoubleValue2 =
+      _CFStringGetDoubleValue2Ptr.asFunction<double Function(CFStringRef)>();
+
+  void CFStringAppend2(
+    CFMutableStringRef theString,
+    CFStringRef appendedString,
+  ) {
+    return _CFStringAppend2(
+      theString,
+      appendedString,
+    );
+  }
+
+  late final _CFStringAppend2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableStringRef, CFStringRef)>>('CFStringAppend');
+  late final _CFStringAppend2 = _CFStringAppend2Ptr.asFunction<
+      void Function(CFMutableStringRef, CFStringRef)>();
+
+  void CFStringAppendCharacters2(
+    CFMutableStringRef theString,
+    ffi.Pointer<UniChar> chars,
+    int numChars,
+  ) {
+    return _CFStringAppendCharacters2(
+      theString,
+      chars,
+      numChars,
+    );
+  }
+
+  late final _CFStringAppendCharacters2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableStringRef, ffi.Pointer<UniChar>,
+              CFIndex)>>('CFStringAppendCharacters');
+  late final _CFStringAppendCharacters2 =
+      _CFStringAppendCharacters2Ptr.asFunction<
+          void Function(CFMutableStringRef, ffi.Pointer<UniChar>, int)>();
+
+  void CFStringAppendPascalString2(
+    CFMutableStringRef theString,
+    ConstStr255Param pStr,
+    int encoding,
+  ) {
+    return _CFStringAppendPascalString2(
+      theString,
+      pStr,
+      encoding,
+    );
+  }
+
+  late final _CFStringAppendPascalString2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableStringRef, ConstStr255Param,
+              CFStringEncoding)>>('CFStringAppendPascalString');
+  late final _CFStringAppendPascalString2 = _CFStringAppendPascalString2Ptr
+      .asFunction<void Function(CFMutableStringRef, ConstStr255Param, int)>();
+
+  void CFStringAppendCString2(
+    CFMutableStringRef theString,
+    ffi.Pointer<ffi.Char> cStr,
+    int encoding,
+  ) {
+    return _CFStringAppendCString2(
+      theString,
+      cStr,
+      encoding,
+    );
+  }
+
+  late final _CFStringAppendCString2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableStringRef, ffi.Pointer<ffi.Char>,
+              CFStringEncoding)>>('CFStringAppendCString');
+  late final _CFStringAppendCString2 = _CFStringAppendCString2Ptr.asFunction<
+      void Function(CFMutableStringRef, ffi.Pointer<ffi.Char>, int)>();
+
+  void CFStringAppendFormat2(
+    CFMutableStringRef theString,
+    CFDictionaryRef formatOptions,
+    CFStringRef format,
+  ) {
+    return _CFStringAppendFormat2(
+      theString,
+      formatOptions,
+      format,
+    );
+  }
+
+  late final _CFStringAppendFormat2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableStringRef, CFDictionaryRef,
+              CFStringRef)>>('CFStringAppendFormat');
+  late final _CFStringAppendFormat2 = _CFStringAppendFormat2Ptr.asFunction<
+      void Function(CFMutableStringRef, CFDictionaryRef, CFStringRef)>();
+
+  void CFStringAppendFormatAndArguments2(
+    CFMutableStringRef theString,
+    CFDictionaryRef formatOptions,
+    CFStringRef format,
+    va_list arguments,
+  ) {
+    return _CFStringAppendFormatAndArguments2(
+      theString,
+      formatOptions,
+      format,
+      arguments,
+    );
+  }
+
+  late final _CFStringAppendFormatAndArguments2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableStringRef, CFDictionaryRef, CFStringRef,
+              va_list)>>('CFStringAppendFormatAndArguments');
+  late final _CFStringAppendFormatAndArguments2 =
+      _CFStringAppendFormatAndArguments2Ptr.asFunction<
+          void Function(
+              CFMutableStringRef, CFDictionaryRef, CFStringRef, va_list)>();
+
+  void CFStringInsert2(
+    CFMutableStringRef str,
+    int idx,
+    CFStringRef insertedStr,
+  ) {
+    return _CFStringInsert2(
+      str,
+      idx,
+      insertedStr,
+    );
+  }
+
+  late final _CFStringInsert2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableStringRef, CFIndex, CFStringRef)>>('CFStringInsert');
+  late final _CFStringInsert2 = _CFStringInsert2Ptr.asFunction<
+      void Function(CFMutableStringRef, int, CFStringRef)>();
+
+  void CFStringDelete2(
+    CFMutableStringRef theString,
+    CFRange range,
+  ) {
+    return _CFStringDelete2(
+      theString,
+      range,
+    );
+  }
+
+  late final _CFStringDelete2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(CFMutableStringRef, CFRange)>>(
+      'CFStringDelete');
+  late final _CFStringDelete2 = _CFStringDelete2Ptr.asFunction<
+      void Function(CFMutableStringRef, CFRange)>();
+
+  void CFStringReplace2(
+    CFMutableStringRef theString,
+    CFRange range,
+    CFStringRef replacement,
+  ) {
+    return _CFStringReplace2(
+      theString,
+      range,
+      replacement,
+    );
+  }
+
+  late final _CFStringReplace2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableStringRef, CFRange, CFStringRef)>>('CFStringReplace');
+  late final _CFStringReplace2 = _CFStringReplace2Ptr.asFunction<
+      void Function(CFMutableStringRef, CFRange, CFStringRef)>();
+
+  void CFStringReplaceAll2(
+    CFMutableStringRef theString,
+    CFStringRef replacement,
+  ) {
+    return _CFStringReplaceAll2(
+      theString,
+      replacement,
+    );
+  }
+
+  late final _CFStringReplaceAll2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableStringRef, CFStringRef)>>('CFStringReplaceAll');
+  late final _CFStringReplaceAll2 = _CFStringReplaceAll2Ptr.asFunction<
+      void Function(CFMutableStringRef, CFStringRef)>();
+
+  int CFStringFindAndReplace2(
+    CFMutableStringRef theString,
+    CFStringRef stringToFind,
+    CFStringRef replacementString,
+    CFRange rangeToSearch,
+    int compareOptions,
+  ) {
+    return _CFStringFindAndReplace2(
+      theString,
+      stringToFind,
+      replacementString,
+      rangeToSearch,
+      compareOptions,
+    );
+  }
+
+  late final _CFStringFindAndReplace2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFMutableStringRef, CFStringRef, CFStringRef,
+              CFRange, ffi.Int32)>>('CFStringFindAndReplace');
+  late final _CFStringFindAndReplace2 = _CFStringFindAndReplace2Ptr.asFunction<
+      int Function(
+          CFMutableStringRef, CFStringRef, CFStringRef, CFRange, int)>();
+
+  void CFStringSetExternalCharactersNoCopy2(
+    CFMutableStringRef theString,
+    ffi.Pointer<UniChar> chars,
+    int length,
+    int capacity,
+  ) {
+    return _CFStringSetExternalCharactersNoCopy2(
+      theString,
+      chars,
+      length,
+      capacity,
+    );
+  }
+
+  late final _CFStringSetExternalCharactersNoCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableStringRef, ffi.Pointer<UniChar>, CFIndex,
+              CFIndex)>>('CFStringSetExternalCharactersNoCopy');
+  late final _CFStringSetExternalCharactersNoCopy2 =
+      _CFStringSetExternalCharactersNoCopy2Ptr.asFunction<
+          void Function(CFMutableStringRef, ffi.Pointer<UniChar>, int, int)>();
+
+  void CFStringPad2(
+    CFMutableStringRef theString,
+    CFStringRef padString,
+    int length,
+    int indexIntoPad,
+  ) {
+    return _CFStringPad2(
+      theString,
+      padString,
+      length,
+      indexIntoPad,
+    );
+  }
+
+  late final _CFStringPad2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableStringRef, CFStringRef, CFIndex,
+              CFIndex)>>('CFStringPad');
+  late final _CFStringPad2 = _CFStringPad2Ptr.asFunction<
+      void Function(CFMutableStringRef, CFStringRef, int, int)>();
+
+  void CFStringTrim2(
+    CFMutableStringRef theString,
+    CFStringRef trimString,
+  ) {
+    return _CFStringTrim2(
+      theString,
+      trimString,
+    );
+  }
+
+  late final _CFStringTrim2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableStringRef, CFStringRef)>>('CFStringTrim');
+  late final _CFStringTrim2 = _CFStringTrim2Ptr.asFunction<
+      void Function(CFMutableStringRef, CFStringRef)>();
+
+  void CFStringTrimWhitespace2(
+    CFMutableStringRef theString,
+  ) {
+    return _CFStringTrimWhitespace2(
+      theString,
+    );
+  }
+
+  late final _CFStringTrimWhitespace2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFMutableStringRef)>>(
+          'CFStringTrimWhitespace');
+  late final _CFStringTrimWhitespace2 = _CFStringTrimWhitespace2Ptr.asFunction<
+      void Function(CFMutableStringRef)>();
+
+  void CFStringLowercase2(
+    CFMutableStringRef theString,
+    CFLocaleRef locale,
+  ) {
+    return _CFStringLowercase2(
+      theString,
+      locale,
+    );
+  }
+
+  late final _CFStringLowercase2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableStringRef, CFLocaleRef)>>('CFStringLowercase');
+  late final _CFStringLowercase2 = _CFStringLowercase2Ptr.asFunction<
+      void Function(CFMutableStringRef, CFLocaleRef)>();
+
+  void CFStringUppercase2(
+    CFMutableStringRef theString,
+    CFLocaleRef locale,
+  ) {
+    return _CFStringUppercase2(
+      theString,
+      locale,
+    );
+  }
+
+  late final _CFStringUppercase2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableStringRef, CFLocaleRef)>>('CFStringUppercase');
+  late final _CFStringUppercase2 = _CFStringUppercase2Ptr.asFunction<
+      void Function(CFMutableStringRef, CFLocaleRef)>();
+
+  void CFStringCapitalize2(
+    CFMutableStringRef theString,
+    CFLocaleRef locale,
+  ) {
+    return _CFStringCapitalize2(
+      theString,
+      locale,
+    );
+  }
+
+  late final _CFStringCapitalize2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableStringRef, CFLocaleRef)>>('CFStringCapitalize');
+  late final _CFStringCapitalize2 = _CFStringCapitalize2Ptr.asFunction<
+      void Function(CFMutableStringRef, CFLocaleRef)>();
+
+  void CFStringNormalize2(
+    CFMutableStringRef theString,
+    int theForm,
+  ) {
+    return _CFStringNormalize2(
+      theString,
+      theForm,
+    );
+  }
+
+  late final _CFStringNormalize2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(CFMutableStringRef, ffi.Int32)>>(
+      'CFStringNormalize');
+  late final _CFStringNormalize2 = _CFStringNormalize2Ptr.asFunction<
+      void Function(CFMutableStringRef, int)>();
+
+  void CFStringFold2(
+    CFMutableStringRef theString,
+    int theFlags,
+    CFLocaleRef theLocale,
+  ) {
+    return _CFStringFold2(
+      theString,
+      theFlags,
+      theLocale,
+    );
+  }
+
+  late final _CFStringFold2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableStringRef, ffi.Int32, CFLocaleRef)>>('CFStringFold');
+  late final _CFStringFold2 = _CFStringFold2Ptr.asFunction<
+      void Function(CFMutableStringRef, int, CFLocaleRef)>();
+
+  int CFStringTransform2(
+    CFMutableStringRef string,
+    ffi.Pointer<CFRange> range,
+    CFStringRef transform,
+    int reverse,
+  ) {
+    return _CFStringTransform2(
+      string,
+      range,
+      transform,
+      reverse,
+    );
+  }
+
+  late final _CFStringTransform2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFMutableStringRef, ffi.Pointer<CFRange>,
+              CFStringRef, Boolean)>>('CFStringTransform');
+  late final _CFStringTransform2 = _CFStringTransform2Ptr.asFunction<
+      int Function(
+          CFMutableStringRef, ffi.Pointer<CFRange>, CFStringRef, int)>();
+
+  int CFStringIsEncodingAvailable2(
+    int encoding,
+  ) {
+    return _CFStringIsEncodingAvailable2(
+      encoding,
+    );
+  }
+
+  late final _CFStringIsEncodingAvailable2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFStringEncoding)>>(
+          'CFStringIsEncodingAvailable');
+  late final _CFStringIsEncodingAvailable2 =
+      _CFStringIsEncodingAvailable2Ptr.asFunction<int Function(int)>();
+
+  ffi.Pointer<CFStringEncoding> CFStringGetListOfAvailableEncodings2() {
+    return _CFStringGetListOfAvailableEncodings2();
+  }
+
+  late final _CFStringGetListOfAvailableEncodings2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<CFStringEncoding> Function()>>(
+          'CFStringGetListOfAvailableEncodings');
+  late final _CFStringGetListOfAvailableEncodings2 =
+      _CFStringGetListOfAvailableEncodings2Ptr.asFunction<
+          ffi.Pointer<CFStringEncoding> Function()>();
+
+  CFStringRef CFStringGetNameOfEncoding2(
+    int encoding,
+  ) {
+    return _CFStringGetNameOfEncoding2(
+      encoding,
+    );
+  }
+
+  late final _CFStringGetNameOfEncoding2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFStringEncoding)>>(
+          'CFStringGetNameOfEncoding');
+  late final _CFStringGetNameOfEncoding2 =
+      _CFStringGetNameOfEncoding2Ptr.asFunction<CFStringRef Function(int)>();
+
+  int CFStringConvertEncodingToNSStringEncoding2(
+    int encoding,
+  ) {
+    return _CFStringConvertEncodingToNSStringEncoding2(
+      encoding,
+    );
+  }
+
+  late final _CFStringConvertEncodingToNSStringEncoding2Ptr =
+      _lookup<ffi.NativeFunction<ffi.UnsignedLong Function(CFStringEncoding)>>(
+          'CFStringConvertEncodingToNSStringEncoding');
+  late final _CFStringConvertEncodingToNSStringEncoding2 =
+      _CFStringConvertEncodingToNSStringEncoding2Ptr.asFunction<
+          int Function(int)>();
+
+  int CFStringConvertNSStringEncodingToEncoding2(
+    int encoding,
+  ) {
+    return _CFStringConvertNSStringEncodingToEncoding2(
+      encoding,
+    );
+  }
+
+  late final _CFStringConvertNSStringEncodingToEncoding2Ptr =
+      _lookup<ffi.NativeFunction<CFStringEncoding Function(ffi.UnsignedLong)>>(
+          'CFStringConvertNSStringEncodingToEncoding');
+  late final _CFStringConvertNSStringEncodingToEncoding2 =
+      _CFStringConvertNSStringEncodingToEncoding2Ptr.asFunction<
+          int Function(int)>();
+
+  int CFStringConvertEncodingToWindowsCodepage2(
+    int encoding,
+  ) {
+    return _CFStringConvertEncodingToWindowsCodepage2(
+      encoding,
+    );
+  }
+
+  late final _CFStringConvertEncodingToWindowsCodepage2Ptr =
+      _lookup<ffi.NativeFunction<UInt32 Function(CFStringEncoding)>>(
+          'CFStringConvertEncodingToWindowsCodepage');
+  late final _CFStringConvertEncodingToWindowsCodepage2 =
+      _CFStringConvertEncodingToWindowsCodepage2Ptr.asFunction<
+          int Function(int)>();
+
+  int CFStringConvertWindowsCodepageToEncoding2(
+    int codepage,
+  ) {
+    return _CFStringConvertWindowsCodepageToEncoding2(
+      codepage,
+    );
+  }
+
+  late final _CFStringConvertWindowsCodepageToEncoding2Ptr =
+      _lookup<ffi.NativeFunction<CFStringEncoding Function(UInt32)>>(
+          'CFStringConvertWindowsCodepageToEncoding');
+  late final _CFStringConvertWindowsCodepageToEncoding2 =
+      _CFStringConvertWindowsCodepageToEncoding2Ptr.asFunction<
+          int Function(int)>();
+
+  int CFStringConvertIANACharSetNameToEncoding2(
+    CFStringRef theString,
+  ) {
+    return _CFStringConvertIANACharSetNameToEncoding2(
+      theString,
+    );
+  }
+
+  late final _CFStringConvertIANACharSetNameToEncoding2Ptr =
+      _lookup<ffi.NativeFunction<CFStringEncoding Function(CFStringRef)>>(
+          'CFStringConvertIANACharSetNameToEncoding');
+  late final _CFStringConvertIANACharSetNameToEncoding2 =
+      _CFStringConvertIANACharSetNameToEncoding2Ptr.asFunction<
+          int Function(CFStringRef)>();
+
+  CFStringRef CFStringConvertEncodingToIANACharSetName2(
+    int encoding,
+  ) {
+    return _CFStringConvertEncodingToIANACharSetName2(
+      encoding,
+    );
+  }
+
+  late final _CFStringConvertEncodingToIANACharSetName2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFStringEncoding)>>(
+          'CFStringConvertEncodingToIANACharSetName');
+  late final _CFStringConvertEncodingToIANACharSetName2 =
+      _CFStringConvertEncodingToIANACharSetName2Ptr.asFunction<
+          CFStringRef Function(int)>();
+
+  int CFStringGetMostCompatibleMacStringEncoding2(
+    int encoding,
+  ) {
+    return _CFStringGetMostCompatibleMacStringEncoding2(
+      encoding,
+    );
+  }
+
+  late final _CFStringGetMostCompatibleMacStringEncoding2Ptr =
+      _lookup<ffi.NativeFunction<CFStringEncoding Function(CFStringEncoding)>>(
+          'CFStringGetMostCompatibleMacStringEncoding');
+  late final _CFStringGetMostCompatibleMacStringEncoding2 =
+      _CFStringGetMostCompatibleMacStringEncoding2Ptr.asFunction<
+          int Function(int)>();
+
+  void CFShow2(
+    CFTypeRef obj,
+  ) {
+    return _CFShow2(
+      obj,
+    );
+  }
+
+  late final _CFShow2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFTypeRef)>>('CFShow');
+  late final _CFShow2 = _CFShow2Ptr.asFunction<void Function(CFTypeRef)>();
+
+  void CFShowStr2(
+    CFStringRef str,
+  ) {
+    return _CFShowStr2(
+      str,
+    );
+  }
+
+  late final _CFShowStr2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFStringRef)>>('CFShowStr');
+  late final _CFShowStr2 =
+      _CFShowStr2Ptr.asFunction<void Function(CFStringRef)>();
+
+  CFStringRef __CFStringMakeConstantString2(
+    ffi.Pointer<ffi.Char> cStr,
+  ) {
+    return ___CFStringMakeConstantString2(
+      cStr,
+    );
+  }
+
+  late final ___CFStringMakeConstantString2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(ffi.Pointer<ffi.Char>)>>(
+          '__CFStringMakeConstantString');
+  late final ___CFStringMakeConstantString2 = ___CFStringMakeConstantString2Ptr
+      .asFunction<CFStringRef Function(ffi.Pointer<ffi.Char>)>();
+
+  int CFTimeZoneGetTypeID2() {
+    return _CFTimeZoneGetTypeID2();
+  }
+
+  late final _CFTimeZoneGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFTimeZoneGetTypeID');
+  late final _CFTimeZoneGetTypeID2 =
+      _CFTimeZoneGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFTimeZoneRef CFTimeZoneCopySystem2() {
+    return _CFTimeZoneCopySystem2();
+  }
+
+  late final _CFTimeZoneCopySystem2Ptr =
+      _lookup<ffi.NativeFunction<CFTimeZoneRef Function()>>(
+          'CFTimeZoneCopySystem');
+  late final _CFTimeZoneCopySystem2 =
+      _CFTimeZoneCopySystem2Ptr.asFunction<CFTimeZoneRef Function()>();
+
+  void CFTimeZoneResetSystem2() {
+    return _CFTimeZoneResetSystem2();
+  }
+
+  late final _CFTimeZoneResetSystem2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('CFTimeZoneResetSystem');
+  late final _CFTimeZoneResetSystem2 =
+      _CFTimeZoneResetSystem2Ptr.asFunction<void Function()>();
+
+  CFTimeZoneRef CFTimeZoneCopyDefault2() {
+    return _CFTimeZoneCopyDefault2();
+  }
+
+  late final _CFTimeZoneCopyDefault2Ptr =
+      _lookup<ffi.NativeFunction<CFTimeZoneRef Function()>>(
+          'CFTimeZoneCopyDefault');
+  late final _CFTimeZoneCopyDefault2 =
+      _CFTimeZoneCopyDefault2Ptr.asFunction<CFTimeZoneRef Function()>();
+
+  void CFTimeZoneSetDefault2(
+    CFTimeZoneRef tz,
+  ) {
+    return _CFTimeZoneSetDefault2(
+      tz,
+    );
+  }
+
+  late final _CFTimeZoneSetDefault2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFTimeZoneRef)>>(
+          'CFTimeZoneSetDefault');
+  late final _CFTimeZoneSetDefault2 =
+      _CFTimeZoneSetDefault2Ptr.asFunction<void Function(CFTimeZoneRef)>();
+
+  CFArrayRef CFTimeZoneCopyKnownNames2() {
+    return _CFTimeZoneCopyKnownNames2();
+  }
+
+  late final _CFTimeZoneCopyKnownNames2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function()>>(
+          'CFTimeZoneCopyKnownNames');
+  late final _CFTimeZoneCopyKnownNames2 =
+      _CFTimeZoneCopyKnownNames2Ptr.asFunction<CFArrayRef Function()>();
+
+  CFDictionaryRef CFTimeZoneCopyAbbreviationDictionary2() {
+    return _CFTimeZoneCopyAbbreviationDictionary2();
+  }
+
+  late final _CFTimeZoneCopyAbbreviationDictionary2Ptr =
+      _lookup<ffi.NativeFunction<CFDictionaryRef Function()>>(
+          'CFTimeZoneCopyAbbreviationDictionary');
+  late final _CFTimeZoneCopyAbbreviationDictionary2 =
+      _CFTimeZoneCopyAbbreviationDictionary2Ptr.asFunction<
+          CFDictionaryRef Function()>();
+
+  void CFTimeZoneSetAbbreviationDictionary2(
+    CFDictionaryRef dict,
+  ) {
+    return _CFTimeZoneSetAbbreviationDictionary2(
+      dict,
+    );
+  }
+
+  late final _CFTimeZoneSetAbbreviationDictionary2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFDictionaryRef)>>(
+          'CFTimeZoneSetAbbreviationDictionary');
+  late final _CFTimeZoneSetAbbreviationDictionary2 =
+      _CFTimeZoneSetAbbreviationDictionary2Ptr.asFunction<
+          void Function(CFDictionaryRef)>();
+
+  CFTimeZoneRef CFTimeZoneCreate2(
+    CFAllocatorRef allocator,
+    CFStringRef name,
+    CFDataRef data,
+  ) {
+    return _CFTimeZoneCreate2(
+      allocator,
+      name,
+      data,
+    );
+  }
+
+  late final _CFTimeZoneCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTimeZoneRef Function(
+              CFAllocatorRef, CFStringRef, CFDataRef)>>('CFTimeZoneCreate');
+  late final _CFTimeZoneCreate2 = _CFTimeZoneCreate2Ptr.asFunction<
+      CFTimeZoneRef Function(CFAllocatorRef, CFStringRef, CFDataRef)>();
+
+  CFTimeZoneRef CFTimeZoneCreateWithTimeIntervalFromGMT2(
+    CFAllocatorRef allocator,
+    double ti,
+  ) {
+    return _CFTimeZoneCreateWithTimeIntervalFromGMT2(
+      allocator,
+      ti,
+    );
+  }
+
+  late final _CFTimeZoneCreateWithTimeIntervalFromGMT2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTimeZoneRef Function(CFAllocatorRef,
+              CFTimeInterval)>>('CFTimeZoneCreateWithTimeIntervalFromGMT');
+  late final _CFTimeZoneCreateWithTimeIntervalFromGMT2 =
+      _CFTimeZoneCreateWithTimeIntervalFromGMT2Ptr.asFunction<
+          CFTimeZoneRef Function(CFAllocatorRef, double)>();
+
+  CFTimeZoneRef CFTimeZoneCreateWithName2(
+    CFAllocatorRef allocator,
+    CFStringRef name,
+    int tryAbbrev,
+  ) {
+    return _CFTimeZoneCreateWithName2(
+      allocator,
+      name,
+      tryAbbrev,
+    );
+  }
+
+  late final _CFTimeZoneCreateWithName2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTimeZoneRef Function(CFAllocatorRef, CFStringRef,
+              Boolean)>>('CFTimeZoneCreateWithName');
+  late final _CFTimeZoneCreateWithName2 = _CFTimeZoneCreateWithName2Ptr
+      .asFunction<CFTimeZoneRef Function(CFAllocatorRef, CFStringRef, int)>();
+
+  CFStringRef CFTimeZoneGetName2(
+    CFTimeZoneRef tz,
+  ) {
+    return _CFTimeZoneGetName2(
+      tz,
+    );
+  }
+
+  late final _CFTimeZoneGetName2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFTimeZoneRef)>>(
+          'CFTimeZoneGetName');
+  late final _CFTimeZoneGetName2 =
+      _CFTimeZoneGetName2Ptr.asFunction<CFStringRef Function(CFTimeZoneRef)>();
+
+  CFDataRef CFTimeZoneGetData2(
+    CFTimeZoneRef tz,
+  ) {
+    return _CFTimeZoneGetData2(
+      tz,
+    );
+  }
+
+  late final _CFTimeZoneGetData2Ptr =
+      _lookup<ffi.NativeFunction<CFDataRef Function(CFTimeZoneRef)>>(
+          'CFTimeZoneGetData');
+  late final _CFTimeZoneGetData2 =
+      _CFTimeZoneGetData2Ptr.asFunction<CFDataRef Function(CFTimeZoneRef)>();
+
+  double CFTimeZoneGetSecondsFromGMT2(
+    CFTimeZoneRef tz,
+    double at,
+  ) {
+    return _CFTimeZoneGetSecondsFromGMT2(
+      tz,
+      at,
+    );
+  }
+
+  late final _CFTimeZoneGetSecondsFromGMT2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTimeInterval Function(
+              CFTimeZoneRef, CFAbsoluteTime)>>('CFTimeZoneGetSecondsFromGMT');
+  late final _CFTimeZoneGetSecondsFromGMT2 = _CFTimeZoneGetSecondsFromGMT2Ptr
+      .asFunction<double Function(CFTimeZoneRef, double)>();
+
+  CFStringRef CFTimeZoneCopyAbbreviation2(
+    CFTimeZoneRef tz,
+    double at,
+  ) {
+    return _CFTimeZoneCopyAbbreviation2(
+      tz,
+      at,
+    );
+  }
+
+  late final _CFTimeZoneCopyAbbreviation2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(
+              CFTimeZoneRef, CFAbsoluteTime)>>('CFTimeZoneCopyAbbreviation');
+  late final _CFTimeZoneCopyAbbreviation2 = _CFTimeZoneCopyAbbreviation2Ptr
+      .asFunction<CFStringRef Function(CFTimeZoneRef, double)>();
+
+  int CFTimeZoneIsDaylightSavingTime2(
+    CFTimeZoneRef tz,
+    double at,
+  ) {
+    return _CFTimeZoneIsDaylightSavingTime2(
+      tz,
+      at,
+    );
+  }
+
+  late final _CFTimeZoneIsDaylightSavingTime2Ptr = _lookup<
+          ffi.NativeFunction<Boolean Function(CFTimeZoneRef, CFAbsoluteTime)>>(
+      'CFTimeZoneIsDaylightSavingTime');
+  late final _CFTimeZoneIsDaylightSavingTime2 =
+      _CFTimeZoneIsDaylightSavingTime2Ptr.asFunction<
+          int Function(CFTimeZoneRef, double)>();
+
+  double CFTimeZoneGetDaylightSavingTimeOffset2(
+    CFTimeZoneRef tz,
+    double at,
+  ) {
+    return _CFTimeZoneGetDaylightSavingTimeOffset2(
+      tz,
+      at,
+    );
+  }
+
+  late final _CFTimeZoneGetDaylightSavingTimeOffset2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTimeInterval Function(CFTimeZoneRef,
+              CFAbsoluteTime)>>('CFTimeZoneGetDaylightSavingTimeOffset');
+  late final _CFTimeZoneGetDaylightSavingTimeOffset2 =
+      _CFTimeZoneGetDaylightSavingTimeOffset2Ptr.asFunction<
+          double Function(CFTimeZoneRef, double)>();
+
+  double CFTimeZoneGetNextDaylightSavingTimeTransition2(
+    CFTimeZoneRef tz,
+    double at,
+  ) {
+    return _CFTimeZoneGetNextDaylightSavingTimeTransition2(
+      tz,
+      at,
+    );
+  }
+
+  late final _CFTimeZoneGetNextDaylightSavingTimeTransition2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFAbsoluteTime Function(CFTimeZoneRef, CFAbsoluteTime)>>(
+      'CFTimeZoneGetNextDaylightSavingTimeTransition');
+  late final _CFTimeZoneGetNextDaylightSavingTimeTransition2 =
+      _CFTimeZoneGetNextDaylightSavingTimeTransition2Ptr.asFunction<
+          double Function(CFTimeZoneRef, double)>();
+
+  CFStringRef CFTimeZoneCopyLocalizedName2(
+    CFTimeZoneRef tz,
+    int style,
+    CFLocaleRef locale,
+  ) {
+    return _CFTimeZoneCopyLocalizedName2(
+      tz,
+      style,
+      locale,
+    );
+  }
+
+  late final _CFTimeZoneCopyLocalizedName2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFTimeZoneRef, ffi.Int32,
+              CFLocaleRef)>>('CFTimeZoneCopyLocalizedName');
+  late final _CFTimeZoneCopyLocalizedName2 = _CFTimeZoneCopyLocalizedName2Ptr
+      .asFunction<CFStringRef Function(CFTimeZoneRef, int, CFLocaleRef)>();
+
+  int CFCalendarGetTypeID2() {
+    return _CFCalendarGetTypeID2();
+  }
+
+  late final _CFCalendarGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFCalendarGetTypeID');
+  late final _CFCalendarGetTypeID2 =
+      _CFCalendarGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFCalendarRef CFCalendarCopyCurrent2() {
+    return _CFCalendarCopyCurrent2();
+  }
+
+  late final _CFCalendarCopyCurrent2Ptr =
+      _lookup<ffi.NativeFunction<CFCalendarRef Function()>>(
+          'CFCalendarCopyCurrent');
+  late final _CFCalendarCopyCurrent2 =
+      _CFCalendarCopyCurrent2Ptr.asFunction<CFCalendarRef Function()>();
+
+  CFCalendarRef CFCalendarCreateWithIdentifier2(
+    CFAllocatorRef allocator,
+    CFCalendarIdentifier identifier,
+  ) {
+    return _CFCalendarCreateWithIdentifier2(
+      allocator,
+      identifier,
+    );
+  }
+
+  late final _CFCalendarCreateWithIdentifier2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFCalendarRef Function(CFAllocatorRef,
+              CFCalendarIdentifier)>>('CFCalendarCreateWithIdentifier');
+  late final _CFCalendarCreateWithIdentifier2 =
+      _CFCalendarCreateWithIdentifier2Ptr.asFunction<
+          CFCalendarRef Function(CFAllocatorRef, CFCalendarIdentifier)>();
+
+  CFCalendarIdentifier CFCalendarGetIdentifier2(
+    CFCalendarRef calendar,
+  ) {
+    return _CFCalendarGetIdentifier2(
+      calendar,
+    );
+  }
+
+  late final _CFCalendarGetIdentifier2Ptr =
+      _lookup<ffi.NativeFunction<CFCalendarIdentifier Function(CFCalendarRef)>>(
+          'CFCalendarGetIdentifier');
+  late final _CFCalendarGetIdentifier2 = _CFCalendarGetIdentifier2Ptr
+      .asFunction<CFCalendarIdentifier Function(CFCalendarRef)>();
+
+  CFLocaleRef CFCalendarCopyLocale2(
+    CFCalendarRef calendar,
+  ) {
+    return _CFCalendarCopyLocale2(
+      calendar,
+    );
+  }
+
+  late final _CFCalendarCopyLocale2Ptr =
+      _lookup<ffi.NativeFunction<CFLocaleRef Function(CFCalendarRef)>>(
+          'CFCalendarCopyLocale');
+  late final _CFCalendarCopyLocale2 = _CFCalendarCopyLocale2Ptr.asFunction<
+      CFLocaleRef Function(CFCalendarRef)>();
+
+  void CFCalendarSetLocale2(
+    CFCalendarRef calendar,
+    CFLocaleRef locale,
+  ) {
+    return _CFCalendarSetLocale2(
+      calendar,
+      locale,
+    );
+  }
+
+  late final _CFCalendarSetLocale2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(CFCalendarRef, CFLocaleRef)>>(
+      'CFCalendarSetLocale');
+  late final _CFCalendarSetLocale2 = _CFCalendarSetLocale2Ptr.asFunction<
+      void Function(CFCalendarRef, CFLocaleRef)>();
+
+  CFTimeZoneRef CFCalendarCopyTimeZone2(
+    CFCalendarRef calendar,
+  ) {
+    return _CFCalendarCopyTimeZone2(
+      calendar,
+    );
+  }
+
+  late final _CFCalendarCopyTimeZone2Ptr =
+      _lookup<ffi.NativeFunction<CFTimeZoneRef Function(CFCalendarRef)>>(
+          'CFCalendarCopyTimeZone');
+  late final _CFCalendarCopyTimeZone2 = _CFCalendarCopyTimeZone2Ptr.asFunction<
+      CFTimeZoneRef Function(CFCalendarRef)>();
+
+  void CFCalendarSetTimeZone2(
+    CFCalendarRef calendar,
+    CFTimeZoneRef tz,
+  ) {
+    return _CFCalendarSetTimeZone2(
+      calendar,
+      tz,
+    );
+  }
+
+  late final _CFCalendarSetTimeZone2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(CFCalendarRef, CFTimeZoneRef)>>(
+      'CFCalendarSetTimeZone');
+  late final _CFCalendarSetTimeZone2 = _CFCalendarSetTimeZone2Ptr.asFunction<
+      void Function(CFCalendarRef, CFTimeZoneRef)>();
+
+  int CFCalendarGetFirstWeekday2(
+    CFCalendarRef calendar,
+  ) {
+    return _CFCalendarGetFirstWeekday2(
+      calendar,
+    );
+  }
+
+  late final _CFCalendarGetFirstWeekday2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFCalendarRef)>>(
+          'CFCalendarGetFirstWeekday');
+  late final _CFCalendarGetFirstWeekday2 =
+      _CFCalendarGetFirstWeekday2Ptr.asFunction<int Function(CFCalendarRef)>();
+
+  void CFCalendarSetFirstWeekday2(
+    CFCalendarRef calendar,
+    int wkdy,
+  ) {
+    return _CFCalendarSetFirstWeekday2(
+      calendar,
+      wkdy,
+    );
+  }
+
+  late final _CFCalendarSetFirstWeekday2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFCalendarRef, CFIndex)>>(
+          'CFCalendarSetFirstWeekday');
+  late final _CFCalendarSetFirstWeekday2 = _CFCalendarSetFirstWeekday2Ptr
+      .asFunction<void Function(CFCalendarRef, int)>();
+
+  int CFCalendarGetMinimumDaysInFirstWeek2(
+    CFCalendarRef calendar,
+  ) {
+    return _CFCalendarGetMinimumDaysInFirstWeek2(
+      calendar,
+    );
+  }
+
+  late final _CFCalendarGetMinimumDaysInFirstWeek2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFCalendarRef)>>(
+          'CFCalendarGetMinimumDaysInFirstWeek');
+  late final _CFCalendarGetMinimumDaysInFirstWeek2 =
+      _CFCalendarGetMinimumDaysInFirstWeek2Ptr.asFunction<
+          int Function(CFCalendarRef)>();
+
+  void CFCalendarSetMinimumDaysInFirstWeek2(
+    CFCalendarRef calendar,
+    int mwd,
+  ) {
+    return _CFCalendarSetMinimumDaysInFirstWeek2(
+      calendar,
+      mwd,
+    );
+  }
+
+  late final _CFCalendarSetMinimumDaysInFirstWeek2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFCalendarRef, CFIndex)>>(
+          'CFCalendarSetMinimumDaysInFirstWeek');
+  late final _CFCalendarSetMinimumDaysInFirstWeek2 =
+      _CFCalendarSetMinimumDaysInFirstWeek2Ptr.asFunction<
+          void Function(CFCalendarRef, int)>();
+
+  CFRange CFCalendarGetMinimumRangeOfUnit2(
+    CFCalendarRef calendar,
+    int unit,
+  ) {
+    return _CFCalendarGetMinimumRangeOfUnit2(
+      calendar,
+      unit,
+    );
+  }
+
+  late final _CFCalendarGetMinimumRangeOfUnit2Ptr =
+      _lookup<ffi.NativeFunction<CFRange Function(CFCalendarRef, ffi.Int32)>>(
+          'CFCalendarGetMinimumRangeOfUnit');
+  late final _CFCalendarGetMinimumRangeOfUnit2 =
+      _CFCalendarGetMinimumRangeOfUnit2Ptr.asFunction<
+          CFRange Function(CFCalendarRef, int)>();
+
+  CFRange CFCalendarGetMaximumRangeOfUnit2(
+    CFCalendarRef calendar,
+    int unit,
+  ) {
+    return _CFCalendarGetMaximumRangeOfUnit2(
+      calendar,
+      unit,
+    );
+  }
+
+  late final _CFCalendarGetMaximumRangeOfUnit2Ptr =
+      _lookup<ffi.NativeFunction<CFRange Function(CFCalendarRef, ffi.Int32)>>(
+          'CFCalendarGetMaximumRangeOfUnit');
+  late final _CFCalendarGetMaximumRangeOfUnit2 =
+      _CFCalendarGetMaximumRangeOfUnit2Ptr.asFunction<
+          CFRange Function(CFCalendarRef, int)>();
+
+  CFRange CFCalendarGetRangeOfUnit2(
+    CFCalendarRef calendar,
+    int smallerUnit,
+    int biggerUnit,
+    double at,
+  ) {
+    return _CFCalendarGetRangeOfUnit2(
+      calendar,
+      smallerUnit,
+      biggerUnit,
+      at,
+    );
+  }
+
+  late final _CFCalendarGetRangeOfUnit2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFRange Function(CFCalendarRef, ffi.Int32, ffi.Int32,
+              CFAbsoluteTime)>>('CFCalendarGetRangeOfUnit');
+  late final _CFCalendarGetRangeOfUnit2 = _CFCalendarGetRangeOfUnit2Ptr
+      .asFunction<CFRange Function(CFCalendarRef, int, int, double)>();
+
+  int CFCalendarGetOrdinalityOfUnit2(
+    CFCalendarRef calendar,
+    int smallerUnit,
+    int biggerUnit,
+    double at,
+  ) {
+    return _CFCalendarGetOrdinalityOfUnit2(
+      calendar,
+      smallerUnit,
+      biggerUnit,
+      at,
+    );
+  }
+
+  late final _CFCalendarGetOrdinalityOfUnit2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFCalendarRef, ffi.Int32, ffi.Int32,
+              CFAbsoluteTime)>>('CFCalendarGetOrdinalityOfUnit');
+  late final _CFCalendarGetOrdinalityOfUnit2 =
+      _CFCalendarGetOrdinalityOfUnit2Ptr.asFunction<
+          int Function(CFCalendarRef, int, int, double)>();
+
+  int CFCalendarGetTimeRangeOfUnit2(
+    CFCalendarRef calendar,
+    int unit,
+    double at,
+    ffi.Pointer<CFAbsoluteTime> startp,
+    ffi.Pointer<CFTimeInterval> tip,
+  ) {
+    return _CFCalendarGetTimeRangeOfUnit2(
+      calendar,
+      unit,
+      at,
+      startp,
+      tip,
+    );
+  }
+
+  late final _CFCalendarGetTimeRangeOfUnit2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(
+              CFCalendarRef,
+              ffi.Int32,
+              CFAbsoluteTime,
+              ffi.Pointer<CFAbsoluteTime>,
+              ffi.Pointer<CFTimeInterval>)>>('CFCalendarGetTimeRangeOfUnit');
+  late final _CFCalendarGetTimeRangeOfUnit2 =
+      _CFCalendarGetTimeRangeOfUnit2Ptr.asFunction<
+          int Function(CFCalendarRef, int, double, ffi.Pointer<CFAbsoluteTime>,
+              ffi.Pointer<CFTimeInterval>)>();
+
+  int CFCalendarComposeAbsoluteTime2(
+    CFCalendarRef calendar,
+    ffi.Pointer<CFAbsoluteTime> at,
+    ffi.Pointer<ffi.Char> componentDesc,
+  ) {
+    return _CFCalendarComposeAbsoluteTime2(
+      calendar,
+      at,
+      componentDesc,
+    );
+  }
+
+  late final _CFCalendarComposeAbsoluteTime2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFCalendarRef, ffi.Pointer<CFAbsoluteTime>,
+              ffi.Pointer<ffi.Char>)>>('CFCalendarComposeAbsoluteTime');
+  late final _CFCalendarComposeAbsoluteTime2 =
+      _CFCalendarComposeAbsoluteTime2Ptr.asFunction<
+          int Function(CFCalendarRef, ffi.Pointer<CFAbsoluteTime>,
+              ffi.Pointer<ffi.Char>)>();
+
+  int CFCalendarDecomposeAbsoluteTime2(
+    CFCalendarRef calendar,
+    double at,
+    ffi.Pointer<ffi.Char> componentDesc,
+  ) {
+    return _CFCalendarDecomposeAbsoluteTime2(
+      calendar,
+      at,
+      componentDesc,
+    );
+  }
+
+  late final _CFCalendarDecomposeAbsoluteTime2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFCalendarRef, CFAbsoluteTime,
+              ffi.Pointer<ffi.Char>)>>('CFCalendarDecomposeAbsoluteTime');
+  late final _CFCalendarDecomposeAbsoluteTime2 =
+      _CFCalendarDecomposeAbsoluteTime2Ptr.asFunction<
+          int Function(CFCalendarRef, double, ffi.Pointer<ffi.Char>)>();
+
+  int CFCalendarAddComponents2(
+    CFCalendarRef calendar,
+    ffi.Pointer<CFAbsoluteTime> at,
+    int options,
+    ffi.Pointer<ffi.Char> componentDesc,
+  ) {
+    return _CFCalendarAddComponents2(
+      calendar,
+      at,
+      options,
+      componentDesc,
+    );
+  }
+
+  late final _CFCalendarAddComponents2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(
+              CFCalendarRef,
+              ffi.Pointer<CFAbsoluteTime>,
+              CFOptionFlags,
+              ffi.Pointer<ffi.Char>)>>('CFCalendarAddComponents');
+  late final _CFCalendarAddComponents2 =
+      _CFCalendarAddComponents2Ptr.asFunction<
+          int Function(CFCalendarRef, ffi.Pointer<CFAbsoluteTime>, int,
+              ffi.Pointer<ffi.Char>)>();
+
+  int CFCalendarGetComponentDifference2(
+    CFCalendarRef calendar,
+    double startingAT,
+    double resultAT,
+    int options,
+    ffi.Pointer<ffi.Char> componentDesc,
+  ) {
+    return _CFCalendarGetComponentDifference2(
+      calendar,
+      startingAT,
+      resultAT,
+      options,
+      componentDesc,
+    );
+  }
+
+  late final _CFCalendarGetComponentDifference2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(
+              CFCalendarRef,
+              CFAbsoluteTime,
+              CFAbsoluteTime,
+              CFOptionFlags,
+              ffi.Pointer<ffi.Char>)>>('CFCalendarGetComponentDifference');
+  late final _CFCalendarGetComponentDifference2 =
+      _CFCalendarGetComponentDifference2Ptr.asFunction<
+          int Function(
+              CFCalendarRef, double, double, int, ffi.Pointer<ffi.Char>)>();
+
+  CFStringRef CFDateFormatterCreateDateFormatFromTemplate2(
+    CFAllocatorRef allocator,
+    CFStringRef tmplate,
+    int options,
+    CFLocaleRef locale,
+  ) {
+    return _CFDateFormatterCreateDateFormatFromTemplate2(
+      allocator,
+      tmplate,
+      options,
+      locale,
+    );
+  }
+
+  late final _CFDateFormatterCreateDateFormatFromTemplate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, CFStringRef, CFOptionFlags,
+              CFLocaleRef)>>('CFDateFormatterCreateDateFormatFromTemplate');
+  late final _CFDateFormatterCreateDateFormatFromTemplate2 =
+      _CFDateFormatterCreateDateFormatFromTemplate2Ptr.asFunction<
+          CFStringRef Function(
+              CFAllocatorRef, CFStringRef, int, CFLocaleRef)>();
+
+  int CFDateFormatterGetTypeID2() {
+    return _CFDateFormatterGetTypeID2();
+  }
+
+  late final _CFDateFormatterGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFDateFormatterGetTypeID');
+  late final _CFDateFormatterGetTypeID2 =
+      _CFDateFormatterGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFDateFormatterRef CFDateFormatterCreateISO8601Formatter2(
+    CFAllocatorRef allocator,
+    int formatOptions,
+  ) {
+    return _CFDateFormatterCreateISO8601Formatter2(
+      allocator,
+      formatOptions,
+    );
+  }
+
+  late final _CFDateFormatterCreateISO8601Formatter2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDateFormatterRef Function(CFAllocatorRef,
+              ffi.Int32)>>('CFDateFormatterCreateISO8601Formatter');
+  late final _CFDateFormatterCreateISO8601Formatter2 =
+      _CFDateFormatterCreateISO8601Formatter2Ptr.asFunction<
+          CFDateFormatterRef Function(CFAllocatorRef, int)>();
+
+  CFDateFormatterRef CFDateFormatterCreate2(
+    CFAllocatorRef allocator,
+    CFLocaleRef locale,
+    int dateStyle,
+    int timeStyle,
+  ) {
+    return _CFDateFormatterCreate2(
+      allocator,
+      locale,
+      dateStyle,
+      timeStyle,
+    );
+  }
+
+  late final _CFDateFormatterCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDateFormatterRef Function(CFAllocatorRef, CFLocaleRef, ffi.Int32,
+              ffi.Int32)>>('CFDateFormatterCreate');
+  late final _CFDateFormatterCreate2 = _CFDateFormatterCreate2Ptr.asFunction<
+      CFDateFormatterRef Function(CFAllocatorRef, CFLocaleRef, int, int)>();
+
+  CFLocaleRef CFDateFormatterGetLocale2(
+    CFDateFormatterRef formatter,
+  ) {
+    return _CFDateFormatterGetLocale2(
+      formatter,
+    );
+  }
+
+  late final _CFDateFormatterGetLocale2Ptr =
+      _lookup<ffi.NativeFunction<CFLocaleRef Function(CFDateFormatterRef)>>(
+          'CFDateFormatterGetLocale');
+  late final _CFDateFormatterGetLocale2 = _CFDateFormatterGetLocale2Ptr
+      .asFunction<CFLocaleRef Function(CFDateFormatterRef)>();
+
+  int CFDateFormatterGetDateStyle2(
+    CFDateFormatterRef formatter,
+  ) {
+    return _CFDateFormatterGetDateStyle2(
+      formatter,
+    );
+  }
+
+  late final _CFDateFormatterGetDateStyle2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(CFDateFormatterRef)>>(
+          'CFDateFormatterGetDateStyle');
+  late final _CFDateFormatterGetDateStyle2 = _CFDateFormatterGetDateStyle2Ptr
+      .asFunction<int Function(CFDateFormatterRef)>();
+
+  int CFDateFormatterGetTimeStyle2(
+    CFDateFormatterRef formatter,
+  ) {
+    return _CFDateFormatterGetTimeStyle2(
+      formatter,
+    );
+  }
+
+  late final _CFDateFormatterGetTimeStyle2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(CFDateFormatterRef)>>(
+          'CFDateFormatterGetTimeStyle');
+  late final _CFDateFormatterGetTimeStyle2 = _CFDateFormatterGetTimeStyle2Ptr
+      .asFunction<int Function(CFDateFormatterRef)>();
+
+  CFStringRef CFDateFormatterGetFormat2(
+    CFDateFormatterRef formatter,
+  ) {
+    return _CFDateFormatterGetFormat2(
+      formatter,
+    );
+  }
+
+  late final _CFDateFormatterGetFormat2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFDateFormatterRef)>>(
+          'CFDateFormatterGetFormat');
+  late final _CFDateFormatterGetFormat2 = _CFDateFormatterGetFormat2Ptr
+      .asFunction<CFStringRef Function(CFDateFormatterRef)>();
+
+  void CFDateFormatterSetFormat2(
+    CFDateFormatterRef formatter,
+    CFStringRef formatString,
+  ) {
+    return _CFDateFormatterSetFormat2(
+      formatter,
+      formatString,
+    );
+  }
+
+  late final _CFDateFormatterSetFormat2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFDateFormatterRef, CFStringRef)>>('CFDateFormatterSetFormat');
+  late final _CFDateFormatterSetFormat2 = _CFDateFormatterSetFormat2Ptr
+      .asFunction<void Function(CFDateFormatterRef, CFStringRef)>();
+
+  CFStringRef CFDateFormatterCreateStringWithDate2(
+    CFAllocatorRef allocator,
+    CFDateFormatterRef formatter,
+    CFDateRef date,
+  ) {
+    return _CFDateFormatterCreateStringWithDate2(
+      allocator,
+      formatter,
+      date,
+    );
+  }
+
+  late final _CFDateFormatterCreateStringWithDate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, CFDateFormatterRef,
+              CFDateRef)>>('CFDateFormatterCreateStringWithDate');
+  late final _CFDateFormatterCreateStringWithDate2 =
+      _CFDateFormatterCreateStringWithDate2Ptr.asFunction<
+          CFStringRef Function(
+              CFAllocatorRef, CFDateFormatterRef, CFDateRef)>();
+
+  CFStringRef CFDateFormatterCreateStringWithAbsoluteTime2(
+    CFAllocatorRef allocator,
+    CFDateFormatterRef formatter,
+    double at,
+  ) {
+    return _CFDateFormatterCreateStringWithAbsoluteTime2(
+      allocator,
+      formatter,
+      at,
+    );
+  }
+
+  late final _CFDateFormatterCreateStringWithAbsoluteTime2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, CFDateFormatterRef,
+              CFAbsoluteTime)>>('CFDateFormatterCreateStringWithAbsoluteTime');
+  late final _CFDateFormatterCreateStringWithAbsoluteTime2 =
+      _CFDateFormatterCreateStringWithAbsoluteTime2Ptr.asFunction<
+          CFStringRef Function(CFAllocatorRef, CFDateFormatterRef, double)>();
+
+  CFDateRef CFDateFormatterCreateDateFromString2(
+    CFAllocatorRef allocator,
+    CFDateFormatterRef formatter,
+    CFStringRef string,
+    ffi.Pointer<CFRange> rangep,
+  ) {
+    return _CFDateFormatterCreateDateFromString2(
+      allocator,
+      formatter,
+      string,
+      rangep,
+    );
+  }
+
+  late final _CFDateFormatterCreateDateFromString2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDateRef Function(CFAllocatorRef, CFDateFormatterRef, CFStringRef,
+              ffi.Pointer<CFRange>)>>('CFDateFormatterCreateDateFromString');
+  late final _CFDateFormatterCreateDateFromString2 =
+      _CFDateFormatterCreateDateFromString2Ptr.asFunction<
+          CFDateRef Function(CFAllocatorRef, CFDateFormatterRef, CFStringRef,
+              ffi.Pointer<CFRange>)>();
+
+  int CFDateFormatterGetAbsoluteTimeFromString2(
+    CFDateFormatterRef formatter,
+    CFStringRef string,
+    ffi.Pointer<CFRange> rangep,
+    ffi.Pointer<CFAbsoluteTime> atp,
+  ) {
+    return _CFDateFormatterGetAbsoluteTimeFromString2(
+      formatter,
+      string,
+      rangep,
+      atp,
+    );
+  }
+
+  late final _CFDateFormatterGetAbsoluteTimeFromString2Ptr = _lookup<
+          ffi.NativeFunction<
+              Boolean Function(CFDateFormatterRef, CFStringRef,
+                  ffi.Pointer<CFRange>, ffi.Pointer<CFAbsoluteTime>)>>(
+      'CFDateFormatterGetAbsoluteTimeFromString');
+  late final _CFDateFormatterGetAbsoluteTimeFromString2 =
+      _CFDateFormatterGetAbsoluteTimeFromString2Ptr.asFunction<
+          int Function(CFDateFormatterRef, CFStringRef, ffi.Pointer<CFRange>,
+              ffi.Pointer<CFAbsoluteTime>)>();
+
+  void CFDateFormatterSetProperty2(
+    CFDateFormatterRef formatter,
+    CFStringRef key,
+    CFTypeRef value,
+  ) {
+    return _CFDateFormatterSetProperty2(
+      formatter,
+      key,
+      value,
+    );
+  }
+
+  late final _CFDateFormatterSetProperty2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFDateFormatterRef, CFStringRef,
+              CFTypeRef)>>('CFDateFormatterSetProperty');
+  late final _CFDateFormatterSetProperty2 = _CFDateFormatterSetProperty2Ptr
+      .asFunction<void Function(CFDateFormatterRef, CFStringRef, CFTypeRef)>();
+
+  CFTypeRef CFDateFormatterCopyProperty2(
+    CFDateFormatterRef formatter,
+    CFDateFormatterKey key,
+  ) {
+    return _CFDateFormatterCopyProperty2(
+      formatter,
+      key,
+    );
+  }
+
+  late final _CFDateFormatterCopyProperty2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTypeRef Function(CFDateFormatterRef,
+              CFDateFormatterKey)>>('CFDateFormatterCopyProperty');
+  late final _CFDateFormatterCopyProperty2 = _CFDateFormatterCopyProperty2Ptr
+      .asFunction<CFTypeRef Function(CFDateFormatterRef, CFDateFormatterKey)>();
+
+  int CFErrorGetTypeID2() {
+    return _CFErrorGetTypeID2();
+  }
+
+  late final _CFErrorGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFErrorGetTypeID');
+  late final _CFErrorGetTypeID2 =
+      _CFErrorGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFErrorRef CFErrorCreate2(
+    CFAllocatorRef allocator,
+    CFErrorDomain domain,
+    int code,
+    CFDictionaryRef userInfo,
+  ) {
+    return _CFErrorCreate2(
+      allocator,
+      domain,
+      code,
+      userInfo,
+    );
+  }
+
+  late final _CFErrorCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFErrorRef Function(CFAllocatorRef, CFErrorDomain, CFIndex,
+              CFDictionaryRef)>>('CFErrorCreate');
+  late final _CFErrorCreate2 = _CFErrorCreate2Ptr.asFunction<
+      CFErrorRef Function(
+          CFAllocatorRef, CFErrorDomain, int, CFDictionaryRef)>();
+
+  CFErrorRef CFErrorCreateWithUserInfoKeysAndValues2(
+    CFAllocatorRef allocator,
+    CFErrorDomain domain,
+    int code,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> userInfoKeys,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> userInfoValues,
+    int numUserInfoValues,
+  ) {
+    return _CFErrorCreateWithUserInfoKeysAndValues2(
+      allocator,
+      domain,
+      code,
+      userInfoKeys,
+      userInfoValues,
+      numUserInfoValues,
+    );
+  }
+
+  late final _CFErrorCreateWithUserInfoKeysAndValues2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFErrorRef Function(
+              CFAllocatorRef,
+              CFErrorDomain,
+              CFIndex,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              CFIndex)>>('CFErrorCreateWithUserInfoKeysAndValues');
+  late final _CFErrorCreateWithUserInfoKeysAndValues2 =
+      _CFErrorCreateWithUserInfoKeysAndValues2Ptr.asFunction<
+          CFErrorRef Function(
+              CFAllocatorRef,
+              CFErrorDomain,
+              int,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              int)>();
+
+  CFErrorDomain CFErrorGetDomain2(
+    CFErrorRef err,
+  ) {
+    return _CFErrorGetDomain2(
+      err,
+    );
+  }
+
+  late final _CFErrorGetDomain2Ptr =
+      _lookup<ffi.NativeFunction<CFErrorDomain Function(CFErrorRef)>>(
+          'CFErrorGetDomain');
+  late final _CFErrorGetDomain2 =
+      _CFErrorGetDomain2Ptr.asFunction<CFErrorDomain Function(CFErrorRef)>();
+
+  int CFErrorGetCode2(
+    CFErrorRef err,
+  ) {
+    return _CFErrorGetCode2(
+      err,
+    );
+  }
+
+  late final _CFErrorGetCode2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFErrorRef)>>(
+          'CFErrorGetCode');
+  late final _CFErrorGetCode2 =
+      _CFErrorGetCode2Ptr.asFunction<int Function(CFErrorRef)>();
+
+  CFDictionaryRef CFErrorCopyUserInfo2(
+    CFErrorRef err,
+  ) {
+    return _CFErrorCopyUserInfo2(
+      err,
+    );
+  }
+
+  late final _CFErrorCopyUserInfo2Ptr =
+      _lookup<ffi.NativeFunction<CFDictionaryRef Function(CFErrorRef)>>(
+          'CFErrorCopyUserInfo');
+  late final _CFErrorCopyUserInfo2 = _CFErrorCopyUserInfo2Ptr.asFunction<
+      CFDictionaryRef Function(CFErrorRef)>();
+
+  CFStringRef CFErrorCopyDescription2(
+    CFErrorRef err,
+  ) {
+    return _CFErrorCopyDescription2(
+      err,
+    );
+  }
+
+  late final _CFErrorCopyDescription2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFErrorRef)>>(
+          'CFErrorCopyDescription');
+  late final _CFErrorCopyDescription2 = _CFErrorCopyDescription2Ptr.asFunction<
+      CFStringRef Function(CFErrorRef)>();
+
+  CFStringRef CFErrorCopyFailureReason2(
+    CFErrorRef err,
+  ) {
+    return _CFErrorCopyFailureReason2(
+      err,
+    );
+  }
+
+  late final _CFErrorCopyFailureReason2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFErrorRef)>>(
+          'CFErrorCopyFailureReason');
+  late final _CFErrorCopyFailureReason2 = _CFErrorCopyFailureReason2Ptr
+      .asFunction<CFStringRef Function(CFErrorRef)>();
+
+  CFStringRef CFErrorCopyRecoverySuggestion2(
+    CFErrorRef err,
+  ) {
+    return _CFErrorCopyRecoverySuggestion2(
+      err,
+    );
+  }
+
+  late final _CFErrorCopyRecoverySuggestion2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFErrorRef)>>(
+          'CFErrorCopyRecoverySuggestion');
+  late final _CFErrorCopyRecoverySuggestion2 =
+      _CFErrorCopyRecoverySuggestion2Ptr.asFunction<
+          CFStringRef Function(CFErrorRef)>();
+
+  int CFBooleanGetTypeID2() {
+    return _CFBooleanGetTypeID2();
+  }
+
+  late final _CFBooleanGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFBooleanGetTypeID');
+  late final _CFBooleanGetTypeID2 =
+      _CFBooleanGetTypeID2Ptr.asFunction<int Function()>();
+
+  int CFBooleanGetValue2(
+    CFBooleanRef boolean,
+  ) {
+    return _CFBooleanGetValue2(
+      boolean,
+    );
+  }
+
+  late final _CFBooleanGetValue2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFBooleanRef)>>(
+          'CFBooleanGetValue');
+  late final _CFBooleanGetValue2 =
+      _CFBooleanGetValue2Ptr.asFunction<int Function(CFBooleanRef)>();
+
+  int CFNumberGetTypeID2() {
+    return _CFNumberGetTypeID2();
+  }
+
+  late final _CFNumberGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFNumberGetTypeID');
+  late final _CFNumberGetTypeID2 =
+      _CFNumberGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFNumberRef CFNumberCreate2(
+    CFAllocatorRef allocator,
+    int theType,
+    ffi.Pointer<ffi.Void> valuePtr,
+  ) {
+    return _CFNumberCreate2(
+      allocator,
+      theType,
+      valuePtr,
+    );
+  }
+
+  late final _CFNumberCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFNumberRef Function(CFAllocatorRef, ffi.Int32,
+              ffi.Pointer<ffi.Void>)>>('CFNumberCreate');
+  late final _CFNumberCreate2 = _CFNumberCreate2Ptr.asFunction<
+      CFNumberRef Function(CFAllocatorRef, int, ffi.Pointer<ffi.Void>)>();
+
+  int CFNumberGetType2(
+    CFNumberRef number,
+  ) {
+    return _CFNumberGetType2(
+      number,
+    );
+  }
+
+  late final _CFNumberGetType2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(CFNumberRef)>>(
+          'CFNumberGetType');
+  late final _CFNumberGetType2 =
+      _CFNumberGetType2Ptr.asFunction<int Function(CFNumberRef)>();
+
+  int CFNumberGetByteSize2(
+    CFNumberRef number,
+  ) {
+    return _CFNumberGetByteSize2(
+      number,
+    );
+  }
+
+  late final _CFNumberGetByteSize2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFNumberRef)>>(
+          'CFNumberGetByteSize');
+  late final _CFNumberGetByteSize2 =
+      _CFNumberGetByteSize2Ptr.asFunction<int Function(CFNumberRef)>();
+
+  int CFNumberIsFloatType2(
+    CFNumberRef number,
+  ) {
+    return _CFNumberIsFloatType2(
+      number,
+    );
+  }
+
+  late final _CFNumberIsFloatType2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFNumberRef)>>(
+          'CFNumberIsFloatType');
+  late final _CFNumberIsFloatType2 =
+      _CFNumberIsFloatType2Ptr.asFunction<int Function(CFNumberRef)>();
+
+  int CFNumberGetValue2(
+    CFNumberRef number,
+    int theType,
+    ffi.Pointer<ffi.Void> valuePtr,
+  ) {
+    return _CFNumberGetValue2(
+      number,
+      theType,
+      valuePtr,
+    );
+  }
+
+  late final _CFNumberGetValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFNumberRef, ffi.Int32,
+              ffi.Pointer<ffi.Void>)>>('CFNumberGetValue');
+  late final _CFNumberGetValue2 = _CFNumberGetValue2Ptr.asFunction<
+      int Function(CFNumberRef, int, ffi.Pointer<ffi.Void>)>();
+
+  int CFNumberCompare2(
+    CFNumberRef number,
+    CFNumberRef otherNumber,
+    ffi.Pointer<ffi.Void> context,
+  ) {
+    return _CFNumberCompare2(
+      number,
+      otherNumber,
+      context,
+    );
+  }
+
+  late final _CFNumberCompare2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(CFNumberRef, CFNumberRef,
+              ffi.Pointer<ffi.Void>)>>('CFNumberCompare');
+  late final _CFNumberCompare2 = _CFNumberCompare2Ptr.asFunction<
+      int Function(CFNumberRef, CFNumberRef, ffi.Pointer<ffi.Void>)>();
+
+  int CFNumberFormatterGetTypeID2() {
+    return _CFNumberFormatterGetTypeID2();
+  }
+
+  late final _CFNumberFormatterGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFNumberFormatterGetTypeID');
+  late final _CFNumberFormatterGetTypeID2 =
+      _CFNumberFormatterGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFNumberFormatterRef CFNumberFormatterCreate2(
+    CFAllocatorRef allocator,
+    CFLocaleRef locale,
+    int style,
+  ) {
+    return _CFNumberFormatterCreate2(
+      allocator,
+      locale,
+      style,
+    );
+  }
+
+  late final _CFNumberFormatterCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFNumberFormatterRef Function(CFAllocatorRef, CFLocaleRef,
+              ffi.Int32)>>('CFNumberFormatterCreate');
+  late final _CFNumberFormatterCreate2 =
+      _CFNumberFormatterCreate2Ptr.asFunction<
+          CFNumberFormatterRef Function(CFAllocatorRef, CFLocaleRef, int)>();
+
+  CFLocaleRef CFNumberFormatterGetLocale2(
+    CFNumberFormatterRef formatter,
+  ) {
+    return _CFNumberFormatterGetLocale2(
+      formatter,
+    );
+  }
+
+  late final _CFNumberFormatterGetLocale2Ptr =
+      _lookup<ffi.NativeFunction<CFLocaleRef Function(CFNumberFormatterRef)>>(
+          'CFNumberFormatterGetLocale');
+  late final _CFNumberFormatterGetLocale2 = _CFNumberFormatterGetLocale2Ptr
+      .asFunction<CFLocaleRef Function(CFNumberFormatterRef)>();
+
+  int CFNumberFormatterGetStyle2(
+    CFNumberFormatterRef formatter,
+  ) {
+    return _CFNumberFormatterGetStyle2(
+      formatter,
+    );
+  }
+
+  late final _CFNumberFormatterGetStyle2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(CFNumberFormatterRef)>>(
+          'CFNumberFormatterGetStyle');
+  late final _CFNumberFormatterGetStyle2 = _CFNumberFormatterGetStyle2Ptr
+      .asFunction<int Function(CFNumberFormatterRef)>();
+
+  CFStringRef CFNumberFormatterGetFormat2(
+    CFNumberFormatterRef formatter,
+  ) {
+    return _CFNumberFormatterGetFormat2(
+      formatter,
+    );
+  }
+
+  late final _CFNumberFormatterGetFormat2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFNumberFormatterRef)>>(
+          'CFNumberFormatterGetFormat');
+  late final _CFNumberFormatterGetFormat2 = _CFNumberFormatterGetFormat2Ptr
+      .asFunction<CFStringRef Function(CFNumberFormatterRef)>();
+
+  void CFNumberFormatterSetFormat2(
+    CFNumberFormatterRef formatter,
+    CFStringRef formatString,
+  ) {
+    return _CFNumberFormatterSetFormat2(
+      formatter,
+      formatString,
+    );
+  }
+
+  late final _CFNumberFormatterSetFormat2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFNumberFormatterRef,
+              CFStringRef)>>('CFNumberFormatterSetFormat');
+  late final _CFNumberFormatterSetFormat2 = _CFNumberFormatterSetFormat2Ptr
+      .asFunction<void Function(CFNumberFormatterRef, CFStringRef)>();
+
+  CFStringRef CFNumberFormatterCreateStringWithNumber2(
+    CFAllocatorRef allocator,
+    CFNumberFormatterRef formatter,
+    CFNumberRef number,
+  ) {
+    return _CFNumberFormatterCreateStringWithNumber2(
+      allocator,
+      formatter,
+      number,
+    );
+  }
+
+  late final _CFNumberFormatterCreateStringWithNumber2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, CFNumberFormatterRef,
+              CFNumberRef)>>('CFNumberFormatterCreateStringWithNumber');
+  late final _CFNumberFormatterCreateStringWithNumber2 =
+      _CFNumberFormatterCreateStringWithNumber2Ptr.asFunction<
+          CFStringRef Function(
+              CFAllocatorRef, CFNumberFormatterRef, CFNumberRef)>();
+
+  CFStringRef CFNumberFormatterCreateStringWithValue2(
+    CFAllocatorRef allocator,
+    CFNumberFormatterRef formatter,
+    int numberType,
+    ffi.Pointer<ffi.Void> valuePtr,
+  ) {
+    return _CFNumberFormatterCreateStringWithValue2(
+      allocator,
+      formatter,
+      numberType,
+      valuePtr,
+    );
+  }
+
+  late final _CFNumberFormatterCreateStringWithValue2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFStringRef Function(CFAllocatorRef, CFNumberFormatterRef,
+                  ffi.Int32, ffi.Pointer<ffi.Void>)>>(
+      'CFNumberFormatterCreateStringWithValue');
+  late final _CFNumberFormatterCreateStringWithValue2 =
+      _CFNumberFormatterCreateStringWithValue2Ptr.asFunction<
+          CFStringRef Function(CFAllocatorRef, CFNumberFormatterRef, int,
+              ffi.Pointer<ffi.Void>)>();
+
+  CFNumberRef CFNumberFormatterCreateNumberFromString2(
+    CFAllocatorRef allocator,
+    CFNumberFormatterRef formatter,
+    CFStringRef string,
+    ffi.Pointer<CFRange> rangep,
+    int options,
+  ) {
+    return _CFNumberFormatterCreateNumberFromString2(
+      allocator,
+      formatter,
+      string,
+      rangep,
+      options,
+    );
+  }
+
+  late final _CFNumberFormatterCreateNumberFromString2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFNumberRef Function(
+              CFAllocatorRef,
+              CFNumberFormatterRef,
+              CFStringRef,
+              ffi.Pointer<CFRange>,
+              CFOptionFlags)>>('CFNumberFormatterCreateNumberFromString');
+  late final _CFNumberFormatterCreateNumberFromString2 =
+      _CFNumberFormatterCreateNumberFromString2Ptr.asFunction<
+          CFNumberRef Function(CFAllocatorRef, CFNumberFormatterRef,
+              CFStringRef, ffi.Pointer<CFRange>, int)>();
+
+  int CFNumberFormatterGetValueFromString2(
+    CFNumberFormatterRef formatter,
+    CFStringRef string,
+    ffi.Pointer<CFRange> rangep,
+    int numberType,
+    ffi.Pointer<ffi.Void> valuePtr,
+  ) {
+    return _CFNumberFormatterGetValueFromString2(
+      formatter,
+      string,
+      rangep,
+      numberType,
+      valuePtr,
+    );
+  }
+
+  late final _CFNumberFormatterGetValueFromString2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(
+              CFNumberFormatterRef,
+              CFStringRef,
+              ffi.Pointer<CFRange>,
+              ffi.Int32,
+              ffi.Pointer<ffi.Void>)>>('CFNumberFormatterGetValueFromString');
+  late final _CFNumberFormatterGetValueFromString2 =
+      _CFNumberFormatterGetValueFromString2Ptr.asFunction<
+          int Function(CFNumberFormatterRef, CFStringRef, ffi.Pointer<CFRange>,
+              int, ffi.Pointer<ffi.Void>)>();
+
+  void CFNumberFormatterSetProperty2(
+    CFNumberFormatterRef formatter,
+    CFNumberFormatterKey key,
+    CFTypeRef value,
+  ) {
+    return _CFNumberFormatterSetProperty2(
+      formatter,
+      key,
+      value,
+    );
+  }
+
+  late final _CFNumberFormatterSetProperty2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFNumberFormatterRef, CFNumberFormatterKey,
+              CFTypeRef)>>('CFNumberFormatterSetProperty');
+  late final _CFNumberFormatterSetProperty2 =
+      _CFNumberFormatterSetProperty2Ptr.asFunction<
+          void Function(
+              CFNumberFormatterRef, CFNumberFormatterKey, CFTypeRef)>();
+
+  CFTypeRef CFNumberFormatterCopyProperty2(
+    CFNumberFormatterRef formatter,
+    CFNumberFormatterKey key,
+  ) {
+    return _CFNumberFormatterCopyProperty2(
+      formatter,
+      key,
+    );
+  }
+
+  late final _CFNumberFormatterCopyProperty2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTypeRef Function(CFNumberFormatterRef,
+              CFNumberFormatterKey)>>('CFNumberFormatterCopyProperty');
+  late final _CFNumberFormatterCopyProperty2 =
+      _CFNumberFormatterCopyProperty2Ptr.asFunction<
+          CFTypeRef Function(CFNumberFormatterRef, CFNumberFormatterKey)>();
+
+  int CFNumberFormatterGetDecimalInfoForCurrencyCode2(
+    CFStringRef currencyCode,
+    ffi.Pointer<ffi.Int32> defaultFractionDigits,
+    ffi.Pointer<ffi.Double> roundingIncrement,
+  ) {
+    return _CFNumberFormatterGetDecimalInfoForCurrencyCode2(
+      currencyCode,
+      defaultFractionDigits,
+      roundingIncrement,
+    );
+  }
+
+  late final _CFNumberFormatterGetDecimalInfoForCurrencyCode2Ptr = _lookup<
+          ffi.NativeFunction<
+              Boolean Function(CFStringRef, ffi.Pointer<ffi.Int32>,
+                  ffi.Pointer<ffi.Double>)>>(
+      'CFNumberFormatterGetDecimalInfoForCurrencyCode');
+  late final _CFNumberFormatterGetDecimalInfoForCurrencyCode2 =
+      _CFNumberFormatterGetDecimalInfoForCurrencyCode2Ptr.asFunction<
+          int Function(
+              CFStringRef, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Double>)>();
+
+  CFPropertyListRef CFPreferencesCopyAppValue2(
+    CFStringRef key,
+    CFStringRef applicationID,
+  ) {
+    return _CFPreferencesCopyAppValue2(
+      key,
+      applicationID,
+    );
+  }
+
+  late final _CFPreferencesCopyAppValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFPropertyListRef Function(
+              CFStringRef, CFStringRef)>>('CFPreferencesCopyAppValue');
+  late final _CFPreferencesCopyAppValue2 = _CFPreferencesCopyAppValue2Ptr
+      .asFunction<CFPropertyListRef Function(CFStringRef, CFStringRef)>();
+
+  int CFPreferencesGetAppBooleanValue2(
+    CFStringRef key,
+    CFStringRef applicationID,
+    ffi.Pointer<Boolean> keyExistsAndHasValidFormat,
+  ) {
+    return _CFPreferencesGetAppBooleanValue2(
+      key,
+      applicationID,
+      keyExistsAndHasValidFormat,
+    );
+  }
+
+  late final _CFPreferencesGetAppBooleanValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFStringRef, CFStringRef,
+              ffi.Pointer<Boolean>)>>('CFPreferencesGetAppBooleanValue');
+  late final _CFPreferencesGetAppBooleanValue2 =
+      _CFPreferencesGetAppBooleanValue2Ptr.asFunction<
+          int Function(CFStringRef, CFStringRef, ffi.Pointer<Boolean>)>();
+
+  int CFPreferencesGetAppIntegerValue2(
+    CFStringRef key,
+    CFStringRef applicationID,
+    ffi.Pointer<Boolean> keyExistsAndHasValidFormat,
+  ) {
+    return _CFPreferencesGetAppIntegerValue2(
+      key,
+      applicationID,
+      keyExistsAndHasValidFormat,
+    );
+  }
+
+  late final _CFPreferencesGetAppIntegerValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFStringRef, CFStringRef,
+              ffi.Pointer<Boolean>)>>('CFPreferencesGetAppIntegerValue');
+  late final _CFPreferencesGetAppIntegerValue2 =
+      _CFPreferencesGetAppIntegerValue2Ptr.asFunction<
+          int Function(CFStringRef, CFStringRef, ffi.Pointer<Boolean>)>();
+
+  void CFPreferencesSetAppValue2(
+    CFStringRef key,
+    CFPropertyListRef value,
+    CFStringRef applicationID,
+  ) {
+    return _CFPreferencesSetAppValue2(
+      key,
+      value,
+      applicationID,
+    );
+  }
+
+  late final _CFPreferencesSetAppValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFStringRef, CFPropertyListRef,
+              CFStringRef)>>('CFPreferencesSetAppValue');
+  late final _CFPreferencesSetAppValue2 = _CFPreferencesSetAppValue2Ptr
+      .asFunction<void Function(CFStringRef, CFPropertyListRef, CFStringRef)>();
+
+  void CFPreferencesAddSuitePreferencesToApp2(
+    CFStringRef applicationID,
+    CFStringRef suiteID,
+  ) {
+    return _CFPreferencesAddSuitePreferencesToApp2(
+      applicationID,
+      suiteID,
+    );
+  }
+
+  late final _CFPreferencesAddSuitePreferencesToApp2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFStringRef, CFStringRef)>>(
+          'CFPreferencesAddSuitePreferencesToApp');
+  late final _CFPreferencesAddSuitePreferencesToApp2 =
+      _CFPreferencesAddSuitePreferencesToApp2Ptr.asFunction<
+          void Function(CFStringRef, CFStringRef)>();
+
+  void CFPreferencesRemoveSuitePreferencesFromApp2(
+    CFStringRef applicationID,
+    CFStringRef suiteID,
+  ) {
+    return _CFPreferencesRemoveSuitePreferencesFromApp2(
+      applicationID,
+      suiteID,
+    );
+  }
+
+  late final _CFPreferencesRemoveSuitePreferencesFromApp2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFStringRef, CFStringRef)>>(
+          'CFPreferencesRemoveSuitePreferencesFromApp');
+  late final _CFPreferencesRemoveSuitePreferencesFromApp2 =
+      _CFPreferencesRemoveSuitePreferencesFromApp2Ptr.asFunction<
+          void Function(CFStringRef, CFStringRef)>();
+
+  int CFPreferencesAppSynchronize2(
+    CFStringRef applicationID,
+  ) {
+    return _CFPreferencesAppSynchronize2(
+      applicationID,
+    );
+  }
+
+  late final _CFPreferencesAppSynchronize2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFStringRef)>>(
+          'CFPreferencesAppSynchronize');
+  late final _CFPreferencesAppSynchronize2 =
+      _CFPreferencesAppSynchronize2Ptr.asFunction<int Function(CFStringRef)>();
+
+  CFPropertyListRef CFPreferencesCopyValue2(
+    CFStringRef key,
+    CFStringRef applicationID,
+    CFStringRef userName,
+    CFStringRef hostName,
+  ) {
+    return _CFPreferencesCopyValue2(
+      key,
+      applicationID,
+      userName,
+      hostName,
+    );
+  }
+
+  late final _CFPreferencesCopyValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFPropertyListRef Function(CFStringRef, CFStringRef, CFStringRef,
+              CFStringRef)>>('CFPreferencesCopyValue');
+  late final _CFPreferencesCopyValue2 = _CFPreferencesCopyValue2Ptr.asFunction<
+      CFPropertyListRef Function(
+          CFStringRef, CFStringRef, CFStringRef, CFStringRef)>();
+
+  CFDictionaryRef CFPreferencesCopyMultiple2(
+    CFArrayRef keysToFetch,
+    CFStringRef applicationID,
+    CFStringRef userName,
+    CFStringRef hostName,
+  ) {
+    return _CFPreferencesCopyMultiple2(
+      keysToFetch,
+      applicationID,
+      userName,
+      hostName,
+    );
+  }
+
+  late final _CFPreferencesCopyMultiple2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDictionaryRef Function(CFArrayRef, CFStringRef, CFStringRef,
+              CFStringRef)>>('CFPreferencesCopyMultiple');
+  late final _CFPreferencesCopyMultiple2 =
+      _CFPreferencesCopyMultiple2Ptr.asFunction<
+          CFDictionaryRef Function(
+              CFArrayRef, CFStringRef, CFStringRef, CFStringRef)>();
+
+  void CFPreferencesSetValue2(
+    CFStringRef key,
+    CFPropertyListRef value,
+    CFStringRef applicationID,
+    CFStringRef userName,
+    CFStringRef hostName,
+  ) {
+    return _CFPreferencesSetValue2(
+      key,
+      value,
+      applicationID,
+      userName,
+      hostName,
+    );
+  }
+
+  late final _CFPreferencesSetValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFStringRef, CFPropertyListRef, CFStringRef,
+              CFStringRef, CFStringRef)>>('CFPreferencesSetValue');
+  late final _CFPreferencesSetValue2 = _CFPreferencesSetValue2Ptr.asFunction<
+      void Function(CFStringRef, CFPropertyListRef, CFStringRef, CFStringRef,
+          CFStringRef)>();
+
+  void CFPreferencesSetMultiple2(
+    CFDictionaryRef keysToSet,
+    CFArrayRef keysToRemove,
+    CFStringRef applicationID,
+    CFStringRef userName,
+    CFStringRef hostName,
+  ) {
+    return _CFPreferencesSetMultiple2(
+      keysToSet,
+      keysToRemove,
+      applicationID,
+      userName,
+      hostName,
+    );
+  }
+
+  late final _CFPreferencesSetMultiple2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFDictionaryRef, CFArrayRef, CFStringRef,
+              CFStringRef, CFStringRef)>>('CFPreferencesSetMultiple');
+  late final _CFPreferencesSetMultiple2 =
+      _CFPreferencesSetMultiple2Ptr.asFunction<
+          void Function(CFDictionaryRef, CFArrayRef, CFStringRef, CFStringRef,
+              CFStringRef)>();
+
+  int CFPreferencesSynchronize2(
+    CFStringRef applicationID,
+    CFStringRef userName,
+    CFStringRef hostName,
+  ) {
+    return _CFPreferencesSynchronize2(
+      applicationID,
+      userName,
+      hostName,
+    );
+  }
+
+  late final _CFPreferencesSynchronize2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFStringRef, CFStringRef,
+              CFStringRef)>>('CFPreferencesSynchronize');
+  late final _CFPreferencesSynchronize2 = _CFPreferencesSynchronize2Ptr
+      .asFunction<int Function(CFStringRef, CFStringRef, CFStringRef)>();
+
+  CFArrayRef CFPreferencesCopyApplicationList2(
+    CFStringRef userName,
+    CFStringRef hostName,
+  ) {
+    return _CFPreferencesCopyApplicationList2(
+      userName,
+      hostName,
+    );
+  }
+
+  late final _CFPreferencesCopyApplicationList2Ptr = _lookup<
+          ffi.NativeFunction<CFArrayRef Function(CFStringRef, CFStringRef)>>(
+      'CFPreferencesCopyApplicationList');
+  late final _CFPreferencesCopyApplicationList2 =
+      _CFPreferencesCopyApplicationList2Ptr.asFunction<
+          CFArrayRef Function(CFStringRef, CFStringRef)>();
+
+  CFArrayRef CFPreferencesCopyKeyList2(
+    CFStringRef applicationID,
+    CFStringRef userName,
+    CFStringRef hostName,
+  ) {
+    return _CFPreferencesCopyKeyList2(
+      applicationID,
+      userName,
+      hostName,
+    );
+  }
+
+  late final _CFPreferencesCopyKeyList2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFArrayRef Function(CFStringRef, CFStringRef,
+              CFStringRef)>>('CFPreferencesCopyKeyList');
+  late final _CFPreferencesCopyKeyList2 = _CFPreferencesCopyKeyList2Ptr
+      .asFunction<CFArrayRef Function(CFStringRef, CFStringRef, CFStringRef)>();
+
+  int CFPreferencesAppValueIsForced2(
+    CFStringRef key,
+    CFStringRef applicationID,
+  ) {
+    return _CFPreferencesAppValueIsForced2(
+      key,
+      applicationID,
+    );
+  }
+
+  late final _CFPreferencesAppValueIsForced2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFStringRef, CFStringRef)>>(
+          'CFPreferencesAppValueIsForced');
+  late final _CFPreferencesAppValueIsForced2 =
+      _CFPreferencesAppValueIsForced2Ptr.asFunction<
+          int Function(CFStringRef, CFStringRef)>();
+
+  int CFURLGetTypeID2() {
+    return _CFURLGetTypeID2();
+  }
+
+  late final _CFURLGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFURLGetTypeID');
+  late final _CFURLGetTypeID2 =
+      _CFURLGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFURLRef CFURLCreateWithBytes2(
+    CFAllocatorRef allocator,
+    ffi.Pointer<UInt8> URLBytes,
+    int length,
+    int encoding,
+    CFURLRef baseURL,
+  ) {
+    return _CFURLCreateWithBytes2(
+      allocator,
+      URLBytes,
+      length,
+      encoding,
+      baseURL,
+    );
+  }
+
+  late final _CFURLCreateWithBytes2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(CFAllocatorRef, ffi.Pointer<UInt8>, CFIndex,
+              CFStringEncoding, CFURLRef)>>('CFURLCreateWithBytes');
+  late final _CFURLCreateWithBytes2 = _CFURLCreateWithBytes2Ptr.asFunction<
+      CFURLRef Function(
+          CFAllocatorRef, ffi.Pointer<UInt8>, int, int, CFURLRef)>();
+
+  CFDataRef CFURLCreateData2(
+    CFAllocatorRef allocator,
+    CFURLRef url,
+    int encoding,
+    int escapeWhitespace,
+  ) {
+    return _CFURLCreateData2(
+      allocator,
+      url,
+      encoding,
+      escapeWhitespace,
+    );
+  }
+
+  late final _CFURLCreateData2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDataRef Function(CFAllocatorRef, CFURLRef, CFStringEncoding,
+              Boolean)>>('CFURLCreateData');
+  late final _CFURLCreateData2 = _CFURLCreateData2Ptr.asFunction<
+      CFDataRef Function(CFAllocatorRef, CFURLRef, int, int)>();
+
+  CFURLRef CFURLCreateWithString2(
+    CFAllocatorRef allocator,
+    CFStringRef URLString,
+    CFURLRef baseURL,
+  ) {
+    return _CFURLCreateWithString2(
+      allocator,
+      URLString,
+      baseURL,
+    );
+  }
+
+  late final _CFURLCreateWithString2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(
+              CFAllocatorRef, CFStringRef, CFURLRef)>>('CFURLCreateWithString');
+  late final _CFURLCreateWithString2 = _CFURLCreateWithString2Ptr.asFunction<
+      CFURLRef Function(CFAllocatorRef, CFStringRef, CFURLRef)>();
+
+  CFURLRef CFURLCreateAbsoluteURLWithBytes2(
+    CFAllocatorRef alloc,
+    ffi.Pointer<UInt8> relativeURLBytes,
+    int length,
+    int encoding,
+    CFURLRef baseURL,
+    int useCompatibilityMode,
+  ) {
+    return _CFURLCreateAbsoluteURLWithBytes2(
+      alloc,
+      relativeURLBytes,
+      length,
+      encoding,
+      baseURL,
+      useCompatibilityMode,
+    );
+  }
+
+  late final _CFURLCreateAbsoluteURLWithBytes2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(
+              CFAllocatorRef,
+              ffi.Pointer<UInt8>,
+              CFIndex,
+              CFStringEncoding,
+              CFURLRef,
+              Boolean)>>('CFURLCreateAbsoluteURLWithBytes');
+  late final _CFURLCreateAbsoluteURLWithBytes2 =
+      _CFURLCreateAbsoluteURLWithBytes2Ptr.asFunction<
+          CFURLRef Function(
+              CFAllocatorRef, ffi.Pointer<UInt8>, int, int, CFURLRef, int)>();
+
+  CFURLRef CFURLCreateWithFileSystemPath2(
+    CFAllocatorRef allocator,
+    CFStringRef filePath,
+    int pathStyle,
+    int isDirectory,
+  ) {
+    return _CFURLCreateWithFileSystemPath2(
+      allocator,
+      filePath,
+      pathStyle,
+      isDirectory,
+    );
+  }
+
+  late final _CFURLCreateWithFileSystemPath2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(CFAllocatorRef, CFStringRef, ffi.Int32,
+              Boolean)>>('CFURLCreateWithFileSystemPath');
+  late final _CFURLCreateWithFileSystemPath2 =
+      _CFURLCreateWithFileSystemPath2Ptr.asFunction<
+          CFURLRef Function(CFAllocatorRef, CFStringRef, int, int)>();
+
+  CFURLRef CFURLCreateFromFileSystemRepresentation2(
+    CFAllocatorRef allocator,
+    ffi.Pointer<UInt8> buffer,
+    int bufLen,
+    int isDirectory,
+  ) {
+    return _CFURLCreateFromFileSystemRepresentation2(
+      allocator,
+      buffer,
+      bufLen,
+      isDirectory,
+    );
+  }
+
+  late final _CFURLCreateFromFileSystemRepresentation2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(CFAllocatorRef, ffi.Pointer<UInt8>, CFIndex,
+              Boolean)>>('CFURLCreateFromFileSystemRepresentation');
+  late final _CFURLCreateFromFileSystemRepresentation2 =
+      _CFURLCreateFromFileSystemRepresentation2Ptr.asFunction<
+          CFURLRef Function(CFAllocatorRef, ffi.Pointer<UInt8>, int, int)>();
+
+  CFURLRef CFURLCreateWithFileSystemPathRelativeToBase2(
+    CFAllocatorRef allocator,
+    CFStringRef filePath,
+    int pathStyle,
+    int isDirectory,
+    CFURLRef baseURL,
+  ) {
+    return _CFURLCreateWithFileSystemPathRelativeToBase2(
+      allocator,
+      filePath,
+      pathStyle,
+      isDirectory,
+      baseURL,
+    );
+  }
+
+  late final _CFURLCreateWithFileSystemPathRelativeToBase2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(CFAllocatorRef, CFStringRef, ffi.Int32, Boolean,
+              CFURLRef)>>('CFURLCreateWithFileSystemPathRelativeToBase');
+  late final _CFURLCreateWithFileSystemPathRelativeToBase2 =
+      _CFURLCreateWithFileSystemPathRelativeToBase2Ptr.asFunction<
+          CFURLRef Function(CFAllocatorRef, CFStringRef, int, int, CFURLRef)>();
+
+  CFURLRef CFURLCreateFromFileSystemRepresentationRelativeToBase2(
+    CFAllocatorRef allocator,
+    ffi.Pointer<UInt8> buffer,
+    int bufLen,
+    int isDirectory,
+    CFURLRef baseURL,
+  ) {
+    return _CFURLCreateFromFileSystemRepresentationRelativeToBase2(
+      allocator,
+      buffer,
+      bufLen,
+      isDirectory,
+      baseURL,
+    );
+  }
+
+  late final _CFURLCreateFromFileSystemRepresentationRelativeToBase2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  CFURLRef Function(CFAllocatorRef, ffi.Pointer<UInt8>, CFIndex,
+                      Boolean, CFURLRef)>>(
+          'CFURLCreateFromFileSystemRepresentationRelativeToBase');
+  late final _CFURLCreateFromFileSystemRepresentationRelativeToBase2 =
+      _CFURLCreateFromFileSystemRepresentationRelativeToBase2Ptr.asFunction<
+          CFURLRef Function(
+              CFAllocatorRef, ffi.Pointer<UInt8>, int, int, CFURLRef)>();
+
+  int CFURLGetFileSystemRepresentation2(
+    CFURLRef url,
+    int resolveAgainstBase,
+    ffi.Pointer<UInt8> buffer,
+    int maxBufLen,
+  ) {
+    return _CFURLGetFileSystemRepresentation2(
+      url,
+      resolveAgainstBase,
+      buffer,
+      maxBufLen,
+    );
+  }
+
+  late final _CFURLGetFileSystemRepresentation2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFURLRef, Boolean, ffi.Pointer<UInt8>,
+              CFIndex)>>('CFURLGetFileSystemRepresentation');
+  late final _CFURLGetFileSystemRepresentation2 =
+      _CFURLGetFileSystemRepresentation2Ptr.asFunction<
+          int Function(CFURLRef, int, ffi.Pointer<UInt8>, int)>();
+
+  CFURLRef CFURLCopyAbsoluteURL2(
+    CFURLRef relativeURL,
+  ) {
+    return _CFURLCopyAbsoluteURL2(
+      relativeURL,
+    );
+  }
+
+  late final _CFURLCopyAbsoluteURL2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFURLRef)>>(
+          'CFURLCopyAbsoluteURL');
+  late final _CFURLCopyAbsoluteURL2 =
+      _CFURLCopyAbsoluteURL2Ptr.asFunction<CFURLRef Function(CFURLRef)>();
+
+  CFStringRef CFURLGetString2(
+    CFURLRef anURL,
+  ) {
+    return _CFURLGetString2(
+      anURL,
+    );
+  }
+
+  late final _CFURLGetString2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef)>>(
+          'CFURLGetString');
+  late final _CFURLGetString2 =
+      _CFURLGetString2Ptr.asFunction<CFStringRef Function(CFURLRef)>();
+
+  CFURLRef CFURLGetBaseURL2(
+    CFURLRef anURL,
+  ) {
+    return _CFURLGetBaseURL2(
+      anURL,
+    );
+  }
+
+  late final _CFURLGetBaseURL2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFURLRef)>>(
+          'CFURLGetBaseURL');
+  late final _CFURLGetBaseURL2 =
+      _CFURLGetBaseURL2Ptr.asFunction<CFURLRef Function(CFURLRef)>();
+
+  int CFURLCanBeDecomposed2(
+    CFURLRef anURL,
+  ) {
+    return _CFURLCanBeDecomposed2(
+      anURL,
+    );
+  }
+
+  late final _CFURLCanBeDecomposed2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFURLRef)>>(
+          'CFURLCanBeDecomposed');
+  late final _CFURLCanBeDecomposed2 =
+      _CFURLCanBeDecomposed2Ptr.asFunction<int Function(CFURLRef)>();
+
+  CFStringRef CFURLCopyScheme2(
+    CFURLRef anURL,
+  ) {
+    return _CFURLCopyScheme2(
+      anURL,
+    );
+  }
+
+  late final _CFURLCopyScheme2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef)>>(
+          'CFURLCopyScheme');
+  late final _CFURLCopyScheme2 =
+      _CFURLCopyScheme2Ptr.asFunction<CFStringRef Function(CFURLRef)>();
+
+  CFStringRef CFURLCopyNetLocation2(
+    CFURLRef anURL,
+  ) {
+    return _CFURLCopyNetLocation2(
+      anURL,
+    );
+  }
+
+  late final _CFURLCopyNetLocation2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef)>>(
+          'CFURLCopyNetLocation');
+  late final _CFURLCopyNetLocation2 =
+      _CFURLCopyNetLocation2Ptr.asFunction<CFStringRef Function(CFURLRef)>();
+
+  CFStringRef CFURLCopyPath2(
+    CFURLRef anURL,
+  ) {
+    return _CFURLCopyPath2(
+      anURL,
+    );
+  }
+
+  late final _CFURLCopyPath2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef)>>(
+          'CFURLCopyPath');
+  late final _CFURLCopyPath2 =
+      _CFURLCopyPath2Ptr.asFunction<CFStringRef Function(CFURLRef)>();
+
+  CFStringRef CFURLCopyStrictPath2(
+    CFURLRef anURL,
+    ffi.Pointer<Boolean> isAbsolute,
+  ) {
+    return _CFURLCopyStrictPath2(
+      anURL,
+      isAbsolute,
+    );
+  }
+
+  late final _CFURLCopyStrictPath2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(
+              CFURLRef, ffi.Pointer<Boolean>)>>('CFURLCopyStrictPath');
+  late final _CFURLCopyStrictPath2 = _CFURLCopyStrictPath2Ptr.asFunction<
+      CFStringRef Function(CFURLRef, ffi.Pointer<Boolean>)>();
+
+  CFStringRef CFURLCopyFileSystemPath2(
+    CFURLRef anURL,
+    int pathStyle,
+  ) {
+    return _CFURLCopyFileSystemPath2(
+      anURL,
+      pathStyle,
+    );
+  }
+
+  late final _CFURLCopyFileSystemPath2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef, ffi.Int32)>>(
+          'CFURLCopyFileSystemPath');
+  late final _CFURLCopyFileSystemPath2 = _CFURLCopyFileSystemPath2Ptr
+      .asFunction<CFStringRef Function(CFURLRef, int)>();
+
+  int CFURLHasDirectoryPath2(
+    CFURLRef anURL,
+  ) {
+    return _CFURLHasDirectoryPath2(
+      anURL,
+    );
+  }
+
+  late final _CFURLHasDirectoryPath2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFURLRef)>>(
+          'CFURLHasDirectoryPath');
+  late final _CFURLHasDirectoryPath2 =
+      _CFURLHasDirectoryPath2Ptr.asFunction<int Function(CFURLRef)>();
+
+  CFStringRef CFURLCopyResourceSpecifier2(
+    CFURLRef anURL,
+  ) {
+    return _CFURLCopyResourceSpecifier2(
+      anURL,
+    );
+  }
+
+  late final _CFURLCopyResourceSpecifier2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef)>>(
+          'CFURLCopyResourceSpecifier');
+  late final _CFURLCopyResourceSpecifier2 = _CFURLCopyResourceSpecifier2Ptr
+      .asFunction<CFStringRef Function(CFURLRef)>();
+
+  CFStringRef CFURLCopyHostName2(
+    CFURLRef anURL,
+  ) {
+    return _CFURLCopyHostName2(
+      anURL,
+    );
+  }
+
+  late final _CFURLCopyHostName2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef)>>(
+          'CFURLCopyHostName');
+  late final _CFURLCopyHostName2 =
+      _CFURLCopyHostName2Ptr.asFunction<CFStringRef Function(CFURLRef)>();
+
+  int CFURLGetPortNumber2(
+    CFURLRef anURL,
+  ) {
+    return _CFURLGetPortNumber2(
+      anURL,
+    );
+  }
+
+  late final _CFURLGetPortNumber2Ptr =
+      _lookup<ffi.NativeFunction<SInt32 Function(CFURLRef)>>(
+          'CFURLGetPortNumber');
+  late final _CFURLGetPortNumber2 =
+      _CFURLGetPortNumber2Ptr.asFunction<int Function(CFURLRef)>();
+
+  CFStringRef CFURLCopyUserName2(
+    CFURLRef anURL,
+  ) {
+    return _CFURLCopyUserName2(
+      anURL,
+    );
+  }
+
+  late final _CFURLCopyUserName2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef)>>(
+          'CFURLCopyUserName');
+  late final _CFURLCopyUserName2 =
+      _CFURLCopyUserName2Ptr.asFunction<CFStringRef Function(CFURLRef)>();
+
+  CFStringRef CFURLCopyPassword2(
+    CFURLRef anURL,
+  ) {
+    return _CFURLCopyPassword2(
+      anURL,
+    );
+  }
+
+  late final _CFURLCopyPassword2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef)>>(
+          'CFURLCopyPassword');
+  late final _CFURLCopyPassword2 =
+      _CFURLCopyPassword2Ptr.asFunction<CFStringRef Function(CFURLRef)>();
+
+  CFStringRef CFURLCopyParameterString2(
+    CFURLRef anURL,
+    CFStringRef charactersToLeaveEscaped,
+  ) {
+    return _CFURLCopyParameterString2(
+      anURL,
+      charactersToLeaveEscaped,
+    );
+  }
+
+  late final _CFURLCopyParameterString2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef, CFStringRef)>>(
+          'CFURLCopyParameterString');
+  late final _CFURLCopyParameterString2 = _CFURLCopyParameterString2Ptr
+      .asFunction<CFStringRef Function(CFURLRef, CFStringRef)>();
+
+  CFStringRef CFURLCopyQueryString2(
+    CFURLRef anURL,
+    CFStringRef charactersToLeaveEscaped,
+  ) {
+    return _CFURLCopyQueryString2(
+      anURL,
+      charactersToLeaveEscaped,
+    );
+  }
+
+  late final _CFURLCopyQueryString2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef, CFStringRef)>>(
+          'CFURLCopyQueryString');
+  late final _CFURLCopyQueryString2 = _CFURLCopyQueryString2Ptr.asFunction<
+      CFStringRef Function(CFURLRef, CFStringRef)>();
+
+  CFStringRef CFURLCopyFragment2(
+    CFURLRef anURL,
+    CFStringRef charactersToLeaveEscaped,
+  ) {
+    return _CFURLCopyFragment2(
+      anURL,
+      charactersToLeaveEscaped,
+    );
+  }
+
+  late final _CFURLCopyFragment2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef, CFStringRef)>>(
+          'CFURLCopyFragment');
+  late final _CFURLCopyFragment2 = _CFURLCopyFragment2Ptr.asFunction<
+      CFStringRef Function(CFURLRef, CFStringRef)>();
+
+  CFStringRef CFURLCopyLastPathComponent2(
+    CFURLRef url,
+  ) {
+    return _CFURLCopyLastPathComponent2(
+      url,
+    );
+  }
+
+  late final _CFURLCopyLastPathComponent2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef)>>(
+          'CFURLCopyLastPathComponent');
+  late final _CFURLCopyLastPathComponent2 = _CFURLCopyLastPathComponent2Ptr
+      .asFunction<CFStringRef Function(CFURLRef)>();
+
+  CFStringRef CFURLCopyPathExtension2(
+    CFURLRef url,
+  ) {
+    return _CFURLCopyPathExtension2(
+      url,
+    );
+  }
+
+  late final _CFURLCopyPathExtension2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFURLRef)>>(
+          'CFURLCopyPathExtension');
+  late final _CFURLCopyPathExtension2 =
+      _CFURLCopyPathExtension2Ptr.asFunction<CFStringRef Function(CFURLRef)>();
+
+  CFURLRef CFURLCreateCopyAppendingPathComponent2(
+    CFAllocatorRef allocator,
+    CFURLRef url,
+    CFStringRef pathComponent,
+    int isDirectory,
+  ) {
+    return _CFURLCreateCopyAppendingPathComponent2(
+      allocator,
+      url,
+      pathComponent,
+      isDirectory,
+    );
+  }
+
+  late final _CFURLCreateCopyAppendingPathComponent2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(CFAllocatorRef, CFURLRef, CFStringRef,
+              Boolean)>>('CFURLCreateCopyAppendingPathComponent');
+  late final _CFURLCreateCopyAppendingPathComponent2 =
+      _CFURLCreateCopyAppendingPathComponent2Ptr.asFunction<
+          CFURLRef Function(CFAllocatorRef, CFURLRef, CFStringRef, int)>();
+
+  CFURLRef CFURLCreateCopyDeletingLastPathComponent2(
+    CFAllocatorRef allocator,
+    CFURLRef url,
+  ) {
+    return _CFURLCreateCopyDeletingLastPathComponent2(
+      allocator,
+      url,
+    );
+  }
+
+  late final _CFURLCreateCopyDeletingLastPathComponent2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFAllocatorRef, CFURLRef)>>(
+          'CFURLCreateCopyDeletingLastPathComponent');
+  late final _CFURLCreateCopyDeletingLastPathComponent2 =
+      _CFURLCreateCopyDeletingLastPathComponent2Ptr.asFunction<
+          CFURLRef Function(CFAllocatorRef, CFURLRef)>();
+
+  CFURLRef CFURLCreateCopyAppendingPathExtension2(
+    CFAllocatorRef allocator,
+    CFURLRef url,
+    CFStringRef extension1,
+  ) {
+    return _CFURLCreateCopyAppendingPathExtension2(
+      allocator,
+      url,
+      extension1,
+    );
+  }
+
+  late final _CFURLCreateCopyAppendingPathExtension2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(CFAllocatorRef, CFURLRef,
+              CFStringRef)>>('CFURLCreateCopyAppendingPathExtension');
+  late final _CFURLCreateCopyAppendingPathExtension2 =
+      _CFURLCreateCopyAppendingPathExtension2Ptr.asFunction<
+          CFURLRef Function(CFAllocatorRef, CFURLRef, CFStringRef)>();
+
+  CFURLRef CFURLCreateCopyDeletingPathExtension2(
+    CFAllocatorRef allocator,
+    CFURLRef url,
+  ) {
+    return _CFURLCreateCopyDeletingPathExtension2(
+      allocator,
+      url,
+    );
+  }
+
+  late final _CFURLCreateCopyDeletingPathExtension2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFAllocatorRef, CFURLRef)>>(
+          'CFURLCreateCopyDeletingPathExtension');
+  late final _CFURLCreateCopyDeletingPathExtension2 =
+      _CFURLCreateCopyDeletingPathExtension2Ptr.asFunction<
+          CFURLRef Function(CFAllocatorRef, CFURLRef)>();
+
+  int CFURLGetBytes2(
+    CFURLRef url,
+    ffi.Pointer<UInt8> buffer,
+    int bufferLength,
+  ) {
+    return _CFURLGetBytes2(
+      url,
+      buffer,
+      bufferLength,
+    );
+  }
+
+  late final _CFURLGetBytes2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(
+              CFURLRef, ffi.Pointer<UInt8>, CFIndex)>>('CFURLGetBytes');
+  late final _CFURLGetBytes2 = _CFURLGetBytes2Ptr.asFunction<
+      int Function(CFURLRef, ffi.Pointer<UInt8>, int)>();
+
+  CFRange CFURLGetByteRangeForComponent2(
+    CFURLRef url,
+    int component,
+    ffi.Pointer<CFRange> rangeIncludingSeparators,
+  ) {
+    return _CFURLGetByteRangeForComponent2(
+      url,
+      component,
+      rangeIncludingSeparators,
+    );
+  }
+
+  late final _CFURLGetByteRangeForComponent2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFRange Function(CFURLRef, ffi.Int32,
+              ffi.Pointer<CFRange>)>>('CFURLGetByteRangeForComponent');
+  late final _CFURLGetByteRangeForComponent2 =
+      _CFURLGetByteRangeForComponent2Ptr.asFunction<
+          CFRange Function(CFURLRef, int, ffi.Pointer<CFRange>)>();
+
+  CFStringRef CFURLCreateStringByReplacingPercentEscapes2(
+    CFAllocatorRef allocator,
+    CFStringRef originalString,
+    CFStringRef charactersToLeaveEscaped,
+  ) {
+    return _CFURLCreateStringByReplacingPercentEscapes2(
+      allocator,
+      originalString,
+      charactersToLeaveEscaped,
+    );
+  }
+
+  late final _CFURLCreateStringByReplacingPercentEscapes2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, CFStringRef,
+              CFStringRef)>>('CFURLCreateStringByReplacingPercentEscapes');
+  late final _CFURLCreateStringByReplacingPercentEscapes2 =
+      _CFURLCreateStringByReplacingPercentEscapes2Ptr.asFunction<
+          CFStringRef Function(CFAllocatorRef, CFStringRef, CFStringRef)>();
+
+  CFStringRef CFURLCreateStringByReplacingPercentEscapesUsingEncoding2(
+    CFAllocatorRef allocator,
+    CFStringRef origString,
+    CFStringRef charsToLeaveEscaped,
+    int encoding,
+  ) {
+    return _CFURLCreateStringByReplacingPercentEscapesUsingEncoding2(
+      allocator,
+      origString,
+      charsToLeaveEscaped,
+      encoding,
+    );
+  }
+
+  late final _CFURLCreateStringByReplacingPercentEscapesUsingEncoding2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  CFStringRef Function(CFAllocatorRef, CFStringRef, CFStringRef,
+                      CFStringEncoding)>>(
+          'CFURLCreateStringByReplacingPercentEscapesUsingEncoding');
+  late final _CFURLCreateStringByReplacingPercentEscapesUsingEncoding2 =
+      _CFURLCreateStringByReplacingPercentEscapesUsingEncoding2Ptr.asFunction<
+          CFStringRef Function(
+              CFAllocatorRef, CFStringRef, CFStringRef, int)>();
+
+  CFStringRef CFURLCreateStringByAddingPercentEscapes2(
+    CFAllocatorRef allocator,
+    CFStringRef originalString,
+    CFStringRef charactersToLeaveUnescaped,
+    CFStringRef legalURLCharactersToBeEscaped,
+    int encoding,
+  ) {
+    return _CFURLCreateStringByAddingPercentEscapes2(
+      allocator,
+      originalString,
+      charactersToLeaveUnescaped,
+      legalURLCharactersToBeEscaped,
+      encoding,
+    );
+  }
+
+  late final _CFURLCreateStringByAddingPercentEscapes2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(
+              CFAllocatorRef,
+              CFStringRef,
+              CFStringRef,
+              CFStringRef,
+              CFStringEncoding)>>('CFURLCreateStringByAddingPercentEscapes');
+  late final _CFURLCreateStringByAddingPercentEscapes2 =
+      _CFURLCreateStringByAddingPercentEscapes2Ptr.asFunction<
+          CFStringRef Function(
+              CFAllocatorRef, CFStringRef, CFStringRef, CFStringRef, int)>();
+
+  int CFURLIsFileReferenceURL2(
+    CFURLRef url,
+  ) {
+    return _CFURLIsFileReferenceURL2(
+      url,
+    );
+  }
+
+  late final _CFURLIsFileReferenceURL2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFURLRef)>>(
+          'CFURLIsFileReferenceURL');
+  late final _CFURLIsFileReferenceURL2 =
+      _CFURLIsFileReferenceURL2Ptr.asFunction<int Function(CFURLRef)>();
+
+  CFURLRef CFURLCreateFileReferenceURL2(
+    CFAllocatorRef allocator,
+    CFURLRef url,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFURLCreateFileReferenceURL2(
+      allocator,
+      url,
+      error,
+    );
+  }
+
+  late final _CFURLCreateFileReferenceURL2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(CFAllocatorRef, CFURLRef,
+              ffi.Pointer<CFErrorRef>)>>('CFURLCreateFileReferenceURL');
+  late final _CFURLCreateFileReferenceURL2 =
+      _CFURLCreateFileReferenceURL2Ptr.asFunction<
+          CFURLRef Function(
+              CFAllocatorRef, CFURLRef, ffi.Pointer<CFErrorRef>)>();
+
+  CFURLRef CFURLCreateFilePathURL2(
+    CFAllocatorRef allocator,
+    CFURLRef url,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFURLCreateFilePathURL2(
+      allocator,
+      url,
+      error,
+    );
+  }
+
+  late final _CFURLCreateFilePathURL2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(CFAllocatorRef, CFURLRef,
+              ffi.Pointer<CFErrorRef>)>>('CFURLCreateFilePathURL');
+  late final _CFURLCreateFilePathURL2 = _CFURLCreateFilePathURL2Ptr.asFunction<
+      CFURLRef Function(CFAllocatorRef, CFURLRef, ffi.Pointer<CFErrorRef>)>();
+
+  CFURLRef CFURLCreateFromFSRef2(
+    CFAllocatorRef allocator,
+    ffi.Pointer<FSRef> fsRef,
+  ) {
+    return _CFURLCreateFromFSRef2(
+      allocator,
+      fsRef,
+    );
+  }
+
+  late final _CFURLCreateFromFSRef2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(
+              CFAllocatorRef, ffi.Pointer<FSRef>)>>('CFURLCreateFromFSRef');
+  late final _CFURLCreateFromFSRef2 = _CFURLCreateFromFSRef2Ptr.asFunction<
+      CFURLRef Function(CFAllocatorRef, ffi.Pointer<FSRef>)>();
+
+  int CFURLGetFSRef2(
+    CFURLRef url,
+    ffi.Pointer<FSRef> fsRef,
+  ) {
+    return _CFURLGetFSRef2(
+      url,
+      fsRef,
+    );
+  }
+
+  late final _CFURLGetFSRef2Ptr = _lookup<
+          ffi.NativeFunction<Boolean Function(CFURLRef, ffi.Pointer<FSRef>)>>(
+      'CFURLGetFSRef');
+  late final _CFURLGetFSRef2 = _CFURLGetFSRef2Ptr.asFunction<
+      int Function(CFURLRef, ffi.Pointer<FSRef>)>();
+
+  int CFURLCopyResourcePropertyForKey2(
+    CFURLRef url,
+    CFStringRef key,
+    ffi.Pointer<ffi.Void> propertyValueTypeRefPtr,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFURLCopyResourcePropertyForKey2(
+      url,
+      key,
+      propertyValueTypeRefPtr,
+      error,
+    );
+  }
+
+  late final _CFURLCopyResourcePropertyForKey2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFURLRef, CFStringRef, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<CFErrorRef>)>>('CFURLCopyResourcePropertyForKey');
+  late final _CFURLCopyResourcePropertyForKey2 =
+      _CFURLCopyResourcePropertyForKey2Ptr.asFunction<
+          int Function(CFURLRef, CFStringRef, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<CFErrorRef>)>();
+
+  CFDictionaryRef CFURLCopyResourcePropertiesForKeys2(
+    CFURLRef url,
+    CFArrayRef keys,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFURLCopyResourcePropertiesForKeys2(
+      url,
+      keys,
+      error,
+    );
+  }
+
+  late final _CFURLCopyResourcePropertiesForKeys2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDictionaryRef Function(CFURLRef, CFArrayRef,
+              ffi.Pointer<CFErrorRef>)>>('CFURLCopyResourcePropertiesForKeys');
+  late final _CFURLCopyResourcePropertiesForKeys2 =
+      _CFURLCopyResourcePropertiesForKeys2Ptr.asFunction<
+          CFDictionaryRef Function(
+              CFURLRef, CFArrayRef, ffi.Pointer<CFErrorRef>)>();
+
+  int CFURLSetResourcePropertyForKey2(
+    CFURLRef url,
+    CFStringRef key,
+    CFTypeRef propertyValue,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFURLSetResourcePropertyForKey2(
+      url,
+      key,
+      propertyValue,
+      error,
+    );
+  }
+
+  late final _CFURLSetResourcePropertyForKey2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFURLRef, CFStringRef, CFTypeRef,
+              ffi.Pointer<CFErrorRef>)>>('CFURLSetResourcePropertyForKey');
+  late final _CFURLSetResourcePropertyForKey2 =
+      _CFURLSetResourcePropertyForKey2Ptr.asFunction<
+          int Function(
+              CFURLRef, CFStringRef, CFTypeRef, ffi.Pointer<CFErrorRef>)>();
+
+  int CFURLSetResourcePropertiesForKeys2(
+    CFURLRef url,
+    CFDictionaryRef keyedPropertyValues,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFURLSetResourcePropertiesForKeys2(
+      url,
+      keyedPropertyValues,
+      error,
+    );
+  }
+
+  late final _CFURLSetResourcePropertiesForKeys2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFURLRef, CFDictionaryRef,
+              ffi.Pointer<CFErrorRef>)>>('CFURLSetResourcePropertiesForKeys');
+  late final _CFURLSetResourcePropertiesForKeys2 =
+      _CFURLSetResourcePropertiesForKeys2Ptr.asFunction<
+          int Function(CFURLRef, CFDictionaryRef, ffi.Pointer<CFErrorRef>)>();
+
+  void CFURLClearResourcePropertyCacheForKey2(
+    CFURLRef url,
+    CFStringRef key,
+  ) {
+    return _CFURLClearResourcePropertyCacheForKey2(
+      url,
+      key,
+    );
+  }
+
+  late final _CFURLClearResourcePropertyCacheForKey2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFURLRef, CFStringRef)>>(
+          'CFURLClearResourcePropertyCacheForKey');
+  late final _CFURLClearResourcePropertyCacheForKey2 =
+      _CFURLClearResourcePropertyCacheForKey2Ptr.asFunction<
+          void Function(CFURLRef, CFStringRef)>();
+
+  void CFURLClearResourcePropertyCache2(
+    CFURLRef url,
+  ) {
+    return _CFURLClearResourcePropertyCache2(
+      url,
+    );
+  }
+
+  late final _CFURLClearResourcePropertyCache2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFURLRef)>>(
+          'CFURLClearResourcePropertyCache');
+  late final _CFURLClearResourcePropertyCache2 =
+      _CFURLClearResourcePropertyCache2Ptr.asFunction<
+          void Function(CFURLRef)>();
+
+  void CFURLSetTemporaryResourcePropertyForKey2(
+    CFURLRef url,
+    CFStringRef key,
+    CFTypeRef propertyValue,
+  ) {
+    return _CFURLSetTemporaryResourcePropertyForKey2(
+      url,
+      key,
+      propertyValue,
+    );
+  }
+
+  late final _CFURLSetTemporaryResourcePropertyForKey2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFURLRef, CFStringRef,
+              CFTypeRef)>>('CFURLSetTemporaryResourcePropertyForKey');
+  late final _CFURLSetTemporaryResourcePropertyForKey2 =
+      _CFURLSetTemporaryResourcePropertyForKey2Ptr.asFunction<
+          void Function(CFURLRef, CFStringRef, CFTypeRef)>();
+
+  int CFURLResourceIsReachable2(
+    CFURLRef url,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFURLResourceIsReachable2(
+      url,
+      error,
+    );
+  }
+
+  late final _CFURLResourceIsReachable2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(
+              CFURLRef, ffi.Pointer<CFErrorRef>)>>('CFURLResourceIsReachable');
+  late final _CFURLResourceIsReachable2 = _CFURLResourceIsReachable2Ptr
+      .asFunction<int Function(CFURLRef, ffi.Pointer<CFErrorRef>)>();
+
+  CFDataRef CFURLCreateBookmarkData2(
+    CFAllocatorRef allocator,
+    CFURLRef url,
+    int options,
+    CFArrayRef resourcePropertiesToInclude,
+    CFURLRef relativeToURL,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFURLCreateBookmarkData2(
+      allocator,
+      url,
+      options,
+      resourcePropertiesToInclude,
+      relativeToURL,
+      error,
+    );
+  }
+
+  late final _CFURLCreateBookmarkData2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDataRef Function(CFAllocatorRef, CFURLRef, ffi.Int32, CFArrayRef,
+              CFURLRef, ffi.Pointer<CFErrorRef>)>>('CFURLCreateBookmarkData');
+  late final _CFURLCreateBookmarkData2 =
+      _CFURLCreateBookmarkData2Ptr.asFunction<
+          CFDataRef Function(CFAllocatorRef, CFURLRef, int, CFArrayRef,
+              CFURLRef, ffi.Pointer<CFErrorRef>)>();
+
+  CFURLRef CFURLCreateByResolvingBookmarkData2(
+    CFAllocatorRef allocator,
+    CFDataRef bookmark,
+    int options,
+    CFURLRef relativeToURL,
+    CFArrayRef resourcePropertiesToInclude,
+    ffi.Pointer<Boolean> isStale,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFURLCreateByResolvingBookmarkData2(
+      allocator,
+      bookmark,
+      options,
+      relativeToURL,
+      resourcePropertiesToInclude,
+      isStale,
+      error,
+    );
+  }
+
+  late final _CFURLCreateByResolvingBookmarkData2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(
+              CFAllocatorRef,
+              CFDataRef,
+              ffi.Int32,
+              CFURLRef,
+              CFArrayRef,
+              ffi.Pointer<Boolean>,
+              ffi.Pointer<CFErrorRef>)>>('CFURLCreateByResolvingBookmarkData');
+  late final _CFURLCreateByResolvingBookmarkData2 =
+      _CFURLCreateByResolvingBookmarkData2Ptr.asFunction<
+          CFURLRef Function(CFAllocatorRef, CFDataRef, int, CFURLRef,
+              CFArrayRef, ffi.Pointer<Boolean>, ffi.Pointer<CFErrorRef>)>();
+
+  CFDictionaryRef CFURLCreateResourcePropertiesForKeysFromBookmarkData2(
+    CFAllocatorRef allocator,
+    CFArrayRef resourcePropertiesToReturn,
+    CFDataRef bookmark,
+  ) {
+    return _CFURLCreateResourcePropertiesForKeysFromBookmarkData2(
+      allocator,
+      resourcePropertiesToReturn,
+      bookmark,
+    );
+  }
+
+  late final _CFURLCreateResourcePropertiesForKeysFromBookmarkData2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  CFDictionaryRef Function(
+                      CFAllocatorRef, CFArrayRef, CFDataRef)>>(
+          'CFURLCreateResourcePropertiesForKeysFromBookmarkData');
+  late final _CFURLCreateResourcePropertiesForKeysFromBookmarkData2 =
+      _CFURLCreateResourcePropertiesForKeysFromBookmarkData2Ptr.asFunction<
+          CFDictionaryRef Function(CFAllocatorRef, CFArrayRef, CFDataRef)>();
+
+  CFTypeRef CFURLCreateResourcePropertyForKeyFromBookmarkData2(
+    CFAllocatorRef allocator,
+    CFStringRef resourcePropertyKey,
+    CFDataRef bookmark,
+  ) {
+    return _CFURLCreateResourcePropertyForKeyFromBookmarkData2(
+      allocator,
+      resourcePropertyKey,
+      bookmark,
+    );
+  }
+
+  late final _CFURLCreateResourcePropertyForKeyFromBookmarkData2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTypeRef Function(CFAllocatorRef, CFStringRef,
+              CFDataRef)>>('CFURLCreateResourcePropertyForKeyFromBookmarkData');
+  late final _CFURLCreateResourcePropertyForKeyFromBookmarkData2 =
+      _CFURLCreateResourcePropertyForKeyFromBookmarkData2Ptr.asFunction<
+          CFTypeRef Function(CFAllocatorRef, CFStringRef, CFDataRef)>();
+
+  CFDataRef CFURLCreateBookmarkDataFromFile2(
+    CFAllocatorRef allocator,
+    CFURLRef fileURL,
+    ffi.Pointer<CFErrorRef> errorRef,
+  ) {
+    return _CFURLCreateBookmarkDataFromFile2(
+      allocator,
+      fileURL,
+      errorRef,
+    );
+  }
+
+  late final _CFURLCreateBookmarkDataFromFile2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDataRef Function(CFAllocatorRef, CFURLRef,
+              ffi.Pointer<CFErrorRef>)>>('CFURLCreateBookmarkDataFromFile');
+  late final _CFURLCreateBookmarkDataFromFile2 =
+      _CFURLCreateBookmarkDataFromFile2Ptr.asFunction<
+          CFDataRef Function(
+              CFAllocatorRef, CFURLRef, ffi.Pointer<CFErrorRef>)>();
+
+  int CFURLWriteBookmarkDataToFile2(
+    CFDataRef bookmarkRef,
+    CFURLRef fileURL,
+    int options,
+    ffi.Pointer<CFErrorRef> errorRef,
+  ) {
+    return _CFURLWriteBookmarkDataToFile2(
+      bookmarkRef,
+      fileURL,
+      options,
+      errorRef,
+    );
+  }
+
+  late final _CFURLWriteBookmarkDataToFile2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(
+              CFDataRef,
+              CFURLRef,
+              CFURLBookmarkFileCreationOptions,
+              ffi.Pointer<CFErrorRef>)>>('CFURLWriteBookmarkDataToFile');
+  late final _CFURLWriteBookmarkDataToFile2 =
+      _CFURLWriteBookmarkDataToFile2Ptr.asFunction<
+          int Function(CFDataRef, CFURLRef, int, ffi.Pointer<CFErrorRef>)>();
+
+  CFDataRef CFURLCreateBookmarkDataFromAliasRecord2(
+    CFAllocatorRef allocatorRef,
+    CFDataRef aliasRecordDataRef,
+  ) {
+    return _CFURLCreateBookmarkDataFromAliasRecord2(
+      allocatorRef,
+      aliasRecordDataRef,
+    );
+  }
+
+  late final _CFURLCreateBookmarkDataFromAliasRecord2Ptr = _lookup<
+          ffi.NativeFunction<CFDataRef Function(CFAllocatorRef, CFDataRef)>>(
+      'CFURLCreateBookmarkDataFromAliasRecord');
+  late final _CFURLCreateBookmarkDataFromAliasRecord2 =
+      _CFURLCreateBookmarkDataFromAliasRecord2Ptr.asFunction<
+          CFDataRef Function(CFAllocatorRef, CFDataRef)>();
+
+  int CFURLStartAccessingSecurityScopedResource2(
+    CFURLRef url,
+  ) {
+    return _CFURLStartAccessingSecurityScopedResource2(
+      url,
+    );
+  }
+
+  late final _CFURLStartAccessingSecurityScopedResource2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFURLRef)>>(
+          'CFURLStartAccessingSecurityScopedResource');
+  late final _CFURLStartAccessingSecurityScopedResource2 =
+      _CFURLStartAccessingSecurityScopedResource2Ptr.asFunction<
+          int Function(CFURLRef)>();
+
+  void CFURLStopAccessingSecurityScopedResource2(
+    CFURLRef url,
+  ) {
+    return _CFURLStopAccessingSecurityScopedResource2(
+      url,
+    );
+  }
+
+  late final _CFURLStopAccessingSecurityScopedResource2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFURLRef)>>(
+          'CFURLStopAccessingSecurityScopedResource');
+  late final _CFURLStopAccessingSecurityScopedResource2 =
+      _CFURLStopAccessingSecurityScopedResource2Ptr.asFunction<
+          void Function(CFURLRef)>();
+
+  int CFRunLoopGetTypeID2() {
+    return _CFRunLoopGetTypeID2();
+  }
+
+  late final _CFRunLoopGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFRunLoopGetTypeID');
+  late final _CFRunLoopGetTypeID2 =
+      _CFRunLoopGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFRunLoopRef CFRunLoopGetCurrent2() {
+    return _CFRunLoopGetCurrent2();
+  }
+
+  late final _CFRunLoopGetCurrent2Ptr =
+      _lookup<ffi.NativeFunction<CFRunLoopRef Function()>>(
+          'CFRunLoopGetCurrent');
+  late final _CFRunLoopGetCurrent2 =
+      _CFRunLoopGetCurrent2Ptr.asFunction<CFRunLoopRef Function()>();
+
+  CFRunLoopRef CFRunLoopGetMain2() {
+    return _CFRunLoopGetMain2();
+  }
+
+  late final _CFRunLoopGetMain2Ptr =
+      _lookup<ffi.NativeFunction<CFRunLoopRef Function()>>('CFRunLoopGetMain');
+  late final _CFRunLoopGetMain2 =
+      _CFRunLoopGetMain2Ptr.asFunction<CFRunLoopRef Function()>();
+
+  CFRunLoopMode CFRunLoopCopyCurrentMode2(
+    CFRunLoopRef rl,
+  ) {
+    return _CFRunLoopCopyCurrentMode2(
+      rl,
+    );
+  }
+
+  late final _CFRunLoopCopyCurrentMode2Ptr =
+      _lookup<ffi.NativeFunction<CFRunLoopMode Function(CFRunLoopRef)>>(
+          'CFRunLoopCopyCurrentMode');
+  late final _CFRunLoopCopyCurrentMode2 = _CFRunLoopCopyCurrentMode2Ptr
+      .asFunction<CFRunLoopMode Function(CFRunLoopRef)>();
+
+  CFArrayRef CFRunLoopCopyAllModes2(
+    CFRunLoopRef rl,
+  ) {
+    return _CFRunLoopCopyAllModes2(
+      rl,
+    );
+  }
+
+  late final _CFRunLoopCopyAllModes2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function(CFRunLoopRef)>>(
+          'CFRunLoopCopyAllModes');
+  late final _CFRunLoopCopyAllModes2 = _CFRunLoopCopyAllModes2Ptr.asFunction<
+      CFArrayRef Function(CFRunLoopRef)>();
+
+  void CFRunLoopAddCommonMode2(
+    CFRunLoopRef rl,
+    CFRunLoopMode mode,
+  ) {
+    return _CFRunLoopAddCommonMode2(
+      rl,
+      mode,
+    );
+  }
+
+  late final _CFRunLoopAddCommonMode2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(CFRunLoopRef, CFRunLoopMode)>>(
+      'CFRunLoopAddCommonMode');
+  late final _CFRunLoopAddCommonMode2 = _CFRunLoopAddCommonMode2Ptr.asFunction<
+      void Function(CFRunLoopRef, CFRunLoopMode)>();
+
+  double CFRunLoopGetNextTimerFireDate2(
+    CFRunLoopRef rl,
+    CFRunLoopMode mode,
+  ) {
+    return _CFRunLoopGetNextTimerFireDate2(
+      rl,
+      mode,
+    );
+  }
+
+  late final _CFRunLoopGetNextTimerFireDate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFAbsoluteTime Function(
+              CFRunLoopRef, CFRunLoopMode)>>('CFRunLoopGetNextTimerFireDate');
+  late final _CFRunLoopGetNextTimerFireDate2 =
+      _CFRunLoopGetNextTimerFireDate2Ptr.asFunction<
+          double Function(CFRunLoopRef, CFRunLoopMode)>();
+
+  void CFRunLoopRun2() {
+    return _CFRunLoopRun2();
+  }
+
+  late final _CFRunLoopRun2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('CFRunLoopRun');
+  late final _CFRunLoopRun2 = _CFRunLoopRun2Ptr.asFunction<void Function()>();
+
+  int CFRunLoopRunInMode2(
+    CFRunLoopMode mode,
+    double seconds,
+    int returnAfterSourceHandled,
+  ) {
+    return _CFRunLoopRunInMode2(
+      mode,
+      seconds,
+      returnAfterSourceHandled,
+    );
+  }
+
+  late final _CFRunLoopRunInMode2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              CFRunLoopMode, CFTimeInterval, Boolean)>>('CFRunLoopRunInMode');
+  late final _CFRunLoopRunInMode2 = _CFRunLoopRunInMode2Ptr.asFunction<
+      int Function(CFRunLoopMode, double, int)>();
+
+  int CFRunLoopIsWaiting2(
+    CFRunLoopRef rl,
+  ) {
+    return _CFRunLoopIsWaiting2(
+      rl,
+    );
+  }
+
+  late final _CFRunLoopIsWaiting2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFRunLoopRef)>>(
+          'CFRunLoopIsWaiting');
+  late final _CFRunLoopIsWaiting2 =
+      _CFRunLoopIsWaiting2Ptr.asFunction<int Function(CFRunLoopRef)>();
+
+  void CFRunLoopWakeUp2(
+    CFRunLoopRef rl,
+  ) {
+    return _CFRunLoopWakeUp2(
+      rl,
+    );
+  }
+
+  late final _CFRunLoopWakeUp2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFRunLoopRef)>>(
+          'CFRunLoopWakeUp');
+  late final _CFRunLoopWakeUp2 =
+      _CFRunLoopWakeUp2Ptr.asFunction<void Function(CFRunLoopRef)>();
+
+  void CFRunLoopStop2(
+    CFRunLoopRef rl,
+  ) {
+    return _CFRunLoopStop2(
+      rl,
+    );
+  }
+
+  late final _CFRunLoopStop2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFRunLoopRef)>>(
+          'CFRunLoopStop');
+  late final _CFRunLoopStop2 =
+      _CFRunLoopStop2Ptr.asFunction<void Function(CFRunLoopRef)>();
+
+  void CFRunLoopPerformBlock2(
+    CFRunLoopRef rl,
+    CFTypeRef mode,
+    ffi.Pointer<_ObjCBlock> block,
+  ) {
+    return _CFRunLoopPerformBlock2(
+      rl,
+      mode,
+      block,
+    );
+  }
+
+  late final _CFRunLoopPerformBlock2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFRunLoopRef, CFTypeRef,
+              ffi.Pointer<_ObjCBlock>)>>('CFRunLoopPerformBlock');
+  late final _CFRunLoopPerformBlock2 = _CFRunLoopPerformBlock2Ptr.asFunction<
+      void Function(CFRunLoopRef, CFTypeRef, ffi.Pointer<_ObjCBlock>)>();
+
+  int CFRunLoopContainsSource2(
+    CFRunLoopRef rl,
+    CFRunLoopSourceRef source,
+    CFRunLoopMode mode,
+  ) {
+    return _CFRunLoopContainsSource2(
+      rl,
+      source,
+      mode,
+    );
+  }
+
+  late final _CFRunLoopContainsSource2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFRunLoopRef, CFRunLoopSourceRef,
+              CFRunLoopMode)>>('CFRunLoopContainsSource');
+  late final _CFRunLoopContainsSource2 =
+      _CFRunLoopContainsSource2Ptr.asFunction<
+          int Function(CFRunLoopRef, CFRunLoopSourceRef, CFRunLoopMode)>();
+
+  void CFRunLoopAddSource2(
+    CFRunLoopRef rl,
+    CFRunLoopSourceRef source,
+    CFRunLoopMode mode,
+  ) {
+    return _CFRunLoopAddSource2(
+      rl,
+      source,
+      mode,
+    );
+  }
+
+  late final _CFRunLoopAddSource2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFRunLoopRef, CFRunLoopSourceRef,
+              CFRunLoopMode)>>('CFRunLoopAddSource');
+  late final _CFRunLoopAddSource2 = _CFRunLoopAddSource2Ptr.asFunction<
+      void Function(CFRunLoopRef, CFRunLoopSourceRef, CFRunLoopMode)>();
+
+  void CFRunLoopRemoveSource2(
+    CFRunLoopRef rl,
+    CFRunLoopSourceRef source,
+    CFRunLoopMode mode,
+  ) {
+    return _CFRunLoopRemoveSource2(
+      rl,
+      source,
+      mode,
+    );
+  }
+
+  late final _CFRunLoopRemoveSource2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFRunLoopRef, CFRunLoopSourceRef,
+              CFRunLoopMode)>>('CFRunLoopRemoveSource');
+  late final _CFRunLoopRemoveSource2 = _CFRunLoopRemoveSource2Ptr.asFunction<
+      void Function(CFRunLoopRef, CFRunLoopSourceRef, CFRunLoopMode)>();
+
+  int CFRunLoopContainsObserver2(
+    CFRunLoopRef rl,
+    CFRunLoopObserverRef observer,
+    CFRunLoopMode mode,
+  ) {
+    return _CFRunLoopContainsObserver2(
+      rl,
+      observer,
+      mode,
+    );
+  }
+
+  late final _CFRunLoopContainsObserver2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFRunLoopRef, CFRunLoopObserverRef,
+              CFRunLoopMode)>>('CFRunLoopContainsObserver');
+  late final _CFRunLoopContainsObserver2 =
+      _CFRunLoopContainsObserver2Ptr.asFunction<
+          int Function(CFRunLoopRef, CFRunLoopObserverRef, CFRunLoopMode)>();
+
+  void CFRunLoopAddObserver2(
+    CFRunLoopRef rl,
+    CFRunLoopObserverRef observer,
+    CFRunLoopMode mode,
+  ) {
+    return _CFRunLoopAddObserver2(
+      rl,
+      observer,
+      mode,
+    );
+  }
+
+  late final _CFRunLoopAddObserver2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFRunLoopRef, CFRunLoopObserverRef,
+              CFRunLoopMode)>>('CFRunLoopAddObserver');
+  late final _CFRunLoopAddObserver2 = _CFRunLoopAddObserver2Ptr.asFunction<
+      void Function(CFRunLoopRef, CFRunLoopObserverRef, CFRunLoopMode)>();
+
+  void CFRunLoopRemoveObserver2(
+    CFRunLoopRef rl,
+    CFRunLoopObserverRef observer,
+    CFRunLoopMode mode,
+  ) {
+    return _CFRunLoopRemoveObserver2(
+      rl,
+      observer,
+      mode,
+    );
+  }
+
+  late final _CFRunLoopRemoveObserver2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFRunLoopRef, CFRunLoopObserverRef,
+              CFRunLoopMode)>>('CFRunLoopRemoveObserver');
+  late final _CFRunLoopRemoveObserver2 =
+      _CFRunLoopRemoveObserver2Ptr.asFunction<
+          void Function(CFRunLoopRef, CFRunLoopObserverRef, CFRunLoopMode)>();
+
+  int CFRunLoopContainsTimer2(
+    CFRunLoopRef rl,
+    CFRunLoopTimerRef timer,
+    CFRunLoopMode mode,
+  ) {
+    return _CFRunLoopContainsTimer2(
+      rl,
+      timer,
+      mode,
+    );
+  }
+
+  late final _CFRunLoopContainsTimer2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFRunLoopRef, CFRunLoopTimerRef,
+              CFRunLoopMode)>>('CFRunLoopContainsTimer');
+  late final _CFRunLoopContainsTimer2 = _CFRunLoopContainsTimer2Ptr.asFunction<
+      int Function(CFRunLoopRef, CFRunLoopTimerRef, CFRunLoopMode)>();
+
+  void CFRunLoopAddTimer2(
+    CFRunLoopRef rl,
+    CFRunLoopTimerRef timer,
+    CFRunLoopMode mode,
+  ) {
+    return _CFRunLoopAddTimer2(
+      rl,
+      timer,
+      mode,
+    );
+  }
+
+  late final _CFRunLoopAddTimer2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFRunLoopRef, CFRunLoopTimerRef,
+              CFRunLoopMode)>>('CFRunLoopAddTimer');
+  late final _CFRunLoopAddTimer2 = _CFRunLoopAddTimer2Ptr.asFunction<
+      void Function(CFRunLoopRef, CFRunLoopTimerRef, CFRunLoopMode)>();
+
+  void CFRunLoopRemoveTimer2(
+    CFRunLoopRef rl,
+    CFRunLoopTimerRef timer,
+    CFRunLoopMode mode,
+  ) {
+    return _CFRunLoopRemoveTimer2(
+      rl,
+      timer,
+      mode,
+    );
+  }
+
+  late final _CFRunLoopRemoveTimer2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFRunLoopRef, CFRunLoopTimerRef,
+              CFRunLoopMode)>>('CFRunLoopRemoveTimer');
+  late final _CFRunLoopRemoveTimer2 = _CFRunLoopRemoveTimer2Ptr.asFunction<
+      void Function(CFRunLoopRef, CFRunLoopTimerRef, CFRunLoopMode)>();
+
+  int CFRunLoopSourceGetTypeID2() {
+    return _CFRunLoopSourceGetTypeID2();
+  }
+
+  late final _CFRunLoopSourceGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFRunLoopSourceGetTypeID');
+  late final _CFRunLoopSourceGetTypeID2 =
+      _CFRunLoopSourceGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFRunLoopSourceRef CFRunLoopSourceCreate2(
+    CFAllocatorRef allocator,
+    int order,
+    ffi.Pointer<CFRunLoopSourceContext> context,
+  ) {
+    return _CFRunLoopSourceCreate2(
+      allocator,
+      order,
+      context,
+    );
+  }
+
+  late final _CFRunLoopSourceCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFRunLoopSourceRef Function(CFAllocatorRef, CFIndex,
+              ffi.Pointer<CFRunLoopSourceContext>)>>('CFRunLoopSourceCreate');
+  late final _CFRunLoopSourceCreate2 = _CFRunLoopSourceCreate2Ptr.asFunction<
+      CFRunLoopSourceRef Function(
+          CFAllocatorRef, int, ffi.Pointer<CFRunLoopSourceContext>)>();
+
+  int CFRunLoopSourceGetOrder2(
+    CFRunLoopSourceRef source,
+  ) {
+    return _CFRunLoopSourceGetOrder2(
+      source,
+    );
+  }
+
+  late final _CFRunLoopSourceGetOrder2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFRunLoopSourceRef)>>(
+          'CFRunLoopSourceGetOrder');
+  late final _CFRunLoopSourceGetOrder2 = _CFRunLoopSourceGetOrder2Ptr
+      .asFunction<int Function(CFRunLoopSourceRef)>();
+
+  void CFRunLoopSourceInvalidate2(
+    CFRunLoopSourceRef source,
+  ) {
+    return _CFRunLoopSourceInvalidate2(
+      source,
+    );
+  }
+
+  late final _CFRunLoopSourceInvalidate2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFRunLoopSourceRef)>>(
+          'CFRunLoopSourceInvalidate');
+  late final _CFRunLoopSourceInvalidate2 = _CFRunLoopSourceInvalidate2Ptr
+      .asFunction<void Function(CFRunLoopSourceRef)>();
+
+  int CFRunLoopSourceIsValid2(
+    CFRunLoopSourceRef source,
+  ) {
+    return _CFRunLoopSourceIsValid2(
+      source,
+    );
+  }
+
+  late final _CFRunLoopSourceIsValid2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFRunLoopSourceRef)>>(
+          'CFRunLoopSourceIsValid');
+  late final _CFRunLoopSourceIsValid2 = _CFRunLoopSourceIsValid2Ptr.asFunction<
+      int Function(CFRunLoopSourceRef)>();
+
+  void CFRunLoopSourceGetContext2(
+    CFRunLoopSourceRef source,
+    ffi.Pointer<CFRunLoopSourceContext> context,
+  ) {
+    return _CFRunLoopSourceGetContext2(
+      source,
+      context,
+    );
+  }
+
+  late final _CFRunLoopSourceGetContext2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  CFRunLoopSourceRef, ffi.Pointer<CFRunLoopSourceContext>)>>(
+      'CFRunLoopSourceGetContext');
+  late final _CFRunLoopSourceGetContext2 =
+      _CFRunLoopSourceGetContext2Ptr.asFunction<
+          void Function(
+              CFRunLoopSourceRef, ffi.Pointer<CFRunLoopSourceContext>)>();
+
+  void CFRunLoopSourceSignal2(
+    CFRunLoopSourceRef source,
+  ) {
+    return _CFRunLoopSourceSignal2(
+      source,
+    );
+  }
+
+  late final _CFRunLoopSourceSignal2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFRunLoopSourceRef)>>(
+          'CFRunLoopSourceSignal');
+  late final _CFRunLoopSourceSignal2 = _CFRunLoopSourceSignal2Ptr.asFunction<
+      void Function(CFRunLoopSourceRef)>();
+
+  int CFRunLoopObserverGetTypeID2() {
+    return _CFRunLoopObserverGetTypeID2();
+  }
+
+  late final _CFRunLoopObserverGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFRunLoopObserverGetTypeID');
+  late final _CFRunLoopObserverGetTypeID2 =
+      _CFRunLoopObserverGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFRunLoopObserverRef CFRunLoopObserverCreate2(
+    CFAllocatorRef allocator,
+    int activities,
+    int repeats,
+    int order,
+    CFRunLoopObserverCallBack callout,
+    ffi.Pointer<CFRunLoopObserverContext> context,
+  ) {
+    return _CFRunLoopObserverCreate2(
+      allocator,
+      activities,
+      repeats,
+      order,
+      callout,
+      context,
+    );
+  }
+
+  late final _CFRunLoopObserverCreate2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFRunLoopObserverRef Function(
+                  CFAllocatorRef,
+                  CFOptionFlags,
+                  Boolean,
+                  CFIndex,
+                  CFRunLoopObserverCallBack,
+                  ffi.Pointer<CFRunLoopObserverContext>)>>(
+      'CFRunLoopObserverCreate');
+  late final _CFRunLoopObserverCreate2 =
+      _CFRunLoopObserverCreate2Ptr.asFunction<
+          CFRunLoopObserverRef Function(
+              CFAllocatorRef,
+              int,
+              int,
+              int,
+              CFRunLoopObserverCallBack,
+              ffi.Pointer<CFRunLoopObserverContext>)>();
+
+  CFRunLoopObserverRef CFRunLoopObserverCreateWithHandler2(
+    CFAllocatorRef allocator,
+    int activities,
+    int repeats,
+    int order,
+    ffi.Pointer<_ObjCBlock> block,
+  ) {
+    return _CFRunLoopObserverCreateWithHandler2(
+      allocator,
+      activities,
+      repeats,
+      order,
+      block,
+    );
+  }
+
+  late final _CFRunLoopObserverCreateWithHandler2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFRunLoopObserverRef Function(
+              CFAllocatorRef,
+              CFOptionFlags,
+              Boolean,
+              CFIndex,
+              ffi.Pointer<_ObjCBlock>)>>('CFRunLoopObserverCreateWithHandler');
+  late final _CFRunLoopObserverCreateWithHandler2 =
+      _CFRunLoopObserverCreateWithHandler2Ptr.asFunction<
+          CFRunLoopObserverRef Function(
+              CFAllocatorRef, int, int, int, ffi.Pointer<_ObjCBlock>)>();
+
+  int CFRunLoopObserverGetActivities2(
+    CFRunLoopObserverRef observer,
+  ) {
+    return _CFRunLoopObserverGetActivities2(
+      observer,
+    );
+  }
+
+  late final _CFRunLoopObserverGetActivities2Ptr =
+      _lookup<ffi.NativeFunction<CFOptionFlags Function(CFRunLoopObserverRef)>>(
+          'CFRunLoopObserverGetActivities');
+  late final _CFRunLoopObserverGetActivities2 =
+      _CFRunLoopObserverGetActivities2Ptr.asFunction<
+          int Function(CFRunLoopObserverRef)>();
+
+  int CFRunLoopObserverDoesRepeat2(
+    CFRunLoopObserverRef observer,
+  ) {
+    return _CFRunLoopObserverDoesRepeat2(
+      observer,
+    );
+  }
+
+  late final _CFRunLoopObserverDoesRepeat2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFRunLoopObserverRef)>>(
+          'CFRunLoopObserverDoesRepeat');
+  late final _CFRunLoopObserverDoesRepeat2 = _CFRunLoopObserverDoesRepeat2Ptr
+      .asFunction<int Function(CFRunLoopObserverRef)>();
+
+  int CFRunLoopObserverGetOrder2(
+    CFRunLoopObserverRef observer,
+  ) {
+    return _CFRunLoopObserverGetOrder2(
+      observer,
+    );
+  }
+
+  late final _CFRunLoopObserverGetOrder2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFRunLoopObserverRef)>>(
+          'CFRunLoopObserverGetOrder');
+  late final _CFRunLoopObserverGetOrder2 = _CFRunLoopObserverGetOrder2Ptr
+      .asFunction<int Function(CFRunLoopObserverRef)>();
+
+  void CFRunLoopObserverInvalidate2(
+    CFRunLoopObserverRef observer,
+  ) {
+    return _CFRunLoopObserverInvalidate2(
+      observer,
+    );
+  }
+
+  late final _CFRunLoopObserverInvalidate2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFRunLoopObserverRef)>>(
+          'CFRunLoopObserverInvalidate');
+  late final _CFRunLoopObserverInvalidate2 = _CFRunLoopObserverInvalidate2Ptr
+      .asFunction<void Function(CFRunLoopObserverRef)>();
+
+  int CFRunLoopObserverIsValid2(
+    CFRunLoopObserverRef observer,
+  ) {
+    return _CFRunLoopObserverIsValid2(
+      observer,
+    );
+  }
+
+  late final _CFRunLoopObserverIsValid2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFRunLoopObserverRef)>>(
+          'CFRunLoopObserverIsValid');
+  late final _CFRunLoopObserverIsValid2 = _CFRunLoopObserverIsValid2Ptr
+      .asFunction<int Function(CFRunLoopObserverRef)>();
+
+  void CFRunLoopObserverGetContext2(
+    CFRunLoopObserverRef observer,
+    ffi.Pointer<CFRunLoopObserverContext> context,
+  ) {
+    return _CFRunLoopObserverGetContext2(
+      observer,
+      context,
+    );
+  }
+
+  late final _CFRunLoopObserverGetContext2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(CFRunLoopObserverRef,
+                  ffi.Pointer<CFRunLoopObserverContext>)>>(
+      'CFRunLoopObserverGetContext');
+  late final _CFRunLoopObserverGetContext2 =
+      _CFRunLoopObserverGetContext2Ptr.asFunction<
+          void Function(
+              CFRunLoopObserverRef, ffi.Pointer<CFRunLoopObserverContext>)>();
+
+  int CFRunLoopTimerGetTypeID2() {
+    return _CFRunLoopTimerGetTypeID2();
+  }
+
+  late final _CFRunLoopTimerGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFRunLoopTimerGetTypeID');
+  late final _CFRunLoopTimerGetTypeID2 =
+      _CFRunLoopTimerGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFRunLoopTimerRef CFRunLoopTimerCreate2(
+    CFAllocatorRef allocator,
+    double fireDate,
+    double interval,
+    int flags,
+    int order,
+    CFRunLoopTimerCallBack callout,
+    ffi.Pointer<CFRunLoopTimerContext> context,
+  ) {
+    return _CFRunLoopTimerCreate2(
+      allocator,
+      fireDate,
+      interval,
+      flags,
+      order,
+      callout,
+      context,
+    );
+  }
+
+  late final _CFRunLoopTimerCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFRunLoopTimerRef Function(
+              CFAllocatorRef,
+              CFAbsoluteTime,
+              CFTimeInterval,
+              CFOptionFlags,
+              CFIndex,
+              CFRunLoopTimerCallBack,
+              ffi.Pointer<CFRunLoopTimerContext>)>>('CFRunLoopTimerCreate');
+  late final _CFRunLoopTimerCreate2 = _CFRunLoopTimerCreate2Ptr.asFunction<
+      CFRunLoopTimerRef Function(CFAllocatorRef, double, double, int, int,
+          CFRunLoopTimerCallBack, ffi.Pointer<CFRunLoopTimerContext>)>();
+
+  CFRunLoopTimerRef CFRunLoopTimerCreateWithHandler2(
+    CFAllocatorRef allocator,
+    double fireDate,
+    double interval,
+    int flags,
+    int order,
+    ffi.Pointer<_ObjCBlock> block,
+  ) {
+    return _CFRunLoopTimerCreateWithHandler2(
+      allocator,
+      fireDate,
+      interval,
+      flags,
+      order,
+      block,
+    );
+  }
+
+  late final _CFRunLoopTimerCreateWithHandler2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFRunLoopTimerRef Function(
+              CFAllocatorRef,
+              CFAbsoluteTime,
+              CFTimeInterval,
+              CFOptionFlags,
+              CFIndex,
+              ffi.Pointer<_ObjCBlock>)>>('CFRunLoopTimerCreateWithHandler');
+  late final _CFRunLoopTimerCreateWithHandler2 =
+      _CFRunLoopTimerCreateWithHandler2Ptr.asFunction<
+          CFRunLoopTimerRef Function(CFAllocatorRef, double, double, int, int,
+              ffi.Pointer<_ObjCBlock>)>();
+
+  double CFRunLoopTimerGetNextFireDate2(
+    CFRunLoopTimerRef timer,
+  ) {
+    return _CFRunLoopTimerGetNextFireDate2(
+      timer,
+    );
+  }
+
+  late final _CFRunLoopTimerGetNextFireDate2Ptr =
+      _lookup<ffi.NativeFunction<CFAbsoluteTime Function(CFRunLoopTimerRef)>>(
+          'CFRunLoopTimerGetNextFireDate');
+  late final _CFRunLoopTimerGetNextFireDate2 =
+      _CFRunLoopTimerGetNextFireDate2Ptr.asFunction<
+          double Function(CFRunLoopTimerRef)>();
+
+  void CFRunLoopTimerSetNextFireDate2(
+    CFRunLoopTimerRef timer,
+    double fireDate,
+  ) {
+    return _CFRunLoopTimerSetNextFireDate2(
+      timer,
+      fireDate,
+    );
+  }
+
+  late final _CFRunLoopTimerSetNextFireDate2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFRunLoopTimerRef,
+              CFAbsoluteTime)>>('CFRunLoopTimerSetNextFireDate');
+  late final _CFRunLoopTimerSetNextFireDate2 =
+      _CFRunLoopTimerSetNextFireDate2Ptr.asFunction<
+          void Function(CFRunLoopTimerRef, double)>();
+
+  double CFRunLoopTimerGetInterval2(
+    CFRunLoopTimerRef timer,
+  ) {
+    return _CFRunLoopTimerGetInterval2(
+      timer,
+    );
+  }
+
+  late final _CFRunLoopTimerGetInterval2Ptr =
+      _lookup<ffi.NativeFunction<CFTimeInterval Function(CFRunLoopTimerRef)>>(
+          'CFRunLoopTimerGetInterval');
+  late final _CFRunLoopTimerGetInterval2 = _CFRunLoopTimerGetInterval2Ptr
+      .asFunction<double Function(CFRunLoopTimerRef)>();
+
+  int CFRunLoopTimerDoesRepeat2(
+    CFRunLoopTimerRef timer,
+  ) {
+    return _CFRunLoopTimerDoesRepeat2(
+      timer,
+    );
+  }
+
+  late final _CFRunLoopTimerDoesRepeat2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFRunLoopTimerRef)>>(
+          'CFRunLoopTimerDoesRepeat');
+  late final _CFRunLoopTimerDoesRepeat2 = _CFRunLoopTimerDoesRepeat2Ptr
+      .asFunction<int Function(CFRunLoopTimerRef)>();
+
+  int CFRunLoopTimerGetOrder2(
+    CFRunLoopTimerRef timer,
+  ) {
+    return _CFRunLoopTimerGetOrder2(
+      timer,
+    );
+  }
+
+  late final _CFRunLoopTimerGetOrder2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFRunLoopTimerRef)>>(
+          'CFRunLoopTimerGetOrder');
+  late final _CFRunLoopTimerGetOrder2 =
+      _CFRunLoopTimerGetOrder2Ptr.asFunction<int Function(CFRunLoopTimerRef)>();
+
+  void CFRunLoopTimerInvalidate2(
+    CFRunLoopTimerRef timer,
+  ) {
+    return _CFRunLoopTimerInvalidate2(
+      timer,
+    );
+  }
+
+  late final _CFRunLoopTimerInvalidate2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFRunLoopTimerRef)>>(
+          'CFRunLoopTimerInvalidate');
+  late final _CFRunLoopTimerInvalidate2 = _CFRunLoopTimerInvalidate2Ptr
+      .asFunction<void Function(CFRunLoopTimerRef)>();
+
+  int CFRunLoopTimerIsValid2(
+    CFRunLoopTimerRef timer,
+  ) {
+    return _CFRunLoopTimerIsValid2(
+      timer,
+    );
+  }
+
+  late final _CFRunLoopTimerIsValid2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFRunLoopTimerRef)>>(
+          'CFRunLoopTimerIsValid');
+  late final _CFRunLoopTimerIsValid2 =
+      _CFRunLoopTimerIsValid2Ptr.asFunction<int Function(CFRunLoopTimerRef)>();
+
+  void CFRunLoopTimerGetContext2(
+    CFRunLoopTimerRef timer,
+    ffi.Pointer<CFRunLoopTimerContext> context,
+  ) {
+    return _CFRunLoopTimerGetContext2(
+      timer,
+      context,
+    );
+  }
+
+  late final _CFRunLoopTimerGetContext2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFRunLoopTimerRef,
+              ffi.Pointer<CFRunLoopTimerContext>)>>('CFRunLoopTimerGetContext');
+  late final _CFRunLoopTimerGetContext2 =
+      _CFRunLoopTimerGetContext2Ptr.asFunction<
+          void Function(
+              CFRunLoopTimerRef, ffi.Pointer<CFRunLoopTimerContext>)>();
+
+  double CFRunLoopTimerGetTolerance2(
+    CFRunLoopTimerRef timer,
+  ) {
+    return _CFRunLoopTimerGetTolerance2(
+      timer,
+    );
+  }
+
+  late final _CFRunLoopTimerGetTolerance2Ptr =
+      _lookup<ffi.NativeFunction<CFTimeInterval Function(CFRunLoopTimerRef)>>(
+          'CFRunLoopTimerGetTolerance');
+  late final _CFRunLoopTimerGetTolerance2 = _CFRunLoopTimerGetTolerance2Ptr
+      .asFunction<double Function(CFRunLoopTimerRef)>();
+
+  void CFRunLoopTimerSetTolerance2(
+    CFRunLoopTimerRef timer,
+    double tolerance,
+  ) {
+    return _CFRunLoopTimerSetTolerance2(
+      timer,
+      tolerance,
+    );
+  }
+
+  late final _CFRunLoopTimerSetTolerance2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFRunLoopTimerRef,
+              CFTimeInterval)>>('CFRunLoopTimerSetTolerance');
+  late final _CFRunLoopTimerSetTolerance2 = _CFRunLoopTimerSetTolerance2Ptr
+      .asFunction<void Function(CFRunLoopTimerRef, double)>();
+
+  int CFSocketGetTypeID2() {
+    return _CFSocketGetTypeID2();
+  }
+
+  late final _CFSocketGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFSocketGetTypeID');
+  late final _CFSocketGetTypeID2 =
+      _CFSocketGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFSocketRef CFSocketCreate2(
+    CFAllocatorRef allocator,
+    int protocolFamily,
+    int socketType,
+    int protocol,
+    int callBackTypes,
+    CFSocketCallBack callout,
+    ffi.Pointer<CFSocketContext> context,
+  ) {
+    return _CFSocketCreate2(
+      allocator,
+      protocolFamily,
+      socketType,
+      protocol,
+      callBackTypes,
+      callout,
+      context,
+    );
+  }
+
+  late final _CFSocketCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFSocketRef Function(
+              CFAllocatorRef,
+              SInt32,
+              SInt32,
+              SInt32,
+              CFOptionFlags,
+              CFSocketCallBack,
+              ffi.Pointer<CFSocketContext>)>>('CFSocketCreate');
+  late final _CFSocketCreate2 = _CFSocketCreate2Ptr.asFunction<
+      CFSocketRef Function(CFAllocatorRef, int, int, int, int, CFSocketCallBack,
+          ffi.Pointer<CFSocketContext>)>();
+
+  CFSocketRef CFSocketCreateWithNative2(
+    CFAllocatorRef allocator,
+    int sock,
+    int callBackTypes,
+    CFSocketCallBack callout,
+    ffi.Pointer<CFSocketContext> context,
+  ) {
+    return _CFSocketCreateWithNative2(
+      allocator,
+      sock,
+      callBackTypes,
+      callout,
+      context,
+    );
+  }
+
+  late final _CFSocketCreateWithNative2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFSocketRef Function(
+              CFAllocatorRef,
+              CFSocketNativeHandle,
+              CFOptionFlags,
+              CFSocketCallBack,
+              ffi.Pointer<CFSocketContext>)>>('CFSocketCreateWithNative');
+  late final _CFSocketCreateWithNative2 =
+      _CFSocketCreateWithNative2Ptr.asFunction<
+          CFSocketRef Function(CFAllocatorRef, int, int, CFSocketCallBack,
+              ffi.Pointer<CFSocketContext>)>();
+
+  CFSocketRef CFSocketCreateWithSocketSignature2(
+    CFAllocatorRef allocator,
+    ffi.Pointer<CFSocketSignature> signature,
+    int callBackTypes,
+    CFSocketCallBack callout,
+    ffi.Pointer<CFSocketContext> context,
+  ) {
+    return _CFSocketCreateWithSocketSignature2(
+      allocator,
+      signature,
+      callBackTypes,
+      callout,
+      context,
+    );
+  }
+
+  late final _CFSocketCreateWithSocketSignature2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFSocketRef Function(
+                  CFAllocatorRef,
+                  ffi.Pointer<CFSocketSignature>,
+                  CFOptionFlags,
+                  CFSocketCallBack,
+                  ffi.Pointer<CFSocketContext>)>>(
+      'CFSocketCreateWithSocketSignature');
+  late final _CFSocketCreateWithSocketSignature2 =
+      _CFSocketCreateWithSocketSignature2Ptr.asFunction<
+          CFSocketRef Function(CFAllocatorRef, ffi.Pointer<CFSocketSignature>,
+              int, CFSocketCallBack, ffi.Pointer<CFSocketContext>)>();
+
+  CFSocketRef CFSocketCreateConnectedToSocketSignature2(
+    CFAllocatorRef allocator,
+    ffi.Pointer<CFSocketSignature> signature,
+    int callBackTypes,
+    CFSocketCallBack callout,
+    ffi.Pointer<CFSocketContext> context,
+    double timeout,
+  ) {
+    return _CFSocketCreateConnectedToSocketSignature2(
+      allocator,
+      signature,
+      callBackTypes,
+      callout,
+      context,
+      timeout,
+    );
+  }
+
+  late final _CFSocketCreateConnectedToSocketSignature2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFSocketRef Function(
+              CFAllocatorRef,
+              ffi.Pointer<CFSocketSignature>,
+              CFOptionFlags,
+              CFSocketCallBack,
+              ffi.Pointer<CFSocketContext>,
+              CFTimeInterval)>>('CFSocketCreateConnectedToSocketSignature');
+  late final _CFSocketCreateConnectedToSocketSignature2 =
+      _CFSocketCreateConnectedToSocketSignature2Ptr.asFunction<
+          CFSocketRef Function(CFAllocatorRef, ffi.Pointer<CFSocketSignature>,
+              int, CFSocketCallBack, ffi.Pointer<CFSocketContext>, double)>();
+
+  int CFSocketSetAddress2(
+    CFSocketRef s,
+    CFDataRef address,
+  ) {
+    return _CFSocketSetAddress2(
+      s,
+      address,
+    );
+  }
+
+  late final _CFSocketSetAddress2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(CFSocketRef, CFDataRef)>>(
+          'CFSocketSetAddress');
+  late final _CFSocketSetAddress2 = _CFSocketSetAddress2Ptr.asFunction<
+      int Function(CFSocketRef, CFDataRef)>();
+
+  int CFSocketConnectToAddress2(
+    CFSocketRef s,
+    CFDataRef address,
+    double timeout,
+  ) {
+    return _CFSocketConnectToAddress2(
+      s,
+      address,
+      timeout,
+    );
+  }
+
+  late final _CFSocketConnectToAddress2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(CFSocketRef, CFDataRef,
+              CFTimeInterval)>>('CFSocketConnectToAddress');
+  late final _CFSocketConnectToAddress2 = _CFSocketConnectToAddress2Ptr
+      .asFunction<int Function(CFSocketRef, CFDataRef, double)>();
+
+  void CFSocketInvalidate2(
+    CFSocketRef s,
+  ) {
+    return _CFSocketInvalidate2(
+      s,
+    );
+  }
+
+  late final _CFSocketInvalidate2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFSocketRef)>>(
+          'CFSocketInvalidate');
+  late final _CFSocketInvalidate2 =
+      _CFSocketInvalidate2Ptr.asFunction<void Function(CFSocketRef)>();
+
+  int CFSocketIsValid2(
+    CFSocketRef s,
+  ) {
+    return _CFSocketIsValid2(
+      s,
+    );
+  }
+
+  late final _CFSocketIsValid2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFSocketRef)>>(
+          'CFSocketIsValid');
+  late final _CFSocketIsValid2 =
+      _CFSocketIsValid2Ptr.asFunction<int Function(CFSocketRef)>();
+
+  CFDataRef CFSocketCopyAddress2(
+    CFSocketRef s,
+  ) {
+    return _CFSocketCopyAddress2(
+      s,
+    );
+  }
+
+  late final _CFSocketCopyAddress2Ptr =
+      _lookup<ffi.NativeFunction<CFDataRef Function(CFSocketRef)>>(
+          'CFSocketCopyAddress');
+  late final _CFSocketCopyAddress2 =
+      _CFSocketCopyAddress2Ptr.asFunction<CFDataRef Function(CFSocketRef)>();
+
+  CFDataRef CFSocketCopyPeerAddress2(
+    CFSocketRef s,
+  ) {
+    return _CFSocketCopyPeerAddress2(
+      s,
+    );
+  }
+
+  late final _CFSocketCopyPeerAddress2Ptr =
+      _lookup<ffi.NativeFunction<CFDataRef Function(CFSocketRef)>>(
+          'CFSocketCopyPeerAddress');
+  late final _CFSocketCopyPeerAddress2 = _CFSocketCopyPeerAddress2Ptr
+      .asFunction<CFDataRef Function(CFSocketRef)>();
+
+  void CFSocketGetContext2(
+    CFSocketRef s,
+    ffi.Pointer<CFSocketContext> context,
+  ) {
+    return _CFSocketGetContext2(
+      s,
+      context,
+    );
+  }
+
+  late final _CFSocketGetContext2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFSocketRef,
+              ffi.Pointer<CFSocketContext>)>>('CFSocketGetContext');
+  late final _CFSocketGetContext2 = _CFSocketGetContext2Ptr.asFunction<
+      void Function(CFSocketRef, ffi.Pointer<CFSocketContext>)>();
+
+  int CFSocketGetNative2(
+    CFSocketRef s,
+  ) {
+    return _CFSocketGetNative2(
+      s,
+    );
+  }
+
+  late final _CFSocketGetNative2Ptr =
+      _lookup<ffi.NativeFunction<CFSocketNativeHandle Function(CFSocketRef)>>(
+          'CFSocketGetNative');
+  late final _CFSocketGetNative2 =
+      _CFSocketGetNative2Ptr.asFunction<int Function(CFSocketRef)>();
+
+  CFRunLoopSourceRef CFSocketCreateRunLoopSource2(
+    CFAllocatorRef allocator,
+    CFSocketRef s,
+    int order,
+  ) {
+    return _CFSocketCreateRunLoopSource2(
+      allocator,
+      s,
+      order,
+    );
+  }
+
+  late final _CFSocketCreateRunLoopSource2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFRunLoopSourceRef Function(CFAllocatorRef, CFSocketRef,
+              CFIndex)>>('CFSocketCreateRunLoopSource');
+  late final _CFSocketCreateRunLoopSource2 =
+      _CFSocketCreateRunLoopSource2Ptr.asFunction<
+          CFRunLoopSourceRef Function(CFAllocatorRef, CFSocketRef, int)>();
+
+  int CFSocketGetSocketFlags2(
+    CFSocketRef s,
+  ) {
+    return _CFSocketGetSocketFlags2(
+      s,
+    );
+  }
+
+  late final _CFSocketGetSocketFlags2Ptr =
+      _lookup<ffi.NativeFunction<CFOptionFlags Function(CFSocketRef)>>(
+          'CFSocketGetSocketFlags');
+  late final _CFSocketGetSocketFlags2 =
+      _CFSocketGetSocketFlags2Ptr.asFunction<int Function(CFSocketRef)>();
+
+  void CFSocketSetSocketFlags2(
+    CFSocketRef s,
+    int flags,
+  ) {
+    return _CFSocketSetSocketFlags2(
+      s,
+      flags,
+    );
+  }
+
+  late final _CFSocketSetSocketFlags2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(CFSocketRef, CFOptionFlags)>>(
+      'CFSocketSetSocketFlags');
+  late final _CFSocketSetSocketFlags2 =
+      _CFSocketSetSocketFlags2Ptr.asFunction<void Function(CFSocketRef, int)>();
+
+  void CFSocketDisableCallBacks2(
+    CFSocketRef s,
+    int callBackTypes,
+  ) {
+    return _CFSocketDisableCallBacks2(
+      s,
+      callBackTypes,
+    );
+  }
+
+  late final _CFSocketDisableCallBacks2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(CFSocketRef, CFOptionFlags)>>(
+      'CFSocketDisableCallBacks');
+  late final _CFSocketDisableCallBacks2 = _CFSocketDisableCallBacks2Ptr
+      .asFunction<void Function(CFSocketRef, int)>();
+
+  void CFSocketEnableCallBacks2(
+    CFSocketRef s,
+    int callBackTypes,
+  ) {
+    return _CFSocketEnableCallBacks2(
+      s,
+      callBackTypes,
+    );
+  }
+
+  late final _CFSocketEnableCallBacks2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(CFSocketRef, CFOptionFlags)>>(
+      'CFSocketEnableCallBacks');
+  late final _CFSocketEnableCallBacks2 = _CFSocketEnableCallBacks2Ptr
+      .asFunction<void Function(CFSocketRef, int)>();
+
+  int CFSocketSendData2(
+    CFSocketRef s,
+    CFDataRef address,
+    CFDataRef data,
+    double timeout,
+  ) {
+    return _CFSocketSendData2(
+      s,
+      address,
+      data,
+      timeout,
+    );
+  }
+
+  late final _CFSocketSendData2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(CFSocketRef, CFDataRef, CFDataRef,
+              CFTimeInterval)>>('CFSocketSendData');
+  late final _CFSocketSendData2 = _CFSocketSendData2Ptr.asFunction<
+      int Function(CFSocketRef, CFDataRef, CFDataRef, double)>();
+
+  int CFSocketRegisterValue2(
+    ffi.Pointer<CFSocketSignature> nameServerSignature,
+    double timeout,
+    CFStringRef name,
+    CFPropertyListRef value,
+  ) {
+    return _CFSocketRegisterValue2(
+      nameServerSignature,
+      timeout,
+      name,
+      value,
+    );
+  }
+
+  late final _CFSocketRegisterValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<CFSocketSignature>, CFTimeInterval,
+              CFStringRef, CFPropertyListRef)>>('CFSocketRegisterValue');
+  late final _CFSocketRegisterValue2 = _CFSocketRegisterValue2Ptr.asFunction<
+      int Function(ffi.Pointer<CFSocketSignature>, double, CFStringRef,
+          CFPropertyListRef)>();
+
+  int CFSocketCopyRegisteredValue2(
+    ffi.Pointer<CFSocketSignature> nameServerSignature,
+    double timeout,
+    CFStringRef name,
+    ffi.Pointer<CFPropertyListRef> value,
+    ffi.Pointer<CFDataRef> nameServerAddress,
+  ) {
+    return _CFSocketCopyRegisteredValue2(
+      nameServerSignature,
+      timeout,
+      name,
+      value,
+      nameServerAddress,
+    );
+  }
+
+  late final _CFSocketCopyRegisteredValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<CFSocketSignature>,
+              CFTimeInterval,
+              CFStringRef,
+              ffi.Pointer<CFPropertyListRef>,
+              ffi.Pointer<CFDataRef>)>>('CFSocketCopyRegisteredValue');
+  late final _CFSocketCopyRegisteredValue2 =
+      _CFSocketCopyRegisteredValue2Ptr.asFunction<
+          int Function(ffi.Pointer<CFSocketSignature>, double, CFStringRef,
+              ffi.Pointer<CFPropertyListRef>, ffi.Pointer<CFDataRef>)>();
+
+  int CFSocketRegisterSocketSignature2(
+    ffi.Pointer<CFSocketSignature> nameServerSignature,
+    double timeout,
+    CFStringRef name,
+    ffi.Pointer<CFSocketSignature> signature,
+  ) {
+    return _CFSocketRegisterSocketSignature2(
+      nameServerSignature,
+      timeout,
+      name,
+      signature,
+    );
+  }
+
+  late final _CFSocketRegisterSocketSignature2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int32 Function(ffi.Pointer<CFSocketSignature>, CFTimeInterval,
+                  CFStringRef, ffi.Pointer<CFSocketSignature>)>>(
+      'CFSocketRegisterSocketSignature');
+  late final _CFSocketRegisterSocketSignature2 =
+      _CFSocketRegisterSocketSignature2Ptr.asFunction<
+          int Function(ffi.Pointer<CFSocketSignature>, double, CFStringRef,
+              ffi.Pointer<CFSocketSignature>)>();
+
+  int CFSocketCopyRegisteredSocketSignature2(
+    ffi.Pointer<CFSocketSignature> nameServerSignature,
+    double timeout,
+    CFStringRef name,
+    ffi.Pointer<CFSocketSignature> signature,
+    ffi.Pointer<CFDataRef> nameServerAddress,
+  ) {
+    return _CFSocketCopyRegisteredSocketSignature2(
+      nameServerSignature,
+      timeout,
+      name,
+      signature,
+      nameServerAddress,
+    );
+  }
+
+  late final _CFSocketCopyRegisteredSocketSignature2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int32 Function(
+                  ffi.Pointer<CFSocketSignature>,
+                  CFTimeInterval,
+                  CFStringRef,
+                  ffi.Pointer<CFSocketSignature>,
+                  ffi.Pointer<CFDataRef>)>>(
+      'CFSocketCopyRegisteredSocketSignature');
+  late final _CFSocketCopyRegisteredSocketSignature2 =
+      _CFSocketCopyRegisteredSocketSignature2Ptr.asFunction<
+          int Function(ffi.Pointer<CFSocketSignature>, double, CFStringRef,
+              ffi.Pointer<CFSocketSignature>, ffi.Pointer<CFDataRef>)>();
+
+  int CFSocketUnregister2(
+    ffi.Pointer<CFSocketSignature> nameServerSignature,
+    double timeout,
+    CFStringRef name,
+  ) {
+    return _CFSocketUnregister2(
+      nameServerSignature,
+      timeout,
+      name,
+    );
+  }
+
+  late final _CFSocketUnregister2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<CFSocketSignature>, CFTimeInterval,
+              CFStringRef)>>('CFSocketUnregister');
+  late final _CFSocketUnregister2 = _CFSocketUnregister2Ptr.asFunction<
+      int Function(ffi.Pointer<CFSocketSignature>, double, CFStringRef)>();
+
+  void CFSocketSetDefaultNameRegistryPortNumber2(
+    int port,
+  ) {
+    return _CFSocketSetDefaultNameRegistryPortNumber2(
+      port,
+    );
+  }
+
+  late final _CFSocketSetDefaultNameRegistryPortNumber2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(UInt16)>>(
+          'CFSocketSetDefaultNameRegistryPortNumber');
+  late final _CFSocketSetDefaultNameRegistryPortNumber2 =
+      _CFSocketSetDefaultNameRegistryPortNumber2Ptr.asFunction<
+          void Function(int)>();
+
+  int CFSocketGetDefaultNameRegistryPortNumber2() {
+    return _CFSocketGetDefaultNameRegistryPortNumber2();
+  }
+
+  late final _CFSocketGetDefaultNameRegistryPortNumber2Ptr =
+      _lookup<ffi.NativeFunction<UInt16 Function()>>(
+          'CFSocketGetDefaultNameRegistryPortNumber');
+  late final _CFSocketGetDefaultNameRegistryPortNumber2 =
+      _CFSocketGetDefaultNameRegistryPortNumber2Ptr.asFunction<
+          int Function()>();
+
+  int CFReadStreamGetTypeID2() {
+    return _CFReadStreamGetTypeID2();
+  }
+
+  late final _CFReadStreamGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFReadStreamGetTypeID');
+  late final _CFReadStreamGetTypeID2 =
+      _CFReadStreamGetTypeID2Ptr.asFunction<int Function()>();
+
+  int CFWriteStreamGetTypeID2() {
+    return _CFWriteStreamGetTypeID2();
+  }
+
+  late final _CFWriteStreamGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFWriteStreamGetTypeID');
+  late final _CFWriteStreamGetTypeID2 =
+      _CFWriteStreamGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFReadStreamRef CFReadStreamCreateWithBytesNoCopy2(
+    CFAllocatorRef alloc,
+    ffi.Pointer<UInt8> bytes,
+    int length,
+    CFAllocatorRef bytesDeallocator,
+  ) {
+    return _CFReadStreamCreateWithBytesNoCopy2(
+      alloc,
+      bytes,
+      length,
+      bytesDeallocator,
+    );
+  }
+
+  late final _CFReadStreamCreateWithBytesNoCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFReadStreamRef Function(CFAllocatorRef, ffi.Pointer<UInt8>, CFIndex,
+              CFAllocatorRef)>>('CFReadStreamCreateWithBytesNoCopy');
+  late final _CFReadStreamCreateWithBytesNoCopy2 =
+      _CFReadStreamCreateWithBytesNoCopy2Ptr.asFunction<
+          CFReadStreamRef Function(
+              CFAllocatorRef, ffi.Pointer<UInt8>, int, CFAllocatorRef)>();
+
+  CFWriteStreamRef CFWriteStreamCreateWithBuffer2(
+    CFAllocatorRef alloc,
+    ffi.Pointer<UInt8> buffer,
+    int bufferCapacity,
+  ) {
+    return _CFWriteStreamCreateWithBuffer2(
+      alloc,
+      buffer,
+      bufferCapacity,
+    );
+  }
+
+  late final _CFWriteStreamCreateWithBuffer2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFWriteStreamRef Function(CFAllocatorRef, ffi.Pointer<UInt8>,
+              CFIndex)>>('CFWriteStreamCreateWithBuffer');
+  late final _CFWriteStreamCreateWithBuffer2 =
+      _CFWriteStreamCreateWithBuffer2Ptr.asFunction<
+          CFWriteStreamRef Function(CFAllocatorRef, ffi.Pointer<UInt8>, int)>();
+
+  CFWriteStreamRef CFWriteStreamCreateWithAllocatedBuffers2(
+    CFAllocatorRef alloc,
+    CFAllocatorRef bufferAllocator,
+  ) {
+    return _CFWriteStreamCreateWithAllocatedBuffers2(
+      alloc,
+      bufferAllocator,
+    );
+  }
+
+  late final _CFWriteStreamCreateWithAllocatedBuffers2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFWriteStreamRef Function(CFAllocatorRef,
+              CFAllocatorRef)>>('CFWriteStreamCreateWithAllocatedBuffers');
+  late final _CFWriteStreamCreateWithAllocatedBuffers2 =
+      _CFWriteStreamCreateWithAllocatedBuffers2Ptr.asFunction<
+          CFWriteStreamRef Function(CFAllocatorRef, CFAllocatorRef)>();
+
+  CFReadStreamRef CFReadStreamCreateWithFile2(
+    CFAllocatorRef alloc,
+    CFURLRef fileURL,
+  ) {
+    return _CFReadStreamCreateWithFile2(
+      alloc,
+      fileURL,
+    );
+  }
+
+  late final _CFReadStreamCreateWithFile2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFReadStreamRef Function(
+              CFAllocatorRef, CFURLRef)>>('CFReadStreamCreateWithFile');
+  late final _CFReadStreamCreateWithFile2 = _CFReadStreamCreateWithFile2Ptr
+      .asFunction<CFReadStreamRef Function(CFAllocatorRef, CFURLRef)>();
+
+  CFWriteStreamRef CFWriteStreamCreateWithFile2(
+    CFAllocatorRef alloc,
+    CFURLRef fileURL,
+  ) {
+    return _CFWriteStreamCreateWithFile2(
+      alloc,
+      fileURL,
+    );
+  }
+
+  late final _CFWriteStreamCreateWithFile2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFWriteStreamRef Function(
+              CFAllocatorRef, CFURLRef)>>('CFWriteStreamCreateWithFile');
+  late final _CFWriteStreamCreateWithFile2 = _CFWriteStreamCreateWithFile2Ptr
+      .asFunction<CFWriteStreamRef Function(CFAllocatorRef, CFURLRef)>();
+
+  void CFStreamCreateBoundPair2(
+    CFAllocatorRef alloc,
+    ffi.Pointer<CFReadStreamRef> readStream,
+    ffi.Pointer<CFWriteStreamRef> writeStream,
+    int transferBufferSize,
+  ) {
+    return _CFStreamCreateBoundPair2(
+      alloc,
+      readStream,
+      writeStream,
+      transferBufferSize,
+    );
+  }
+
+  late final _CFStreamCreateBoundPair2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFAllocatorRef,
+              ffi.Pointer<CFReadStreamRef>,
+              ffi.Pointer<CFWriteStreamRef>,
+              CFIndex)>>('CFStreamCreateBoundPair');
+  late final _CFStreamCreateBoundPair2 =
+      _CFStreamCreateBoundPair2Ptr.asFunction<
+          void Function(CFAllocatorRef, ffi.Pointer<CFReadStreamRef>,
+              ffi.Pointer<CFWriteStreamRef>, int)>();
+
+  void CFStreamCreatePairWithSocket2(
+    CFAllocatorRef alloc,
+    int sock,
+    ffi.Pointer<CFReadStreamRef> readStream,
+    ffi.Pointer<CFWriteStreamRef> writeStream,
+  ) {
+    return _CFStreamCreatePairWithSocket2(
+      alloc,
+      sock,
+      readStream,
+      writeStream,
+    );
+  }
+
+  late final _CFStreamCreatePairWithSocket2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFAllocatorRef,
+              CFSocketNativeHandle,
+              ffi.Pointer<CFReadStreamRef>,
+              ffi.Pointer<CFWriteStreamRef>)>>('CFStreamCreatePairWithSocket');
+  late final _CFStreamCreatePairWithSocket2 =
+      _CFStreamCreatePairWithSocket2Ptr.asFunction<
+          void Function(CFAllocatorRef, int, ffi.Pointer<CFReadStreamRef>,
+              ffi.Pointer<CFWriteStreamRef>)>();
+
+  void CFStreamCreatePairWithSocketToHost2(
+    CFAllocatorRef alloc,
+    CFStringRef host,
+    int port,
+    ffi.Pointer<CFReadStreamRef> readStream,
+    ffi.Pointer<CFWriteStreamRef> writeStream,
+  ) {
+    return _CFStreamCreatePairWithSocketToHost2(
+      alloc,
+      host,
+      port,
+      readStream,
+      writeStream,
+    );
+  }
+
+  late final _CFStreamCreatePairWithSocketToHost2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  CFAllocatorRef,
+                  CFStringRef,
+                  UInt32,
+                  ffi.Pointer<CFReadStreamRef>,
+                  ffi.Pointer<CFWriteStreamRef>)>>(
+      'CFStreamCreatePairWithSocketToHost');
+  late final _CFStreamCreatePairWithSocketToHost2 =
+      _CFStreamCreatePairWithSocketToHost2Ptr.asFunction<
+          void Function(CFAllocatorRef, CFStringRef, int,
+              ffi.Pointer<CFReadStreamRef>, ffi.Pointer<CFWriteStreamRef>)>();
+
+  void CFStreamCreatePairWithPeerSocketSignature2(
+    CFAllocatorRef alloc,
+    ffi.Pointer<CFSocketSignature> signature,
+    ffi.Pointer<CFReadStreamRef> readStream,
+    ffi.Pointer<CFWriteStreamRef> writeStream,
+  ) {
+    return _CFStreamCreatePairWithPeerSocketSignature2(
+      alloc,
+      signature,
+      readStream,
+      writeStream,
+    );
+  }
+
+  late final _CFStreamCreatePairWithPeerSocketSignature2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  CFAllocatorRef,
+                  ffi.Pointer<CFSocketSignature>,
+                  ffi.Pointer<CFReadStreamRef>,
+                  ffi.Pointer<CFWriteStreamRef>)>>(
+      'CFStreamCreatePairWithPeerSocketSignature');
+  late final _CFStreamCreatePairWithPeerSocketSignature2 =
+      _CFStreamCreatePairWithPeerSocketSignature2Ptr.asFunction<
+          void Function(CFAllocatorRef, ffi.Pointer<CFSocketSignature>,
+              ffi.Pointer<CFReadStreamRef>, ffi.Pointer<CFWriteStreamRef>)>();
+
+  int CFReadStreamGetStatus2(
+    CFReadStreamRef stream,
+  ) {
+    return _CFReadStreamGetStatus2(
+      stream,
+    );
+  }
+
+  late final _CFReadStreamGetStatus2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(CFReadStreamRef)>>(
+          'CFReadStreamGetStatus');
+  late final _CFReadStreamGetStatus2 =
+      _CFReadStreamGetStatus2Ptr.asFunction<int Function(CFReadStreamRef)>();
+
+  int CFWriteStreamGetStatus2(
+    CFWriteStreamRef stream,
+  ) {
+    return _CFWriteStreamGetStatus2(
+      stream,
+    );
+  }
+
+  late final _CFWriteStreamGetStatus2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(CFWriteStreamRef)>>(
+          'CFWriteStreamGetStatus');
+  late final _CFWriteStreamGetStatus2 =
+      _CFWriteStreamGetStatus2Ptr.asFunction<int Function(CFWriteStreamRef)>();
+
+  CFErrorRef CFReadStreamCopyError2(
+    CFReadStreamRef stream,
+  ) {
+    return _CFReadStreamCopyError2(
+      stream,
+    );
+  }
+
+  late final _CFReadStreamCopyError2Ptr =
+      _lookup<ffi.NativeFunction<CFErrorRef Function(CFReadStreamRef)>>(
+          'CFReadStreamCopyError');
+  late final _CFReadStreamCopyError2 = _CFReadStreamCopyError2Ptr.asFunction<
+      CFErrorRef Function(CFReadStreamRef)>();
+
+  CFErrorRef CFWriteStreamCopyError2(
+    CFWriteStreamRef stream,
+  ) {
+    return _CFWriteStreamCopyError2(
+      stream,
+    );
+  }
+
+  late final _CFWriteStreamCopyError2Ptr =
+      _lookup<ffi.NativeFunction<CFErrorRef Function(CFWriteStreamRef)>>(
+          'CFWriteStreamCopyError');
+  late final _CFWriteStreamCopyError2 = _CFWriteStreamCopyError2Ptr.asFunction<
+      CFErrorRef Function(CFWriteStreamRef)>();
+
+  int CFReadStreamOpen2(
+    CFReadStreamRef stream,
+  ) {
+    return _CFReadStreamOpen2(
+      stream,
+    );
+  }
+
+  late final _CFReadStreamOpen2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFReadStreamRef)>>(
+          'CFReadStreamOpen');
+  late final _CFReadStreamOpen2 =
+      _CFReadStreamOpen2Ptr.asFunction<int Function(CFReadStreamRef)>();
+
+  int CFWriteStreamOpen2(
+    CFWriteStreamRef stream,
+  ) {
+    return _CFWriteStreamOpen2(
+      stream,
+    );
+  }
+
+  late final _CFWriteStreamOpen2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFWriteStreamRef)>>(
+          'CFWriteStreamOpen');
+  late final _CFWriteStreamOpen2 =
+      _CFWriteStreamOpen2Ptr.asFunction<int Function(CFWriteStreamRef)>();
+
+  void CFReadStreamClose2(
+    CFReadStreamRef stream,
+  ) {
+    return _CFReadStreamClose2(
+      stream,
+    );
+  }
+
+  late final _CFReadStreamClose2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFReadStreamRef)>>(
+          'CFReadStreamClose');
+  late final _CFReadStreamClose2 =
+      _CFReadStreamClose2Ptr.asFunction<void Function(CFReadStreamRef)>();
+
+  void CFWriteStreamClose2(
+    CFWriteStreamRef stream,
+  ) {
+    return _CFWriteStreamClose2(
+      stream,
+    );
+  }
+
+  late final _CFWriteStreamClose2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFWriteStreamRef)>>(
+          'CFWriteStreamClose');
+  late final _CFWriteStreamClose2 =
+      _CFWriteStreamClose2Ptr.asFunction<void Function(CFWriteStreamRef)>();
+
+  int CFReadStreamHasBytesAvailable2(
+    CFReadStreamRef stream,
+  ) {
+    return _CFReadStreamHasBytesAvailable2(
+      stream,
+    );
+  }
+
+  late final _CFReadStreamHasBytesAvailable2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFReadStreamRef)>>(
+          'CFReadStreamHasBytesAvailable');
+  late final _CFReadStreamHasBytesAvailable2 =
+      _CFReadStreamHasBytesAvailable2Ptr.asFunction<
+          int Function(CFReadStreamRef)>();
+
+  int CFReadStreamRead2(
+    CFReadStreamRef stream,
+    ffi.Pointer<UInt8> buffer,
+    int bufferLength,
+  ) {
+    return _CFReadStreamRead2(
+      stream,
+      buffer,
+      bufferLength,
+    );
+  }
+
+  late final _CFReadStreamRead2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFReadStreamRef, ffi.Pointer<UInt8>,
+              CFIndex)>>('CFReadStreamRead');
+  late final _CFReadStreamRead2 = _CFReadStreamRead2Ptr.asFunction<
+      int Function(CFReadStreamRef, ffi.Pointer<UInt8>, int)>();
+
+  ffi.Pointer<UInt8> CFReadStreamGetBuffer2(
+    CFReadStreamRef stream,
+    int maxBytesToRead,
+    ffi.Pointer<CFIndex> numBytesRead,
+  ) {
+    return _CFReadStreamGetBuffer2(
+      stream,
+      maxBytesToRead,
+      numBytesRead,
+    );
+  }
+
+  late final _CFReadStreamGetBuffer2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<UInt8> Function(CFReadStreamRef, CFIndex,
+              ffi.Pointer<CFIndex>)>>('CFReadStreamGetBuffer');
+  late final _CFReadStreamGetBuffer2 = _CFReadStreamGetBuffer2Ptr.asFunction<
+      ffi.Pointer<UInt8> Function(
+          CFReadStreamRef, int, ffi.Pointer<CFIndex>)>();
+
+  int CFWriteStreamCanAcceptBytes2(
+    CFWriteStreamRef stream,
+  ) {
+    return _CFWriteStreamCanAcceptBytes2(
+      stream,
+    );
+  }
+
+  late final _CFWriteStreamCanAcceptBytes2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFWriteStreamRef)>>(
+          'CFWriteStreamCanAcceptBytes');
+  late final _CFWriteStreamCanAcceptBytes2 = _CFWriteStreamCanAcceptBytes2Ptr
+      .asFunction<int Function(CFWriteStreamRef)>();
+
+  int CFWriteStreamWrite2(
+    CFWriteStreamRef stream,
+    ffi.Pointer<UInt8> buffer,
+    int bufferLength,
+  ) {
+    return _CFWriteStreamWrite2(
+      stream,
+      buffer,
+      bufferLength,
+    );
+  }
+
+  late final _CFWriteStreamWrite2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFWriteStreamRef, ffi.Pointer<UInt8>,
+              CFIndex)>>('CFWriteStreamWrite');
+  late final _CFWriteStreamWrite2 = _CFWriteStreamWrite2Ptr.asFunction<
+      int Function(CFWriteStreamRef, ffi.Pointer<UInt8>, int)>();
+
+  CFTypeRef CFReadStreamCopyProperty2(
+    CFReadStreamRef stream,
+    CFStreamPropertyKey propertyName,
+  ) {
+    return _CFReadStreamCopyProperty2(
+      stream,
+      propertyName,
+    );
+  }
+
+  late final _CFReadStreamCopyProperty2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTypeRef Function(CFReadStreamRef,
+              CFStreamPropertyKey)>>('CFReadStreamCopyProperty');
+  late final _CFReadStreamCopyProperty2 = _CFReadStreamCopyProperty2Ptr
+      .asFunction<CFTypeRef Function(CFReadStreamRef, CFStreamPropertyKey)>();
+
+  CFTypeRef CFWriteStreamCopyProperty2(
+    CFWriteStreamRef stream,
+    CFStreamPropertyKey propertyName,
+  ) {
+    return _CFWriteStreamCopyProperty2(
+      stream,
+      propertyName,
+    );
+  }
+
+  late final _CFWriteStreamCopyProperty2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTypeRef Function(CFWriteStreamRef,
+              CFStreamPropertyKey)>>('CFWriteStreamCopyProperty');
+  late final _CFWriteStreamCopyProperty2 = _CFWriteStreamCopyProperty2Ptr
+      .asFunction<CFTypeRef Function(CFWriteStreamRef, CFStreamPropertyKey)>();
+
+  int CFReadStreamSetProperty2(
+    CFReadStreamRef stream,
+    CFStreamPropertyKey propertyName,
+    CFTypeRef propertyValue,
+  ) {
+    return _CFReadStreamSetProperty2(
+      stream,
+      propertyName,
+      propertyValue,
+    );
+  }
+
+  late final _CFReadStreamSetProperty2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFReadStreamRef, CFStreamPropertyKey,
+              CFTypeRef)>>('CFReadStreamSetProperty');
+  late final _CFReadStreamSetProperty2 =
+      _CFReadStreamSetProperty2Ptr.asFunction<
+          int Function(CFReadStreamRef, CFStreamPropertyKey, CFTypeRef)>();
+
+  int CFWriteStreamSetProperty2(
+    CFWriteStreamRef stream,
+    CFStreamPropertyKey propertyName,
+    CFTypeRef propertyValue,
+  ) {
+    return _CFWriteStreamSetProperty2(
+      stream,
+      propertyName,
+      propertyValue,
+    );
+  }
+
+  late final _CFWriteStreamSetProperty2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFWriteStreamRef, CFStreamPropertyKey,
+              CFTypeRef)>>('CFWriteStreamSetProperty');
+  late final _CFWriteStreamSetProperty2 =
+      _CFWriteStreamSetProperty2Ptr.asFunction<
+          int Function(CFWriteStreamRef, CFStreamPropertyKey, CFTypeRef)>();
+
+  int CFReadStreamSetClient2(
+    CFReadStreamRef stream,
+    int streamEvents,
+    CFReadStreamClientCallBack clientCB,
+    ffi.Pointer<CFStreamClientContext> clientContext,
+  ) {
+    return _CFReadStreamSetClient2(
+      stream,
+      streamEvents,
+      clientCB,
+      clientContext,
+    );
+  }
+
+  late final _CFReadStreamSetClient2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(
+              CFReadStreamRef,
+              CFOptionFlags,
+              CFReadStreamClientCallBack,
+              ffi.Pointer<CFStreamClientContext>)>>('CFReadStreamSetClient');
+  late final _CFReadStreamSetClient2 = _CFReadStreamSetClient2Ptr.asFunction<
+      int Function(CFReadStreamRef, int, CFReadStreamClientCallBack,
+          ffi.Pointer<CFStreamClientContext>)>();
+
+  int CFWriteStreamSetClient2(
+    CFWriteStreamRef stream,
+    int streamEvents,
+    CFWriteStreamClientCallBack clientCB,
+    ffi.Pointer<CFStreamClientContext> clientContext,
+  ) {
+    return _CFWriteStreamSetClient2(
+      stream,
+      streamEvents,
+      clientCB,
+      clientContext,
+    );
+  }
+
+  late final _CFWriteStreamSetClient2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(
+              CFWriteStreamRef,
+              CFOptionFlags,
+              CFWriteStreamClientCallBack,
+              ffi.Pointer<CFStreamClientContext>)>>('CFWriteStreamSetClient');
+  late final _CFWriteStreamSetClient2 = _CFWriteStreamSetClient2Ptr.asFunction<
+      int Function(CFWriteStreamRef, int, CFWriteStreamClientCallBack,
+          ffi.Pointer<CFStreamClientContext>)>();
+
+  void CFReadStreamScheduleWithRunLoop2(
+    CFReadStreamRef stream,
+    CFRunLoopRef runLoop,
+    CFRunLoopMode runLoopMode,
+  ) {
+    return _CFReadStreamScheduleWithRunLoop2(
+      stream,
+      runLoop,
+      runLoopMode,
+    );
+  }
+
+  late final _CFReadStreamScheduleWithRunLoop2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFReadStreamRef, CFRunLoopRef,
+              CFRunLoopMode)>>('CFReadStreamScheduleWithRunLoop');
+  late final _CFReadStreamScheduleWithRunLoop2 =
+      _CFReadStreamScheduleWithRunLoop2Ptr.asFunction<
+          void Function(CFReadStreamRef, CFRunLoopRef, CFRunLoopMode)>();
+
+  void CFWriteStreamScheduleWithRunLoop2(
+    CFWriteStreamRef stream,
+    CFRunLoopRef runLoop,
+    CFRunLoopMode runLoopMode,
+  ) {
+    return _CFWriteStreamScheduleWithRunLoop2(
+      stream,
+      runLoop,
+      runLoopMode,
+    );
+  }
+
+  late final _CFWriteStreamScheduleWithRunLoop2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFWriteStreamRef, CFRunLoopRef,
+              CFRunLoopMode)>>('CFWriteStreamScheduleWithRunLoop');
+  late final _CFWriteStreamScheduleWithRunLoop2 =
+      _CFWriteStreamScheduleWithRunLoop2Ptr.asFunction<
+          void Function(CFWriteStreamRef, CFRunLoopRef, CFRunLoopMode)>();
+
+  void CFReadStreamUnscheduleFromRunLoop2(
+    CFReadStreamRef stream,
+    CFRunLoopRef runLoop,
+    CFRunLoopMode runLoopMode,
+  ) {
+    return _CFReadStreamUnscheduleFromRunLoop2(
+      stream,
+      runLoop,
+      runLoopMode,
+    );
+  }
+
+  late final _CFReadStreamUnscheduleFromRunLoop2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFReadStreamRef, CFRunLoopRef,
+              CFRunLoopMode)>>('CFReadStreamUnscheduleFromRunLoop');
+  late final _CFReadStreamUnscheduleFromRunLoop2 =
+      _CFReadStreamUnscheduleFromRunLoop2Ptr.asFunction<
+          void Function(CFReadStreamRef, CFRunLoopRef, CFRunLoopMode)>();
+
+  void CFWriteStreamUnscheduleFromRunLoop2(
+    CFWriteStreamRef stream,
+    CFRunLoopRef runLoop,
+    CFRunLoopMode runLoopMode,
+  ) {
+    return _CFWriteStreamUnscheduleFromRunLoop2(
+      stream,
+      runLoop,
+      runLoopMode,
+    );
+  }
+
+  late final _CFWriteStreamUnscheduleFromRunLoop2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFWriteStreamRef, CFRunLoopRef,
+              CFRunLoopMode)>>('CFWriteStreamUnscheduleFromRunLoop');
+  late final _CFWriteStreamUnscheduleFromRunLoop2 =
+      _CFWriteStreamUnscheduleFromRunLoop2Ptr.asFunction<
+          void Function(CFWriteStreamRef, CFRunLoopRef, CFRunLoopMode)>();
+
+  void CFReadStreamSetDispatchQueue2(
+    CFReadStreamRef stream,
+    dispatch_queue_t q,
+  ) {
+    return _CFReadStreamSetDispatchQueue2(
+      stream,
+      q,
+    );
+  }
+
+  late final _CFReadStreamSetDispatchQueue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFReadStreamRef,
+              dispatch_queue_t)>>('CFReadStreamSetDispatchQueue');
+  late final _CFReadStreamSetDispatchQueue2 = _CFReadStreamSetDispatchQueue2Ptr
+      .asFunction<void Function(CFReadStreamRef, dispatch_queue_t)>();
+
+  void CFWriteStreamSetDispatchQueue2(
+    CFWriteStreamRef stream,
+    dispatch_queue_t q,
+  ) {
+    return _CFWriteStreamSetDispatchQueue2(
+      stream,
+      q,
+    );
+  }
+
+  late final _CFWriteStreamSetDispatchQueue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFWriteStreamRef,
+              dispatch_queue_t)>>('CFWriteStreamSetDispatchQueue');
+  late final _CFWriteStreamSetDispatchQueue2 =
+      _CFWriteStreamSetDispatchQueue2Ptr.asFunction<
+          void Function(CFWriteStreamRef, dispatch_queue_t)>();
+
+  dispatch_queue_t CFReadStreamCopyDispatchQueue2(
+    CFReadStreamRef stream,
+  ) {
+    return _CFReadStreamCopyDispatchQueue2(
+      stream,
+    );
+  }
+
+  late final _CFReadStreamCopyDispatchQueue2Ptr =
+      _lookup<ffi.NativeFunction<dispatch_queue_t Function(CFReadStreamRef)>>(
+          'CFReadStreamCopyDispatchQueue');
+  late final _CFReadStreamCopyDispatchQueue2 =
+      _CFReadStreamCopyDispatchQueue2Ptr.asFunction<
+          dispatch_queue_t Function(CFReadStreamRef)>();
+
+  dispatch_queue_t CFWriteStreamCopyDispatchQueue2(
+    CFWriteStreamRef stream,
+  ) {
+    return _CFWriteStreamCopyDispatchQueue2(
+      stream,
+    );
+  }
+
+  late final _CFWriteStreamCopyDispatchQueue2Ptr =
+      _lookup<ffi.NativeFunction<dispatch_queue_t Function(CFWriteStreamRef)>>(
+          'CFWriteStreamCopyDispatchQueue');
+  late final _CFWriteStreamCopyDispatchQueue2 =
+      _CFWriteStreamCopyDispatchQueue2Ptr.asFunction<
+          dispatch_queue_t Function(CFWriteStreamRef)>();
+
+  CFStreamError CFReadStreamGetError2(
+    CFReadStreamRef stream,
+  ) {
+    return _CFReadStreamGetError2(
+      stream,
+    );
+  }
+
+  late final _CFReadStreamGetError2Ptr =
+      _lookup<ffi.NativeFunction<CFStreamError Function(CFReadStreamRef)>>(
+          'CFReadStreamGetError');
+  late final _CFReadStreamGetError2 = _CFReadStreamGetError2Ptr.asFunction<
+      CFStreamError Function(CFReadStreamRef)>();
+
+  CFStreamError CFWriteStreamGetError2(
+    CFWriteStreamRef stream,
+  ) {
+    return _CFWriteStreamGetError2(
+      stream,
+    );
+  }
+
+  late final _CFWriteStreamGetError2Ptr =
+      _lookup<ffi.NativeFunction<CFStreamError Function(CFWriteStreamRef)>>(
+          'CFWriteStreamGetError');
+  late final _CFWriteStreamGetError2 = _CFWriteStreamGetError2Ptr.asFunction<
+      CFStreamError Function(CFWriteStreamRef)>();
+
+  CFPropertyListRef CFPropertyListCreateFromXMLData2(
+    CFAllocatorRef allocator,
+    CFDataRef xmlData,
+    int mutabilityOption,
+    ffi.Pointer<CFStringRef> errorString,
+  ) {
+    return _CFPropertyListCreateFromXMLData2(
+      allocator,
+      xmlData,
+      mutabilityOption,
+      errorString,
+    );
+  }
+
+  late final _CFPropertyListCreateFromXMLData2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFPropertyListRef Function(CFAllocatorRef, CFDataRef, CFOptionFlags,
+              ffi.Pointer<CFStringRef>)>>('CFPropertyListCreateFromXMLData');
+  late final _CFPropertyListCreateFromXMLData2 =
+      _CFPropertyListCreateFromXMLData2Ptr.asFunction<
+          CFPropertyListRef Function(
+              CFAllocatorRef, CFDataRef, int, ffi.Pointer<CFStringRef>)>();
+
+  CFDataRef CFPropertyListCreateXMLData2(
+    CFAllocatorRef allocator,
+    CFPropertyListRef propertyList,
+  ) {
+    return _CFPropertyListCreateXMLData2(
+      allocator,
+      propertyList,
+    );
+  }
+
+  late final _CFPropertyListCreateXMLData2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDataRef Function(CFAllocatorRef,
+              CFPropertyListRef)>>('CFPropertyListCreateXMLData');
+  late final _CFPropertyListCreateXMLData2 = _CFPropertyListCreateXMLData2Ptr
+      .asFunction<CFDataRef Function(CFAllocatorRef, CFPropertyListRef)>();
+
+  CFPropertyListRef CFPropertyListCreateDeepCopy2(
+    CFAllocatorRef allocator,
+    CFPropertyListRef propertyList,
+    int mutabilityOption,
+  ) {
+    return _CFPropertyListCreateDeepCopy2(
+      allocator,
+      propertyList,
+      mutabilityOption,
+    );
+  }
+
+  late final _CFPropertyListCreateDeepCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFPropertyListRef Function(CFAllocatorRef, CFPropertyListRef,
+              CFOptionFlags)>>('CFPropertyListCreateDeepCopy');
+  late final _CFPropertyListCreateDeepCopy2 =
+      _CFPropertyListCreateDeepCopy2Ptr.asFunction<
+          CFPropertyListRef Function(CFAllocatorRef, CFPropertyListRef, int)>();
+
+  int CFPropertyListIsValid2(
+    CFPropertyListRef plist,
+    int format,
+  ) {
+    return _CFPropertyListIsValid2(
+      plist,
+      format,
+    );
+  }
+
+  late final _CFPropertyListIsValid2Ptr = _lookup<
+          ffi.NativeFunction<Boolean Function(CFPropertyListRef, ffi.Int32)>>(
+      'CFPropertyListIsValid');
+  late final _CFPropertyListIsValid2 = _CFPropertyListIsValid2Ptr.asFunction<
+      int Function(CFPropertyListRef, int)>();
+
+  int CFPropertyListWriteToStream2(
+    CFPropertyListRef propertyList,
+    CFWriteStreamRef stream,
+    int format,
+    ffi.Pointer<CFStringRef> errorString,
+  ) {
+    return _CFPropertyListWriteToStream2(
+      propertyList,
+      stream,
+      format,
+      errorString,
+    );
+  }
+
+  late final _CFPropertyListWriteToStream2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFPropertyListRef, CFWriteStreamRef, ffi.Int32,
+              ffi.Pointer<CFStringRef>)>>('CFPropertyListWriteToStream');
+  late final _CFPropertyListWriteToStream2 =
+      _CFPropertyListWriteToStream2Ptr.asFunction<
+          int Function(CFPropertyListRef, CFWriteStreamRef, int,
+              ffi.Pointer<CFStringRef>)>();
+
+  CFPropertyListRef CFPropertyListCreateFromStream2(
+    CFAllocatorRef allocator,
+    CFReadStreamRef stream,
+    int streamLength,
+    int mutabilityOption,
+    ffi.Pointer<ffi.Int32> format,
+    ffi.Pointer<CFStringRef> errorString,
+  ) {
+    return _CFPropertyListCreateFromStream2(
+      allocator,
+      stream,
+      streamLength,
+      mutabilityOption,
+      format,
+      errorString,
+    );
+  }
+
+  late final _CFPropertyListCreateFromStream2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFPropertyListRef Function(
+              CFAllocatorRef,
+              CFReadStreamRef,
+              CFIndex,
+              CFOptionFlags,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<CFStringRef>)>>('CFPropertyListCreateFromStream');
+  late final _CFPropertyListCreateFromStream2 =
+      _CFPropertyListCreateFromStream2Ptr.asFunction<
+          CFPropertyListRef Function(CFAllocatorRef, CFReadStreamRef, int, int,
+              ffi.Pointer<ffi.Int32>, ffi.Pointer<CFStringRef>)>();
+
+  CFPropertyListRef CFPropertyListCreateWithData2(
+    CFAllocatorRef allocator,
+    CFDataRef data,
+    int options,
+    ffi.Pointer<ffi.Int32> format,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFPropertyListCreateWithData2(
+      allocator,
+      data,
+      options,
+      format,
+      error,
+    );
+  }
+
+  late final _CFPropertyListCreateWithData2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFPropertyListRef Function(
+              CFAllocatorRef,
+              CFDataRef,
+              CFOptionFlags,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<CFErrorRef>)>>('CFPropertyListCreateWithData');
+  late final _CFPropertyListCreateWithData2 =
+      _CFPropertyListCreateWithData2Ptr.asFunction<
+          CFPropertyListRef Function(CFAllocatorRef, CFDataRef, int,
+              ffi.Pointer<ffi.Int32>, ffi.Pointer<CFErrorRef>)>();
+
+  CFPropertyListRef CFPropertyListCreateWithStream2(
+    CFAllocatorRef allocator,
+    CFReadStreamRef stream,
+    int streamLength,
+    int options,
+    ffi.Pointer<ffi.Int32> format,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFPropertyListCreateWithStream2(
+      allocator,
+      stream,
+      streamLength,
+      options,
+      format,
+      error,
+    );
+  }
+
+  late final _CFPropertyListCreateWithStream2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFPropertyListRef Function(
+              CFAllocatorRef,
+              CFReadStreamRef,
+              CFIndex,
+              CFOptionFlags,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<CFErrorRef>)>>('CFPropertyListCreateWithStream');
+  late final _CFPropertyListCreateWithStream2 =
+      _CFPropertyListCreateWithStream2Ptr.asFunction<
+          CFPropertyListRef Function(CFAllocatorRef, CFReadStreamRef, int, int,
+              ffi.Pointer<ffi.Int32>, ffi.Pointer<CFErrorRef>)>();
+
+  int CFPropertyListWrite2(
+    CFPropertyListRef propertyList,
+    CFWriteStreamRef stream,
+    int format,
+    int options,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFPropertyListWrite2(
+      propertyList,
+      stream,
+      format,
+      options,
+      error,
+    );
+  }
+
+  late final _CFPropertyListWrite2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFPropertyListRef, CFWriteStreamRef, ffi.Int32,
+              CFOptionFlags, ffi.Pointer<CFErrorRef>)>>('CFPropertyListWrite');
+  late final _CFPropertyListWrite2 = _CFPropertyListWrite2Ptr.asFunction<
+      int Function(CFPropertyListRef, CFWriteStreamRef, int, int,
+          ffi.Pointer<CFErrorRef>)>();
+
+  CFDataRef CFPropertyListCreateData2(
+    CFAllocatorRef allocator,
+    CFPropertyListRef propertyList,
+    int format,
+    int options,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFPropertyListCreateData2(
+      allocator,
+      propertyList,
+      format,
+      options,
+      error,
+    );
+  }
+
+  late final _CFPropertyListCreateData2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDataRef Function(
+              CFAllocatorRef,
+              CFPropertyListRef,
+              ffi.Int32,
+              CFOptionFlags,
+              ffi.Pointer<CFErrorRef>)>>('CFPropertyListCreateData');
+  late final _CFPropertyListCreateData2 =
+      _CFPropertyListCreateData2Ptr.asFunction<
+          CFDataRef Function(CFAllocatorRef, CFPropertyListRef, int, int,
+              ffi.Pointer<CFErrorRef>)>();
+
+  int CFSetGetTypeID2() {
+    return _CFSetGetTypeID2();
+  }
+
+  late final _CFSetGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFSetGetTypeID');
+  late final _CFSetGetTypeID2 =
+      _CFSetGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFSetRef CFSetCreate2(
+    CFAllocatorRef allocator,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> values,
+    int numValues,
+    ffi.Pointer<CFSetCallBacks> callBacks,
+  ) {
+    return _CFSetCreate2(
+      allocator,
+      values,
+      numValues,
+      callBacks,
+    );
+  }
+
+  late final _CFSetCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFSetRef Function(CFAllocatorRef, ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              CFIndex, ffi.Pointer<CFSetCallBacks>)>>('CFSetCreate');
+  late final _CFSetCreate2 = _CFSetCreate2Ptr.asFunction<
+      CFSetRef Function(CFAllocatorRef, ffi.Pointer<ffi.Pointer<ffi.Void>>, int,
+          ffi.Pointer<CFSetCallBacks>)>();
+
+  CFSetRef CFSetCreateCopy2(
+    CFAllocatorRef allocator,
+    CFSetRef theSet,
+  ) {
+    return _CFSetCreateCopy2(
+      allocator,
+      theSet,
+    );
+  }
+
+  late final _CFSetCreateCopy2Ptr =
+      _lookup<ffi.NativeFunction<CFSetRef Function(CFAllocatorRef, CFSetRef)>>(
+          'CFSetCreateCopy');
+  late final _CFSetCreateCopy2 = _CFSetCreateCopy2Ptr.asFunction<
+      CFSetRef Function(CFAllocatorRef, CFSetRef)>();
+
+  CFMutableSetRef CFSetCreateMutable2(
+    CFAllocatorRef allocator,
+    int capacity,
+    ffi.Pointer<CFSetCallBacks> callBacks,
+  ) {
+    return _CFSetCreateMutable2(
+      allocator,
+      capacity,
+      callBacks,
+    );
+  }
+
+  late final _CFSetCreateMutable2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableSetRef Function(CFAllocatorRef, CFIndex,
+              ffi.Pointer<CFSetCallBacks>)>>('CFSetCreateMutable');
+  late final _CFSetCreateMutable2 = _CFSetCreateMutable2Ptr.asFunction<
+      CFMutableSetRef Function(
+          CFAllocatorRef, int, ffi.Pointer<CFSetCallBacks>)>();
+
+  CFMutableSetRef CFSetCreateMutableCopy2(
+    CFAllocatorRef allocator,
+    int capacity,
+    CFSetRef theSet,
+  ) {
+    return _CFSetCreateMutableCopy2(
+      allocator,
+      capacity,
+      theSet,
+    );
+  }
+
+  late final _CFSetCreateMutableCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableSetRef Function(
+              CFAllocatorRef, CFIndex, CFSetRef)>>('CFSetCreateMutableCopy');
+  late final _CFSetCreateMutableCopy2 = _CFSetCreateMutableCopy2Ptr.asFunction<
+      CFMutableSetRef Function(CFAllocatorRef, int, CFSetRef)>();
+
+  int CFSetGetCount2(
+    CFSetRef theSet,
+  ) {
+    return _CFSetGetCount2(
+      theSet,
+    );
+  }
+
+  late final _CFSetGetCount2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFSetRef)>>('CFSetGetCount');
+  late final _CFSetGetCount2 =
+      _CFSetGetCount2Ptr.asFunction<int Function(CFSetRef)>();
+
+  int CFSetGetCountOfValue2(
+    CFSetRef theSet,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFSetGetCountOfValue2(
+      theSet,
+      value,
+    );
+  }
+
+  late final _CFSetGetCountOfValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(
+              CFSetRef, ffi.Pointer<ffi.Void>)>>('CFSetGetCountOfValue');
+  late final _CFSetGetCountOfValue2 = _CFSetGetCountOfValue2Ptr.asFunction<
+      int Function(CFSetRef, ffi.Pointer<ffi.Void>)>();
+
+  int CFSetContainsValue2(
+    CFSetRef theSet,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFSetContainsValue2(
+      theSet,
+      value,
+    );
+  }
+
+  late final _CFSetContainsValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(
+              CFSetRef, ffi.Pointer<ffi.Void>)>>('CFSetContainsValue');
+  late final _CFSetContainsValue2 = _CFSetContainsValue2Ptr.asFunction<
+      int Function(CFSetRef, ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> CFSetGetValue2(
+    CFSetRef theSet,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFSetGetValue2(
+      theSet,
+      value,
+    );
+  }
+
+  late final _CFSetGetValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              CFSetRef, ffi.Pointer<ffi.Void>)>>('CFSetGetValue');
+  late final _CFSetGetValue2 = _CFSetGetValue2Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(CFSetRef, ffi.Pointer<ffi.Void>)>();
+
+  int CFSetGetValueIfPresent2(
+    CFSetRef theSet,
+    ffi.Pointer<ffi.Void> candidate,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> value,
+  ) {
+    return _CFSetGetValueIfPresent2(
+      theSet,
+      candidate,
+      value,
+    );
+  }
+
+  late final _CFSetGetValueIfPresent2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFSetRef, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>)>>('CFSetGetValueIfPresent');
+  late final _CFSetGetValueIfPresent2 = _CFSetGetValueIfPresent2Ptr.asFunction<
+      int Function(CFSetRef, ffi.Pointer<ffi.Void>,
+          ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  void CFSetGetValues2(
+    CFSetRef theSet,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> values,
+  ) {
+    return _CFSetGetValues2(
+      theSet,
+      values,
+    );
+  }
+
+  late final _CFSetGetValues2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFSetRef, ffi.Pointer<ffi.Pointer<ffi.Void>>)>>('CFSetGetValues');
+  late final _CFSetGetValues2 = _CFSetGetValues2Ptr.asFunction<
+      void Function(CFSetRef, ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  void CFSetApplyFunction2(
+    CFSetRef theSet,
+    CFSetApplierFunction applier,
+    ffi.Pointer<ffi.Void> context,
+  ) {
+    return _CFSetApplyFunction2(
+      theSet,
+      applier,
+      context,
+    );
+  }
+
+  late final _CFSetApplyFunction2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFSetRef, CFSetApplierFunction,
+              ffi.Pointer<ffi.Void>)>>('CFSetApplyFunction');
+  late final _CFSetApplyFunction2 = _CFSetApplyFunction2Ptr.asFunction<
+      void Function(CFSetRef, CFSetApplierFunction, ffi.Pointer<ffi.Void>)>();
+
+  void CFSetAddValue2(
+    CFMutableSetRef theSet,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFSetAddValue2(
+      theSet,
+      value,
+    );
+  }
+
+  late final _CFSetAddValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableSetRef, ffi.Pointer<ffi.Void>)>>('CFSetAddValue');
+  late final _CFSetAddValue2 = _CFSetAddValue2Ptr.asFunction<
+      void Function(CFMutableSetRef, ffi.Pointer<ffi.Void>)>();
+
+  void CFSetReplaceValue2(
+    CFMutableSetRef theSet,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFSetReplaceValue2(
+      theSet,
+      value,
+    );
+  }
+
+  late final _CFSetReplaceValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableSetRef, ffi.Pointer<ffi.Void>)>>('CFSetReplaceValue');
+  late final _CFSetReplaceValue2 = _CFSetReplaceValue2Ptr.asFunction<
+      void Function(CFMutableSetRef, ffi.Pointer<ffi.Void>)>();
+
+  void CFSetSetValue2(
+    CFMutableSetRef theSet,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFSetSetValue2(
+      theSet,
+      value,
+    );
+  }
+
+  late final _CFSetSetValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableSetRef, ffi.Pointer<ffi.Void>)>>('CFSetSetValue');
+  late final _CFSetSetValue2 = _CFSetSetValue2Ptr.asFunction<
+      void Function(CFMutableSetRef, ffi.Pointer<ffi.Void>)>();
+
+  void CFSetRemoveValue2(
+    CFMutableSetRef theSet,
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _CFSetRemoveValue2(
+      theSet,
+      value,
+    );
+  }
+
+  late final _CFSetRemoveValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFMutableSetRef, ffi.Pointer<ffi.Void>)>>('CFSetRemoveValue');
+  late final _CFSetRemoveValue2 = _CFSetRemoveValue2Ptr.asFunction<
+      void Function(CFMutableSetRef, ffi.Pointer<ffi.Void>)>();
+
+  void CFSetRemoveAllValues2(
+    CFMutableSetRef theSet,
+  ) {
+    return _CFSetRemoveAllValues2(
+      theSet,
+    );
+  }
+
+  late final _CFSetRemoveAllValues2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFMutableSetRef)>>(
+          'CFSetRemoveAllValues');
+  late final _CFSetRemoveAllValues2 =
+      _CFSetRemoveAllValues2Ptr.asFunction<void Function(CFMutableSetRef)>();
+
+  int CFTreeGetTypeID2() {
+    return _CFTreeGetTypeID2();
+  }
+
+  late final _CFTreeGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFTreeGetTypeID');
+  late final _CFTreeGetTypeID2 =
+      _CFTreeGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFTreeRef CFTreeCreate2(
+    CFAllocatorRef allocator,
+    ffi.Pointer<CFTreeContext> context,
+  ) {
+    return _CFTreeCreate2(
+      allocator,
+      context,
+    );
+  }
+
+  late final _CFTreeCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTreeRef Function(
+              CFAllocatorRef, ffi.Pointer<CFTreeContext>)>>('CFTreeCreate');
+  late final _CFTreeCreate2 = _CFTreeCreate2Ptr.asFunction<
+      CFTreeRef Function(CFAllocatorRef, ffi.Pointer<CFTreeContext>)>();
+
+  CFTreeRef CFTreeGetParent2(
+    CFTreeRef tree,
+  ) {
+    return _CFTreeGetParent2(
+      tree,
+    );
+  }
+
+  late final _CFTreeGetParent2Ptr =
+      _lookup<ffi.NativeFunction<CFTreeRef Function(CFTreeRef)>>(
+          'CFTreeGetParent');
+  late final _CFTreeGetParent2 =
+      _CFTreeGetParent2Ptr.asFunction<CFTreeRef Function(CFTreeRef)>();
+
+  CFTreeRef CFTreeGetNextSibling2(
+    CFTreeRef tree,
+  ) {
+    return _CFTreeGetNextSibling2(
+      tree,
+    );
+  }
+
+  late final _CFTreeGetNextSibling2Ptr =
+      _lookup<ffi.NativeFunction<CFTreeRef Function(CFTreeRef)>>(
+          'CFTreeGetNextSibling');
+  late final _CFTreeGetNextSibling2 =
+      _CFTreeGetNextSibling2Ptr.asFunction<CFTreeRef Function(CFTreeRef)>();
+
+  CFTreeRef CFTreeGetFirstChild2(
+    CFTreeRef tree,
+  ) {
+    return _CFTreeGetFirstChild2(
+      tree,
+    );
+  }
+
+  late final _CFTreeGetFirstChild2Ptr =
+      _lookup<ffi.NativeFunction<CFTreeRef Function(CFTreeRef)>>(
+          'CFTreeGetFirstChild');
+  late final _CFTreeGetFirstChild2 =
+      _CFTreeGetFirstChild2Ptr.asFunction<CFTreeRef Function(CFTreeRef)>();
+
+  void CFTreeGetContext2(
+    CFTreeRef tree,
+    ffi.Pointer<CFTreeContext> context,
+  ) {
+    return _CFTreeGetContext2(
+      tree,
+      context,
+    );
+  }
+
+  late final _CFTreeGetContext2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFTreeRef, ffi.Pointer<CFTreeContext>)>>('CFTreeGetContext');
+  late final _CFTreeGetContext2 = _CFTreeGetContext2Ptr.asFunction<
+      void Function(CFTreeRef, ffi.Pointer<CFTreeContext>)>();
+
+  int CFTreeGetChildCount2(
+    CFTreeRef tree,
+  ) {
+    return _CFTreeGetChildCount2(
+      tree,
+    );
+  }
+
+  late final _CFTreeGetChildCount2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFTreeRef)>>(
+          'CFTreeGetChildCount');
+  late final _CFTreeGetChildCount2 =
+      _CFTreeGetChildCount2Ptr.asFunction<int Function(CFTreeRef)>();
+
+  CFTreeRef CFTreeGetChildAtIndex2(
+    CFTreeRef tree,
+    int idx,
+  ) {
+    return _CFTreeGetChildAtIndex2(
+      tree,
+      idx,
+    );
+  }
+
+  late final _CFTreeGetChildAtIndex2Ptr =
+      _lookup<ffi.NativeFunction<CFTreeRef Function(CFTreeRef, CFIndex)>>(
+          'CFTreeGetChildAtIndex');
+  late final _CFTreeGetChildAtIndex2 = _CFTreeGetChildAtIndex2Ptr.asFunction<
+      CFTreeRef Function(CFTreeRef, int)>();
+
+  void CFTreeGetChildren2(
+    CFTreeRef tree,
+    ffi.Pointer<CFTreeRef> children,
+  ) {
+    return _CFTreeGetChildren2(
+      tree,
+      children,
+    );
+  }
+
+  late final _CFTreeGetChildren2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFTreeRef, ffi.Pointer<CFTreeRef>)>>('CFTreeGetChildren');
+  late final _CFTreeGetChildren2 = _CFTreeGetChildren2Ptr.asFunction<
+      void Function(CFTreeRef, ffi.Pointer<CFTreeRef>)>();
+
+  void CFTreeApplyFunctionToChildren2(
+    CFTreeRef tree,
+    CFTreeApplierFunction applier,
+    ffi.Pointer<ffi.Void> context,
+  ) {
+    return _CFTreeApplyFunctionToChildren2(
+      tree,
+      applier,
+      context,
+    );
+  }
+
+  late final _CFTreeApplyFunctionToChildren2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFTreeRef, CFTreeApplierFunction,
+              ffi.Pointer<ffi.Void>)>>('CFTreeApplyFunctionToChildren');
+  late final _CFTreeApplyFunctionToChildren2 =
+      _CFTreeApplyFunctionToChildren2Ptr.asFunction<
+          void Function(
+              CFTreeRef, CFTreeApplierFunction, ffi.Pointer<ffi.Void>)>();
+
+  CFTreeRef CFTreeFindRoot2(
+    CFTreeRef tree,
+  ) {
+    return _CFTreeFindRoot2(
+      tree,
+    );
+  }
+
+  late final _CFTreeFindRoot2Ptr =
+      _lookup<ffi.NativeFunction<CFTreeRef Function(CFTreeRef)>>(
+          'CFTreeFindRoot');
+  late final _CFTreeFindRoot2 =
+      _CFTreeFindRoot2Ptr.asFunction<CFTreeRef Function(CFTreeRef)>();
+
+  void CFTreeSetContext2(
+    CFTreeRef tree,
+    ffi.Pointer<CFTreeContext> context,
+  ) {
+    return _CFTreeSetContext2(
+      tree,
+      context,
+    );
+  }
+
+  late final _CFTreeSetContext2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFTreeRef, ffi.Pointer<CFTreeContext>)>>('CFTreeSetContext');
+  late final _CFTreeSetContext2 = _CFTreeSetContext2Ptr.asFunction<
+      void Function(CFTreeRef, ffi.Pointer<CFTreeContext>)>();
+
+  void CFTreePrependChild2(
+    CFTreeRef tree,
+    CFTreeRef newChild,
+  ) {
+    return _CFTreePrependChild2(
+      tree,
+      newChild,
+    );
+  }
+
+  late final _CFTreePrependChild2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFTreeRef, CFTreeRef)>>(
+          'CFTreePrependChild');
+  late final _CFTreePrependChild2 =
+      _CFTreePrependChild2Ptr.asFunction<void Function(CFTreeRef, CFTreeRef)>();
+
+  void CFTreeAppendChild2(
+    CFTreeRef tree,
+    CFTreeRef newChild,
+  ) {
+    return _CFTreeAppendChild2(
+      tree,
+      newChild,
+    );
+  }
+
+  late final _CFTreeAppendChild2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFTreeRef, CFTreeRef)>>(
+          'CFTreeAppendChild');
+  late final _CFTreeAppendChild2 =
+      _CFTreeAppendChild2Ptr.asFunction<void Function(CFTreeRef, CFTreeRef)>();
+
+  void CFTreeInsertSibling2(
+    CFTreeRef tree,
+    CFTreeRef newSibling,
+  ) {
+    return _CFTreeInsertSibling2(
+      tree,
+      newSibling,
+    );
+  }
+
+  late final _CFTreeInsertSibling2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFTreeRef, CFTreeRef)>>(
+          'CFTreeInsertSibling');
+  late final _CFTreeInsertSibling2 = _CFTreeInsertSibling2Ptr.asFunction<
+      void Function(CFTreeRef, CFTreeRef)>();
+
+  void CFTreeRemove2(
+    CFTreeRef tree,
+  ) {
+    return _CFTreeRemove2(
+      tree,
+    );
+  }
+
+  late final _CFTreeRemove2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFTreeRef)>>('CFTreeRemove');
+  late final _CFTreeRemove2 =
+      _CFTreeRemove2Ptr.asFunction<void Function(CFTreeRef)>();
+
+  void CFTreeRemoveAllChildren2(
+    CFTreeRef tree,
+  ) {
+    return _CFTreeRemoveAllChildren2(
+      tree,
+    );
+  }
+
+  late final _CFTreeRemoveAllChildren2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFTreeRef)>>(
+          'CFTreeRemoveAllChildren');
+  late final _CFTreeRemoveAllChildren2 =
+      _CFTreeRemoveAllChildren2Ptr.asFunction<void Function(CFTreeRef)>();
+
+  void CFTreeSortChildren2(
+    CFTreeRef tree,
+    CFComparatorFunction comparator,
+    ffi.Pointer<ffi.Void> context,
+  ) {
+    return _CFTreeSortChildren2(
+      tree,
+      comparator,
+      context,
+    );
+  }
+
+  late final _CFTreeSortChildren2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFTreeRef, CFComparatorFunction,
+              ffi.Pointer<ffi.Void>)>>('CFTreeSortChildren');
+  late final _CFTreeSortChildren2 = _CFTreeSortChildren2Ptr.asFunction<
+      void Function(CFTreeRef, CFComparatorFunction, ffi.Pointer<ffi.Void>)>();
+
+  int CFURLCreateDataAndPropertiesFromResource2(
+    CFAllocatorRef alloc,
+    CFURLRef url,
+    ffi.Pointer<CFDataRef> resourceData,
+    ffi.Pointer<CFDictionaryRef> properties,
+    CFArrayRef desiredProperties,
+    ffi.Pointer<SInt32> errorCode,
+  ) {
+    return _CFURLCreateDataAndPropertiesFromResource2(
+      alloc,
+      url,
+      resourceData,
+      properties,
+      desiredProperties,
+      errorCode,
+    );
+  }
+
+  late final _CFURLCreateDataAndPropertiesFromResource2Ptr = _lookup<
+          ffi.NativeFunction<
+              Boolean Function(
+                  CFAllocatorRef,
+                  CFURLRef,
+                  ffi.Pointer<CFDataRef>,
+                  ffi.Pointer<CFDictionaryRef>,
+                  CFArrayRef,
+                  ffi.Pointer<SInt32>)>>(
+      'CFURLCreateDataAndPropertiesFromResource');
+  late final _CFURLCreateDataAndPropertiesFromResource2 =
+      _CFURLCreateDataAndPropertiesFromResource2Ptr.asFunction<
+          int Function(CFAllocatorRef, CFURLRef, ffi.Pointer<CFDataRef>,
+              ffi.Pointer<CFDictionaryRef>, CFArrayRef, ffi.Pointer<SInt32>)>();
+
+  int CFURLWriteDataAndPropertiesToResource2(
+    CFURLRef url,
+    CFDataRef dataToWrite,
+    CFDictionaryRef propertiesToWrite,
+    ffi.Pointer<SInt32> errorCode,
+  ) {
+    return _CFURLWriteDataAndPropertiesToResource2(
+      url,
+      dataToWrite,
+      propertiesToWrite,
+      errorCode,
+    );
+  }
+
+  late final _CFURLWriteDataAndPropertiesToResource2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFURLRef, CFDataRef, CFDictionaryRef,
+              ffi.Pointer<SInt32>)>>('CFURLWriteDataAndPropertiesToResource');
+  late final _CFURLWriteDataAndPropertiesToResource2 =
+      _CFURLWriteDataAndPropertiesToResource2Ptr.asFunction<
+          int Function(
+              CFURLRef, CFDataRef, CFDictionaryRef, ffi.Pointer<SInt32>)>();
+
+  int CFURLDestroyResource2(
+    CFURLRef url,
+    ffi.Pointer<SInt32> errorCode,
+  ) {
+    return _CFURLDestroyResource2(
+      url,
+      errorCode,
+    );
+  }
+
+  late final _CFURLDestroyResource2Ptr = _lookup<
+          ffi.NativeFunction<Boolean Function(CFURLRef, ffi.Pointer<SInt32>)>>(
+      'CFURLDestroyResource');
+  late final _CFURLDestroyResource2 = _CFURLDestroyResource2Ptr.asFunction<
+      int Function(CFURLRef, ffi.Pointer<SInt32>)>();
+
+  CFTypeRef CFURLCreatePropertyFromResource2(
+    CFAllocatorRef alloc,
+    CFURLRef url,
+    CFStringRef property,
+    ffi.Pointer<SInt32> errorCode,
+  ) {
+    return _CFURLCreatePropertyFromResource2(
+      alloc,
+      url,
+      property,
+      errorCode,
+    );
+  }
+
+  late final _CFURLCreatePropertyFromResource2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTypeRef Function(CFAllocatorRef, CFURLRef, CFStringRef,
+              ffi.Pointer<SInt32>)>>('CFURLCreatePropertyFromResource');
+  late final _CFURLCreatePropertyFromResource2 =
+      _CFURLCreatePropertyFromResource2Ptr.asFunction<
+          CFTypeRef Function(
+              CFAllocatorRef, CFURLRef, CFStringRef, ffi.Pointer<SInt32>)>();
+
+  int CFUUIDGetTypeID2() {
+    return _CFUUIDGetTypeID2();
+  }
+
+  late final _CFUUIDGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFUUIDGetTypeID');
+  late final _CFUUIDGetTypeID2 =
+      _CFUUIDGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFUUIDRef CFUUIDCreate2(
+    CFAllocatorRef alloc,
+  ) {
+    return _CFUUIDCreate2(
+      alloc,
+    );
+  }
+
+  late final _CFUUIDCreate2Ptr =
+      _lookup<ffi.NativeFunction<CFUUIDRef Function(CFAllocatorRef)>>(
+          'CFUUIDCreate');
+  late final _CFUUIDCreate2 =
+      _CFUUIDCreate2Ptr.asFunction<CFUUIDRef Function(CFAllocatorRef)>();
+
+  CFUUIDRef CFUUIDCreateWithBytes2(
+    CFAllocatorRef alloc,
+    int byte0,
+    int byte1,
+    int byte2,
+    int byte3,
+    int byte4,
+    int byte5,
+    int byte6,
+    int byte7,
+    int byte8,
+    int byte9,
+    int byte10,
+    int byte11,
+    int byte12,
+    int byte13,
+    int byte14,
+    int byte15,
+  ) {
+    return _CFUUIDCreateWithBytes2(
+      alloc,
+      byte0,
+      byte1,
+      byte2,
+      byte3,
+      byte4,
+      byte5,
+      byte6,
+      byte7,
+      byte8,
+      byte9,
+      byte10,
+      byte11,
+      byte12,
+      byte13,
+      byte14,
+      byte15,
+    );
+  }
+
+  late final _CFUUIDCreateWithBytes2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFUUIDRef Function(
+              CFAllocatorRef,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8)>>('CFUUIDCreateWithBytes');
+  late final _CFUUIDCreateWithBytes2 = _CFUUIDCreateWithBytes2Ptr.asFunction<
+      CFUUIDRef Function(CFAllocatorRef, int, int, int, int, int, int, int, int,
+          int, int, int, int, int, int, int, int)>();
+
+  CFUUIDRef CFUUIDCreateFromString2(
+    CFAllocatorRef alloc,
+    CFStringRef uuidStr,
+  ) {
+    return _CFUUIDCreateFromString2(
+      alloc,
+      uuidStr,
+    );
+  }
+
+  late final _CFUUIDCreateFromString2Ptr = _lookup<
+          ffi.NativeFunction<CFUUIDRef Function(CFAllocatorRef, CFStringRef)>>(
+      'CFUUIDCreateFromString');
+  late final _CFUUIDCreateFromString2 = _CFUUIDCreateFromString2Ptr.asFunction<
+      CFUUIDRef Function(CFAllocatorRef, CFStringRef)>();
+
+  CFStringRef CFUUIDCreateString2(
+    CFAllocatorRef alloc,
+    CFUUIDRef uuid,
+  ) {
+    return _CFUUIDCreateString2(
+      alloc,
+      uuid,
+    );
+  }
+
+  late final _CFUUIDCreateString2Ptr = _lookup<
+          ffi.NativeFunction<CFStringRef Function(CFAllocatorRef, CFUUIDRef)>>(
+      'CFUUIDCreateString');
+  late final _CFUUIDCreateString2 = _CFUUIDCreateString2Ptr.asFunction<
+      CFStringRef Function(CFAllocatorRef, CFUUIDRef)>();
+
+  CFUUIDRef CFUUIDGetConstantUUIDWithBytes2(
+    CFAllocatorRef alloc,
+    int byte0,
+    int byte1,
+    int byte2,
+    int byte3,
+    int byte4,
+    int byte5,
+    int byte6,
+    int byte7,
+    int byte8,
+    int byte9,
+    int byte10,
+    int byte11,
+    int byte12,
+    int byte13,
+    int byte14,
+    int byte15,
+  ) {
+    return _CFUUIDGetConstantUUIDWithBytes2(
+      alloc,
+      byte0,
+      byte1,
+      byte2,
+      byte3,
+      byte4,
+      byte5,
+      byte6,
+      byte7,
+      byte8,
+      byte9,
+      byte10,
+      byte11,
+      byte12,
+      byte13,
+      byte14,
+      byte15,
+    );
+  }
+
+  late final _CFUUIDGetConstantUUIDWithBytes2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFUUIDRef Function(
+              CFAllocatorRef,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8,
+              UInt8)>>('CFUUIDGetConstantUUIDWithBytes');
+  late final _CFUUIDGetConstantUUIDWithBytes2 =
+      _CFUUIDGetConstantUUIDWithBytes2Ptr.asFunction<
+          CFUUIDRef Function(CFAllocatorRef, int, int, int, int, int, int, int,
+              int, int, int, int, int, int, int, int, int)>();
+
+  CFUUIDBytes CFUUIDGetUUIDBytes2(
+    CFUUIDRef uuid,
+  ) {
+    return _CFUUIDGetUUIDBytes2(
+      uuid,
+    );
+  }
+
+  late final _CFUUIDGetUUIDBytes2Ptr =
+      _lookup<ffi.NativeFunction<CFUUIDBytes Function(CFUUIDRef)>>(
+          'CFUUIDGetUUIDBytes');
+  late final _CFUUIDGetUUIDBytes2 =
+      _CFUUIDGetUUIDBytes2Ptr.asFunction<CFUUIDBytes Function(CFUUIDRef)>();
+
+  CFUUIDRef CFUUIDCreateFromUUIDBytes2(
+    CFAllocatorRef alloc,
+    CFUUIDBytes bytes,
+  ) {
+    return _CFUUIDCreateFromUUIDBytes2(
+      alloc,
+      bytes,
+    );
+  }
+
+  late final _CFUUIDCreateFromUUIDBytes2Ptr = _lookup<
+          ffi.NativeFunction<CFUUIDRef Function(CFAllocatorRef, CFUUIDBytes)>>(
+      'CFUUIDCreateFromUUIDBytes');
+  late final _CFUUIDCreateFromUUIDBytes2 = _CFUUIDCreateFromUUIDBytes2Ptr
+      .asFunction<CFUUIDRef Function(CFAllocatorRef, CFUUIDBytes)>();
+
+  CFURLRef CFCopyHomeDirectoryURL2() {
+    return _CFCopyHomeDirectoryURL2();
+  }
+
+  late final _CFCopyHomeDirectoryURL2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function()>>(
+          'CFCopyHomeDirectoryURL');
+  late final _CFCopyHomeDirectoryURL2 =
+      _CFCopyHomeDirectoryURL2Ptr.asFunction<CFURLRef Function()>();
+
+  CFBundleRef CFBundleGetMainBundle2() {
+    return _CFBundleGetMainBundle2();
+  }
+
+  late final _CFBundleGetMainBundle2Ptr =
+      _lookup<ffi.NativeFunction<CFBundleRef Function()>>(
+          'CFBundleGetMainBundle');
+  late final _CFBundleGetMainBundle2 =
+      _CFBundleGetMainBundle2Ptr.asFunction<CFBundleRef Function()>();
+
+  CFBundleRef CFBundleGetBundleWithIdentifier2(
+    CFStringRef bundleID,
+  ) {
+    return _CFBundleGetBundleWithIdentifier2(
+      bundleID,
+    );
+  }
+
+  late final _CFBundleGetBundleWithIdentifier2Ptr =
+      _lookup<ffi.NativeFunction<CFBundleRef Function(CFStringRef)>>(
+          'CFBundleGetBundleWithIdentifier');
+  late final _CFBundleGetBundleWithIdentifier2 =
+      _CFBundleGetBundleWithIdentifier2Ptr.asFunction<
+          CFBundleRef Function(CFStringRef)>();
+
+  CFArrayRef CFBundleGetAllBundles2() {
+    return _CFBundleGetAllBundles2();
+  }
+
+  late final _CFBundleGetAllBundles2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function()>>(
+          'CFBundleGetAllBundles');
+  late final _CFBundleGetAllBundles2 =
+      _CFBundleGetAllBundles2Ptr.asFunction<CFArrayRef Function()>();
+
+  int CFBundleGetTypeID2() {
+    return _CFBundleGetTypeID2();
+  }
+
+  late final _CFBundleGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFBundleGetTypeID');
+  late final _CFBundleGetTypeID2 =
+      _CFBundleGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFBundleRef CFBundleCreate2(
+    CFAllocatorRef allocator,
+    CFURLRef bundleURL,
+  ) {
+    return _CFBundleCreate2(
+      allocator,
+      bundleURL,
+    );
+  }
+
+  late final _CFBundleCreate2Ptr = _lookup<
+          ffi.NativeFunction<CFBundleRef Function(CFAllocatorRef, CFURLRef)>>(
+      'CFBundleCreate');
+  late final _CFBundleCreate2 = _CFBundleCreate2Ptr.asFunction<
+      CFBundleRef Function(CFAllocatorRef, CFURLRef)>();
+
+  CFArrayRef CFBundleCreateBundlesFromDirectory2(
+    CFAllocatorRef allocator,
+    CFURLRef directoryURL,
+    CFStringRef bundleType,
+  ) {
+    return _CFBundleCreateBundlesFromDirectory2(
+      allocator,
+      directoryURL,
+      bundleType,
+    );
+  }
+
+  late final _CFBundleCreateBundlesFromDirectory2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFArrayRef Function(CFAllocatorRef, CFURLRef,
+              CFStringRef)>>('CFBundleCreateBundlesFromDirectory');
+  late final _CFBundleCreateBundlesFromDirectory2 =
+      _CFBundleCreateBundlesFromDirectory2Ptr.asFunction<
+          CFArrayRef Function(CFAllocatorRef, CFURLRef, CFStringRef)>();
+
+  CFURLRef CFBundleCopyBundleURL2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleCopyBundleURL2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleCopyBundleURL2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFBundleRef)>>(
+          'CFBundleCopyBundleURL');
+  late final _CFBundleCopyBundleURL2 =
+      _CFBundleCopyBundleURL2Ptr.asFunction<CFURLRef Function(CFBundleRef)>();
+
+  CFTypeRef CFBundleGetValueForInfoDictionaryKey2(
+    CFBundleRef bundle,
+    CFStringRef key,
+  ) {
+    return _CFBundleGetValueForInfoDictionaryKey2(
+      bundle,
+      key,
+    );
+  }
+
+  late final _CFBundleGetValueForInfoDictionaryKey2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeRef Function(CFBundleRef, CFStringRef)>>(
+          'CFBundleGetValueForInfoDictionaryKey');
+  late final _CFBundleGetValueForInfoDictionaryKey2 =
+      _CFBundleGetValueForInfoDictionaryKey2Ptr.asFunction<
+          CFTypeRef Function(CFBundleRef, CFStringRef)>();
+
+  CFDictionaryRef CFBundleGetInfoDictionary2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleGetInfoDictionary2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleGetInfoDictionary2Ptr =
+      _lookup<ffi.NativeFunction<CFDictionaryRef Function(CFBundleRef)>>(
+          'CFBundleGetInfoDictionary');
+  late final _CFBundleGetInfoDictionary2 = _CFBundleGetInfoDictionary2Ptr
+      .asFunction<CFDictionaryRef Function(CFBundleRef)>();
+
+  CFDictionaryRef CFBundleGetLocalInfoDictionary2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleGetLocalInfoDictionary2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleGetLocalInfoDictionary2Ptr =
+      _lookup<ffi.NativeFunction<CFDictionaryRef Function(CFBundleRef)>>(
+          'CFBundleGetLocalInfoDictionary');
+  late final _CFBundleGetLocalInfoDictionary2 =
+      _CFBundleGetLocalInfoDictionary2Ptr.asFunction<
+          CFDictionaryRef Function(CFBundleRef)>();
+
+  void CFBundleGetPackageInfo2(
+    CFBundleRef bundle,
+    ffi.Pointer<UInt32> packageType,
+    ffi.Pointer<UInt32> packageCreator,
+  ) {
+    return _CFBundleGetPackageInfo2(
+      bundle,
+      packageType,
+      packageCreator,
+    );
+  }
+
+  late final _CFBundleGetPackageInfo2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFBundleRef, ffi.Pointer<UInt32>,
+              ffi.Pointer<UInt32>)>>('CFBundleGetPackageInfo');
+  late final _CFBundleGetPackageInfo2 = _CFBundleGetPackageInfo2Ptr.asFunction<
+      void Function(CFBundleRef, ffi.Pointer<UInt32>, ffi.Pointer<UInt32>)>();
+
+  CFStringRef CFBundleGetIdentifier2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleGetIdentifier2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleGetIdentifier2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFBundleRef)>>(
+          'CFBundleGetIdentifier');
+  late final _CFBundleGetIdentifier2 = _CFBundleGetIdentifier2Ptr.asFunction<
+      CFStringRef Function(CFBundleRef)>();
+
+  int CFBundleGetVersionNumber2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleGetVersionNumber2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleGetVersionNumber2Ptr =
+      _lookup<ffi.NativeFunction<UInt32 Function(CFBundleRef)>>(
+          'CFBundleGetVersionNumber');
+  late final _CFBundleGetVersionNumber2 =
+      _CFBundleGetVersionNumber2Ptr.asFunction<int Function(CFBundleRef)>();
+
+  CFStringRef CFBundleGetDevelopmentRegion2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleGetDevelopmentRegion2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleGetDevelopmentRegion2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFBundleRef)>>(
+          'CFBundleGetDevelopmentRegion');
+  late final _CFBundleGetDevelopmentRegion2 = _CFBundleGetDevelopmentRegion2Ptr
+      .asFunction<CFStringRef Function(CFBundleRef)>();
+
+  CFURLRef CFBundleCopySupportFilesDirectoryURL2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleCopySupportFilesDirectoryURL2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleCopySupportFilesDirectoryURL2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFBundleRef)>>(
+          'CFBundleCopySupportFilesDirectoryURL');
+  late final _CFBundleCopySupportFilesDirectoryURL2 =
+      _CFBundleCopySupportFilesDirectoryURL2Ptr.asFunction<
+          CFURLRef Function(CFBundleRef)>();
+
+  CFURLRef CFBundleCopyResourcesDirectoryURL2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleCopyResourcesDirectoryURL2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleCopyResourcesDirectoryURL2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFBundleRef)>>(
+          'CFBundleCopyResourcesDirectoryURL');
+  late final _CFBundleCopyResourcesDirectoryURL2 =
+      _CFBundleCopyResourcesDirectoryURL2Ptr.asFunction<
+          CFURLRef Function(CFBundleRef)>();
+
+  CFURLRef CFBundleCopyPrivateFrameworksURL2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleCopyPrivateFrameworksURL2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleCopyPrivateFrameworksURL2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFBundleRef)>>(
+          'CFBundleCopyPrivateFrameworksURL');
+  late final _CFBundleCopyPrivateFrameworksURL2 =
+      _CFBundleCopyPrivateFrameworksURL2Ptr.asFunction<
+          CFURLRef Function(CFBundleRef)>();
+
+  CFURLRef CFBundleCopySharedFrameworksURL2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleCopySharedFrameworksURL2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleCopySharedFrameworksURL2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFBundleRef)>>(
+          'CFBundleCopySharedFrameworksURL');
+  late final _CFBundleCopySharedFrameworksURL2 =
+      _CFBundleCopySharedFrameworksURL2Ptr.asFunction<
+          CFURLRef Function(CFBundleRef)>();
+
+  CFURLRef CFBundleCopySharedSupportURL2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleCopySharedSupportURL2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleCopySharedSupportURL2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFBundleRef)>>(
+          'CFBundleCopySharedSupportURL');
+  late final _CFBundleCopySharedSupportURL2 = _CFBundleCopySharedSupportURL2Ptr
+      .asFunction<CFURLRef Function(CFBundleRef)>();
+
+  CFURLRef CFBundleCopyBuiltInPlugInsURL2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleCopyBuiltInPlugInsURL2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleCopyBuiltInPlugInsURL2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFBundleRef)>>(
+          'CFBundleCopyBuiltInPlugInsURL');
+  late final _CFBundleCopyBuiltInPlugInsURL2 =
+      _CFBundleCopyBuiltInPlugInsURL2Ptr.asFunction<
+          CFURLRef Function(CFBundleRef)>();
+
+  CFDictionaryRef CFBundleCopyInfoDictionaryInDirectory2(
+    CFURLRef bundleURL,
+  ) {
+    return _CFBundleCopyInfoDictionaryInDirectory2(
+      bundleURL,
+    );
+  }
+
+  late final _CFBundleCopyInfoDictionaryInDirectory2Ptr =
+      _lookup<ffi.NativeFunction<CFDictionaryRef Function(CFURLRef)>>(
+          'CFBundleCopyInfoDictionaryInDirectory');
+  late final _CFBundleCopyInfoDictionaryInDirectory2 =
+      _CFBundleCopyInfoDictionaryInDirectory2Ptr.asFunction<
+          CFDictionaryRef Function(CFURLRef)>();
+
+  int CFBundleGetPackageInfoInDirectory2(
+    CFURLRef url,
+    ffi.Pointer<UInt32> packageType,
+    ffi.Pointer<UInt32> packageCreator,
+  ) {
+    return _CFBundleGetPackageInfoInDirectory2(
+      url,
+      packageType,
+      packageCreator,
+    );
+  }
+
+  late final _CFBundleGetPackageInfoInDirectory2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFURLRef, ffi.Pointer<UInt32>,
+              ffi.Pointer<UInt32>)>>('CFBundleGetPackageInfoInDirectory');
+  late final _CFBundleGetPackageInfoInDirectory2 =
+      _CFBundleGetPackageInfoInDirectory2Ptr.asFunction<
+          int Function(CFURLRef, ffi.Pointer<UInt32>, ffi.Pointer<UInt32>)>();
+
+  CFURLRef CFBundleCopyResourceURL2(
+    CFBundleRef bundle,
+    CFStringRef resourceName,
+    CFStringRef resourceType,
+    CFStringRef subDirName,
+  ) {
+    return _CFBundleCopyResourceURL2(
+      bundle,
+      resourceName,
+      resourceType,
+      subDirName,
+    );
+  }
+
+  late final _CFBundleCopyResourceURL2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(CFBundleRef, CFStringRef, CFStringRef,
+              CFStringRef)>>('CFBundleCopyResourceURL');
+  late final _CFBundleCopyResourceURL2 =
+      _CFBundleCopyResourceURL2Ptr.asFunction<
+          CFURLRef Function(
+              CFBundleRef, CFStringRef, CFStringRef, CFStringRef)>();
+
+  CFArrayRef CFBundleCopyResourceURLsOfType2(
+    CFBundleRef bundle,
+    CFStringRef resourceType,
+    CFStringRef subDirName,
+  ) {
+    return _CFBundleCopyResourceURLsOfType2(
+      bundle,
+      resourceType,
+      subDirName,
+    );
+  }
+
+  late final _CFBundleCopyResourceURLsOfType2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFArrayRef Function(CFBundleRef, CFStringRef,
+              CFStringRef)>>('CFBundleCopyResourceURLsOfType');
+  late final _CFBundleCopyResourceURLsOfType2 =
+      _CFBundleCopyResourceURLsOfType2Ptr.asFunction<
+          CFArrayRef Function(CFBundleRef, CFStringRef, CFStringRef)>();
+
+  CFStringRef CFBundleCopyLocalizedString2(
+    CFBundleRef bundle,
+    CFStringRef key,
+    CFStringRef value,
+    CFStringRef tableName,
+  ) {
+    return _CFBundleCopyLocalizedString2(
+      bundle,
+      key,
+      value,
+      tableName,
+    );
+  }
+
+  late final _CFBundleCopyLocalizedString2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFBundleRef, CFStringRef, CFStringRef,
+              CFStringRef)>>('CFBundleCopyLocalizedString');
+  late final _CFBundleCopyLocalizedString2 =
+      _CFBundleCopyLocalizedString2Ptr.asFunction<
+          CFStringRef Function(
+              CFBundleRef, CFStringRef, CFStringRef, CFStringRef)>();
+
+  CFURLRef CFBundleCopyResourceURLInDirectory2(
+    CFURLRef bundleURL,
+    CFStringRef resourceName,
+    CFStringRef resourceType,
+    CFStringRef subDirName,
+  ) {
+    return _CFBundleCopyResourceURLInDirectory2(
+      bundleURL,
+      resourceName,
+      resourceType,
+      subDirName,
+    );
+  }
+
+  late final _CFBundleCopyResourceURLInDirectory2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(CFURLRef, CFStringRef, CFStringRef,
+              CFStringRef)>>('CFBundleCopyResourceURLInDirectory');
+  late final _CFBundleCopyResourceURLInDirectory2 =
+      _CFBundleCopyResourceURLInDirectory2Ptr.asFunction<
+          CFURLRef Function(CFURLRef, CFStringRef, CFStringRef, CFStringRef)>();
+
+  CFArrayRef CFBundleCopyResourceURLsOfTypeInDirectory2(
+    CFURLRef bundleURL,
+    CFStringRef resourceType,
+    CFStringRef subDirName,
+  ) {
+    return _CFBundleCopyResourceURLsOfTypeInDirectory2(
+      bundleURL,
+      resourceType,
+      subDirName,
+    );
+  }
+
+  late final _CFBundleCopyResourceURLsOfTypeInDirectory2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFArrayRef Function(CFURLRef, CFStringRef,
+              CFStringRef)>>('CFBundleCopyResourceURLsOfTypeInDirectory');
+  late final _CFBundleCopyResourceURLsOfTypeInDirectory2 =
+      _CFBundleCopyResourceURLsOfTypeInDirectory2Ptr.asFunction<
+          CFArrayRef Function(CFURLRef, CFStringRef, CFStringRef)>();
+
+  CFArrayRef CFBundleCopyBundleLocalizations2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleCopyBundleLocalizations2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleCopyBundleLocalizations2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function(CFBundleRef)>>(
+          'CFBundleCopyBundleLocalizations');
+  late final _CFBundleCopyBundleLocalizations2 =
+      _CFBundleCopyBundleLocalizations2Ptr.asFunction<
+          CFArrayRef Function(CFBundleRef)>();
+
+  CFArrayRef CFBundleCopyPreferredLocalizationsFromArray2(
+    CFArrayRef locArray,
+  ) {
+    return _CFBundleCopyPreferredLocalizationsFromArray2(
+      locArray,
+    );
+  }
+
+  late final _CFBundleCopyPreferredLocalizationsFromArray2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function(CFArrayRef)>>(
+          'CFBundleCopyPreferredLocalizationsFromArray');
+  late final _CFBundleCopyPreferredLocalizationsFromArray2 =
+      _CFBundleCopyPreferredLocalizationsFromArray2Ptr.asFunction<
+          CFArrayRef Function(CFArrayRef)>();
+
+  CFArrayRef CFBundleCopyLocalizationsForPreferences2(
+    CFArrayRef locArray,
+    CFArrayRef prefArray,
+  ) {
+    return _CFBundleCopyLocalizationsForPreferences2(
+      locArray,
+      prefArray,
+    );
+  }
+
+  late final _CFBundleCopyLocalizationsForPreferences2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function(CFArrayRef, CFArrayRef)>>(
+          'CFBundleCopyLocalizationsForPreferences');
+  late final _CFBundleCopyLocalizationsForPreferences2 =
+      _CFBundleCopyLocalizationsForPreferences2Ptr.asFunction<
+          CFArrayRef Function(CFArrayRef, CFArrayRef)>();
+
+  CFURLRef CFBundleCopyResourceURLForLocalization2(
+    CFBundleRef bundle,
+    CFStringRef resourceName,
+    CFStringRef resourceType,
+    CFStringRef subDirName,
+    CFStringRef localizationName,
+  ) {
+    return _CFBundleCopyResourceURLForLocalization2(
+      bundle,
+      resourceName,
+      resourceType,
+      subDirName,
+      localizationName,
+    );
+  }
+
+  late final _CFBundleCopyResourceURLForLocalization2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLRef Function(CFBundleRef, CFStringRef, CFStringRef, CFStringRef,
+              CFStringRef)>>('CFBundleCopyResourceURLForLocalization');
+  late final _CFBundleCopyResourceURLForLocalization2 =
+      _CFBundleCopyResourceURLForLocalization2Ptr.asFunction<
+          CFURLRef Function(CFBundleRef, CFStringRef, CFStringRef, CFStringRef,
+              CFStringRef)>();
+
+  CFArrayRef CFBundleCopyResourceURLsOfTypeForLocalization2(
+    CFBundleRef bundle,
+    CFStringRef resourceType,
+    CFStringRef subDirName,
+    CFStringRef localizationName,
+  ) {
+    return _CFBundleCopyResourceURLsOfTypeForLocalization2(
+      bundle,
+      resourceType,
+      subDirName,
+      localizationName,
+    );
+  }
+
+  late final _CFBundleCopyResourceURLsOfTypeForLocalization2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFArrayRef Function(CFBundleRef, CFStringRef, CFStringRef,
+              CFStringRef)>>('CFBundleCopyResourceURLsOfTypeForLocalization');
+  late final _CFBundleCopyResourceURLsOfTypeForLocalization2 =
+      _CFBundleCopyResourceURLsOfTypeForLocalization2Ptr.asFunction<
+          CFArrayRef Function(
+              CFBundleRef, CFStringRef, CFStringRef, CFStringRef)>();
+
+  CFDictionaryRef CFBundleCopyInfoDictionaryForURL2(
+    CFURLRef url,
+  ) {
+    return _CFBundleCopyInfoDictionaryForURL2(
+      url,
+    );
+  }
+
+  late final _CFBundleCopyInfoDictionaryForURL2Ptr =
+      _lookup<ffi.NativeFunction<CFDictionaryRef Function(CFURLRef)>>(
+          'CFBundleCopyInfoDictionaryForURL');
+  late final _CFBundleCopyInfoDictionaryForURL2 =
+      _CFBundleCopyInfoDictionaryForURL2Ptr.asFunction<
+          CFDictionaryRef Function(CFURLRef)>();
+
+  CFArrayRef CFBundleCopyLocalizationsForURL2(
+    CFURLRef url,
+  ) {
+    return _CFBundleCopyLocalizationsForURL2(
+      url,
+    );
+  }
+
+  late final _CFBundleCopyLocalizationsForURL2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function(CFURLRef)>>(
+          'CFBundleCopyLocalizationsForURL');
+  late final _CFBundleCopyLocalizationsForURL2 =
+      _CFBundleCopyLocalizationsForURL2Ptr.asFunction<
+          CFArrayRef Function(CFURLRef)>();
+
+  CFArrayRef CFBundleCopyExecutableArchitecturesForURL2(
+    CFURLRef url,
+  ) {
+    return _CFBundleCopyExecutableArchitecturesForURL2(
+      url,
+    );
+  }
+
+  late final _CFBundleCopyExecutableArchitecturesForURL2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function(CFURLRef)>>(
+          'CFBundleCopyExecutableArchitecturesForURL');
+  late final _CFBundleCopyExecutableArchitecturesForURL2 =
+      _CFBundleCopyExecutableArchitecturesForURL2Ptr.asFunction<
+          CFArrayRef Function(CFURLRef)>();
+
+  CFURLRef CFBundleCopyExecutableURL2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleCopyExecutableURL2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleCopyExecutableURL2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFBundleRef)>>(
+          'CFBundleCopyExecutableURL');
+  late final _CFBundleCopyExecutableURL2 = _CFBundleCopyExecutableURL2Ptr
+      .asFunction<CFURLRef Function(CFBundleRef)>();
+
+  CFArrayRef CFBundleCopyExecutableArchitectures2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleCopyExecutableArchitectures2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleCopyExecutableArchitectures2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function(CFBundleRef)>>(
+          'CFBundleCopyExecutableArchitectures');
+  late final _CFBundleCopyExecutableArchitectures2 =
+      _CFBundleCopyExecutableArchitectures2Ptr.asFunction<
+          CFArrayRef Function(CFBundleRef)>();
+
+  int CFBundlePreflightExecutable2(
+    CFBundleRef bundle,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFBundlePreflightExecutable2(
+      bundle,
+      error,
+    );
+  }
+
+  late final _CFBundlePreflightExecutable2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFBundleRef,
+              ffi.Pointer<CFErrorRef>)>>('CFBundlePreflightExecutable');
+  late final _CFBundlePreflightExecutable2 = _CFBundlePreflightExecutable2Ptr
+      .asFunction<int Function(CFBundleRef, ffi.Pointer<CFErrorRef>)>();
+
+  int CFBundleLoadExecutableAndReturnError2(
+    CFBundleRef bundle,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFBundleLoadExecutableAndReturnError2(
+      bundle,
+      error,
+    );
+  }
+
+  late final _CFBundleLoadExecutableAndReturnError2Ptr = _lookup<
+          ffi.NativeFunction<
+              Boolean Function(CFBundleRef, ffi.Pointer<CFErrorRef>)>>(
+      'CFBundleLoadExecutableAndReturnError');
+  late final _CFBundleLoadExecutableAndReturnError2 =
+      _CFBundleLoadExecutableAndReturnError2Ptr.asFunction<
+          int Function(CFBundleRef, ffi.Pointer<CFErrorRef>)>();
+
+  int CFBundleLoadExecutable2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleLoadExecutable2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleLoadExecutable2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFBundleRef)>>(
+          'CFBundleLoadExecutable');
+  late final _CFBundleLoadExecutable2 =
+      _CFBundleLoadExecutable2Ptr.asFunction<int Function(CFBundleRef)>();
+
+  int CFBundleIsExecutableLoaded2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleIsExecutableLoaded2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleIsExecutableLoaded2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFBundleRef)>>(
+          'CFBundleIsExecutableLoaded');
+  late final _CFBundleIsExecutableLoaded2 =
+      _CFBundleIsExecutableLoaded2Ptr.asFunction<int Function(CFBundleRef)>();
+
+  void CFBundleUnloadExecutable2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleUnloadExecutable2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleUnloadExecutable2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFBundleRef)>>(
+          'CFBundleUnloadExecutable');
+  late final _CFBundleUnloadExecutable2 =
+      _CFBundleUnloadExecutable2Ptr.asFunction<void Function(CFBundleRef)>();
+
+  ffi.Pointer<ffi.Void> CFBundleGetFunctionPointerForName2(
+    CFBundleRef bundle,
+    CFStringRef functionName,
+  ) {
+    return _CFBundleGetFunctionPointerForName2(
+      bundle,
+      functionName,
+    );
+  }
+
+  late final _CFBundleGetFunctionPointerForName2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              CFBundleRef, CFStringRef)>>('CFBundleGetFunctionPointerForName');
+  late final _CFBundleGetFunctionPointerForName2 =
+      _CFBundleGetFunctionPointerForName2Ptr.asFunction<
+          ffi.Pointer<ffi.Void> Function(CFBundleRef, CFStringRef)>();
+
+  void CFBundleGetFunctionPointersForNames2(
+    CFBundleRef bundle,
+    CFArrayRef functionNames,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> ftbl,
+  ) {
+    return _CFBundleGetFunctionPointersForNames2(
+      bundle,
+      functionNames,
+      ftbl,
+    );
+  }
+
+  late final _CFBundleGetFunctionPointersForNames2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(CFBundleRef, CFArrayRef,
+                  ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
+      'CFBundleGetFunctionPointersForNames');
+  late final _CFBundleGetFunctionPointersForNames2 =
+      _CFBundleGetFunctionPointersForNames2Ptr.asFunction<
+          void Function(
+              CFBundleRef, CFArrayRef, ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  ffi.Pointer<ffi.Void> CFBundleGetDataPointerForName2(
+    CFBundleRef bundle,
+    CFStringRef symbolName,
+  ) {
+    return _CFBundleGetDataPointerForName2(
+      bundle,
+      symbolName,
+    );
+  }
+
+  late final _CFBundleGetDataPointerForName2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              CFBundleRef, CFStringRef)>>('CFBundleGetDataPointerForName');
+  late final _CFBundleGetDataPointerForName2 =
+      _CFBundleGetDataPointerForName2Ptr.asFunction<
+          ffi.Pointer<ffi.Void> Function(CFBundleRef, CFStringRef)>();
+
+  void CFBundleGetDataPointersForNames2(
+    CFBundleRef bundle,
+    CFArrayRef symbolNames,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> stbl,
+  ) {
+    return _CFBundleGetDataPointersForNames2(
+      bundle,
+      symbolNames,
+      stbl,
+    );
+  }
+
+  late final _CFBundleGetDataPointersForNames2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(CFBundleRef, CFArrayRef,
+                  ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
+      'CFBundleGetDataPointersForNames');
+  late final _CFBundleGetDataPointersForNames2 =
+      _CFBundleGetDataPointersForNames2Ptr.asFunction<
+          void Function(
+              CFBundleRef, CFArrayRef, ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  CFURLRef CFBundleCopyAuxiliaryExecutableURL2(
+    CFBundleRef bundle,
+    CFStringRef executableName,
+  ) {
+    return _CFBundleCopyAuxiliaryExecutableURL2(
+      bundle,
+      executableName,
+    );
+  }
+
+  late final _CFBundleCopyAuxiliaryExecutableURL2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFBundleRef, CFStringRef)>>(
+          'CFBundleCopyAuxiliaryExecutableURL');
+  late final _CFBundleCopyAuxiliaryExecutableURL2 =
+      _CFBundleCopyAuxiliaryExecutableURL2Ptr.asFunction<
+          CFURLRef Function(CFBundleRef, CFStringRef)>();
+
+  int CFBundleIsExecutableLoadable2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleIsExecutableLoadable2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleIsExecutableLoadable2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFBundleRef)>>(
+          'CFBundleIsExecutableLoadable');
+  late final _CFBundleIsExecutableLoadable2 =
+      _CFBundleIsExecutableLoadable2Ptr.asFunction<int Function(CFBundleRef)>();
+
+  int CFBundleIsExecutableLoadableForURL2(
+    CFURLRef url,
+  ) {
+    return _CFBundleIsExecutableLoadableForURL2(
+      url,
+    );
+  }
+
+  late final _CFBundleIsExecutableLoadableForURL2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFURLRef)>>(
+          'CFBundleIsExecutableLoadableForURL');
+  late final _CFBundleIsExecutableLoadableForURL2 =
+      _CFBundleIsExecutableLoadableForURL2Ptr.asFunction<
+          int Function(CFURLRef)>();
+
+  int CFBundleIsArchitectureLoadable2(
+    int arch,
+  ) {
+    return _CFBundleIsArchitectureLoadable2(
+      arch,
+    );
+  }
+
+  late final _CFBundleIsArchitectureLoadable2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(cpu_type_t)>>(
+          'CFBundleIsArchitectureLoadable');
+  late final _CFBundleIsArchitectureLoadable2 =
+      _CFBundleIsArchitectureLoadable2Ptr.asFunction<int Function(int)>();
+
+  CFPlugInRef CFBundleGetPlugIn2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleGetPlugIn2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleGetPlugIn2Ptr =
+      _lookup<ffi.NativeFunction<CFPlugInRef Function(CFBundleRef)>>(
+          'CFBundleGetPlugIn');
+  late final _CFBundleGetPlugIn2 =
+      _CFBundleGetPlugIn2Ptr.asFunction<CFPlugInRef Function(CFBundleRef)>();
+
+  int CFBundleOpenBundleResourceMap2(
+    CFBundleRef bundle,
+  ) {
+    return _CFBundleOpenBundleResourceMap2(
+      bundle,
+    );
+  }
+
+  late final _CFBundleOpenBundleResourceMap2Ptr =
+      _lookup<ffi.NativeFunction<CFBundleRefNum Function(CFBundleRef)>>(
+          'CFBundleOpenBundleResourceMap');
+  late final _CFBundleOpenBundleResourceMap2 =
+      _CFBundleOpenBundleResourceMap2Ptr.asFunction<
+          int Function(CFBundleRef)>();
+
+  int CFBundleOpenBundleResourceFiles2(
+    CFBundleRef bundle,
+    ffi.Pointer<CFBundleRefNum> refNum,
+    ffi.Pointer<CFBundleRefNum> localizedRefNum,
+  ) {
+    return _CFBundleOpenBundleResourceFiles2(
+      bundle,
+      refNum,
+      localizedRefNum,
+    );
+  }
+
+  late final _CFBundleOpenBundleResourceFiles2Ptr = _lookup<
+      ffi.NativeFunction<
+          SInt32 Function(CFBundleRef, ffi.Pointer<CFBundleRefNum>,
+              ffi.Pointer<CFBundleRefNum>)>>('CFBundleOpenBundleResourceFiles');
+  late final _CFBundleOpenBundleResourceFiles2 =
+      _CFBundleOpenBundleResourceFiles2Ptr.asFunction<
+          int Function(CFBundleRef, ffi.Pointer<CFBundleRefNum>,
+              ffi.Pointer<CFBundleRefNum>)>();
+
+  void CFBundleCloseBundleResourceMap2(
+    CFBundleRef bundle,
+    int refNum,
+  ) {
+    return _CFBundleCloseBundleResourceMap2(
+      bundle,
+      refNum,
+    );
+  }
+
+  late final _CFBundleCloseBundleResourceMap2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(CFBundleRef, CFBundleRefNum)>>(
+      'CFBundleCloseBundleResourceMap');
+  late final _CFBundleCloseBundleResourceMap2 =
+      _CFBundleCloseBundleResourceMap2Ptr.asFunction<
+          void Function(CFBundleRef, int)>();
+
+  int CFMessagePortGetTypeID2() {
+    return _CFMessagePortGetTypeID2();
+  }
+
+  late final _CFMessagePortGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFMessagePortGetTypeID');
+  late final _CFMessagePortGetTypeID2 =
+      _CFMessagePortGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFMessagePortRef CFMessagePortCreateLocal2(
+    CFAllocatorRef allocator,
+    CFStringRef name,
+    CFMessagePortCallBack callout,
+    ffi.Pointer<CFMessagePortContext> context,
+    ffi.Pointer<Boolean> shouldFreeInfo,
+  ) {
+    return _CFMessagePortCreateLocal2(
+      allocator,
+      name,
+      callout,
+      context,
+      shouldFreeInfo,
+    );
+  }
+
+  late final _CFMessagePortCreateLocal2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMessagePortRef Function(
+              CFAllocatorRef,
+              CFStringRef,
+              CFMessagePortCallBack,
+              ffi.Pointer<CFMessagePortContext>,
+              ffi.Pointer<Boolean>)>>('CFMessagePortCreateLocal');
+  late final _CFMessagePortCreateLocal2 =
+      _CFMessagePortCreateLocal2Ptr.asFunction<
+          CFMessagePortRef Function(
+              CFAllocatorRef,
+              CFStringRef,
+              CFMessagePortCallBack,
+              ffi.Pointer<CFMessagePortContext>,
+              ffi.Pointer<Boolean>)>();
+
+  CFMessagePortRef CFMessagePortCreateRemote2(
+    CFAllocatorRef allocator,
+    CFStringRef name,
+  ) {
+    return _CFMessagePortCreateRemote2(
+      allocator,
+      name,
+    );
+  }
+
+  late final _CFMessagePortCreateRemote2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMessagePortRef Function(
+              CFAllocatorRef, CFStringRef)>>('CFMessagePortCreateRemote');
+  late final _CFMessagePortCreateRemote2 = _CFMessagePortCreateRemote2Ptr
+      .asFunction<CFMessagePortRef Function(CFAllocatorRef, CFStringRef)>();
+
+  int CFMessagePortIsRemote2(
+    CFMessagePortRef ms,
+  ) {
+    return _CFMessagePortIsRemote2(
+      ms,
+    );
+  }
+
+  late final _CFMessagePortIsRemote2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFMessagePortRef)>>(
+          'CFMessagePortIsRemote');
+  late final _CFMessagePortIsRemote2 =
+      _CFMessagePortIsRemote2Ptr.asFunction<int Function(CFMessagePortRef)>();
+
+  CFStringRef CFMessagePortGetName2(
+    CFMessagePortRef ms,
+  ) {
+    return _CFMessagePortGetName2(
+      ms,
+    );
+  }
+
+  late final _CFMessagePortGetName2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFMessagePortRef)>>(
+          'CFMessagePortGetName');
+  late final _CFMessagePortGetName2 = _CFMessagePortGetName2Ptr.asFunction<
+      CFStringRef Function(CFMessagePortRef)>();
+
+  int CFMessagePortSetName2(
+    CFMessagePortRef ms,
+    CFStringRef newName,
+  ) {
+    return _CFMessagePortSetName2(
+      ms,
+      newName,
+    );
+  }
+
+  late final _CFMessagePortSetName2Ptr = _lookup<
+          ffi.NativeFunction<Boolean Function(CFMessagePortRef, CFStringRef)>>(
+      'CFMessagePortSetName');
+  late final _CFMessagePortSetName2 = _CFMessagePortSetName2Ptr.asFunction<
+      int Function(CFMessagePortRef, CFStringRef)>();
+
+  void CFMessagePortGetContext2(
+    CFMessagePortRef ms,
+    ffi.Pointer<CFMessagePortContext> context,
+  ) {
+    return _CFMessagePortGetContext2(
+      ms,
+      context,
+    );
+  }
+
+  late final _CFMessagePortGetContext2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMessagePortRef,
+              ffi.Pointer<CFMessagePortContext>)>>('CFMessagePortGetContext');
+  late final _CFMessagePortGetContext2 =
+      _CFMessagePortGetContext2Ptr.asFunction<
+          void Function(CFMessagePortRef, ffi.Pointer<CFMessagePortContext>)>();
+
+  void CFMessagePortInvalidate2(
+    CFMessagePortRef ms,
+  ) {
+    return _CFMessagePortInvalidate2(
+      ms,
+    );
+  }
+
+  late final _CFMessagePortInvalidate2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFMessagePortRef)>>(
+          'CFMessagePortInvalidate');
+  late final _CFMessagePortInvalidate2 = _CFMessagePortInvalidate2Ptr
+      .asFunction<void Function(CFMessagePortRef)>();
+
+  int CFMessagePortIsValid2(
+    CFMessagePortRef ms,
+  ) {
+    return _CFMessagePortIsValid2(
+      ms,
+    );
+  }
+
+  late final _CFMessagePortIsValid2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFMessagePortRef)>>(
+          'CFMessagePortIsValid');
+  late final _CFMessagePortIsValid2 =
+      _CFMessagePortIsValid2Ptr.asFunction<int Function(CFMessagePortRef)>();
+
+  CFMessagePortInvalidationCallBack CFMessagePortGetInvalidationCallBack2(
+    CFMessagePortRef ms,
+  ) {
+    return _CFMessagePortGetInvalidationCallBack2(
+      ms,
+    );
+  }
+
+  late final _CFMessagePortGetInvalidationCallBack2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMessagePortInvalidationCallBack Function(
+              CFMessagePortRef)>>('CFMessagePortGetInvalidationCallBack');
+  late final _CFMessagePortGetInvalidationCallBack2 =
+      _CFMessagePortGetInvalidationCallBack2Ptr.asFunction<
+          CFMessagePortInvalidationCallBack Function(CFMessagePortRef)>();
+
+  void CFMessagePortSetInvalidationCallBack2(
+    CFMessagePortRef ms,
+    CFMessagePortInvalidationCallBack callout,
+  ) {
+    return _CFMessagePortSetInvalidationCallBack2(
+      ms,
+      callout,
+    );
+  }
+
+  late final _CFMessagePortSetInvalidationCallBack2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  CFMessagePortRef, CFMessagePortInvalidationCallBack)>>(
+      'CFMessagePortSetInvalidationCallBack');
+  late final _CFMessagePortSetInvalidationCallBack2 =
+      _CFMessagePortSetInvalidationCallBack2Ptr.asFunction<
+          void Function(CFMessagePortRef, CFMessagePortInvalidationCallBack)>();
+
+  int CFMessagePortSendRequest2(
+    CFMessagePortRef remote,
+    int msgid,
+    CFDataRef data,
+    double sendTimeout,
+    double rcvTimeout,
+    CFStringRef replyMode,
+    ffi.Pointer<CFDataRef> returnData,
+  ) {
+    return _CFMessagePortSendRequest2(
+      remote,
+      msgid,
+      data,
+      sendTimeout,
+      rcvTimeout,
+      replyMode,
+      returnData,
+    );
+  }
+
+  late final _CFMessagePortSendRequest2Ptr = _lookup<
+      ffi.NativeFunction<
+          SInt32 Function(
+              CFMessagePortRef,
+              SInt32,
+              CFDataRef,
+              CFTimeInterval,
+              CFTimeInterval,
+              CFStringRef,
+              ffi.Pointer<CFDataRef>)>>('CFMessagePortSendRequest');
+  late final _CFMessagePortSendRequest2 =
+      _CFMessagePortSendRequest2Ptr.asFunction<
+          int Function(CFMessagePortRef, int, CFDataRef, double, double,
+              CFStringRef, ffi.Pointer<CFDataRef>)>();
+
+  CFRunLoopSourceRef CFMessagePortCreateRunLoopSource2(
+    CFAllocatorRef allocator,
+    CFMessagePortRef local,
+    int order,
+  ) {
+    return _CFMessagePortCreateRunLoopSource2(
+      allocator,
+      local,
+      order,
+    );
+  }
+
+  late final _CFMessagePortCreateRunLoopSource2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFRunLoopSourceRef Function(CFAllocatorRef, CFMessagePortRef,
+              CFIndex)>>('CFMessagePortCreateRunLoopSource');
+  late final _CFMessagePortCreateRunLoopSource2 =
+      _CFMessagePortCreateRunLoopSource2Ptr.asFunction<
+          CFRunLoopSourceRef Function(CFAllocatorRef, CFMessagePortRef, int)>();
+
+  void CFMessagePortSetDispatchQueue2(
+    CFMessagePortRef ms,
+    dispatch_queue_t queue,
+  ) {
+    return _CFMessagePortSetDispatchQueue2(
+      ms,
+      queue,
+    );
+  }
+
+  late final _CFMessagePortSetDispatchQueue2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMessagePortRef,
+              dispatch_queue_t)>>('CFMessagePortSetDispatchQueue');
+  late final _CFMessagePortSetDispatchQueue2 =
+      _CFMessagePortSetDispatchQueue2Ptr.asFunction<
+          void Function(CFMessagePortRef, dispatch_queue_t)>();
+
+  int CFPlugInGetTypeID2() {
+    return _CFPlugInGetTypeID2();
+  }
+
+  late final _CFPlugInGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFPlugInGetTypeID');
+  late final _CFPlugInGetTypeID2 =
+      _CFPlugInGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFPlugInRef CFPlugInCreate2(
+    CFAllocatorRef allocator,
+    CFURLRef plugInURL,
+  ) {
+    return _CFPlugInCreate2(
+      allocator,
+      plugInURL,
+    );
+  }
+
+  late final _CFPlugInCreate2Ptr = _lookup<
+          ffi.NativeFunction<CFPlugInRef Function(CFAllocatorRef, CFURLRef)>>(
+      'CFPlugInCreate');
+  late final _CFPlugInCreate2 = _CFPlugInCreate2Ptr.asFunction<
+      CFPlugInRef Function(CFAllocatorRef, CFURLRef)>();
+
+  CFBundleRef CFPlugInGetBundle2(
+    CFPlugInRef plugIn,
+  ) {
+    return _CFPlugInGetBundle2(
+      plugIn,
+    );
+  }
+
+  late final _CFPlugInGetBundle2Ptr =
+      _lookup<ffi.NativeFunction<CFBundleRef Function(CFPlugInRef)>>(
+          'CFPlugInGetBundle');
+  late final _CFPlugInGetBundle2 =
+      _CFPlugInGetBundle2Ptr.asFunction<CFBundleRef Function(CFPlugInRef)>();
+
+  void CFPlugInSetLoadOnDemand2(
+    CFPlugInRef plugIn,
+    int flag,
+  ) {
+    return _CFPlugInSetLoadOnDemand2(
+      plugIn,
+      flag,
+    );
+  }
+
+  late final _CFPlugInSetLoadOnDemand2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFPlugInRef, Boolean)>>(
+          'CFPlugInSetLoadOnDemand');
+  late final _CFPlugInSetLoadOnDemand2 = _CFPlugInSetLoadOnDemand2Ptr
+      .asFunction<void Function(CFPlugInRef, int)>();
+
+  int CFPlugInIsLoadOnDemand2(
+    CFPlugInRef plugIn,
+  ) {
+    return _CFPlugInIsLoadOnDemand2(
+      plugIn,
+    );
+  }
+
+  late final _CFPlugInIsLoadOnDemand2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFPlugInRef)>>(
+          'CFPlugInIsLoadOnDemand');
+  late final _CFPlugInIsLoadOnDemand2 =
+      _CFPlugInIsLoadOnDemand2Ptr.asFunction<int Function(CFPlugInRef)>();
+
+  CFArrayRef CFPlugInFindFactoriesForPlugInType2(
+    CFUUIDRef typeUUID,
+  ) {
+    return _CFPlugInFindFactoriesForPlugInType2(
+      typeUUID,
+    );
+  }
+
+  late final _CFPlugInFindFactoriesForPlugInType2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function(CFUUIDRef)>>(
+          'CFPlugInFindFactoriesForPlugInType');
+  late final _CFPlugInFindFactoriesForPlugInType2 =
+      _CFPlugInFindFactoriesForPlugInType2Ptr.asFunction<
+          CFArrayRef Function(CFUUIDRef)>();
+
+  CFArrayRef CFPlugInFindFactoriesForPlugInTypeInPlugIn2(
+    CFUUIDRef typeUUID,
+    CFPlugInRef plugIn,
+  ) {
+    return _CFPlugInFindFactoriesForPlugInTypeInPlugIn2(
+      typeUUID,
+      plugIn,
+    );
+  }
+
+  late final _CFPlugInFindFactoriesForPlugInTypeInPlugIn2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function(CFUUIDRef, CFPlugInRef)>>(
+          'CFPlugInFindFactoriesForPlugInTypeInPlugIn');
+  late final _CFPlugInFindFactoriesForPlugInTypeInPlugIn2 =
+      _CFPlugInFindFactoriesForPlugInTypeInPlugIn2Ptr.asFunction<
+          CFArrayRef Function(CFUUIDRef, CFPlugInRef)>();
+
+  ffi.Pointer<ffi.Void> CFPlugInInstanceCreate2(
+    CFAllocatorRef allocator,
+    CFUUIDRef factoryUUID,
+    CFUUIDRef typeUUID,
+  ) {
+    return _CFPlugInInstanceCreate2(
+      allocator,
+      factoryUUID,
+      typeUUID,
+    );
+  }
+
+  late final _CFPlugInInstanceCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              CFAllocatorRef, CFUUIDRef, CFUUIDRef)>>('CFPlugInInstanceCreate');
+  late final _CFPlugInInstanceCreate2 = _CFPlugInInstanceCreate2Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(CFAllocatorRef, CFUUIDRef, CFUUIDRef)>();
+
+  int CFPlugInRegisterFactoryFunction2(
+    CFUUIDRef factoryUUID,
+    CFPlugInFactoryFunction func,
+  ) {
+    return _CFPlugInRegisterFactoryFunction2(
+      factoryUUID,
+      func,
+    );
+  }
+
+  late final _CFPlugInRegisterFactoryFunction2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFUUIDRef,
+              CFPlugInFactoryFunction)>>('CFPlugInRegisterFactoryFunction');
+  late final _CFPlugInRegisterFactoryFunction2 =
+      _CFPlugInRegisterFactoryFunction2Ptr.asFunction<
+          int Function(CFUUIDRef, CFPlugInFactoryFunction)>();
+
+  int CFPlugInRegisterFactoryFunctionByName2(
+    CFUUIDRef factoryUUID,
+    CFPlugInRef plugIn,
+    CFStringRef functionName,
+  ) {
+    return _CFPlugInRegisterFactoryFunctionByName2(
+      factoryUUID,
+      plugIn,
+      functionName,
+    );
+  }
+
+  late final _CFPlugInRegisterFactoryFunctionByName2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFUUIDRef, CFPlugInRef,
+              CFStringRef)>>('CFPlugInRegisterFactoryFunctionByName');
+  late final _CFPlugInRegisterFactoryFunctionByName2 =
+      _CFPlugInRegisterFactoryFunctionByName2Ptr.asFunction<
+          int Function(CFUUIDRef, CFPlugInRef, CFStringRef)>();
+
+  int CFPlugInUnregisterFactory2(
+    CFUUIDRef factoryUUID,
+  ) {
+    return _CFPlugInUnregisterFactory2(
+      factoryUUID,
+    );
+  }
+
+  late final _CFPlugInUnregisterFactory2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFUUIDRef)>>(
+          'CFPlugInUnregisterFactory');
+  late final _CFPlugInUnregisterFactory2 =
+      _CFPlugInUnregisterFactory2Ptr.asFunction<int Function(CFUUIDRef)>();
+
+  int CFPlugInRegisterPlugInType2(
+    CFUUIDRef factoryUUID,
+    CFUUIDRef typeUUID,
+  ) {
+    return _CFPlugInRegisterPlugInType2(
+      factoryUUID,
+      typeUUID,
+    );
+  }
+
+  late final _CFPlugInRegisterPlugInType2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFUUIDRef, CFUUIDRef)>>(
+          'CFPlugInRegisterPlugInType');
+  late final _CFPlugInRegisterPlugInType2 = _CFPlugInRegisterPlugInType2Ptr
+      .asFunction<int Function(CFUUIDRef, CFUUIDRef)>();
+
+  int CFPlugInUnregisterPlugInType2(
+    CFUUIDRef factoryUUID,
+    CFUUIDRef typeUUID,
+  ) {
+    return _CFPlugInUnregisterPlugInType2(
+      factoryUUID,
+      typeUUID,
+    );
+  }
+
+  late final _CFPlugInUnregisterPlugInType2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFUUIDRef, CFUUIDRef)>>(
+          'CFPlugInUnregisterPlugInType');
+  late final _CFPlugInUnregisterPlugInType2 = _CFPlugInUnregisterPlugInType2Ptr
+      .asFunction<int Function(CFUUIDRef, CFUUIDRef)>();
+
+  void CFPlugInAddInstanceForFactory2(
+    CFUUIDRef factoryID,
+  ) {
+    return _CFPlugInAddInstanceForFactory2(
+      factoryID,
+    );
+  }
+
+  late final _CFPlugInAddInstanceForFactory2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFUUIDRef)>>(
+          'CFPlugInAddInstanceForFactory');
+  late final _CFPlugInAddInstanceForFactory2 =
+      _CFPlugInAddInstanceForFactory2Ptr.asFunction<void Function(CFUUIDRef)>();
+
+  void CFPlugInRemoveInstanceForFactory2(
+    CFUUIDRef factoryID,
+  ) {
+    return _CFPlugInRemoveInstanceForFactory2(
+      factoryID,
+    );
+  }
+
+  late final _CFPlugInRemoveInstanceForFactory2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFUUIDRef)>>(
+          'CFPlugInRemoveInstanceForFactory');
+  late final _CFPlugInRemoveInstanceForFactory2 =
+      _CFPlugInRemoveInstanceForFactory2Ptr.asFunction<
+          void Function(CFUUIDRef)>();
+
+  int CFPlugInInstanceGetInterfaceFunctionTable2(
+    CFPlugInInstanceRef instance,
+    CFStringRef interfaceName,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> ftbl,
+  ) {
+    return _CFPlugInInstanceGetInterfaceFunctionTable2(
+      instance,
+      interfaceName,
+      ftbl,
+    );
+  }
+
+  late final _CFPlugInInstanceGetInterfaceFunctionTable2Ptr = _lookup<
+          ffi.NativeFunction<
+              Boolean Function(CFPlugInInstanceRef, CFStringRef,
+                  ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
+      'CFPlugInInstanceGetInterfaceFunctionTable');
+  late final _CFPlugInInstanceGetInterfaceFunctionTable2 =
+      _CFPlugInInstanceGetInterfaceFunctionTable2Ptr.asFunction<
+          int Function(CFPlugInInstanceRef, CFStringRef,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  CFStringRef CFPlugInInstanceGetFactoryName2(
+    CFPlugInInstanceRef instance,
+  ) {
+    return _CFPlugInInstanceGetFactoryName2(
+      instance,
+    );
+  }
+
+  late final _CFPlugInInstanceGetFactoryName2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFPlugInInstanceRef)>>(
+          'CFPlugInInstanceGetFactoryName');
+  late final _CFPlugInInstanceGetFactoryName2 =
+      _CFPlugInInstanceGetFactoryName2Ptr.asFunction<
+          CFStringRef Function(CFPlugInInstanceRef)>();
+
+  ffi.Pointer<ffi.Void> CFPlugInInstanceGetInstanceData2(
+    CFPlugInInstanceRef instance,
+  ) {
+    return _CFPlugInInstanceGetInstanceData2(
+      instance,
+    );
+  }
+
+  late final _CFPlugInInstanceGetInstanceData2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              CFPlugInInstanceRef)>>('CFPlugInInstanceGetInstanceData');
+  late final _CFPlugInInstanceGetInstanceData2 =
+      _CFPlugInInstanceGetInstanceData2Ptr.asFunction<
+          ffi.Pointer<ffi.Void> Function(CFPlugInInstanceRef)>();
+
+  int CFPlugInInstanceGetTypeID2() {
+    return _CFPlugInInstanceGetTypeID2();
+  }
+
+  late final _CFPlugInInstanceGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFPlugInInstanceGetTypeID');
+  late final _CFPlugInInstanceGetTypeID2 =
+      _CFPlugInInstanceGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFPlugInInstanceRef CFPlugInInstanceCreateWithInstanceDataSize2(
+    CFAllocatorRef allocator,
+    int instanceDataSize,
+    CFPlugInInstanceDeallocateInstanceDataFunction deallocateInstanceFunction,
+    CFStringRef factoryName,
+    CFPlugInInstanceGetInterfaceFunction getInterfaceFunction,
+  ) {
+    return _CFPlugInInstanceCreateWithInstanceDataSize2(
+      allocator,
+      instanceDataSize,
+      deallocateInstanceFunction,
+      factoryName,
+      getInterfaceFunction,
+    );
+  }
+
+  late final _CFPlugInInstanceCreateWithInstanceDataSize2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFPlugInInstanceRef Function(
+                  CFAllocatorRef,
+                  CFIndex,
+                  CFPlugInInstanceDeallocateInstanceDataFunction,
+                  CFStringRef,
+                  CFPlugInInstanceGetInterfaceFunction)>>(
+      'CFPlugInInstanceCreateWithInstanceDataSize');
+  late final _CFPlugInInstanceCreateWithInstanceDataSize2 =
+      _CFPlugInInstanceCreateWithInstanceDataSize2Ptr.asFunction<
+          CFPlugInInstanceRef Function(
+              CFAllocatorRef,
+              int,
+              CFPlugInInstanceDeallocateInstanceDataFunction,
+              CFStringRef,
+              CFPlugInInstanceGetInterfaceFunction)>();
+
+  int CFMachPortGetTypeID2() {
+    return _CFMachPortGetTypeID2();
+  }
+
+  late final _CFMachPortGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFMachPortGetTypeID');
+  late final _CFMachPortGetTypeID2 =
+      _CFMachPortGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFMachPortRef CFMachPortCreate2(
+    CFAllocatorRef allocator,
+    CFMachPortCallBack callout,
+    ffi.Pointer<CFMachPortContext> context,
+    ffi.Pointer<Boolean> shouldFreeInfo,
+  ) {
+    return _CFMachPortCreate2(
+      allocator,
+      callout,
+      context,
+      shouldFreeInfo,
+    );
+  }
+
+  late final _CFMachPortCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMachPortRef Function(
+              CFAllocatorRef,
+              CFMachPortCallBack,
+              ffi.Pointer<CFMachPortContext>,
+              ffi.Pointer<Boolean>)>>('CFMachPortCreate');
+  late final _CFMachPortCreate2 = _CFMachPortCreate2Ptr.asFunction<
+      CFMachPortRef Function(CFAllocatorRef, CFMachPortCallBack,
+          ffi.Pointer<CFMachPortContext>, ffi.Pointer<Boolean>)>();
+
+  CFMachPortRef CFMachPortCreateWithPort2(
+    CFAllocatorRef allocator,
+    int portNum,
+    CFMachPortCallBack callout,
+    ffi.Pointer<CFMachPortContext> context,
+    ffi.Pointer<Boolean> shouldFreeInfo,
+  ) {
+    return _CFMachPortCreateWithPort2(
+      allocator,
+      portNum,
+      callout,
+      context,
+      shouldFreeInfo,
+    );
+  }
+
+  late final _CFMachPortCreateWithPort2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMachPortRef Function(
+              CFAllocatorRef,
+              mach_port_t,
+              CFMachPortCallBack,
+              ffi.Pointer<CFMachPortContext>,
+              ffi.Pointer<Boolean>)>>('CFMachPortCreateWithPort');
+  late final _CFMachPortCreateWithPort2 =
+      _CFMachPortCreateWithPort2Ptr.asFunction<
+          CFMachPortRef Function(CFAllocatorRef, int, CFMachPortCallBack,
+              ffi.Pointer<CFMachPortContext>, ffi.Pointer<Boolean>)>();
+
+  int CFMachPortGetPort2(
+    CFMachPortRef port,
+  ) {
+    return _CFMachPortGetPort2(
+      port,
+    );
+  }
+
+  late final _CFMachPortGetPort2Ptr =
+      _lookup<ffi.NativeFunction<mach_port_t Function(CFMachPortRef)>>(
+          'CFMachPortGetPort');
+  late final _CFMachPortGetPort2 =
+      _CFMachPortGetPort2Ptr.asFunction<int Function(CFMachPortRef)>();
+
+  void CFMachPortGetContext2(
+    CFMachPortRef port,
+    ffi.Pointer<CFMachPortContext> context,
+  ) {
+    return _CFMachPortGetContext2(
+      port,
+      context,
+    );
+  }
+
+  late final _CFMachPortGetContext2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMachPortRef,
+              ffi.Pointer<CFMachPortContext>)>>('CFMachPortGetContext');
+  late final _CFMachPortGetContext2 = _CFMachPortGetContext2Ptr.asFunction<
+      void Function(CFMachPortRef, ffi.Pointer<CFMachPortContext>)>();
+
+  void CFMachPortInvalidate2(
+    CFMachPortRef port,
+  ) {
+    return _CFMachPortInvalidate2(
+      port,
+    );
+  }
+
+  late final _CFMachPortInvalidate2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFMachPortRef)>>(
+          'CFMachPortInvalidate');
+  late final _CFMachPortInvalidate2 =
+      _CFMachPortInvalidate2Ptr.asFunction<void Function(CFMachPortRef)>();
+
+  int CFMachPortIsValid2(
+    CFMachPortRef port,
+  ) {
+    return _CFMachPortIsValid2(
+      port,
+    );
+  }
+
+  late final _CFMachPortIsValid2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFMachPortRef)>>(
+          'CFMachPortIsValid');
+  late final _CFMachPortIsValid2 =
+      _CFMachPortIsValid2Ptr.asFunction<int Function(CFMachPortRef)>();
+
+  CFMachPortInvalidationCallBack CFMachPortGetInvalidationCallBack2(
+    CFMachPortRef port,
+  ) {
+    return _CFMachPortGetInvalidationCallBack2(
+      port,
+    );
+  }
+
+  late final _CFMachPortGetInvalidationCallBack2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMachPortInvalidationCallBack Function(
+              CFMachPortRef)>>('CFMachPortGetInvalidationCallBack');
+  late final _CFMachPortGetInvalidationCallBack2 =
+      _CFMachPortGetInvalidationCallBack2Ptr.asFunction<
+          CFMachPortInvalidationCallBack Function(CFMachPortRef)>();
+
+  void CFMachPortSetInvalidationCallBack2(
+    CFMachPortRef port,
+    CFMachPortInvalidationCallBack callout,
+  ) {
+    return _CFMachPortSetInvalidationCallBack2(
+      port,
+      callout,
+    );
+  }
+
+  late final _CFMachPortSetInvalidationCallBack2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  CFMachPortRef, CFMachPortInvalidationCallBack)>>(
+      'CFMachPortSetInvalidationCallBack');
+  late final _CFMachPortSetInvalidationCallBack2 =
+      _CFMachPortSetInvalidationCallBack2Ptr.asFunction<
+          void Function(CFMachPortRef, CFMachPortInvalidationCallBack)>();
+
+  CFRunLoopSourceRef CFMachPortCreateRunLoopSource2(
+    CFAllocatorRef allocator,
+    CFMachPortRef port,
+    int order,
+  ) {
+    return _CFMachPortCreateRunLoopSource2(
+      allocator,
+      port,
+      order,
+    );
+  }
+
+  late final _CFMachPortCreateRunLoopSource2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFRunLoopSourceRef Function(CFAllocatorRef, CFMachPortRef,
+              CFIndex)>>('CFMachPortCreateRunLoopSource');
+  late final _CFMachPortCreateRunLoopSource2 =
+      _CFMachPortCreateRunLoopSource2Ptr.asFunction<
+          CFRunLoopSourceRef Function(CFAllocatorRef, CFMachPortRef, int)>();
+
+  int CFAttributedStringGetTypeID2() {
+    return _CFAttributedStringGetTypeID2();
+  }
+
+  late final _CFAttributedStringGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFAttributedStringGetTypeID');
+  late final _CFAttributedStringGetTypeID2 =
+      _CFAttributedStringGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFAttributedStringRef CFAttributedStringCreate2(
+    CFAllocatorRef alloc,
+    CFStringRef str,
+    CFDictionaryRef attributes,
+  ) {
+    return _CFAttributedStringCreate2(
+      alloc,
+      str,
+      attributes,
+    );
+  }
+
+  late final _CFAttributedStringCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFAttributedStringRef Function(CFAllocatorRef, CFStringRef,
+              CFDictionaryRef)>>('CFAttributedStringCreate');
+  late final _CFAttributedStringCreate2 =
+      _CFAttributedStringCreate2Ptr.asFunction<
+          CFAttributedStringRef Function(
+              CFAllocatorRef, CFStringRef, CFDictionaryRef)>();
+
+  CFAttributedStringRef CFAttributedStringCreateWithSubstring2(
+    CFAllocatorRef alloc,
+    CFAttributedStringRef aStr,
+    CFRange range,
+  ) {
+    return _CFAttributedStringCreateWithSubstring2(
+      alloc,
+      aStr,
+      range,
+    );
+  }
+
+  late final _CFAttributedStringCreateWithSubstring2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFAttributedStringRef Function(CFAllocatorRef, CFAttributedStringRef,
+              CFRange)>>('CFAttributedStringCreateWithSubstring');
+  late final _CFAttributedStringCreateWithSubstring2 =
+      _CFAttributedStringCreateWithSubstring2Ptr.asFunction<
+          CFAttributedStringRef Function(
+              CFAllocatorRef, CFAttributedStringRef, CFRange)>();
+
+  CFAttributedStringRef CFAttributedStringCreateCopy2(
+    CFAllocatorRef alloc,
+    CFAttributedStringRef aStr,
+  ) {
+    return _CFAttributedStringCreateCopy2(
+      alloc,
+      aStr,
+    );
+  }
+
+  late final _CFAttributedStringCreateCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFAttributedStringRef Function(CFAllocatorRef,
+              CFAttributedStringRef)>>('CFAttributedStringCreateCopy');
+  late final _CFAttributedStringCreateCopy2 =
+      _CFAttributedStringCreateCopy2Ptr.asFunction<
+          CFAttributedStringRef Function(
+              CFAllocatorRef, CFAttributedStringRef)>();
+
+  CFStringRef CFAttributedStringGetString2(
+    CFAttributedStringRef aStr,
+  ) {
+    return _CFAttributedStringGetString2(
+      aStr,
+    );
+  }
+
+  late final _CFAttributedStringGetString2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFAttributedStringRef)>>(
+          'CFAttributedStringGetString');
+  late final _CFAttributedStringGetString2 = _CFAttributedStringGetString2Ptr
+      .asFunction<CFStringRef Function(CFAttributedStringRef)>();
+
+  int CFAttributedStringGetLength2(
+    CFAttributedStringRef aStr,
+  ) {
+    return _CFAttributedStringGetLength2(
+      aStr,
+    );
+  }
+
+  late final _CFAttributedStringGetLength2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFAttributedStringRef)>>(
+          'CFAttributedStringGetLength');
+  late final _CFAttributedStringGetLength2 = _CFAttributedStringGetLength2Ptr
+      .asFunction<int Function(CFAttributedStringRef)>();
+
+  CFDictionaryRef CFAttributedStringGetAttributes2(
+    CFAttributedStringRef aStr,
+    int loc,
+    ffi.Pointer<CFRange> effectiveRange,
+  ) {
+    return _CFAttributedStringGetAttributes2(
+      aStr,
+      loc,
+      effectiveRange,
+    );
+  }
+
+  late final _CFAttributedStringGetAttributes2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDictionaryRef Function(CFAttributedStringRef, CFIndex,
+              ffi.Pointer<CFRange>)>>('CFAttributedStringGetAttributes');
+  late final _CFAttributedStringGetAttributes2 =
+      _CFAttributedStringGetAttributes2Ptr.asFunction<
+          CFDictionaryRef Function(
+              CFAttributedStringRef, int, ffi.Pointer<CFRange>)>();
+
+  CFTypeRef CFAttributedStringGetAttribute2(
+    CFAttributedStringRef aStr,
+    int loc,
+    CFStringRef attrName,
+    ffi.Pointer<CFRange> effectiveRange,
+  ) {
+    return _CFAttributedStringGetAttribute2(
+      aStr,
+      loc,
+      attrName,
+      effectiveRange,
+    );
+  }
+
+  late final _CFAttributedStringGetAttribute2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTypeRef Function(CFAttributedStringRef, CFIndex, CFStringRef,
+              ffi.Pointer<CFRange>)>>('CFAttributedStringGetAttribute');
+  late final _CFAttributedStringGetAttribute2 =
+      _CFAttributedStringGetAttribute2Ptr.asFunction<
+          CFTypeRef Function(
+              CFAttributedStringRef, int, CFStringRef, ffi.Pointer<CFRange>)>();
+
+  CFDictionaryRef CFAttributedStringGetAttributesAndLongestEffectiveRange2(
+    CFAttributedStringRef aStr,
+    int loc,
+    CFRange inRange,
+    ffi.Pointer<CFRange> longestEffectiveRange,
+  ) {
+    return _CFAttributedStringGetAttributesAndLongestEffectiveRange2(
+      aStr,
+      loc,
+      inRange,
+      longestEffectiveRange,
+    );
+  }
+
+  late final _CFAttributedStringGetAttributesAndLongestEffectiveRange2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  CFDictionaryRef Function(CFAttributedStringRef, CFIndex,
+                      CFRange, ffi.Pointer<CFRange>)>>(
+          'CFAttributedStringGetAttributesAndLongestEffectiveRange');
+  late final _CFAttributedStringGetAttributesAndLongestEffectiveRange2 =
+      _CFAttributedStringGetAttributesAndLongestEffectiveRange2Ptr.asFunction<
+          CFDictionaryRef Function(
+              CFAttributedStringRef, int, CFRange, ffi.Pointer<CFRange>)>();
+
+  CFTypeRef CFAttributedStringGetAttributeAndLongestEffectiveRange2(
+    CFAttributedStringRef aStr,
+    int loc,
+    CFStringRef attrName,
+    CFRange inRange,
+    ffi.Pointer<CFRange> longestEffectiveRange,
+  ) {
+    return _CFAttributedStringGetAttributeAndLongestEffectiveRange2(
+      aStr,
+      loc,
+      attrName,
+      inRange,
+      longestEffectiveRange,
+    );
+  }
+
+  late final _CFAttributedStringGetAttributeAndLongestEffectiveRange2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  CFTypeRef Function(CFAttributedStringRef, CFIndex,
+                      CFStringRef, CFRange, ffi.Pointer<CFRange>)>>(
+          'CFAttributedStringGetAttributeAndLongestEffectiveRange');
+  late final _CFAttributedStringGetAttributeAndLongestEffectiveRange2 =
+      _CFAttributedStringGetAttributeAndLongestEffectiveRange2Ptr.asFunction<
+          CFTypeRef Function(CFAttributedStringRef, int, CFStringRef, CFRange,
+              ffi.Pointer<CFRange>)>();
+
+  CFMutableAttributedStringRef CFAttributedStringCreateMutableCopy2(
+    CFAllocatorRef alloc,
+    int maxLength,
+    CFAttributedStringRef aStr,
+  ) {
+    return _CFAttributedStringCreateMutableCopy2(
+      alloc,
+      maxLength,
+      aStr,
+    );
+  }
+
+  late final _CFAttributedStringCreateMutableCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableAttributedStringRef Function(CFAllocatorRef, CFIndex,
+              CFAttributedStringRef)>>('CFAttributedStringCreateMutableCopy');
+  late final _CFAttributedStringCreateMutableCopy2 =
+      _CFAttributedStringCreateMutableCopy2Ptr.asFunction<
+          CFMutableAttributedStringRef Function(
+              CFAllocatorRef, int, CFAttributedStringRef)>();
+
+  CFMutableAttributedStringRef CFAttributedStringCreateMutable2(
+    CFAllocatorRef alloc,
+    int maxLength,
+  ) {
+    return _CFAttributedStringCreateMutable2(
+      alloc,
+      maxLength,
+    );
+  }
+
+  late final _CFAttributedStringCreateMutable2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFMutableAttributedStringRef Function(
+              CFAllocatorRef, CFIndex)>>('CFAttributedStringCreateMutable');
+  late final _CFAttributedStringCreateMutable2 =
+      _CFAttributedStringCreateMutable2Ptr.asFunction<
+          CFMutableAttributedStringRef Function(CFAllocatorRef, int)>();
+
+  void CFAttributedStringReplaceString2(
+    CFMutableAttributedStringRef aStr,
+    CFRange range,
+    CFStringRef replacement,
+  ) {
+    return _CFAttributedStringReplaceString2(
+      aStr,
+      range,
+      replacement,
+    );
+  }
+
+  late final _CFAttributedStringReplaceString2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableAttributedStringRef, CFRange,
+              CFStringRef)>>('CFAttributedStringReplaceString');
+  late final _CFAttributedStringReplaceString2 =
+      _CFAttributedStringReplaceString2Ptr.asFunction<
+          void Function(CFMutableAttributedStringRef, CFRange, CFStringRef)>();
+
+  CFMutableStringRef CFAttributedStringGetMutableString2(
+    CFMutableAttributedStringRef aStr,
+  ) {
+    return _CFAttributedStringGetMutableString2(
+      aStr,
+    );
+  }
+
+  late final _CFAttributedStringGetMutableString2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFMutableStringRef Function(CFMutableAttributedStringRef)>>(
+      'CFAttributedStringGetMutableString');
+  late final _CFAttributedStringGetMutableString2 =
+      _CFAttributedStringGetMutableString2Ptr.asFunction<
+          CFMutableStringRef Function(CFMutableAttributedStringRef)>();
+
+  void CFAttributedStringSetAttributes2(
+    CFMutableAttributedStringRef aStr,
+    CFRange range,
+    CFDictionaryRef replacement,
+    int clearOtherAttributes,
+  ) {
+    return _CFAttributedStringSetAttributes2(
+      aStr,
+      range,
+      replacement,
+      clearOtherAttributes,
+    );
+  }
+
+  late final _CFAttributedStringSetAttributes2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableAttributedStringRef, CFRange,
+              CFDictionaryRef, Boolean)>>('CFAttributedStringSetAttributes');
+  late final _CFAttributedStringSetAttributes2 =
+      _CFAttributedStringSetAttributes2Ptr.asFunction<
+          void Function(
+              CFMutableAttributedStringRef, CFRange, CFDictionaryRef, int)>();
+
+  void CFAttributedStringSetAttribute2(
+    CFMutableAttributedStringRef aStr,
+    CFRange range,
+    CFStringRef attrName,
+    CFTypeRef value,
+  ) {
+    return _CFAttributedStringSetAttribute2(
+      aStr,
+      range,
+      attrName,
+      value,
+    );
+  }
+
+  late final _CFAttributedStringSetAttribute2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableAttributedStringRef, CFRange, CFStringRef,
+              CFTypeRef)>>('CFAttributedStringSetAttribute');
+  late final _CFAttributedStringSetAttribute2 =
+      _CFAttributedStringSetAttribute2Ptr.asFunction<
+          void Function(
+              CFMutableAttributedStringRef, CFRange, CFStringRef, CFTypeRef)>();
+
+  void CFAttributedStringRemoveAttribute2(
+    CFMutableAttributedStringRef aStr,
+    CFRange range,
+    CFStringRef attrName,
+  ) {
+    return _CFAttributedStringRemoveAttribute2(
+      aStr,
+      range,
+      attrName,
+    );
+  }
+
+  late final _CFAttributedStringRemoveAttribute2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFMutableAttributedStringRef, CFRange,
+              CFStringRef)>>('CFAttributedStringRemoveAttribute');
+  late final _CFAttributedStringRemoveAttribute2 =
+      _CFAttributedStringRemoveAttribute2Ptr.asFunction<
+          void Function(CFMutableAttributedStringRef, CFRange, CFStringRef)>();
+
+  void CFAttributedStringReplaceAttributedString2(
+    CFMutableAttributedStringRef aStr,
+    CFRange range,
+    CFAttributedStringRef replacement,
+  ) {
+    return _CFAttributedStringReplaceAttributedString2(
+      aStr,
+      range,
+      replacement,
+    );
+  }
+
+  late final _CFAttributedStringReplaceAttributedString2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(CFMutableAttributedStringRef, CFRange,
+                  CFAttributedStringRef)>>(
+      'CFAttributedStringReplaceAttributedString');
+  late final _CFAttributedStringReplaceAttributedString2 =
+      _CFAttributedStringReplaceAttributedString2Ptr.asFunction<
+          void Function(
+              CFMutableAttributedStringRef, CFRange, CFAttributedStringRef)>();
+
+  void CFAttributedStringBeginEditing2(
+    CFMutableAttributedStringRef aStr,
+  ) {
+    return _CFAttributedStringBeginEditing2(
+      aStr,
+    );
+  }
+
+  late final _CFAttributedStringBeginEditing2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(CFMutableAttributedStringRef)>>(
+      'CFAttributedStringBeginEditing');
+  late final _CFAttributedStringBeginEditing2 =
+      _CFAttributedStringBeginEditing2Ptr.asFunction<
+          void Function(CFMutableAttributedStringRef)>();
+
+  void CFAttributedStringEndEditing2(
+    CFMutableAttributedStringRef aStr,
+  ) {
+    return _CFAttributedStringEndEditing2(
+      aStr,
+    );
+  }
+
+  late final _CFAttributedStringEndEditing2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(CFMutableAttributedStringRef)>>(
+      'CFAttributedStringEndEditing');
+  late final _CFAttributedStringEndEditing2 = _CFAttributedStringEndEditing2Ptr
+      .asFunction<void Function(CFMutableAttributedStringRef)>();
+
+  int CFURLEnumeratorGetTypeID2() {
+    return _CFURLEnumeratorGetTypeID2();
+  }
+
+  late final _CFURLEnumeratorGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFURLEnumeratorGetTypeID');
+  late final _CFURLEnumeratorGetTypeID2 =
+      _CFURLEnumeratorGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFURLEnumeratorRef CFURLEnumeratorCreateForDirectoryURL2(
+    CFAllocatorRef alloc,
+    CFURLRef directoryURL,
+    int option,
+    CFArrayRef propertyKeys,
+  ) {
+    return _CFURLEnumeratorCreateForDirectoryURL2(
+      alloc,
+      directoryURL,
+      option,
+      propertyKeys,
+    );
+  }
+
+  late final _CFURLEnumeratorCreateForDirectoryURL2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLEnumeratorRef Function(CFAllocatorRef, CFURLRef, ffi.Int32,
+              CFArrayRef)>>('CFURLEnumeratorCreateForDirectoryURL');
+  late final _CFURLEnumeratorCreateForDirectoryURL2 =
+      _CFURLEnumeratorCreateForDirectoryURL2Ptr.asFunction<
+          CFURLEnumeratorRef Function(
+              CFAllocatorRef, CFURLRef, int, CFArrayRef)>();
+
+  CFURLEnumeratorRef CFURLEnumeratorCreateForMountedVolumes2(
+    CFAllocatorRef alloc,
+    int option,
+    CFArrayRef propertyKeys,
+  ) {
+    return _CFURLEnumeratorCreateForMountedVolumes2(
+      alloc,
+      option,
+      propertyKeys,
+    );
+  }
+
+  late final _CFURLEnumeratorCreateForMountedVolumes2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFURLEnumeratorRef Function(CFAllocatorRef, ffi.Int32,
+              CFArrayRef)>>('CFURLEnumeratorCreateForMountedVolumes');
+  late final _CFURLEnumeratorCreateForMountedVolumes2 =
+      _CFURLEnumeratorCreateForMountedVolumes2Ptr.asFunction<
+          CFURLEnumeratorRef Function(CFAllocatorRef, int, CFArrayRef)>();
+
+  int CFURLEnumeratorGetNextURL2(
+    CFURLEnumeratorRef enumerator,
+    ffi.Pointer<CFURLRef> url,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _CFURLEnumeratorGetNextURL2(
+      enumerator,
+      url,
+      error,
+    );
+  }
+
+  late final _CFURLEnumeratorGetNextURL2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(CFURLEnumeratorRef, ffi.Pointer<CFURLRef>,
+              ffi.Pointer<CFErrorRef>)>>('CFURLEnumeratorGetNextURL');
+  late final _CFURLEnumeratorGetNextURL2 =
+      _CFURLEnumeratorGetNextURL2Ptr.asFunction<
+          int Function(CFURLEnumeratorRef, ffi.Pointer<CFURLRef>,
+              ffi.Pointer<CFErrorRef>)>();
+
+  void CFURLEnumeratorSkipDescendents2(
+    CFURLEnumeratorRef enumerator,
+  ) {
+    return _CFURLEnumeratorSkipDescendents2(
+      enumerator,
+    );
+  }
+
+  late final _CFURLEnumeratorSkipDescendents2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFURLEnumeratorRef)>>(
+          'CFURLEnumeratorSkipDescendents');
+  late final _CFURLEnumeratorSkipDescendents2 =
+      _CFURLEnumeratorSkipDescendents2Ptr.asFunction<
+          void Function(CFURLEnumeratorRef)>();
+
+  int CFURLEnumeratorGetDescendentLevel2(
+    CFURLEnumeratorRef enumerator,
+  ) {
+    return _CFURLEnumeratorGetDescendentLevel2(
+      enumerator,
+    );
+  }
+
+  late final _CFURLEnumeratorGetDescendentLevel2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFURLEnumeratorRef)>>(
+          'CFURLEnumeratorGetDescendentLevel');
+  late final _CFURLEnumeratorGetDescendentLevel2 =
+      _CFURLEnumeratorGetDescendentLevel2Ptr.asFunction<
+          int Function(CFURLEnumeratorRef)>();
+
+  int CFURLEnumeratorGetSourceDidChange2(
+    CFURLEnumeratorRef enumerator,
+  ) {
+    return _CFURLEnumeratorGetSourceDidChange2(
+      enumerator,
+    );
+  }
+
+  late final _CFURLEnumeratorGetSourceDidChange2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFURLEnumeratorRef)>>(
+          'CFURLEnumeratorGetSourceDidChange');
+  late final _CFURLEnumeratorGetSourceDidChange2 =
+      _CFURLEnumeratorGetSourceDidChange2Ptr.asFunction<
+          int Function(CFURLEnumeratorRef)>();
+
+  int CFFileSecurityGetTypeID2() {
+    return _CFFileSecurityGetTypeID2();
+  }
+
+  late final _CFFileSecurityGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFFileSecurityGetTypeID');
+  late final _CFFileSecurityGetTypeID2 =
+      _CFFileSecurityGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFFileSecurityRef CFFileSecurityCreate2(
+    CFAllocatorRef allocator,
+  ) {
+    return _CFFileSecurityCreate2(
+      allocator,
+    );
+  }
+
+  late final _CFFileSecurityCreate2Ptr =
+      _lookup<ffi.NativeFunction<CFFileSecurityRef Function(CFAllocatorRef)>>(
+          'CFFileSecurityCreate');
+  late final _CFFileSecurityCreate2 = _CFFileSecurityCreate2Ptr.asFunction<
+      CFFileSecurityRef Function(CFAllocatorRef)>();
+
+  CFFileSecurityRef CFFileSecurityCreateCopy2(
+    CFAllocatorRef allocator,
+    CFFileSecurityRef fileSec,
+  ) {
+    return _CFFileSecurityCreateCopy2(
+      allocator,
+      fileSec,
+    );
+  }
+
+  late final _CFFileSecurityCreateCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFFileSecurityRef Function(
+              CFAllocatorRef, CFFileSecurityRef)>>('CFFileSecurityCreateCopy');
+  late final _CFFileSecurityCreateCopy2 =
+      _CFFileSecurityCreateCopy2Ptr.asFunction<
+          CFFileSecurityRef Function(CFAllocatorRef, CFFileSecurityRef)>();
+
+  int CFFileSecurityCopyOwnerUUID2(
+    CFFileSecurityRef fileSec,
+    ffi.Pointer<CFUUIDRef> ownerUUID,
+  ) {
+    return _CFFileSecurityCopyOwnerUUID2(
+      fileSec,
+      ownerUUID,
+    );
+  }
+
+  late final _CFFileSecurityCopyOwnerUUID2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFFileSecurityRef,
+              ffi.Pointer<CFUUIDRef>)>>('CFFileSecurityCopyOwnerUUID');
+  late final _CFFileSecurityCopyOwnerUUID2 = _CFFileSecurityCopyOwnerUUID2Ptr
+      .asFunction<int Function(CFFileSecurityRef, ffi.Pointer<CFUUIDRef>)>();
+
+  int CFFileSecuritySetOwnerUUID2(
+    CFFileSecurityRef fileSec,
+    CFUUIDRef ownerUUID,
+  ) {
+    return _CFFileSecuritySetOwnerUUID2(
+      fileSec,
+      ownerUUID,
+    );
+  }
+
+  late final _CFFileSecuritySetOwnerUUID2Ptr = _lookup<
+          ffi.NativeFunction<Boolean Function(CFFileSecurityRef, CFUUIDRef)>>(
+      'CFFileSecuritySetOwnerUUID');
+  late final _CFFileSecuritySetOwnerUUID2 = _CFFileSecuritySetOwnerUUID2Ptr
+      .asFunction<int Function(CFFileSecurityRef, CFUUIDRef)>();
+
+  int CFFileSecurityCopyGroupUUID2(
+    CFFileSecurityRef fileSec,
+    ffi.Pointer<CFUUIDRef> groupUUID,
+  ) {
+    return _CFFileSecurityCopyGroupUUID2(
+      fileSec,
+      groupUUID,
+    );
+  }
+
+  late final _CFFileSecurityCopyGroupUUID2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFFileSecurityRef,
+              ffi.Pointer<CFUUIDRef>)>>('CFFileSecurityCopyGroupUUID');
+  late final _CFFileSecurityCopyGroupUUID2 = _CFFileSecurityCopyGroupUUID2Ptr
+      .asFunction<int Function(CFFileSecurityRef, ffi.Pointer<CFUUIDRef>)>();
+
+  int CFFileSecuritySetGroupUUID2(
+    CFFileSecurityRef fileSec,
+    CFUUIDRef groupUUID,
+  ) {
+    return _CFFileSecuritySetGroupUUID2(
+      fileSec,
+      groupUUID,
+    );
+  }
+
+  late final _CFFileSecuritySetGroupUUID2Ptr = _lookup<
+          ffi.NativeFunction<Boolean Function(CFFileSecurityRef, CFUUIDRef)>>(
+      'CFFileSecuritySetGroupUUID');
+  late final _CFFileSecuritySetGroupUUID2 = _CFFileSecuritySetGroupUUID2Ptr
+      .asFunction<int Function(CFFileSecurityRef, CFUUIDRef)>();
+
+  int CFFileSecurityCopyAccessControlList2(
+    CFFileSecurityRef fileSec,
+    ffi.Pointer<acl_t> accessControlList,
+  ) {
+    return _CFFileSecurityCopyAccessControlList2(
+      fileSec,
+      accessControlList,
+    );
+  }
+
+  late final _CFFileSecurityCopyAccessControlList2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFFileSecurityRef,
+              ffi.Pointer<acl_t>)>>('CFFileSecurityCopyAccessControlList');
+  late final _CFFileSecurityCopyAccessControlList2 =
+      _CFFileSecurityCopyAccessControlList2Ptr.asFunction<
+          int Function(CFFileSecurityRef, ffi.Pointer<acl_t>)>();
+
+  int CFFileSecuritySetAccessControlList2(
+    CFFileSecurityRef fileSec,
+    acl_t accessControlList,
+  ) {
+    return _CFFileSecuritySetAccessControlList2(
+      fileSec,
+      accessControlList,
+    );
+  }
+
+  late final _CFFileSecuritySetAccessControlList2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFFileSecurityRef, acl_t)>>(
+          'CFFileSecuritySetAccessControlList');
+  late final _CFFileSecuritySetAccessControlList2 =
+      _CFFileSecuritySetAccessControlList2Ptr.asFunction<
+          int Function(CFFileSecurityRef, acl_t)>();
+
+  int CFFileSecurityGetOwner2(
+    CFFileSecurityRef fileSec,
+    ffi.Pointer<uid_t> owner,
+  ) {
+    return _CFFileSecurityGetOwner2(
+      fileSec,
+      owner,
+    );
+  }
+
+  late final _CFFileSecurityGetOwner2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFFileSecurityRef,
+              ffi.Pointer<uid_t>)>>('CFFileSecurityGetOwner');
+  late final _CFFileSecurityGetOwner2 = _CFFileSecurityGetOwner2Ptr.asFunction<
+      int Function(CFFileSecurityRef, ffi.Pointer<uid_t>)>();
+
+  int CFFileSecuritySetOwner2(
+    CFFileSecurityRef fileSec,
+    int owner,
+  ) {
+    return _CFFileSecuritySetOwner2(
+      fileSec,
+      owner,
+    );
+  }
+
+  late final _CFFileSecuritySetOwner2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFFileSecurityRef, uid_t)>>(
+          'CFFileSecuritySetOwner');
+  late final _CFFileSecuritySetOwner2 = _CFFileSecuritySetOwner2Ptr.asFunction<
+      int Function(CFFileSecurityRef, int)>();
+
+  int CFFileSecurityGetGroup2(
+    CFFileSecurityRef fileSec,
+    ffi.Pointer<gid_t> group,
+  ) {
+    return _CFFileSecurityGetGroup2(
+      fileSec,
+      group,
+    );
+  }
+
+  late final _CFFileSecurityGetGroup2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFFileSecurityRef,
+              ffi.Pointer<gid_t>)>>('CFFileSecurityGetGroup');
+  late final _CFFileSecurityGetGroup2 = _CFFileSecurityGetGroup2Ptr.asFunction<
+      int Function(CFFileSecurityRef, ffi.Pointer<gid_t>)>();
+
+  int CFFileSecuritySetGroup2(
+    CFFileSecurityRef fileSec,
+    int group,
+  ) {
+    return _CFFileSecuritySetGroup2(
+      fileSec,
+      group,
+    );
+  }
+
+  late final _CFFileSecuritySetGroup2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFFileSecurityRef, gid_t)>>(
+          'CFFileSecuritySetGroup');
+  late final _CFFileSecuritySetGroup2 = _CFFileSecuritySetGroup2Ptr.asFunction<
+      int Function(CFFileSecurityRef, int)>();
+
+  int CFFileSecurityGetMode2(
+    CFFileSecurityRef fileSec,
+    ffi.Pointer<mode_t> mode,
+  ) {
+    return _CFFileSecurityGetMode2(
+      fileSec,
+      mode,
+    );
+  }
+
+  late final _CFFileSecurityGetMode2Ptr = _lookup<
+      ffi.NativeFunction<
+          Boolean Function(CFFileSecurityRef,
+              ffi.Pointer<mode_t>)>>('CFFileSecurityGetMode');
+  late final _CFFileSecurityGetMode2 = _CFFileSecurityGetMode2Ptr.asFunction<
+      int Function(CFFileSecurityRef, ffi.Pointer<mode_t>)>();
+
+  int CFFileSecuritySetMode2(
+    CFFileSecurityRef fileSec,
+    int mode,
+  ) {
+    return _CFFileSecuritySetMode2(
+      fileSec,
+      mode,
+    );
+  }
+
+  late final _CFFileSecuritySetMode2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFFileSecurityRef, mode_t)>>(
+          'CFFileSecuritySetMode');
+  late final _CFFileSecuritySetMode2 = _CFFileSecuritySetMode2Ptr.asFunction<
+      int Function(CFFileSecurityRef, int)>();
+
+  int CFFileSecurityClearProperties2(
+    CFFileSecurityRef fileSec,
+    int clearPropertyMask,
+  ) {
+    return _CFFileSecurityClearProperties2(
+      fileSec,
+      clearPropertyMask,
+    );
+  }
+
+  late final _CFFileSecurityClearProperties2Ptr = _lookup<
+          ffi.NativeFunction<Boolean Function(CFFileSecurityRef, ffi.Int32)>>(
+      'CFFileSecurityClearProperties');
+  late final _CFFileSecurityClearProperties2 =
+      _CFFileSecurityClearProperties2Ptr.asFunction<
+          int Function(CFFileSecurityRef, int)>();
+
+  CFStringRef CFStringTokenizerCopyBestStringLanguage2(
+    CFStringRef string,
+    CFRange range,
+  ) {
+    return _CFStringTokenizerCopyBestStringLanguage2(
+      string,
+      range,
+    );
+  }
+
+  late final _CFStringTokenizerCopyBestStringLanguage2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFStringRef, CFRange)>>(
+          'CFStringTokenizerCopyBestStringLanguage');
+  late final _CFStringTokenizerCopyBestStringLanguage2 =
+      _CFStringTokenizerCopyBestStringLanguage2Ptr.asFunction<
+          CFStringRef Function(CFStringRef, CFRange)>();
+
+  int CFStringTokenizerGetTypeID2() {
+    return _CFStringTokenizerGetTypeID2();
+  }
+
+  late final _CFStringTokenizerGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFStringTokenizerGetTypeID');
+  late final _CFStringTokenizerGetTypeID2 =
+      _CFStringTokenizerGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFStringTokenizerRef CFStringTokenizerCreate2(
+    CFAllocatorRef alloc,
+    CFStringRef string,
+    CFRange range,
+    int options,
+    CFLocaleRef locale,
+  ) {
+    return _CFStringTokenizerCreate2(
+      alloc,
+      string,
+      range,
+      options,
+      locale,
+    );
+  }
+
+  late final _CFStringTokenizerCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringTokenizerRef Function(CFAllocatorRef, CFStringRef, CFRange,
+              CFOptionFlags, CFLocaleRef)>>('CFStringTokenizerCreate');
+  late final _CFStringTokenizerCreate2 =
+      _CFStringTokenizerCreate2Ptr.asFunction<
+          CFStringTokenizerRef Function(
+              CFAllocatorRef, CFStringRef, CFRange, int, CFLocaleRef)>();
+
+  void CFStringTokenizerSetString2(
+    CFStringTokenizerRef tokenizer,
+    CFStringRef string,
+    CFRange range,
+  ) {
+    return _CFStringTokenizerSetString2(
+      tokenizer,
+      string,
+      range,
+    );
+  }
+
+  late final _CFStringTokenizerSetString2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFStringTokenizerRef, CFStringRef,
+              CFRange)>>('CFStringTokenizerSetString');
+  late final _CFStringTokenizerSetString2 = _CFStringTokenizerSetString2Ptr
+      .asFunction<void Function(CFStringTokenizerRef, CFStringRef, CFRange)>();
+
+  int CFStringTokenizerGoToTokenAtIndex2(
+    CFStringTokenizerRef tokenizer,
+    int index,
+  ) {
+    return _CFStringTokenizerGoToTokenAtIndex2(
+      tokenizer,
+      index,
+    );
+  }
+
+  late final _CFStringTokenizerGoToTokenAtIndex2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(CFStringTokenizerRef,
+              CFIndex)>>('CFStringTokenizerGoToTokenAtIndex');
+  late final _CFStringTokenizerGoToTokenAtIndex2 =
+      _CFStringTokenizerGoToTokenAtIndex2Ptr.asFunction<
+          int Function(CFStringTokenizerRef, int)>();
+
+  int CFStringTokenizerAdvanceToNextToken2(
+    CFStringTokenizerRef tokenizer,
+  ) {
+    return _CFStringTokenizerAdvanceToNextToken2(
+      tokenizer,
+    );
+  }
+
+  late final _CFStringTokenizerAdvanceToNextToken2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(CFStringTokenizerRef)>>(
+          'CFStringTokenizerAdvanceToNextToken');
+  late final _CFStringTokenizerAdvanceToNextToken2 =
+      _CFStringTokenizerAdvanceToNextToken2Ptr.asFunction<
+          int Function(CFStringTokenizerRef)>();
+
+  CFRange CFStringTokenizerGetCurrentTokenRange2(
+    CFStringTokenizerRef tokenizer,
+  ) {
+    return _CFStringTokenizerGetCurrentTokenRange2(
+      tokenizer,
+    );
+  }
+
+  late final _CFStringTokenizerGetCurrentTokenRange2Ptr =
+      _lookup<ffi.NativeFunction<CFRange Function(CFStringTokenizerRef)>>(
+          'CFStringTokenizerGetCurrentTokenRange');
+  late final _CFStringTokenizerGetCurrentTokenRange2 =
+      _CFStringTokenizerGetCurrentTokenRange2Ptr.asFunction<
+          CFRange Function(CFStringTokenizerRef)>();
+
+  CFTypeRef CFStringTokenizerCopyCurrentTokenAttribute2(
+    CFStringTokenizerRef tokenizer,
+    int attribute,
+  ) {
+    return _CFStringTokenizerCopyCurrentTokenAttribute2(
+      tokenizer,
+      attribute,
+    );
+  }
+
+  late final _CFStringTokenizerCopyCurrentTokenAttribute2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFTypeRef Function(CFStringTokenizerRef,
+              CFOptionFlags)>>('CFStringTokenizerCopyCurrentTokenAttribute');
+  late final _CFStringTokenizerCopyCurrentTokenAttribute2 =
+      _CFStringTokenizerCopyCurrentTokenAttribute2Ptr.asFunction<
+          CFTypeRef Function(CFStringTokenizerRef, int)>();
+
+  int CFStringTokenizerGetCurrentSubTokens2(
+    CFStringTokenizerRef tokenizer,
+    ffi.Pointer<CFRange> ranges,
+    int maxRangeLength,
+    CFMutableArrayRef derivedSubTokens,
+  ) {
+    return _CFStringTokenizerGetCurrentSubTokens2(
+      tokenizer,
+      ranges,
+      maxRangeLength,
+      derivedSubTokens,
+    );
+  }
+
+  late final _CFStringTokenizerGetCurrentSubTokens2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFIndex Function(CFStringTokenizerRef, ffi.Pointer<CFRange>, CFIndex,
+              CFMutableArrayRef)>>('CFStringTokenizerGetCurrentSubTokens');
+  late final _CFStringTokenizerGetCurrentSubTokens2 =
+      _CFStringTokenizerGetCurrentSubTokens2Ptr.asFunction<
+          int Function(CFStringTokenizerRef, ffi.Pointer<CFRange>, int,
+              CFMutableArrayRef)>();
+
+  int CFFileDescriptorGetTypeID2() {
+    return _CFFileDescriptorGetTypeID2();
+  }
+
+  late final _CFFileDescriptorGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFFileDescriptorGetTypeID');
+  late final _CFFileDescriptorGetTypeID2 =
+      _CFFileDescriptorGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFFileDescriptorRef CFFileDescriptorCreate2(
+    CFAllocatorRef allocator,
+    int fd,
+    int closeOnInvalidate,
+    CFFileDescriptorCallBack callout,
+    ffi.Pointer<CFFileDescriptorContext> context,
+  ) {
+    return _CFFileDescriptorCreate2(
+      allocator,
+      fd,
+      closeOnInvalidate,
+      callout,
+      context,
+    );
+  }
+
+  late final _CFFileDescriptorCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFFileDescriptorRef Function(
+              CFAllocatorRef,
+              CFFileDescriptorNativeDescriptor,
+              Boolean,
+              CFFileDescriptorCallBack,
+              ffi.Pointer<CFFileDescriptorContext>)>>('CFFileDescriptorCreate');
+  late final _CFFileDescriptorCreate2 = _CFFileDescriptorCreate2Ptr.asFunction<
+      CFFileDescriptorRef Function(CFAllocatorRef, int, int,
+          CFFileDescriptorCallBack, ffi.Pointer<CFFileDescriptorContext>)>();
+
+  int CFFileDescriptorGetNativeDescriptor2(
+    CFFileDescriptorRef f,
+  ) {
+    return _CFFileDescriptorGetNativeDescriptor2(
+      f,
+    );
+  }
+
+  late final _CFFileDescriptorGetNativeDescriptor2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFFileDescriptorNativeDescriptor Function(
+              CFFileDescriptorRef)>>('CFFileDescriptorGetNativeDescriptor');
+  late final _CFFileDescriptorGetNativeDescriptor2 =
+      _CFFileDescriptorGetNativeDescriptor2Ptr.asFunction<
+          int Function(CFFileDescriptorRef)>();
+
+  void CFFileDescriptorGetContext2(
+    CFFileDescriptorRef f,
+    ffi.Pointer<CFFileDescriptorContext> context,
+  ) {
+    return _CFFileDescriptorGetContext2(
+      f,
+      context,
+    );
+  }
+
+  late final _CFFileDescriptorGetContext2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  CFFileDescriptorRef, ffi.Pointer<CFFileDescriptorContext>)>>(
+      'CFFileDescriptorGetContext');
+  late final _CFFileDescriptorGetContext2 =
+      _CFFileDescriptorGetContext2Ptr.asFunction<
+          void Function(
+              CFFileDescriptorRef, ffi.Pointer<CFFileDescriptorContext>)>();
+
+  void CFFileDescriptorEnableCallBacks2(
+    CFFileDescriptorRef f,
+    int callBackTypes,
+  ) {
+    return _CFFileDescriptorEnableCallBacks2(
+      f,
+      callBackTypes,
+    );
+  }
+
+  late final _CFFileDescriptorEnableCallBacks2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFFileDescriptorRef,
+              CFOptionFlags)>>('CFFileDescriptorEnableCallBacks');
+  late final _CFFileDescriptorEnableCallBacks2 =
+      _CFFileDescriptorEnableCallBacks2Ptr.asFunction<
+          void Function(CFFileDescriptorRef, int)>();
+
+  void CFFileDescriptorDisableCallBacks2(
+    CFFileDescriptorRef f,
+    int callBackTypes,
+  ) {
+    return _CFFileDescriptorDisableCallBacks2(
+      f,
+      callBackTypes,
+    );
+  }
+
+  late final _CFFileDescriptorDisableCallBacks2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFFileDescriptorRef,
+              CFOptionFlags)>>('CFFileDescriptorDisableCallBacks');
+  late final _CFFileDescriptorDisableCallBacks2 =
+      _CFFileDescriptorDisableCallBacks2Ptr.asFunction<
+          void Function(CFFileDescriptorRef, int)>();
+
+  void CFFileDescriptorInvalidate2(
+    CFFileDescriptorRef f,
+  ) {
+    return _CFFileDescriptorInvalidate2(
+      f,
+    );
+  }
+
+  late final _CFFileDescriptorInvalidate2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(CFFileDescriptorRef)>>(
+          'CFFileDescriptorInvalidate');
+  late final _CFFileDescriptorInvalidate2 = _CFFileDescriptorInvalidate2Ptr
+      .asFunction<void Function(CFFileDescriptorRef)>();
+
+  int CFFileDescriptorIsValid2(
+    CFFileDescriptorRef f,
+  ) {
+    return _CFFileDescriptorIsValid2(
+      f,
+    );
+  }
+
+  late final _CFFileDescriptorIsValid2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFFileDescriptorRef)>>(
+          'CFFileDescriptorIsValid');
+  late final _CFFileDescriptorIsValid2 = _CFFileDescriptorIsValid2Ptr
+      .asFunction<int Function(CFFileDescriptorRef)>();
+
+  CFRunLoopSourceRef CFFileDescriptorCreateRunLoopSource2(
+    CFAllocatorRef allocator,
+    CFFileDescriptorRef f,
+    int order,
+  ) {
+    return _CFFileDescriptorCreateRunLoopSource2(
+      allocator,
+      f,
+      order,
+    );
+  }
+
+  late final _CFFileDescriptorCreateRunLoopSource2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFRunLoopSourceRef Function(CFAllocatorRef, CFFileDescriptorRef,
+              CFIndex)>>('CFFileDescriptorCreateRunLoopSource');
+  late final _CFFileDescriptorCreateRunLoopSource2 =
+      _CFFileDescriptorCreateRunLoopSource2Ptr.asFunction<
+          CFRunLoopSourceRef Function(
+              CFAllocatorRef, CFFileDescriptorRef, int)>();
+
+  int CFUserNotificationGetTypeID2() {
+    return _CFUserNotificationGetTypeID2();
+  }
+
+  late final _CFUserNotificationGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'CFUserNotificationGetTypeID');
+  late final _CFUserNotificationGetTypeID2 =
+      _CFUserNotificationGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFUserNotificationRef CFUserNotificationCreate2(
+    CFAllocatorRef allocator,
+    double timeout,
+    int flags,
+    ffi.Pointer<SInt32> error,
+    CFDictionaryRef dictionary,
+  ) {
+    return _CFUserNotificationCreate2(
+      allocator,
+      timeout,
+      flags,
+      error,
+      dictionary,
+    );
+  }
+
+  late final _CFUserNotificationCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFUserNotificationRef Function(
+              CFAllocatorRef,
+              CFTimeInterval,
+              CFOptionFlags,
+              ffi.Pointer<SInt32>,
+              CFDictionaryRef)>>('CFUserNotificationCreate');
+  late final _CFUserNotificationCreate2 =
+      _CFUserNotificationCreate2Ptr.asFunction<
+          CFUserNotificationRef Function(CFAllocatorRef, double, int,
+              ffi.Pointer<SInt32>, CFDictionaryRef)>();
+
+  int CFUserNotificationReceiveResponse2(
+    CFUserNotificationRef userNotification,
+    double timeout,
+    ffi.Pointer<CFOptionFlags> responseFlags,
+  ) {
+    return _CFUserNotificationReceiveResponse2(
+      userNotification,
+      timeout,
+      responseFlags,
+    );
+  }
+
+  late final _CFUserNotificationReceiveResponse2Ptr = _lookup<
+          ffi.NativeFunction<
+              SInt32 Function(CFUserNotificationRef, CFTimeInterval,
+                  ffi.Pointer<CFOptionFlags>)>>(
+      'CFUserNotificationReceiveResponse');
+  late final _CFUserNotificationReceiveResponse2 =
+      _CFUserNotificationReceiveResponse2Ptr.asFunction<
+          int Function(
+              CFUserNotificationRef, double, ffi.Pointer<CFOptionFlags>)>();
+
+  CFStringRef CFUserNotificationGetResponseValue2(
+    CFUserNotificationRef userNotification,
+    CFStringRef key,
+    int idx,
+  ) {
+    return _CFUserNotificationGetResponseValue2(
+      userNotification,
+      key,
+      idx,
+    );
+  }
+
+  late final _CFUserNotificationGetResponseValue2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFUserNotificationRef, CFStringRef,
+              CFIndex)>>('CFUserNotificationGetResponseValue');
+  late final _CFUserNotificationGetResponseValue2 =
+      _CFUserNotificationGetResponseValue2Ptr.asFunction<
+          CFStringRef Function(CFUserNotificationRef, CFStringRef, int)>();
+
+  CFDictionaryRef CFUserNotificationGetResponseDictionary2(
+    CFUserNotificationRef userNotification,
+  ) {
+    return _CFUserNotificationGetResponseDictionary2(
+      userNotification,
+    );
+  }
+
+  late final _CFUserNotificationGetResponseDictionary2Ptr = _lookup<
+          ffi.NativeFunction<CFDictionaryRef Function(CFUserNotificationRef)>>(
+      'CFUserNotificationGetResponseDictionary');
+  late final _CFUserNotificationGetResponseDictionary2 =
+      _CFUserNotificationGetResponseDictionary2Ptr.asFunction<
+          CFDictionaryRef Function(CFUserNotificationRef)>();
+
+  int CFUserNotificationUpdate2(
+    CFUserNotificationRef userNotification,
+    double timeout,
+    int flags,
+    CFDictionaryRef dictionary,
+  ) {
+    return _CFUserNotificationUpdate2(
+      userNotification,
+      timeout,
+      flags,
+      dictionary,
+    );
+  }
+
+  late final _CFUserNotificationUpdate2Ptr = _lookup<
+      ffi.NativeFunction<
+          SInt32 Function(CFUserNotificationRef, CFTimeInterval, CFOptionFlags,
+              CFDictionaryRef)>>('CFUserNotificationUpdate');
+  late final _CFUserNotificationUpdate2 =
+      _CFUserNotificationUpdate2Ptr.asFunction<
+          int Function(CFUserNotificationRef, double, int, CFDictionaryRef)>();
+
+  int CFUserNotificationCancel2(
+    CFUserNotificationRef userNotification,
+  ) {
+    return _CFUserNotificationCancel2(
+      userNotification,
+    );
+  }
+
+  late final _CFUserNotificationCancel2Ptr =
+      _lookup<ffi.NativeFunction<SInt32 Function(CFUserNotificationRef)>>(
+          'CFUserNotificationCancel');
+  late final _CFUserNotificationCancel2 = _CFUserNotificationCancel2Ptr
+      .asFunction<int Function(CFUserNotificationRef)>();
+
+  CFRunLoopSourceRef CFUserNotificationCreateRunLoopSource2(
+    CFAllocatorRef allocator,
+    CFUserNotificationRef userNotification,
+    CFUserNotificationCallBack callout,
+    int order,
+  ) {
+    return _CFUserNotificationCreateRunLoopSource2(
+      allocator,
+      userNotification,
+      callout,
+      order,
+    );
+  }
+
+  late final _CFUserNotificationCreateRunLoopSource2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFRunLoopSourceRef Function(
+              CFAllocatorRef,
+              CFUserNotificationRef,
+              CFUserNotificationCallBack,
+              CFIndex)>>('CFUserNotificationCreateRunLoopSource');
+  late final _CFUserNotificationCreateRunLoopSource2 =
+      _CFUserNotificationCreateRunLoopSource2Ptr.asFunction<
+          CFRunLoopSourceRef Function(CFAllocatorRef, CFUserNotificationRef,
+              CFUserNotificationCallBack, int)>();
+
+  int CFUserNotificationDisplayNotice2(
+    double timeout,
+    int flags,
+    CFURLRef iconURL,
+    CFURLRef soundURL,
+    CFURLRef localizationURL,
+    CFStringRef alertHeader,
+    CFStringRef alertMessage,
+    CFStringRef defaultButtonTitle,
+  ) {
+    return _CFUserNotificationDisplayNotice2(
+      timeout,
+      flags,
+      iconURL,
+      soundURL,
+      localizationURL,
+      alertHeader,
+      alertMessage,
+      defaultButtonTitle,
+    );
+  }
+
+  late final _CFUserNotificationDisplayNotice2Ptr = _lookup<
+      ffi.NativeFunction<
+          SInt32 Function(
+              CFTimeInterval,
+              CFOptionFlags,
+              CFURLRef,
+              CFURLRef,
+              CFURLRef,
+              CFStringRef,
+              CFStringRef,
+              CFStringRef)>>('CFUserNotificationDisplayNotice');
+  late final _CFUserNotificationDisplayNotice2 =
+      _CFUserNotificationDisplayNotice2Ptr.asFunction<
+          int Function(double, int, CFURLRef, CFURLRef, CFURLRef, CFStringRef,
+              CFStringRef, CFStringRef)>();
+
+  int CFUserNotificationDisplayAlert2(
+    double timeout,
+    int flags,
+    CFURLRef iconURL,
+    CFURLRef soundURL,
+    CFURLRef localizationURL,
+    CFStringRef alertHeader,
+    CFStringRef alertMessage,
+    CFStringRef defaultButtonTitle,
+    CFStringRef alternateButtonTitle,
+    CFStringRef otherButtonTitle,
+    ffi.Pointer<CFOptionFlags> responseFlags,
+  ) {
+    return _CFUserNotificationDisplayAlert2(
+      timeout,
+      flags,
+      iconURL,
+      soundURL,
+      localizationURL,
+      alertHeader,
+      alertMessage,
+      defaultButtonTitle,
+      alternateButtonTitle,
+      otherButtonTitle,
+      responseFlags,
+    );
+  }
+
+  late final _CFUserNotificationDisplayAlert2Ptr = _lookup<
+      ffi.NativeFunction<
+          SInt32 Function(
+              CFTimeInterval,
+              CFOptionFlags,
+              CFURLRef,
+              CFURLRef,
+              CFURLRef,
+              CFStringRef,
+              CFStringRef,
+              CFStringRef,
+              CFStringRef,
+              CFStringRef,
+              ffi.Pointer<CFOptionFlags>)>>('CFUserNotificationDisplayAlert');
+  late final _CFUserNotificationDisplayAlert2 =
+      _CFUserNotificationDisplayAlert2Ptr.asFunction<
+          int Function(
+              double,
+              int,
+              CFURLRef,
+              CFURLRef,
+              CFURLRef,
+              CFStringRef,
+              CFStringRef,
+              CFStringRef,
+              CFStringRef,
+              CFStringRef,
+              ffi.Pointer<CFOptionFlags>)>();
+
+  int CFXMLNodeGetTypeID2() {
+    return _CFXMLNodeGetTypeID2();
+  }
+
+  late final _CFXMLNodeGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFXMLNodeGetTypeID');
+  late final _CFXMLNodeGetTypeID2 =
+      _CFXMLNodeGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFXMLNodeRef CFXMLNodeCreate2(
+    CFAllocatorRef alloc,
+    int xmlType,
+    CFStringRef dataString,
+    ffi.Pointer<ffi.Void> additionalInfoPtr,
+    int version,
+  ) {
+    return _CFXMLNodeCreate2(
+      alloc,
+      xmlType,
+      dataString,
+      additionalInfoPtr,
+      version,
+    );
+  }
+
+  late final _CFXMLNodeCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFXMLNodeRef Function(CFAllocatorRef, ffi.Int32, CFStringRef,
+              ffi.Pointer<ffi.Void>, CFIndex)>>('CFXMLNodeCreate');
+  late final _CFXMLNodeCreate2 = _CFXMLNodeCreate2Ptr.asFunction<
+      CFXMLNodeRef Function(
+          CFAllocatorRef, int, CFStringRef, ffi.Pointer<ffi.Void>, int)>();
+
+  CFXMLNodeRef CFXMLNodeCreateCopy2(
+    CFAllocatorRef alloc,
+    CFXMLNodeRef origNode,
+  ) {
+    return _CFXMLNodeCreateCopy2(
+      alloc,
+      origNode,
+    );
+  }
+
+  late final _CFXMLNodeCreateCopy2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFXMLNodeRef Function(
+              CFAllocatorRef, CFXMLNodeRef)>>('CFXMLNodeCreateCopy');
+  late final _CFXMLNodeCreateCopy2 = _CFXMLNodeCreateCopy2Ptr.asFunction<
+      CFXMLNodeRef Function(CFAllocatorRef, CFXMLNodeRef)>();
+
+  int CFXMLNodeGetTypeCode2(
+    CFXMLNodeRef node,
+  ) {
+    return _CFXMLNodeGetTypeCode2(
+      node,
+    );
+  }
+
+  late final _CFXMLNodeGetTypeCode2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(CFXMLNodeRef)>>(
+          'CFXMLNodeGetTypeCode');
+  late final _CFXMLNodeGetTypeCode2 =
+      _CFXMLNodeGetTypeCode2Ptr.asFunction<int Function(CFXMLNodeRef)>();
+
+  CFStringRef CFXMLNodeGetString2(
+    CFXMLNodeRef node,
+  ) {
+    return _CFXMLNodeGetString2(
+      node,
+    );
+  }
+
+  late final _CFXMLNodeGetString2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFXMLNodeRef)>>(
+          'CFXMLNodeGetString');
+  late final _CFXMLNodeGetString2 =
+      _CFXMLNodeGetString2Ptr.asFunction<CFStringRef Function(CFXMLNodeRef)>();
+
+  ffi.Pointer<ffi.Void> CFXMLNodeGetInfoPtr2(
+    CFXMLNodeRef node,
+  ) {
+    return _CFXMLNodeGetInfoPtr2(
+      node,
+    );
+  }
+
+  late final _CFXMLNodeGetInfoPtr2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(CFXMLNodeRef)>>(
+          'CFXMLNodeGetInfoPtr');
+  late final _CFXMLNodeGetInfoPtr2 = _CFXMLNodeGetInfoPtr2Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(CFXMLNodeRef)>();
+
+  int CFXMLNodeGetVersion2(
+    CFXMLNodeRef node,
+  ) {
+    return _CFXMLNodeGetVersion2(
+      node,
+    );
+  }
+
+  late final _CFXMLNodeGetVersion2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFXMLNodeRef)>>(
+          'CFXMLNodeGetVersion');
+  late final _CFXMLNodeGetVersion2 =
+      _CFXMLNodeGetVersion2Ptr.asFunction<int Function(CFXMLNodeRef)>();
+
+  CFXMLTreeRef CFXMLTreeCreateWithNode2(
+    CFAllocatorRef allocator,
+    CFXMLNodeRef node,
+  ) {
+    return _CFXMLTreeCreateWithNode2(
+      allocator,
+      node,
+    );
+  }
+
+  late final _CFXMLTreeCreateWithNode2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFXMLTreeRef Function(
+              CFAllocatorRef, CFXMLNodeRef)>>('CFXMLTreeCreateWithNode');
+  late final _CFXMLTreeCreateWithNode2 = _CFXMLTreeCreateWithNode2Ptr
+      .asFunction<CFXMLTreeRef Function(CFAllocatorRef, CFXMLNodeRef)>();
+
+  CFXMLNodeRef CFXMLTreeGetNode2(
+    CFXMLTreeRef xmlTree,
+  ) {
+    return _CFXMLTreeGetNode2(
+      xmlTree,
+    );
+  }
+
+  late final _CFXMLTreeGetNode2Ptr =
+      _lookup<ffi.NativeFunction<CFXMLNodeRef Function(CFXMLTreeRef)>>(
+          'CFXMLTreeGetNode');
+  late final _CFXMLTreeGetNode2 =
+      _CFXMLTreeGetNode2Ptr.asFunction<CFXMLNodeRef Function(CFXMLTreeRef)>();
+
+  int CFXMLParserGetTypeID2() {
+    return _CFXMLParserGetTypeID2();
+  }
+
+  late final _CFXMLParserGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('CFXMLParserGetTypeID');
+  late final _CFXMLParserGetTypeID2 =
+      _CFXMLParserGetTypeID2Ptr.asFunction<int Function()>();
+
+  CFXMLParserRef CFXMLParserCreate2(
+    CFAllocatorRef allocator,
+    CFDataRef xmlData,
+    CFURLRef dataSource,
+    int parseOptions,
+    int versionOfNodes,
+    ffi.Pointer<CFXMLParserCallBacks> callBacks,
+    ffi.Pointer<CFXMLParserContext> context,
+  ) {
+    return _CFXMLParserCreate2(
+      allocator,
+      xmlData,
+      dataSource,
+      parseOptions,
+      versionOfNodes,
+      callBacks,
+      context,
+    );
+  }
+
+  late final _CFXMLParserCreate2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFXMLParserRef Function(
+              CFAllocatorRef,
+              CFDataRef,
+              CFURLRef,
+              CFOptionFlags,
+              CFIndex,
+              ffi.Pointer<CFXMLParserCallBacks>,
+              ffi.Pointer<CFXMLParserContext>)>>('CFXMLParserCreate');
+  late final _CFXMLParserCreate2 = _CFXMLParserCreate2Ptr.asFunction<
+      CFXMLParserRef Function(
+          CFAllocatorRef,
+          CFDataRef,
+          CFURLRef,
+          int,
+          int,
+          ffi.Pointer<CFXMLParserCallBacks>,
+          ffi.Pointer<CFXMLParserContext>)>();
+
+  CFXMLParserRef CFXMLParserCreateWithDataFromURL2(
+    CFAllocatorRef allocator,
+    CFURLRef dataSource,
+    int parseOptions,
+    int versionOfNodes,
+    ffi.Pointer<CFXMLParserCallBacks> callBacks,
+    ffi.Pointer<CFXMLParserContext> context,
+  ) {
+    return _CFXMLParserCreateWithDataFromURL2(
+      allocator,
+      dataSource,
+      parseOptions,
+      versionOfNodes,
+      callBacks,
+      context,
+    );
+  }
+
+  late final _CFXMLParserCreateWithDataFromURL2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFXMLParserRef Function(
+                  CFAllocatorRef,
+                  CFURLRef,
+                  CFOptionFlags,
+                  CFIndex,
+                  ffi.Pointer<CFXMLParserCallBacks>,
+                  ffi.Pointer<CFXMLParserContext>)>>(
+      'CFXMLParserCreateWithDataFromURL');
+  late final _CFXMLParserCreateWithDataFromURL2 =
+      _CFXMLParserCreateWithDataFromURL2Ptr.asFunction<
+          CFXMLParserRef Function(
+              CFAllocatorRef,
+              CFURLRef,
+              int,
+              int,
+              ffi.Pointer<CFXMLParserCallBacks>,
+              ffi.Pointer<CFXMLParserContext>)>();
+
+  void CFXMLParserGetContext2(
+    CFXMLParserRef parser,
+    ffi.Pointer<CFXMLParserContext> context,
+  ) {
+    return _CFXMLParserGetContext2(
+      parser,
+      context,
+    );
+  }
+
+  late final _CFXMLParserGetContext2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFXMLParserRef,
+              ffi.Pointer<CFXMLParserContext>)>>('CFXMLParserGetContext');
+  late final _CFXMLParserGetContext2 = _CFXMLParserGetContext2Ptr.asFunction<
+      void Function(CFXMLParserRef, ffi.Pointer<CFXMLParserContext>)>();
+
+  void CFXMLParserGetCallBacks2(
+    CFXMLParserRef parser,
+    ffi.Pointer<CFXMLParserCallBacks> callBacks,
+  ) {
+    return _CFXMLParserGetCallBacks2(
+      parser,
+      callBacks,
+    );
+  }
+
+  late final _CFXMLParserGetCallBacks2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(CFXMLParserRef,
+              ffi.Pointer<CFXMLParserCallBacks>)>>('CFXMLParserGetCallBacks');
+  late final _CFXMLParserGetCallBacks2 =
+      _CFXMLParserGetCallBacks2Ptr.asFunction<
+          void Function(CFXMLParserRef, ffi.Pointer<CFXMLParserCallBacks>)>();
+
+  CFURLRef CFXMLParserGetSourceURL2(
+    CFXMLParserRef parser,
+  ) {
+    return _CFXMLParserGetSourceURL2(
+      parser,
+    );
+  }
+
+  late final _CFXMLParserGetSourceURL2Ptr =
+      _lookup<ffi.NativeFunction<CFURLRef Function(CFXMLParserRef)>>(
+          'CFXMLParserGetSourceURL');
+  late final _CFXMLParserGetSourceURL2 = _CFXMLParserGetSourceURL2Ptr
+      .asFunction<CFURLRef Function(CFXMLParserRef)>();
+
+  int CFXMLParserGetLocation2(
+    CFXMLParserRef parser,
+  ) {
+    return _CFXMLParserGetLocation2(
+      parser,
+    );
+  }
+
+  late final _CFXMLParserGetLocation2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFXMLParserRef)>>(
+          'CFXMLParserGetLocation');
+  late final _CFXMLParserGetLocation2 =
+      _CFXMLParserGetLocation2Ptr.asFunction<int Function(CFXMLParserRef)>();
+
+  int CFXMLParserGetLineNumber2(
+    CFXMLParserRef parser,
+  ) {
+    return _CFXMLParserGetLineNumber2(
+      parser,
+    );
+  }
+
+  late final _CFXMLParserGetLineNumber2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(CFXMLParserRef)>>(
+          'CFXMLParserGetLineNumber');
+  late final _CFXMLParserGetLineNumber2 =
+      _CFXMLParserGetLineNumber2Ptr.asFunction<int Function(CFXMLParserRef)>();
+
+  ffi.Pointer<ffi.Void> CFXMLParserGetDocument2(
+    CFXMLParserRef parser,
+  ) {
+    return _CFXMLParserGetDocument2(
+      parser,
+    );
+  }
+
+  late final _CFXMLParserGetDocument2Ptr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(CFXMLParserRef)>>(
+      'CFXMLParserGetDocument');
+  late final _CFXMLParserGetDocument2 = _CFXMLParserGetDocument2Ptr.asFunction<
+      ffi.Pointer<ffi.Void> Function(CFXMLParserRef)>();
+
+  int CFXMLParserGetStatusCode2(
+    CFXMLParserRef parser,
+  ) {
+    return _CFXMLParserGetStatusCode2(
+      parser,
+    );
+  }
+
+  late final _CFXMLParserGetStatusCode2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(CFXMLParserRef)>>(
+          'CFXMLParserGetStatusCode');
+  late final _CFXMLParserGetStatusCode2 =
+      _CFXMLParserGetStatusCode2Ptr.asFunction<int Function(CFXMLParserRef)>();
+
+  CFStringRef CFXMLParserCopyErrorDescription2(
+    CFXMLParserRef parser,
+  ) {
+    return _CFXMLParserCopyErrorDescription2(
+      parser,
+    );
+  }
+
+  late final _CFXMLParserCopyErrorDescription2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(CFXMLParserRef)>>(
+          'CFXMLParserCopyErrorDescription');
+  late final _CFXMLParserCopyErrorDescription2 =
+      _CFXMLParserCopyErrorDescription2Ptr.asFunction<
+          CFStringRef Function(CFXMLParserRef)>();
+
+  void CFXMLParserAbort2(
+    CFXMLParserRef parser,
+    int errorCode,
+    CFStringRef errorDescription,
+  ) {
+    return _CFXMLParserAbort2(
+      parser,
+      errorCode,
+      errorDescription,
+    );
+  }
+
+  late final _CFXMLParserAbort2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              CFXMLParserRef, ffi.Int32, CFStringRef)>>('CFXMLParserAbort');
+  late final _CFXMLParserAbort2 = _CFXMLParserAbort2Ptr.asFunction<
+      void Function(CFXMLParserRef, int, CFStringRef)>();
+
+  int CFXMLParserParse2(
+    CFXMLParserRef parser,
+  ) {
+    return _CFXMLParserParse2(
+      parser,
+    );
+  }
+
+  late final _CFXMLParserParse2Ptr =
+      _lookup<ffi.NativeFunction<Boolean Function(CFXMLParserRef)>>(
+          'CFXMLParserParse');
+  late final _CFXMLParserParse2 =
+      _CFXMLParserParse2Ptr.asFunction<int Function(CFXMLParserRef)>();
+
+  CFXMLTreeRef CFXMLTreeCreateFromData2(
+    CFAllocatorRef allocator,
+    CFDataRef xmlData,
+    CFURLRef dataSource,
+    int parseOptions,
+    int versionOfNodes,
+  ) {
+    return _CFXMLTreeCreateFromData2(
+      allocator,
+      xmlData,
+      dataSource,
+      parseOptions,
+      versionOfNodes,
+    );
+  }
+
+  late final _CFXMLTreeCreateFromData2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFXMLTreeRef Function(CFAllocatorRef, CFDataRef, CFURLRef,
+              CFOptionFlags, CFIndex)>>('CFXMLTreeCreateFromData');
+  late final _CFXMLTreeCreateFromData2 =
+      _CFXMLTreeCreateFromData2Ptr.asFunction<
+          CFXMLTreeRef Function(
+              CFAllocatorRef, CFDataRef, CFURLRef, int, int)>();
+
+  CFXMLTreeRef CFXMLTreeCreateFromDataWithError2(
+    CFAllocatorRef allocator,
+    CFDataRef xmlData,
+    CFURLRef dataSource,
+    int parseOptions,
+    int versionOfNodes,
+    ffi.Pointer<CFDictionaryRef> errorDict,
+  ) {
+    return _CFXMLTreeCreateFromDataWithError2(
+      allocator,
+      xmlData,
+      dataSource,
+      parseOptions,
+      versionOfNodes,
+      errorDict,
+    );
+  }
+
+  late final _CFXMLTreeCreateFromDataWithError2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFXMLTreeRef Function(CFAllocatorRef, CFDataRef, CFURLRef,
+                  CFOptionFlags, CFIndex, ffi.Pointer<CFDictionaryRef>)>>(
+      'CFXMLTreeCreateFromDataWithError');
+  late final _CFXMLTreeCreateFromDataWithError2 =
+      _CFXMLTreeCreateFromDataWithError2Ptr.asFunction<
+          CFXMLTreeRef Function(CFAllocatorRef, CFDataRef, CFURLRef, int, int,
+              ffi.Pointer<CFDictionaryRef>)>();
+
+  CFXMLTreeRef CFXMLTreeCreateWithDataFromURL2(
+    CFAllocatorRef allocator,
+    CFURLRef dataSource,
+    int parseOptions,
+    int versionOfNodes,
+  ) {
+    return _CFXMLTreeCreateWithDataFromURL2(
+      allocator,
+      dataSource,
+      parseOptions,
+      versionOfNodes,
+    );
+  }
+
+  late final _CFXMLTreeCreateWithDataFromURL2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFXMLTreeRef Function(CFAllocatorRef, CFURLRef, CFOptionFlags,
+              CFIndex)>>('CFXMLTreeCreateWithDataFromURL');
+  late final _CFXMLTreeCreateWithDataFromURL2 =
+      _CFXMLTreeCreateWithDataFromURL2Ptr.asFunction<
+          CFXMLTreeRef Function(CFAllocatorRef, CFURLRef, int, int)>();
+
+  CFDataRef CFXMLTreeCreateXMLData2(
+    CFAllocatorRef allocator,
+    CFXMLTreeRef xmlTree,
+  ) {
+    return _CFXMLTreeCreateXMLData2(
+      allocator,
+      xmlTree,
+    );
+  }
+
+  late final _CFXMLTreeCreateXMLData2Ptr = _lookup<
+          ffi.NativeFunction<CFDataRef Function(CFAllocatorRef, CFXMLTreeRef)>>(
+      'CFXMLTreeCreateXMLData');
+  late final _CFXMLTreeCreateXMLData2 = _CFXMLTreeCreateXMLData2Ptr.asFunction<
+      CFDataRef Function(CFAllocatorRef, CFXMLTreeRef)>();
+
+  CFStringRef CFXMLCreateStringByEscapingEntities2(
+    CFAllocatorRef allocator,
+    CFStringRef string,
+    CFDictionaryRef entitiesDictionary,
+  ) {
+    return _CFXMLCreateStringByEscapingEntities2(
+      allocator,
+      string,
+      entitiesDictionary,
+    );
+  }
+
+  late final _CFXMLCreateStringByEscapingEntities2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, CFStringRef,
+              CFDictionaryRef)>>('CFXMLCreateStringByEscapingEntities');
+  late final _CFXMLCreateStringByEscapingEntities2 =
+      _CFXMLCreateStringByEscapingEntities2Ptr.asFunction<
+          CFStringRef Function(CFAllocatorRef, CFStringRef, CFDictionaryRef)>();
+
+  CFStringRef CFXMLCreateStringByUnescapingEntities2(
+    CFAllocatorRef allocator,
+    CFStringRef string,
+    CFDictionaryRef entitiesDictionary,
+  ) {
+    return _CFXMLCreateStringByUnescapingEntities2(
+      allocator,
+      string,
+      entitiesDictionary,
+    );
+  }
+
+  late final _CFXMLCreateStringByUnescapingEntities2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, CFStringRef,
+              CFDictionaryRef)>>('CFXMLCreateStringByUnescapingEntities');
+  late final _CFXMLCreateStringByUnescapingEntities2 =
+      _CFXMLCreateStringByUnescapingEntities2Ptr.asFunction<
+          CFStringRef Function(CFAllocatorRef, CFStringRef, CFDictionaryRef)>();
+
+  int SecTrustGetTypeID2() {
+    return _SecTrustGetTypeID2();
+  }
+
+  late final _SecTrustGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('SecTrustGetTypeID');
+  late final _SecTrustGetTypeID2 =
+      _SecTrustGetTypeID2Ptr.asFunction<int Function()>();
+
+  int SecTrustCreateWithCertificates2(
+    CFTypeRef certificates,
+    CFTypeRef policies,
+    ffi.Pointer<SecTrustRef> trust,
+  ) {
+    return _SecTrustCreateWithCertificates2(
+      certificates,
+      policies,
+      trust,
+    );
+  }
+
+  late final _SecTrustCreateWithCertificates2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(CFTypeRef, CFTypeRef,
+              ffi.Pointer<SecTrustRef>)>>('SecTrustCreateWithCertificates');
+  late final _SecTrustCreateWithCertificates2 =
+      _SecTrustCreateWithCertificates2Ptr.asFunction<
+          int Function(CFTypeRef, CFTypeRef, ffi.Pointer<SecTrustRef>)>();
+
+  int SecTrustSetPolicies2(
+    SecTrustRef trust,
+    CFTypeRef policies,
+  ) {
+    return _SecTrustSetPolicies2(
+      trust,
+      policies,
+    );
+  }
+
+  late final _SecTrustSetPolicies2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SecTrustRef, CFTypeRef)>>(
+          'SecTrustSetPolicies');
+  late final _SecTrustSetPolicies2 = _SecTrustSetPolicies2Ptr.asFunction<
+      int Function(SecTrustRef, CFTypeRef)>();
+
+  int SecTrustCopyPolicies2(
+    SecTrustRef trust,
+    ffi.Pointer<CFArrayRef> policies,
+  ) {
+    return _SecTrustCopyPolicies2(
+      trust,
+      policies,
+    );
+  }
+
+  late final _SecTrustCopyPolicies2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SecTrustRef, ffi.Pointer<CFArrayRef>)>>('SecTrustCopyPolicies');
+  late final _SecTrustCopyPolicies2 = _SecTrustCopyPolicies2Ptr.asFunction<
+      int Function(SecTrustRef, ffi.Pointer<CFArrayRef>)>();
+
+  int SecTrustSetNetworkFetchAllowed2(
+    SecTrustRef trust,
+    int allowFetch,
+  ) {
+    return _SecTrustSetNetworkFetchAllowed2(
+      trust,
+      allowFetch,
+    );
+  }
+
+  late final _SecTrustSetNetworkFetchAllowed2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SecTrustRef, Boolean)>>(
+          'SecTrustSetNetworkFetchAllowed');
+  late final _SecTrustSetNetworkFetchAllowed2 =
+      _SecTrustSetNetworkFetchAllowed2Ptr.asFunction<
+          int Function(SecTrustRef, int)>();
+
+  int SecTrustGetNetworkFetchAllowed2(
+    SecTrustRef trust,
+    ffi.Pointer<Boolean> allowFetch,
+  ) {
+    return _SecTrustGetNetworkFetchAllowed2(
+      trust,
+      allowFetch,
+    );
+  }
+
+  late final _SecTrustGetNetworkFetchAllowed2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecTrustRef,
+              ffi.Pointer<Boolean>)>>('SecTrustGetNetworkFetchAllowed');
+  late final _SecTrustGetNetworkFetchAllowed2 =
+      _SecTrustGetNetworkFetchAllowed2Ptr.asFunction<
+          int Function(SecTrustRef, ffi.Pointer<Boolean>)>();
+
+  int SecTrustSetAnchorCertificates2(
+    SecTrustRef trust,
+    CFArrayRef anchorCertificates,
+  ) {
+    return _SecTrustSetAnchorCertificates2(
+      trust,
+      anchorCertificates,
+    );
+  }
+
+  late final _SecTrustSetAnchorCertificates2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SecTrustRef, CFArrayRef)>>(
+          'SecTrustSetAnchorCertificates');
+  late final _SecTrustSetAnchorCertificates2 =
+      _SecTrustSetAnchorCertificates2Ptr.asFunction<
+          int Function(SecTrustRef, CFArrayRef)>();
+
+  int SecTrustSetAnchorCertificatesOnly2(
+    SecTrustRef trust,
+    int anchorCertificatesOnly,
+  ) {
+    return _SecTrustSetAnchorCertificatesOnly2(
+      trust,
+      anchorCertificatesOnly,
+    );
+  }
+
+  late final _SecTrustSetAnchorCertificatesOnly2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SecTrustRef, Boolean)>>(
+          'SecTrustSetAnchorCertificatesOnly');
+  late final _SecTrustSetAnchorCertificatesOnly2 =
+      _SecTrustSetAnchorCertificatesOnly2Ptr.asFunction<
+          int Function(SecTrustRef, int)>();
+
+  int SecTrustCopyCustomAnchorCertificates2(
+    SecTrustRef trust,
+    ffi.Pointer<CFArrayRef> anchors,
+  ) {
+    return _SecTrustCopyCustomAnchorCertificates2(
+      trust,
+      anchors,
+    );
+  }
+
+  late final _SecTrustCopyCustomAnchorCertificates2Ptr = _lookup<
+          ffi.NativeFunction<
+              OSStatus Function(SecTrustRef, ffi.Pointer<CFArrayRef>)>>(
+      'SecTrustCopyCustomAnchorCertificates');
+  late final _SecTrustCopyCustomAnchorCertificates2 =
+      _SecTrustCopyCustomAnchorCertificates2Ptr.asFunction<
+          int Function(SecTrustRef, ffi.Pointer<CFArrayRef>)>();
+
+  int SecTrustSetVerifyDate2(
+    SecTrustRef trust,
+    CFDateRef verifyDate,
+  ) {
+    return _SecTrustSetVerifyDate2(
+      trust,
+      verifyDate,
+    );
+  }
+
+  late final _SecTrustSetVerifyDate2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SecTrustRef, CFDateRef)>>(
+          'SecTrustSetVerifyDate');
+  late final _SecTrustSetVerifyDate2 = _SecTrustSetVerifyDate2Ptr.asFunction<
+      int Function(SecTrustRef, CFDateRef)>();
+
+  double SecTrustGetVerifyTime2(
+    SecTrustRef trust,
+  ) {
+    return _SecTrustGetVerifyTime2(
+      trust,
+    );
+  }
+
+  late final _SecTrustGetVerifyTime2Ptr =
+      _lookup<ffi.NativeFunction<CFAbsoluteTime Function(SecTrustRef)>>(
+          'SecTrustGetVerifyTime');
+  late final _SecTrustGetVerifyTime2 =
+      _SecTrustGetVerifyTime2Ptr.asFunction<double Function(SecTrustRef)>();
+
+  int SecTrustEvaluate2(
+    SecTrustRef trust,
+    ffi.Pointer<ffi.Int32> result,
+  ) {
+    return _SecTrustEvaluate2(
+      trust,
+      result,
+    );
+  }
+
+  late final _SecTrustEvaluate2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SecTrustRef, ffi.Pointer<ffi.Int32>)>>('SecTrustEvaluate');
+  late final _SecTrustEvaluate2 = _SecTrustEvaluate2Ptr.asFunction<
+      int Function(SecTrustRef, ffi.Pointer<ffi.Int32>)>();
+
+  int SecTrustEvaluateAsync2(
+    SecTrustRef trust,
+    dispatch_queue_t queue,
+    SecTrustCallback result,
+  ) {
+    return _SecTrustEvaluateAsync2(
+      trust,
+      queue,
+      result,
+    );
+  }
+
+  late final _SecTrustEvaluateAsync2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecTrustRef, dispatch_queue_t,
+              SecTrustCallback)>>('SecTrustEvaluateAsync');
+  late final _SecTrustEvaluateAsync2 = _SecTrustEvaluateAsync2Ptr.asFunction<
+      int Function(SecTrustRef, dispatch_queue_t, SecTrustCallback)>();
+
+  bool SecTrustEvaluateWithError2(
+    SecTrustRef trust,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _SecTrustEvaluateWithError2(
+          trust,
+          error,
+        ) !=
+        0;
+  }
+
+  late final _SecTrustEvaluateWithError2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Uint8 Function(SecTrustRef,
+              ffi.Pointer<CFErrorRef>)>>('SecTrustEvaluateWithError');
+  late final _SecTrustEvaluateWithError2 = _SecTrustEvaluateWithError2Ptr
+      .asFunction<int Function(SecTrustRef, ffi.Pointer<CFErrorRef>)>();
+
+  int SecTrustEvaluateAsyncWithError2(
+    SecTrustRef trust,
+    dispatch_queue_t queue,
+    SecTrustWithErrorCallback result,
+  ) {
+    return _SecTrustEvaluateAsyncWithError2(
+      trust,
+      queue,
+      result,
+    );
+  }
+
+  late final _SecTrustEvaluateAsyncWithError2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecTrustRef, dispatch_queue_t,
+              SecTrustWithErrorCallback)>>('SecTrustEvaluateAsyncWithError');
+  late final _SecTrustEvaluateAsyncWithError2 =
+      _SecTrustEvaluateAsyncWithError2Ptr.asFunction<
+          int Function(
+              SecTrustRef, dispatch_queue_t, SecTrustWithErrorCallback)>();
+
+  int SecTrustGetTrustResult2(
+    SecTrustRef trust,
+    ffi.Pointer<ffi.Int32> result,
+  ) {
+    return _SecTrustGetTrustResult2(
+      trust,
+      result,
+    );
+  }
+
+  late final _SecTrustGetTrustResult2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SecTrustRef, ffi.Pointer<ffi.Int32>)>>('SecTrustGetTrustResult');
+  late final _SecTrustGetTrustResult2 = _SecTrustGetTrustResult2Ptr.asFunction<
+      int Function(SecTrustRef, ffi.Pointer<ffi.Int32>)>();
+
+  SecKeyRef SecTrustCopyPublicKey2(
+    SecTrustRef trust,
+  ) {
+    return _SecTrustCopyPublicKey2(
+      trust,
+    );
+  }
+
+  late final _SecTrustCopyPublicKey2Ptr =
+      _lookup<ffi.NativeFunction<SecKeyRef Function(SecTrustRef)>>(
+          'SecTrustCopyPublicKey');
+  late final _SecTrustCopyPublicKey2 =
+      _SecTrustCopyPublicKey2Ptr.asFunction<SecKeyRef Function(SecTrustRef)>();
+
+  SecKeyRef SecTrustCopyKey2(
+    SecTrustRef trust,
+  ) {
+    return _SecTrustCopyKey2(
+      trust,
+    );
+  }
+
+  late final _SecTrustCopyKey2Ptr =
+      _lookup<ffi.NativeFunction<SecKeyRef Function(SecTrustRef)>>(
+          'SecTrustCopyKey');
+  late final _SecTrustCopyKey2 =
+      _SecTrustCopyKey2Ptr.asFunction<SecKeyRef Function(SecTrustRef)>();
+
+  int SecTrustGetCertificateCount2(
+    SecTrustRef trust,
+  ) {
+    return _SecTrustGetCertificateCount2(
+      trust,
+    );
+  }
+
+  late final _SecTrustGetCertificateCount2Ptr =
+      _lookup<ffi.NativeFunction<CFIndex Function(SecTrustRef)>>(
+          'SecTrustGetCertificateCount');
+  late final _SecTrustGetCertificateCount2 =
+      _SecTrustGetCertificateCount2Ptr.asFunction<int Function(SecTrustRef)>();
+
+  SecCertificateRef SecTrustGetCertificateAtIndex2(
+    SecTrustRef trust,
+    int ix,
+  ) {
+    return _SecTrustGetCertificateAtIndex2(
+      trust,
+      ix,
+    );
+  }
+
+  late final _SecTrustGetCertificateAtIndex2Ptr = _lookup<
+          ffi.NativeFunction<SecCertificateRef Function(SecTrustRef, CFIndex)>>(
+      'SecTrustGetCertificateAtIndex');
+  late final _SecTrustGetCertificateAtIndex2 =
+      _SecTrustGetCertificateAtIndex2Ptr.asFunction<
+          SecCertificateRef Function(SecTrustRef, int)>();
+
+  CFDataRef SecTrustCopyExceptions2(
+    SecTrustRef trust,
+  ) {
+    return _SecTrustCopyExceptions2(
+      trust,
+    );
+  }
+
+  late final _SecTrustCopyExceptions2Ptr =
+      _lookup<ffi.NativeFunction<CFDataRef Function(SecTrustRef)>>(
+          'SecTrustCopyExceptions');
+  late final _SecTrustCopyExceptions2 =
+      _SecTrustCopyExceptions2Ptr.asFunction<CFDataRef Function(SecTrustRef)>();
+
+  bool SecTrustSetExceptions2(
+    SecTrustRef trust,
+    CFDataRef exceptions,
+  ) {
+    return _SecTrustSetExceptions2(
+          trust,
+          exceptions,
+        ) !=
+        0;
+  }
+
+  late final _SecTrustSetExceptions2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function(SecTrustRef, CFDataRef)>>(
+          'SecTrustSetExceptions');
+  late final _SecTrustSetExceptions2 = _SecTrustSetExceptions2Ptr.asFunction<
+      int Function(SecTrustRef, CFDataRef)>();
+
+  CFArrayRef SecTrustCopyProperties2(
+    SecTrustRef trust,
+  ) {
+    return _SecTrustCopyProperties2(
+      trust,
+    );
+  }
+
+  late final _SecTrustCopyProperties2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function(SecTrustRef)>>(
+          'SecTrustCopyProperties');
+  late final _SecTrustCopyProperties2 = _SecTrustCopyProperties2Ptr.asFunction<
+      CFArrayRef Function(SecTrustRef)>();
+
+  CFDictionaryRef SecTrustCopyResult2(
+    SecTrustRef trust,
+  ) {
+    return _SecTrustCopyResult2(
+      trust,
+    );
+  }
+
+  late final _SecTrustCopyResult2Ptr =
+      _lookup<ffi.NativeFunction<CFDictionaryRef Function(SecTrustRef)>>(
+          'SecTrustCopyResult');
+  late final _SecTrustCopyResult2 = _SecTrustCopyResult2Ptr.asFunction<
+      CFDictionaryRef Function(SecTrustRef)>();
+
+  int SecTrustSetOCSPResponse2(
+    SecTrustRef trust,
+    CFTypeRef responseData,
+  ) {
+    return _SecTrustSetOCSPResponse2(
+      trust,
+      responseData,
+    );
+  }
+
+  late final _SecTrustSetOCSPResponse2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SecTrustRef, CFTypeRef)>>(
+          'SecTrustSetOCSPResponse');
+  late final _SecTrustSetOCSPResponse2 = _SecTrustSetOCSPResponse2Ptr
+      .asFunction<int Function(SecTrustRef, CFTypeRef)>();
+
+  int SecTrustSetSignedCertificateTimestamps2(
+    SecTrustRef trust,
+    CFArrayRef sctArray,
+  ) {
+    return _SecTrustSetSignedCertificateTimestamps2(
+      trust,
+      sctArray,
+    );
+  }
+
+  late final _SecTrustSetSignedCertificateTimestamps2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SecTrustRef, CFArrayRef)>>(
+          'SecTrustSetSignedCertificateTimestamps');
+  late final _SecTrustSetSignedCertificateTimestamps2 =
+      _SecTrustSetSignedCertificateTimestamps2Ptr.asFunction<
+          int Function(SecTrustRef, CFArrayRef)>();
+
+  CFArrayRef SecTrustCopyCertificateChain2(
+    SecTrustRef trust,
+  ) {
+    return _SecTrustCopyCertificateChain2(
+      trust,
+    );
+  }
+
+  late final _SecTrustCopyCertificateChain2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function(SecTrustRef)>>(
+          'SecTrustCopyCertificateChain');
+  late final _SecTrustCopyCertificateChain2 = _SecTrustCopyCertificateChain2Ptr
+      .asFunction<CFArrayRef Function(SecTrustRef)>();
+
+  void cssmPerror2(
+    ffi.Pointer<ffi.Char> how,
+    int error,
+  ) {
+    return _cssmPerror2(
+      how,
+      error,
+    );
+  }
+
+  late final _cssmPerror2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Char>, CSSM_RETURN)>>('cssmPerror');
+  late final _cssmPerror2 =
+      _cssmPerror2Ptr.asFunction<void Function(ffi.Pointer<ffi.Char>, int)>();
+
+  bool cssmOidToAlg2(
+    ffi.Pointer<SecAsn1Oid> oid,
+    ffi.Pointer<CSSM_ALGORITHMS> alg,
+  ) {
+    return _cssmOidToAlg2(
+          oid,
+          alg,
+        ) !=
+        0;
+  }
+
+  late final _cssmOidToAlg2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Uint8 Function(ffi.Pointer<SecAsn1Oid>,
+              ffi.Pointer<CSSM_ALGORITHMS>)>>('cssmOidToAlg');
+  late final _cssmOidToAlg2 = _cssmOidToAlg2Ptr.asFunction<
+      int Function(ffi.Pointer<SecAsn1Oid>, ffi.Pointer<CSSM_ALGORITHMS>)>();
+
+  ffi.Pointer<SecAsn1Oid> cssmAlgToOid2(
+    int algId,
+  ) {
+    return _cssmAlgToOid2(
+      algId,
+    );
+  }
+
+  late final _cssmAlgToOid2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SecAsn1Oid> Function(CSSM_ALGORITHMS)>>('cssmAlgToOid');
+  late final _cssmAlgToOid2 =
+      _cssmAlgToOid2Ptr.asFunction<ffi.Pointer<SecAsn1Oid> Function(int)>();
+
+  int SecTrustSetOptions2(
+    SecTrustRef trustRef,
+    int options,
+  ) {
+    return _SecTrustSetOptions2(
+      trustRef,
+      options,
+    );
+  }
+
+  late final _SecTrustSetOptions2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SecTrustRef, ffi.Int32)>>(
+          'SecTrustSetOptions');
+  late final _SecTrustSetOptions2 =
+      _SecTrustSetOptions2Ptr.asFunction<int Function(SecTrustRef, int)>();
+
+  int SecTrustSetParameters2(
+    SecTrustRef trustRef,
+    int action,
+    CFDataRef actionData,
+  ) {
+    return _SecTrustSetParameters2(
+      trustRef,
+      action,
+      actionData,
+    );
+  }
+
+  late final _SecTrustSetParameters2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecTrustRef, CSSM_TP_ACTION,
+              CFDataRef)>>('SecTrustSetParameters');
+  late final _SecTrustSetParameters2 = _SecTrustSetParameters2Ptr.asFunction<
+      int Function(SecTrustRef, int, CFDataRef)>();
+
+  int SecTrustSetKeychains2(
+    SecTrustRef trust,
+    CFTypeRef keychainOrArray,
+  ) {
+    return _SecTrustSetKeychains2(
+      trust,
+      keychainOrArray,
+    );
+  }
+
+  late final _SecTrustSetKeychains2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SecTrustRef, CFTypeRef)>>(
+          'SecTrustSetKeychains');
+  late final _SecTrustSetKeychains2 = _SecTrustSetKeychains2Ptr.asFunction<
+      int Function(SecTrustRef, CFTypeRef)>();
+
+  int SecTrustGetResult2(
+    SecTrustRef trustRef,
+    ffi.Pointer<ffi.Int32> result,
+    ffi.Pointer<CFArrayRef> certChain,
+    ffi.Pointer<ffi.Pointer<CSSM_TP_APPLE_EVIDENCE_INFO>> statusChain,
+  ) {
+    return _SecTrustGetResult2(
+      trustRef,
+      result,
+      certChain,
+      statusChain,
+    );
+  }
+
+  late final _SecTrustGetResult2Ptr = _lookup<
+          ffi.NativeFunction<
+              OSStatus Function(
+                  SecTrustRef,
+                  ffi.Pointer<ffi.Int32>,
+                  ffi.Pointer<CFArrayRef>,
+                  ffi.Pointer<ffi.Pointer<CSSM_TP_APPLE_EVIDENCE_INFO>>)>>(
+      'SecTrustGetResult');
+  late final _SecTrustGetResult2 = _SecTrustGetResult2Ptr.asFunction<
+      int Function(SecTrustRef, ffi.Pointer<ffi.Int32>, ffi.Pointer<CFArrayRef>,
+          ffi.Pointer<ffi.Pointer<CSSM_TP_APPLE_EVIDENCE_INFO>>)>();
+
+  int SecTrustGetCssmResult2(
+    SecTrustRef trust,
+    ffi.Pointer<CSSM_TP_VERIFY_CONTEXT_RESULT_PTR> result,
+  ) {
+    return _SecTrustGetCssmResult2(
+      trust,
+      result,
+    );
+  }
+
+  late final _SecTrustGetCssmResult2Ptr = _lookup<
+          ffi.NativeFunction<
+              OSStatus Function(SecTrustRef,
+                  ffi.Pointer<CSSM_TP_VERIFY_CONTEXT_RESULT_PTR>)>>(
+      'SecTrustGetCssmResult');
+  late final _SecTrustGetCssmResult2 = _SecTrustGetCssmResult2Ptr.asFunction<
+      int Function(
+          SecTrustRef, ffi.Pointer<CSSM_TP_VERIFY_CONTEXT_RESULT_PTR>)>();
+
+  int SecTrustGetCssmResultCode2(
+    SecTrustRef trust,
+    ffi.Pointer<OSStatus> resultCode,
+  ) {
+    return _SecTrustGetCssmResultCode2(
+      trust,
+      resultCode,
+    );
+  }
+
+  late final _SecTrustGetCssmResultCode2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecTrustRef,
+              ffi.Pointer<OSStatus>)>>('SecTrustGetCssmResultCode');
+  late final _SecTrustGetCssmResultCode2 = _SecTrustGetCssmResultCode2Ptr
+      .asFunction<int Function(SecTrustRef, ffi.Pointer<OSStatus>)>();
+
+  int SecTrustGetTPHandle2(
+    SecTrustRef trust,
+    ffi.Pointer<CSSM_TP_HANDLE> handle,
+  ) {
+    return _SecTrustGetTPHandle2(
+      trust,
+      handle,
+    );
+  }
+
+  late final _SecTrustGetTPHandle2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecTrustRef,
+              ffi.Pointer<CSSM_TP_HANDLE>)>>('SecTrustGetTPHandle');
+  late final _SecTrustGetTPHandle2 = _SecTrustGetTPHandle2Ptr.asFunction<
+      int Function(SecTrustRef, ffi.Pointer<CSSM_TP_HANDLE>)>();
+
+  int SecTrustCopyAnchorCertificates2(
+    ffi.Pointer<CFArrayRef> anchors,
+  ) {
+    return _SecTrustCopyAnchorCertificates2(
+      anchors,
+    );
+  }
+
+  late final _SecTrustCopyAnchorCertificates2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(ffi.Pointer<CFArrayRef>)>>(
+          'SecTrustCopyAnchorCertificates');
+  late final _SecTrustCopyAnchorCertificates2 =
+      _SecTrustCopyAnchorCertificates2Ptr.asFunction<
+          int Function(ffi.Pointer<CFArrayRef>)>();
+
+  int SecCertificateGetTypeID2() {
+    return _SecCertificateGetTypeID2();
+  }
+
+  late final _SecCertificateGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>(
+          'SecCertificateGetTypeID');
+  late final _SecCertificateGetTypeID2 =
+      _SecCertificateGetTypeID2Ptr.asFunction<int Function()>();
+
+  SecCertificateRef SecCertificateCreateWithData2(
+    CFAllocatorRef allocator,
+    CFDataRef data,
+  ) {
+    return _SecCertificateCreateWithData2(
+      allocator,
+      data,
+    );
+  }
+
+  late final _SecCertificateCreateWithData2Ptr = _lookup<
+      ffi.NativeFunction<
+          SecCertificateRef Function(
+              CFAllocatorRef, CFDataRef)>>('SecCertificateCreateWithData');
+  late final _SecCertificateCreateWithData2 = _SecCertificateCreateWithData2Ptr
+      .asFunction<SecCertificateRef Function(CFAllocatorRef, CFDataRef)>();
+
+  CFDataRef SecCertificateCopyData2(
+    SecCertificateRef certificate,
+  ) {
+    return _SecCertificateCopyData2(
+      certificate,
+    );
+  }
+
+  late final _SecCertificateCopyData2Ptr =
+      _lookup<ffi.NativeFunction<CFDataRef Function(SecCertificateRef)>>(
+          'SecCertificateCopyData');
+  late final _SecCertificateCopyData2 = _SecCertificateCopyData2Ptr.asFunction<
+      CFDataRef Function(SecCertificateRef)>();
+
+  CFStringRef SecCertificateCopySubjectSummary2(
+    SecCertificateRef certificate,
+  ) {
+    return _SecCertificateCopySubjectSummary2(
+      certificate,
+    );
+  }
+
+  late final _SecCertificateCopySubjectSummary2Ptr =
+      _lookup<ffi.NativeFunction<CFStringRef Function(SecCertificateRef)>>(
+          'SecCertificateCopySubjectSummary');
+  late final _SecCertificateCopySubjectSummary2 =
+      _SecCertificateCopySubjectSummary2Ptr.asFunction<
+          CFStringRef Function(SecCertificateRef)>();
+
+  int SecCertificateCopyCommonName2(
+    SecCertificateRef certificate,
+    ffi.Pointer<CFStringRef> commonName,
+  ) {
+    return _SecCertificateCopyCommonName2(
+      certificate,
+      commonName,
+    );
+  }
+
+  late final _SecCertificateCopyCommonName2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecCertificateRef,
+              ffi.Pointer<CFStringRef>)>>('SecCertificateCopyCommonName');
+  late final _SecCertificateCopyCommonName2 = _SecCertificateCopyCommonName2Ptr
+      .asFunction<int Function(SecCertificateRef, ffi.Pointer<CFStringRef>)>();
+
+  int SecCertificateCopyEmailAddresses2(
+    SecCertificateRef certificate,
+    ffi.Pointer<CFArrayRef> emailAddresses,
+  ) {
+    return _SecCertificateCopyEmailAddresses2(
+      certificate,
+      emailAddresses,
+    );
+  }
+
+  late final _SecCertificateCopyEmailAddresses2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecCertificateRef,
+              ffi.Pointer<CFArrayRef>)>>('SecCertificateCopyEmailAddresses');
+  late final _SecCertificateCopyEmailAddresses2 =
+      _SecCertificateCopyEmailAddresses2Ptr.asFunction<
+          int Function(SecCertificateRef, ffi.Pointer<CFArrayRef>)>();
+
+  CFDataRef SecCertificateCopyNormalizedIssuerSequence2(
+    SecCertificateRef certificate,
+  ) {
+    return _SecCertificateCopyNormalizedIssuerSequence2(
+      certificate,
+    );
+  }
+
+  late final _SecCertificateCopyNormalizedIssuerSequence2Ptr =
+      _lookup<ffi.NativeFunction<CFDataRef Function(SecCertificateRef)>>(
+          'SecCertificateCopyNormalizedIssuerSequence');
+  late final _SecCertificateCopyNormalizedIssuerSequence2 =
+      _SecCertificateCopyNormalizedIssuerSequence2Ptr.asFunction<
+          CFDataRef Function(SecCertificateRef)>();
+
+  CFDataRef SecCertificateCopyNormalizedSubjectSequence2(
+    SecCertificateRef certificate,
+  ) {
+    return _SecCertificateCopyNormalizedSubjectSequence2(
+      certificate,
+    );
+  }
+
+  late final _SecCertificateCopyNormalizedSubjectSequence2Ptr =
+      _lookup<ffi.NativeFunction<CFDataRef Function(SecCertificateRef)>>(
+          'SecCertificateCopyNormalizedSubjectSequence');
+  late final _SecCertificateCopyNormalizedSubjectSequence2 =
+      _SecCertificateCopyNormalizedSubjectSequence2Ptr.asFunction<
+          CFDataRef Function(SecCertificateRef)>();
+
+  SecKeyRef SecCertificateCopyKey2(
+    SecCertificateRef certificate,
+  ) {
+    return _SecCertificateCopyKey2(
+      certificate,
+    );
+  }
+
+  late final _SecCertificateCopyKey2Ptr =
+      _lookup<ffi.NativeFunction<SecKeyRef Function(SecCertificateRef)>>(
+          'SecCertificateCopyKey');
+  late final _SecCertificateCopyKey2 = _SecCertificateCopyKey2Ptr.asFunction<
+      SecKeyRef Function(SecCertificateRef)>();
+
+  int SecCertificateCopyPublicKey2(
+    SecCertificateRef certificate,
+    ffi.Pointer<SecKeyRef> key,
+  ) {
+    return _SecCertificateCopyPublicKey2(
+      certificate,
+      key,
+    );
+  }
+
+  late final _SecCertificateCopyPublicKey2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecCertificateRef,
+              ffi.Pointer<SecKeyRef>)>>('SecCertificateCopyPublicKey');
+  late final _SecCertificateCopyPublicKey2 = _SecCertificateCopyPublicKey2Ptr
+      .asFunction<int Function(SecCertificateRef, ffi.Pointer<SecKeyRef>)>();
+
+  CFDataRef SecCertificateCopySerialNumberData2(
+    SecCertificateRef certificate,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _SecCertificateCopySerialNumberData2(
+      certificate,
+      error,
+    );
+  }
+
+  late final _SecCertificateCopySerialNumberData2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDataRef Function(SecCertificateRef,
+              ffi.Pointer<CFErrorRef>)>>('SecCertificateCopySerialNumberData');
+  late final _SecCertificateCopySerialNumberData2 =
+      _SecCertificateCopySerialNumberData2Ptr.asFunction<
+          CFDataRef Function(SecCertificateRef, ffi.Pointer<CFErrorRef>)>();
+
+  CFDataRef SecCertificateCopySerialNumber2(
+    SecCertificateRef certificate,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _SecCertificateCopySerialNumber2(
+      certificate,
+      error,
+    );
+  }
+
+  late final _SecCertificateCopySerialNumber2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDataRef Function(SecCertificateRef,
+              ffi.Pointer<CFErrorRef>)>>('SecCertificateCopySerialNumber');
+  late final _SecCertificateCopySerialNumber2 =
+      _SecCertificateCopySerialNumber2Ptr.asFunction<
+          CFDataRef Function(SecCertificateRef, ffi.Pointer<CFErrorRef>)>();
+
+  int SecCertificateCreateFromData2(
+    ffi.Pointer<SecAsn1Item> data,
+    int type,
+    int encoding,
+    ffi.Pointer<SecCertificateRef> certificate,
+  ) {
+    return _SecCertificateCreateFromData2(
+      data,
+      type,
+      encoding,
+      certificate,
+    );
+  }
+
+  late final _SecCertificateCreateFromData2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              ffi.Pointer<SecAsn1Item>,
+              CSSM_CERT_TYPE,
+              CSSM_CERT_ENCODING,
+              ffi.Pointer<SecCertificateRef>)>>('SecCertificateCreateFromData');
+  late final _SecCertificateCreateFromData2 =
+      _SecCertificateCreateFromData2Ptr.asFunction<
+          int Function(ffi.Pointer<SecAsn1Item>, int, int,
+              ffi.Pointer<SecCertificateRef>)>();
+
+  int SecCertificateAddToKeychain2(
+    SecCertificateRef certificate,
+    SecKeychainRef keychain,
+  ) {
+    return _SecCertificateAddToKeychain2(
+      certificate,
+      keychain,
+    );
+  }
+
+  late final _SecCertificateAddToKeychain2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecCertificateRef,
+              SecKeychainRef)>>('SecCertificateAddToKeychain');
+  late final _SecCertificateAddToKeychain2 = _SecCertificateAddToKeychain2Ptr
+      .asFunction<int Function(SecCertificateRef, SecKeychainRef)>();
+
+  int SecCertificateGetData2(
+    SecCertificateRef certificate,
+    CSSM_DATA_PTR data,
+  ) {
+    return _SecCertificateGetData2(
+      certificate,
+      data,
+    );
+  }
+
+  late final _SecCertificateGetData2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SecCertificateRef, CSSM_DATA_PTR)>>('SecCertificateGetData');
+  late final _SecCertificateGetData2 = _SecCertificateGetData2Ptr.asFunction<
+      int Function(SecCertificateRef, CSSM_DATA_PTR)>();
+
+  int SecCertificateGetType2(
+    SecCertificateRef certificate,
+    ffi.Pointer<CSSM_CERT_TYPE> certificateType,
+  ) {
+    return _SecCertificateGetType2(
+      certificate,
+      certificateType,
+    );
+  }
+
+  late final _SecCertificateGetType2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecCertificateRef,
+              ffi.Pointer<CSSM_CERT_TYPE>)>>('SecCertificateGetType');
+  late final _SecCertificateGetType2 = _SecCertificateGetType2Ptr.asFunction<
+      int Function(SecCertificateRef, ffi.Pointer<CSSM_CERT_TYPE>)>();
+
+  int SecCertificateGetSubject2(
+    SecCertificateRef certificate,
+    ffi.Pointer<ffi.Pointer<CSSM_X509_NAME>> subject,
+  ) {
+    return _SecCertificateGetSubject2(
+      certificate,
+      subject,
+    );
+  }
+
+  late final _SecCertificateGetSubject2Ptr = _lookup<
+          ffi.NativeFunction<
+              OSStatus Function(SecCertificateRef,
+                  ffi.Pointer<ffi.Pointer<CSSM_X509_NAME>>)>>(
+      'SecCertificateGetSubject');
+  late final _SecCertificateGetSubject2 =
+      _SecCertificateGetSubject2Ptr.asFunction<
+          int Function(
+              SecCertificateRef, ffi.Pointer<ffi.Pointer<CSSM_X509_NAME>>)>();
+
+  int SecCertificateGetIssuer2(
+    SecCertificateRef certificate,
+    ffi.Pointer<ffi.Pointer<CSSM_X509_NAME>> issuer,
+  ) {
+    return _SecCertificateGetIssuer2(
+      certificate,
+      issuer,
+    );
+  }
+
+  late final _SecCertificateGetIssuer2Ptr = _lookup<
+          ffi.NativeFunction<
+              OSStatus Function(SecCertificateRef,
+                  ffi.Pointer<ffi.Pointer<CSSM_X509_NAME>>)>>(
+      'SecCertificateGetIssuer');
+  late final _SecCertificateGetIssuer2 =
+      _SecCertificateGetIssuer2Ptr.asFunction<
+          int Function(
+              SecCertificateRef, ffi.Pointer<ffi.Pointer<CSSM_X509_NAME>>)>();
+
+  int SecCertificateGetCLHandle2(
+    SecCertificateRef certificate,
+    ffi.Pointer<CSSM_CL_HANDLE> clHandle,
+  ) {
+    return _SecCertificateGetCLHandle2(
+      certificate,
+      clHandle,
+    );
+  }
+
+  late final _SecCertificateGetCLHandle2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecCertificateRef,
+              ffi.Pointer<CSSM_CL_HANDLE>)>>('SecCertificateGetCLHandle');
+  late final _SecCertificateGetCLHandle2 =
+      _SecCertificateGetCLHandle2Ptr.asFunction<
+          int Function(SecCertificateRef, ffi.Pointer<CSSM_CL_HANDLE>)>();
+
+  int SecCertificateGetAlgorithmID2(
+    SecCertificateRef certificate,
+    ffi.Pointer<ffi.Pointer<SecAsn1AlgId>> algid,
+  ) {
+    return _SecCertificateGetAlgorithmID2(
+      certificate,
+      algid,
+    );
+  }
+
+  late final _SecCertificateGetAlgorithmID2Ptr = _lookup<
+          ffi.NativeFunction<
+              OSStatus Function(
+                  SecCertificateRef, ffi.Pointer<ffi.Pointer<SecAsn1AlgId>>)>>(
+      'SecCertificateGetAlgorithmID');
+  late final _SecCertificateGetAlgorithmID2 =
+      _SecCertificateGetAlgorithmID2Ptr.asFunction<
+          int Function(
+              SecCertificateRef, ffi.Pointer<ffi.Pointer<SecAsn1AlgId>>)>();
+
+  int SecCertificateCopyPreference2(
+    CFStringRef name,
+    int keyUsage,
+    ffi.Pointer<SecCertificateRef> certificate,
+  ) {
+    return _SecCertificateCopyPreference2(
+      name,
+      keyUsage,
+      certificate,
+    );
+  }
+
+  late final _SecCertificateCopyPreference2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(CFStringRef, uint32,
+              ffi.Pointer<SecCertificateRef>)>>('SecCertificateCopyPreference');
+  late final _SecCertificateCopyPreference2 =
+      _SecCertificateCopyPreference2Ptr.asFunction<
+          int Function(CFStringRef, int, ffi.Pointer<SecCertificateRef>)>();
+
+  SecCertificateRef SecCertificateCopyPreferred2(
+    CFStringRef name,
+    CFArrayRef keyUsage,
+  ) {
+    return _SecCertificateCopyPreferred2(
+      name,
+      keyUsage,
+    );
+  }
+
+  late final _SecCertificateCopyPreferred2Ptr = _lookup<
+      ffi.NativeFunction<
+          SecCertificateRef Function(
+              CFStringRef, CFArrayRef)>>('SecCertificateCopyPreferred');
+  late final _SecCertificateCopyPreferred2 = _SecCertificateCopyPreferred2Ptr
+      .asFunction<SecCertificateRef Function(CFStringRef, CFArrayRef)>();
+
+  int SecCertificateSetPreference2(
+    SecCertificateRef certificate,
+    CFStringRef name,
+    int keyUsage,
+    CFDateRef date,
+  ) {
+    return _SecCertificateSetPreference2(
+      certificate,
+      name,
+      keyUsage,
+      date,
+    );
+  }
+
+  late final _SecCertificateSetPreference2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecCertificateRef, CFStringRef, uint32,
+              CFDateRef)>>('SecCertificateSetPreference');
+  late final _SecCertificateSetPreference2 =
+      _SecCertificateSetPreference2Ptr.asFunction<
+          int Function(SecCertificateRef, CFStringRef, int, CFDateRef)>();
+
+  int SecCertificateSetPreferred2(
+    SecCertificateRef certificate,
+    CFStringRef name,
+    CFArrayRef keyUsage,
+  ) {
+    return _SecCertificateSetPreferred2(
+      certificate,
+      name,
+      keyUsage,
+    );
+  }
+
+  late final _SecCertificateSetPreferred2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecCertificateRef, CFStringRef,
+              CFArrayRef)>>('SecCertificateSetPreferred');
+  late final _SecCertificateSetPreferred2 = _SecCertificateSetPreferred2Ptr
+      .asFunction<int Function(SecCertificateRef, CFStringRef, CFArrayRef)>();
+
+  CFDictionaryRef SecCertificateCopyValues2(
+    SecCertificateRef certificate,
+    CFArrayRef keys,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _SecCertificateCopyValues2(
+      certificate,
+      keys,
+      error,
+    );
+  }
+
+  late final _SecCertificateCopyValues2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFDictionaryRef Function(SecCertificateRef, CFArrayRef,
+              ffi.Pointer<CFErrorRef>)>>('SecCertificateCopyValues');
+  late final _SecCertificateCopyValues2 =
+      _SecCertificateCopyValues2Ptr.asFunction<
+          CFDictionaryRef Function(
+              SecCertificateRef, CFArrayRef, ffi.Pointer<CFErrorRef>)>();
+
+  CFStringRef SecCertificateCopyLongDescription2(
+    CFAllocatorRef alloc,
+    SecCertificateRef certificate,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _SecCertificateCopyLongDescription2(
+      alloc,
+      certificate,
+      error,
+    );
+  }
+
+  late final _SecCertificateCopyLongDescription2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, SecCertificateRef,
+              ffi.Pointer<CFErrorRef>)>>('SecCertificateCopyLongDescription');
+  late final _SecCertificateCopyLongDescription2 =
+      _SecCertificateCopyLongDescription2Ptr.asFunction<
+          CFStringRef Function(
+              CFAllocatorRef, SecCertificateRef, ffi.Pointer<CFErrorRef>)>();
+
+  CFStringRef SecCertificateCopyShortDescription2(
+    CFAllocatorRef alloc,
+    SecCertificateRef certificate,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _SecCertificateCopyShortDescription2(
+      alloc,
+      certificate,
+      error,
+    );
+  }
+
+  late final _SecCertificateCopyShortDescription2Ptr = _lookup<
+      ffi.NativeFunction<
+          CFStringRef Function(CFAllocatorRef, SecCertificateRef,
+              ffi.Pointer<CFErrorRef>)>>('SecCertificateCopyShortDescription');
+  late final _SecCertificateCopyShortDescription2 =
+      _SecCertificateCopyShortDescription2Ptr.asFunction<
+          CFStringRef Function(
+              CFAllocatorRef, SecCertificateRef, ffi.Pointer<CFErrorRef>)>();
+
+  CFDataRef SecCertificateCopyNormalizedIssuerContent2(
+    SecCertificateRef certificate,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _SecCertificateCopyNormalizedIssuerContent2(
+      certificate,
+      error,
+    );
+  }
+
+  late final _SecCertificateCopyNormalizedIssuerContent2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFDataRef Function(SecCertificateRef, ffi.Pointer<CFErrorRef>)>>(
+      'SecCertificateCopyNormalizedIssuerContent');
+  late final _SecCertificateCopyNormalizedIssuerContent2 =
+      _SecCertificateCopyNormalizedIssuerContent2Ptr.asFunction<
+          CFDataRef Function(SecCertificateRef, ffi.Pointer<CFErrorRef>)>();
+
+  CFDataRef SecCertificateCopyNormalizedSubjectContent2(
+    SecCertificateRef certificate,
+    ffi.Pointer<CFErrorRef> error,
+  ) {
+    return _SecCertificateCopyNormalizedSubjectContent2(
+      certificate,
+      error,
+    );
+  }
+
+  late final _SecCertificateCopyNormalizedSubjectContent2Ptr = _lookup<
+          ffi.NativeFunction<
+              CFDataRef Function(SecCertificateRef, ffi.Pointer<CFErrorRef>)>>(
+      'SecCertificateCopyNormalizedSubjectContent');
+  late final _SecCertificateCopyNormalizedSubjectContent2 =
+      _SecCertificateCopyNormalizedSubjectContent2Ptr.asFunction<
+          CFDataRef Function(SecCertificateRef, ffi.Pointer<CFErrorRef>)>();
+
+  int SecIdentityGetTypeID2() {
+    return _SecIdentityGetTypeID2();
+  }
+
+  late final _SecIdentityGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('SecIdentityGetTypeID');
+  late final _SecIdentityGetTypeID2 =
+      _SecIdentityGetTypeID2Ptr.asFunction<int Function()>();
+
+  int SecIdentityCreateWithCertificate2(
+    CFTypeRef keychainOrArray,
+    SecCertificateRef certificateRef,
+    ffi.Pointer<SecIdentityRef> identityRef,
+  ) {
+    return _SecIdentityCreateWithCertificate2(
+      keychainOrArray,
+      certificateRef,
+      identityRef,
+    );
+  }
+
+  late final _SecIdentityCreateWithCertificate2Ptr = _lookup<
+          ffi.NativeFunction<
+              OSStatus Function(
+                  CFTypeRef, SecCertificateRef, ffi.Pointer<SecIdentityRef>)>>(
+      'SecIdentityCreateWithCertificate');
+  late final _SecIdentityCreateWithCertificate2 =
+      _SecIdentityCreateWithCertificate2Ptr.asFunction<
+          int Function(
+              CFTypeRef, SecCertificateRef, ffi.Pointer<SecIdentityRef>)>();
+
+  int SecIdentityCopyCertificate2(
+    SecIdentityRef identityRef,
+    ffi.Pointer<SecCertificateRef> certificateRef,
+  ) {
+    return _SecIdentityCopyCertificate2(
+      identityRef,
+      certificateRef,
+    );
+  }
+
+  late final _SecIdentityCopyCertificate2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecIdentityRef,
+              ffi.Pointer<SecCertificateRef>)>>('SecIdentityCopyCertificate');
+  late final _SecIdentityCopyCertificate2 =
+      _SecIdentityCopyCertificate2Ptr.asFunction<
+          int Function(SecIdentityRef, ffi.Pointer<SecCertificateRef>)>();
+
+  int SecIdentityCopyPrivateKey2(
+    SecIdentityRef identityRef,
+    ffi.Pointer<SecKeyRef> privateKeyRef,
+  ) {
+    return _SecIdentityCopyPrivateKey2(
+      identityRef,
+      privateKeyRef,
+    );
+  }
+
+  late final _SecIdentityCopyPrivateKey2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecIdentityRef,
+              ffi.Pointer<SecKeyRef>)>>('SecIdentityCopyPrivateKey');
+  late final _SecIdentityCopyPrivateKey2 = _SecIdentityCopyPrivateKey2Ptr
+      .asFunction<int Function(SecIdentityRef, ffi.Pointer<SecKeyRef>)>();
+
+  int SecIdentityCopyPreference2(
+    CFStringRef name,
+    int keyUsage,
+    CFArrayRef validIssuers,
+    ffi.Pointer<SecIdentityRef> identity,
+  ) {
+    return _SecIdentityCopyPreference2(
+      name,
+      keyUsage,
+      validIssuers,
+      identity,
+    );
+  }
+
+  late final _SecIdentityCopyPreference2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(CFStringRef, CSSM_KEYUSE, CFArrayRef,
+              ffi.Pointer<SecIdentityRef>)>>('SecIdentityCopyPreference');
+  late final _SecIdentityCopyPreference2 =
+      _SecIdentityCopyPreference2Ptr.asFunction<
+          int Function(
+              CFStringRef, int, CFArrayRef, ffi.Pointer<SecIdentityRef>)>();
+
+  SecIdentityRef SecIdentityCopyPreferred2(
+    CFStringRef name,
+    CFArrayRef keyUsage,
+    CFArrayRef validIssuers,
+  ) {
+    return _SecIdentityCopyPreferred2(
+      name,
+      keyUsage,
+      validIssuers,
+    );
+  }
+
+  late final _SecIdentityCopyPreferred2Ptr = _lookup<
+      ffi.NativeFunction<
+          SecIdentityRef Function(CFStringRef, CFArrayRef,
+              CFArrayRef)>>('SecIdentityCopyPreferred');
+  late final _SecIdentityCopyPreferred2 =
+      _SecIdentityCopyPreferred2Ptr.asFunction<
+          SecIdentityRef Function(CFStringRef, CFArrayRef, CFArrayRef)>();
+
+  int SecIdentitySetPreference2(
+    SecIdentityRef identity,
+    CFStringRef name,
+    int keyUsage,
+  ) {
+    return _SecIdentitySetPreference2(
+      identity,
+      name,
+      keyUsage,
+    );
+  }
+
+  late final _SecIdentitySetPreference2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecIdentityRef, CFStringRef,
+              CSSM_KEYUSE)>>('SecIdentitySetPreference');
+  late final _SecIdentitySetPreference2 = _SecIdentitySetPreference2Ptr
+      .asFunction<int Function(SecIdentityRef, CFStringRef, int)>();
+
+  int SecIdentitySetPreferred2(
+    SecIdentityRef identity,
+    CFStringRef name,
+    CFArrayRef keyUsage,
+  ) {
+    return _SecIdentitySetPreferred2(
+      identity,
+      name,
+      keyUsage,
+    );
+  }
+
+  late final _SecIdentitySetPreferred2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SecIdentityRef, CFStringRef,
+              CFArrayRef)>>('SecIdentitySetPreferred');
+  late final _SecIdentitySetPreferred2 = _SecIdentitySetPreferred2Ptr
+      .asFunction<int Function(SecIdentityRef, CFStringRef, CFArrayRef)>();
+
+  int SecIdentityCopySystemIdentity2(
+    CFStringRef domain,
+    ffi.Pointer<SecIdentityRef> idRef,
+    ffi.Pointer<CFStringRef> actualDomain,
+  ) {
+    return _SecIdentityCopySystemIdentity2(
+      domain,
+      idRef,
+      actualDomain,
+    );
+  }
+
+  late final _SecIdentityCopySystemIdentity2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(CFStringRef, ffi.Pointer<SecIdentityRef>,
+              ffi.Pointer<CFStringRef>)>>('SecIdentityCopySystemIdentity');
+  late final _SecIdentityCopySystemIdentity2 =
+      _SecIdentityCopySystemIdentity2Ptr.asFunction<
+          int Function(CFStringRef, ffi.Pointer<SecIdentityRef>,
+              ffi.Pointer<CFStringRef>)>();
+
+  int SecIdentitySetSystemIdentity2(
+    CFStringRef domain,
+    SecIdentityRef idRef,
+  ) {
+    return _SecIdentitySetSystemIdentity2(
+      domain,
+      idRef,
+    );
+  }
+
+  late final _SecIdentitySetSystemIdentity2Ptr = _lookup<
+          ffi.NativeFunction<OSStatus Function(CFStringRef, SecIdentityRef)>>(
+      'SecIdentitySetSystemIdentity');
+  late final _SecIdentitySetSystemIdentity2 = _SecIdentitySetSystemIdentity2Ptr
+      .asFunction<int Function(CFStringRef, SecIdentityRef)>();
+
+  sec_trust_t sec_trust_create2(
+    SecTrustRef trust,
+  ) {
+    return _sec_trust_create2(
+      trust,
+    );
+  }
+
+  late final _sec_trust_create2Ptr =
+      _lookup<ffi.NativeFunction<sec_trust_t Function(SecTrustRef)>>(
+          'sec_trust_create');
+  late final _sec_trust_create2 =
+      _sec_trust_create2Ptr.asFunction<sec_trust_t Function(SecTrustRef)>();
+
+  SecTrustRef sec_trust_copy_ref2(
+    sec_trust_t trust,
+  ) {
+    return _sec_trust_copy_ref2(
+      trust,
+    );
+  }
+
+  late final _sec_trust_copy_ref2Ptr =
+      _lookup<ffi.NativeFunction<SecTrustRef Function(sec_trust_t)>>(
+          'sec_trust_copy_ref');
+  late final _sec_trust_copy_ref2 =
+      _sec_trust_copy_ref2Ptr.asFunction<SecTrustRef Function(sec_trust_t)>();
+
+  sec_identity_t sec_identity_create2(
+    SecIdentityRef identity,
+  ) {
+    return _sec_identity_create2(
+      identity,
+    );
+  }
+
+  late final _sec_identity_create2Ptr =
+      _lookup<ffi.NativeFunction<sec_identity_t Function(SecIdentityRef)>>(
+          'sec_identity_create');
+  late final _sec_identity_create2 = _sec_identity_create2Ptr
+      .asFunction<sec_identity_t Function(SecIdentityRef)>();
+
+  sec_identity_t sec_identity_create_with_certificates2(
+    SecIdentityRef identity,
+    CFArrayRef certificates,
+  ) {
+    return _sec_identity_create_with_certificates2(
+      identity,
+      certificates,
+    );
+  }
+
+  late final _sec_identity_create_with_certificates2Ptr = _lookup<
+      ffi.NativeFunction<
+          sec_identity_t Function(SecIdentityRef,
+              CFArrayRef)>>('sec_identity_create_with_certificates');
+  late final _sec_identity_create_with_certificates2 =
+      _sec_identity_create_with_certificates2Ptr
+          .asFunction<sec_identity_t Function(SecIdentityRef, CFArrayRef)>();
+
+  bool sec_identity_access_certificates2(
+    sec_identity_t identity,
+    ffi.Pointer<_ObjCBlock> handler,
+  ) {
+    return _sec_identity_access_certificates2(
+          identity,
+          handler,
+        ) !=
+        0;
+  }
+
+  late final _sec_identity_access_certificates2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Uint8 Function(sec_identity_t,
+              ffi.Pointer<_ObjCBlock>)>>('sec_identity_access_certificates');
+  late final _sec_identity_access_certificates2 =
+      _sec_identity_access_certificates2Ptr
+          .asFunction<int Function(sec_identity_t, ffi.Pointer<_ObjCBlock>)>();
+
+  SecIdentityRef sec_identity_copy_ref2(
+    sec_identity_t identity,
+  ) {
+    return _sec_identity_copy_ref2(
+      identity,
+    );
+  }
+
+  late final _sec_identity_copy_ref2Ptr =
+      _lookup<ffi.NativeFunction<SecIdentityRef Function(sec_identity_t)>>(
+          'sec_identity_copy_ref');
+  late final _sec_identity_copy_ref2 = _sec_identity_copy_ref2Ptr
+      .asFunction<SecIdentityRef Function(sec_identity_t)>();
+
+  CFArrayRef sec_identity_copy_certificates_ref2(
+    sec_identity_t identity,
+  ) {
+    return _sec_identity_copy_certificates_ref2(
+      identity,
+    );
+  }
+
+  late final _sec_identity_copy_certificates_ref2Ptr =
+      _lookup<ffi.NativeFunction<CFArrayRef Function(sec_identity_t)>>(
+          'sec_identity_copy_certificates_ref');
+  late final _sec_identity_copy_certificates_ref2 =
+      _sec_identity_copy_certificates_ref2Ptr
+          .asFunction<CFArrayRef Function(sec_identity_t)>();
+
+  sec_certificate_t sec_certificate_create2(
+    SecCertificateRef certificate,
+  ) {
+    return _sec_certificate_create2(
+      certificate,
+    );
+  }
+
+  late final _sec_certificate_create2Ptr = _lookup<
+          ffi.NativeFunction<sec_certificate_t Function(SecCertificateRef)>>(
+      'sec_certificate_create');
+  late final _sec_certificate_create2 = _sec_certificate_create2Ptr
+      .asFunction<sec_certificate_t Function(SecCertificateRef)>();
+
+  SecCertificateRef sec_certificate_copy_ref2(
+    sec_certificate_t certificate,
+  ) {
+    return _sec_certificate_copy_ref2(
+      certificate,
+    );
+  }
+
+  late final _sec_certificate_copy_ref2Ptr = _lookup<
+          ffi.NativeFunction<SecCertificateRef Function(sec_certificate_t)>>(
+      'sec_certificate_copy_ref');
+  late final _sec_certificate_copy_ref2 = _sec_certificate_copy_ref2Ptr
+      .asFunction<SecCertificateRef Function(sec_certificate_t)>();
+
+  ffi.Pointer<ffi.Char> sec_protocol_metadata_get_negotiated_protocol2(
+    sec_protocol_metadata_t metadata,
+  ) {
+    return _sec_protocol_metadata_get_negotiated_protocol2(
+      metadata,
+    );
+  }
+
+  late final _sec_protocol_metadata_get_negotiated_protocol2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(sec_protocol_metadata_t)>>(
+      'sec_protocol_metadata_get_negotiated_protocol');
+  late final _sec_protocol_metadata_get_negotiated_protocol2 =
+      _sec_protocol_metadata_get_negotiated_protocol2Ptr.asFunction<
+          ffi.Pointer<ffi.Char> Function(sec_protocol_metadata_t)>();
+
+  dispatch_data_t sec_protocol_metadata_copy_peer_public_key2(
+    sec_protocol_metadata_t metadata,
+  ) {
+    return _sec_protocol_metadata_copy_peer_public_key2(
+      metadata,
+    );
+  }
+
+  late final _sec_protocol_metadata_copy_peer_public_key2Ptr = _lookup<
+          ffi.NativeFunction<
+              dispatch_data_t Function(sec_protocol_metadata_t)>>(
+      'sec_protocol_metadata_copy_peer_public_key');
+  late final _sec_protocol_metadata_copy_peer_public_key2 =
+      _sec_protocol_metadata_copy_peer_public_key2Ptr
+          .asFunction<dispatch_data_t Function(sec_protocol_metadata_t)>();
+
+  int sec_protocol_metadata_get_negotiated_tls_protocol_version2(
+    sec_protocol_metadata_t metadata,
+  ) {
+    return _sec_protocol_metadata_get_negotiated_tls_protocol_version2(
+      metadata,
+    );
+  }
+
+  late final _sec_protocol_metadata_get_negotiated_tls_protocol_version2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(sec_protocol_metadata_t)>>(
+          'sec_protocol_metadata_get_negotiated_tls_protocol_version');
+  late final _sec_protocol_metadata_get_negotiated_tls_protocol_version2 =
+      _sec_protocol_metadata_get_negotiated_tls_protocol_version2Ptr
+          .asFunction<int Function(sec_protocol_metadata_t)>();
+
+  int sec_protocol_metadata_get_negotiated_protocol_version2(
+    sec_protocol_metadata_t metadata,
+  ) {
+    return _sec_protocol_metadata_get_negotiated_protocol_version2(
+      metadata,
+    );
+  }
+
+  late final _sec_protocol_metadata_get_negotiated_protocol_version2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(sec_protocol_metadata_t)>>(
+          'sec_protocol_metadata_get_negotiated_protocol_version');
+  late final _sec_protocol_metadata_get_negotiated_protocol_version2 =
+      _sec_protocol_metadata_get_negotiated_protocol_version2Ptr
+          .asFunction<int Function(sec_protocol_metadata_t)>();
+
+  int sec_protocol_metadata_get_negotiated_tls_ciphersuite2(
+    sec_protocol_metadata_t metadata,
+  ) {
+    return _sec_protocol_metadata_get_negotiated_tls_ciphersuite2(
+      metadata,
+    );
+  }
+
+  late final _sec_protocol_metadata_get_negotiated_tls_ciphersuite2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(sec_protocol_metadata_t)>>(
+          'sec_protocol_metadata_get_negotiated_tls_ciphersuite');
+  late final _sec_protocol_metadata_get_negotiated_tls_ciphersuite2 =
+      _sec_protocol_metadata_get_negotiated_tls_ciphersuite2Ptr
+          .asFunction<int Function(sec_protocol_metadata_t)>();
+
+  int sec_protocol_metadata_get_negotiated_ciphersuite2(
+    sec_protocol_metadata_t metadata,
+  ) {
+    return _sec_protocol_metadata_get_negotiated_ciphersuite2(
+      metadata,
+    );
+  }
+
+  late final _sec_protocol_metadata_get_negotiated_ciphersuite2Ptr = _lookup<
+          ffi.NativeFunction<SSLCipherSuite Function(sec_protocol_metadata_t)>>(
+      'sec_protocol_metadata_get_negotiated_ciphersuite');
+  late final _sec_protocol_metadata_get_negotiated_ciphersuite2 =
+      _sec_protocol_metadata_get_negotiated_ciphersuite2Ptr
+          .asFunction<int Function(sec_protocol_metadata_t)>();
+
+  bool sec_protocol_metadata_get_early_data_accepted2(
+    sec_protocol_metadata_t metadata,
+  ) {
+    return _sec_protocol_metadata_get_early_data_accepted2(
+          metadata,
+        ) !=
+        0;
+  }
+
+  late final _sec_protocol_metadata_get_early_data_accepted2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function(sec_protocol_metadata_t)>>(
+          'sec_protocol_metadata_get_early_data_accepted');
+  late final _sec_protocol_metadata_get_early_data_accepted2 =
+      _sec_protocol_metadata_get_early_data_accepted2Ptr
+          .asFunction<int Function(sec_protocol_metadata_t)>();
+
+  bool sec_protocol_metadata_access_peer_certificate_chain2(
+    sec_protocol_metadata_t metadata,
+    ffi.Pointer<_ObjCBlock> handler,
+  ) {
+    return _sec_protocol_metadata_access_peer_certificate_chain2(
+          metadata,
+          handler,
+        ) !=
+        0;
+  }
+
+  late final _sec_protocol_metadata_access_peer_certificate_chain2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Uint8 Function(
+                  sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
+      'sec_protocol_metadata_access_peer_certificate_chain');
+  late final _sec_protocol_metadata_access_peer_certificate_chain2 =
+      _sec_protocol_metadata_access_peer_certificate_chain2Ptr.asFunction<
+          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+
+  bool sec_protocol_metadata_access_ocsp_response2(
+    sec_protocol_metadata_t metadata,
+    ffi.Pointer<_ObjCBlock> handler,
+  ) {
+    return _sec_protocol_metadata_access_ocsp_response2(
+          metadata,
+          handler,
+        ) !=
+        0;
+  }
+
+  late final _sec_protocol_metadata_access_ocsp_response2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Uint8 Function(
+                  sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
+      'sec_protocol_metadata_access_ocsp_response');
+  late final _sec_protocol_metadata_access_ocsp_response2 =
+      _sec_protocol_metadata_access_ocsp_response2Ptr.asFunction<
+          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+
+  bool sec_protocol_metadata_access_supported_signature_algorithms2(
+    sec_protocol_metadata_t metadata,
+    ffi.Pointer<_ObjCBlock> handler,
+  ) {
+    return _sec_protocol_metadata_access_supported_signature_algorithms2(
+          metadata,
+          handler,
+        ) !=
+        0;
+  }
+
+  late final _sec_protocol_metadata_access_supported_signature_algorithms2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Uint8 Function(
+                      sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
+          'sec_protocol_metadata_access_supported_signature_algorithms');
+  late final _sec_protocol_metadata_access_supported_signature_algorithms2 =
+      _sec_protocol_metadata_access_supported_signature_algorithms2Ptr
+          .asFunction<
+              int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+
+  bool sec_protocol_metadata_access_distinguished_names2(
+    sec_protocol_metadata_t metadata,
+    ffi.Pointer<_ObjCBlock> handler,
+  ) {
+    return _sec_protocol_metadata_access_distinguished_names2(
+          metadata,
+          handler,
+        ) !=
+        0;
+  }
+
+  late final _sec_protocol_metadata_access_distinguished_names2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Uint8 Function(
+                  sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
+      'sec_protocol_metadata_access_distinguished_names');
+  late final _sec_protocol_metadata_access_distinguished_names2 =
+      _sec_protocol_metadata_access_distinguished_names2Ptr.asFunction<
+          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+
+  bool sec_protocol_metadata_access_pre_shared_keys2(
+    sec_protocol_metadata_t metadata,
+    ffi.Pointer<_ObjCBlock> handler,
+  ) {
+    return _sec_protocol_metadata_access_pre_shared_keys2(
+          metadata,
+          handler,
+        ) !=
+        0;
+  }
+
+  late final _sec_protocol_metadata_access_pre_shared_keys2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Uint8 Function(
+                  sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
+      'sec_protocol_metadata_access_pre_shared_keys');
+  late final _sec_protocol_metadata_access_pre_shared_keys2 =
+      _sec_protocol_metadata_access_pre_shared_keys2Ptr.asFunction<
+          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+
+  ffi.Pointer<ffi.Char> sec_protocol_metadata_get_server_name2(
+    sec_protocol_metadata_t metadata,
+  ) {
+    return _sec_protocol_metadata_get_server_name2(
+      metadata,
+    );
+  }
+
+  late final _sec_protocol_metadata_get_server_name2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(sec_protocol_metadata_t)>>(
+      'sec_protocol_metadata_get_server_name');
+  late final _sec_protocol_metadata_get_server_name2 =
+      _sec_protocol_metadata_get_server_name2Ptr.asFunction<
+          ffi.Pointer<ffi.Char> Function(sec_protocol_metadata_t)>();
+
+  bool sec_protocol_metadata_peers_are_equal2(
+    sec_protocol_metadata_t metadataA,
+    sec_protocol_metadata_t metadataB,
+  ) {
+    return _sec_protocol_metadata_peers_are_equal2(
+          metadataA,
+          metadataB,
+        ) !=
+        0;
+  }
+
+  late final _sec_protocol_metadata_peers_are_equal2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Uint8 Function(
+                  sec_protocol_metadata_t, sec_protocol_metadata_t)>>(
+      'sec_protocol_metadata_peers_are_equal');
+  late final _sec_protocol_metadata_peers_are_equal2 =
+      _sec_protocol_metadata_peers_are_equal2Ptr.asFunction<
+          int Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
+
+  bool sec_protocol_metadata_challenge_parameters_are_equal2(
+    sec_protocol_metadata_t metadataA,
+    sec_protocol_metadata_t metadataB,
+  ) {
+    return _sec_protocol_metadata_challenge_parameters_are_equal2(
+          metadataA,
+          metadataB,
+        ) !=
+        0;
+  }
+
+  late final _sec_protocol_metadata_challenge_parameters_are_equal2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Uint8 Function(
+                      sec_protocol_metadata_t, sec_protocol_metadata_t)>>(
+          'sec_protocol_metadata_challenge_parameters_are_equal');
+  late final _sec_protocol_metadata_challenge_parameters_are_equal2 =
+      _sec_protocol_metadata_challenge_parameters_are_equal2Ptr.asFunction<
+          int Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
+
+  dispatch_data_t sec_protocol_metadata_create_secret2(
+    sec_protocol_metadata_t metadata,
+    int label_len,
+    ffi.Pointer<ffi.Char> label,
+    int exporter_length,
+  ) {
+    return _sec_protocol_metadata_create_secret2(
+      metadata,
+      label_len,
+      label,
+      exporter_length,
+    );
+  }
+
+  late final _sec_protocol_metadata_create_secret2Ptr = _lookup<
+      ffi.NativeFunction<
+          dispatch_data_t Function(
+              sec_protocol_metadata_t,
+              ffi.Size,
+              ffi.Pointer<ffi.Char>,
+              ffi.Size)>>('sec_protocol_metadata_create_secret');
+  late final _sec_protocol_metadata_create_secret2 =
+      _sec_protocol_metadata_create_secret2Ptr.asFunction<
+          dispatch_data_t Function(
+              sec_protocol_metadata_t, int, ffi.Pointer<ffi.Char>, int)>();
+
+  dispatch_data_t sec_protocol_metadata_create_secret_with_context2(
+    sec_protocol_metadata_t metadata,
+    int label_len,
+    ffi.Pointer<ffi.Char> label,
+    int context_len,
+    ffi.Pointer<ffi.Uint8> context,
+    int exporter_length,
+  ) {
+    return _sec_protocol_metadata_create_secret_with_context2(
+      metadata,
+      label_len,
+      label,
+      context_len,
+      context,
+      exporter_length,
+    );
+  }
+
+  late final _sec_protocol_metadata_create_secret_with_context2Ptr = _lookup<
+      ffi.NativeFunction<
+          dispatch_data_t Function(
+              sec_protocol_metadata_t,
+              ffi.Size,
+              ffi.Pointer<ffi.Char>,
+              ffi.Size,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Size)>>('sec_protocol_metadata_create_secret_with_context');
+  late final _sec_protocol_metadata_create_secret_with_context2 =
+      _sec_protocol_metadata_create_secret_with_context2Ptr.asFunction<
+          dispatch_data_t Function(sec_protocol_metadata_t, int,
+              ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Uint8>, int)>();
+
+  bool sec_protocol_options_are_equal2(
+    sec_protocol_options_t optionsA,
+    sec_protocol_options_t optionsB,
+  ) {
+    return _sec_protocol_options_are_equal2(
+          optionsA,
+          optionsB,
+        ) !=
+        0;
+  }
+
+  late final _sec_protocol_options_are_equal2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Uint8 Function(sec_protocol_options_t,
+              sec_protocol_options_t)>>('sec_protocol_options_are_equal');
+  late final _sec_protocol_options_are_equal2 =
+      _sec_protocol_options_are_equal2Ptr.asFunction<
+          int Function(sec_protocol_options_t, sec_protocol_options_t)>();
+
+  void sec_protocol_options_set_local_identity2(
+    sec_protocol_options_t options,
+    sec_identity_t identity,
+  ) {
+    return _sec_protocol_options_set_local_identity2(
+      options,
+      identity,
+    );
+  }
+
+  late final _sec_protocol_options_set_local_identity2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              sec_identity_t)>>('sec_protocol_options_set_local_identity');
+  late final _sec_protocol_options_set_local_identity2 =
+      _sec_protocol_options_set_local_identity2Ptr
+          .asFunction<void Function(sec_protocol_options_t, sec_identity_t)>();
+
+  void sec_protocol_options_append_tls_ciphersuite2(
+    sec_protocol_options_t options,
+    int ciphersuite,
+  ) {
+    return _sec_protocol_options_append_tls_ciphersuite2(
+      options,
+      ciphersuite,
+    );
+  }
+
+  late final _sec_protocol_options_append_tls_ciphersuite2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Int32)>>('sec_protocol_options_append_tls_ciphersuite');
+  late final _sec_protocol_options_append_tls_ciphersuite2 =
+      _sec_protocol_options_append_tls_ciphersuite2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_add_tls_ciphersuite2(
+    sec_protocol_options_t options,
+    int ciphersuite,
+  ) {
+    return _sec_protocol_options_add_tls_ciphersuite2(
+      options,
+      ciphersuite,
+    );
+  }
+
+  late final _sec_protocol_options_add_tls_ciphersuite2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              SSLCipherSuite)>>('sec_protocol_options_add_tls_ciphersuite');
+  late final _sec_protocol_options_add_tls_ciphersuite2 =
+      _sec_protocol_options_add_tls_ciphersuite2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_append_tls_ciphersuite_group2(
+    sec_protocol_options_t options,
+    int group,
+  ) {
+    return _sec_protocol_options_append_tls_ciphersuite_group2(
+      options,
+      group,
+    );
+  }
+
+  late final _sec_protocol_options_append_tls_ciphersuite_group2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Int32)>>('sec_protocol_options_append_tls_ciphersuite_group');
+  late final _sec_protocol_options_append_tls_ciphersuite_group2 =
+      _sec_protocol_options_append_tls_ciphersuite_group2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_add_tls_ciphersuite_group2(
+    sec_protocol_options_t options,
+    int group,
+  ) {
+    return _sec_protocol_options_add_tls_ciphersuite_group2(
+      options,
+      group,
+    );
+  }
+
+  late final _sec_protocol_options_add_tls_ciphersuite_group2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Int32)>>('sec_protocol_options_add_tls_ciphersuite_group');
+  late final _sec_protocol_options_add_tls_ciphersuite_group2 =
+      _sec_protocol_options_add_tls_ciphersuite_group2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_tls_min_version2(
+    sec_protocol_options_t options,
+    int version,
+  ) {
+    return _sec_protocol_options_set_tls_min_version2(
+      options,
+      version,
+    );
+  }
+
+  late final _sec_protocol_options_set_tls_min_version2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Int32)>>('sec_protocol_options_set_tls_min_version');
+  late final _sec_protocol_options_set_tls_min_version2 =
+      _sec_protocol_options_set_tls_min_version2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_min_tls_protocol_version2(
+    sec_protocol_options_t options,
+    int version,
+  ) {
+    return _sec_protocol_options_set_min_tls_protocol_version2(
+      options,
+      version,
+    );
+  }
+
+  late final _sec_protocol_options_set_min_tls_protocol_version2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Int32)>>('sec_protocol_options_set_min_tls_protocol_version');
+  late final _sec_protocol_options_set_min_tls_protocol_version2 =
+      _sec_protocol_options_set_min_tls_protocol_version2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  int sec_protocol_options_get_default_min_tls_protocol_version2() {
+    return _sec_protocol_options_get_default_min_tls_protocol_version2();
+  }
+
+  late final _sec_protocol_options_get_default_min_tls_protocol_version2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
+          'sec_protocol_options_get_default_min_tls_protocol_version');
+  late final _sec_protocol_options_get_default_min_tls_protocol_version2 =
+      _sec_protocol_options_get_default_min_tls_protocol_version2Ptr
+          .asFunction<int Function()>();
+
+  int sec_protocol_options_get_default_min_dtls_protocol_version2() {
+    return _sec_protocol_options_get_default_min_dtls_protocol_version2();
+  }
+
+  late final _sec_protocol_options_get_default_min_dtls_protocol_version2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
+          'sec_protocol_options_get_default_min_dtls_protocol_version');
+  late final _sec_protocol_options_get_default_min_dtls_protocol_version2 =
+      _sec_protocol_options_get_default_min_dtls_protocol_version2Ptr
+          .asFunction<int Function()>();
+
+  void sec_protocol_options_set_tls_max_version2(
+    sec_protocol_options_t options,
+    int version,
+  ) {
+    return _sec_protocol_options_set_tls_max_version2(
+      options,
+      version,
+    );
+  }
+
+  late final _sec_protocol_options_set_tls_max_version2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Int32)>>('sec_protocol_options_set_tls_max_version');
+  late final _sec_protocol_options_set_tls_max_version2 =
+      _sec_protocol_options_set_tls_max_version2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_max_tls_protocol_version2(
+    sec_protocol_options_t options,
+    int version,
+  ) {
+    return _sec_protocol_options_set_max_tls_protocol_version2(
+      options,
+      version,
+    );
+  }
+
+  late final _sec_protocol_options_set_max_tls_protocol_version2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Int32)>>('sec_protocol_options_set_max_tls_protocol_version');
+  late final _sec_protocol_options_set_max_tls_protocol_version2 =
+      _sec_protocol_options_set_max_tls_protocol_version2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  int sec_protocol_options_get_default_max_tls_protocol_version2() {
+    return _sec_protocol_options_get_default_max_tls_protocol_version2();
+  }
+
+  late final _sec_protocol_options_get_default_max_tls_protocol_version2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
+          'sec_protocol_options_get_default_max_tls_protocol_version');
+  late final _sec_protocol_options_get_default_max_tls_protocol_version2 =
+      _sec_protocol_options_get_default_max_tls_protocol_version2Ptr
+          .asFunction<int Function()>();
+
+  int sec_protocol_options_get_default_max_dtls_protocol_version2() {
+    return _sec_protocol_options_get_default_max_dtls_protocol_version2();
+  }
+
+  late final _sec_protocol_options_get_default_max_dtls_protocol_version2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
+          'sec_protocol_options_get_default_max_dtls_protocol_version');
+  late final _sec_protocol_options_get_default_max_dtls_protocol_version2 =
+      _sec_protocol_options_get_default_max_dtls_protocol_version2Ptr
+          .asFunction<int Function()>();
+
+  bool sec_protocol_options_get_enable_encrypted_client_hello2(
+    sec_protocol_options_t options,
+  ) {
+    return _sec_protocol_options_get_enable_encrypted_client_hello2(
+          options,
+        ) !=
+        0;
+  }
+
+  late final _sec_protocol_options_get_enable_encrypted_client_hello2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function(sec_protocol_options_t)>>(
+          'sec_protocol_options_get_enable_encrypted_client_hello');
+  late final _sec_protocol_options_get_enable_encrypted_client_hello2 =
+      _sec_protocol_options_get_enable_encrypted_client_hello2Ptr
+          .asFunction<int Function(sec_protocol_options_t)>();
+
+  bool sec_protocol_options_get_quic_use_legacy_codepoint2(
+    sec_protocol_options_t options,
+  ) {
+    return _sec_protocol_options_get_quic_use_legacy_codepoint2(
+          options,
+        ) !=
+        0;
+  }
+
+  late final _sec_protocol_options_get_quic_use_legacy_codepoint2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function(sec_protocol_options_t)>>(
+          'sec_protocol_options_get_quic_use_legacy_codepoint');
+  late final _sec_protocol_options_get_quic_use_legacy_codepoint2 =
+      _sec_protocol_options_get_quic_use_legacy_codepoint2Ptr
+          .asFunction<int Function(sec_protocol_options_t)>();
+
+  void sec_protocol_options_add_tls_application_protocol2(
+    sec_protocol_options_t options,
+    ffi.Pointer<ffi.Char> application_protocol,
+  ) {
+    return _sec_protocol_options_add_tls_application_protocol2(
+      options,
+      application_protocol,
+    );
+  }
+
+  late final _sec_protocol_options_add_tls_application_protocol2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  sec_protocol_options_t, ffi.Pointer<ffi.Char>)>>(
+      'sec_protocol_options_add_tls_application_protocol');
+  late final _sec_protocol_options_add_tls_application_protocol2 =
+      _sec_protocol_options_add_tls_application_protocol2Ptr.asFunction<
+          void Function(sec_protocol_options_t, ffi.Pointer<ffi.Char>)>();
+
+  void sec_protocol_options_set_tls_server_name2(
+    sec_protocol_options_t options,
+    ffi.Pointer<ffi.Char> server_name,
+  ) {
+    return _sec_protocol_options_set_tls_server_name2(
+      options,
+      server_name,
+    );
+  }
+
+  late final _sec_protocol_options_set_tls_server_name2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  sec_protocol_options_t, ffi.Pointer<ffi.Char>)>>(
+      'sec_protocol_options_set_tls_server_name');
+  late final _sec_protocol_options_set_tls_server_name2 =
+      _sec_protocol_options_set_tls_server_name2Ptr.asFunction<
+          void Function(sec_protocol_options_t, ffi.Pointer<ffi.Char>)>();
+
+  void sec_protocol_options_set_tls_diffie_hellman_parameters2(
+    sec_protocol_options_t options,
+    dispatch_data_t params,
+  ) {
+    return _sec_protocol_options_set_tls_diffie_hellman_parameters2(
+      options,
+      params,
+    );
+  }
+
+  late final _sec_protocol_options_set_tls_diffie_hellman_parameters2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(sec_protocol_options_t, dispatch_data_t)>>(
+          'sec_protocol_options_set_tls_diffie_hellman_parameters');
+  late final _sec_protocol_options_set_tls_diffie_hellman_parameters2 =
+      _sec_protocol_options_set_tls_diffie_hellman_parameters2Ptr
+          .asFunction<void Function(sec_protocol_options_t, dispatch_data_t)>();
+
+  void sec_protocol_options_add_pre_shared_key2(
+    sec_protocol_options_t options,
+    dispatch_data_t psk,
+    dispatch_data_t psk_identity,
+  ) {
+    return _sec_protocol_options_add_pre_shared_key2(
+      options,
+      psk,
+      psk_identity,
+    );
+  }
+
+  late final _sec_protocol_options_add_pre_shared_key2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t, dispatch_data_t,
+              dispatch_data_t)>>('sec_protocol_options_add_pre_shared_key');
+  late final _sec_protocol_options_add_pre_shared_key2 =
+      _sec_protocol_options_add_pre_shared_key2Ptr.asFunction<
+          void Function(
+              sec_protocol_options_t, dispatch_data_t, dispatch_data_t)>();
+
+  void sec_protocol_options_set_tls_pre_shared_key_identity_hint2(
+    sec_protocol_options_t options,
+    dispatch_data_t psk_identity_hint,
+  ) {
+    return _sec_protocol_options_set_tls_pre_shared_key_identity_hint2(
+      options,
+      psk_identity_hint,
+    );
+  }
+
+  late final _sec_protocol_options_set_tls_pre_shared_key_identity_hint2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(sec_protocol_options_t, dispatch_data_t)>>(
+          'sec_protocol_options_set_tls_pre_shared_key_identity_hint');
+  late final _sec_protocol_options_set_tls_pre_shared_key_identity_hint2 =
+      _sec_protocol_options_set_tls_pre_shared_key_identity_hint2Ptr
+          .asFunction<void Function(sec_protocol_options_t, dispatch_data_t)>();
+
+  void sec_protocol_options_set_pre_shared_key_selection_block2(
+    sec_protocol_options_t options,
+    sec_protocol_pre_shared_key_selection_t psk_selection_block,
+    dispatch_queue_t psk_selection_queue,
+  ) {
+    return _sec_protocol_options_set_pre_shared_key_selection_block2(
+      options,
+      psk_selection_block,
+      psk_selection_queue,
+    );
+  }
+
+  late final _sec_protocol_options_set_pre_shared_key_selection_block2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      sec_protocol_options_t,
+                      sec_protocol_pre_shared_key_selection_t,
+                      dispatch_queue_t)>>(
+          'sec_protocol_options_set_pre_shared_key_selection_block');
+  late final _sec_protocol_options_set_pre_shared_key_selection_block2 =
+      _sec_protocol_options_set_pre_shared_key_selection_block2Ptr.asFunction<
+          void Function(sec_protocol_options_t,
+              sec_protocol_pre_shared_key_selection_t, dispatch_queue_t)>();
+
+  void sec_protocol_options_set_tls_tickets_enabled2(
+    sec_protocol_options_t options,
+    bool tickets_enabled,
+  ) {
+    return _sec_protocol_options_set_tls_tickets_enabled2(
+      options,
+      tickets_enabled ? 1 : 0,
+    );
+  }
+
+  late final _sec_protocol_options_set_tls_tickets_enabled2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Uint8)>>('sec_protocol_options_set_tls_tickets_enabled');
+  late final _sec_protocol_options_set_tls_tickets_enabled2 =
+      _sec_protocol_options_set_tls_tickets_enabled2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_tls_is_fallback_attempt2(
+    sec_protocol_options_t options,
+    bool is_fallback_attempt,
+  ) {
+    return _sec_protocol_options_set_tls_is_fallback_attempt2(
+      options,
+      is_fallback_attempt ? 1 : 0,
+    );
+  }
+
+  late final _sec_protocol_options_set_tls_is_fallback_attempt2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Uint8)>>('sec_protocol_options_set_tls_is_fallback_attempt');
+  late final _sec_protocol_options_set_tls_is_fallback_attempt2 =
+      _sec_protocol_options_set_tls_is_fallback_attempt2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_tls_resumption_enabled2(
+    sec_protocol_options_t options,
+    bool resumption_enabled,
+  ) {
+    return _sec_protocol_options_set_tls_resumption_enabled2(
+      options,
+      resumption_enabled ? 1 : 0,
+    );
+  }
+
+  late final _sec_protocol_options_set_tls_resumption_enabled2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Uint8)>>('sec_protocol_options_set_tls_resumption_enabled');
+  late final _sec_protocol_options_set_tls_resumption_enabled2 =
+      _sec_protocol_options_set_tls_resumption_enabled2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_tls_false_start_enabled2(
+    sec_protocol_options_t options,
+    bool false_start_enabled,
+  ) {
+    return _sec_protocol_options_set_tls_false_start_enabled2(
+      options,
+      false_start_enabled ? 1 : 0,
+    );
+  }
+
+  late final _sec_protocol_options_set_tls_false_start_enabled2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Uint8)>>('sec_protocol_options_set_tls_false_start_enabled');
+  late final _sec_protocol_options_set_tls_false_start_enabled2 =
+      _sec_protocol_options_set_tls_false_start_enabled2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_tls_ocsp_enabled2(
+    sec_protocol_options_t options,
+    bool ocsp_enabled,
+  ) {
+    return _sec_protocol_options_set_tls_ocsp_enabled2(
+      options,
+      ocsp_enabled ? 1 : 0,
+    );
+  }
+
+  late final _sec_protocol_options_set_tls_ocsp_enabled2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Uint8)>>('sec_protocol_options_set_tls_ocsp_enabled');
+  late final _sec_protocol_options_set_tls_ocsp_enabled2 =
+      _sec_protocol_options_set_tls_ocsp_enabled2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_tls_sct_enabled2(
+    sec_protocol_options_t options,
+    bool sct_enabled,
+  ) {
+    return _sec_protocol_options_set_tls_sct_enabled2(
+      options,
+      sct_enabled ? 1 : 0,
+    );
+  }
+
+  late final _sec_protocol_options_set_tls_sct_enabled2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Uint8)>>('sec_protocol_options_set_tls_sct_enabled');
+  late final _sec_protocol_options_set_tls_sct_enabled2 =
+      _sec_protocol_options_set_tls_sct_enabled2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_tls_renegotiation_enabled2(
+    sec_protocol_options_t options,
+    bool renegotiation_enabled,
+  ) {
+    return _sec_protocol_options_set_tls_renegotiation_enabled2(
+      options,
+      renegotiation_enabled ? 1 : 0,
+    );
+  }
+
+  late final _sec_protocol_options_set_tls_renegotiation_enabled2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+      'sec_protocol_options_set_tls_renegotiation_enabled');
+  late final _sec_protocol_options_set_tls_renegotiation_enabled2 =
+      _sec_protocol_options_set_tls_renegotiation_enabled2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_peer_authentication_required2(
+    sec_protocol_options_t options,
+    bool peer_authentication_required,
+  ) {
+    return _sec_protocol_options_set_peer_authentication_required2(
+      options,
+      peer_authentication_required ? 1 : 0,
+    );
+  }
+
+  late final _sec_protocol_options_set_peer_authentication_required2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+          'sec_protocol_options_set_peer_authentication_required');
+  late final _sec_protocol_options_set_peer_authentication_required2 =
+      _sec_protocol_options_set_peer_authentication_required2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_peer_authentication_optional2(
+    sec_protocol_options_t options,
+    bool peer_authentication_optional,
+  ) {
+    return _sec_protocol_options_set_peer_authentication_optional2(
+      options,
+      peer_authentication_optional ? 1 : 0,
+    );
+  }
+
+  late final _sec_protocol_options_set_peer_authentication_optional2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+          'sec_protocol_options_set_peer_authentication_optional');
+  late final _sec_protocol_options_set_peer_authentication_optional2 =
+      _sec_protocol_options_set_peer_authentication_optional2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_enable_encrypted_client_hello2(
+    sec_protocol_options_t options,
+    bool enable_encrypted_client_hello,
+  ) {
+    return _sec_protocol_options_set_enable_encrypted_client_hello2(
+      options,
+      enable_encrypted_client_hello ? 1 : 0,
+    );
+  }
+
+  late final _sec_protocol_options_set_enable_encrypted_client_hello2Ptr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+          'sec_protocol_options_set_enable_encrypted_client_hello');
+  late final _sec_protocol_options_set_enable_encrypted_client_hello2 =
+      _sec_protocol_options_set_enable_encrypted_client_hello2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_quic_use_legacy_codepoint2(
+    sec_protocol_options_t options,
+    bool quic_use_legacy_codepoint,
+  ) {
+    return _sec_protocol_options_set_quic_use_legacy_codepoint2(
+      options,
+      quic_use_legacy_codepoint ? 1 : 0,
+    );
+  }
+
+  late final _sec_protocol_options_set_quic_use_legacy_codepoint2Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+      'sec_protocol_options_set_quic_use_legacy_codepoint');
+  late final _sec_protocol_options_set_quic_use_legacy_codepoint2 =
+      _sec_protocol_options_set_quic_use_legacy_codepoint2Ptr
+          .asFunction<void Function(sec_protocol_options_t, int)>();
+
+  void sec_protocol_options_set_key_update_block2(
+    sec_protocol_options_t options,
+    sec_protocol_key_update_t key_update_block,
+    dispatch_queue_t key_update_queue,
+  ) {
+    return _sec_protocol_options_set_key_update_block2(
+      options,
+      key_update_block,
+      key_update_queue,
+    );
+  }
+
+  late final _sec_protocol_options_set_key_update_block2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t, sec_protocol_key_update_t,
+              dispatch_queue_t)>>('sec_protocol_options_set_key_update_block');
+  late final _sec_protocol_options_set_key_update_block2 =
+      _sec_protocol_options_set_key_update_block2Ptr.asFunction<
+          void Function(sec_protocol_options_t, sec_protocol_key_update_t,
+              dispatch_queue_t)>();
+
+  void sec_protocol_options_set_challenge_block2(
+    sec_protocol_options_t options,
+    sec_protocol_challenge_t challenge_block,
+    dispatch_queue_t challenge_queue,
+  ) {
+    return _sec_protocol_options_set_challenge_block2(
+      options,
+      challenge_block,
+      challenge_queue,
+    );
+  }
+
+  late final _sec_protocol_options_set_challenge_block2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t, sec_protocol_challenge_t,
+              dispatch_queue_t)>>('sec_protocol_options_set_challenge_block');
+  late final _sec_protocol_options_set_challenge_block2 =
+      _sec_protocol_options_set_challenge_block2Ptr.asFunction<
+          void Function(sec_protocol_options_t, sec_protocol_challenge_t,
+              dispatch_queue_t)>();
+
+  void sec_protocol_options_set_verify_block2(
+    sec_protocol_options_t options,
+    sec_protocol_verify_t verify_block,
+    dispatch_queue_t verify_block_queue,
+  ) {
+    return _sec_protocol_options_set_verify_block2(
+      options,
+      verify_block,
+      verify_block_queue,
+    );
+  }
+
+  late final _sec_protocol_options_set_verify_block2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t, sec_protocol_verify_t,
+              dispatch_queue_t)>>('sec_protocol_options_set_verify_block');
+  late final _sec_protocol_options_set_verify_block2 =
+      _sec_protocol_options_set_verify_block2Ptr.asFunction<
+          void Function(sec_protocol_options_t, sec_protocol_verify_t,
+              dispatch_queue_t)>();
+
+  int SSLContextGetTypeID2() {
+    return _SSLContextGetTypeID2();
+  }
+
+  late final _SSLContextGetTypeID2Ptr =
+      _lookup<ffi.NativeFunction<CFTypeID Function()>>('SSLContextGetTypeID');
+  late final _SSLContextGetTypeID2 =
+      _SSLContextGetTypeID2Ptr.asFunction<int Function()>();
+
+  SSLContextRef SSLCreateContext2(
+    CFAllocatorRef alloc,
+    int protocolSide,
+    int connectionType,
+  ) {
+    return _SSLCreateContext2(
+      alloc,
+      protocolSide,
+      connectionType,
+    );
+  }
+
+  late final _SSLCreateContext2Ptr = _lookup<
+      ffi.NativeFunction<
+          SSLContextRef Function(
+              CFAllocatorRef, ffi.Int32, ffi.Int32)>>('SSLCreateContext');
+  late final _SSLCreateContext2 = _SSLCreateContext2Ptr.asFunction<
+      SSLContextRef Function(CFAllocatorRef, int, int)>();
+
+  int SSLNewContext2(
+    int isServer,
+    ffi.Pointer<SSLContextRef> contextPtr,
+  ) {
+    return _SSLNewContext2(
+      isServer,
+      contextPtr,
+    );
+  }
+
+  late final _SSLNewContext2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              Boolean, ffi.Pointer<SSLContextRef>)>>('SSLNewContext');
+  late final _SSLNewContext2 = _SSLNewContext2Ptr.asFunction<
+      int Function(int, ffi.Pointer<SSLContextRef>)>();
+
+  int SSLDisposeContext2(
+    SSLContextRef context,
+  ) {
+    return _SSLDisposeContext2(
+      context,
+    );
+  }
+
+  late final _SSLDisposeContext2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef)>>(
+          'SSLDisposeContext');
+  late final _SSLDisposeContext2 =
+      _SSLDisposeContext2Ptr.asFunction<int Function(SSLContextRef)>();
+
+  int SSLGetSessionState2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Int32> state,
+  ) {
+    return _SSLGetSessionState2(
+      context,
+      state,
+    );
+  }
+
+  late final _SSLGetSessionState2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, ffi.Pointer<ffi.Int32>)>>('SSLGetSessionState');
+  late final _SSLGetSessionState2 = _SSLGetSessionState2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<ffi.Int32>)>();
+
+  int SSLSetSessionOption2(
+    SSLContextRef context,
+    int option,
+    int value,
+  ) {
+    return _SSLSetSessionOption2(
+      context,
+      option,
+      value,
+    );
+  }
+
+  late final _SSLSetSessionOption2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, ffi.Int32, Boolean)>>('SSLSetSessionOption');
+  late final _SSLSetSessionOption2 = _SSLSetSessionOption2Ptr.asFunction<
+      int Function(SSLContextRef, int, int)>();
+
+  int SSLGetSessionOption2(
+    SSLContextRef context,
+    int option,
+    ffi.Pointer<Boolean> value,
+  ) {
+    return _SSLGetSessionOption2(
+      context,
+      option,
+      value,
+    );
+  }
+
+  late final _SSLGetSessionOption2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Int32,
+              ffi.Pointer<Boolean>)>>('SSLGetSessionOption');
+  late final _SSLGetSessionOption2 = _SSLGetSessionOption2Ptr.asFunction<
+      int Function(SSLContextRef, int, ffi.Pointer<Boolean>)>();
+
+  int SSLSetIOFuncs2(
+    SSLContextRef context,
+    SSLReadFunc readFunc,
+    SSLWriteFunc writeFunc,
+  ) {
+    return _SSLSetIOFuncs2(
+      context,
+      readFunc,
+      writeFunc,
+    );
+  }
+
+  late final _SSLSetIOFuncs2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, SSLReadFunc, SSLWriteFunc)>>('SSLSetIOFuncs');
+  late final _SSLSetIOFuncs2 = _SSLSetIOFuncs2Ptr.asFunction<
+      int Function(SSLContextRef, SSLReadFunc, SSLWriteFunc)>();
+
+  int SSLSetSessionConfig2(
+    SSLContextRef context,
+    CFStringRef config,
+  ) {
+    return _SSLSetSessionConfig2(
+      context,
+      config,
+    );
+  }
+
+  late final _SSLSetSessionConfig2Ptr = _lookup<
+          ffi.NativeFunction<OSStatus Function(SSLContextRef, CFStringRef)>>(
+      'SSLSetSessionConfig');
+  late final _SSLSetSessionConfig2 = _SSLSetSessionConfig2Ptr.asFunction<
+      int Function(SSLContextRef, CFStringRef)>();
+
+  int SSLSetProtocolVersionMin2(
+    SSLContextRef context,
+    int minVersion,
+  ) {
+    return _SSLSetProtocolVersionMin2(
+      context,
+      minVersion,
+    );
+  }
+
+  late final _SSLSetProtocolVersionMin2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, ffi.Int32)>>(
+          'SSLSetProtocolVersionMin');
+  late final _SSLSetProtocolVersionMin2 = _SSLSetProtocolVersionMin2Ptr
+      .asFunction<int Function(SSLContextRef, int)>();
+
+  int SSLGetProtocolVersionMin2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Int32> minVersion,
+  ) {
+    return _SSLGetProtocolVersionMin2(
+      context,
+      minVersion,
+    );
+  }
+
+  late final _SSLGetProtocolVersionMin2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<ffi.Int32>)>>('SSLGetProtocolVersionMin');
+  late final _SSLGetProtocolVersionMin2 = _SSLGetProtocolVersionMin2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<ffi.Int32>)>();
+
+  int SSLSetProtocolVersionMax2(
+    SSLContextRef context,
+    int maxVersion,
+  ) {
+    return _SSLSetProtocolVersionMax2(
+      context,
+      maxVersion,
+    );
+  }
+
+  late final _SSLSetProtocolVersionMax2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, ffi.Int32)>>(
+          'SSLSetProtocolVersionMax');
+  late final _SSLSetProtocolVersionMax2 = _SSLSetProtocolVersionMax2Ptr
+      .asFunction<int Function(SSLContextRef, int)>();
+
+  int SSLGetProtocolVersionMax2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Int32> maxVersion,
+  ) {
+    return _SSLGetProtocolVersionMax2(
+      context,
+      maxVersion,
+    );
+  }
+
+  late final _SSLGetProtocolVersionMax2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<ffi.Int32>)>>('SSLGetProtocolVersionMax');
+  late final _SSLGetProtocolVersionMax2 = _SSLGetProtocolVersionMax2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<ffi.Int32>)>();
+
+  int SSLSetProtocolVersionEnabled2(
+    SSLContextRef context,
+    int protocol,
+    int enable,
+  ) {
+    return _SSLSetProtocolVersionEnabled2(
+      context,
+      protocol,
+      enable,
+    );
+  }
+
+  late final _SSLSetProtocolVersionEnabled2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Int32,
+              Boolean)>>('SSLSetProtocolVersionEnabled');
+  late final _SSLSetProtocolVersionEnabled2 = _SSLSetProtocolVersionEnabled2Ptr
+      .asFunction<int Function(SSLContextRef, int, int)>();
+
+  int SSLGetProtocolVersionEnabled2(
+    SSLContextRef context,
+    int protocol,
+    ffi.Pointer<Boolean> enable,
+  ) {
+    return _SSLGetProtocolVersionEnabled2(
+      context,
+      protocol,
+      enable,
+    );
+  }
+
+  late final _SSLGetProtocolVersionEnabled2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Int32,
+              ffi.Pointer<Boolean>)>>('SSLGetProtocolVersionEnabled');
+  late final _SSLGetProtocolVersionEnabled2 = _SSLGetProtocolVersionEnabled2Ptr
+      .asFunction<int Function(SSLContextRef, int, ffi.Pointer<Boolean>)>();
+
+  int SSLSetProtocolVersion2(
+    SSLContextRef context,
+    int version,
+  ) {
+    return _SSLSetProtocolVersion2(
+      context,
+      version,
+    );
+  }
+
+  late final _SSLSetProtocolVersion2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, ffi.Int32)>>(
+          'SSLSetProtocolVersion');
+  late final _SSLSetProtocolVersion2 =
+      _SSLSetProtocolVersion2Ptr.asFunction<int Function(SSLContextRef, int)>();
+
+  int SSLGetProtocolVersion2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Int32> protocol,
+  ) {
+    return _SSLGetProtocolVersion2(
+      context,
+      protocol,
+    );
+  }
+
+  late final _SSLGetProtocolVersion2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, ffi.Pointer<ffi.Int32>)>>('SSLGetProtocolVersion');
+  late final _SSLGetProtocolVersion2 = _SSLGetProtocolVersion2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<ffi.Int32>)>();
+
+  int SSLSetCertificate2(
+    SSLContextRef context,
+    CFArrayRef certRefs,
+  ) {
+    return _SSLSetCertificate2(
+      context,
+      certRefs,
+    );
+  }
+
+  late final _SSLSetCertificate2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, CFArrayRef)>>(
+          'SSLSetCertificate');
+  late final _SSLSetCertificate2 = _SSLSetCertificate2Ptr.asFunction<
+      int Function(SSLContextRef, CFArrayRef)>();
+
+  int SSLSetConnection2(
+    SSLContextRef context,
+    SSLConnectionRef connection,
+  ) {
+    return _SSLSetConnection2(
+      context,
+      connection,
+    );
+  }
+
+  late final _SSLSetConnection2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, SSLConnectionRef)>>('SSLSetConnection');
+  late final _SSLSetConnection2 = _SSLSetConnection2Ptr.asFunction<
+      int Function(SSLContextRef, SSLConnectionRef)>();
+
+  int SSLGetConnection2(
+    SSLContextRef context,
+    ffi.Pointer<SSLConnectionRef> connection,
+  ) {
+    return _SSLGetConnection2(
+      context,
+      connection,
+    );
+  }
+
+  late final _SSLGetConnection2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<SSLConnectionRef>)>>('SSLGetConnection');
+  late final _SSLGetConnection2 = _SSLGetConnection2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<SSLConnectionRef>)>();
+
+  int SSLSetPeerDomainName2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Char> peerName,
+    int peerNameLen,
+  ) {
+    return _SSLSetPeerDomainName2(
+      context,
+      peerName,
+      peerNameLen,
+    );
+  }
+
+  late final _SSLSetPeerDomainName2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Pointer<ffi.Char>,
+              ffi.Size)>>('SSLSetPeerDomainName');
+  late final _SSLSetPeerDomainName2 = _SSLSetPeerDomainName2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<ffi.Char>, int)>();
+
+  int SSLGetPeerDomainNameLength2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Size> peerNameLen,
+  ) {
+    return _SSLGetPeerDomainNameLength2(
+      context,
+      peerNameLen,
+    );
+  }
+
+  late final _SSLGetPeerDomainNameLength2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<ffi.Size>)>>('SSLGetPeerDomainNameLength');
+  late final _SSLGetPeerDomainNameLength2 = _SSLGetPeerDomainNameLength2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<ffi.Size>)>();
+
+  int SSLGetPeerDomainName2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Char> peerName,
+    ffi.Pointer<ffi.Size> peerNameLen,
+  ) {
+    return _SSLGetPeerDomainName2(
+      context,
+      peerName,
+      peerNameLen,
+    );
+  }
+
+  late final _SSLGetPeerDomainName2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Size>)>>('SSLGetPeerDomainName');
+  late final _SSLGetPeerDomainName2 = _SSLGetPeerDomainName2Ptr.asFunction<
+      int Function(
+          SSLContextRef, ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Size>)>();
+
+  int SSLCopyRequestedPeerNameLength2(
+    SSLContextRef ctx,
+    ffi.Pointer<ffi.Size> peerNameLen,
+  ) {
+    return _SSLCopyRequestedPeerNameLength2(
+      ctx,
+      peerNameLen,
+    );
+  }
+
+  late final _SSLCopyRequestedPeerNameLength2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<ffi.Size>)>>('SSLCopyRequestedPeerNameLength');
+  late final _SSLCopyRequestedPeerNameLength2 =
+      _SSLCopyRequestedPeerNameLength2Ptr.asFunction<
+          int Function(SSLContextRef, ffi.Pointer<ffi.Size>)>();
+
+  int SSLCopyRequestedPeerName2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Char> peerName,
+    ffi.Pointer<ffi.Size> peerNameLen,
+  ) {
+    return _SSLCopyRequestedPeerName2(
+      context,
+      peerName,
+      peerNameLen,
+    );
+  }
+
+  late final _SSLCopyRequestedPeerName2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Size>)>>('SSLCopyRequestedPeerName');
+  late final _SSLCopyRequestedPeerName2 =
+      _SSLCopyRequestedPeerName2Ptr.asFunction<
+          int Function(
+              SSLContextRef, ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Size>)>();
+
+  int SSLSetDatagramHelloCookie2(
+    SSLContextRef dtlsContext,
+    ffi.Pointer<ffi.Void> cookie,
+    int cookieLen,
+  ) {
+    return _SSLSetDatagramHelloCookie2(
+      dtlsContext,
+      cookie,
+      cookieLen,
+    );
+  }
+
+  late final _SSLSetDatagramHelloCookie2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Pointer<ffi.Void>,
+              ffi.Size)>>('SSLSetDatagramHelloCookie');
+  late final _SSLSetDatagramHelloCookie2 = _SSLSetDatagramHelloCookie2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<ffi.Void>, int)>();
+
+  int SSLSetMaxDatagramRecordSize2(
+    SSLContextRef dtlsContext,
+    int maxSize,
+  ) {
+    return _SSLSetMaxDatagramRecordSize2(
+      dtlsContext,
+      maxSize,
+    );
+  }
+
+  late final _SSLSetMaxDatagramRecordSize2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, ffi.Size)>>(
+          'SSLSetMaxDatagramRecordSize');
+  late final _SSLSetMaxDatagramRecordSize2 = _SSLSetMaxDatagramRecordSize2Ptr
+      .asFunction<int Function(SSLContextRef, int)>();
+
+  int SSLGetMaxDatagramRecordSize2(
+    SSLContextRef dtlsContext,
+    ffi.Pointer<ffi.Size> maxSize,
+  ) {
+    return _SSLGetMaxDatagramRecordSize2(
+      dtlsContext,
+      maxSize,
+    );
+  }
+
+  late final _SSLGetMaxDatagramRecordSize2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<ffi.Size>)>>('SSLGetMaxDatagramRecordSize');
+  late final _SSLGetMaxDatagramRecordSize2 = _SSLGetMaxDatagramRecordSize2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<ffi.Size>)>();
+
+  int SSLGetNegotiatedProtocolVersion2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Int32> protocol,
+  ) {
+    return _SSLGetNegotiatedProtocolVersion2(
+      context,
+      protocol,
+    );
+  }
+
+  late final _SSLGetNegotiatedProtocolVersion2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<ffi.Int32>)>>('SSLGetNegotiatedProtocolVersion');
+  late final _SSLGetNegotiatedProtocolVersion2 =
+      _SSLGetNegotiatedProtocolVersion2Ptr.asFunction<
+          int Function(SSLContextRef, ffi.Pointer<ffi.Int32>)>();
+
+  int SSLGetNumberSupportedCiphers2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Size> numCiphers,
+  ) {
+    return _SSLGetNumberSupportedCiphers2(
+      context,
+      numCiphers,
+    );
+  }
+
+  late final _SSLGetNumberSupportedCiphers2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<ffi.Size>)>>('SSLGetNumberSupportedCiphers');
+  late final _SSLGetNumberSupportedCiphers2 = _SSLGetNumberSupportedCiphers2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<ffi.Size>)>();
+
+  int SSLGetSupportedCiphers2(
+    SSLContextRef context,
+    ffi.Pointer<SSLCipherSuite> ciphers,
+    ffi.Pointer<ffi.Size> numCiphers,
+  ) {
+    return _SSLGetSupportedCiphers2(
+      context,
+      ciphers,
+      numCiphers,
+    );
+  }
+
+  late final _SSLGetSupportedCiphers2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Pointer<SSLCipherSuite>,
+              ffi.Pointer<ffi.Size>)>>('SSLGetSupportedCiphers');
+  late final _SSLGetSupportedCiphers2 = _SSLGetSupportedCiphers2Ptr.asFunction<
+      int Function(
+          SSLContextRef, ffi.Pointer<SSLCipherSuite>, ffi.Pointer<ffi.Size>)>();
+
+  int SSLGetNumberEnabledCiphers2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Size> numCiphers,
+  ) {
+    return _SSLGetNumberEnabledCiphers2(
+      context,
+      numCiphers,
+    );
+  }
+
+  late final _SSLGetNumberEnabledCiphers2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<ffi.Size>)>>('SSLGetNumberEnabledCiphers');
+  late final _SSLGetNumberEnabledCiphers2 = _SSLGetNumberEnabledCiphers2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<ffi.Size>)>();
+
+  int SSLSetEnabledCiphers2(
+    SSLContextRef context,
+    ffi.Pointer<SSLCipherSuite> ciphers,
+    int numCiphers,
+  ) {
+    return _SSLSetEnabledCiphers2(
+      context,
+      ciphers,
+      numCiphers,
+    );
+  }
+
+  late final _SSLSetEnabledCiphers2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Pointer<SSLCipherSuite>,
+              ffi.Size)>>('SSLSetEnabledCiphers');
+  late final _SSLSetEnabledCiphers2 = _SSLSetEnabledCiphers2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<SSLCipherSuite>, int)>();
+
+  int SSLGetEnabledCiphers2(
+    SSLContextRef context,
+    ffi.Pointer<SSLCipherSuite> ciphers,
+    ffi.Pointer<ffi.Size> numCiphers,
+  ) {
+    return _SSLGetEnabledCiphers2(
+      context,
+      ciphers,
+      numCiphers,
+    );
+  }
+
+  late final _SSLGetEnabledCiphers2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Pointer<SSLCipherSuite>,
+              ffi.Pointer<ffi.Size>)>>('SSLGetEnabledCiphers');
+  late final _SSLGetEnabledCiphers2 = _SSLGetEnabledCiphers2Ptr.asFunction<
+      int Function(
+          SSLContextRef, ffi.Pointer<SSLCipherSuite>, ffi.Pointer<ffi.Size>)>();
+
+  int SSLSetSessionTicketsEnabled2(
+    SSLContextRef context,
+    int enabled,
+  ) {
+    return _SSLSetSessionTicketsEnabled2(
+      context,
+      enabled,
+    );
+  }
+
+  late final _SSLSetSessionTicketsEnabled2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, Boolean)>>(
+          'SSLSetSessionTicketsEnabled');
+  late final _SSLSetSessionTicketsEnabled2 = _SSLSetSessionTicketsEnabled2Ptr
+      .asFunction<int Function(SSLContextRef, int)>();
+
+  int SSLSetEnableCertVerify2(
+    SSLContextRef context,
+    int enableVerify,
+  ) {
+    return _SSLSetEnableCertVerify2(
+      context,
+      enableVerify,
+    );
+  }
+
+  late final _SSLSetEnableCertVerify2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, Boolean)>>(
+          'SSLSetEnableCertVerify');
+  late final _SSLSetEnableCertVerify2 = _SSLSetEnableCertVerify2Ptr.asFunction<
+      int Function(SSLContextRef, int)>();
+
+  int SSLGetEnableCertVerify2(
+    SSLContextRef context,
+    ffi.Pointer<Boolean> enableVerify,
+  ) {
+    return _SSLGetEnableCertVerify2(
+      context,
+      enableVerify,
+    );
+  }
+
+  late final _SSLGetEnableCertVerify2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, ffi.Pointer<Boolean>)>>('SSLGetEnableCertVerify');
+  late final _SSLGetEnableCertVerify2 = _SSLGetEnableCertVerify2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<Boolean>)>();
+
+  int SSLSetAllowsExpiredCerts2(
+    SSLContextRef context,
+    int allowsExpired,
+  ) {
+    return _SSLSetAllowsExpiredCerts2(
+      context,
+      allowsExpired,
+    );
+  }
+
+  late final _SSLSetAllowsExpiredCerts2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, Boolean)>>(
+          'SSLSetAllowsExpiredCerts');
+  late final _SSLSetAllowsExpiredCerts2 = _SSLSetAllowsExpiredCerts2Ptr
+      .asFunction<int Function(SSLContextRef, int)>();
+
+  int SSLGetAllowsExpiredCerts2(
+    SSLContextRef context,
+    ffi.Pointer<Boolean> allowsExpired,
+  ) {
+    return _SSLGetAllowsExpiredCerts2(
+      context,
+      allowsExpired,
+    );
+  }
+
+  late final _SSLGetAllowsExpiredCerts2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<Boolean>)>>('SSLGetAllowsExpiredCerts');
+  late final _SSLGetAllowsExpiredCerts2 = _SSLGetAllowsExpiredCerts2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<Boolean>)>();
+
+  int SSLSetAllowsExpiredRoots2(
+    SSLContextRef context,
+    int allowsExpired,
+  ) {
+    return _SSLSetAllowsExpiredRoots2(
+      context,
+      allowsExpired,
+    );
+  }
+
+  late final _SSLSetAllowsExpiredRoots2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, Boolean)>>(
+          'SSLSetAllowsExpiredRoots');
+  late final _SSLSetAllowsExpiredRoots2 = _SSLSetAllowsExpiredRoots2Ptr
+      .asFunction<int Function(SSLContextRef, int)>();
+
+  int SSLGetAllowsExpiredRoots2(
+    SSLContextRef context,
+    ffi.Pointer<Boolean> allowsExpired,
+  ) {
+    return _SSLGetAllowsExpiredRoots2(
+      context,
+      allowsExpired,
+    );
+  }
+
+  late final _SSLGetAllowsExpiredRoots2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<Boolean>)>>('SSLGetAllowsExpiredRoots');
+  late final _SSLGetAllowsExpiredRoots2 = _SSLGetAllowsExpiredRoots2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<Boolean>)>();
+
+  int SSLSetAllowsAnyRoot2(
+    SSLContextRef context,
+    int anyRoot,
+  ) {
+    return _SSLSetAllowsAnyRoot2(
+      context,
+      anyRoot,
+    );
+  }
+
+  late final _SSLSetAllowsAnyRoot2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, Boolean)>>(
+          'SSLSetAllowsAnyRoot');
+  late final _SSLSetAllowsAnyRoot2 =
+      _SSLSetAllowsAnyRoot2Ptr.asFunction<int Function(SSLContextRef, int)>();
+
+  int SSLGetAllowsAnyRoot2(
+    SSLContextRef context,
+    ffi.Pointer<Boolean> anyRoot,
+  ) {
+    return _SSLGetAllowsAnyRoot2(
+      context,
+      anyRoot,
+    );
+  }
+
+  late final _SSLGetAllowsAnyRoot2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, ffi.Pointer<Boolean>)>>('SSLGetAllowsAnyRoot');
+  late final _SSLGetAllowsAnyRoot2 = _SSLGetAllowsAnyRoot2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<Boolean>)>();
+
+  int SSLSetTrustedRoots2(
+    SSLContextRef context,
+    CFArrayRef trustedRoots,
+    int replaceExisting,
+  ) {
+    return _SSLSetTrustedRoots2(
+      context,
+      trustedRoots,
+      replaceExisting,
+    );
+  }
+
+  late final _SSLSetTrustedRoots2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, CFArrayRef, Boolean)>>('SSLSetTrustedRoots');
+  late final _SSLSetTrustedRoots2 = _SSLSetTrustedRoots2Ptr.asFunction<
+      int Function(SSLContextRef, CFArrayRef, int)>();
+
+  int SSLCopyTrustedRoots2(
+    SSLContextRef context,
+    ffi.Pointer<CFArrayRef> trustedRoots,
+  ) {
+    return _SSLCopyTrustedRoots2(
+      context,
+      trustedRoots,
+    );
+  }
+
+  late final _SSLCopyTrustedRoots2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, ffi.Pointer<CFArrayRef>)>>('SSLCopyTrustedRoots');
+  late final _SSLCopyTrustedRoots2 = _SSLCopyTrustedRoots2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<CFArrayRef>)>();
+
+  int SSLCopyPeerCertificates2(
+    SSLContextRef context,
+    ffi.Pointer<CFArrayRef> certs,
+  ) {
+    return _SSLCopyPeerCertificates2(
+      context,
+      certs,
+    );
+  }
+
+  late final _SSLCopyPeerCertificates2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<CFArrayRef>)>>('SSLCopyPeerCertificates');
+  late final _SSLCopyPeerCertificates2 = _SSLCopyPeerCertificates2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<CFArrayRef>)>();
+
+  int SSLCopyPeerTrust2(
+    SSLContextRef context,
+    ffi.Pointer<SecTrustRef> trust,
+  ) {
+    return _SSLCopyPeerTrust2(
+      context,
+      trust,
+    );
+  }
+
+  late final _SSLCopyPeerTrust2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, ffi.Pointer<SecTrustRef>)>>('SSLCopyPeerTrust');
+  late final _SSLCopyPeerTrust2 = _SSLCopyPeerTrust2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<SecTrustRef>)>();
+
+  int SSLSetPeerID2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Void> peerID,
+    int peerIDLen,
+  ) {
+    return _SSLSetPeerID2(
+      context,
+      peerID,
+      peerIDLen,
+    );
+  }
+
+  late final _SSLSetPeerID2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, ffi.Pointer<ffi.Void>, ffi.Size)>>('SSLSetPeerID');
+  late final _SSLSetPeerID2 = _SSLSetPeerID2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<ffi.Void>, int)>();
+
+  int SSLGetPeerID2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> peerID,
+    ffi.Pointer<ffi.Size> peerIDLen,
+  ) {
+    return _SSLGetPeerID2(
+      context,
+      peerID,
+      peerIDLen,
+    );
+  }
+
+  late final _SSLGetPeerID2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              ffi.Pointer<ffi.Size>)>>('SSLGetPeerID');
+  late final _SSLGetPeerID2 = _SSLGetPeerID2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<ffi.Pointer<ffi.Void>>,
+          ffi.Pointer<ffi.Size>)>();
+
+  int SSLGetNegotiatedCipher2(
+    SSLContextRef context,
+    ffi.Pointer<SSLCipherSuite> cipherSuite,
+  ) {
+    return _SSLGetNegotiatedCipher2(
+      context,
+      cipherSuite,
+    );
+  }
+
+  late final _SSLGetNegotiatedCipher2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<SSLCipherSuite>)>>('SSLGetNegotiatedCipher');
+  late final _SSLGetNegotiatedCipher2 = _SSLGetNegotiatedCipher2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<SSLCipherSuite>)>();
+
+  int SSLSetALPNProtocols2(
+    SSLContextRef context,
+    CFArrayRef protocols,
+  ) {
+    return _SSLSetALPNProtocols2(
+      context,
+      protocols,
+    );
+  }
+
+  late final _SSLSetALPNProtocols2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, CFArrayRef)>>(
+          'SSLSetALPNProtocols');
+  late final _SSLSetALPNProtocols2 = _SSLSetALPNProtocols2Ptr.asFunction<
+      int Function(SSLContextRef, CFArrayRef)>();
+
+  int SSLCopyALPNProtocols2(
+    SSLContextRef context,
+    ffi.Pointer<CFArrayRef> protocols,
+  ) {
+    return _SSLCopyALPNProtocols2(
+      context,
+      protocols,
+    );
+  }
+
+  late final _SSLCopyALPNProtocols2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, ffi.Pointer<CFArrayRef>)>>('SSLCopyALPNProtocols');
+  late final _SSLCopyALPNProtocols2 = _SSLCopyALPNProtocols2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<CFArrayRef>)>();
+
+  int SSLSetOCSPResponse2(
+    SSLContextRef context,
+    CFDataRef response,
+  ) {
+    return _SSLSetOCSPResponse2(
+      context,
+      response,
+    );
+  }
+
+  late final _SSLSetOCSPResponse2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, CFDataRef)>>(
+          'SSLSetOCSPResponse');
+  late final _SSLSetOCSPResponse2 = _SSLSetOCSPResponse2Ptr.asFunction<
+      int Function(SSLContextRef, CFDataRef)>();
+
+  int SSLSetEncryptionCertificate2(
+    SSLContextRef context,
+    CFArrayRef certRefs,
+  ) {
+    return _SSLSetEncryptionCertificate2(
+      context,
+      certRefs,
+    );
+  }
+
+  late final _SSLSetEncryptionCertificate2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, CFArrayRef)>>(
+          'SSLSetEncryptionCertificate');
+  late final _SSLSetEncryptionCertificate2 = _SSLSetEncryptionCertificate2Ptr
+      .asFunction<int Function(SSLContextRef, CFArrayRef)>();
+
+  int SSLSetClientSideAuthenticate2(
+    SSLContextRef context,
+    int auth,
+  ) {
+    return _SSLSetClientSideAuthenticate2(
+      context,
+      auth,
+    );
+  }
+
+  late final _SSLSetClientSideAuthenticate2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, ffi.Int32)>>(
+          'SSLSetClientSideAuthenticate');
+  late final _SSLSetClientSideAuthenticate2 = _SSLSetClientSideAuthenticate2Ptr
+      .asFunction<int Function(SSLContextRef, int)>();
+
+  int SSLAddDistinguishedName2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Void> derDN,
+    int derDNLen,
+  ) {
+    return _SSLAddDistinguishedName2(
+      context,
+      derDN,
+      derDNLen,
+    );
+  }
+
+  late final _SSLAddDistinguishedName2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Pointer<ffi.Void>,
+              ffi.Size)>>('SSLAddDistinguishedName');
+  late final _SSLAddDistinguishedName2 = _SSLAddDistinguishedName2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<ffi.Void>, int)>();
+
+  int SSLSetCertificateAuthorities2(
+    SSLContextRef context,
+    CFTypeRef certificateOrArray,
+    int replaceExisting,
+  ) {
+    return _SSLSetCertificateAuthorities2(
+      context,
+      certificateOrArray,
+      replaceExisting,
+    );
+  }
+
+  late final _SSLSetCertificateAuthorities2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, CFTypeRef,
+              Boolean)>>('SSLSetCertificateAuthorities');
+  late final _SSLSetCertificateAuthorities2 = _SSLSetCertificateAuthorities2Ptr
+      .asFunction<int Function(SSLContextRef, CFTypeRef, int)>();
+
+  int SSLCopyCertificateAuthorities2(
+    SSLContextRef context,
+    ffi.Pointer<CFArrayRef> certificates,
+  ) {
+    return _SSLCopyCertificateAuthorities2(
+      context,
+      certificates,
+    );
+  }
+
+  late final _SSLCopyCertificateAuthorities2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<CFArrayRef>)>>('SSLCopyCertificateAuthorities');
+  late final _SSLCopyCertificateAuthorities2 =
+      _SSLCopyCertificateAuthorities2Ptr.asFunction<
+          int Function(SSLContextRef, ffi.Pointer<CFArrayRef>)>();
+
+  int SSLCopyDistinguishedNames2(
+    SSLContextRef context,
+    ffi.Pointer<CFArrayRef> names,
+  ) {
+    return _SSLCopyDistinguishedNames2(
+      context,
+      names,
+    );
+  }
+
+  late final _SSLCopyDistinguishedNames2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<CFArrayRef>)>>('SSLCopyDistinguishedNames');
+  late final _SSLCopyDistinguishedNames2 = _SSLCopyDistinguishedNames2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<CFArrayRef>)>();
+
+  int SSLGetClientCertificateState2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Int32> clientState,
+  ) {
+    return _SSLGetClientCertificateState2(
+      context,
+      clientState,
+    );
+  }
+
+  late final _SSLGetClientCertificateState2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<ffi.Int32>)>>('SSLGetClientCertificateState');
+  late final _SSLGetClientCertificateState2 = _SSLGetClientCertificateState2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<ffi.Int32>)>();
+
+  int SSLSetDiffieHellmanParams2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Void> dhParams,
+    int dhParamsLen,
+  ) {
+    return _SSLSetDiffieHellmanParams2(
+      context,
+      dhParams,
+      dhParamsLen,
+    );
+  }
+
+  late final _SSLSetDiffieHellmanParams2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Pointer<ffi.Void>,
+              ffi.Size)>>('SSLSetDiffieHellmanParams');
+  late final _SSLSetDiffieHellmanParams2 = _SSLSetDiffieHellmanParams2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<ffi.Void>, int)>();
+
+  int SSLGetDiffieHellmanParams2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> dhParams,
+    ffi.Pointer<ffi.Size> dhParamsLen,
+  ) {
+    return _SSLGetDiffieHellmanParams2(
+      context,
+      dhParams,
+      dhParamsLen,
+    );
+  }
+
+  late final _SSLGetDiffieHellmanParams2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              ffi.Pointer<ffi.Size>)>>('SSLGetDiffieHellmanParams');
+  late final _SSLGetDiffieHellmanParams2 =
+      _SSLGetDiffieHellmanParams2Ptr.asFunction<
+          int Function(SSLContextRef, ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              ffi.Pointer<ffi.Size>)>();
+
+  int SSLSetRsaBlinding2(
+    SSLContextRef context,
+    int blinding,
+  ) {
+    return _SSLSetRsaBlinding2(
+      context,
+      blinding,
+    );
+  }
+
+  late final _SSLSetRsaBlinding2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, Boolean)>>(
+          'SSLSetRsaBlinding');
+  late final _SSLSetRsaBlinding2 =
+      _SSLSetRsaBlinding2Ptr.asFunction<int Function(SSLContextRef, int)>();
+
+  int SSLGetRsaBlinding2(
+    SSLContextRef context,
+    ffi.Pointer<Boolean> blinding,
+  ) {
+    return _SSLGetRsaBlinding2(
+      context,
+      blinding,
+    );
+  }
+
+  late final _SSLGetRsaBlinding2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, ffi.Pointer<Boolean>)>>('SSLGetRsaBlinding');
+  late final _SSLGetRsaBlinding2 = _SSLGetRsaBlinding2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<Boolean>)>();
+
+  int SSLHandshake2(
+    SSLContextRef context,
+  ) {
+    return _SSLHandshake2(
+      context,
+    );
+  }
+
+  late final _SSLHandshake2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef)>>(
+          'SSLHandshake');
+  late final _SSLHandshake2 =
+      _SSLHandshake2Ptr.asFunction<int Function(SSLContextRef)>();
+
+  int SSLReHandshake2(
+    SSLContextRef context,
+  ) {
+    return _SSLReHandshake2(
+      context,
+    );
+  }
+
+  late final _SSLReHandshake2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef)>>(
+          'SSLReHandshake');
+  late final _SSLReHandshake2 =
+      _SSLReHandshake2Ptr.asFunction<int Function(SSLContextRef)>();
+
+  int SSLWrite2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Void> data,
+    int dataLength,
+    ffi.Pointer<ffi.Size> processed,
+  ) {
+    return _SSLWrite2(
+      context,
+      data,
+      dataLength,
+      processed,
+    );
+  }
+
+  late final _SSLWrite2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Pointer<ffi.Void>, ffi.Size,
+              ffi.Pointer<ffi.Size>)>>('SSLWrite');
+  late final _SSLWrite2 = _SSLWrite2Ptr.asFunction<
+      int Function(
+          SSLContextRef, ffi.Pointer<ffi.Void>, int, ffi.Pointer<ffi.Size>)>();
+
+  int SSLRead2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Void> data,
+    int dataLength,
+    ffi.Pointer<ffi.Size> processed,
+  ) {
+    return _SSLRead2(
+      context,
+      data,
+      dataLength,
+      processed,
+    );
+  }
+
+  late final _SSLRead2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef, ffi.Pointer<ffi.Void>, ffi.Size,
+              ffi.Pointer<ffi.Size>)>>('SSLRead');
+  late final _SSLRead2 = _SSLRead2Ptr.asFunction<
+      int Function(
+          SSLContextRef, ffi.Pointer<ffi.Void>, int, ffi.Pointer<ffi.Size>)>();
+
+  int SSLGetBufferedReadSize2(
+    SSLContextRef context,
+    ffi.Pointer<ffi.Size> bufferSize,
+  ) {
+    return _SSLGetBufferedReadSize2(
+      context,
+      bufferSize,
+    );
+  }
+
+  late final _SSLGetBufferedReadSize2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(
+              SSLContextRef, ffi.Pointer<ffi.Size>)>>('SSLGetBufferedReadSize');
+  late final _SSLGetBufferedReadSize2 = _SSLGetBufferedReadSize2Ptr.asFunction<
+      int Function(SSLContextRef, ffi.Pointer<ffi.Size>)>();
+
+  int SSLGetDatagramWriteSize2(
+    SSLContextRef dtlsContext,
+    ffi.Pointer<ffi.Size> bufSize,
+  ) {
+    return _SSLGetDatagramWriteSize2(
+      dtlsContext,
+      bufSize,
+    );
+  }
+
+  late final _SSLGetDatagramWriteSize2Ptr = _lookup<
+      ffi.NativeFunction<
+          OSStatus Function(SSLContextRef,
+              ffi.Pointer<ffi.Size>)>>('SSLGetDatagramWriteSize');
+  late final _SSLGetDatagramWriteSize2 = _SSLGetDatagramWriteSize2Ptr
+      .asFunction<int Function(SSLContextRef, ffi.Pointer<ffi.Size>)>();
+
+  int SSLClose2(
+    SSLContextRef context,
+  ) {
+    return _SSLClose2(
+      context,
+    );
+  }
+
+  late final _SSLClose2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef)>>('SSLClose');
+  late final _SSLClose2 =
+      _SSLClose2Ptr.asFunction<int Function(SSLContextRef)>();
+
+  int SSLSetError2(
+    SSLContextRef context,
+    int status,
+  ) {
+    return _SSLSetError2(
+      context,
+      status,
+    );
+  }
+
+  late final _SSLSetError2Ptr =
+      _lookup<ffi.NativeFunction<OSStatus Function(SSLContextRef, OSStatus)>>(
+          'SSLSetError');
+  late final _SSLSetError2 =
+      _SSLSetError2Ptr.asFunction<int Function(SSLContextRef, int)>();
+
+  late final ffi.Pointer<ObjCObject> _class_CUPHTTPForwardedDelegate1 =
+      _getClass1("CUPHTTPForwardedDelegate");
+  late final ffi.Pointer<ObjCSel> _sel_initWithSession_task_1 =
+      _registerName1("initWithSession:task:");
   late final ffi.Pointer<ObjCSel> _sel_finish1 = _registerName1("finish");
   late final ffi.Pointer<ObjCSel> _sel_session1 = _registerName1("session");
   late final ffi.Pointer<ObjCSel> _sel_task1 = _registerName1("task");
   late final ffi.Pointer<ObjCSel> _sel_lock1 = _registerName1("lock");
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPRedirect1 =
-      _getClass1("CUPHTTPRedirect");
+  late final ffi.Pointer<ObjCObject> _class_CUPHTTPForwardedRedirect1 =
+      _getClass1("CUPHTTPForwardedRedirect");
+  late final ffi.Pointer<ObjCSel> _sel_initWithSession_task_response_request_1 =
+      _registerName1("initWithSession:task:response:request:");
   late final ffi.Pointer<ObjCSel> _sel_finishWithRequest_1 =
       _registerName1("finishWithRequest:");
   late final ffi.Pointer<ObjCSel> _sel_redirectRequest1 =
       _registerName1("redirectRequest");
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPResponseReceived1 =
-      _getClass1("CUPHTTPResponseReceived");
+  late final ffi.Pointer<ObjCObject> _class_CUPHTTPForwardedResponse1 =
+      _getClass1("CUPHTTPForwardedResponse");
+  late final ffi.Pointer<ObjCSel> _sel_initWithSession_task_response_1 =
+      _registerName1("initWithSession:task:response:");
   late final ffi.Pointer<ObjCSel> _sel_finishWithDisposition_1 =
       _registerName1("finishWithDisposition:");
   void _objc_msgSend_305(
@@ -69944,14 +88818,14 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_306 = __objc_msgSend_306Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPComplete1 =
-      _getClass1("CUPHTTPComplete");
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPReceiveData1 =
-      _getClass1("CUPHTTPReceiveData");
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPClientDelegate1 =
-      _getClass1("CUPHTTPClientDelegate");
-  late final ffi.Pointer<ObjCSel> _sel_registerTask_withConfiguration_1 =
-      _registerName1("registerTask:withConfiguration:");
+  late final ffi.Pointer<ObjCObject> _class_CUPHTTPForwardedData1 =
+      _getClass1("CUPHTTPForwardedData");
+  late final ffi.Pointer<ObjCSel> _sel_initWithSession_task_data_1 =
+      _registerName1("initWithSession:task:data:");
+  late final ffi.Pointer<ObjCObject> _class_CUPHTTPForwardedComplete1 =
+      _getClass1("CUPHTTPForwardedComplete");
+  late final ffi.Pointer<ObjCSel> _sel_initWithSession_task_error_1 =
+      _registerName1("initWithSession:task:error:");
 }
 
 class ObjCObject extends ffi.Opaque {}
@@ -86955,221 +105829,6 @@ class CUPHTTPTaskConfiguration extends NSObject {
   }
 }
 
-class CUPHTTPDelegateData extends NSObject {
-  CUPHTTPDelegateData._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
-
-  static CUPHTTPDelegateData castFrom<T extends _ObjCWrapper>(T other) {
-    return CUPHTTPDelegateData._(other._id, other._lib);
-  }
-
-  static CUPHTTPDelegateData castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return CUPHTTPDelegateData._(other, lib);
-  }
-
-  /// Indicates that the task should continue executing using the given request.
-  /// If the request is NIL then the redirect is not followed and the task is
-  /// complete.
-  void finish() {
-    _lib._objc_msgSend_0(_id, _lib._sel_finish1);
-  }
-
-  NSObject? get session {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_session1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
-  }
-
-  NSObject? get task {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_task1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
-  }
-
-  /// These properties are meant to be used only by CUPHTTPClientDelegate.
-  NSObject? get lock {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_lock1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
-  }
-
-  static CUPHTTPDelegateData new1(NativeCupertinoHttp _lib) {
-    final _ret =
-        _lib._objc_msgSend_1(_lib._class_CUPHTTPDelegateData1, _lib._sel_new1);
-    return CUPHTTPDelegateData._(_ret, _lib);
-  }
-
-  static CUPHTTPDelegateData alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
-        _lib._class_CUPHTTPDelegateData1, _lib._sel_alloc1);
-    return CUPHTTPDelegateData._(_ret, _lib);
-  }
-}
-
-/// An object used to communicate redirect information to Dart code.
-///
-/// The flow is:
-/// 1. CUPHTTPClientDelegate receives a
-/// [URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:]
-/// message.
-/// 2. CUPHTTPClientDelegate creates a new CUPHTTPRedirect.
-/// 3. CUPHTTPClientDelegate sends the CUPHTTPRedirect to the configured
-/// Dart_Port.
-/// 4. CUPHTTPClientDelegate waits on CUPHTTPRedirect.lock
-/// 5. When the Dart code is done process the message received on the port,
-/// it calls [CUPHTTPRedirect continueWithRequest:], which releases the lock.
-/// 6. CUPHTTPClientDelegate continues running and returns the value passed to
-/// [CUPHTTPRedirect continueWithRequest:].
-class CUPHTTPRedirect extends CUPHTTPDelegateData {
-  CUPHTTPRedirect._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
-
-  static CUPHTTPRedirect castFrom<T extends _ObjCWrapper>(T other) {
-    return CUPHTTPRedirect._(other._id, other._lib);
-  }
-
-  static CUPHTTPRedirect castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return CUPHTTPRedirect._(other, lib);
-  }
-
-  /// Indicates that the task should continue executing using the given request.
-  /// If the request is NIL then the redirect is not followed and the task is
-  /// complete.
-  void finishWithRequest_(NSObject? request) {
-    _lib._objc_msgSend_8(
-        _id, _lib._sel_finishWithRequest_1, request?._id ?? ffi.nullptr);
-  }
-
-  NSObject? get response {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_response1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
-  }
-
-  NSObject? get request {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_request1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
-  }
-
-  /// These properties are meant to be used only by CUPHTTPClientDelegate.
-  NSObject? get redirectRequest {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_redirectRequest1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
-  }
-
-  static CUPHTTPRedirect new1(NativeCupertinoHttp _lib) {
-    final _ret =
-        _lib._objc_msgSend_1(_lib._class_CUPHTTPRedirect1, _lib._sel_new1);
-    return CUPHTTPRedirect._(_ret, _lib);
-  }
-
-  static CUPHTTPRedirect alloc(NativeCupertinoHttp _lib) {
-    final _ret =
-        _lib._objc_msgSend_1(_lib._class_CUPHTTPRedirect1, _lib._sel_alloc1);
-    return CUPHTTPRedirect._(_ret, _lib);
-  }
-}
-
-class CUPHTTPResponseReceived extends CUPHTTPDelegateData {
-  CUPHTTPResponseReceived._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
-
-  static CUPHTTPResponseReceived castFrom<T extends _ObjCWrapper>(T other) {
-    return CUPHTTPResponseReceived._(other._id, other._lib);
-  }
-
-  static CUPHTTPResponseReceived castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return CUPHTTPResponseReceived._(other, lib);
-  }
-
-  void finishWithDisposition_(int disposition) {
-    _lib._objc_msgSend_305(_id, _lib._sel_finishWithDisposition_1, disposition);
-  }
-
-  NSObject? get response {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_response1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
-  }
-
-  /// These properties are meant to be used only by CUPHTTPClientDelegate.
-  int get disposition {
-    return _lib._objc_msgSend_306(_id, _lib._sel_disposition1);
-  }
-
-  static CUPHTTPResponseReceived new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
-        _lib._class_CUPHTTPResponseReceived1, _lib._sel_new1);
-    return CUPHTTPResponseReceived._(_ret, _lib);
-  }
-
-  static CUPHTTPResponseReceived alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
-        _lib._class_CUPHTTPResponseReceived1, _lib._sel_alloc1);
-    return CUPHTTPResponseReceived._(_ret, _lib);
-  }
-}
-
-class CUPHTTPComplete extends CUPHTTPDelegateData {
-  CUPHTTPComplete._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
-
-  static CUPHTTPComplete castFrom<T extends _ObjCWrapper>(T other) {
-    return CUPHTTPComplete._(other._id, other._lib);
-  }
-
-  static CUPHTTPComplete castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return CUPHTTPComplete._(other, lib);
-  }
-
-  NSObject? get error {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_error1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
-  }
-
-  static CUPHTTPComplete new1(NativeCupertinoHttp _lib) {
-    final _ret =
-        _lib._objc_msgSend_1(_lib._class_CUPHTTPComplete1, _lib._sel_new1);
-    return CUPHTTPComplete._(_ret, _lib);
-  }
-
-  static CUPHTTPComplete alloc(NativeCupertinoHttp _lib) {
-    final _ret =
-        _lib._objc_msgSend_1(_lib._class_CUPHTTPComplete1, _lib._sel_alloc1);
-    return CUPHTTPComplete._(_ret, _lib);
-  }
-}
-
-class CUPHTTPReceiveData extends CUPHTTPDelegateData {
-  CUPHTTPReceiveData._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
-
-  static CUPHTTPReceiveData castFrom<T extends _ObjCWrapper>(T other) {
-    return CUPHTTPReceiveData._(other._id, other._lib);
-  }
-
-  static CUPHTTPReceiveData castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return CUPHTTPReceiveData._(other, lib);
-  }
-
-  NSObject? get data {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_data1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
-  }
-
-  static CUPHTTPReceiveData new1(NativeCupertinoHttp _lib) {
-    final _ret =
-        _lib._objc_msgSend_1(_lib._class_CUPHTTPReceiveData1, _lib._sel_new1);
-    return CUPHTTPReceiveData._(_ret, _lib);
-  }
-
-  static CUPHTTPReceiveData alloc(NativeCupertinoHttp _lib) {
-    final _ret =
-        _lib._objc_msgSend_1(_lib._class_CUPHTTPReceiveData1, _lib._sel_alloc1);
-    return CUPHTTPReceiveData._(_ret, _lib);
-  }
-}
-
 /// A delegate for NSURLSession that forwards events for registered
 /// NSURLSessionTasks and forwards them to a port for consumption in Dart.
 ///
@@ -87177,16 +105836,16 @@ class CUPHTTPReceiveData extends CUPHTTPDelegateData {
 /// possible formats:
 ///
 /// 1. When the delegate receives a HTTP redirect response:
-/// [MessageType::RedirectMessage, <int: pointer to CUPHTTPRedirect>]
+/// [MessageType::RedirectMessage, <int: pointer to CUPHTTPForwardedRedirect>]
 ///
 /// 2. When the delegate receives a HTTP response:
-/// [MessageType::ResponseMessage, <int: pointer to NSURLResponse>]
+/// [MessageType::ResponseMessage, <int: pointer to CUPHTTPForwardedResponse>]
 ///
 /// 3. When the delegate receives some HTTP data:
-/// [MessageType::DataMessage, <Uint8List: the received data>]
+/// [MessageType::DataMessage, <int: pointer to CUPHTTPForwardedData>]
 ///
 /// 4. When the delegate is informed that the response is complete:
-/// [MessageType::CompletedMessage, <int: pointer to NSError> | null]
+/// [MessageType::CompletedMessage, <int: pointer to CUPHTTPForwardedComplete>]
 class CUPHTTPClientDelegate extends NSObject {
   CUPHTTPClientDelegate._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
       : super._(id, lib);
@@ -87217,6 +105876,271 @@ class CUPHTTPClientDelegate extends NSObject {
     final _ret = _lib._objc_msgSend_1(
         _lib._class_CUPHTTPClientDelegate1, _lib._sel_alloc1);
     return CUPHTTPClientDelegate._(_ret, _lib);
+  }
+}
+
+/// An object used to communicate redirect information to Dart code.
+///
+/// The flow is:
+/// 1. CUPHTTPClientDelegate receives a message from the URL Loading System.
+/// 2. CUPHTTPClientDelegate creates a new CUPHTTPForwardedDelegate subclass.
+/// 3. CUPHTTPClientDelegate sends the CUPHTTPForwardedDelegate to the
+/// configured Dart_Port.
+/// 4. CUPHTTPClientDelegate waits on CUPHTTPForwardedDelegate.lock
+/// 5. When the Dart code is done process the message received on the port,
+/// it calls [CUPHTTPForwardedDelegate finish*], which releases the lock.
+/// 6. CUPHTTPClientDelegate continues running.
+class CUPHTTPForwardedDelegate extends NSObject {
+  CUPHTTPForwardedDelegate._(
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
+      : super._(id, lib);
+
+  static CUPHTTPForwardedDelegate castFrom<T extends _ObjCWrapper>(T other) {
+    return CUPHTTPForwardedDelegate._(other._id, other._lib);
+  }
+
+  static CUPHTTPForwardedDelegate castFromPointer(
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
+    return CUPHTTPForwardedDelegate._(other, lib);
+  }
+
+  NSObject initWithSession_task_(NSObject? session, NSObject? task) {
+    final _ret = _lib._objc_msgSend_76(_id, _lib._sel_initWithSession_task_1,
+        session?._id ?? ffi.nullptr, task?._id ?? ffi.nullptr);
+    return NSObject._(_ret, _lib);
+  }
+
+  /// Indicates that the task should continue executing using the given request.
+  void finish() {
+    _lib._objc_msgSend_0(_id, _lib._sel_finish1);
+  }
+
+  NSObject? get session {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_session1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  NSObject? get task {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_task1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  /// This property is meant to be used only by CUPHTTPClientDelegate.
+  NSObject? get lock {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_lock1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  static CUPHTTPForwardedDelegate new1(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPForwardedDelegate1, _lib._sel_new1);
+    return CUPHTTPForwardedDelegate._(_ret, _lib);
+  }
+
+  static CUPHTTPForwardedDelegate alloc(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPForwardedDelegate1, _lib._sel_alloc1);
+    return CUPHTTPForwardedDelegate._(_ret, _lib);
+  }
+}
+
+class CUPHTTPForwardedRedirect extends CUPHTTPForwardedDelegate {
+  CUPHTTPForwardedRedirect._(
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
+      : super._(id, lib);
+
+  static CUPHTTPForwardedRedirect castFrom<T extends _ObjCWrapper>(T other) {
+    return CUPHTTPForwardedRedirect._(other._id, other._lib);
+  }
+
+  static CUPHTTPForwardedRedirect castFromPointer(
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
+    return CUPHTTPForwardedRedirect._(other, lib);
+  }
+
+  NSObject initWithSession_task_response_request_(NSObject? session,
+      NSObject? task, NSObject? response, NSObject? request) {
+    final _ret = _lib._objc_msgSend_153(
+        _id,
+        _lib._sel_initWithSession_task_response_request_1,
+        session?._id ?? ffi.nullptr,
+        task?._id ?? ffi.nullptr,
+        response?._id ?? ffi.nullptr,
+        request?._id ?? ffi.nullptr);
+    return NSObject._(_ret, _lib);
+  }
+
+  /// Indicates that the task should continue executing using the given request.
+  /// If the request is NIL then the redirect is not followed and the task is
+  /// complete.
+  void finishWithRequest_(NSObject? request) {
+    _lib._objc_msgSend_8(
+        _id, _lib._sel_finishWithRequest_1, request?._id ?? ffi.nullptr);
+  }
+
+  NSObject? get response {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_response1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  NSObject? get request {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_request1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  /// This property is meant to be used only by CUPHTTPClientDelegate.
+  NSObject? get redirectRequest {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_redirectRequest1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  static CUPHTTPForwardedRedirect new1(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPForwardedRedirect1, _lib._sel_new1);
+    return CUPHTTPForwardedRedirect._(_ret, _lib);
+  }
+
+  static CUPHTTPForwardedRedirect alloc(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPForwardedRedirect1, _lib._sel_alloc1);
+    return CUPHTTPForwardedRedirect._(_ret, _lib);
+  }
+}
+
+class CUPHTTPForwardedResponse extends CUPHTTPForwardedDelegate {
+  CUPHTTPForwardedResponse._(
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
+      : super._(id, lib);
+
+  static CUPHTTPForwardedResponse castFrom<T extends _ObjCWrapper>(T other) {
+    return CUPHTTPForwardedResponse._(other._id, other._lib);
+  }
+
+  static CUPHTTPForwardedResponse castFromPointer(
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
+    return CUPHTTPForwardedResponse._(other, lib);
+  }
+
+  NSObject initWithSession_task_response_(
+      NSObject? session, NSObject? task, NSObject? response) {
+    final _ret = _lib._objc_msgSend_183(
+        _id,
+        _lib._sel_initWithSession_task_response_1,
+        session?._id ?? ffi.nullptr,
+        task?._id ?? ffi.nullptr,
+        response?._id ?? ffi.nullptr);
+    return NSObject._(_ret, _lib);
+  }
+
+  void finishWithDisposition_(int disposition) {
+    _lib._objc_msgSend_305(_id, _lib._sel_finishWithDisposition_1, disposition);
+  }
+
+  NSObject? get response {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_response1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  /// This property is meant to be used only by CUPHTTPClientDelegate.
+  int get disposition {
+    return _lib._objc_msgSend_306(_id, _lib._sel_disposition1);
+  }
+
+  static CUPHTTPForwardedResponse new1(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPForwardedResponse1, _lib._sel_new1);
+    return CUPHTTPForwardedResponse._(_ret, _lib);
+  }
+
+  static CUPHTTPForwardedResponse alloc(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPForwardedResponse1, _lib._sel_alloc1);
+    return CUPHTTPForwardedResponse._(_ret, _lib);
+  }
+}
+
+class CUPHTTPForwardedData extends CUPHTTPForwardedDelegate {
+  CUPHTTPForwardedData._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
+      : super._(id, lib);
+
+  static CUPHTTPForwardedData castFrom<T extends _ObjCWrapper>(T other) {
+    return CUPHTTPForwardedData._(other._id, other._lib);
+  }
+
+  static CUPHTTPForwardedData castFromPointer(
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
+    return CUPHTTPForwardedData._(other, lib);
+  }
+
+  NSObject initWithSession_task_data_(
+      NSObject? session, NSObject? task, NSObject? data) {
+    final _ret = _lib._objc_msgSend_183(
+        _id,
+        _lib._sel_initWithSession_task_data_1,
+        session?._id ?? ffi.nullptr,
+        task?._id ?? ffi.nullptr,
+        data?._id ?? ffi.nullptr);
+    return NSObject._(_ret, _lib);
+  }
+
+  NSObject? get data {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_data1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  static CUPHTTPForwardedData new1(NativeCupertinoHttp _lib) {
+    final _ret =
+        _lib._objc_msgSend_1(_lib._class_CUPHTTPForwardedData1, _lib._sel_new1);
+    return CUPHTTPForwardedData._(_ret, _lib);
+  }
+
+  static CUPHTTPForwardedData alloc(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPForwardedData1, _lib._sel_alloc1);
+    return CUPHTTPForwardedData._(_ret, _lib);
+  }
+}
+
+class CUPHTTPForwardedComplete extends CUPHTTPForwardedDelegate {
+  CUPHTTPForwardedComplete._(
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
+      : super._(id, lib);
+
+  static CUPHTTPForwardedComplete castFrom<T extends _ObjCWrapper>(T other) {
+    return CUPHTTPForwardedComplete._(other._id, other._lib);
+  }
+
+  static CUPHTTPForwardedComplete castFromPointer(
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
+    return CUPHTTPForwardedComplete._(other, lib);
+  }
+
+  NSObject initWithSession_task_error_(
+      NSObject? session, NSObject? task, NSObject? error) {
+    final _ret = _lib._objc_msgSend_183(
+        _id,
+        _lib._sel_initWithSession_task_error_1,
+        session?._id ?? ffi.nullptr,
+        task?._id ?? ffi.nullptr,
+        error?._id ?? ffi.nullptr);
+    return NSObject._(_ret, _lib);
+  }
+
+  NSObject? get error {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_error1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  static CUPHTTPForwardedComplete new1(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPForwardedComplete1, _lib._sel_new1);
+    return CUPHTTPForwardedComplete._(_ret, _lib);
+  }
+
+  static CUPHTTPForwardedComplete alloc(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPForwardedComplete1, _lib._sel_alloc1);
+    return CUPHTTPForwardedComplete._(_ret, _lib);
   }
 }
 

@@ -588,145 +588,124 @@ enum URLSessionResponseDisposition {
   NSURLSessionResponseBecomeStream
 }
 
-void delegateDispatcher(
-    ncb.CUPHTTPClientDelegate _delegate, URLSessionTask task,
+void _setupDelegation(ncb.CUPHTTPClientDelegate delegate, URLSessionTask task,
     {URLRequest? Function(URLSession session, URLSessionTask task,
             HTTPURLResponse response, URLRequest newRequest)?
         onRedirect,
     URLSessionResponseDisposition Function(
             URLSession session, URLSessionTask task, URLResponse response)?
         onResponse,
-    URLRequest? Function(URLSession session, URLSessionTask task, Data error)?
-        onData,
-    URLRequest? Function(URLSession session, URLSessionTask task, Error? error)?
+    void Function(URLSession session, URLSessionTask task, Data error)? onData,
+    void Function(URLSession session, URLSessionTask task, Error? error)?
         onComplete}) {
   final responsePort = ReceivePort();
-  MutableData? data;
   responsePort.listen((message) {
     final messageType = message[0];
-    final payload = message[1];
+    final dp = Pointer<ncb.ObjCObject>.fromAddress(message[1]);
+
+    // TODO(https://github.com/dart-lang/ffigen/issues/387): Indicate that
+    // the reference should be released but not retained in
+    // castFromPointer.
+    final forwardedDelegate =
+        ncb.CUPHTTPForwardedDelegate.castFromPointer(helperLibs, dp);
+    final session =
+        URLSession._(ncb.NSURLSession.castFrom(forwardedDelegate.session!));
+    final task = URLSessionTask._(
+        ncb.NSURLSessionTask.castFrom(forwardedDelegate.task!));
 
     switch (messageType) {
-      case ncb.MessageType.ResponseMessage:
-        final rp = Pointer<ncb.ObjCObject>.fromAddress(payload);
-        // TODO(https://github.com/dart-lang/ffigen/issues/374): Check the
-        // actual type of the response instead of assuming that it is a
-        // NSHTTPURLResponse.
-        // TODO(https://github.com/dart-lang/ffigen/issues/387): Indicate that
-        // the reference should be released but not retained in
-        // castFromPointer.
-        final responseReceived =
-            ncb.CUPHTTPResponseReceived.castFromPointer(helperLibs, rp);
+      case ncb.MessageType.RedirectMessage:
+        final forwardedRedirect =
+            ncb.CUPHTTPForwardedRedirect.castFrom(forwardedDelegate);
+        URLRequest? redirectRequest;
 
-        if (onResponse == null) {
-          responseReceived.finishWithDisposition_(
-              URLSessionResponseDisposition.NSURLSessionResponseAllow.index);
-        } else {
-          final session = URLSession._(
-              ncb.NSURLSession.castFrom(responseReceived.session!));
-          final task = URLSessionTask._(
-              ncb.NSURLSessionTask.castFrom(responseReceived.task!));
-
-          // XXX CAST!
+        try {
           final response = HTTPURLResponse._(
-              ncb.NSHTTPURLResponse.castFrom(responseReceived.response!));
+              ncb.NSHTTPURLResponse.castFrom(forwardedRedirect.response!));
+          final request = URLRequest._(
+              ncb.NSURLRequest.castFrom(forwardedRedirect.request!));
 
-          var disposition =
-              URLSessionResponseDisposition.NSURLSessionResponseCancel;
-          try {
-            disposition = onResponse!(session, task, response);
-          } catch (e) {
-            // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
-            // this exception as an `Error` and call the completion function
-            // with it.
-          } finally {
-            // [CUPHTTPClientDelegate
-            //    URLSession: task: willPerformHTTPRedirection: ...]
-            // will wait on a lock until `continueWithRequest_` is called, so
-            // ensure that it is called even if `httpRedirection` throws.
-            responseReceived.finishWithDisposition_(disposition.index);
+          if (onRedirect == null) {
+            redirectRequest = request;
+          } else {
+            try {
+              redirectRequest = onRedirect(session, task, response, request);
+            } catch (e) {
+              // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
+              // this exception as an `Error` and call the completion function
+              // with it.
+            }
           }
+        } finally {
+          forwardedRedirect.finishWithRequest_(redirectRequest?._nsObject);
+        }
+        break;
+      case ncb.MessageType.ResponseMessage:
+        final forwardedResponse =
+            ncb.CUPHTTPForwardedResponse.castFrom(forwardedDelegate);
+        var disposition =
+            URLSessionResponseDisposition.NSURLSessionResponseCancel;
+
+        try {
+          if (onResponse == null) {
+            disposition =
+                URLSessionResponseDisposition.NSURLSessionResponseAllow;
+          } else {
+            final response = URLResponse._(
+                ncb.NSHTTPURLResponse.castFrom(forwardedResponse.response!));
+
+            try {
+              disposition = onResponse(session, task, response);
+            } catch (e) {
+              // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
+              // this exception as an `Error` and call the completion function
+              // with it.
+            }
+          }
+        } finally {
+          forwardedResponse.finishWithDisposition_(disposition.index);
         }
         break;
       case ncb.MessageType.DataMessage:
-        final cp = Pointer<ncb.ObjCObject>.fromAddress(payload);
-        // TODO(https://github.com/dart-lang/ffigen/issues/374): Check the
-        // actual type of the response instead of assuming that it is a
-        // NSHTTPURLResponse.
-        // TODO(https://github.com/dart-lang/ffigen/issues/387): Indicate that
-        // the reference should be released but not retained in
-        // castFromPointer.
-        final receiveData =
-            ncb.CUPHTTPReceiveData.castFromPointer(helperLibs, cp);
+        final forwardedData =
+            ncb.CUPHTTPForwardedData.castFrom(forwardedDelegate);
 
-        if (onData != null) {
-          final session =
-              URLSession._(ncb.NSURLSession.castFrom(receiveData.session!));
-          final task = URLSessionTask._(
-              ncb.NSURLSessionTask.castFrom(receiveData.task!));
-
-          if (data == null) {
-            data = MutableData.empty();
+        try {
+          if (onData != null) {
+            try {
+              onData(session, task,
+                  Data._(ncb.NSData.castFrom(forwardedData.data!)));
+            } catch (e) {
+              // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
+              // this exception as an `Error` and call the completion function
+              // with it.
+            }
           }
-          onData(session, task, Data._(ncb.NSData.castFrom(receiveData.data!)));
+        } finally {
+          forwardedData.finish();
         }
-        receiveData.finish();
         break;
       case ncb.MessageType.CompletedMessage:
-        final cp = Pointer<ncb.ObjCObject>.fromAddress(payload);
-        // TODO(https://github.com/dart-lang/ffigen/issues/374): Check the
-        // actual type of the response instead of assuming that it is a
-        // NSHTTPURLResponse.
-        // TODO(https://github.com/dart-lang/ffigen/issues/387): Indicate that
-        // the reference should be released but not retained in
-        // castFromPointer.
-        final complete = ncb.CUPHTTPComplete.castFromPointer(helperLibs, cp);
+        final forwardedComplete =
+            ncb.CUPHTTPForwardedComplete.castFrom(forwardedDelegate);
 
-        if (onComplete != null) {
-          final session =
-              URLSession._(ncb.NSURLSession.castFrom(complete.session!));
-          final task =
-              URLSessionTask._(ncb.NSURLSessionTask.castFrom(complete.task!));
-
-          Error? error;
-          if (complete.error != null) {
-            error = Error._(ncb.NSError.castFrom(complete.error!));
+        try {
+          if (onComplete != null) {
+            Error? error;
+            if (forwardedComplete.error != null) {
+              error = Error._(ncb.NSError.castFrom(forwardedComplete.error!));
+            }
+            try {
+              onComplete(session, task, error);
+            } catch (e) {
+              // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
+              // this exception as an `Error` and call the completion function
+              // with it.
+            }
           }
-          onComplete(session, task, error);
-        }
-        complete.finish();
-        responsePort.close();
-        break;
-      case ncb.MessageType.RedirectMessage:
-        final rp = Pointer<ncb.ObjCObject>.fromAddress(payload);
-        final redirect = ncb.CUPHTTPRedirect.castFromPointer(helperLibs, rp);
-
-        if (onRedirect == null) {
-          redirect.finishWithRequest_(redirect.request);
-        } else {
-          final session =
-              URLSession._(ncb.NSURLSession.castFrom(redirect.session!));
-          final task =
-              URLSessionTask._(ncb.NSURLSessionTask.castFrom(redirect.task!));
-          final response = HTTPURLResponse._(
-              ncb.NSHTTPURLResponse.castFrom(redirect.response!));
-          final request =
-              URLRequest._(ncb.NSURLRequest.castFrom(redirect.request!));
-
-          URLRequest? redirectRequest;
-          try {
-            redirectRequest = onRedirect!(session, task, response, request);
-          } catch (e) {
-            // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
-            // this exception as an `Error` and call the completion function
-            // with it.
-          } finally {
-            // [CUPHTTPClientDelegate
-            //    URLSession: task: willPerformHTTPRedirection: ...]
-            // will wait on a lock until `continueWithRequest_` is called, so
-            // ensure that it is called even if `httpRedirection` throws.
-            redirect.finishWithRequest_(redirectRequest?._nsObject);
-          }
+        } finally {
+          forwardedComplete.finish();
+          responsePort.close();
         }
         break;
     }
@@ -735,7 +714,7 @@ void delegateDispatcher(
       ncb.CUPHTTPTaskConfiguration.alloc(helperLibs)
           .initWithPort_(responsePort.sendPort.nativePort));
 
-  _delegate.registerTask_withConfiguration_(task._nsObject, config);
+  delegate.registerTask_withConfiguration_(task._nsObject, config);
 }
 
 /// A client that can make network requests to a server.
@@ -752,9 +731,8 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
   URLSessionResponseDisposition Function(
           URLSession session, URLSessionTask task, URLResponse response)?
       _onResponse;
-  URLRequest? Function(URLSession session, URLSessionTask task, Data error)?
-      _onData;
-  URLRequest? Function(URLSession session, URLSessionTask task, Error? error)?
+  void Function(URLSession session, URLSessionTask task, Data error)? _onData;
+  void Function(URLSession session, URLSessionTask task, Error? error)?
       _onComplete;
 
   URLSession._(ncb.NSURLSession c,
@@ -764,10 +742,9 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
       URLSessionResponseDisposition Function(
               URLSession session, URLSessionTask task, URLResponse response)?
           onResponse,
-      URLRequest? Function(URLSession session, URLSessionTask task, Data error)?
+      void Function(URLSession session, URLSessionTask task, Data error)?
           onData,
-      URLRequest? Function(
-              URLSession session, URLSessionTask task, Error? error)?
+      void Function(URLSession session, URLSessionTask task, Error? error)?
           onComplete})
       : _onRedirect = onRedirect,
         _onResponse = onResponse,
@@ -802,10 +779,9 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
       URLSessionResponseDisposition Function(
               URLSession session, URLSessionTask task, URLResponse response)?
           onResponse,
-      URLRequest? Function(URLSession session, URLSessionTask task, Data error)?
+      void Function(URLSession session, URLSessionTask task, Data error)?
           onData,
-      URLRequest? Function(
-              URLSession session, URLSessionTask task, Error? error)?
+      void Function(URLSession session, URLSessionTask task, Error? error)?
           onComplete}) {
     return URLSession._(
         ncb.NSURLSession.sessionWithConfiguration_delegate_delegateQueue_(
@@ -830,7 +806,7 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
   URLSessionTask dataTaskWithRequest(URLRequest request) {
     final task =
         URLSessionTask._(_nsObject.dataTaskWithRequest_(request._nsObject));
-    delegateDispatcher(_delegate, task,
+    _setupDelegation(_delegate, task,
         onComplete: _onComplete,
         onData: _onData,
         onRedirect: _onRedirect,
@@ -863,7 +839,7 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
     HTTPURLResponse? finalResponse;
     MutableData? allData;
 
-    delegateDispatcher(_delegate, task, onRedirect: _onRedirect, onResponse:
+    _setupDelegation(_delegate, task, onRedirect: _onRedirect, onResponse:
         (URLSession session, URLSessionTask task, URLResponse response) {
       finalResponse =
           HTTPURLResponse._(ncb.NSHTTPURLResponse.castFrom(response._nsObject));

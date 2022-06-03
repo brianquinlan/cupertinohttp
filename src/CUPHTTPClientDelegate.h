@@ -32,79 +32,6 @@ typedef NS_ENUM(NSInteger, MessageType) {
 
 @end
 
-@interface CUPHTTPDelegateData : NSObject
-/**
- * Indicates that the task should continue executing using the given request.
- * If the request is NIL then the redirect is not followed and the task is
- * complete.
- */
-- (void) finish;;
-
-@property (readonly) NSURLSession *session;
-@property (readonly) NSURLSessionTask *task;
-
-// These properties are meant to be used only by CUPHTTPClientDelegate.
-@property (readonly) NSLock *lock;
-
-@end
-/**
- * An object used to communicate redirect information to Dart code.
- *
- * The flow is:
- *  1. CUPHTTPClientDelegate receives a
- *    [URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:]
- *    message.
- *  2. CUPHTTPClientDelegate creates a new CUPHTTPRedirect.
- *  3. CUPHTTPClientDelegate sends the CUPHTTPRedirect to the configured
- *    Dart_Port.
- *  4. CUPHTTPClientDelegate waits on CUPHTTPRedirect.lock
- *  5. When the Dart code is done process the message received on the port,
- *    it calls [CUPHTTPRedirect continueWithRequest:], which releases the lock.
- *  6. CUPHTTPClientDelegate continues running and returns the value passed to
- *    [CUPHTTPRedirect continueWithRequest:].
- */
-@interface CUPHTTPRedirect : CUPHTTPDelegateData
-
-/**
- * Indicates that the task should continue executing using the given request.
- * If the request is NIL then the redirect is not followed and the task is
- * complete.
- */
-- (void) finishWithRequest:(NSURLRequest *) request;
-
-@property (readonly) NSHTTPURLResponse *response;
-@property (readonly) NSURLRequest *request;
-
-// These properties are meant to be used only by CUPHTTPClientDelegate.
-@property (readonly) NSURLRequest *redirectRequest;
-
-@end
-
-@interface CUPHTTPResponseReceived : CUPHTTPDelegateData
-
-- (void) finishWithDisposition:(NSURLSessionResponseDisposition) disposition;
-
-@property (readonly) NSURLResponse *response;
-
-// These properties are meant to be used only by CUPHTTPClientDelegate.
-@property (readonly) NSURLSessionResponseDisposition disposition;
-
-@end
-
-
-@interface CUPHTTPComplete : CUPHTTPDelegateData
-
-@property (readonly) NSError* error;
-
-@end
-
-@interface CUPHTTPReceiveData : CUPHTTPDelegateData
-
-@property (readonly) NSData* data;
-
-@end
-
-
 /**
  * A delegate for NSURLSession that forwards events for registered
  * NSURLSessionTasks and forwards them to a port for consumption in Dart.
@@ -113,16 +40,16 @@ typedef NS_ENUM(NSInteger, MessageType) {
  * possible formats:
  *
  * 1. When the delegate receives a HTTP redirect response:
- *    [MessageType::RedirectMessage, <int: pointer to CUPHTTPRedirect>]
+ *    [MessageType::RedirectMessage, <int: pointer to CUPHTTPForwardedRedirect>]
  *
  * 2. When the delegate receives a HTTP response:
- *    [MessageType::ResponseMessage, <int: pointer to NSURLResponse>]
+ *    [MessageType::ResponseMessage, <int: pointer to CUPHTTPForwardedResponse>]
  *
  * 3. When the delegate receives some HTTP data:
- *    [MessageType::DataMessage, <Uint8List: the received data>]
+ *    [MessageType::DataMessage, <int: pointer to CUPHTTPForwardedData>]
  *
  * 4. When the delegate is informed that the response is complete:
- *    [MessageType::CompletedMessage, <int: pointer to NSError> | null]
+ *    [MessageType::CompletedMessage, <int: pointer to CUPHTTPForwardedComplete>]
  */
 @interface CUPHTTPClientDelegate : NSObject
 
@@ -130,5 +57,6 @@ typedef NS_ENUM(NSInteger, MessageType) {
  * Instruct the delegate to forward events for the given task to the port
  * specified in the configuration.
  */
-- (void)registerTask:(NSURLSessionTask *) task withConfiguration:(CUPHTTPTaskConfiguration *)config;
+- (void)registerTask:(NSURLSessionTask *)task
+   withConfiguration:(CUPHTTPTaskConfiguration *)config;
 @end
