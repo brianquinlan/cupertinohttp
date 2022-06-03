@@ -32,6 +32,21 @@ typedef NS_ENUM(NSInteger, MessageType) {
 
 @end
 
+@interface CUPHTTPDelegateData : NSObject
+/**
+ * Indicates that the task should continue executing using the given request.
+ * If the request is NIL then the redirect is not followed and the task is
+ * complete.
+ */
+- (void) finish;;
+
+@property (readonly) NSURLSession *session;
+@property (readonly) NSURLSessionTask *task;
+
+// These properties are meant to be used only by CUPHTTPClientDelegate.
+@property (readonly) NSLock *lock;
+
+@end
 /**
  * An object used to communicate redirect information to Dart code.
  *
@@ -48,25 +63,47 @@ typedef NS_ENUM(NSInteger, MessageType) {
  *  6. CUPHTTPClientDelegate continues running and returns the value passed to
  *    [CUPHTTPRedirect continueWithRequest:].
  */
-@interface CUPHTTPRedirect : NSObject
+@interface CUPHTTPRedirect : CUPHTTPDelegateData
 
 /**
  * Indicates that the task should continue executing using the given request.
  * If the request is NIL then the redirect is not followed and the task is
  * complete.
  */
-- (void) continueWithRequest:(NSURLRequest *) request;
+- (void) finishWithRequest:(NSURLRequest *) request;
 
-@property (readonly) NSURLSession *session;
-@property (readonly) NSURLSessionTask *task;
 @property (readonly) NSHTTPURLResponse *response;
 @property (readonly) NSURLRequest *request;
 
 // These properties are meant to be used only by CUPHTTPClientDelegate.
-@property (readonly) NSLock *lock;
 @property (readonly) NSURLRequest *redirectRequest;
 
 @end
+
+@interface CUPHTTPResponseReceived : CUPHTTPDelegateData
+
+- (void) finishWithDisposition:(NSURLSessionResponseDisposition) disposition;
+
+@property (readonly) NSURLResponse *response;
+
+// These properties are meant to be used only by CUPHTTPClientDelegate.
+@property (readonly) NSURLSessionResponseDisposition disposition;
+
+@end
+
+
+@interface CUPHTTPComplete : CUPHTTPDelegateData
+
+@property (readonly) NSError* error;
+
+@end
+
+@interface CUPHTTPReceiveData : CUPHTTPDelegateData
+
+@property (readonly) NSData* data;
+
+@end
+
 
 /**
  * A delegate for NSURLSession that forwards events for registered

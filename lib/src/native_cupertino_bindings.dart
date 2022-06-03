@@ -69890,15 +69890,64 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
   late final ffi.Pointer<ObjCSel> _sel_sendPort1 = _registerName1("sendPort");
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPRedirect1 =
-      _getClass1("CUPHTTPRedirect");
-  late final ffi.Pointer<ObjCSel> _sel_continueWithRequest_1 =
-      _registerName1("continueWithRequest:");
+  late final ffi.Pointer<ObjCObject> _class_CUPHTTPDelegateData1 =
+      _getClass1("CUPHTTPDelegateData");
+  late final ffi.Pointer<ObjCSel> _sel_finish1 = _registerName1("finish");
   late final ffi.Pointer<ObjCSel> _sel_session1 = _registerName1("session");
   late final ffi.Pointer<ObjCSel> _sel_task1 = _registerName1("task");
   late final ffi.Pointer<ObjCSel> _sel_lock1 = _registerName1("lock");
+  late final ffi.Pointer<ObjCObject> _class_CUPHTTPRedirect1 =
+      _getClass1("CUPHTTPRedirect");
+  late final ffi.Pointer<ObjCSel> _sel_finishWithRequest_1 =
+      _registerName1("finishWithRequest:");
   late final ffi.Pointer<ObjCSel> _sel_redirectRequest1 =
       _registerName1("redirectRequest");
+  late final ffi.Pointer<ObjCObject> _class_CUPHTTPResponseReceived1 =
+      _getClass1("CUPHTTPResponseReceived");
+  late final ffi.Pointer<ObjCSel> _sel_finishWithDisposition_1 =
+      _registerName1("finishWithDisposition:");
+  void _objc_msgSend_305(
+    ffi.Pointer<ObjCObject> obj,
+    ffi.Pointer<ObjCSel> sel,
+    int disposition,
+  ) {
+    return __objc_msgSend_305(
+      obj,
+      sel,
+      disposition,
+    );
+  }
+
+  late final __objc_msgSend_305Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+              ffi.Int32)>>('objc_msgSend');
+  late final __objc_msgSend_305 = __objc_msgSend_305Ptr.asFunction<
+      void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
+
+  late final ffi.Pointer<ObjCSel> _sel_disposition1 =
+      _registerName1("disposition");
+  int _objc_msgSend_306(
+    ffi.Pointer<ObjCObject> obj,
+    ffi.Pointer<ObjCSel> sel,
+  ) {
+    return __objc_msgSend_306(
+      obj,
+      sel,
+    );
+  }
+
+  late final __objc_msgSend_306Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>>('objc_msgSend');
+  late final __objc_msgSend_306 = __objc_msgSend_306Ptr.asFunction<
+      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
+
+  late final ffi.Pointer<ObjCObject> _class_CUPHTTPComplete1 =
+      _getClass1("CUPHTTPComplete");
+  late final ffi.Pointer<ObjCObject> _class_CUPHTTPReceiveData1 =
+      _getClass1("CUPHTTPReceiveData");
   late final ffi.Pointer<ObjCObject> _class_CUPHTTPClientDelegate1 =
       _getClass1("CUPHTTPClientDelegate");
   late final ffi.Pointer<ObjCSel> _sel_registerTask_withConfiguration_1 =
@@ -86906,22 +86955,24 @@ class CUPHTTPTaskConfiguration extends NSObject {
   }
 }
 
-class CUPHTTPRedirect extends NSObject {
-  CUPHTTPRedirect._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
+class CUPHTTPDelegateData extends NSObject {
+  CUPHTTPDelegateData._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
       : super._(id, lib);
 
-  static CUPHTTPRedirect castFrom<T extends _ObjCWrapper>(T other) {
-    return CUPHTTPRedirect._(other._id, other._lib);
+  static CUPHTTPDelegateData castFrom<T extends _ObjCWrapper>(T other) {
+    return CUPHTTPDelegateData._(other._id, other._lib);
   }
 
-  static CUPHTTPRedirect castFromPointer(
+  static CUPHTTPDelegateData castFromPointer(
       NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return CUPHTTPRedirect._(other, lib);
+    return CUPHTTPDelegateData._(other, lib);
   }
 
-  void continueWithRequest_(NSObject? request) {
-    _lib._objc_msgSend_8(
-        _id, _lib._sel_continueWithRequest_1, request?._id ?? ffi.nullptr);
+  /// Indicates that the task should continue executing using the given request.
+  /// If the request is NIL then the redirect is not followed and the task is
+  /// complete.
+  void finish() {
+    _lib._objc_msgSend_0(_id, _lib._sel_finish1);
   }
 
   NSObject? get session {
@@ -86934,6 +86985,60 @@ class CUPHTTPRedirect extends NSObject {
     return _ret.address == 0 ? null : NSObject._(_ret, _lib);
   }
 
+  /// These properties are meant to be used only by CUPHTTPClientDelegate.
+  NSObject? get lock {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_lock1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  static CUPHTTPDelegateData new1(NativeCupertinoHttp _lib) {
+    final _ret =
+        _lib._objc_msgSend_1(_lib._class_CUPHTTPDelegateData1, _lib._sel_new1);
+    return CUPHTTPDelegateData._(_ret, _lib);
+  }
+
+  static CUPHTTPDelegateData alloc(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPDelegateData1, _lib._sel_alloc1);
+    return CUPHTTPDelegateData._(_ret, _lib);
+  }
+}
+
+/// An object used to communicate redirect information to Dart code.
+///
+/// The flow is:
+/// 1. CUPHTTPClientDelegate receives a
+/// [URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:]
+/// message.
+/// 2. CUPHTTPClientDelegate creates a new CUPHTTPRedirect.
+/// 3. CUPHTTPClientDelegate sends the CUPHTTPRedirect to the configured
+/// Dart_Port.
+/// 4. CUPHTTPClientDelegate waits on CUPHTTPRedirect.lock
+/// 5. When the Dart code is done process the message received on the port,
+/// it calls [CUPHTTPRedirect continueWithRequest:], which releases the lock.
+/// 6. CUPHTTPClientDelegate continues running and returns the value passed to
+/// [CUPHTTPRedirect continueWithRequest:].
+class CUPHTTPRedirect extends CUPHTTPDelegateData {
+  CUPHTTPRedirect._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
+      : super._(id, lib);
+
+  static CUPHTTPRedirect castFrom<T extends _ObjCWrapper>(T other) {
+    return CUPHTTPRedirect._(other._id, other._lib);
+  }
+
+  static CUPHTTPRedirect castFromPointer(
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
+    return CUPHTTPRedirect._(other, lib);
+  }
+
+  /// Indicates that the task should continue executing using the given request.
+  /// If the request is NIL then the redirect is not followed and the task is
+  /// complete.
+  void finishWithRequest_(NSObject? request) {
+    _lib._objc_msgSend_8(
+        _id, _lib._sel_finishWithRequest_1, request?._id ?? ffi.nullptr);
+  }
+
   NSObject? get response {
     final _ret = _lib._objc_msgSend_1(_id, _lib._sel_response1);
     return _ret.address == 0 ? null : NSObject._(_ret, _lib);
@@ -86944,11 +87049,7 @@ class CUPHTTPRedirect extends NSObject {
     return _ret.address == 0 ? null : NSObject._(_ret, _lib);
   }
 
-  NSObject? get lock {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_lock1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
-  }
-
+  /// These properties are meant to be used only by CUPHTTPClientDelegate.
   NSObject? get redirectRequest {
     final _ret = _lib._objc_msgSend_1(_id, _lib._sel_redirectRequest1);
     return _ret.address == 0 ? null : NSObject._(_ret, _lib);
@@ -86967,19 +87068,124 @@ class CUPHTTPRedirect extends NSObject {
   }
 }
 
+class CUPHTTPResponseReceived extends CUPHTTPDelegateData {
+  CUPHTTPResponseReceived._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
+      : super._(id, lib);
+
+  static CUPHTTPResponseReceived castFrom<T extends _ObjCWrapper>(T other) {
+    return CUPHTTPResponseReceived._(other._id, other._lib);
+  }
+
+  static CUPHTTPResponseReceived castFromPointer(
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
+    return CUPHTTPResponseReceived._(other, lib);
+  }
+
+  void finishWithDisposition_(int disposition) {
+    _lib._objc_msgSend_305(_id, _lib._sel_finishWithDisposition_1, disposition);
+  }
+
+  NSObject? get response {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_response1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  /// These properties are meant to be used only by CUPHTTPClientDelegate.
+  int get disposition {
+    return _lib._objc_msgSend_306(_id, _lib._sel_disposition1);
+  }
+
+  static CUPHTTPResponseReceived new1(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPResponseReceived1, _lib._sel_new1);
+    return CUPHTTPResponseReceived._(_ret, _lib);
+  }
+
+  static CUPHTTPResponseReceived alloc(NativeCupertinoHttp _lib) {
+    final _ret = _lib._objc_msgSend_1(
+        _lib._class_CUPHTTPResponseReceived1, _lib._sel_alloc1);
+    return CUPHTTPResponseReceived._(_ret, _lib);
+  }
+}
+
+class CUPHTTPComplete extends CUPHTTPDelegateData {
+  CUPHTTPComplete._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
+      : super._(id, lib);
+
+  static CUPHTTPComplete castFrom<T extends _ObjCWrapper>(T other) {
+    return CUPHTTPComplete._(other._id, other._lib);
+  }
+
+  static CUPHTTPComplete castFromPointer(
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
+    return CUPHTTPComplete._(other, lib);
+  }
+
+  NSObject? get error {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_error1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  static CUPHTTPComplete new1(NativeCupertinoHttp _lib) {
+    final _ret =
+        _lib._objc_msgSend_1(_lib._class_CUPHTTPComplete1, _lib._sel_new1);
+    return CUPHTTPComplete._(_ret, _lib);
+  }
+
+  static CUPHTTPComplete alloc(NativeCupertinoHttp _lib) {
+    final _ret =
+        _lib._objc_msgSend_1(_lib._class_CUPHTTPComplete1, _lib._sel_alloc1);
+    return CUPHTTPComplete._(_ret, _lib);
+  }
+}
+
+class CUPHTTPReceiveData extends CUPHTTPDelegateData {
+  CUPHTTPReceiveData._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
+      : super._(id, lib);
+
+  static CUPHTTPReceiveData castFrom<T extends _ObjCWrapper>(T other) {
+    return CUPHTTPReceiveData._(other._id, other._lib);
+  }
+
+  static CUPHTTPReceiveData castFromPointer(
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
+    return CUPHTTPReceiveData._(other, lib);
+  }
+
+  NSObject? get data {
+    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_data1);
+    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+  }
+
+  static CUPHTTPReceiveData new1(NativeCupertinoHttp _lib) {
+    final _ret =
+        _lib._objc_msgSend_1(_lib._class_CUPHTTPReceiveData1, _lib._sel_new1);
+    return CUPHTTPReceiveData._(_ret, _lib);
+  }
+
+  static CUPHTTPReceiveData alloc(NativeCupertinoHttp _lib) {
+    final _ret =
+        _lib._objc_msgSend_1(_lib._class_CUPHTTPReceiveData1, _lib._sel_alloc1);
+    return CUPHTTPReceiveData._(_ret, _lib);
+  }
+}
+
 /// A delegate for NSURLSession that forwards events for registered
 /// NSURLSessionTasks and forwards them to a port for consumption in Dart.
 ///
 /// The messages sent to the port are contained in a List with one of 3
 /// possible formats:
 ///
-/// 1. When the delegate receives a HTTP response:
+/// 1. When the delegate receives a HTTP redirect response:
+/// [MessageType::RedirectMessage, <int: pointer to CUPHTTPRedirect>]
+///
+/// 2. When the delegate receives a HTTP response:
 /// [MessageType::ResponseMessage, <int: pointer to NSURLResponse>]
 ///
-/// 2. When the delegate receives some HTTP data:
+/// 3. When the delegate receives some HTTP data:
 /// [MessageType::DataMessage, <Uint8List: the received data>]
 ///
-/// 3. When the delegate is informed that the response is complete:
+/// 4. When the delegate is informed that the response is complete:
 /// [MessageType::CompletedMessage, <int: pointer to NSError> | null]
 class CUPHTTPClientDelegate extends NSObject {
   CUPHTTPClientDelegate._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
