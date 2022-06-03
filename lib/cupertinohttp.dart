@@ -592,6 +592,13 @@ class MutableURLRequest extends URLRequest {
   }
 }
 
+/// Setup delegation for the given [task] to the given methods.
+///
+/// Specifically, this causes the Objective-C-implemented delegate installed
+/// with
+/// [sessionWithConfiguration:delegate:delegateQueue:](https://developer.apple.com/documentation/foundation/nsurlsession/1411597-sessionwithconfiguration)
+/// to send a [ncb.CUPHTTPForwardedDelegate] object to a send port, which is
+/// then processed by [_setupDelegation] and forwarded to the given methods.
 void _setupDelegation(
     ncb.CUPHTTPClientDelegate delegate, URLSession session, URLSessionTask task,
     {URLRequest? Function(URLSession session, URLSessionTask task,
