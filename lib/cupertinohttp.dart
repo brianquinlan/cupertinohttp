@@ -628,21 +628,21 @@ void _setupDelegation(
         URLRequest? redirectRequest;
 
         try {
-          final response = HTTPURLResponse._(
-              ncb.NSHTTPURLResponse.castFrom(forwardedRedirect.response!));
           final request = URLRequest._(
               ncb.NSURLRequest.castFrom(forwardedRedirect.request!));
 
           if (onRedirect == null) {
             redirectRequest = request;
-          } else {
-            try {
-              redirectRequest = onRedirect(session, task, response, request);
-            } catch (e) {
-              // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
-              // this exception as an `Error` and call the completion function
-              // with it.
-            }
+            break;
+          }
+          try {
+            final response = HTTPURLResponse._(
+                ncb.NSHTTPURLResponse.castFrom(forwardedRedirect.response!));
+            redirectRequest = onRedirect(session, task, response, request);
+          } catch (e) {
+            // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
+            // this exception as an `Error` and call the completion function
+            // with it.
           }
         } finally {
           forwardedRedirect.finishWithRequest_(redirectRequest?._nsObject);
@@ -657,20 +657,20 @@ void _setupDelegation(
         try {
           if (onResponse == null) {
             disposition = URLSessionResponseDisposition.urlSessionResponseAllow;
-          } else {
-            // TODO(https://github.com/dart-lang/ffigen/issues/374): Check the
-            // actual type of the response instead of assuming that it is a
-            // NSHTTPURLResponse.
-            final response = HTTPURLResponse._(
-                ncb.NSHTTPURLResponse.castFrom(forwardedResponse.response!));
+            break;
+          }
+          // TODO(https://github.com/dart-lang/ffigen/issues/374): Check the
+          // actual type of the response instead of assuming that it is a
+          // NSHTTPURLResponse.
+          final response = HTTPURLResponse._(
+              ncb.NSHTTPURLResponse.castFrom(forwardedResponse.response!));
 
-            try {
-              disposition = onResponse(session, task, response);
-            } catch (e) {
-              // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
-              // this exception as an `Error` and call the completion function
-              // with it.
-            }
+          try {
+            disposition = onResponse(session, task, response);
+          } catch (e) {
+            // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
+            // this exception as an `Error` and call the completion function
+            // with it.
           }
         } finally {
           forwardedResponse.finishWithDisposition_(disposition.index);
@@ -681,15 +681,16 @@ void _setupDelegation(
             ncb.CUPHTTPForwardedData.castFrom(forwardedDelegate);
 
         try {
-          if (onData != null) {
-            try {
-              onData(session, task,
-                  Data._(ncb.NSData.castFrom(forwardedData.data!)));
-            } catch (e) {
-              // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
-              // this exception as an `Error` and call the completion function
-              // with it.
-            }
+          if (onData == null) {
+            break;
+          }
+          try {
+            onData(session, task,
+                Data._(ncb.NSData.castFrom(forwardedData.data!)));
+          } catch (e) {
+            // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
+            // this exception as an `Error` and call the completion function
+            // with it.
           }
         } finally {
           forwardedData.finish();
@@ -700,18 +701,19 @@ void _setupDelegation(
             ncb.CUPHTTPForwardedComplete.castFrom(forwardedDelegate);
 
         try {
-          if (onComplete != null) {
-            Error? error;
-            if (forwardedComplete.error != null) {
-              error = Error._(ncb.NSError.castFrom(forwardedComplete.error!));
-            }
-            try {
-              onComplete(session, task, error);
-            } catch (e) {
-              // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
-              // this exception as an `Error` and call the completion function
-              // with it.
-            }
+          if (onComplete == null) {
+            break;
+          }
+          Error? error;
+          if (forwardedComplete.error != null) {
+            error = Error._(ncb.NSError.castFrom(forwardedComplete.error!));
+          }
+          try {
+            onComplete(session, task, error);
+          } catch (e) {
+            // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
+            // this exception as an `Error` and call the completion function
+            // with it.
           }
         } finally {
           forwardedComplete.finish();
