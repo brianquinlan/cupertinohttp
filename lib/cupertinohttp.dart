@@ -49,6 +49,17 @@ enum HTTPCookieAcceptPolicy {
   httpCookieAcceptPolicyOnlyFromMainDocumentDomain,
 }
 
+// Controls how [URLSessionTask] execute will proceed after the response is
+// received.
+//
+// See [NSURLSessionResponseDisposition](https://developer.apple.com/documentation/foundation/nsurlsessionresponsedisposition).
+enum URLSessionResponseDisposition {
+  urlSessionResponseCancel,
+  urlSessionResponseAllow,
+  urlSessionResponseBecomeDownload,
+  urlSessionResponseBecomeStream
+}
+
 /// Information about a failure.
 ///
 /// See [NSError](https://developer.apple.com/documentation/foundation/nserror)
@@ -581,6 +592,143 @@ class MutableURLRequest extends URLRequest {
   }
 }
 
+/// Setup delegation for the given [task] to the given methods.
+///
+/// Specifically, this causes the Objective-C-implemented delegate installed
+/// with
+/// [sessionWithConfiguration:delegate:delegateQueue:](https://developer.apple.com/documentation/foundation/nsurlsession/1411597-sessionwithconfiguration)
+/// to send a [ncb.CUPHTTPForwardedDelegate] object to a send port, which is
+/// then processed by [_setupDelegation] and forwarded to the given methods.
+void _setupDelegation(
+    ncb.CUPHTTPClientDelegate delegate, URLSession session, URLSessionTask task,
+    {URLRequest? Function(URLSession session, URLSessionTask task,
+            HTTPURLResponse response, URLRequest newRequest)?
+        onRedirect,
+    URLSessionResponseDisposition Function(
+            URLSession session, URLSessionTask task, URLResponse response)?
+        onResponse,
+    void Function(URLSession session, URLSessionTask task, Data error)? onData,
+    void Function(URLSession session, URLSessionTask task, Error? error)?
+        onComplete}) {
+  final responsePort = ReceivePort();
+  responsePort.listen((message) {
+    final messageType = message[0];
+    final dp = Pointer<ncb.ObjCObject>.fromAddress(message[1]);
+
+    // TODO(https://github.com/dart-lang/ffigen/issues/387): Indicate that
+    // the reference should be released but not retained in
+    // castFromPointer.
+    final forwardedDelegate =
+        ncb.CUPHTTPForwardedDelegate.castFromPointer(helperLibs, dp);
+
+    switch (messageType) {
+      case ncb.MessageType.RedirectMessage:
+        final forwardedRedirect =
+            ncb.CUPHTTPForwardedRedirect.castFrom(forwardedDelegate);
+        URLRequest? redirectRequest;
+
+        try {
+          final request = URLRequest._(
+              ncb.NSURLRequest.castFrom(forwardedRedirect.request!));
+
+          if (onRedirect == null) {
+            redirectRequest = request;
+            break;
+          }
+          try {
+            final response = HTTPURLResponse._(
+                ncb.NSHTTPURLResponse.castFrom(forwardedRedirect.response!));
+            redirectRequest = onRedirect(session, task, response, request);
+          } catch (e) {
+            // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
+            // this exception as an `Error` and call the completion function
+            // with it.
+          }
+        } finally {
+          forwardedRedirect.finishWithRequest_(redirectRequest?._nsObject);
+        }
+        break;
+      case ncb.MessageType.ResponseMessage:
+        final forwardedResponse =
+            ncb.CUPHTTPForwardedResponse.castFrom(forwardedDelegate);
+        var disposition =
+            URLSessionResponseDisposition.urlSessionResponseCancel;
+
+        try {
+          if (onResponse == null) {
+            disposition = URLSessionResponseDisposition.urlSessionResponseAllow;
+            break;
+          }
+          // TODO(https://github.com/dart-lang/ffigen/issues/374): Check the
+          // actual type of the response instead of assuming that it is a
+          // NSHTTPURLResponse.
+          final response = HTTPURLResponse._(
+              ncb.NSHTTPURLResponse.castFrom(forwardedResponse.response!));
+
+          try {
+            disposition = onResponse(session, task, response);
+          } catch (e) {
+            // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
+            // this exception as an `Error` and call the completion function
+            // with it.
+          }
+        } finally {
+          forwardedResponse.finishWithDisposition_(disposition.index);
+        }
+        break;
+      case ncb.MessageType.DataMessage:
+        final forwardedData =
+            ncb.CUPHTTPForwardedData.castFrom(forwardedDelegate);
+
+        try {
+          if (onData == null) {
+            break;
+          }
+          try {
+            onData(session, task,
+                Data._(ncb.NSData.castFrom(forwardedData.data!)));
+          } catch (e) {
+            // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
+            // this exception as an `Error` and call the completion function
+            // with it.
+          }
+        } finally {
+          forwardedData.finish();
+        }
+        break;
+      case ncb.MessageType.CompletedMessage:
+        final forwardedComplete =
+            ncb.CUPHTTPForwardedComplete.castFrom(forwardedDelegate);
+
+        try {
+          if (onComplete == null) {
+            break;
+          }
+          Error? error;
+          if (forwardedComplete.error != null) {
+            error = Error._(ncb.NSError.castFrom(forwardedComplete.error!));
+          }
+          try {
+            onComplete(session, task, error);
+          } catch (e) {
+            // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
+            // this exception as an `Error` and call the completion function
+            // with it.
+          }
+        } finally {
+          forwardedComplete.finish();
+          responsePort.close();
+        }
+        break;
+    }
+  });
+  final config = ncb.CUPHTTPTaskConfiguration.castFrom(
+      ncb.CUPHTTPTaskConfiguration.alloc(helperLibs)
+          .initWithPort_(responsePort.sendPort.nativePort));
+
+  delegate.registerTask_withConfiguration_(task._nsObject, config);
+}
+
 /// A client that can make network requests to a server.
 ///
 /// See [NSURLSession](https://developer.apple.com/documentation/foundation/nsurlsession)
@@ -591,8 +739,30 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
       ncb.CUPHTTPClientDelegate.new1(helperLibs);
 
   URLRequest? Function(URLSession session, URLSessionTask task,
-      HTTPURLResponse response, URLRequest newRequest)? httpRedirection;
-  URLSession._(ncb.NSURLSession c, {this.httpRedirection}) : super(c);
+      HTTPURLResponse response, URLRequest newRequest)? _onRedirect;
+  URLSessionResponseDisposition Function(
+          URLSession session, URLSessionTask task, URLResponse response)?
+      _onResponse;
+  void Function(URLSession session, URLSessionTask task, Data error)? _onData;
+  void Function(URLSession session, URLSessionTask task, Error? error)?
+      _onComplete;
+
+  URLSession._(ncb.NSURLSession c,
+      {URLRequest? Function(URLSession session, URLSessionTask task,
+              HTTPURLResponse response, URLRequest newRequest)?
+          onRedirect,
+      URLSessionResponseDisposition Function(
+              URLSession session, URLSessionTask task, URLResponse response)?
+          onResponse,
+      void Function(URLSession session, URLSessionTask task, Data error)?
+          onData,
+      void Function(URLSession session, URLSessionTask task, Error? error)?
+          onComplete})
+      : _onRedirect = onRedirect,
+        _onResponse = onResponse,
+        _onData = onData,
+        _onComplete = onComplete,
+        super(c);
 
   /// A client with reasonable default behavior.
   ///
@@ -604,7 +774,7 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
 
   /// A client with a given configuration.
   ///
-  /// If [httpRedirection] is set then it will be called whenever a HTTP
+  /// If [onRedirect] is set then it will be called whenever a HTTP
   /// request returns a redirect response (e.g. 302). The `response` parameter
   /// contains the response from the server. The `newRequest` parameter contains
   /// a follow-up request that would honor the server's redirect. If the return
@@ -613,15 +783,39 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
   /// executed. See
   /// [URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:](https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411626-urlsession)
   ///
-  /// See [NSURLSession sessionWithConfiguration:](https://developer.apple.com/documentation/foundation/nsurlsession/1411474-sessionwithconfiguration)
+  /// If [onResponse] is set then it will be called whenever a valid response
+  /// is received. The returned [URLSessionResponseDisposition] will decide
+  /// how the content of the response is processed. See
+  /// [URLSession:dataTask:didReceiveResponse:completionHandler:](https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1410027-urlsession)
+  ///
+  /// If [onData] is set then it will be called whenever response data is
+  /// received. If the amount of received data is large, then it may be
+  /// called more than once. See
+  /// [URLSession:dataTask:didReceiveData:](https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1411528-urlsession)
+  ///
+  /// If [onComplete] is set then it will be called when a task completes. If
+  /// `error` is `null` then the request completed successfully. See
+  /// [URLSession:task:didCompleteWithError:](https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411610-urlsession)
+  ///
+  /// See [sessionWithConfiguration:delegate:delegateQueue:](https://developer.apple.com/documentation/foundation/nsurlsession/1411597-sessionwithconfiguration)
   factory URLSession.sessionWithConfiguration(URLSessionConfiguration config,
       {URLRequest? Function(URLSession session, URLSessionTask task,
               HTTPURLResponse response, URLRequest newRequest)?
-          httpRedirection}) {
+          onRedirect,
+      URLSessionResponseDisposition Function(
+              URLSession session, URLSessionTask task, URLResponse response)?
+          onResponse,
+      void Function(URLSession session, URLSessionTask task, Data error)?
+          onData,
+      void Function(URLSession session, URLSessionTask task, Error? error)?
+          onComplete}) {
     return URLSession._(
         ncb.NSURLSession.sessionWithConfiguration_delegate_delegateQueue_(
             linkedLibs, config._nsObject, _delegate, null),
-        httpRedirection: httpRedirection);
+        onRedirect: onRedirect,
+        onResponse: onResponse,
+        onData: onData,
+        onComplete: onComplete);
   }
 
   // A **copy** of the configuration for this sesion.
@@ -636,8 +830,14 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
   //
   // See [NSURLSession dataTaskWithRequest:](https://developer.apple.com/documentation/foundation/nsurlsession/1410592-datataskwithrequest)
   URLSessionTask dataTaskWithRequest(URLRequest request) {
-    final task = _nsObject.dataTaskWithRequest_(request._nsObject);
-    return URLSessionTask._(task);
+    final task =
+        URLSessionTask._(_nsObject.dataTaskWithRequest_(request._nsObject));
+    _setupDelegation(_delegate, this, task,
+        onComplete: _onComplete,
+        onData: _onData,
+        onRedirect: _onRedirect,
+        onResponse: _onResponse);
+    return task;
   }
 
   /// Creates a [URLSessionTask] accesses a server URL and calls [completion]
@@ -659,86 +859,27 @@ class URLSession extends _ObjectHolder<ncb.NSURLSession> {
     // 2. use a delegate to send information about the task to the port
     // 3. call the user-provided completion function when we receive the
     //    `CompletedMessage` message type.
-    final task = _nsObject.dataTaskWithRequest_(request._nsObject);
+    final task =
+        URLSessionTask._(_nsObject.dataTaskWithRequest_(request._nsObject));
 
-    final responsePort = ReceivePort();
-    HTTPURLResponse? response;
-    MutableData? data;
-    responsePort.listen((message) {
-      final messageType = message[0];
-      final payload = message[1];
+    HTTPURLResponse? finalResponse;
+    MutableData? allData;
 
-      switch (messageType) {
-        case ncb.MessageType.ResponseMessage:
-          final rp = Pointer<ncb.ObjCObject>.fromAddress(payload);
-          // TODO(https://github.com/dart-lang/ffigen/issues/374): Check the
-          // actual type of the response instead of assuming that it is a
-          // NSHTTPURLResponse.
-          // TODO(https://github.com/dart-lang/ffigen/issues/387): Indicate that
-          // the reference should be released but not retained in
-          // castFromPointer.
-          response = HTTPURLResponse._(
-              ncb.NSHTTPURLResponse.castFromPointer(helperLibs, rp));
-          break;
-        case ncb.MessageType.DataMessage:
-          if (data == null) {
-            data = MutableData.empty();
-          }
-          data!.appendBytes(payload);
-          break;
-        case ncb.MessageType.CompletedMessage:
-          Error? error;
-          if (payload != null) {
-            final ep = Pointer<ncb.ObjCObject>.fromAddress(payload);
-            // TODO(https://github.com/dart-lang/ffigen/issues/387): Indicate
-            // that the reference should be released but not retained in
-            // castFromPointer.
-            error = Error._(ncb.NSError.castFromPointer(helperLibs, ep));
-          }
-          completion(
-              data == null ? null : Data.fromData(data!), response, error);
-          responsePort.close();
-          break;
-        case ncb.MessageType.RedirectMessage:
-          final rp = Pointer<ncb.ObjCObject>.fromAddress(payload);
-          final redirect = ncb.CUPHTTPRedirect.castFromPointer(helperLibs, rp);
-
-          if (httpRedirection == null) {
-            redirect.continueWithRequest_(redirect.request);
-          } else {
-            final session =
-                URLSession._(ncb.NSURLSession.castFrom(redirect.session!));
-            final task =
-                URLSessionTask._(ncb.NSURLSessionTask.castFrom(redirect.task!));
-            final response = HTTPURLResponse._(
-                ncb.NSHTTPURLResponse.castFrom(redirect.response!));
-            final request =
-                URLRequest._(ncb.NSURLRequest.castFrom(redirect.request!));
-
-            URLRequest? redirectRequest;
-            try {
-              redirectRequest =
-                  httpRedirection!(session, task, response, request);
-            } catch (e) {
-              // TODO(https://github.com/dart-lang/ffigen/issues/386): Package
-              // this exception as an `Error` and call the completion function
-              // with it.
-            } finally {
-              // [CUPHTTPClientDelegate
-              //    URLSession: task: willPerformHTTPRedirection: ...]
-              // will wait on a lock until `continueWithRequest_` is called, so
-              // ensure that it is called even if `httpRedirection` throws.
-              redirect.continueWithRequest_(redirectRequest?._nsObject);
-            }
-          }
+    _setupDelegation(_delegate, this, task, onRedirect: _onRedirect, onResponse:
+        (URLSession session, URLSessionTask task, URLResponse response) {
+      finalResponse =
+          HTTPURLResponse._(ncb.NSHTTPURLResponse.castFrom(response._nsObject));
+      return URLSessionResponseDisposition.urlSessionResponseAllow;
+    }, onData: (URLSession session, URLSessionTask task, Data data) {
+      if (allData == null) {
+        allData = MutableData.empty();
       }
+      allData!.appendBytes(data.bytes);
+    }, onComplete: (URLSession session, URLSessionTask task, Error? error) {
+      completion(allData == null ? null : Data.fromData(allData!),
+          finalResponse, error);
     });
 
-    final config = ncb.CUPHTTPTaskConfiguration.castFrom(
-        ncb.CUPHTTPTaskConfiguration.alloc(helperLibs)
-            .initWithPort_(responsePort.sendPort.nativePort));
-
-    _delegate.registerTask_withConfiguration_(task, config);
-    return URLSessionTask._(task);
+    return URLSessionTask._(task._nsObject);
   }
 }

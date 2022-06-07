@@ -7,6 +7,8 @@
 #import <Foundation/Foundation.h>
 #include <os/log.h>
 
+#import "CUPHTTPForwardedDelegate.h"
+
 static Dart_CObject NSObjectToCObject(NSObject* n) {
   Dart_CObject cobj;
   cobj.type = Dart_CObject_kInt64;
@@ -29,39 +31,6 @@ static Dart_CObject MessageTypeToCObject(MessageType messageType) {
     self->_sendPort = sendPort;
   }
   return self;
-}
-
-@end
-
-@implementation CUPHTTPRedirect
-
-- (id) initWithSession:(NSURLSession *)session
-                  task:(NSURLSessionTask *) task
-              response:(NSHTTPURLResponse *)response
-               request:(NSURLRequest *)request{
-  self = [super init];
-  if (self != nil) {
-    self->_session = [session retain];
-    self->_task = [task retain];
-    self->_response = [response retain];
-    self->_request = [request retain];
-    self->_lock = [NSLock new];
-  }
-  return self;
-}
-
-- (void) dealloc {
-  [self->_session release];
-  [self->_task release];
-  [self->_response release];
-  [self->_request release];
-  [self->_lock release];
-  [super dealloc];
-}
-
-- (void) continueWithRequest:(NSURLRequest *) request {
-  self->_redirectRequest = [request retain];
-  [self->_lock unlock];
 }
 
 @end
@@ -91,130 +60,132 @@ static Dart_CObject MessageTypeToCObject(MessageType messageType) {
   [taskConfigurations removeObjectForKey:task];
 }
 
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)task
-didReceiveResponse:(NSURLResponse *)response
- completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
-{
-  CUPHTTPTaskConfiguration *config = [taskConfigurations objectForKey:task];
-  if (config != nil) {
-    [response retain];
-
-    Dart_CObject ctype = MessageTypeToCObject(ResponseMessage);
-    Dart_CObject cresponse = NSObjectToCObject(response);
-    Dart_CObject* message_carray[] = { &ctype, &cresponse};
-
-    Dart_CObject message_cobj;
-    message_cobj.type = Dart_CObject_kArray;
-    message_cobj.value.as_array.length = 2;
-    message_cobj.value.as_array.values = message_carray;
-
-    const bool success = Dart_PostCObject_DL(config.sendPort, &message_cobj);
-    if (!success) {
-      os_log_error(OS_LOG_DEFAULT, "Dart_PostCObject_DL failed.");
-    }
-  }
-  completionHandler(NSURLSessionResponseAllow);
-}
-
 - (void)URLSession:(NSURLSession *)session
               task:(NSURLSessionTask *)task
 willPerformHTTPRedirection:(NSHTTPURLResponse *)response
         newRequest:(NSURLRequest *)request
  completionHandler:(void (^)(NSURLRequest *))completionHandler {
   CUPHTTPTaskConfiguration *config = [taskConfigurations objectForKey:task];
-  if (config == nil) {
-    completionHandler(nil);
-    return;
-  }
-  CUPHTTPRedirect *redirect = [[[CUPHTTPRedirect alloc]
-                                initWithSession:session task:task response:response request:request]
-                               autorelease];
-  Dart_CObject ctype = MessageTypeToCObject(RedirectMessage);
-  Dart_CObject credirect = NSObjectToCObject(redirect);
-  Dart_CObject* message_carray[] = { &ctype, &credirect };
+  NSAssert(config != nil, @"No configuration for task.");
 
+  CUPHTTPForwardedRedirect *forwardedRedirect = [[CUPHTTPForwardedRedirect alloc]
+                                                 initWithSession:session task:task
+                                                 response:response request:request];
+  Dart_CObject ctype = MessageTypeToCObject(RedirectMessage);
+  Dart_CObject credirect = NSObjectToCObject(forwardedRedirect);
+  Dart_CObject* message_carray[] = { &ctype, &credirect };
+  
   Dart_CObject message_cobj;
   message_cobj.type = Dart_CObject_kArray;
   message_cobj.value.as_array.length = 2;
   message_cobj.value.as_array.values = message_carray;
-
-  [redirect.lock lock];  // After this line, any attempt to acquire the lock will wait.
+  
+  [forwardedRedirect.lock lock];  // After this line, any attempt to acquire the lock will wait.
   const bool success = Dart_PostCObject_DL(config.sendPort, &message_cobj);
-  if (!success) {
-    os_log_error(OS_LOG_DEFAULT, "Dart_PostCObject_DL failed.");
-    completionHandler(nil);
-    return;
-  }
+  NSAssert(success, @"Dart_PostCObject_DL failed.");
+  
   // Will be unlocked by [CUPHTTPRedirect continueWithRequest:], which will
   // set `redirect.redirectRequest`.
   //
   // See the @interface description for CUPHTTPRedirect.
-  [redirect.lock lock];
+  [forwardedRedirect.lock lock];
+  
+  completionHandler(forwardedRedirect.redirectRequest);
+}
 
-  completionHandler(redirect.redirectRequest);
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)task
+didReceiveResponse:(NSURLResponse *)response
+ completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
+{
+  CUPHTTPTaskConfiguration *config = [taskConfigurations objectForKey:task];
+  NSAssert(config != nil, @"No configuration for task.");
+  
+  CUPHTTPForwardedResponse *forwardedResponse = [[CUPHTTPForwardedResponse alloc]
+                                                 initWithSession:session
+                                                 task:task
+                                                 response:response];
+  
+  
+  Dart_CObject ctype = MessageTypeToCObject(ResponseMessage);
+  Dart_CObject cRsponseReceived = NSObjectToCObject(forwardedResponse);
+  Dart_CObject* message_carray[] = { &ctype, &cRsponseReceived };
+  
+  Dart_CObject message_cobj;
+  message_cobj.type = Dart_CObject_kArray;
+  message_cobj.value.as_array.length = 2;
+  message_cobj.value.as_array.values = message_carray;
+  
+  [forwardedResponse.lock lock];  // After this line, any attempt to acquire the lock will wait.
+  const bool success = Dart_PostCObject_DL(config.sendPort, &message_cobj);
+  NSAssert(success, @"Dart_PostCObject_DL failed.");
+  
+  // Will be unlocked by [CUPHTTPRedirect continueWithRequest:], which will
+  // set `redirect.redirectRequest`.
+  //
+  // See the @interface description for CUPHTTPRedirect.
+  [forwardedResponse.lock lock];
+  
+  completionHandler(forwardedResponse.disposition);
 }
 
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)task
     didReceiveData:(NSData *)data {
   CUPHTTPTaskConfiguration *config = [taskConfigurations objectForKey:task];
-  if (config == nil) {
-    return;
-  }
-
-  [data enumerateByteRangesUsingBlock:^(const void * _Nonnull bytes, NSRange byteRange, BOOL * _Nonnull stop) {
-    Dart_CObject ctype = MessageTypeToCObject(DataMessage);
-
-    Dart_CObject cdata;
-    cdata.type = Dart_CObject_kTypedData;
-    cdata.value.as_typed_data.type = Dart_TypedData_kUint8;
-    cdata.value.as_typed_data.length = byteRange.length;
-    cdata.value.as_typed_data.values = (uint8_t *) bytes;
-
-    Dart_CObject* message_carray[] = { &ctype, &cdata};
-
-    Dart_CObject message_cobj;
-    message_cobj.type = Dart_CObject_kArray;
-    message_cobj.value.as_array.length = 2;
-    message_cobj.value.as_array.values = message_carray;
-
-    const bool success = Dart_PostCObject_DL(config.sendPort, &message_cobj);
-    if (!success) {
-      os_log_error(OS_LOG_DEFAULT, "Dart_PostCObject_DL failed.");
-    }
-  }];
+  NSAssert(config != nil, @"No configuration for task.");
+  
+  CUPHTTPForwardedData *forwardedData = [[CUPHTTPForwardedData alloc]
+                                         initWithSession:session task:task data: data]
+  ;
+  
+  Dart_CObject ctype = MessageTypeToCObject(DataMessage);
+  Dart_CObject cReceiveData = NSObjectToCObject(forwardedData);
+  Dart_CObject* message_carray[] = { &ctype, &cReceiveData };
+  
+  Dart_CObject message_cobj;
+  message_cobj.type = Dart_CObject_kArray;
+  message_cobj.value.as_array.length = 2;
+  message_cobj.value.as_array.values = message_carray;
+  
+  [forwardedData.lock lock];  // After this line, any attempt to acquire the lock will wait.
+  const bool success = Dart_PostCObject_DL(config.sendPort, &message_cobj);
+  NSAssert(success, @"Dart_PostCObject_DL failed.");
+  
+  // Will be unlocked by [CUPHTTPRedirect continueWithRequest:], which will
+  // set `redirect.redirectRequest`.
+  //
+  // See the @interface description for CUPHTTPRedirect.
+  [forwardedData.lock lock];
 }
 
 - (void)URLSession:(NSURLSession *)session
               task:(NSURLSessionTask *)task
 didCompleteWithError:(NSError *)error {
   CUPHTTPTaskConfiguration *config = [taskConfigurations objectForKey:task];
-  if (config == nil) {
-    return;
-  }
+  NSAssert(config != nil, @"No configuration for task.");
+  
+  CUPHTTPForwardedComplete *forwardedComplete = [[CUPHTTPForwardedComplete alloc]
+                                                 initWithSession:session task:task error: error];
+  
   
   Dart_CObject ctype = MessageTypeToCObject(CompletedMessage);
-  Dart_CObject cerror;
-  if (error != nil) {
-    [error retain];
-    cerror.type = Dart_CObject_kInt64;
-    cerror.value.as_int64 = (int64_t) error;
-  } else {
-    cerror.type = Dart_CObject_kNull;
-  }
-
-  Dart_CObject* message_carray[] = { &ctype, &cerror};
-
+  Dart_CObject cComplete = NSObjectToCObject(forwardedComplete);
+  Dart_CObject* message_carray[] = { &ctype, &cComplete };
+  
   Dart_CObject message_cobj;
   message_cobj.type = Dart_CObject_kArray;
   message_cobj.value.as_array.length = 2;
   message_cobj.value.as_array.values = message_carray;
-
+  
+  [forwardedComplete.lock lock];  // After this line, any attempt to acquire the lock will wait.
   const bool success = Dart_PostCObject_DL(config.sendPort, &message_cobj);
-  [self unregisterTask: task];
-  if (!success) {
-    os_log_error(OS_LOG_DEFAULT, "Dart_PostCObject_DL failed.");
-  }
+  NSAssert(success, @"Dart_PostCObject_DL failed.");
+  
+  // Will be unlocked by [CUPHTTPRedirect continueWithRequest:], which will
+  // set `redirect.redirectRequest`.
+  //
+  // See the @interface description for CUPHTTPRedirect.
+  [forwardedComplete.lock lock];
 }
 
 @end
