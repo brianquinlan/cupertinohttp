@@ -469,6 +469,7 @@ class URLSessionTask extends _ObjectHolder<ncb.NSURLSessionTask> {
   @override
   String toString() {
     return "[URLSessionTask "
+        "taskIdentifider=$taskIdentifider "
         "countOfBytesExpectedToReceive=$countOfBytesExpectedToReceive "
         "countOfBytesReceived=$countOfBytesReceived "
         "state=$state"
