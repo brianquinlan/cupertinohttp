@@ -10,10 +10,10 @@ import 'package:http/http.dart';
 import 'cupertinohttp.dart';
 
 class _TaskTracker {
-  var numRedirects = 0;
   final completer = Completer<Object>();
-  BaseRequest request;
+  final BaseRequest request;
   final responseController = StreamController<Uint8List>();
+  var numRedirects = 0;
 
   _TaskTracker(this.request);
 
@@ -61,7 +61,7 @@ class CupertinoClient extends BaseClient {
 
     if (error != null) {
       final exception =
-          ClientException(error.localizedDescription ?? "No description");
+          ClientException(error.localizedDescription ?? 'Unknown');
       if (t.completer.isCompleted) {
         t.responseController.addError(exception);
       } else {
@@ -69,7 +69,7 @@ class CupertinoClient extends BaseClient {
       }
     } else if (!t.completer.isCompleted) {
       t.completer.complete(
-          new StateError("task completed without an error or response"));
+          new StateError('task completed without an error or response'));
     }
     t.close();
     tasks.remove(task.taskIdentifider);
@@ -97,12 +97,14 @@ class CupertinoClient extends BaseClient {
     return URLSessionResponseDisposition.urlSessionResponseAllow;
   }
 
+  /// A [Client] with the default configuration.
   factory CupertinoClient.defaultSessionConfiguration() {
     final URLSessionConfiguration config =
         URLSessionConfiguration.defaultSessionConfiguration();
     return CupertinoClient.fromSessionConfiguration(config);
   }
 
+  /// A [Client] configured with a [URLSessionConfiguration].
   factory CupertinoClient.fromSessionConfiguration(
       URLSessionConfiguration config) {
     final session = URLSession.sessionWithConfiguration(config,
