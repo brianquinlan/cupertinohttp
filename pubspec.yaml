@@ -10,7 +10,7 @@ environment:
   flutter: ">=3.0.0"
 
 dependencies:
-  ffi: ">=1.2.1<2.0.0"
+  ffi: ^1.2.1
   flutter:
     sdk: flutter
   http: ^0.13.4
@@ -19,7 +19,7 @@ dependencies:
     path: third_party/native_library
 
 dev_dependencies:
-  ffigen: ">=5.0.0<6.0.0"
+  ffigen: ^6.0.0
   flutter_test:
     sdk: flutter
   test: ">=1.21.1<2.0.0"

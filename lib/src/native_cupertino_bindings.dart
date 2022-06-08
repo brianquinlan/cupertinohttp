@@ -593,16 +593,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZonePtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone = _NSCreateZonePtr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone(
     ffi.Pointer<NSZone> zone,
@@ -921,29 +921,40 @@ class NativeCupertinoHttp {
   late final __objc_getClass = __objc_getClassPtr
       .asFunction<ffi.Pointer<ObjCObject> Function(ffi.Pointer<ffi.Char>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSObject1 = _getClass1("NSObject");
-  late final ffi.Pointer<ObjCSel> _sel_load1 = _registerName1("load");
-  void _objc_msgSend_0(
-    ffi.Pointer<ObjCObject> obj,
-    ffi.Pointer<ObjCSel> sel,
+  ffi.Pointer<ObjCObject> _objc_retain(
+    ffi.Pointer<ObjCObject> value,
   ) {
-    return __objc_msgSend_0(
-      obj,
-      sel,
+    return __objc_retain(
+      value,
     );
   }
 
-  late final __objc_msgSend_0Ptr = _lookup<
+  late final __objc_retainPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>>('objc_msgSend');
-  late final __objc_msgSend_0 = __objc_msgSend_0Ptr.asFunction<
-      void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
+          ffi.Pointer<ObjCObject> Function(
+              ffi.Pointer<ObjCObject>)>>('objc_retain');
+  late final __objc_retain = __objc_retainPtr
+      .asFunction<ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initialize1 =
-      _registerName1("initialize");
-  late final ffi.Pointer<ObjCSel> _sel_init1 = _registerName1("init");
-  instancetype _objc_msgSend_1(
+  void _objc_release(
+    ffi.Pointer<ObjCObject> value,
+  ) {
+    return __objc_release(
+      value,
+    );
+  }
+
+  late final __objc_releasePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ObjCObject>)>>(
+          'objc_release');
+  late final __objc_release =
+      __objc_releasePtr.asFunction<void Function(ffi.Pointer<ObjCObject>)>();
+
+  late final _objc_releaseFinalizer1 =
+      ffi.NativeFinalizer(__objc_releasePtr.cast());
+  late final _class_NSObject1 = _getClass1("NSObject");
+  late final _sel_load1 = _registerName1("load");
+  void _objc_msgSend_1(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
   ) {
@@ -955,92 +966,104 @@ class NativeCupertinoHttp {
 
   late final __objc_msgSend_1Ptr = _lookup<
       ffi.NativeFunction<
-          instancetype Function(
+          ffi.Void Function(
               ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>>('objc_msgSend');
   late final __objc_msgSend_1 = __objc_msgSend_1Ptr.asFunction<
+      void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
+
+  late final _sel_initialize1 = _registerName1("initialize");
+  late final _sel_init1 = _registerName1("init");
+  instancetype _objc_msgSend_2(
+    ffi.Pointer<ObjCObject> obj,
+    ffi.Pointer<ObjCSel> sel,
+  ) {
+    return __objc_msgSend_2(
+      obj,
+      sel,
+    );
+  }
+
+  late final __objc_msgSend_2Ptr = _lookup<
+      ffi.NativeFunction<
+          instancetype Function(
+              ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>>('objc_msgSend');
+  late final __objc_msgSend_2 = __objc_msgSend_2Ptr.asFunction<
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_new1 = _registerName1("new");
-  late final ffi.Pointer<ObjCSel> _sel_allocWithZone_1 =
-      _registerName1("allocWithZone:");
-  instancetype _objc_msgSend_2(
+  late final _sel_new1 = _registerName1("new");
+  late final _sel_allocWithZone_1 = _registerName1("allocWithZone:");
+  instancetype _objc_msgSend_3(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
     ffi.Pointer<_NSZone> zone,
   ) {
-    return __objc_msgSend_2(
+    return __objc_msgSend_3(
       obj,
       sel,
       zone,
     );
   }
 
-  late final __objc_msgSend_2Ptr = _lookup<
+  late final __objc_msgSend_3Ptr = _lookup<
       ffi.NativeFunction<
           instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
               ffi.Pointer<_NSZone>)>>('objc_msgSend');
-  late final __objc_msgSend_2 = __objc_msgSend_2Ptr.asFunction<
+  late final __objc_msgSend_3 = __objc_msgSend_3Ptr.asFunction<
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_NSZone>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_alloc1 = _registerName1("alloc");
-  late final ffi.Pointer<ObjCSel> _sel_dealloc1 = _registerName1("dealloc");
-  late final ffi.Pointer<ObjCSel> _sel_finalize1 = _registerName1("finalize");
-  late final ffi.Pointer<ObjCSel> _sel_copy1 = _registerName1("copy");
-  late final ffi.Pointer<ObjCSel> _sel_mutableCopy1 =
-      _registerName1("mutableCopy");
-  late final ffi.Pointer<ObjCSel> _sel_copyWithZone_1 =
-      _registerName1("copyWithZone:");
-  late final ffi.Pointer<ObjCSel> _sel_mutableCopyWithZone_1 =
+  late final _sel_alloc1 = _registerName1("alloc");
+  late final _sel_dealloc1 = _registerName1("dealloc");
+  late final _sel_finalize1 = _registerName1("finalize");
+  late final _sel_copy1 = _registerName1("copy");
+  late final _sel_mutableCopy1 = _registerName1("mutableCopy");
+  late final _sel_copyWithZone_1 = _registerName1("copyWithZone:");
+  late final _sel_mutableCopyWithZone_1 =
       _registerName1("mutableCopyWithZone:");
-  late final ffi.Pointer<ObjCSel> _sel_instancesRespondToSelector_1 =
+  late final _sel_instancesRespondToSelector_1 =
       _registerName1("instancesRespondToSelector:");
-  bool _objc_msgSend_3(
+  bool _objc_msgSend_4(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
     ffi.Pointer<ObjCSel> aSelector,
   ) {
-    return __objc_msgSend_3(
-          obj,
-          sel,
-          aSelector,
-        ) !=
-        0;
-  }
-
-  late final __objc_msgSend_3Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-              ffi.Pointer<ObjCSel>)>>('objc_msgSend');
-  late final __objc_msgSend_3 = __objc_msgSend_3Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-          ffi.Pointer<ObjCSel>)>();
-
-  late final ffi.Pointer<ObjCSel> _sel_conformsToProtocol_1 =
-      _registerName1("conformsToProtocol:");
-  bool _objc_msgSend_4(
-    ffi.Pointer<ObjCObject> obj,
-    ffi.Pointer<ObjCSel> sel,
-    ffi.Pointer<ObjCObject> protocol,
-  ) {
     return __objc_msgSend_4(
-          obj,
-          sel,
-          protocol,
-        ) !=
-        0;
+      obj,
+      sel,
+      aSelector,
+    );
   }
 
   late final __objc_msgSend_4Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-              ffi.Pointer<ObjCObject>)>>('objc_msgSend');
+          ffi.Bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+              ffi.Pointer<ObjCSel>)>>('objc_msgSend');
   late final __objc_msgSend_4 = __objc_msgSend_4Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+          ffi.Pointer<ObjCSel>)>();
+
+  late final _sel_conformsToProtocol_1 = _registerName1("conformsToProtocol:");
+  bool _objc_msgSend_0(
+    ffi.Pointer<ObjCObject> obj,
+    ffi.Pointer<ObjCSel> sel,
+    ffi.Pointer<ObjCObject> clazz,
+  ) {
+    return __objc_msgSend_0(
+      obj,
+      sel,
+      clazz,
+    );
+  }
+
+  late final __objc_msgSend_0Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+              ffi.Pointer<ObjCObject>)>>('objc_msgSend');
+  late final __objc_msgSend_0 = __objc_msgSend_0Ptr.asFunction<
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_methodForSelector_1 =
-      _registerName1("methodForSelector:");
+  late final _sel_methodForSelector_1 = _registerName1("methodForSelector:");
   IMP _objc_msgSend_5(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1061,9 +1084,9 @@ class NativeCupertinoHttp {
       IMP Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_instanceMethodForSelector_1 =
+  late final _sel_instanceMethodForSelector_1 =
       _registerName1("instanceMethodForSelector:");
-  late final ffi.Pointer<ObjCSel> _sel_doesNotRecognizeSelector_1 =
+  late final _sel_doesNotRecognizeSelector_1 =
       _registerName1("doesNotRecognizeSelector:");
   void _objc_msgSend_6(
     ffi.Pointer<ObjCObject> obj,
@@ -1085,7 +1108,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_forwardingTargetForSelector_1 =
+  late final _sel_forwardingTargetForSelector_1 =
       _registerName1("forwardingTargetForSelector:");
   ffi.Pointer<ObjCObject> _objc_msgSend_7(
     ffi.Pointer<ObjCObject> obj,
@@ -1107,8 +1130,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_forwardInvocation_1 =
-      _registerName1("forwardInvocation:");
+  late final _sel_forwardInvocation_1 = _registerName1("forwardInvocation:");
   void _objc_msgSend_8(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1129,9 +1151,9 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSMethodSignature1 =
-      _getClass1("NSMethodSignature");
-  late final ffi.Pointer<ObjCSel> _sel_methodSignatureForSelector_1 =
+  late final _sel_isKindOfClass_1 = _registerName1("isKindOfClass:");
+  late final _class_NSMethodSignature1 = _getClass1("NSMethodSignature");
+  late final _sel_methodSignatureForSelector_1 =
       _registerName1("methodSignatureForSelector:");
   ffi.Pointer<ObjCObject> _objc_msgSend_9(
     ffi.Pointer<ObjCObject> obj,
@@ -1153,37 +1175,32 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_instanceMethodSignatureForSelector_1 =
+  late final _sel_instanceMethodSignatureForSelector_1 =
       _registerName1("instanceMethodSignatureForSelector:");
-  late final ffi.Pointer<ObjCSel> _sel_allowsWeakReference1 =
-      _registerName1("allowsWeakReference");
+  late final _sel_allowsWeakReference1 = _registerName1("allowsWeakReference");
   bool _objc_msgSend_10(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
   ) {
     return __objc_msgSend_10(
-          obj,
-          sel,
-        ) !=
-        0;
+      obj,
+      sel,
+    );
   }
 
   late final __objc_msgSend_10Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>>('objc_msgSend');
   late final __objc_msgSend_10 = __objc_msgSend_10Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_retainWeakReference1 =
-      _registerName1("retainWeakReference");
-  late final ffi.Pointer<ObjCSel> _sel_isSubclassOfClass_1 =
-      _registerName1("isSubclassOfClass:");
-  late final ffi.Pointer<ObjCSel> _sel_resolveClassMethod_1 =
-      _registerName1("resolveClassMethod:");
-  late final ffi.Pointer<ObjCSel> _sel_resolveInstanceMethod_1 =
+  late final _sel_retainWeakReference1 = _registerName1("retainWeakReference");
+  late final _sel_isSubclassOfClass_1 = _registerName1("isSubclassOfClass:");
+  late final _sel_resolveClassMethod_1 = _registerName1("resolveClassMethod:");
+  late final _sel_resolveInstanceMethod_1 =
       _registerName1("resolveInstanceMethod:");
-  late final ffi.Pointer<ObjCSel> _sel_hash1 = _registerName1("hash");
+  late final _sel_hash1 = _registerName1("hash");
   int _objc_msgSend_11(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1201,13 +1218,11 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_11 = __objc_msgSend_11Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_superclass1 =
-      _registerName1("superclass");
-  late final ffi.Pointer<ObjCSel> _sel_class1 = _registerName1("class");
-  late final ffi.Pointer<ObjCObject> _class_NSString1 = _getClass1("NSString");
-  late final ffi.Pointer<ObjCSel> _sel_length1 = _registerName1("length");
-  late final ffi.Pointer<ObjCSel> _sel_characterAtIndex_1 =
-      _registerName1("characterAtIndex:");
+  late final _sel_superclass1 = _registerName1("superclass");
+  late final _sel_class1 = _registerName1("class");
+  late final _class_NSString1 = _getClass1("NSString");
+  late final _sel_length1 = _registerName1("length");
+  late final _sel_characterAtIndex_1 = _registerName1("characterAtIndex:");
   int _objc_msgSend_12(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1227,8 +1242,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_12 = __objc_msgSend_12Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithCoder_1 =
-      _registerName1("initWithCoder:");
+  late final _sel_initWithCoder_1 = _registerName1("initWithCoder:");
   instancetype _objc_msgSend_13(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1249,8 +1263,7 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_substringFromIndex_1 =
-      _registerName1("substringFromIndex:");
+  late final _sel_substringFromIndex_1 = _registerName1("substringFromIndex:");
   ffi.Pointer<ObjCObject> _objc_msgSend_14(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1271,10 +1284,8 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_substringToIndex_1 =
-      _registerName1("substringToIndex:");
-  late final ffi.Pointer<ObjCSel> _sel_substringWithRange_1 =
-      _registerName1("substringWithRange:");
+  late final _sel_substringToIndex_1 = _registerName1("substringToIndex:");
+  late final _sel_substringWithRange_1 = _registerName1("substringWithRange:");
   ffi.Pointer<ObjCObject> _objc_msgSend_15(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1295,7 +1306,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_getCharacters_range_1 =
+  late final _sel_getCharacters_range_1 =
       _registerName1("getCharacters:range:");
   void _objc_msgSend_16(
     ffi.Pointer<ObjCObject> obj,
@@ -1319,7 +1330,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<unichar>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_compare_1 = _registerName1("compare:");
+  late final _sel_compare_1 = _registerName1("compare:");
   int _objc_msgSend_17(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1340,8 +1351,7 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_compare_options_1 =
-      _registerName1("compare:options:");
+  late final _sel_compare_options_1 = _registerName1("compare:options:");
   int _objc_msgSend_18(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1364,7 +1374,7 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_compare_options_range_1 =
+  late final _sel_compare_options_range_1 =
       _registerName1("compare:options:range:");
   int _objc_msgSend_19(
     ffi.Pointer<ObjCObject> obj,
@@ -1390,7 +1400,7 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_compare_options_range_locale_1 =
+  late final _sel_compare_options_range_locale_1 =
       _registerName1("compare:options:range:locale:");
   int _objc_msgSend_20(
     ffi.Pointer<ObjCObject> obj,
@@ -1423,21 +1433,17 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int, NSRange, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_caseInsensitiveCompare_1 =
+  late final _sel_caseInsensitiveCompare_1 =
       _registerName1("caseInsensitiveCompare:");
-  late final ffi.Pointer<ObjCSel> _sel_localizedCompare_1 =
-      _registerName1("localizedCompare:");
-  late final ffi.Pointer<ObjCSel> _sel_localizedCaseInsensitiveCompare_1 =
+  late final _sel_localizedCompare_1 = _registerName1("localizedCompare:");
+  late final _sel_localizedCaseInsensitiveCompare_1 =
       _registerName1("localizedCaseInsensitiveCompare:");
-  late final ffi.Pointer<ObjCSel> _sel_localizedStandardCompare_1 =
+  late final _sel_localizedStandardCompare_1 =
       _registerName1("localizedStandardCompare:");
-  late final ffi.Pointer<ObjCSel> _sel_isEqualToString_1 =
-      _registerName1("isEqualToString:");
-  late final ffi.Pointer<ObjCSel> _sel_hasPrefix_1 =
-      _registerName1("hasPrefix:");
-  late final ffi.Pointer<ObjCSel> _sel_hasSuffix_1 =
-      _registerName1("hasSuffix:");
-  late final ffi.Pointer<ObjCSel> _sel_commonPrefixWithString_options_1 =
+  late final _sel_isEqualToString_1 = _registerName1("isEqualToString:");
+  late final _sel_hasPrefix_1 = _registerName1("hasPrefix:");
+  late final _sel_hasSuffix_1 = _registerName1("hasSuffix:");
+  late final _sel_commonPrefixWithString_options_1 =
       _registerName1("commonPrefixWithString:options:");
   ffi.Pointer<ObjCObject> _objc_msgSend_21(
     ffi.Pointer<ObjCObject> obj,
@@ -1464,14 +1470,12 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_containsString_1 =
-      _registerName1("containsString:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_localizedCaseInsensitiveContainsString_1 =
+  late final _sel_containsString_1 = _registerName1("containsString:");
+  late final _sel_localizedCaseInsensitiveContainsString_1 =
       _registerName1("localizedCaseInsensitiveContainsString:");
-  late final ffi.Pointer<ObjCSel> _sel_localizedStandardContainsString_1 =
+  late final _sel_localizedStandardContainsString_1 =
       _registerName1("localizedStandardContainsString:");
-  late final ffi.Pointer<ObjCSel> _sel_localizedStandardRangeOfString_1 =
+  late final _sel_localizedStandardRangeOfString_1 =
       _registerName1("localizedStandardRangeOfString:");
   NSRange _objc_msgSend_22(
     ffi.Pointer<ObjCObject> obj,
@@ -1493,9 +1497,8 @@ class NativeCupertinoHttp {
       NSRange Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfString_1 =
-      _registerName1("rangeOfString:");
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfString_options_1 =
+  late final _sel_rangeOfString_1 = _registerName1("rangeOfString:");
+  late final _sel_rangeOfString_options_1 =
       _registerName1("rangeOfString:options:");
   NSRange _objc_msgSend_23(
     ffi.Pointer<ObjCObject> obj,
@@ -1519,7 +1522,7 @@ class NativeCupertinoHttp {
       NSRange Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfString_options_range_1 =
+  late final _sel_rangeOfString_options_range_1 =
       _registerName1("rangeOfString:options:range:");
   NSRange _objc_msgSend_24(
     ffi.Pointer<ObjCObject> obj,
@@ -1545,7 +1548,7 @@ class NativeCupertinoHttp {
       NSRange Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfString_options_range_locale_1 =
+  late final _sel_rangeOfString_options_range_locale_1 =
       _registerName1("rangeOfString:options:range:locale:");
   NSRange _objc_msgSend_25(
     ffi.Pointer<ObjCObject> obj,
@@ -1578,14 +1581,13 @@ class NativeCupertinoHttp {
       NSRange Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int, NSRange, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfCharacterFromSet_1 =
+  late final _sel_rangeOfCharacterFromSet_1 =
       _registerName1("rangeOfCharacterFromSet:");
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfCharacterFromSet_options_1 =
+  late final _sel_rangeOfCharacterFromSet_options_1 =
       _registerName1("rangeOfCharacterFromSet:options:");
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfCharacterFromSet_options_range_1 =
+  late final _sel_rangeOfCharacterFromSet_options_range_1 =
       _registerName1("rangeOfCharacterFromSet:options:range:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_rangeOfComposedCharacterSequenceAtIndex_1 =
+  late final _sel_rangeOfComposedCharacterSequenceAtIndex_1 =
       _registerName1("rangeOfComposedCharacterSequenceAtIndex:");
   NSRange _objc_msgSend_26(
     ffi.Pointer<ObjCObject> obj,
@@ -1606,8 +1608,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_26 = __objc_msgSend_26Ptr.asFunction<
       NSRange Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_rangeOfComposedCharacterSequencesForRange_1 =
+  late final _sel_rangeOfComposedCharacterSequencesForRange_1 =
       _registerName1("rangeOfComposedCharacterSequencesForRange:");
   NSRange _objc_msgSend_27(
     ffi.Pointer<ObjCObject> obj,
@@ -1629,7 +1630,7 @@ class NativeCupertinoHttp {
       NSRange Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_stringByAppendingString_1 =
+  late final _sel_stringByAppendingString_1 =
       _registerName1("stringByAppendingString:");
   ffi.Pointer<ObjCObject> _objc_msgSend_28(
     ffi.Pointer<ObjCObject> obj,
@@ -1651,10 +1652,9 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_stringByAppendingFormat_1 =
+  late final _sel_stringByAppendingFormat_1 =
       _registerName1("stringByAppendingFormat:");
-  late final ffi.Pointer<ObjCSel> _sel_doubleValue1 =
-      _registerName1("doubleValue");
+  late final _sel_doubleValue1 = _registerName1("doubleValue");
   double _objc_msgSend_29(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1672,8 +1672,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_29 = __objc_msgSend_29Ptr.asFunction<
       double Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_floatValue1 =
-      _registerName1("floatValue");
+  late final _sel_floatValue1 = _registerName1("floatValue");
   double _objc_msgSend_30(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1691,7 +1690,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_30 = __objc_msgSend_30Ptr.asFunction<
       double Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_intValue1 = _registerName1("intValue");
+  late final _sel_intValue1 = _registerName1("intValue");
   int _objc_msgSend_31(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1709,8 +1708,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_31 = __objc_msgSend_31Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_integerValue1 =
-      _registerName1("integerValue");
+  late final _sel_integerValue1 = _registerName1("integerValue");
   int _objc_msgSend_32(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1728,8 +1726,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_32 = __objc_msgSend_32Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_longLongValue1 =
-      _registerName1("longLongValue");
+  late final _sel_longLongValue1 = _registerName1("longLongValue");
   int _objc_msgSend_33(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1747,26 +1744,23 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_33 = __objc_msgSend_33Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_boolValue1 = _registerName1("boolValue");
-  late final ffi.Pointer<ObjCSel> _sel_uppercaseString1 =
-      _registerName1("uppercaseString");
-  late final ffi.Pointer<ObjCSel> _sel_lowercaseString1 =
-      _registerName1("lowercaseString");
-  late final ffi.Pointer<ObjCSel> _sel_capitalizedString1 =
-      _registerName1("capitalizedString");
-  late final ffi.Pointer<ObjCSel> _sel_localizedUppercaseString1 =
+  late final _sel_boolValue1 = _registerName1("boolValue");
+  late final _sel_uppercaseString1 = _registerName1("uppercaseString");
+  late final _sel_lowercaseString1 = _registerName1("lowercaseString");
+  late final _sel_capitalizedString1 = _registerName1("capitalizedString");
+  late final _sel_localizedUppercaseString1 =
       _registerName1("localizedUppercaseString");
-  late final ffi.Pointer<ObjCSel> _sel_localizedLowercaseString1 =
+  late final _sel_localizedLowercaseString1 =
       _registerName1("localizedLowercaseString");
-  late final ffi.Pointer<ObjCSel> _sel_localizedCapitalizedString1 =
+  late final _sel_localizedCapitalizedString1 =
       _registerName1("localizedCapitalizedString");
-  late final ffi.Pointer<ObjCSel> _sel_uppercaseStringWithLocale_1 =
+  late final _sel_uppercaseStringWithLocale_1 =
       _registerName1("uppercaseStringWithLocale:");
-  late final ffi.Pointer<ObjCSel> _sel_lowercaseStringWithLocale_1 =
+  late final _sel_lowercaseStringWithLocale_1 =
       _registerName1("lowercaseStringWithLocale:");
-  late final ffi.Pointer<ObjCSel> _sel_capitalizedStringWithLocale_1 =
+  late final _sel_capitalizedStringWithLocale_1 =
       _registerName1("capitalizedStringWithLocale:");
-  late final ffi.Pointer<ObjCSel> _sel_getLineStart_end_contentsEnd_forRange_1 =
+  late final _sel_getLineStart_end_contentsEnd_forRange_1 =
       _registerName1("getLineStart:end:contentsEnd:forRange:");
   void _objc_msgSend_34(
     ffi.Pointer<ObjCObject> obj,
@@ -1804,12 +1798,10 @@ class NativeCupertinoHttp {
           ffi.Pointer<NSUInteger>,
           NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_lineRangeForRange_1 =
-      _registerName1("lineRangeForRange:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_getParagraphStart_end_contentsEnd_forRange_1 =
+  late final _sel_lineRangeForRange_1 = _registerName1("lineRangeForRange:");
+  late final _sel_getParagraphStart_end_contentsEnd_forRange_1 =
       _registerName1("getParagraphStart:end:contentsEnd:forRange:");
-  late final ffi.Pointer<ObjCSel> _sel_paragraphRangeForRange_1 =
+  late final _sel_paragraphRangeForRange_1 =
       _registerName1("paragraphRangeForRange:");
   ffi.Pointer<_ObjCBlockDesc> _newBlockDesc1() {
     final d =
@@ -1818,18 +1810,20 @@ class NativeCupertinoHttp {
     return d;
   }
 
-  late final ffi.Pointer<_ObjCBlockDesc> _objc_block_desc1 = _newBlockDesc1();
+  late final _objc_block_desc1 = _newBlockDesc1();
+  late final _objc_concrete_global_block1 =
+      _lookup<ffi.Void>('_NSConcreteGlobalBlock');
   ffi.Pointer<_ObjCBlock> _newBlock1(
       ffi.Pointer<ffi.Void> invoke, ffi.Pointer<ffi.Void> target) {
     final b = pkg_ffi.calloc.allocate<_ObjCBlock>(ffi.sizeOf<_ObjCBlock>());
+    b.ref.isa = _objc_concrete_global_block1;
     b.ref.invoke = invoke;
     b.ref.target = target;
     b.ref.descriptor = _objc_block_desc1;
     return b;
   }
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_enumerateSubstringsInRange_options_usingBlock_1 =
+  late final _sel_enumerateSubstringsInRange_options_usingBlock_1 =
       _registerName1("enumerateSubstringsInRange:options:usingBlock:");
   void _objc_msgSend_35(
     ffi.Pointer<ObjCObject> obj,
@@ -1855,7 +1849,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange, int,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_enumerateLinesUsingBlock_1 =
+  late final _sel_enumerateLinesUsingBlock_1 =
       _registerName1("enumerateLinesUsingBlock:");
   void _objc_msgSend_36(
     ffi.Pointer<ObjCObject> obj,
@@ -1877,8 +1871,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_UTF8String1 =
-      _registerName1("UTF8String");
+  late final _sel_UTF8String1 = _registerName1("UTF8String");
   ffi.Pointer<ffi.Char> _objc_msgSend_37(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1897,12 +1890,10 @@ class NativeCupertinoHttp {
       ffi.Pointer<ffi.Char> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_fastestEncoding1 =
-      _registerName1("fastestEncoding");
-  late final ffi.Pointer<ObjCSel> _sel_smallestEncoding1 =
-      _registerName1("smallestEncoding");
-  late final ffi.Pointer<ObjCObject> _class_NSData1 = _getClass1("NSData");
-  late final ffi.Pointer<ObjCSel> _sel_bytes1 = _registerName1("bytes");
+  late final _sel_fastestEncoding1 = _registerName1("fastestEncoding");
+  late final _sel_smallestEncoding1 = _registerName1("smallestEncoding");
+  late final _class_NSData1 = _getClass1("NSData");
+  late final _sel_bytes1 = _registerName1("bytes");
   ffi.Pointer<ffi.Void> _objc_msgSend_38(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1921,10 +1912,8 @@ class NativeCupertinoHttp {
       ffi.Pointer<ffi.Void> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_description1 =
-      _registerName1("description");
-  late final ffi.Pointer<ObjCSel> _sel_getBytes_length_1 =
-      _registerName1("getBytes:length:");
+  late final _sel_description1 = _registerName1("description");
+  late final _sel_getBytes_length_1 = _registerName1("getBytes:length:");
   void _objc_msgSend_39(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1947,8 +1936,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Void>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_getBytes_range_1 =
-      _registerName1("getBytes:range:");
+  late final _sel_getBytes_range_1 = _registerName1("getBytes:range:");
   void _objc_msgSend_40(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1971,10 +1959,8 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Void>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_isEqualToData_1 =
-      _registerName1("isEqualToData:");
-  late final ffi.Pointer<ObjCSel> _sel_subdataWithRange_1 =
-      _registerName1("subdataWithRange:");
+  late final _sel_isEqualToData_1 = _registerName1("isEqualToData:");
+  late final _sel_subdataWithRange_1 = _registerName1("subdataWithRange:");
   ffi.Pointer<ObjCObject> _objc_msgSend_41(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -1995,7 +1981,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_writeToFile_atomically_1 =
+  late final _sel_writeToFile_atomically_1 =
       _registerName1("writeToFile:atomically:");
   bool _objc_msgSend_42(
     ffi.Pointer<ObjCObject> obj,
@@ -2004,25 +1990,24 @@ class NativeCupertinoHttp {
     bool useAuxiliaryFile,
   ) {
     return __objc_msgSend_42(
-          obj,
-          sel,
-          path,
-          useAuxiliaryFile ? 1 : 0,
-        ) !=
-        0;
+      obj,
+      sel,
+      path,
+      useAuxiliaryFile,
+    );
   }
 
   late final __objc_msgSend_42Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-              ffi.Pointer<ObjCObject>, ffi.Uint8)>>('objc_msgSend');
+          ffi.Bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+              ffi.Pointer<ObjCObject>, ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_42 = __objc_msgSend_42Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-          ffi.Pointer<ObjCObject>, int)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+          ffi.Pointer<ObjCObject>, bool)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_writeToURL_atomically_1 =
+  late final _sel_writeToURL_atomically_1 =
       _registerName1("writeToURL:atomically:");
-  late final ffi.Pointer<ObjCSel> _sel_writeToFile_options_error_1 =
+  late final _sel_writeToFile_options_error_1 =
       _registerName1("writeToFile:options:error:");
   bool _objc_msgSend_43(
     ffi.Pointer<ObjCObject> obj,
@@ -2032,34 +2017,33 @@ class NativeCupertinoHttp {
     ffi.Pointer<ffi.Pointer<ObjCObject>> errorPtr,
   ) {
     return __objc_msgSend_43(
-          obj,
-          sel,
-          path,
-          writeOptionsMask,
-          errorPtr,
-        ) !=
-        0;
+      obj,
+      sel,
+      path,
+      writeOptionsMask,
+      errorPtr,
+    );
   }
 
   late final __objc_msgSend_43Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ObjCObject>,
               ffi.Int32,
               ffi.Pointer<ffi.Pointer<ObjCObject>>)>>('objc_msgSend');
   late final __objc_msgSend_43 = __objc_msgSend_43Ptr.asFunction<
-      int Function(
+      bool Function(
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>,
           int,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_writeToURL_options_error_1 =
+  late final _sel_writeToURL_options_error_1 =
       _registerName1("writeToURL:options:error:");
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfData_options_range_1 =
+  late final _sel_rangeOfData_options_range_1 =
       _registerName1("rangeOfData:options:range:");
   NSRange _objc_msgSend_44(
     ffi.Pointer<ObjCObject> obj,
@@ -2085,7 +2069,7 @@ class NativeCupertinoHttp {
       NSRange Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_enumerateByteRangesUsingBlock_1 =
+  late final _sel_enumerateByteRangesUsingBlock_1 =
       _registerName1("enumerateByteRangesUsingBlock:");
   void _objc_msgSend_45(
     ffi.Pointer<ObjCObject> obj,
@@ -2107,8 +2091,8 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_data1 = _registerName1("data");
-  late final ffi.Pointer<ObjCSel> _sel_dataWithBytes_length_1 =
+  late final _sel_data1 = _registerName1("data");
+  late final _sel_dataWithBytes_length_1 =
       _registerName1("dataWithBytes:length:");
   instancetype _objc_msgSend_46(
     ffi.Pointer<ObjCObject> obj,
@@ -2132,10 +2116,9 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Void>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_dataWithBytesNoCopy_length_1 =
+  late final _sel_dataWithBytesNoCopy_length_1 =
       _registerName1("dataWithBytesNoCopy:length:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_dataWithBytesNoCopy_length_freeWhenDone_1 =
+  late final _sel_dataWithBytesNoCopy_length_freeWhenDone_1 =
       _registerName1("dataWithBytesNoCopy:length:freeWhenDone:");
   instancetype _objc_msgSend_47(
     ffi.Pointer<ObjCObject> obj,
@@ -2149,19 +2132,19 @@ class NativeCupertinoHttp {
       sel,
       bytes,
       length,
-      b ? 1 : 0,
+      b,
     );
   }
 
   late final __objc_msgSend_47Ptr = _lookup<
       ffi.NativeFunction<
           instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-              ffi.Pointer<ffi.Void>, NSUInteger, ffi.Uint8)>>('objc_msgSend');
+              ffi.Pointer<ffi.Void>, NSUInteger, ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_47 = __objc_msgSend_47Ptr.asFunction<
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-          ffi.Pointer<ffi.Void>, int, int)>();
+          ffi.Pointer<ffi.Void>, int, bool)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_dataWithContentsOfFile_options_error_1 =
+  late final _sel_dataWithContentsOfFile_options_error_1 =
       _registerName1("dataWithContentsOfFile:options:error:");
   instancetype _objc_msgSend_48(
     ffi.Pointer<ObjCObject> obj,
@@ -2195,21 +2178,19 @@ class NativeCupertinoHttp {
           int,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_dataWithContentsOfURL_options_error_1 =
+  late final _sel_dataWithContentsOfURL_options_error_1 =
       _registerName1("dataWithContentsOfURL:options:error:");
-  late final ffi.Pointer<ObjCSel> _sel_dataWithContentsOfFile_1 =
+  late final _sel_dataWithContentsOfFile_1 =
       _registerName1("dataWithContentsOfFile:");
-  late final ffi.Pointer<ObjCSel> _sel_dataWithContentsOfURL_1 =
+  late final _sel_dataWithContentsOfURL_1 =
       _registerName1("dataWithContentsOfURL:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithBytes_length_1 =
+  late final _sel_initWithBytes_length_1 =
       _registerName1("initWithBytes:length:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithBytesNoCopy_length_1 =
+  late final _sel_initWithBytesNoCopy_length_1 =
       _registerName1("initWithBytesNoCopy:length:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithBytesNoCopy_length_freeWhenDone_1 =
+  late final _sel_initWithBytesNoCopy_length_freeWhenDone_1 =
       _registerName1("initWithBytesNoCopy:length:freeWhenDone:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithBytesNoCopy_length_deallocator_1 =
+  late final _sel_initWithBytesNoCopy_length_deallocator_1 =
       _registerName1("initWithBytesNoCopy:length:deallocator:");
   instancetype _objc_msgSend_49(
     ffi.Pointer<ObjCObject> obj,
@@ -2239,19 +2220,17 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Void>, int, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithContentsOfFile_options_error_1 =
+  late final _sel_initWithContentsOfFile_options_error_1 =
       _registerName1("initWithContentsOfFile:options:error:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithContentsOfURL_options_error_1 =
+  late final _sel_initWithContentsOfURL_options_error_1 =
       _registerName1("initWithContentsOfURL:options:error:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithContentsOfFile_1 =
+  late final _sel_initWithContentsOfFile_1 =
       _registerName1("initWithContentsOfFile:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithContentsOfURL_1 =
+  late final _sel_initWithContentsOfURL_1 =
       _registerName1("initWithContentsOfURL:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithData_1 =
-      _registerName1("initWithData:");
-  late final ffi.Pointer<ObjCSel> _sel_dataWithData_1 =
-      _registerName1("dataWithData:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithBase64EncodedString_options_1 =
+  late final _sel_initWithData_1 = _registerName1("initWithData:");
+  late final _sel_dataWithData_1 = _registerName1("dataWithData:");
+  late final _sel_initWithBase64EncodedString_options_1 =
       _registerName1("initWithBase64EncodedString:options:");
   instancetype _objc_msgSend_50(
     ffi.Pointer<ObjCObject> obj,
@@ -2275,7 +2254,7 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_base64EncodedStringWithOptions_1 =
+  late final _sel_base64EncodedStringWithOptions_1 =
       _registerName1("base64EncodedStringWithOptions:");
   ffi.Pointer<ObjCObject> _objc_msgSend_51(
     ffi.Pointer<ObjCObject> obj,
@@ -2297,9 +2276,9 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithBase64EncodedData_options_1 =
+  late final _sel_initWithBase64EncodedData_options_1 =
       _registerName1("initWithBase64EncodedData:options:");
-  late final ffi.Pointer<ObjCSel> _sel_base64EncodedDataWithOptions_1 =
+  late final _sel_base64EncodedDataWithOptions_1 =
       _registerName1("base64EncodedDataWithOptions:");
   ffi.Pointer<ObjCObject> _objc_msgSend_52(
     ffi.Pointer<ObjCObject> obj,
@@ -2321,7 +2300,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_decompressedDataUsingAlgorithm_error_1 =
+  late final _sel_decompressedDataUsingAlgorithm_error_1 =
       _registerName1("decompressedDataUsingAlgorithm:error:");
   instancetype _objc_msgSend_53(
     ffi.Pointer<ObjCObject> obj,
@@ -2348,9 +2327,9 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_compressedDataUsingAlgorithm_error_1 =
+  late final _sel_compressedDataUsingAlgorithm_error_1 =
       _registerName1("compressedDataUsingAlgorithm:error:");
-  late final ffi.Pointer<ObjCSel> _sel_getBytes_1 = _registerName1("getBytes:");
+  late final _sel_getBytes_1 = _registerName1("getBytes:");
   void _objc_msgSend_54(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -2371,14 +2350,13 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Void>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_dataWithContentsOfMappedFile_1 =
+  late final _sel_dataWithContentsOfMappedFile_1 =
       _registerName1("dataWithContentsOfMappedFile:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithContentsOfMappedFile_1 =
+  late final _sel_initWithContentsOfMappedFile_1 =
       _registerName1("initWithContentsOfMappedFile:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithBase64Encoding_1 =
+  late final _sel_initWithBase64Encoding_1 =
       _registerName1("initWithBase64Encoding:");
-  late final ffi.Pointer<ObjCSel> _sel_base64Encoding1 =
-      _registerName1("base64Encoding");
+  late final _sel_base64Encoding1 = _registerName1("base64Encoding");
   ffi.Pointer<ObjCObject> _objc_msgSend_55(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -2397,8 +2375,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_dataUsingEncoding_allowLossyConversion_1 =
+  late final _sel_dataUsingEncoding_allowLossyConversion_1 =
       _registerName1("dataUsingEncoding:allowLossyConversion:");
   ffi.Pointer<ObjCObject> _objc_msgSend_56(
     ffi.Pointer<ObjCObject> obj,
@@ -2410,7 +2387,7 @@ class NativeCupertinoHttp {
       obj,
       sel,
       encoding,
-      lossy ? 1 : 0,
+      lossy,
     );
   }
 
@@ -2420,13 +2397,12 @@ class NativeCupertinoHttp {
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               NSStringEncoding,
-              ffi.Uint8)>>('objc_msgSend');
+              ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_56 = __objc_msgSend_56Ptr.asFunction<
       ffi.Pointer<ObjCObject> Function(
-          ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int, int)>();
+          ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int, bool)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_dataUsingEncoding_1 =
-      _registerName1("dataUsingEncoding:");
+  late final _sel_dataUsingEncoding_1 = _registerName1("dataUsingEncoding:");
   ffi.Pointer<ObjCObject> _objc_msgSend_57(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -2447,7 +2423,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_canBeConvertedToEncoding_1 =
+  late final _sel_canBeConvertedToEncoding_1 =
       _registerName1("canBeConvertedToEncoding:");
   bool _objc_msgSend_58(
     ffi.Pointer<ObjCObject> obj,
@@ -2455,21 +2431,20 @@ class NativeCupertinoHttp {
     int encoding,
   ) {
     return __objc_msgSend_58(
-          obj,
-          sel,
-          encoding,
-        ) !=
-        0;
+      obj,
+      sel,
+      encoding,
+    );
   }
 
   late final __objc_msgSend_58Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
               NSStringEncoding)>>('objc_msgSend');
   late final __objc_msgSend_58 = __objc_msgSend_58Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_cStringUsingEncoding_1 =
+  late final _sel_cStringUsingEncoding_1 =
       _registerName1("cStringUsingEncoding:");
   void _objc_msgSend_59(
     ffi.Pointer<ObjCObject> obj,
@@ -2490,7 +2465,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_59 = __objc_msgSend_59Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_getCString_maxLength_encoding_1 =
+  late final _sel_getCString_maxLength_encoding_1 =
       _registerName1("getCString:maxLength:encoding:");
   bool _objc_msgSend_60(
     ffi.Pointer<ObjCObject> obj,
@@ -2500,29 +2475,27 @@ class NativeCupertinoHttp {
     int encoding,
   ) {
     return __objc_msgSend_60(
-          obj,
-          sel,
-          buffer,
-          maxBufferCount,
-          encoding,
-        ) !=
-        0;
+      obj,
+      sel,
+      buffer,
+      maxBufferCount,
+      encoding,
+    );
   }
 
   late final __objc_msgSend_60Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ffi.Char>,
               NSUInteger,
               NSStringEncoding)>>('objc_msgSend');
   late final __objc_msgSend_60 = __objc_msgSend_60Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Char>, int, int)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_getBytes_maxLength_usedLength_encoding_options_range_remainingRange_1 =
+  late final _sel_getBytes_maxLength_usedLength_encoding_options_range_remainingRange_1 =
       _registerName1(
           "getBytes:maxLength:usedLength:encoding:options:range:remainingRange:");
   bool _objc_msgSend_61(
@@ -2537,22 +2510,21 @@ class NativeCupertinoHttp {
     NSRangePointer leftover,
   ) {
     return __objc_msgSend_61(
-          obj,
-          sel,
-          buffer,
-          maxBufferCount,
-          usedBufferCount,
-          encoding,
-          options,
-          range,
-          leftover,
-        ) !=
-        0;
+      obj,
+      sel,
+      buffer,
+      maxBufferCount,
+      usedBufferCount,
+      encoding,
+      options,
+      range,
+      leftover,
+    );
   }
 
   late final __objc_msgSend_61Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ffi.Void>,
@@ -2563,7 +2535,7 @@ class NativeCupertinoHttp {
               NSRange,
               NSRangePointer)>>('objc_msgSend');
   late final __objc_msgSend_61 = __objc_msgSend_61Ptr.asFunction<
-      int Function(
+      bool Function(
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Void>,
@@ -2574,7 +2546,7 @@ class NativeCupertinoHttp {
           NSRange,
           NSRangePointer)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_maximumLengthOfBytesUsingEncoding_1 =
+  late final _sel_maximumLengthOfBytesUsingEncoding_1 =
       _registerName1("maximumLengthOfBytesUsingEncoding:");
   int _objc_msgSend_62(
     ffi.Pointer<ObjCObject> obj,
@@ -2595,9 +2567,9 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_62 = __objc_msgSend_62Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_lengthOfBytesUsingEncoding_1 =
+  late final _sel_lengthOfBytesUsingEncoding_1 =
       _registerName1("lengthOfBytesUsingEncoding:");
-  late final ffi.Pointer<ObjCSel> _sel_availableStringEncodings1 =
+  late final _sel_availableStringEncodings1 =
       _registerName1("availableStringEncodings");
   ffi.Pointer<NSStringEncoding> _objc_msgSend_63(
     ffi.Pointer<ObjCObject> obj,
@@ -2617,24 +2589,21 @@ class NativeCupertinoHttp {
       ffi.Pointer<NSStringEncoding> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_localizedNameOfStringEncoding_1 =
+  late final _sel_localizedNameOfStringEncoding_1 =
       _registerName1("localizedNameOfStringEncoding:");
-  late final ffi.Pointer<ObjCSel> _sel_defaultCStringEncoding1 =
+  late final _sel_defaultCStringEncoding1 =
       _registerName1("defaultCStringEncoding");
-  late final ffi.Pointer<ObjCSel> _sel_decomposedStringWithCanonicalMapping1 =
+  late final _sel_decomposedStringWithCanonicalMapping1 =
       _registerName1("decomposedStringWithCanonicalMapping");
-  late final ffi.Pointer<ObjCSel> _sel_precomposedStringWithCanonicalMapping1 =
+  late final _sel_precomposedStringWithCanonicalMapping1 =
       _registerName1("precomposedStringWithCanonicalMapping");
-  late final ffi.Pointer<ObjCSel>
-      _sel_decomposedStringWithCompatibilityMapping1 =
+  late final _sel_decomposedStringWithCompatibilityMapping1 =
       _registerName1("decomposedStringWithCompatibilityMapping");
-  late final ffi.Pointer<ObjCSel>
-      _sel_precomposedStringWithCompatibilityMapping1 =
+  late final _sel_precomposedStringWithCompatibilityMapping1 =
       _registerName1("precomposedStringWithCompatibilityMapping");
-  late final ffi.Pointer<ObjCSel> _sel_stringByTrimmingCharactersInSet_1 =
+  late final _sel_stringByTrimmingCharactersInSet_1 =
       _registerName1("stringByTrimmingCharactersInSet:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_stringByPaddingToLength_withString_startingAtIndex_1 =
+  late final _sel_stringByPaddingToLength_withString_startingAtIndex_1 =
       _registerName1("stringByPaddingToLength:withString:startingAtIndex:");
   ffi.Pointer<ObjCObject> _objc_msgSend_64(
     ffi.Pointer<ObjCObject> obj,
@@ -2664,7 +2633,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, int, ffi.Pointer<ObjCObject>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_stringByFoldingWithOptions_locale_1 =
+  late final _sel_stringByFoldingWithOptions_locale_1 =
       _registerName1("stringByFoldingWithOptions:locale:");
   ffi.Pointer<ObjCObject> _objc_msgSend_65(
     ffi.Pointer<ObjCObject> obj,
@@ -2691,8 +2660,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, int, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_stringByReplacingOccurrencesOfString_withString_options_range_1 =
+  late final _sel_stringByReplacingOccurrencesOfString_withString_options_range_1 =
       _registerName1(
           "stringByReplacingOccurrencesOfString:withString:options:range:");
   ffi.Pointer<ObjCObject> _objc_msgSend_66(
@@ -2731,8 +2699,7 @@ class NativeCupertinoHttp {
           int,
           NSRange)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_stringByReplacingOccurrencesOfString_withString_1 =
+  late final _sel_stringByReplacingOccurrencesOfString_withString_1 =
       _registerName1("stringByReplacingOccurrencesOfString:withString:");
   ffi.Pointer<ObjCObject> _objc_msgSend_67(
     ffi.Pointer<ObjCObject> obj,
@@ -2762,8 +2729,7 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_stringByReplacingCharactersInRange_withString_1 =
+  late final _sel_stringByReplacingCharactersInRange_withString_1 =
       _registerName1("stringByReplacingCharactersInRange:withString:");
   ffi.Pointer<ObjCObject> _objc_msgSend_68(
     ffi.Pointer<ObjCObject> obj,
@@ -2790,7 +2756,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, NSRange, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_stringByApplyingTransform_reverse_1 =
+  late final _sel_stringByApplyingTransform_reverse_1 =
       _registerName1("stringByApplyingTransform:reverse:");
   ffi.Pointer<ObjCObject> _objc_msgSend_69(
     ffi.Pointer<ObjCObject> obj,
@@ -2802,7 +2768,7 @@ class NativeCupertinoHttp {
       obj,
       sel,
       transform,
-      reverse ? 1 : 0,
+      reverse,
     );
   }
 
@@ -2812,12 +2778,12 @@ class NativeCupertinoHttp {
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               NSStringTransform,
-              ffi.Uint8)>>('objc_msgSend');
+              ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_69 = __objc_msgSend_69Ptr.asFunction<
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
-          ffi.Pointer<ObjCSel>, NSStringTransform, int)>();
+          ffi.Pointer<ObjCSel>, NSStringTransform, bool)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_writeToURL_atomically_encoding_error_1 =
+  late final _sel_writeToURL_atomically_encoding_error_1 =
       _registerName1("writeToURL:atomically:encoding:error:");
   bool _objc_msgSend_70(
     ffi.Pointer<ObjCObject> obj,
@@ -2828,38 +2794,36 @@ class NativeCupertinoHttp {
     ffi.Pointer<ffi.Pointer<ObjCObject>> error,
   ) {
     return __objc_msgSend_70(
-          obj,
-          sel,
-          url,
-          useAuxiliaryFile ? 1 : 0,
-          enc,
-          error,
-        ) !=
-        0;
+      obj,
+      sel,
+      url,
+      useAuxiliaryFile,
+      enc,
+      error,
+    );
   }
 
   late final __objc_msgSend_70Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ObjCObject>,
-              ffi.Uint8,
+              ffi.Bool,
               NSStringEncoding,
               ffi.Pointer<ffi.Pointer<ObjCObject>>)>>('objc_msgSend');
   late final __objc_msgSend_70 = __objc_msgSend_70Ptr.asFunction<
-      int Function(
+      bool Function(
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>,
-          int,
+          bool,
           int,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_writeToFile_atomically_encoding_error_1 =
+  late final _sel_writeToFile_atomically_encoding_error_1 =
       _registerName1("writeToFile:atomically:encoding:error:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithCharactersNoCopy_length_freeWhenDone_1 =
+  late final _sel_initWithCharactersNoCopy_length_freeWhenDone_1 =
       _registerName1("initWithCharactersNoCopy:length:freeWhenDone:");
   instancetype _objc_msgSend_71(
     ffi.Pointer<ObjCObject> obj,
@@ -2873,20 +2837,19 @@ class NativeCupertinoHttp {
       sel,
       characters,
       length,
-      freeBuffer ? 1 : 0,
+      freeBuffer,
     );
   }
 
   late final __objc_msgSend_71Ptr = _lookup<
       ffi.NativeFunction<
           instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-              ffi.Pointer<unichar>, NSUInteger, ffi.Uint8)>>('objc_msgSend');
+              ffi.Pointer<unichar>, NSUInteger, ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_71 = __objc_msgSend_71Ptr.asFunction<
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-          ffi.Pointer<unichar>, int, int)>();
+          ffi.Pointer<unichar>, int, bool)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithCharactersNoCopy_length_deallocator_1 =
+  late final _sel_initWithCharactersNoCopy_length_deallocator_1 =
       _registerName1("initWithCharactersNoCopy:length:deallocator:");
   instancetype _objc_msgSend_72(
     ffi.Pointer<ObjCObject> obj,
@@ -2916,7 +2879,7 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<unichar>, int, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithCharacters_length_1 =
+  late final _sel_initWithCharacters_length_1 =
       _registerName1("initWithCharacters:length:");
   instancetype _objc_msgSend_73(
     ffi.Pointer<ObjCObject> obj,
@@ -2940,8 +2903,7 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<unichar>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithUTF8String_1 =
-      _registerName1("initWithUTF8String:");
+  late final _sel_initWithUTF8String_1 = _registerName1("initWithUTF8String:");
   instancetype _objc_msgSend_74(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -2962,11 +2924,9 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Char>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithString_1 =
-      _registerName1("initWithString:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithFormat_1 =
-      _registerName1("initWithFormat:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithFormat_arguments_1 =
+  late final _sel_initWithString_1 = _registerName1("initWithString:");
+  late final _sel_initWithFormat_1 = _registerName1("initWithFormat:");
+  late final _sel_initWithFormat_arguments_1 =
       _registerName1("initWithFormat:arguments:");
   instancetype _objc_msgSend_75(
     ffi.Pointer<ObjCObject> obj,
@@ -2990,7 +2950,7 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, va_list)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithFormat_locale_1 =
+  late final _sel_initWithFormat_locale_1 =
       _registerName1("initWithFormat:locale:");
   instancetype _objc_msgSend_76(
     ffi.Pointer<ObjCObject> obj,
@@ -3017,7 +2977,7 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithFormat_locale_arguments_1 =
+  late final _sel_initWithFormat_locale_arguments_1 =
       _registerName1("initWithFormat:locale:arguments:");
   instancetype _objc_msgSend_77(
     ffi.Pointer<ObjCObject> obj,
@@ -3047,7 +3007,7 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCObject>, va_list)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithData_encoding_1 =
+  late final _sel_initWithData_encoding_1 =
       _registerName1("initWithData:encoding:");
   instancetype _objc_msgSend_78(
     ffi.Pointer<ObjCObject> obj,
@@ -3071,7 +3031,7 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithBytes_length_encoding_1 =
+  late final _sel_initWithBytes_length_encoding_1 =
       _registerName1("initWithBytes:length:encoding:");
   instancetype _objc_msgSend_79(
     ffi.Pointer<ObjCObject> obj,
@@ -3101,8 +3061,7 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Void>, int, int)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithBytesNoCopy_length_encoding_freeWhenDone_1 =
+  late final _sel_initWithBytesNoCopy_length_encoding_freeWhenDone_1 =
       _registerName1("initWithBytesNoCopy:length:encoding:freeWhenDone:");
   instancetype _objc_msgSend_80(
     ffi.Pointer<ObjCObject> obj,
@@ -3118,7 +3077,7 @@ class NativeCupertinoHttp {
       bytes,
       len,
       encoding,
-      freeBuffer ? 1 : 0,
+      freeBuffer,
     );
   }
 
@@ -3130,13 +3089,12 @@ class NativeCupertinoHttp {
               ffi.Pointer<ffi.Void>,
               NSUInteger,
               NSStringEncoding,
-              ffi.Uint8)>>('objc_msgSend');
+              ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_80 = __objc_msgSend_80Ptr.asFunction<
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-          ffi.Pointer<ffi.Void>, int, int, int)>();
+          ffi.Pointer<ffi.Void>, int, int, bool)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithBytesNoCopy_length_encoding_deallocator_1 =
+  late final _sel_initWithBytesNoCopy_length_encoding_deallocator_1 =
       _registerName1("initWithBytesNoCopy:length:encoding:deallocator:");
   instancetype _objc_msgSend_81(
     ffi.Pointer<ObjCObject> obj,
@@ -3169,18 +3127,16 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Void>, int, int, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_string1 = _registerName1("string");
-  late final ffi.Pointer<ObjCSel> _sel_stringWithString_1 =
-      _registerName1("stringWithString:");
-  late final ffi.Pointer<ObjCSel> _sel_stringWithCharacters_length_1 =
+  late final _sel_string1 = _registerName1("string");
+  late final _sel_stringWithString_1 = _registerName1("stringWithString:");
+  late final _sel_stringWithCharacters_length_1 =
       _registerName1("stringWithCharacters:length:");
-  late final ffi.Pointer<ObjCSel> _sel_stringWithUTF8String_1 =
+  late final _sel_stringWithUTF8String_1 =
       _registerName1("stringWithUTF8String:");
-  late final ffi.Pointer<ObjCSel> _sel_stringWithFormat_1 =
-      _registerName1("stringWithFormat:");
-  late final ffi.Pointer<ObjCSel> _sel_localizedStringWithFormat_1 =
+  late final _sel_stringWithFormat_1 = _registerName1("stringWithFormat:");
+  late final _sel_localizedStringWithFormat_1 =
       _registerName1("localizedStringWithFormat:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithCString_encoding_1 =
+  late final _sel_initWithCString_encoding_1 =
       _registerName1("initWithCString:encoding:");
   instancetype _objc_msgSend_82(
     ffi.Pointer<ObjCObject> obj,
@@ -3204,9 +3160,9 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Char>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_stringWithCString_encoding_1 =
+  late final _sel_stringWithCString_encoding_1 =
       _registerName1("stringWithCString:encoding:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithContentsOfURL_encoding_error_1 =
+  late final _sel_initWithContentsOfURL_encoding_error_1 =
       _registerName1("initWithContentsOfURL:encoding:error:");
   instancetype _objc_msgSend_83(
     ffi.Pointer<ObjCObject> obj,
@@ -3240,16 +3196,13 @@ class NativeCupertinoHttp {
           int,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithContentsOfFile_encoding_error_1 =
+  late final _sel_initWithContentsOfFile_encoding_error_1 =
       _registerName1("initWithContentsOfFile:encoding:error:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_stringWithContentsOfURL_encoding_error_1 =
+  late final _sel_stringWithContentsOfURL_encoding_error_1 =
       _registerName1("stringWithContentsOfURL:encoding:error:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_stringWithContentsOfFile_encoding_error_1 =
+  late final _sel_stringWithContentsOfFile_encoding_error_1 =
       _registerName1("stringWithContentsOfFile:encoding:error:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithContentsOfURL_usedEncoding_error_1 =
+  late final _sel_initWithContentsOfURL_usedEncoding_error_1 =
       _registerName1("initWithContentsOfURL:usedEncoding:error:");
   instancetype _objc_msgSend_84(
     ffi.Pointer<ObjCObject> obj,
@@ -3283,17 +3236,13 @@ class NativeCupertinoHttp {
           ffi.Pointer<NSStringEncoding>,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithContentsOfFile_usedEncoding_error_1 =
+  late final _sel_initWithContentsOfFile_usedEncoding_error_1 =
       _registerName1("initWithContentsOfFile:usedEncoding:error:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_stringWithContentsOfURL_usedEncoding_error_1 =
+  late final _sel_stringWithContentsOfURL_usedEncoding_error_1 =
       _registerName1("stringWithContentsOfURL:usedEncoding:error:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_stringWithContentsOfFile_usedEncoding_error_1 =
+  late final _sel_stringWithContentsOfFile_usedEncoding_error_1 =
       _registerName1("stringWithContentsOfFile:usedEncoding:error:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_stringEncodingForData_encodingOptions_convertedString_usedLossyConversion_1 =
+  late final _sel_stringEncodingForData_encodingOptions_convertedString_usedLossyConversion_1 =
       _registerName1(
           "stringEncodingForData:encodingOptions:convertedString:usedLossyConversion:");
   int _objc_msgSend_85(
@@ -3302,7 +3251,7 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> data,
     ffi.Pointer<ObjCObject> opts,
     ffi.Pointer<ffi.Pointer<ObjCObject>> string,
-    ffi.Pointer<ffi.Uint8> usedLossyConversion,
+    ffi.Pointer<ffi.Bool> usedLossyConversion,
   ) {
     return __objc_msgSend_85(
       obj,
@@ -3322,7 +3271,7 @@ class NativeCupertinoHttp {
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ffi.Pointer<ObjCObject>>,
-              ffi.Pointer<ffi.Uint8>)>>('objc_msgSend');
+              ffi.Pointer<ffi.Bool>)>>('objc_msgSend');
   late final __objc_msgSend_85 = __objc_msgSend_85Ptr.asFunction<
       int Function(
           ffi.Pointer<ObjCObject>,
@@ -3330,16 +3279,13 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ffi.Pointer<ObjCObject>>,
-          ffi.Pointer<ffi.Uint8>)>();
+          ffi.Pointer<ffi.Bool>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_propertyList1 =
-      _registerName1("propertyList");
-  late final ffi.Pointer<ObjCObject> _class_NSDictionary1 =
-      _getClass1("NSDictionary");
-  late final ffi.Pointer<ObjCSel> _sel_count1 = _registerName1("count");
-  late final ffi.Pointer<ObjCSel> _sel_objectForKey_1 =
-      _registerName1("objectForKey:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithObjects_forKeys_count_1 =
+  late final _sel_propertyList1 = _registerName1("propertyList");
+  late final _class_NSDictionary1 = _getClass1("NSDictionary");
+  late final _sel_count1 = _registerName1("count");
+  late final _sel_objectForKey_1 = _registerName1("objectForKey:");
+  late final _sel_initWithObjects_forKeys_count_1 =
       _registerName1("initWithObjects:forKeys:count:");
   instancetype _objc_msgSend_86(
     ffi.Pointer<ObjCObject> obj,
@@ -3373,13 +3319,13 @@ class NativeCupertinoHttp {
           ffi.Pointer<ffi.Pointer<ObjCObject>>,
           int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_allKeys1 = _registerName1("allKeys");
-  late final ffi.Pointer<ObjCSel> _sel_allValues1 = _registerName1("allValues");
-  late final ffi.Pointer<ObjCSel> _sel_descriptionInStringsFileFormat1 =
+  late final _sel_allKeys1 = _registerName1("allKeys");
+  late final _sel_allValues1 = _registerName1("allValues");
+  late final _sel_descriptionInStringsFileFormat1 =
       _registerName1("descriptionInStringsFileFormat");
-  late final ffi.Pointer<ObjCSel> _sel_descriptionWithLocale_1 =
+  late final _sel_descriptionWithLocale_1 =
       _registerName1("descriptionWithLocale:");
-  late final ffi.Pointer<ObjCSel> _sel_descriptionWithLocale_indent_1 =
+  late final _sel_descriptionWithLocale_indent_1 =
       _registerName1("descriptionWithLocale:indent:");
   ffi.Pointer<ObjCObject> _objc_msgSend_87(
     ffi.Pointer<ObjCObject> obj,
@@ -3406,10 +3352,9 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_isEqualToDictionary_1 =
+  late final _sel_isEqualToDictionary_1 =
       _registerName1("isEqualToDictionary:");
-  late final ffi.Pointer<ObjCSel> _sel_writeToURL_error_1 =
-      _registerName1("writeToURL:error:");
+  late final _sel_writeToURL_error_1 = _registerName1("writeToURL:error:");
   bool _objc_msgSend_88(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -3417,26 +3362,25 @@ class NativeCupertinoHttp {
     ffi.Pointer<ffi.Pointer<ObjCObject>> error,
   ) {
     return __objc_msgSend_88(
-          obj,
-          sel,
-          url,
-          error,
-        ) !=
-        0;
+      obj,
+      sel,
+      url,
+      error,
+    );
   }
 
   late final __objc_msgSend_88Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ffi.Pointer<ObjCObject>>)>>('objc_msgSend');
   late final __objc_msgSend_88 = __objc_msgSend_88Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_getObjects_andKeys_count_1 =
+  late final _sel_getObjects_andKeys_count_1 =
       _registerName1("getObjects:andKeys:count:");
   void _objc_msgSend_89(
     ffi.Pointer<ObjCObject> obj,
@@ -3470,9 +3414,9 @@ class NativeCupertinoHttp {
           ffi.Pointer<ffi.Pointer<ObjCObject>>,
           int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_objectForKeyedSubscript_1 =
+  late final _sel_objectForKeyedSubscript_1 =
       _registerName1("objectForKeyedSubscript:");
-  late final ffi.Pointer<ObjCSel> _sel_enumerateKeysAndObjectsUsingBlock_1 =
+  late final _sel_enumerateKeysAndObjectsUsingBlock_1 =
       _registerName1("enumerateKeysAndObjectsUsingBlock:");
   void _objc_msgSend_90(
     ffi.Pointer<ObjCObject> obj,
@@ -3494,8 +3438,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_enumerateKeysAndObjectsWithOptions_usingBlock_1 =
+  late final _sel_enumerateKeysAndObjectsWithOptions_usingBlock_1 =
       _registerName1("enumerateKeysAndObjectsWithOptions:usingBlock:");
   void _objc_msgSend_91(
     ffi.Pointer<ObjCObject> obj,
@@ -3519,8 +3462,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_getObjects_andKeys_1 =
-      _registerName1("getObjects:andKeys:");
+  late final _sel_getObjects_andKeys_1 = _registerName1("getObjects:andKeys:");
   void _objc_msgSend_92(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -3549,23 +3491,21 @@ class NativeCupertinoHttp {
           ffi.Pointer<ffi.Pointer<ObjCObject>>,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_dictionary1 =
-      _registerName1("dictionary");
-  late final ffi.Pointer<ObjCSel> _sel_dictionaryWithObject_forKey_1 =
+  late final _sel_dictionary1 = _registerName1("dictionary");
+  late final _sel_dictionaryWithObject_forKey_1 =
       _registerName1("dictionaryWithObject:forKey:");
-  late final ffi.Pointer<ObjCSel> _sel_dictionaryWithObjects_forKeys_count_1 =
+  late final _sel_dictionaryWithObjects_forKeys_count_1 =
       _registerName1("dictionaryWithObjects:forKeys:count:");
-  late final ffi.Pointer<ObjCSel> _sel_dictionaryWithObjectsAndKeys_1 =
+  late final _sel_dictionaryWithObjectsAndKeys_1 =
       _registerName1("dictionaryWithObjectsAndKeys:");
-  late final ffi.Pointer<ObjCSel> _sel_dictionaryWithDictionary_1 =
+  late final _sel_dictionaryWithDictionary_1 =
       _registerName1("dictionaryWithDictionary:");
-  late final ffi.Pointer<ObjCSel> _sel_dictionaryWithObjects_forKeys_1 =
+  late final _sel_dictionaryWithObjects_forKeys_1 =
       _registerName1("dictionaryWithObjects:forKeys:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithObjectsAndKeys_1 =
+  late final _sel_initWithObjectsAndKeys_1 =
       _registerName1("initWithObjectsAndKeys:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithDictionary_1 =
-      _registerName1("initWithDictionary:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithDictionary_copyItems_1 =
+  late final _sel_initWithDictionary_1 = _registerName1("initWithDictionary:");
+  late final _sel_initWithDictionary_copyItems_1 =
       _registerName1("initWithDictionary:copyItems:");
   instancetype _objc_msgSend_93(
     ffi.Pointer<ObjCObject> obj,
@@ -3577,24 +3517,23 @@ class NativeCupertinoHttp {
       obj,
       sel,
       otherDictionary,
-      flag ? 1 : 0,
+      flag,
     );
   }
 
   late final __objc_msgSend_93Ptr = _lookup<
       ffi.NativeFunction<
           instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-              ffi.Pointer<ObjCObject>, ffi.Uint8)>>('objc_msgSend');
+              ffi.Pointer<ObjCObject>, ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_93 = __objc_msgSend_93Ptr.asFunction<
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-          ffi.Pointer<ObjCObject>, int)>();
+          ffi.Pointer<ObjCObject>, bool)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithObjects_forKeys_1 =
+  late final _sel_initWithObjects_forKeys_1 =
       _registerName1("initWithObjects:forKeys:");
-  late final ffi.Pointer<ObjCSel> _sel_sharedKeySetForKeys_1 =
+  late final _sel_sharedKeySetForKeys_1 =
       _registerName1("sharedKeySetForKeys:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_countByEnumeratingWithState_objects_count_1 =
+  late final _sel_countByEnumeratingWithState_objects_count_1 =
       _registerName1("countByEnumeratingWithState:objects:count:");
   int _objc_msgSend_94(
     ffi.Pointer<ObjCObject> obj,
@@ -3628,7 +3567,7 @@ class NativeCupertinoHttp {
           ffi.Pointer<ffi.Pointer<ObjCObject>>,
           int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_propertyListFromStringsFileFormat1 =
+  late final _sel_propertyListFromStringsFileFormat1 =
       _registerName1("propertyListFromStringsFileFormat");
   ffi.Pointer<ObjCObject> _objc_msgSend_95(
     ffi.Pointer<ObjCObject> obj,
@@ -3648,13 +3587,10 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_cString1 = _registerName1("cString");
-  late final ffi.Pointer<ObjCSel> _sel_lossyCString1 =
-      _registerName1("lossyCString");
-  late final ffi.Pointer<ObjCSel> _sel_cStringLength1 =
-      _registerName1("cStringLength");
-  late final ffi.Pointer<ObjCSel> _sel_getCString_1 =
-      _registerName1("getCString:");
+  late final _sel_cString1 = _registerName1("cString");
+  late final _sel_lossyCString1 = _registerName1("lossyCString");
+  late final _sel_cStringLength1 = _registerName1("cStringLength");
+  late final _sel_getCString_1 = _registerName1("getCString:");
   void _objc_msgSend_96(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -3675,7 +3611,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Char>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_getCString_maxLength_1 =
+  late final _sel_getCString_maxLength_1 =
       _registerName1("getCString:maxLength:");
   void _objc_msgSend_97(
     ffi.Pointer<ObjCObject> obj,
@@ -3699,8 +3635,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Char>, int)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_getCString_maxLength_range_remainingRange_1 =
+  late final _sel_getCString_maxLength_range_remainingRange_1 =
       _registerName1("getCString:maxLength:range:remainingRange:");
   void _objc_msgSend_98(
     ffi.Pointer<ObjCObject> obj,
@@ -3733,12 +3668,11 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Char>, int, NSRange, NSRangePointer)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_stringWithContentsOfFile_1 =
+  late final _sel_stringWithContentsOfFile_1 =
       _registerName1("stringWithContentsOfFile:");
-  late final ffi.Pointer<ObjCSel> _sel_stringWithContentsOfURL_1 =
+  late final _sel_stringWithContentsOfURL_1 =
       _registerName1("stringWithContentsOfURL:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithCStringNoCopy_length_freeWhenDone_1 =
+  late final _sel_initWithCStringNoCopy_length_freeWhenDone_1 =
       _registerName1("initWithCStringNoCopy:length:freeWhenDone:");
   ffi.Pointer<ObjCObject> _objc_msgSend_99(
     ffi.Pointer<ObjCObject> obj,
@@ -3752,7 +3686,7 @@ class NativeCupertinoHttp {
       sel,
       bytes,
       length,
-      freeBuffer ? 1 : 0,
+      freeBuffer,
     );
   }
 
@@ -3763,21 +3697,18 @@ class NativeCupertinoHttp {
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ffi.Char>,
               NSUInteger,
-              ffi.Uint8)>>('objc_msgSend');
+              ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_99 = __objc_msgSend_99Ptr.asFunction<
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
-          ffi.Pointer<ObjCSel>, ffi.Pointer<ffi.Char>, int, int)>();
+          ffi.Pointer<ObjCSel>, ffi.Pointer<ffi.Char>, int, bool)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithCString_length_1 =
+  late final _sel_initWithCString_length_1 =
       _registerName1("initWithCString:length:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithCString_1 =
-      _registerName1("initWithCString:");
-  late final ffi.Pointer<ObjCSel> _sel_stringWithCString_length_1 =
+  late final _sel_initWithCString_1 = _registerName1("initWithCString:");
+  late final _sel_stringWithCString_length_1 =
       _registerName1("stringWithCString:length:");
-  late final ffi.Pointer<ObjCSel> _sel_stringWithCString_1 =
-      _registerName1("stringWithCString:");
-  late final ffi.Pointer<ObjCSel> _sel_getCharacters_1 =
-      _registerName1("getCharacters:");
+  late final _sel_stringWithCString_1 = _registerName1("stringWithCString:");
+  late final _sel_getCharacters_1 = _registerName1("getCharacters:");
   void _objc_msgSend_100(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -3798,22 +3729,17 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<unichar>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_stringByAddingPercentEncodingWithAllowedCharacters_1 =
+  late final _sel_stringByAddingPercentEncodingWithAllowedCharacters_1 =
       _registerName1("stringByAddingPercentEncodingWithAllowedCharacters:");
-  late final ffi.Pointer<ObjCSel> _sel_stringByRemovingPercentEncoding1 =
+  late final _sel_stringByRemovingPercentEncoding1 =
       _registerName1("stringByRemovingPercentEncoding");
-  late final ffi.Pointer<ObjCSel>
-      _sel_stringByAddingPercentEscapesUsingEncoding_1 =
+  late final _sel_stringByAddingPercentEscapesUsingEncoding_1 =
       _registerName1("stringByAddingPercentEscapesUsingEncoding:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_stringByReplacingPercentEscapesUsingEncoding_1 =
+  late final _sel_stringByReplacingPercentEscapesUsingEncoding_1 =
       _registerName1("stringByReplacingPercentEscapesUsingEncoding:");
-  late final ffi.Pointer<ObjCSel> _sel_debugDescription1 =
-      _registerName1("debugDescription");
-  late final ffi.Pointer<ObjCSel> _sel_version1 = _registerName1("version");
-  late final ffi.Pointer<ObjCSel> _sel_setVersion_1 =
-      _registerName1("setVersion:");
+  late final _sel_debugDescription1 = _registerName1("debugDescription");
+  late final _sel_version1 = _registerName1("version");
+  late final _sel_setVersion_1 = _registerName1("setVersion:");
   void _objc_msgSend_101(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -3833,17 +3759,15 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_101 = __objc_msgSend_101Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_classForCoder1 =
-      _registerName1("classForCoder");
-  late final ffi.Pointer<ObjCSel> _sel_replacementObjectForCoder_1 =
+  late final _sel_classForCoder1 = _registerName1("classForCoder");
+  late final _sel_replacementObjectForCoder_1 =
       _registerName1("replacementObjectForCoder:");
-  late final ffi.Pointer<ObjCSel> _sel_awakeAfterUsingCoder_1 =
+  late final _sel_awakeAfterUsingCoder_1 =
       _registerName1("awakeAfterUsingCoder:");
-  late final ffi.Pointer<ObjCSel> _sel_poseAsClass_1 =
-      _registerName1("poseAsClass:");
-  late final ffi.Pointer<ObjCSel> _sel_autoContentAccessingProxy1 =
+  late final _sel_poseAsClass_1 = _registerName1("poseAsClass:");
+  late final _sel_autoContentAccessingProxy1 =
       _registerName1("autoContentAccessingProxy");
-  late final ffi.Pointer<ObjCSel> _sel_URL_resourceDataDidBecomeAvailable_1 =
+  late final _sel_URL_resourceDataDidBecomeAvailable_1 =
       _registerName1("URL:resourceDataDidBecomeAvailable:");
   void _objc_msgSend_102(
     ffi.Pointer<ObjCObject> obj,
@@ -3870,14 +3794,13 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_URLResourceDidFinishLoading_1 =
+  late final _sel_URLResourceDidFinishLoading_1 =
       _registerName1("URLResourceDidFinishLoading:");
-  late final ffi.Pointer<ObjCSel> _sel_URLResourceDidCancelLoading_1 =
+  late final _sel_URLResourceDidCancelLoading_1 =
       _registerName1("URLResourceDidCancelLoading:");
-  late final ffi.Pointer<ObjCSel> _sel_URL_resourceDidFailLoadingWithReason_1 =
+  late final _sel_URL_resourceDidFailLoadingWithReason_1 =
       _registerName1("URL:resourceDidFailLoadingWithReason:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_attemptRecoveryFromError_optionIndex_delegate_didRecoverSelector_contextInfo_1 =
+  late final _sel_attemptRecoveryFromError_optionIndex_delegate_didRecoverSelector_contextInfo_1 =
       _registerName1(
           "attemptRecoveryFromError:optionIndex:delegate:didRecoverSelector:contextInfo:");
   void _objc_msgSend_103(
@@ -3920,7 +3843,7 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Void>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_attemptRecoveryFromError_optionIndex_1 =
+  late final _sel_attemptRecoveryFromError_optionIndex_1 =
       _registerName1("attemptRecoveryFromError:optionIndex:");
   bool _objc_msgSend_104(
     ffi.Pointer<ObjCObject> obj,
@@ -3929,20 +3852,19 @@ class NativeCupertinoHttp {
     int recoveryOptionIndex,
   ) {
     return __objc_msgSend_104(
-          obj,
-          sel,
-          error,
-          recoveryOptionIndex,
-        ) !=
-        0;
+      obj,
+      sel,
+      error,
+      recoveryOptionIndex,
+    );
   }
 
   late final __objc_msgSend_104Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
               ffi.Pointer<ObjCObject>, NSUInteger)>>('objc_msgSend');
   late final __objc_msgSend_104 = __objc_msgSend_104Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int)>();
 
   ffi.Pointer<ObjCObject> NSAllocateObject(
@@ -4004,18 +3926,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZonePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
   late final _NSShouldRetainWithZone = _NSShouldRetainWithZonePtr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount(
     ffi.Pointer<ObjCObject> object,
@@ -4035,17 +3956,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZeroPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero =
       _NSDecrementExtraRefCountWasZeroPtr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount(
     ffi.Pointer<ObjCObject> object,
@@ -4061,17 +3981,13 @@ class NativeCupertinoHttp {
   late final _NSExtraRefCount =
       _NSExtraRefCountPtr.asFunction<int Function(ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSEnumerator1 =
-      _getClass1("NSEnumerator");
-  late final ffi.Pointer<ObjCSel> _sel_nextObject1 =
-      _registerName1("nextObject");
-  late final ffi.Pointer<ObjCSel> _sel_allObjects1 =
-      _registerName1("allObjects");
-  late final ffi.Pointer<ObjCObject> _class_NSValue1 = _getClass1("NSValue");
-  late final ffi.Pointer<ObjCSel> _sel_getValue_size_1 =
-      _registerName1("getValue:size:");
-  late final ffi.Pointer<ObjCSel> _sel_objCType1 = _registerName1("objCType");
-  late final ffi.Pointer<ObjCSel> _sel_initWithBytes_objCType_1 =
+  late final _class_NSEnumerator1 = _getClass1("NSEnumerator");
+  late final _sel_nextObject1 = _registerName1("nextObject");
+  late final _sel_allObjects1 = _registerName1("allObjects");
+  late final _class_NSValue1 = _getClass1("NSValue");
+  late final _sel_getValue_size_1 = _registerName1("getValue:size:");
+  late final _sel_objCType1 = _registerName1("objCType");
+  late final _sel_initWithBytes_objCType_1 =
       _registerName1("initWithBytes:objCType:");
   instancetype _objc_msgSend_105(
     ffi.Pointer<ObjCObject> obj,
@@ -4095,7 +4011,7 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_valueWithBytes_objCType_1 =
+  late final _sel_valueWithBytes_objCType_1 =
       _registerName1("valueWithBytes:objCType:");
   ffi.Pointer<ObjCObject> _objc_msgSend_106(
     ffi.Pointer<ObjCObject> obj,
@@ -4125,9 +4041,8 @@ class NativeCupertinoHttp {
           ffi.Pointer<ffi.Void>,
           ffi.Pointer<ffi.Char>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_value_withObjCType_1 =
-      _registerName1("value:withObjCType:");
-  late final ffi.Pointer<ObjCSel> _sel_valueWithNonretainedObject_1 =
+  late final _sel_value_withObjCType_1 = _registerName1("value:withObjCType:");
+  late final _sel_valueWithNonretainedObject_1 =
       _registerName1("valueWithNonretainedObject:");
   ffi.Pointer<ObjCObject> _objc_msgSend_107(
     ffi.Pointer<ObjCObject> obj,
@@ -4149,10 +4064,9 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_nonretainedObjectValue1 =
+  late final _sel_nonretainedObjectValue1 =
       _registerName1("nonretainedObjectValue");
-  late final ffi.Pointer<ObjCSel> _sel_valueWithPointer_1 =
-      _registerName1("valueWithPointer:");
+  late final _sel_valueWithPointer_1 = _registerName1("valueWithPointer:");
   ffi.Pointer<ObjCObject> _objc_msgSend_108(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4173,13 +4087,10 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ffi.Void>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_pointerValue1 =
-      _registerName1("pointerValue");
-  late final ffi.Pointer<ObjCSel> _sel_isEqualToValue_1 =
-      _registerName1("isEqualToValue:");
-  late final ffi.Pointer<ObjCSel> _sel_getValue_1 = _registerName1("getValue:");
-  late final ffi.Pointer<ObjCSel> _sel_valueWithRange_1 =
-      _registerName1("valueWithRange:");
+  late final _sel_pointerValue1 = _registerName1("pointerValue");
+  late final _sel_isEqualToValue_1 = _registerName1("isEqualToValue:");
+  late final _sel_getValue_1 = _registerName1("getValue:");
+  late final _sel_valueWithRange_1 = _registerName1("valueWithRange:");
   ffi.Pointer<ObjCObject> _objc_msgSend_109(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4200,8 +4111,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_rangeValue1 =
-      _registerName1("rangeValue");
+  late final _sel_rangeValue1 = _registerName1("rangeValue");
   NSRange _objc_msgSend_110(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4219,9 +4129,8 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_110 = __objc_msgSend_110Ptr.asFunction<
       NSRange Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSNumber1 = _getClass1("NSNumber");
-  late final ffi.Pointer<ObjCSel> _sel_initWithChar_1 =
-      _registerName1("initWithChar:");
+  late final _class_NSNumber1 = _getClass1("NSNumber");
+  late final _sel_initWithChar_1 = _registerName1("initWithChar:");
   ffi.Pointer<ObjCObject> _objc_msgSend_111(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4242,7 +4151,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithUnsignedChar_1 =
+  late final _sel_initWithUnsignedChar_1 =
       _registerName1("initWithUnsignedChar:");
   ffi.Pointer<ObjCObject> _objc_msgSend_112(
     ffi.Pointer<ObjCObject> obj,
@@ -4264,8 +4173,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithShort_1 =
-      _registerName1("initWithShort:");
+  late final _sel_initWithShort_1 = _registerName1("initWithShort:");
   ffi.Pointer<ObjCObject> _objc_msgSend_113(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4286,7 +4194,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithUnsignedShort_1 =
+  late final _sel_initWithUnsignedShort_1 =
       _registerName1("initWithUnsignedShort:");
   ffi.Pointer<ObjCObject> _objc_msgSend_114(
     ffi.Pointer<ObjCObject> obj,
@@ -4308,8 +4216,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithInt_1 =
-      _registerName1("initWithInt:");
+  late final _sel_initWithInt_1 = _registerName1("initWithInt:");
   ffi.Pointer<ObjCObject> _objc_msgSend_115(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4330,7 +4237,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithUnsignedInt_1 =
+  late final _sel_initWithUnsignedInt_1 =
       _registerName1("initWithUnsignedInt:");
   ffi.Pointer<ObjCObject> _objc_msgSend_116(
     ffi.Pointer<ObjCObject> obj,
@@ -4352,8 +4259,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithLong_1 =
-      _registerName1("initWithLong:");
+  late final _sel_initWithLong_1 = _registerName1("initWithLong:");
   ffi.Pointer<ObjCObject> _objc_msgSend_117(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4374,7 +4280,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithUnsignedLong_1 =
+  late final _sel_initWithUnsignedLong_1 =
       _registerName1("initWithUnsignedLong:");
   ffi.Pointer<ObjCObject> _objc_msgSend_118(
     ffi.Pointer<ObjCObject> obj,
@@ -4396,8 +4302,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithLongLong_1 =
-      _registerName1("initWithLongLong:");
+  late final _sel_initWithLongLong_1 = _registerName1("initWithLongLong:");
   ffi.Pointer<ObjCObject> _objc_msgSend_119(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4418,7 +4323,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithUnsignedLongLong_1 =
+  late final _sel_initWithUnsignedLongLong_1 =
       _registerName1("initWithUnsignedLongLong:");
   ffi.Pointer<ObjCObject> _objc_msgSend_120(
     ffi.Pointer<ObjCObject> obj,
@@ -4440,8 +4345,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithFloat_1 =
-      _registerName1("initWithFloat:");
+  late final _sel_initWithFloat_1 = _registerName1("initWithFloat:");
   ffi.Pointer<ObjCObject> _objc_msgSend_121(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4462,8 +4366,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, double)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithDouble_1 =
-      _registerName1("initWithDouble:");
+  late final _sel_initWithDouble_1 = _registerName1("initWithDouble:");
   ffi.Pointer<ObjCObject> _objc_msgSend_122(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4484,8 +4387,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, double)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithBool_1 =
-      _registerName1("initWithBool:");
+  late final _sel_initWithBool_1 = _registerName1("initWithBool:");
   ffi.Pointer<ObjCObject> _objc_msgSend_123(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4494,23 +4396,22 @@ class NativeCupertinoHttp {
     return __objc_msgSend_123(
       obj,
       sel,
-      value ? 1 : 0,
+      value,
     );
   }
 
   late final __objc_msgSend_123Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
-              ffi.Pointer<ObjCSel>, ffi.Uint8)>>('objc_msgSend');
+              ffi.Pointer<ObjCSel>, ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_123 = __objc_msgSend_123Ptr.asFunction<
       ffi.Pointer<ObjCObject> Function(
-          ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
+          ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, bool)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithInteger_1 =
-      _registerName1("initWithInteger:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithUnsignedInteger_1 =
+  late final _sel_initWithInteger_1 = _registerName1("initWithInteger:");
+  late final _sel_initWithUnsignedInteger_1 =
       _registerName1("initWithUnsignedInteger:");
-  late final ffi.Pointer<ObjCSel> _sel_charValue1 = _registerName1("charValue");
+  late final _sel_charValue1 = _registerName1("charValue");
   int _objc_msgSend_124(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4528,8 +4429,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_124 = __objc_msgSend_124Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_unsignedCharValue1 =
-      _registerName1("unsignedCharValue");
+  late final _sel_unsignedCharValue1 = _registerName1("unsignedCharValue");
   int _objc_msgSend_125(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4547,8 +4447,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_125 = __objc_msgSend_125Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_shortValue1 =
-      _registerName1("shortValue");
+  late final _sel_shortValue1 = _registerName1("shortValue");
   int _objc_msgSend_126(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4566,8 +4465,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_126 = __objc_msgSend_126Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_unsignedShortValue1 =
-      _registerName1("unsignedShortValue");
+  late final _sel_unsignedShortValue1 = _registerName1("unsignedShortValue");
   int _objc_msgSend_127(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4585,8 +4483,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_127 = __objc_msgSend_127Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_unsignedIntValue1 =
-      _registerName1("unsignedIntValue");
+  late final _sel_unsignedIntValue1 = _registerName1("unsignedIntValue");
   int _objc_msgSend_128(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4604,10 +4501,9 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_128 = __objc_msgSend_128Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_longValue1 = _registerName1("longValue");
-  late final ffi.Pointer<ObjCSel> _sel_unsignedLongValue1 =
-      _registerName1("unsignedLongValue");
-  late final ffi.Pointer<ObjCSel> _sel_unsignedLongLongValue1 =
+  late final _sel_longValue1 = _registerName1("longValue");
+  late final _sel_unsignedLongValue1 = _registerName1("unsignedLongValue");
+  late final _sel_unsignedLongLongValue1 =
       _registerName1("unsignedLongLongValue");
   int _objc_msgSend_129(
     ffi.Pointer<ObjCObject> obj,
@@ -4626,41 +4522,30 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_129 = __objc_msgSend_129Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_unsignedIntegerValue1 =
+  late final _sel_unsignedIntegerValue1 =
       _registerName1("unsignedIntegerValue");
-  late final ffi.Pointer<ObjCSel> _sel_stringValue1 =
-      _registerName1("stringValue");
-  late final ffi.Pointer<ObjCSel> _sel_isEqualToNumber_1 =
-      _registerName1("isEqualToNumber:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithChar_1 =
-      _registerName1("numberWithChar:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithUnsignedChar_1 =
+  late final _sel_stringValue1 = _registerName1("stringValue");
+  late final _sel_isEqualToNumber_1 = _registerName1("isEqualToNumber:");
+  late final _sel_numberWithChar_1 = _registerName1("numberWithChar:");
+  late final _sel_numberWithUnsignedChar_1 =
       _registerName1("numberWithUnsignedChar:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithShort_1 =
-      _registerName1("numberWithShort:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithUnsignedShort_1 =
+  late final _sel_numberWithShort_1 = _registerName1("numberWithShort:");
+  late final _sel_numberWithUnsignedShort_1 =
       _registerName1("numberWithUnsignedShort:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithInt_1 =
-      _registerName1("numberWithInt:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithUnsignedInt_1 =
+  late final _sel_numberWithInt_1 = _registerName1("numberWithInt:");
+  late final _sel_numberWithUnsignedInt_1 =
       _registerName1("numberWithUnsignedInt:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithLong_1 =
-      _registerName1("numberWithLong:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithUnsignedLong_1 =
+  late final _sel_numberWithLong_1 = _registerName1("numberWithLong:");
+  late final _sel_numberWithUnsignedLong_1 =
       _registerName1("numberWithUnsignedLong:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithLongLong_1 =
-      _registerName1("numberWithLongLong:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithUnsignedLongLong_1 =
+  late final _sel_numberWithLongLong_1 = _registerName1("numberWithLongLong:");
+  late final _sel_numberWithUnsignedLongLong_1 =
       _registerName1("numberWithUnsignedLongLong:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithFloat_1 =
-      _registerName1("numberWithFloat:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithDouble_1 =
-      _registerName1("numberWithDouble:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithBool_1 =
-      _registerName1("numberWithBool:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithInteger_1 =
-      _registerName1("numberWithInteger:");
-  late final ffi.Pointer<ObjCSel> _sel_numberWithUnsignedInteger_1 =
+  late final _sel_numberWithFloat_1 = _registerName1("numberWithFloat:");
+  late final _sel_numberWithDouble_1 = _registerName1("numberWithDouble:");
+  late final _sel_numberWithBool_1 = _registerName1("numberWithBool:");
+  late final _sel_numberWithInteger_1 = _registerName1("numberWithInteger:");
+  late final _sel_numberWithUnsignedInteger_1 =
       _registerName1("numberWithUnsignedInteger:");
   NSRange NSUnionRange(
     NSRange range1,
@@ -4722,11 +4607,10 @@ class NativeCupertinoHttp {
   late final _NSRangeFromString = _NSRangeFromStringPtr.asFunction<
       NSRange Function(ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSOrderedCollectionChange1 =
+  late final _class_NSOrderedCollectionChange1 =
       _getClass1("NSOrderedCollectionChange");
-  late final ffi.Pointer<ObjCSel> _sel_object1 = _registerName1("object");
-  late final ffi.Pointer<ObjCSel> _sel_changeType1 =
-      _registerName1("changeType");
+  late final _sel_object1 = _registerName1("object");
+  late final _sel_changeType1 = _registerName1("changeType");
   int _objc_msgSend_130(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4744,10 +4628,9 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_130 = __objc_msgSend_130Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_index1 = _registerName1("index");
-  late final ffi.Pointer<ObjCSel> _sel_associatedIndex1 =
-      _registerName1("associatedIndex");
-  late final ffi.Pointer<ObjCSel> _sel_initWithObject_type_index_1 =
+  late final _sel_index1 = _registerName1("index");
+  late final _sel_associatedIndex1 = _registerName1("associatedIndex");
+  late final _sel_initWithObject_type_index_1 =
       _registerName1("initWithObject:type:index:");
   instancetype _objc_msgSend_131(
     ffi.Pointer<ObjCObject> obj,
@@ -4773,8 +4656,7 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int, int)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithObject_type_index_associatedIndex_1 =
+  late final _sel_initWithObject_type_index_associatedIndex_1 =
       _registerName1("initWithObject:type:index:associatedIndex:");
   instancetype _objc_msgSend_132(
     ffi.Pointer<ObjCObject> obj,
@@ -4807,11 +4689,9 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int, int, int)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSIndexSet1 =
-      _getClass1("NSIndexSet");
-  late final ffi.Pointer<ObjCSel> _sel_indexSet1 = _registerName1("indexSet");
-  late final ffi.Pointer<ObjCSel> _sel_indexSetWithIndex_1 =
-      _registerName1("indexSetWithIndex:");
+  late final _class_NSIndexSet1 = _getClass1("NSIndexSet");
+  late final _sel_indexSet1 = _registerName1("indexSet");
+  late final _sel_indexSetWithIndex_1 = _registerName1("indexSetWithIndex:");
   instancetype _objc_msgSend_133(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -4832,7 +4712,7 @@ class NativeCupertinoHttp {
       instancetype Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_indexSetWithIndexesInRange_1 =
+  late final _sel_indexSetWithIndexesInRange_1 =
       _registerName1("indexSetWithIndexesInRange:");
   instancetype _objc_msgSend_134(
     ffi.Pointer<ObjCObject> obj,
@@ -4854,26 +4734,21 @@ class NativeCupertinoHttp {
       instancetype Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithIndexesInRange_1 =
+  late final _sel_initWithIndexesInRange_1 =
       _registerName1("initWithIndexesInRange:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithIndexSet_1 =
-      _registerName1("initWithIndexSet:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithIndex_1 =
-      _registerName1("initWithIndex:");
-  late final ffi.Pointer<ObjCSel> _sel_isEqualToIndexSet_1 =
-      _registerName1("isEqualToIndexSet:");
-  late final ffi.Pointer<ObjCSel> _sel_firstIndex1 =
-      _registerName1("firstIndex");
-  late final ffi.Pointer<ObjCSel> _sel_lastIndex1 = _registerName1("lastIndex");
-  late final ffi.Pointer<ObjCSel> _sel_indexGreaterThanIndex_1 =
+  late final _sel_initWithIndexSet_1 = _registerName1("initWithIndexSet:");
+  late final _sel_initWithIndex_1 = _registerName1("initWithIndex:");
+  late final _sel_isEqualToIndexSet_1 = _registerName1("isEqualToIndexSet:");
+  late final _sel_firstIndex1 = _registerName1("firstIndex");
+  late final _sel_lastIndex1 = _registerName1("lastIndex");
+  late final _sel_indexGreaterThanIndex_1 =
       _registerName1("indexGreaterThanIndex:");
-  late final ffi.Pointer<ObjCSel> _sel_indexLessThanIndex_1 =
-      _registerName1("indexLessThanIndex:");
-  late final ffi.Pointer<ObjCSel> _sel_indexGreaterThanOrEqualToIndex_1 =
+  late final _sel_indexLessThanIndex_1 = _registerName1("indexLessThanIndex:");
+  late final _sel_indexGreaterThanOrEqualToIndex_1 =
       _registerName1("indexGreaterThanOrEqualToIndex:");
-  late final ffi.Pointer<ObjCSel> _sel_indexLessThanOrEqualToIndex_1 =
+  late final _sel_indexLessThanOrEqualToIndex_1 =
       _registerName1("indexLessThanOrEqualToIndex:");
-  late final ffi.Pointer<ObjCSel> _sel_getIndexes_maxCount_inIndexRange_1 =
+  late final _sel_getIndexes_maxCount_inIndexRange_1 =
       _registerName1("getIndexes:maxCount:inIndexRange:");
   int _objc_msgSend_135(
     ffi.Pointer<ObjCObject> obj,
@@ -4903,7 +4778,7 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<NSUInteger>, int, NSRangePointer)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_countOfIndexesInRange_1 =
+  late final _sel_countOfIndexesInRange_1 =
       _registerName1("countOfIndexesInRange:");
   int _objc_msgSend_136(
     ffi.Pointer<ObjCObject> obj,
@@ -4924,9 +4799,8 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_136 = __objc_msgSend_136Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_containsIndex_1 =
-      _registerName1("containsIndex:");
-  late final ffi.Pointer<ObjCSel> _sel_containsIndexesInRange_1 =
+  late final _sel_containsIndex_1 = _registerName1("containsIndex:");
+  late final _sel_containsIndexesInRange_1 =
       _registerName1("containsIndexesInRange:");
   bool _objc_msgSend_137(
     ffi.Pointer<ObjCObject> obj,
@@ -4934,25 +4808,23 @@ class NativeCupertinoHttp {
     NSRange range,
   ) {
     return __objc_msgSend_137(
-          obj,
-          sel,
-          range,
-        ) !=
-        0;
+      obj,
+      sel,
+      range,
+    );
   }
 
   late final __objc_msgSend_137Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
               NSRange)>>('objc_msgSend');
   late final __objc_msgSend_137 = __objc_msgSend_137Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_containsIndexes_1 =
-      _registerName1("containsIndexes:");
-  late final ffi.Pointer<ObjCSel> _sel_intersectsIndexesInRange_1 =
+  late final _sel_containsIndexes_1 = _registerName1("containsIndexes:");
+  late final _sel_intersectsIndexesInRange_1 =
       _registerName1("intersectsIndexesInRange:");
-  late final ffi.Pointer<ObjCSel> _sel_enumerateIndexesUsingBlock_1 =
+  late final _sel_enumerateIndexesUsingBlock_1 =
       _registerName1("enumerateIndexesUsingBlock:");
   void _objc_msgSend_138(
     ffi.Pointer<ObjCObject> obj,
@@ -4974,8 +4846,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_enumerateIndexesWithOptions_usingBlock_1 =
+  late final _sel_enumerateIndexesWithOptions_usingBlock_1 =
       _registerName1("enumerateIndexesWithOptions:usingBlock:");
   void _objc_msgSend_139(
     ffi.Pointer<ObjCObject> obj,
@@ -4999,8 +4870,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_enumerateIndexesInRange_options_usingBlock_1 =
+  late final _sel_enumerateIndexesInRange_options_usingBlock_1 =
       _registerName1("enumerateIndexesInRange:options:usingBlock:");
   void _objc_msgSend_140(
     ffi.Pointer<ObjCObject> obj,
@@ -5026,8 +4896,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange, int,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_indexPassingTest_1 =
-      _registerName1("indexPassingTest:");
+  late final _sel_indexPassingTest_1 = _registerName1("indexPassingTest:");
   int _objc_msgSend_141(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -5048,7 +4917,7 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_indexWithOptions_passingTest_1 =
+  late final _sel_indexWithOptions_passingTest_1 =
       _registerName1("indexWithOptions:passingTest:");
   int _objc_msgSend_142(
     ffi.Pointer<ObjCObject> obj,
@@ -5072,7 +4941,7 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_indexInRange_options_passingTest_1 =
+  late final _sel_indexInRange_options_passingTest_1 =
       _registerName1("indexInRange:options:passingTest:");
   int _objc_msgSend_143(
     ffi.Pointer<ObjCObject> obj,
@@ -5098,8 +4967,7 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange, int,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_indexesPassingTest_1 =
-      _registerName1("indexesPassingTest:");
+  late final _sel_indexesPassingTest_1 = _registerName1("indexesPassingTest:");
   ffi.Pointer<ObjCObject> _objc_msgSend_144(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -5120,7 +4988,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_indexesWithOptions_passingTest_1 =
+  late final _sel_indexesWithOptions_passingTest_1 =
       _registerName1("indexesWithOptions:passingTest:");
   ffi.Pointer<ObjCObject> _objc_msgSend_145(
     ffi.Pointer<ObjCObject> obj,
@@ -5147,7 +5015,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, int, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_indexesInRange_options_passingTest_1 =
+  late final _sel_indexesInRange_options_passingTest_1 =
       _registerName1("indexesInRange:options:passingTest:");
   ffi.Pointer<ObjCObject> _objc_msgSend_146(
     ffi.Pointer<ObjCObject> obj,
@@ -5177,7 +5045,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, NSRange, int, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_enumerateRangesUsingBlock_1 =
+  late final _sel_enumerateRangesUsingBlock_1 =
       _registerName1("enumerateRangesUsingBlock:");
   void _objc_msgSend_147(
     ffi.Pointer<ObjCObject> obj,
@@ -5199,7 +5067,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_enumerateRangesWithOptions_usingBlock_1 =
+  late final _sel_enumerateRangesWithOptions_usingBlock_1 =
       _registerName1("enumerateRangesWithOptions:usingBlock:");
   void _objc_msgSend_148(
     ffi.Pointer<ObjCObject> obj,
@@ -5223,8 +5091,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_enumerateRangesInRange_options_usingBlock_1 =
+  late final _sel_enumerateRangesInRange_options_usingBlock_1 =
       _registerName1("enumerateRangesInRange:options:usingBlock:");
   void _objc_msgSend_149(
     ffi.Pointer<ObjCObject> obj,
@@ -5250,19 +5117,13 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange, int,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSMutableIndexSet1 =
-      _getClass1("NSMutableIndexSet");
-  late final ffi.Pointer<ObjCSel> _sel_addIndexes_1 =
-      _registerName1("addIndexes:");
-  late final ffi.Pointer<ObjCSel> _sel_removeIndexes_1 =
-      _registerName1("removeIndexes:");
-  late final ffi.Pointer<ObjCSel> _sel_removeAllIndexes1 =
-      _registerName1("removeAllIndexes");
-  late final ffi.Pointer<ObjCSel> _sel_addIndex_1 = _registerName1("addIndex:");
-  late final ffi.Pointer<ObjCSel> _sel_removeIndex_1 =
-      _registerName1("removeIndex:");
-  late final ffi.Pointer<ObjCSel> _sel_addIndexesInRange_1 =
-      _registerName1("addIndexesInRange:");
+  late final _class_NSMutableIndexSet1 = _getClass1("NSMutableIndexSet");
+  late final _sel_addIndexes_1 = _registerName1("addIndexes:");
+  late final _sel_removeIndexes_1 = _registerName1("removeIndexes:");
+  late final _sel_removeAllIndexes1 = _registerName1("removeAllIndexes");
+  late final _sel_addIndex_1 = _registerName1("addIndex:");
+  late final _sel_removeIndex_1 = _registerName1("removeIndex:");
+  late final _sel_addIndexesInRange_1 = _registerName1("addIndexesInRange:");
   void _objc_msgSend_150(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -5282,9 +5143,9 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_150 = __objc_msgSend_150Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_removeIndexesInRange_1 =
+  late final _sel_removeIndexesInRange_1 =
       _registerName1("removeIndexesInRange:");
-  late final ffi.Pointer<ObjCSel> _sel_shiftIndexesStartingAtIndex_by_1 =
+  late final _sel_shiftIndexesStartingAtIndex_by_1 =
       _registerName1("shiftIndexesStartingAtIndex:by:");
   void _objc_msgSend_151(
     ffi.Pointer<ObjCObject> obj,
@@ -5307,12 +5168,10 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_151 = __objc_msgSend_151Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int, int)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSOrderedCollectionDifference1 =
+  late final _class_NSOrderedCollectionDifference1 =
       _getClass1("NSOrderedCollectionDifference");
-  late final ffi.Pointer<ObjCSel> _sel_initWithChanges_1 =
-      _registerName1("initWithChanges:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithInsertIndexes_insertedObjects_removeIndexes_removedObjects_additionalChanges_1 =
+  late final _sel_initWithChanges_1 = _registerName1("initWithChanges:");
+  late final _sel_initWithInsertIndexes_insertedObjects_removeIndexes_removedObjects_additionalChanges_1 =
       _registerName1(
           "initWithInsertIndexes:insertedObjects:removeIndexes:removedObjects:additionalChanges:");
   instancetype _objc_msgSend_152(
@@ -5355,8 +5214,7 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithInsertIndexes_insertedObjects_removeIndexes_removedObjects_1 =
+  late final _sel_initWithInsertIndexes_insertedObjects_removeIndexes_removedObjects_1 =
       _registerName1(
           "initWithInsertIndexes:insertedObjects:removeIndexes:removedObjects:");
   instancetype _objc_msgSend_153(
@@ -5395,17 +5253,13 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_insertions1 =
-      _registerName1("insertions");
-  late final ffi.Pointer<ObjCSel> _sel_removals1 = _registerName1("removals");
-  late final ffi.Pointer<ObjCSel> _sel_hasChanges1 =
-      _registerName1("hasChanges");
-  late final ffi.Pointer<ObjCSel> _sel_inverseDifference1 =
-      _registerName1("inverseDifference");
-  late final ffi.Pointer<ObjCObject> _class_NSArray1 = _getClass1("NSArray");
-  late final ffi.Pointer<ObjCSel> _sel_objectAtIndex_1 =
-      _registerName1("objectAtIndex:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithObjects_count_1 =
+  late final _sel_insertions1 = _registerName1("insertions");
+  late final _sel_removals1 = _registerName1("removals");
+  late final _sel_hasChanges1 = _registerName1("hasChanges");
+  late final _sel_inverseDifference1 = _registerName1("inverseDifference");
+  late final _class_NSArray1 = _getClass1("NSArray");
+  late final _sel_objectAtIndex_1 = _registerName1("objectAtIndex:");
+  late final _sel_initWithObjects_count_1 =
       _registerName1("initWithObjects:count:");
   instancetype _objc_msgSend_154(
     ffi.Pointer<ObjCObject> obj,
@@ -5432,14 +5286,12 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Pointer<ObjCObject>>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_componentsJoinedByString_1 =
+  late final _sel_componentsJoinedByString_1 =
       _registerName1("componentsJoinedByString:");
-  late final ffi.Pointer<ObjCSel> _sel_containsObject_1 =
-      _registerName1("containsObject:");
-  late final ffi.Pointer<ObjCSel> _sel_firstObjectCommonWithArray_1 =
+  late final _sel_containsObject_1 = _registerName1("containsObject:");
+  late final _sel_firstObjectCommonWithArray_1 =
       _registerName1("firstObjectCommonWithArray:");
-  late final ffi.Pointer<ObjCSel> _sel_getObjects_range_1 =
-      _registerName1("getObjects:range:");
+  late final _sel_getObjects_range_1 = _registerName1("getObjects:range:");
   void _objc_msgSend_155(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -5462,8 +5314,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Pointer<ObjCObject>>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_indexOfObject_1 =
-      _registerName1("indexOfObject:");
+  late final _sel_indexOfObject_1 = _registerName1("indexOfObject:");
   int _objc_msgSend_156(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -5484,7 +5335,7 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_indexOfObject_inRange_1 =
+  late final _sel_indexOfObject_inRange_1 =
       _registerName1("indexOfObject:inRange:");
   int _objc_msgSend_157(
     ffi.Pointer<ObjCObject> obj,
@@ -5508,21 +5359,17 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_indexOfObjectIdenticalTo_1 =
+  late final _sel_indexOfObjectIdenticalTo_1 =
       _registerName1("indexOfObjectIdenticalTo:");
-  late final ffi.Pointer<ObjCSel> _sel_indexOfObjectIdenticalTo_inRange_1 =
+  late final _sel_indexOfObjectIdenticalTo_inRange_1 =
       _registerName1("indexOfObjectIdenticalTo:inRange:");
-  late final ffi.Pointer<ObjCSel> _sel_isEqualToArray_1 =
-      _registerName1("isEqualToArray:");
-  late final ffi.Pointer<ObjCSel> _sel_firstObject1 =
-      _registerName1("firstObject");
-  late final ffi.Pointer<ObjCSel> _sel_lastObject1 =
-      _registerName1("lastObject");
-  late final ffi.Pointer<ObjCSel> _sel_sortedArrayHint1 =
-      _registerName1("sortedArrayHint");
-  late final ffi.Pointer<ObjCSel> _sel_makeObjectsPerformSelector_1 =
+  late final _sel_isEqualToArray_1 = _registerName1("isEqualToArray:");
+  late final _sel_firstObject1 = _registerName1("firstObject");
+  late final _sel_lastObject1 = _registerName1("lastObject");
+  late final _sel_sortedArrayHint1 = _registerName1("sortedArrayHint");
+  late final _sel_makeObjectsPerformSelector_1 =
       _registerName1("makeObjectsPerformSelector:");
-  late final ffi.Pointer<ObjCSel> _sel_makeObjectsPerformSelector_withObject_1 =
+  late final _sel_makeObjectsPerformSelector_withObject_1 =
       _registerName1("makeObjectsPerformSelector:withObject:");
   void _objc_msgSend_158(
     ffi.Pointer<ObjCObject> obj,
@@ -5546,9 +5393,9 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_objectAtIndexedSubscript_1 =
+  late final _sel_objectAtIndexedSubscript_1 =
       _registerName1("objectAtIndexedSubscript:");
-  late final ffi.Pointer<ObjCSel> _sel_enumerateObjectsUsingBlock_1 =
+  late final _sel_enumerateObjectsUsingBlock_1 =
       _registerName1("enumerateObjectsUsingBlock:");
   void _objc_msgSend_159(
     ffi.Pointer<ObjCObject> obj,
@@ -5570,8 +5417,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_enumerateObjectsWithOptions_usingBlock_1 =
+  late final _sel_enumerateObjectsWithOptions_usingBlock_1 =
       _registerName1("enumerateObjectsWithOptions:usingBlock:");
   void _objc_msgSend_160(
     ffi.Pointer<ObjCObject> obj,
@@ -5595,8 +5441,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_enumerateObjectsAtIndexes_options_usingBlock_1 =
+  late final _sel_enumerateObjectsAtIndexes_options_usingBlock_1 =
       _registerName1("enumerateObjectsAtIndexes:options:usingBlock:");
   void _objc_msgSend_161(
     ffi.Pointer<ObjCObject> obj,
@@ -5626,7 +5471,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_indexOfObjectPassingTest_1 =
+  late final _sel_indexOfObjectPassingTest_1 =
       _registerName1("indexOfObjectPassingTest:");
   int _objc_msgSend_162(
     ffi.Pointer<ObjCObject> obj,
@@ -5648,7 +5493,7 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_indexOfObjectWithOptions_passingTest_1 =
+  late final _sel_indexOfObjectWithOptions_passingTest_1 =
       _registerName1("indexOfObjectWithOptions:passingTest:");
   int _objc_msgSend_163(
     ffi.Pointer<ObjCObject> obj,
@@ -5672,8 +5517,7 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_indexOfObjectAtIndexes_options_passingTest_1 =
+  late final _sel_indexOfObjectAtIndexes_options_passingTest_1 =
       _registerName1("indexOfObjectAtIndexes:options:passingTest:");
   int _objc_msgSend_164(
     ffi.Pointer<ObjCObject> obj,
@@ -5703,7 +5547,7 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_indexesOfObjectsPassingTest_1 =
+  late final _sel_indexesOfObjectsPassingTest_1 =
       _registerName1("indexesOfObjectsPassingTest:");
   ffi.Pointer<ObjCObject> _objc_msgSend_165(
     ffi.Pointer<ObjCObject> obj,
@@ -5725,8 +5569,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_indexesOfObjectsWithOptions_passingTest_1 =
+  late final _sel_indexesOfObjectsWithOptions_passingTest_1 =
       _registerName1("indexesOfObjectsWithOptions:passingTest:");
   ffi.Pointer<ObjCObject> _objc_msgSend_166(
     ffi.Pointer<ObjCObject> obj,
@@ -5753,8 +5596,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, int, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_indexesOfObjectsAtIndexes_options_passingTest_1 =
+  late final _sel_indexesOfObjectsAtIndexes_options_passingTest_1 =
       _registerName1("indexesOfObjectsAtIndexes:options:passingTest:");
   ffi.Pointer<ObjCObject> _objc_msgSend_167(
     ffi.Pointer<ObjCObject> obj,
@@ -5788,8 +5630,7 @@ class NativeCupertinoHttp {
           int,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_indexOfObject_inSortedRange_options_usingComparator_1 =
+  late final _sel_indexOfObject_inSortedRange_options_usingComparator_1 =
       _registerName1("indexOfObject:inSortedRange:options:usingComparator:");
   int _objc_msgSend_168(
     ffi.Pointer<ObjCObject> obj,
@@ -5822,23 +5663,17 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, NSRange, int, NSComparator)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_array1 = _registerName1("array");
-  late final ffi.Pointer<ObjCSel> _sel_arrayWithObject_1 =
-      _registerName1("arrayWithObject:");
-  late final ffi.Pointer<ObjCSel> _sel_arrayWithObjects_count_1 =
+  late final _sel_array1 = _registerName1("array");
+  late final _sel_arrayWithObject_1 = _registerName1("arrayWithObject:");
+  late final _sel_arrayWithObjects_count_1 =
       _registerName1("arrayWithObjects:count:");
-  late final ffi.Pointer<ObjCSel> _sel_arrayWithObjects_1 =
-      _registerName1("arrayWithObjects:");
-  late final ffi.Pointer<ObjCSel> _sel_arrayWithArray_1 =
-      _registerName1("arrayWithArray:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithObjects_1 =
-      _registerName1("initWithObjects:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithArray_1 =
-      _registerName1("initWithArray:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithArray_copyItems_1 =
+  late final _sel_arrayWithObjects_1 = _registerName1("arrayWithObjects:");
+  late final _sel_arrayWithArray_1 = _registerName1("arrayWithArray:");
+  late final _sel_initWithObjects_1 = _registerName1("initWithObjects:");
+  late final _sel_initWithArray_1 = _registerName1("initWithArray:");
+  late final _sel_initWithArray_copyItems_1 =
       _registerName1("initWithArray:copyItems:");
-  late final ffi.Pointer<ObjCSel> _sel_getObjects_1 =
-      _registerName1("getObjects:");
+  late final _sel_getObjects_1 = _registerName1("getObjects:");
   void _objc_msgSend_169(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -5859,11 +5694,9 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSMutableArray1 =
-      _getClass1("NSMutableArray");
-  late final ffi.Pointer<ObjCSel> _sel_addObject_1 =
-      _registerName1("addObject:");
-  late final ffi.Pointer<ObjCSel> _sel_insertObject_atIndex_1 =
+  late final _class_NSMutableArray1 = _getClass1("NSMutableArray");
+  late final _sel_addObject_1 = _registerName1("addObject:");
+  late final _sel_insertObject_atIndex_1 =
       _registerName1("insertObject:atIndex:");
   void _objc_msgSend_170(
     ffi.Pointer<ObjCObject> obj,
@@ -5887,11 +5720,10 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_removeLastObject1 =
-      _registerName1("removeLastObject");
-  late final ffi.Pointer<ObjCSel> _sel_removeObjectAtIndex_1 =
+  late final _sel_removeLastObject1 = _registerName1("removeLastObject");
+  late final _sel_removeObjectAtIndex_1 =
       _registerName1("removeObjectAtIndex:");
-  late final ffi.Pointer<ObjCSel> _sel_replaceObjectAtIndex_withObject_1 =
+  late final _sel_replaceObjectAtIndex_withObject_1 =
       _registerName1("replaceObjectAtIndex:withObject:");
   void _objc_msgSend_171(
     ffi.Pointer<ObjCObject> obj,
@@ -5915,12 +5747,10 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithCapacity_1 =
-      _registerName1("initWithCapacity:");
-  late final ffi.Pointer<ObjCSel> _sel_addObjectsFromArray_1 =
+  late final _sel_initWithCapacity_1 = _registerName1("initWithCapacity:");
+  late final _sel_addObjectsFromArray_1 =
       _registerName1("addObjectsFromArray:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_exchangeObjectAtIndex_withObjectAtIndex_1 =
+  late final _sel_exchangeObjectAtIndex_withObjectAtIndex_1 =
       _registerName1("exchangeObjectAtIndex:withObjectAtIndex:");
   void _objc_msgSend_172(
     ffi.Pointer<ObjCObject> obj,
@@ -5943,9 +5773,8 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_172 = __objc_msgSend_172Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_removeAllObjects1 =
-      _registerName1("removeAllObjects");
-  late final ffi.Pointer<ObjCSel> _sel_removeObject_inRange_1 =
+  late final _sel_removeAllObjects1 = _registerName1("removeAllObjects");
+  late final _sel_removeObject_inRange_1 =
       _registerName1("removeObject:inRange:");
   void _objc_msgSend_173(
     ffi.Pointer<ObjCObject> obj,
@@ -5969,13 +5798,12 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_removeObject_1 =
-      _registerName1("removeObject:");
-  late final ffi.Pointer<ObjCSel> _sel_removeObjectIdenticalTo_inRange_1 =
+  late final _sel_removeObject_1 = _registerName1("removeObject:");
+  late final _sel_removeObjectIdenticalTo_inRange_1 =
       _registerName1("removeObjectIdenticalTo:inRange:");
-  late final ffi.Pointer<ObjCSel> _sel_removeObjectIdenticalTo_1 =
+  late final _sel_removeObjectIdenticalTo_1 =
       _registerName1("removeObjectIdenticalTo:");
-  late final ffi.Pointer<ObjCSel> _sel_removeObjectsFromIndices_numIndices_1 =
+  late final _sel_removeObjectsFromIndices_numIndices_1 =
       _registerName1("removeObjectsFromIndices:numIndices:");
   void _objc_msgSend_174(
     ffi.Pointer<ObjCObject> obj,
@@ -5999,12 +5827,11 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<NSUInteger>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_removeObjectsInArray_1 =
+  late final _sel_removeObjectsInArray_1 =
       _registerName1("removeObjectsInArray:");
-  late final ffi.Pointer<ObjCSel> _sel_removeObjectsInRange_1 =
+  late final _sel_removeObjectsInRange_1 =
       _registerName1("removeObjectsInRange:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_replaceObjectsInRange_withObjectsFromArray_range_1 =
+  late final _sel_replaceObjectsInRange_withObjectsFromArray_range_1 =
       _registerName1("replaceObjectsInRange:withObjectsFromArray:range:");
   void _objc_msgSend_175(
     ffi.Pointer<ObjCObject> obj,
@@ -6030,8 +5857,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange,
           ffi.Pointer<ObjCObject>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_replaceObjectsInRange_withObjectsFromArray_1 =
+  late final _sel_replaceObjectsInRange_withObjectsFromArray_1 =
       _registerName1("replaceObjectsInRange:withObjectsFromArray:");
   void _objc_msgSend_176(
     ffi.Pointer<ObjCObject> obj,
@@ -6055,8 +5881,8 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setArray_1 = _registerName1("setArray:");
-  late final ffi.Pointer<ObjCSel> _sel_sortUsingFunction_context_1 =
+  late final _sel_setArray_1 = _registerName1("setArray:");
+  late final _sel_sortUsingFunction_context_1 =
       _registerName1("sortUsingFunction:context:");
   void _objc_msgSend_177(
     ffi.Pointer<ObjCObject> obj,
@@ -6096,17 +5922,16 @@ class NativeCupertinoHttp {
                       ffi.Pointer<ObjCObject>, ffi.Pointer<ffi.Void>)>>,
           ffi.Pointer<ffi.Void>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_sortUsingSelector_1 =
-      _registerName1("sortUsingSelector:");
-  late final ffi.Pointer<ObjCSel> _sel_insertObjects_atIndexes_1 =
+  late final _sel_sortUsingSelector_1 = _registerName1("sortUsingSelector:");
+  late final _sel_insertObjects_atIndexes_1 =
       _registerName1("insertObjects:atIndexes:");
-  late final ffi.Pointer<ObjCSel> _sel_removeObjectsAtIndexes_1 =
+  late final _sel_removeObjectsAtIndexes_1 =
       _registerName1("removeObjectsAtIndexes:");
-  late final ffi.Pointer<ObjCSel> _sel_replaceObjectsAtIndexes_withObjects_1 =
+  late final _sel_replaceObjectsAtIndexes_withObjects_1 =
       _registerName1("replaceObjectsAtIndexes:withObjects:");
-  late final ffi.Pointer<ObjCSel> _sel_setObject_atIndexedSubscript_1 =
+  late final _sel_setObject_atIndexedSubscript_1 =
       _registerName1("setObject:atIndexedSubscript:");
-  late final ffi.Pointer<ObjCSel> _sel_sortUsingComparator_1 =
+  late final _sel_sortUsingComparator_1 =
       _registerName1("sortUsingComparator:");
   void _objc_msgSend_178(
     ffi.Pointer<ObjCObject> obj,
@@ -6128,7 +5953,7 @@ class NativeCupertinoHttp {
       void Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSComparator)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_sortWithOptions_usingComparator_1 =
+  late final _sel_sortWithOptions_usingComparator_1 =
       _registerName1("sortWithOptions:usingComparator:");
   void _objc_msgSend_179(
     ffi.Pointer<ObjCObject> obj,
@@ -6152,10 +5977,8 @@ class NativeCupertinoHttp {
       void Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int, NSComparator)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_arrayWithCapacity_1 =
-      _registerName1("arrayWithCapacity:");
-  late final ffi.Pointer<ObjCSel> _sel_applyDifference_1 =
-      _registerName1("applyDifference:");
+  late final _sel_arrayWithCapacity_1 = _registerName1("arrayWithCapacity:");
+  late final _sel_applyDifference_1 = _registerName1("applyDifference:");
   ffi.Pointer<ObjCObject> NSStringFromSelector1(
     ffi.Pointer<ObjCSel> aSelector,
   ) {
@@ -6638,16 +6461,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone1(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZone1Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone1 = _NSCreateZone1Ptr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone1(
     ffi.Pointer<NSZone> zone,
@@ -6982,18 +6805,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone1(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZone1Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
   late final _NSShouldRetainWithZone1 = _NSShouldRetainWithZone1Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount1(
     ffi.Pointer<ObjCObject> object,
@@ -7013,17 +6835,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero1(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZero1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero1 =
       _NSDecrementExtraRefCountWasZero1Ptr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount1(
     ffi.Pointer<ObjCObject> object,
@@ -7099,19 +6920,13 @@ class NativeCupertinoHttp {
   late final _NSRangeFromString1 = _NSRangeFromString1Ptr.asFunction<
       NSRange Function(ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSMutableData1 =
-      _getClass1("NSMutableData");
-  late final ffi.Pointer<ObjCSel> _sel_mutableBytes1 =
-      _registerName1("mutableBytes");
-  late final ffi.Pointer<ObjCSel> _sel_setLength_1 =
-      _registerName1("setLength:");
-  late final ffi.Pointer<ObjCSel> _sel_appendBytes_length_1 =
-      _registerName1("appendBytes:length:");
-  late final ffi.Pointer<ObjCSel> _sel_appendData_1 =
-      _registerName1("appendData:");
-  late final ffi.Pointer<ObjCSel> _sel_increaseLengthBy_1 =
-      _registerName1("increaseLengthBy:");
-  late final ffi.Pointer<ObjCSel> _sel_replaceBytesInRange_withBytes_1 =
+  late final _class_NSMutableData1 = _getClass1("NSMutableData");
+  late final _sel_mutableBytes1 = _registerName1("mutableBytes");
+  late final _sel_setLength_1 = _registerName1("setLength:");
+  late final _sel_appendBytes_length_1 = _registerName1("appendBytes:length:");
+  late final _sel_appendData_1 = _registerName1("appendData:");
+  late final _sel_increaseLengthBy_1 = _registerName1("increaseLengthBy:");
+  late final _sel_replaceBytesInRange_withBytes_1 =
       _registerName1("replaceBytesInRange:withBytes:");
   void _objc_msgSend_180(
     ffi.Pointer<ObjCObject> obj,
@@ -7135,10 +6950,9 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange,
           ffi.Pointer<ffi.Void>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_resetBytesInRange_1 =
-      _registerName1("resetBytesInRange:");
-  late final ffi.Pointer<ObjCSel> _sel_setData_1 = _registerName1("setData:");
-  late final ffi.Pointer<ObjCSel> _sel_replaceBytesInRange_withBytes_length_1 =
+  late final _sel_resetBytesInRange_1 = _registerName1("resetBytesInRange:");
+  late final _sel_setData_1 = _registerName1("setData:");
+  late final _sel_replaceBytesInRange_withBytes_length_1 =
       _registerName1("replaceBytesInRange:withBytes:length:");
   void _objc_msgSend_181(
     ffi.Pointer<ObjCObject> obj,
@@ -7164,13 +6978,10 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange,
           ffi.Pointer<ffi.Void>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_dataWithCapacity_1 =
-      _registerName1("dataWithCapacity:");
-  late final ffi.Pointer<ObjCSel> _sel_dataWithLength_1 =
-      _registerName1("dataWithLength:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithLength_1 =
-      _registerName1("initWithLength:");
-  late final ffi.Pointer<ObjCSel> _sel_decompressUsingAlgorithm_error_1 =
+  late final _sel_dataWithCapacity_1 = _registerName1("dataWithCapacity:");
+  late final _sel_dataWithLength_1 = _registerName1("dataWithLength:");
+  late final _sel_initWithLength_1 = _registerName1("initWithLength:");
+  late final _sel_decompressUsingAlgorithm_error_1 =
       _registerName1("decompressUsingAlgorithm:error:");
   bool _objc_msgSend_182(
     ffi.Pointer<ObjCObject> obj,
@@ -7179,29 +6990,27 @@ class NativeCupertinoHttp {
     ffi.Pointer<ffi.Pointer<ObjCObject>> error,
   ) {
     return __objc_msgSend_182(
-          obj,
-          sel,
-          algorithm,
-          error,
-        ) !=
-        0;
+      obj,
+      sel,
+      algorithm,
+      error,
+    );
   }
 
   late final __objc_msgSend_182Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Int32,
               ffi.Pointer<ffi.Pointer<ObjCObject>>)>>('objc_msgSend');
   late final __objc_msgSend_182 = __objc_msgSend_182Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int,
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_compressUsingAlgorithm_error_1 =
+  late final _sel_compressUsingAlgorithm_error_1 =
       _registerName1("compressUsingAlgorithm:error:");
-  late final ffi.Pointer<ObjCObject> _class_NSPurgeableData1 =
-      _getClass1("NSPurgeableData");
+  late final _class_NSPurgeableData1 = _getClass1("NSPurgeableData");
   ffi.Pointer<ObjCObject> NSStringFromSelector2(
     ffi.Pointer<ObjCSel> aSelector,
   ) {
@@ -7684,16 +7493,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone2(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZone2Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone2 = _NSCreateZone2Ptr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone2(
     ffi.Pointer<NSZone> zone,
@@ -8028,18 +7837,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone2(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZone2Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
   late final _NSShouldRetainWithZone2 = _NSShouldRetainWithZone2Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount2(
     ffi.Pointer<ObjCObject> object,
@@ -8059,17 +7867,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero2(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZero2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero2 =
       _NSDecrementExtraRefCountWasZero2Ptr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount2(
     ffi.Pointer<ObjCObject> object,
@@ -8085,21 +7892,17 @@ class NativeCupertinoHttp {
   late final _NSExtraRefCount2 =
       _NSExtraRefCount2Ptr.asFunction<int Function(ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSMutableDictionary1 =
-      _getClass1("NSMutableDictionary");
-  late final ffi.Pointer<ObjCSel> _sel_removeObjectForKey_1 =
-      _registerName1("removeObjectForKey:");
-  late final ffi.Pointer<ObjCSel> _sel_setObject_forKey_1 =
-      _registerName1("setObject:forKey:");
-  late final ffi.Pointer<ObjCSel> _sel_addEntriesFromDictionary_1 =
+  late final _class_NSMutableDictionary1 = _getClass1("NSMutableDictionary");
+  late final _sel_removeObjectForKey_1 = _registerName1("removeObjectForKey:");
+  late final _sel_setObject_forKey_1 = _registerName1("setObject:forKey:");
+  late final _sel_addEntriesFromDictionary_1 =
       _registerName1("addEntriesFromDictionary:");
-  late final ffi.Pointer<ObjCSel> _sel_removeObjectsForKeys_1 =
+  late final _sel_removeObjectsForKeys_1 =
       _registerName1("removeObjectsForKeys:");
-  late final ffi.Pointer<ObjCSel> _sel_setDictionary_1 =
-      _registerName1("setDictionary:");
-  late final ffi.Pointer<ObjCSel> _sel_setObject_forKeyedSubscript_1 =
+  late final _sel_setDictionary_1 = _registerName1("setDictionary:");
+  late final _sel_setObject_forKeyedSubscript_1 =
       _registerName1("setObject:forKeyedSubscript:");
-  late final ffi.Pointer<ObjCSel> _sel_dictionaryWithCapacity_1 =
+  late final _sel_dictionaryWithCapacity_1 =
       _registerName1("dictionaryWithCapacity:");
   ffi.Pointer<ObjCObject> NSStringFromSelector3(
     ffi.Pointer<ObjCSel> aSelector,
@@ -8583,16 +8386,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone3(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZone3Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone3 = _NSCreateZone3Ptr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone3(
     ffi.Pointer<NSZone> zone,
@@ -8927,18 +8730,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone3(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZone3Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
   late final _NSShouldRetainWithZone3 = _NSShouldRetainWithZone3Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount3(
     ffi.Pointer<ObjCObject> object,
@@ -8958,17 +8760,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero3(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZero3Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero3 =
       _NSDecrementExtraRefCountWasZero3Ptr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount3(
     ffi.Pointer<ObjCObject> object,
@@ -8984,11 +8785,10 @@ class NativeCupertinoHttp {
   late final _NSExtraRefCount3 =
       _NSExtraRefCount3Ptr.asFunction<int Function(ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSNotification1 =
-      _getClass1("NSNotification");
-  late final ffi.Pointer<ObjCSel> _sel_name1 = _registerName1("name");
-  late final ffi.Pointer<ObjCSel> _sel_userInfo1 = _registerName1("userInfo");
-  late final ffi.Pointer<ObjCSel> _sel_initWithName_object_userInfo_1 =
+  late final _class_NSNotification1 = _getClass1("NSNotification");
+  late final _sel_name1 = _registerName1("name");
+  late final _sel_userInfo1 = _registerName1("userInfo");
+  late final _sel_initWithName_object_userInfo_1 =
       _registerName1("initWithName:object:userInfo:");
   instancetype _objc_msgSend_183(
     ffi.Pointer<ObjCObject> obj,
@@ -9022,15 +8822,13 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_notificationWithName_object_1 =
+  late final _sel_notificationWithName_object_1 =
       _registerName1("notificationWithName:object:");
-  late final ffi.Pointer<ObjCSel> _sel_notificationWithName_object_userInfo_1 =
+  late final _sel_notificationWithName_object_userInfo_1 =
       _registerName1("notificationWithName:object:userInfo:");
-  late final ffi.Pointer<ObjCObject> _class_NSNotificationCenter1 =
-      _getClass1("NSNotificationCenter");
-  late final ffi.Pointer<ObjCSel> _sel_defaultCenter1 =
-      _registerName1("defaultCenter");
-  late final ffi.Pointer<ObjCSel> _sel_addObserver_selector_name_object_1 =
+  late final _class_NSNotificationCenter1 = _getClass1("NSNotificationCenter");
+  late final _sel_defaultCenter1 = _registerName1("defaultCenter");
+  late final _sel_addObserver_selector_name_object_1 =
       _registerName1("addObserver:selector:name:object:");
   void _objc_msgSend_184(
     ffi.Pointer<ObjCObject> obj,
@@ -9068,11 +8866,10 @@ class NativeCupertinoHttp {
           NSNotificationName,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_postNotification_1 =
-      _registerName1("postNotification:");
-  late final ffi.Pointer<ObjCSel> _sel_postNotificationName_object_1 =
+  late final _sel_postNotification_1 = _registerName1("postNotification:");
+  late final _sel_postNotificationName_object_1 =
       _registerName1("postNotificationName:object:");
-  late final ffi.Pointer<ObjCSel> _sel_postNotificationName_object_userInfo_1 =
+  late final _sel_postNotificationName_object_userInfo_1 =
       _registerName1("postNotificationName:object:userInfo:");
   void _objc_msgSend_185(
     ffi.Pointer<ObjCObject> obj,
@@ -9106,12 +8903,10 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_removeObserver_1 =
-      _registerName1("removeObserver:");
-  late final ffi.Pointer<ObjCSel> _sel_removeObserver_name_object_1 =
+  late final _sel_removeObserver_1 = _registerName1("removeObserver:");
+  late final _sel_removeObserver_name_object_1 =
       _registerName1("removeObserver:name:object:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_addObserverForName_object_queue_usingBlock_1 =
+  late final _sel_addObserverForName_object_queue_usingBlock_1 =
       _registerName1("addObserverForName:object:queue:usingBlock:");
   ffi.Pointer<ObjCObject> _objc_msgSend_186(
     ffi.Pointer<ObjCObject> obj,
@@ -9159,11 +8954,10 @@ class NativeCupertinoHttp {
   set NSSystemClockDidChangeNotification(NSNotificationName value) =>
       _NSSystemClockDidChangeNotification.value = value;
 
-  late final ffi.Pointer<ObjCObject> _class_NSDate1 = _getClass1("NSDate");
-  late final ffi.Pointer<ObjCSel> _sel_timeIntervalSinceReferenceDate1 =
+  late final _class_NSDate1 = _getClass1("NSDate");
+  late final _sel_timeIntervalSinceReferenceDate1 =
       _registerName1("timeIntervalSinceReferenceDate");
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithTimeIntervalSinceReferenceDate_1 =
+  late final _sel_initWithTimeIntervalSinceReferenceDate_1 =
       _registerName1("initWithTimeIntervalSinceReferenceDate:");
   instancetype _objc_msgSend_187(
     ffi.Pointer<ObjCObject> obj,
@@ -9185,7 +8979,7 @@ class NativeCupertinoHttp {
       instancetype Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, double)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_timeIntervalSinceDate_1 =
+  late final _sel_timeIntervalSinceDate_1 =
       _registerName1("timeIntervalSinceDate:");
   double _objc_msgSend_188(
     ffi.Pointer<ObjCObject> obj,
@@ -9207,16 +9001,14 @@ class NativeCupertinoHttp {
       double Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_timeIntervalSinceNow1 =
+  late final _sel_timeIntervalSinceNow1 =
       _registerName1("timeIntervalSinceNow");
-  late final ffi.Pointer<ObjCSel> _sel_timeIntervalSince19701 =
+  late final _sel_timeIntervalSince19701 =
       _registerName1("timeIntervalSince1970");
-  late final ffi.Pointer<ObjCSel> _sel_addTimeInterval_1 =
-      _registerName1("addTimeInterval:");
-  late final ffi.Pointer<ObjCSel> _sel_dateByAddingTimeInterval_1 =
+  late final _sel_addTimeInterval_1 = _registerName1("addTimeInterval:");
+  late final _sel_dateByAddingTimeInterval_1 =
       _registerName1("dateByAddingTimeInterval:");
-  late final ffi.Pointer<ObjCSel> _sel_earlierDate_1 =
-      _registerName1("earlierDate:");
+  late final _sel_earlierDate_1 = _registerName1("earlierDate:");
   ffi.Pointer<ObjCObject> _objc_msgSend_189(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -9237,19 +9029,16 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_laterDate_1 =
-      _registerName1("laterDate:");
-  late final ffi.Pointer<ObjCSel> _sel_isEqualToDate_1 =
-      _registerName1("isEqualToDate:");
-  late final ffi.Pointer<ObjCSel> _sel_date1 = _registerName1("date");
-  late final ffi.Pointer<ObjCSel> _sel_dateWithTimeIntervalSinceNow_1 =
+  late final _sel_laterDate_1 = _registerName1("laterDate:");
+  late final _sel_isEqualToDate_1 = _registerName1("isEqualToDate:");
+  late final _sel_date1 = _registerName1("date");
+  late final _sel_dateWithTimeIntervalSinceNow_1 =
       _registerName1("dateWithTimeIntervalSinceNow:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_dateWithTimeIntervalSinceReferenceDate_1 =
+  late final _sel_dateWithTimeIntervalSinceReferenceDate_1 =
       _registerName1("dateWithTimeIntervalSinceReferenceDate:");
-  late final ffi.Pointer<ObjCSel> _sel_dateWithTimeIntervalSince1970_1 =
+  late final _sel_dateWithTimeIntervalSince1970_1 =
       _registerName1("dateWithTimeIntervalSince1970:");
-  late final ffi.Pointer<ObjCSel> _sel_dateWithTimeInterval_sinceDate_1 =
+  late final _sel_dateWithTimeInterval_sinceDate_1 =
       _registerName1("dateWithTimeInterval:sinceDate:");
   instancetype _objc_msgSend_190(
     ffi.Pointer<ObjCObject> obj,
@@ -9273,25 +9062,20 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           double, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_distantFuture1 =
-      _registerName1("distantFuture");
-  late final ffi.Pointer<ObjCSel> _sel_distantPast1 =
-      _registerName1("distantPast");
-  late final ffi.Pointer<ObjCSel> _sel_now1 = _registerName1("now");
-  late final ffi.Pointer<ObjCSel> _sel_initWithTimeIntervalSinceNow_1 =
+  late final _sel_distantFuture1 = _registerName1("distantFuture");
+  late final _sel_distantPast1 = _registerName1("distantPast");
+  late final _sel_now1 = _registerName1("now");
+  late final _sel_initWithTimeIntervalSinceNow_1 =
       _registerName1("initWithTimeIntervalSinceNow:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithTimeIntervalSince1970_1 =
+  late final _sel_initWithTimeIntervalSince1970_1 =
       _registerName1("initWithTimeIntervalSince1970:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithTimeInterval_sinceDate_1 =
+  late final _sel_initWithTimeInterval_sinceDate_1 =
       _registerName1("initWithTimeInterval:sinceDate:");
-  late final ffi.Pointer<ObjCObject> _class_NSURLRequest1 =
-      _getClass1("NSURLRequest");
-  late final ffi.Pointer<ObjCSel> _sel_requestWithURL_1 =
-      _registerName1("requestWithURL:");
-  late final ffi.Pointer<ObjCSel> _sel_supportsSecureCoding1 =
+  late final _class_NSURLRequest1 = _getClass1("NSURLRequest");
+  late final _sel_requestWithURL_1 = _registerName1("requestWithURL:");
+  late final _sel_supportsSecureCoding1 =
       _registerName1("supportsSecureCoding");
-  late final ffi.Pointer<ObjCSel>
-      _sel_requestWithURL_cachePolicy_timeoutInterval_1 =
+  late final _sel_requestWithURL_cachePolicy_timeoutInterval_1 =
       _registerName1("requestWithURL:cachePolicy:timeoutInterval:");
   instancetype _objc_msgSend_191(
     ffi.Pointer<ObjCObject> obj,
@@ -9321,14 +9105,11 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int, double)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithURL_1 =
-      _registerName1("initWithURL:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithURL_cachePolicy_timeoutInterval_1 =
+  late final _sel_initWithURL_1 = _registerName1("initWithURL:");
+  late final _sel_initWithURL_cachePolicy_timeoutInterval_1 =
       _registerName1("initWithURL:cachePolicy:timeoutInterval:");
-  late final ffi.Pointer<ObjCSel> _sel_URL1 = _registerName1("URL");
-  late final ffi.Pointer<ObjCSel> _sel_cachePolicy1 =
-      _registerName1("cachePolicy");
+  late final _sel_URL1 = _registerName1("URL");
+  late final _sel_cachePolicy1 = _registerName1("cachePolicy");
   int _objc_msgSend_192(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -9346,12 +9127,9 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_192 = __objc_msgSend_192Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_timeoutInterval1 =
-      _registerName1("timeoutInterval");
-  late final ffi.Pointer<ObjCSel> _sel_mainDocumentURL1 =
-      _registerName1("mainDocumentURL");
-  late final ffi.Pointer<ObjCSel> _sel_networkServiceType1 =
-      _registerName1("networkServiceType");
+  late final _sel_timeoutInterval1 = _registerName1("timeoutInterval");
+  late final _sel_mainDocumentURL1 = _registerName1("mainDocumentURL");
+  late final _sel_networkServiceType1 = _registerName1("networkServiceType");
   int _objc_msgSend_193(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -9369,32 +9147,26 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_193 = __objc_msgSend_193Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_allowsCellularAccess1 =
+  late final _sel_allowsCellularAccess1 =
       _registerName1("allowsCellularAccess");
-  late final ffi.Pointer<ObjCSel> _sel_allowsExpensiveNetworkAccess1 =
+  late final _sel_allowsExpensiveNetworkAccess1 =
       _registerName1("allowsExpensiveNetworkAccess");
-  late final ffi.Pointer<ObjCSel> _sel_allowsConstrainedNetworkAccess1 =
+  late final _sel_allowsConstrainedNetworkAccess1 =
       _registerName1("allowsConstrainedNetworkAccess");
-  late final ffi.Pointer<ObjCSel> _sel_assumesHTTP3Capable1 =
-      _registerName1("assumesHTTP3Capable");
-  late final ffi.Pointer<ObjCSel> _sel_HTTPMethod1 =
-      _registerName1("HTTPMethod");
-  late final ffi.Pointer<ObjCSel> _sel_allHTTPHeaderFields1 =
-      _registerName1("allHTTPHeaderFields");
-  late final ffi.Pointer<ObjCSel> _sel_valueForHTTPHeaderField_1 =
+  late final _sel_assumesHTTP3Capable1 = _registerName1("assumesHTTP3Capable");
+  late final _sel_HTTPMethod1 = _registerName1("HTTPMethod");
+  late final _sel_allHTTPHeaderFields1 = _registerName1("allHTTPHeaderFields");
+  late final _sel_valueForHTTPHeaderField_1 =
       _registerName1("valueForHTTPHeaderField:");
-  late final ffi.Pointer<ObjCSel> _sel_HTTPBody1 = _registerName1("HTTPBody");
-  late final ffi.Pointer<ObjCSel> _sel_HTTPBodyStream1 =
-      _registerName1("HTTPBodyStream");
-  late final ffi.Pointer<ObjCSel> _sel_HTTPShouldHandleCookies1 =
+  late final _sel_HTTPBody1 = _registerName1("HTTPBody");
+  late final _sel_HTTPBodyStream1 = _registerName1("HTTPBodyStream");
+  late final _sel_HTTPShouldHandleCookies1 =
       _registerName1("HTTPShouldHandleCookies");
-  late final ffi.Pointer<ObjCSel> _sel_HTTPShouldUsePipelining1 =
+  late final _sel_HTTPShouldUsePipelining1 =
       _registerName1("HTTPShouldUsePipelining");
-  late final ffi.Pointer<ObjCObject> _class_NSMutableURLRequest1 =
-      _getClass1("NSMutableURLRequest");
-  late final ffi.Pointer<ObjCSel> _sel_setURL_1 = _registerName1("setURL:");
-  late final ffi.Pointer<ObjCSel> _sel_setCachePolicy_1 =
-      _registerName1("setCachePolicy:");
+  late final _class_NSMutableURLRequest1 = _getClass1("NSMutableURLRequest");
+  late final _sel_setURL_1 = _registerName1("setURL:");
+  late final _sel_setCachePolicy_1 = _registerName1("setCachePolicy:");
   void _objc_msgSend_194(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -9414,8 +9186,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_194 = __objc_msgSend_194Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setTimeoutInterval_1 =
-      _registerName1("setTimeoutInterval:");
+  late final _sel_setTimeoutInterval_1 = _registerName1("setTimeoutInterval:");
   void _objc_msgSend_195(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -9435,9 +9206,8 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_195 = __objc_msgSend_195Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, double)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setMainDocumentURL_1 =
-      _registerName1("setMainDocumentURL:");
-  late final ffi.Pointer<ObjCSel> _sel_setNetworkServiceType_1 =
+  late final _sel_setMainDocumentURL_1 = _registerName1("setMainDocumentURL:");
+  late final _sel_setNetworkServiceType_1 =
       _registerName1("setNetworkServiceType:");
   void _objc_msgSend_196(
     ffi.Pointer<ObjCObject> obj,
@@ -9458,7 +9228,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_196 = __objc_msgSend_196Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setAllowsCellularAccess_1 =
+  late final _sel_setAllowsCellularAccess_1 =
       _registerName1("setAllowsCellularAccess:");
   void _objc_msgSend_197(
     ffi.Pointer<ObjCObject> obj,
@@ -9468,38 +9238,35 @@ class NativeCupertinoHttp {
     return __objc_msgSend_197(
       obj,
       sel,
-      value ? 1 : 0,
+      value,
     );
   }
 
   late final __objc_msgSend_197Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-              ffi.Uint8)>>('objc_msgSend');
+              ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_197 = __objc_msgSend_197Ptr.asFunction<
-      void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
+      void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, bool)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setAllowsExpensiveNetworkAccess_1 =
+  late final _sel_setAllowsExpensiveNetworkAccess_1 =
       _registerName1("setAllowsExpensiveNetworkAccess:");
-  late final ffi.Pointer<ObjCSel> _sel_setAllowsConstrainedNetworkAccess_1 =
+  late final _sel_setAllowsConstrainedNetworkAccess_1 =
       _registerName1("setAllowsConstrainedNetworkAccess:");
-  late final ffi.Pointer<ObjCSel> _sel_setAssumesHTTP3Capable_1 =
+  late final _sel_setAssumesHTTP3Capable_1 =
       _registerName1("setAssumesHTTP3Capable:");
-  late final ffi.Pointer<ObjCSel> _sel_setHTTPMethod_1 =
-      _registerName1("setHTTPMethod:");
-  late final ffi.Pointer<ObjCSel> _sel_setAllHTTPHeaderFields_1 =
+  late final _sel_setHTTPMethod_1 = _registerName1("setHTTPMethod:");
+  late final _sel_setAllHTTPHeaderFields_1 =
       _registerName1("setAllHTTPHeaderFields:");
-  late final ffi.Pointer<ObjCSel> _sel_setValue_forHTTPHeaderField_1 =
+  late final _sel_setValue_forHTTPHeaderField_1 =
       _registerName1("setValue:forHTTPHeaderField:");
-  late final ffi.Pointer<ObjCSel> _sel_addValue_forHTTPHeaderField_1 =
+  late final _sel_addValue_forHTTPHeaderField_1 =
       _registerName1("addValue:forHTTPHeaderField:");
-  late final ffi.Pointer<ObjCSel> _sel_setHTTPBody_1 =
-      _registerName1("setHTTPBody:");
-  late final ffi.Pointer<ObjCSel> _sel_setHTTPBodyStream_1 =
-      _registerName1("setHTTPBodyStream:");
-  late final ffi.Pointer<ObjCSel> _sel_setHTTPShouldHandleCookies_1 =
+  late final _sel_setHTTPBody_1 = _registerName1("setHTTPBody:");
+  late final _sel_setHTTPBodyStream_1 = _registerName1("setHTTPBodyStream:");
+  late final _sel_setHTTPShouldHandleCookies_1 =
       _registerName1("setHTTPShouldHandleCookies:");
-  late final ffi.Pointer<ObjCSel> _sel_setHTTPShouldUsePipelining_1 =
+  late final _sel_setHTTPShouldUsePipelining_1 =
       _registerName1("setHTTPShouldUsePipelining:");
   ffi.Pointer<ObjCObject> NSStringFromSelector4(
     ffi.Pointer<ObjCSel> aSelector,
@@ -9983,16 +9750,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone4(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZone4Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone4 = _NSCreateZone4Ptr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone4(
     ffi.Pointer<NSZone> zone,
@@ -10327,18 +10094,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone4(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZone4Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
   late final _NSShouldRetainWithZone4 = _NSShouldRetainWithZone4Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount4(
     ffi.Pointer<ObjCObject> object,
@@ -10358,17 +10124,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero4(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZero4Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero4 =
       _NSDecrementExtraRefCountWasZero4Ptr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount4(
     ffi.Pointer<ObjCObject> object,
@@ -10384,12 +10149,10 @@ class NativeCupertinoHttp {
   late final _NSExtraRefCount4 =
       _NSExtraRefCount4Ptr.asFunction<int Function(ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSHTTPCookieStorage1 =
-      _getClass1("NSHTTPCookieStorage");
-  late final ffi.Pointer<ObjCSel> _sel_sharedHTTPCookieStorage1 =
+  late final _class_NSHTTPCookieStorage1 = _getClass1("NSHTTPCookieStorage");
+  late final _sel_sharedHTTPCookieStorage1 =
       _registerName1("sharedHTTPCookieStorage");
-  late final ffi.Pointer<ObjCSel>
-      _sel_sharedCookieStorageForGroupContainerIdentifier_1 =
+  late final _sel_sharedCookieStorageForGroupContainerIdentifier_1 =
       _registerName1("sharedCookieStorageForGroupContainerIdentifier:");
   ffi.Pointer<ObjCObject> _objc_msgSend_198(
     ffi.Pointer<ObjCObject> obj,
@@ -10411,17 +10174,14 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_cookies1 = _registerName1("cookies");
-  late final ffi.Pointer<ObjCSel> _sel_setCookie_1 =
-      _registerName1("setCookie:");
-  late final ffi.Pointer<ObjCSel> _sel_deleteCookie_1 =
-      _registerName1("deleteCookie:");
-  late final ffi.Pointer<ObjCSel> _sel_removeCookiesSinceDate_1 =
+  late final _sel_cookies1 = _registerName1("cookies");
+  late final _sel_setCookie_1 = _registerName1("setCookie:");
+  late final _sel_deleteCookie_1 = _registerName1("deleteCookie:");
+  late final _sel_removeCookiesSinceDate_1 =
       _registerName1("removeCookiesSinceDate:");
-  late final ffi.Pointer<ObjCSel> _sel_setCookies_forURL_mainDocumentURL_1 =
+  late final _sel_setCookies_forURL_mainDocumentURL_1 =
       _registerName1("setCookies:forURL:mainDocumentURL:");
-  late final ffi.Pointer<ObjCSel> _sel_cookieAcceptPolicy1 =
-      _registerName1("cookieAcceptPolicy");
+  late final _sel_cookieAcceptPolicy1 = _registerName1("cookieAcceptPolicy");
   int _objc_msgSend_199(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -10439,7 +10199,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_199 = __objc_msgSend_199Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setCookieAcceptPolicy_1 =
+  late final _sel_setCookieAcceptPolicy_1 =
       _registerName1("setCookieAcceptPolicy:");
   void _objc_msgSend_200(
     ffi.Pointer<ObjCObject> obj,
@@ -10460,9 +10220,9 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_200 = __objc_msgSend_200Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_storeCookies_forTask_1 =
+  late final _sel_storeCookies_forTask_1 =
       _registerName1("storeCookies:forTask:");
-  late final ffi.Pointer<ObjCSel> _sel_getCookiesForTask_completionHandler_1 =
+  late final _sel_getCookiesForTask_completionHandler_1 =
       _registerName1("getCookiesForTask:completionHandler:");
   void _objc_msgSend_201(
     ffi.Pointer<ObjCObject> obj,
@@ -10512,10 +10272,8 @@ class NativeCupertinoHttp {
   set NSHTTPCookieManagerCookiesChangedNotification(NSNotificationName value) =>
       _NSHTTPCookieManagerCookiesChangedNotification.value = value;
 
-  late final ffi.Pointer<ObjCObject> _class_NSProgress1 =
-      _getClass1("NSProgress");
-  late final ffi.Pointer<ObjCSel> _sel_currentProgress1 =
-      _registerName1("currentProgress");
+  late final _class_NSProgress1 = _getClass1("NSProgress");
+  late final _sel_currentProgress1 = _registerName1("currentProgress");
   ffi.Pointer<ObjCObject> _objc_msgSend_202(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -10534,7 +10292,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_progressWithTotalUnitCount_1 =
+  late final _sel_progressWithTotalUnitCount_1 =
       _registerName1("progressWithTotalUnitCount:");
   ffi.Pointer<ObjCObject> _objc_msgSend_203(
     ffi.Pointer<ObjCObject> obj,
@@ -10556,10 +10314,9 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_discreteProgressWithTotalUnitCount_1 =
+  late final _sel_discreteProgressWithTotalUnitCount_1 =
       _registerName1("discreteProgressWithTotalUnitCount:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_progressWithTotalUnitCount_parent_pendingUnitCount_1 =
+  late final _sel_progressWithTotalUnitCount_parent_pendingUnitCount_1 =
       _registerName1("progressWithTotalUnitCount:parent:pendingUnitCount:");
   ffi.Pointer<ObjCObject> _objc_msgSend_204(
     ffi.Pointer<ObjCObject> obj,
@@ -10589,9 +10346,9 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, int, ffi.Pointer<ObjCObject>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithParent_userInfo_1 =
+  late final _sel_initWithParent_userInfo_1 =
       _registerName1("initWithParent:userInfo:");
-  late final ffi.Pointer<ObjCSel> _sel_becomeCurrentWithPendingUnitCount_1 =
+  late final _sel_becomeCurrentWithPendingUnitCount_1 =
       _registerName1("becomeCurrentWithPendingUnitCount:");
   void _objc_msgSend_205(
     ffi.Pointer<ObjCObject> obj,
@@ -10612,8 +10369,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_205 = __objc_msgSend_205Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_performAsCurrentWithPendingUnitCount_usingBlock_1 =
+  late final _sel_performAsCurrentWithPendingUnitCount_usingBlock_1 =
       _registerName1("performAsCurrentWithPendingUnitCount:usingBlock:");
   void _objc_msgSend_206(
     ffi.Pointer<ObjCObject> obj,
@@ -10637,9 +10393,8 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_resignCurrent1 =
-      _registerName1("resignCurrent");
-  late final ffi.Pointer<ObjCSel> _sel_addChild_withPendingUnitCount_1 =
+  late final _sel_resignCurrent1 = _registerName1("resignCurrent");
+  late final _sel_addChild_withPendingUnitCount_1 =
       _registerName1("addChild:withPendingUnitCount:");
   void _objc_msgSend_207(
     ffi.Pointer<ObjCObject> obj,
@@ -10663,8 +10418,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_totalUnitCount1 =
-      _registerName1("totalUnitCount");
+  late final _sel_totalUnitCount1 = _registerName1("totalUnitCount");
   int _objc_msgSend_208(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -10682,33 +10436,25 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_208 = __objc_msgSend_208Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setTotalUnitCount_1 =
-      _registerName1("setTotalUnitCount:");
-  late final ffi.Pointer<ObjCSel> _sel_completedUnitCount1 =
-      _registerName1("completedUnitCount");
-  late final ffi.Pointer<ObjCSel> _sel_setCompletedUnitCount_1 =
+  late final _sel_setTotalUnitCount_1 = _registerName1("setTotalUnitCount:");
+  late final _sel_completedUnitCount1 = _registerName1("completedUnitCount");
+  late final _sel_setCompletedUnitCount_1 =
       _registerName1("setCompletedUnitCount:");
-  late final ffi.Pointer<ObjCSel> _sel_localizedDescription1 =
+  late final _sel_localizedDescription1 =
       _registerName1("localizedDescription");
-  late final ffi.Pointer<ObjCSel> _sel_setLocalizedDescription_1 =
+  late final _sel_setLocalizedDescription_1 =
       _registerName1("setLocalizedDescription:");
-  late final ffi.Pointer<ObjCSel> _sel_localizedAdditionalDescription1 =
+  late final _sel_localizedAdditionalDescription1 =
       _registerName1("localizedAdditionalDescription");
-  late final ffi.Pointer<ObjCSel> _sel_setLocalizedAdditionalDescription_1 =
+  late final _sel_setLocalizedAdditionalDescription_1 =
       _registerName1("setLocalizedAdditionalDescription:");
-  late final ffi.Pointer<ObjCSel> _sel_isCancellable1 =
-      _registerName1("isCancellable");
-  late final ffi.Pointer<ObjCSel> _sel_setCancellable_1 =
-      _registerName1("setCancellable:");
-  late final ffi.Pointer<ObjCSel> _sel_isPausable1 =
-      _registerName1("isPausable");
-  late final ffi.Pointer<ObjCSel> _sel_setPausable_1 =
-      _registerName1("setPausable:");
-  late final ffi.Pointer<ObjCSel> _sel_isCancelled1 =
-      _registerName1("isCancelled");
-  late final ffi.Pointer<ObjCSel> _sel_isPaused1 = _registerName1("isPaused");
-  late final ffi.Pointer<ObjCSel> _sel_cancellationHandler1 =
-      _registerName1("cancellationHandler");
+  late final _sel_isCancellable1 = _registerName1("isCancellable");
+  late final _sel_setCancellable_1 = _registerName1("setCancellable:");
+  late final _sel_isPausable1 = _registerName1("isPausable");
+  late final _sel_setPausable_1 = _registerName1("setPausable:");
+  late final _sel_isCancelled1 = _registerName1("isCancelled");
+  late final _sel_isPaused1 = _registerName1("isPaused");
+  late final _sel_cancellationHandler1 = _registerName1("cancellationHandler");
   ffi.Pointer<_ObjCBlock> _objc_msgSend_209(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -10727,7 +10473,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<_ObjCBlock> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setCancellationHandler_1 =
+  late final _sel_setCancellationHandler_1 =
       _registerName1("setCancellationHandler:");
   void _objc_msgSend_210(
     ffi.Pointer<ObjCObject> obj,
@@ -10749,54 +10495,39 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_pausingHandler1 =
-      _registerName1("pausingHandler");
-  late final ffi.Pointer<ObjCSel> _sel_setPausingHandler_1 =
-      _registerName1("setPausingHandler:");
-  late final ffi.Pointer<ObjCSel> _sel_resumingHandler1 =
-      _registerName1("resumingHandler");
-  late final ffi.Pointer<ObjCSel> _sel_setResumingHandler_1 =
-      _registerName1("setResumingHandler:");
-  late final ffi.Pointer<ObjCSel> _sel_setUserInfoObject_forKey_1 =
+  late final _sel_pausingHandler1 = _registerName1("pausingHandler");
+  late final _sel_setPausingHandler_1 = _registerName1("setPausingHandler:");
+  late final _sel_resumingHandler1 = _registerName1("resumingHandler");
+  late final _sel_setResumingHandler_1 = _registerName1("setResumingHandler:");
+  late final _sel_setUserInfoObject_forKey_1 =
       _registerName1("setUserInfoObject:forKey:");
-  late final ffi.Pointer<ObjCSel> _sel_isIndeterminate1 =
-      _registerName1("isIndeterminate");
-  late final ffi.Pointer<ObjCSel> _sel_fractionCompleted1 =
-      _registerName1("fractionCompleted");
-  late final ffi.Pointer<ObjCSel> _sel_isFinished1 =
-      _registerName1("isFinished");
-  late final ffi.Pointer<ObjCSel> _sel_cancel1 = _registerName1("cancel");
-  late final ffi.Pointer<ObjCSel> _sel_pause1 = _registerName1("pause");
-  late final ffi.Pointer<ObjCSel> _sel_resume1 = _registerName1("resume");
-  late final ffi.Pointer<ObjCSel> _sel_kind1 = _registerName1("kind");
-  late final ffi.Pointer<ObjCSel> _sel_setKind_1 = _registerName1("setKind:");
-  late final ffi.Pointer<ObjCSel> _sel_estimatedTimeRemaining1 =
+  late final _sel_isIndeterminate1 = _registerName1("isIndeterminate");
+  late final _sel_fractionCompleted1 = _registerName1("fractionCompleted");
+  late final _sel_isFinished1 = _registerName1("isFinished");
+  late final _sel_cancel1 = _registerName1("cancel");
+  late final _sel_pause1 = _registerName1("pause");
+  late final _sel_resume1 = _registerName1("resume");
+  late final _sel_kind1 = _registerName1("kind");
+  late final _sel_setKind_1 = _registerName1("setKind:");
+  late final _sel_estimatedTimeRemaining1 =
       _registerName1("estimatedTimeRemaining");
-  late final ffi.Pointer<ObjCSel> _sel_setEstimatedTimeRemaining_1 =
+  late final _sel_setEstimatedTimeRemaining_1 =
       _registerName1("setEstimatedTimeRemaining:");
-  late final ffi.Pointer<ObjCSel> _sel_throughput1 =
-      _registerName1("throughput");
-  late final ffi.Pointer<ObjCSel> _sel_setThroughput_1 =
-      _registerName1("setThroughput:");
-  late final ffi.Pointer<ObjCSel> _sel_fileOperationKind1 =
-      _registerName1("fileOperationKind");
-  late final ffi.Pointer<ObjCSel> _sel_setFileOperationKind_1 =
+  late final _sel_throughput1 = _registerName1("throughput");
+  late final _sel_setThroughput_1 = _registerName1("setThroughput:");
+  late final _sel_fileOperationKind1 = _registerName1("fileOperationKind");
+  late final _sel_setFileOperationKind_1 =
       _registerName1("setFileOperationKind:");
-  late final ffi.Pointer<ObjCSel> _sel_fileURL1 = _registerName1("fileURL");
-  late final ffi.Pointer<ObjCSel> _sel_setFileURL_1 =
-      _registerName1("setFileURL:");
-  late final ffi.Pointer<ObjCSel> _sel_fileTotalCount1 =
-      _registerName1("fileTotalCount");
-  late final ffi.Pointer<ObjCSel> _sel_setFileTotalCount_1 =
-      _registerName1("setFileTotalCount:");
-  late final ffi.Pointer<ObjCSel> _sel_fileCompletedCount1 =
-      _registerName1("fileCompletedCount");
-  late final ffi.Pointer<ObjCSel> _sel_setFileCompletedCount_1 =
+  late final _sel_fileURL1 = _registerName1("fileURL");
+  late final _sel_setFileURL_1 = _registerName1("setFileURL:");
+  late final _sel_fileTotalCount1 = _registerName1("fileTotalCount");
+  late final _sel_setFileTotalCount_1 = _registerName1("setFileTotalCount:");
+  late final _sel_fileCompletedCount1 = _registerName1("fileCompletedCount");
+  late final _sel_setFileCompletedCount_1 =
       _registerName1("setFileCompletedCount:");
-  late final ffi.Pointer<ObjCSel> _sel_publish1 = _registerName1("publish");
-  late final ffi.Pointer<ObjCSel> _sel_unpublish1 = _registerName1("unpublish");
-  late final ffi.Pointer<ObjCSel>
-      _sel_addSubscriberForFileURL_withPublishingHandler_1 =
+  late final _sel_publish1 = _registerName1("publish");
+  late final _sel_unpublish1 = _registerName1("unpublish");
+  late final _sel_addSubscriberForFileURL_withPublishingHandler_1 =
       _registerName1("addSubscriberForFileURL:withPublishingHandler:");
   ffi.Pointer<ObjCObject> _objc_msgSend_211(
     ffi.Pointer<ObjCObject> obj,
@@ -10826,9 +10557,8 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           NSProgressPublishingHandler)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_removeSubscriber_1 =
-      _registerName1("removeSubscriber:");
-  late final ffi.Pointer<ObjCSel> _sel_isOld1 = _registerName1("isOld");
+  late final _sel_removeSubscriber_1 = _registerName1("removeSubscriber:");
+  late final _sel_isOld1 = _registerName1("isOld");
   late final ffi.Pointer<NSProgressUserInfoKey>
       _NSProgressEstimatedTimeRemainingKey =
       _lookup<NSProgressUserInfoKey>('NSProgressEstimatedTimeRemainingKey');
@@ -28632,18 +28362,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<CFErrorRef> error,
   ) {
     return _SecTrustEvaluateWithError(
-          trust,
-          error,
-        ) !=
-        0;
+      trust,
+      error,
+    );
   }
 
   late final _SecTrustEvaluateWithErrorPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(SecTrustRef,
+          ffi.Bool Function(SecTrustRef,
               ffi.Pointer<CFErrorRef>)>>('SecTrustEvaluateWithError');
   late final _SecTrustEvaluateWithError = _SecTrustEvaluateWithErrorPtr
-      .asFunction<int Function(SecTrustRef, ffi.Pointer<CFErrorRef>)>();
+      .asFunction<bool Function(SecTrustRef, ffi.Pointer<CFErrorRef>)>();
 
   int SecTrustEvaluateAsyncWithError(
     SecTrustRef trust,
@@ -28760,17 +28489,16 @@ class NativeCupertinoHttp {
     CFDataRef exceptions,
   ) {
     return _SecTrustSetExceptions(
-          trust,
-          exceptions,
-        ) !=
-        0;
+      trust,
+      exceptions,
+    );
   }
 
   late final _SecTrustSetExceptionsPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(SecTrustRef, CFDataRef)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(SecTrustRef, CFDataRef)>>(
           'SecTrustSetExceptions');
   late final _SecTrustSetExceptions = _SecTrustSetExceptionsPtr.asFunction<
-      int Function(SecTrustRef, CFDataRef)>();
+      bool Function(SecTrustRef, CFDataRef)>();
 
   CFArrayRef SecTrustCopyProperties(
     SecTrustRef trust,
@@ -28918,18 +28646,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<CSSM_ALGORITHMS> alg,
   ) {
     return _cssmOidToAlg(
-          oid,
-          alg,
-        ) !=
-        0;
+      oid,
+      alg,
+    );
   }
 
   late final _cssmOidToAlgPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<SecAsn1Oid>,
+          ffi.Bool Function(ffi.Pointer<SecAsn1Oid>,
               ffi.Pointer<CSSM_ALGORITHMS>)>>('cssmOidToAlg');
   late final _cssmOidToAlg = _cssmOidToAlgPtr.asFunction<
-      int Function(ffi.Pointer<SecAsn1Oid>, ffi.Pointer<CSSM_ALGORITHMS>)>();
+      bool Function(ffi.Pointer<SecAsn1Oid>, ffi.Pointer<CSSM_ALGORITHMS>)>();
 
   ffi.Pointer<SecAsn1Oid> cssmAlgToOid(
     int algId,
@@ -29980,19 +29707,18 @@ class NativeCupertinoHttp {
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_identity_access_certificates(
-          identity,
-          handler,
-        ) !=
-        0;
+      identity,
+      handler,
+    );
   }
 
   late final _sec_identity_access_certificatesPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(sec_identity_t,
+          ffi.Bool Function(sec_identity_t,
               ffi.Pointer<_ObjCBlock>)>>('sec_identity_access_certificates');
   late final _sec_identity_access_certificates =
       _sec_identity_access_certificatesPtr
-          .asFunction<int Function(sec_identity_t, ffi.Pointer<_ObjCBlock>)>();
+          .asFunction<bool Function(sec_identity_t, ffi.Pointer<_ObjCBlock>)>();
 
   SecIdentityRef sec_identity_copy_ref(
     sec_identity_t identity,
@@ -30147,119 +29873,114 @@ class NativeCupertinoHttp {
     sec_protocol_metadata_t metadata,
   ) {
     return _sec_protocol_metadata_get_early_data_accepted(
-          metadata,
-        ) !=
-        0;
+      metadata,
+    );
   }
 
   late final _sec_protocol_metadata_get_early_data_acceptedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(sec_protocol_metadata_t)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(sec_protocol_metadata_t)>>(
           'sec_protocol_metadata_get_early_data_accepted');
   late final _sec_protocol_metadata_get_early_data_accepted =
       _sec_protocol_metadata_get_early_data_acceptedPtr
-          .asFunction<int Function(sec_protocol_metadata_t)>();
+          .asFunction<bool Function(sec_protocol_metadata_t)>();
 
   bool sec_protocol_metadata_access_peer_certificate_chain(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_peer_certificate_chain(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_peer_certificate_chainPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
       'sec_protocol_metadata_access_peer_certificate_chain');
   late final _sec_protocol_metadata_access_peer_certificate_chain =
       _sec_protocol_metadata_access_peer_certificate_chainPtr.asFunction<
-          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+          bool Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   bool sec_protocol_metadata_access_ocsp_response(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_ocsp_response(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_ocsp_responsePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
       'sec_protocol_metadata_access_ocsp_response');
   late final _sec_protocol_metadata_access_ocsp_response =
       _sec_protocol_metadata_access_ocsp_responsePtr.asFunction<
-          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+          bool Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   bool sec_protocol_metadata_access_supported_signature_algorithms(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_supported_signature_algorithms(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_supported_signature_algorithmsPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Uint8 Function(
+                  ffi.Bool Function(
                       sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
           'sec_protocol_metadata_access_supported_signature_algorithms');
   late final _sec_protocol_metadata_access_supported_signature_algorithms =
       _sec_protocol_metadata_access_supported_signature_algorithmsPtr
           .asFunction<
-              int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+              bool Function(
+                  sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   bool sec_protocol_metadata_access_distinguished_names(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_distinguished_names(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_distinguished_namesPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
       'sec_protocol_metadata_access_distinguished_names');
   late final _sec_protocol_metadata_access_distinguished_names =
       _sec_protocol_metadata_access_distinguished_namesPtr.asFunction<
-          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+          bool Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   bool sec_protocol_metadata_access_pre_shared_keys(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_pre_shared_keys(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_pre_shared_keysPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
       'sec_protocol_metadata_access_pre_shared_keys');
   late final _sec_protocol_metadata_access_pre_shared_keys =
       _sec_protocol_metadata_access_pre_shared_keysPtr.asFunction<
-          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+          bool Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   ffi.Pointer<ffi.Char> sec_protocol_metadata_get_server_name(
     sec_protocol_metadata_t metadata,
@@ -30282,40 +30003,38 @@ class NativeCupertinoHttp {
     sec_protocol_metadata_t metadataB,
   ) {
     return _sec_protocol_metadata_peers_are_equal(
-          metadataA,
-          metadataB,
-        ) !=
-        0;
+      metadataA,
+      metadataB,
+    );
   }
 
   late final _sec_protocol_metadata_peers_are_equalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, sec_protocol_metadata_t)>>(
       'sec_protocol_metadata_peers_are_equal');
   late final _sec_protocol_metadata_peers_are_equal =
       _sec_protocol_metadata_peers_are_equalPtr.asFunction<
-          int Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
+          bool Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
 
   bool sec_protocol_metadata_challenge_parameters_are_equal(
     sec_protocol_metadata_t metadataA,
     sec_protocol_metadata_t metadataB,
   ) {
     return _sec_protocol_metadata_challenge_parameters_are_equal(
-          metadataA,
-          metadataB,
-        ) !=
-        0;
+      metadataA,
+      metadataB,
+    );
   }
 
   late final _sec_protocol_metadata_challenge_parameters_are_equalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, sec_protocol_metadata_t)>>(
       'sec_protocol_metadata_challenge_parameters_are_equal');
   late final _sec_protocol_metadata_challenge_parameters_are_equal =
       _sec_protocol_metadata_challenge_parameters_are_equalPtr.asFunction<
-          int Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
+          bool Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
 
   dispatch_data_t sec_protocol_metadata_create_secret(
     sec_protocol_metadata_t metadata,
@@ -30380,19 +30099,18 @@ class NativeCupertinoHttp {
     sec_protocol_options_t optionsB,
   ) {
     return _sec_protocol_options_are_equal(
-          optionsA,
-          optionsB,
-        ) !=
-        0;
+      optionsA,
+      optionsB,
+    );
   }
 
   late final _sec_protocol_options_are_equalPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(sec_protocol_options_t,
+          ffi.Bool Function(sec_protocol_options_t,
               sec_protocol_options_t)>>('sec_protocol_options_are_equal');
   late final _sec_protocol_options_are_equal =
       _sec_protocol_options_are_equalPtr.asFunction<
-          int Function(sec_protocol_options_t, sec_protocol_options_t)>();
+          bool Function(sec_protocol_options_t, sec_protocol_options_t)>();
 
   void sec_protocol_options_set_local_identity(
     sec_protocol_options_t options,
@@ -30604,33 +30322,31 @@ class NativeCupertinoHttp {
     sec_protocol_options_t options,
   ) {
     return _sec_protocol_options_get_enable_encrypted_client_hello(
-          options,
-        ) !=
-        0;
+      options,
+    );
   }
 
   late final _sec_protocol_options_get_enable_encrypted_client_helloPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(sec_protocol_options_t)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(sec_protocol_options_t)>>(
           'sec_protocol_options_get_enable_encrypted_client_hello');
   late final _sec_protocol_options_get_enable_encrypted_client_hello =
       _sec_protocol_options_get_enable_encrypted_client_helloPtr
-          .asFunction<int Function(sec_protocol_options_t)>();
+          .asFunction<bool Function(sec_protocol_options_t)>();
 
   bool sec_protocol_options_get_quic_use_legacy_codepoint(
     sec_protocol_options_t options,
   ) {
     return _sec_protocol_options_get_quic_use_legacy_codepoint(
-          options,
-        ) !=
-        0;
+      options,
+    );
   }
 
   late final _sec_protocol_options_get_quic_use_legacy_codepointPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(sec_protocol_options_t)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(sec_protocol_options_t)>>(
           'sec_protocol_options_get_quic_use_legacy_codepoint');
   late final _sec_protocol_options_get_quic_use_legacy_codepoint =
       _sec_protocol_options_get_quic_use_legacy_codepointPtr
-          .asFunction<int Function(sec_protocol_options_t)>();
+          .asFunction<bool Function(sec_protocol_options_t)>();
 
   void sec_protocol_options_add_tls_application_protocol(
     sec_protocol_options_t options,
@@ -30760,17 +30476,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_tickets_enabled(
       options,
-      tickets_enabled ? 1 : 0,
+      tickets_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_tickets_enabledPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_tickets_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_tickets_enabled');
   late final _sec_protocol_options_set_tls_tickets_enabled =
       _sec_protocol_options_set_tls_tickets_enabledPtr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_is_fallback_attempt(
     sec_protocol_options_t options,
@@ -30778,17 +30494,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_is_fallback_attempt(
       options,
-      is_fallback_attempt ? 1 : 0,
+      is_fallback_attempt,
     );
   }
 
   late final _sec_protocol_options_set_tls_is_fallback_attemptPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_is_fallback_attempt');
+              ffi.Bool)>>('sec_protocol_options_set_tls_is_fallback_attempt');
   late final _sec_protocol_options_set_tls_is_fallback_attempt =
       _sec_protocol_options_set_tls_is_fallback_attemptPtr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_resumption_enabled(
     sec_protocol_options_t options,
@@ -30796,17 +30512,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_resumption_enabled(
       options,
-      resumption_enabled ? 1 : 0,
+      resumption_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_resumption_enabledPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_resumption_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_resumption_enabled');
   late final _sec_protocol_options_set_tls_resumption_enabled =
       _sec_protocol_options_set_tls_resumption_enabledPtr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_false_start_enabled(
     sec_protocol_options_t options,
@@ -30814,17 +30530,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_false_start_enabled(
       options,
-      false_start_enabled ? 1 : 0,
+      false_start_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_false_start_enabledPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_false_start_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_false_start_enabled');
   late final _sec_protocol_options_set_tls_false_start_enabled =
       _sec_protocol_options_set_tls_false_start_enabledPtr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_ocsp_enabled(
     sec_protocol_options_t options,
@@ -30832,17 +30548,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_ocsp_enabled(
       options,
-      ocsp_enabled ? 1 : 0,
+      ocsp_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_ocsp_enabledPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_ocsp_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_ocsp_enabled');
   late final _sec_protocol_options_set_tls_ocsp_enabled =
       _sec_protocol_options_set_tls_ocsp_enabledPtr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_sct_enabled(
     sec_protocol_options_t options,
@@ -30850,17 +30566,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_sct_enabled(
       options,
-      sct_enabled ? 1 : 0,
+      sct_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_sct_enabledPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_sct_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_sct_enabled');
   late final _sec_protocol_options_set_tls_sct_enabled =
       _sec_protocol_options_set_tls_sct_enabledPtr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_renegotiation_enabled(
     sec_protocol_options_t options,
@@ -30868,17 +30584,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_renegotiation_enabled(
       options,
-      renegotiation_enabled ? 1 : 0,
+      renegotiation_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_renegotiation_enabledPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
-      'sec_protocol_options_set_tls_renegotiation_enabled');
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Bool)>>('sec_protocol_options_set_tls_renegotiation_enabled');
   late final _sec_protocol_options_set_tls_renegotiation_enabled =
       _sec_protocol_options_set_tls_renegotiation_enabledPtr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_peer_authentication_required(
     sec_protocol_options_t options,
@@ -30886,18 +30602,18 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_peer_authentication_required(
       options,
-      peer_authentication_required ? 1 : 0,
+      peer_authentication_required,
     );
   }
 
   late final _sec_protocol_options_set_peer_authentication_requiredPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+                  ffi.Void Function(sec_protocol_options_t, ffi.Bool)>>(
           'sec_protocol_options_set_peer_authentication_required');
   late final _sec_protocol_options_set_peer_authentication_required =
       _sec_protocol_options_set_peer_authentication_requiredPtr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_peer_authentication_optional(
     sec_protocol_options_t options,
@@ -30905,18 +30621,18 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_peer_authentication_optional(
       options,
-      peer_authentication_optional ? 1 : 0,
+      peer_authentication_optional,
     );
   }
 
   late final _sec_protocol_options_set_peer_authentication_optionalPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+                  ffi.Void Function(sec_protocol_options_t, ffi.Bool)>>(
           'sec_protocol_options_set_peer_authentication_optional');
   late final _sec_protocol_options_set_peer_authentication_optional =
       _sec_protocol_options_set_peer_authentication_optionalPtr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_enable_encrypted_client_hello(
     sec_protocol_options_t options,
@@ -30924,18 +30640,18 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_enable_encrypted_client_hello(
       options,
-      enable_encrypted_client_hello ? 1 : 0,
+      enable_encrypted_client_hello,
     );
   }
 
   late final _sec_protocol_options_set_enable_encrypted_client_helloPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+                  ffi.Void Function(sec_protocol_options_t, ffi.Bool)>>(
           'sec_protocol_options_set_enable_encrypted_client_hello');
   late final _sec_protocol_options_set_enable_encrypted_client_hello =
       _sec_protocol_options_set_enable_encrypted_client_helloPtr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_quic_use_legacy_codepoint(
     sec_protocol_options_t options,
@@ -30943,17 +30659,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_quic_use_legacy_codepoint(
       options,
-      quic_use_legacy_codepoint ? 1 : 0,
+      quic_use_legacy_codepoint,
     );
   }
 
   late final _sec_protocol_options_set_quic_use_legacy_codepointPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
-      'sec_protocol_options_set_quic_use_legacy_codepoint');
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Bool)>>('sec_protocol_options_set_quic_use_legacy_codepoint');
   late final _sec_protocol_options_set_quic_use_legacy_codepoint =
       _sec_protocol_options_set_quic_use_legacy_codepointPtr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_key_update_block(
     sec_protocol_options_t options,
@@ -32378,11 +32094,9 @@ class NativeCupertinoHttp {
   set NSURLSessionTransferSizeUnknown(int value) =>
       _NSURLSessionTransferSizeUnknown.value = value;
 
-  late final ffi.Pointer<ObjCObject> _class_NSURLSession1 =
-      _getClass1("NSURLSession");
-  late final ffi.Pointer<ObjCSel> _sel_sharedSession1 =
-      _registerName1("sharedSession");
-  late final ffi.Pointer<ObjCSel> _sel_sessionWithConfiguration_1 =
+  late final _class_NSURLSession1 = _getClass1("NSURLSession");
+  late final _sel_sharedSession1 = _registerName1("sharedSession");
+  late final _sel_sessionWithConfiguration_1 =
       _registerName1("sessionWithConfiguration:");
   ffi.Pointer<ObjCObject> _objc_msgSend_212(
     ffi.Pointer<ObjCObject> obj,
@@ -32404,8 +32118,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_sessionWithConfiguration_delegate_delegateQueue_1 =
+  late final _sel_sessionWithConfiguration_delegate_delegateQueue_1 =
       _registerName1("sessionWithConfiguration:delegate:delegateQueue:");
   ffi.Pointer<ObjCObject> _objc_msgSend_213(
     ffi.Pointer<ObjCObject> obj,
@@ -32439,24 +32152,20 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_delegateQueue1 =
-      _registerName1("delegateQueue");
-  late final ffi.Pointer<ObjCSel> _sel_delegate1 = _registerName1("delegate");
-  late final ffi.Pointer<ObjCSel> _sel_configuration1 =
-      _registerName1("configuration");
-  late final ffi.Pointer<ObjCSel> _sel_sessionDescription1 =
-      _registerName1("sessionDescription");
-  late final ffi.Pointer<ObjCSel> _sel_setSessionDescription_1 =
+  late final _sel_delegateQueue1 = _registerName1("delegateQueue");
+  late final _sel_delegate1 = _registerName1("delegate");
+  late final _sel_configuration1 = _registerName1("configuration");
+  late final _sel_sessionDescription1 = _registerName1("sessionDescription");
+  late final _sel_setSessionDescription_1 =
       _registerName1("setSessionDescription:");
-  late final ffi.Pointer<ObjCSel> _sel_finishTasksAndInvalidate1 =
+  late final _sel_finishTasksAndInvalidate1 =
       _registerName1("finishTasksAndInvalidate");
-  late final ffi.Pointer<ObjCSel> _sel_invalidateAndCancel1 =
-      _registerName1("invalidateAndCancel");
-  late final ffi.Pointer<ObjCSel> _sel_resetWithCompletionHandler_1 =
+  late final _sel_invalidateAndCancel1 = _registerName1("invalidateAndCancel");
+  late final _sel_resetWithCompletionHandler_1 =
       _registerName1("resetWithCompletionHandler:");
-  late final ffi.Pointer<ObjCSel> _sel_flushWithCompletionHandler_1 =
+  late final _sel_flushWithCompletionHandler_1 =
       _registerName1("flushWithCompletionHandler:");
-  late final ffi.Pointer<ObjCSel> _sel_getTasksWithCompletionHandler_1 =
+  late final _sel_getTasksWithCompletionHandler_1 =
       _registerName1("getTasksWithCompletionHandler:");
   void _objc_msgSend_214(
     ffi.Pointer<ObjCObject> obj,
@@ -32478,7 +32187,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_getAllTasksWithCompletionHandler_1 =
+  late final _sel_getAllTasksWithCompletionHandler_1 =
       _registerName1("getAllTasksWithCompletionHandler:");
   void _objc_msgSend_215(
     ffi.Pointer<ObjCObject> obj,
@@ -32500,43 +32209,34 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSURLSessionDataTask1 =
-      _getClass1("NSURLSessionDataTask");
-  late final ffi.Pointer<ObjCObject> _class_NSURLSessionTask1 =
-      _getClass1("NSURLSessionTask");
-  late final ffi.Pointer<ObjCSel> _sel_taskIdentifier1 =
-      _registerName1("taskIdentifier");
-  late final ffi.Pointer<ObjCSel> _sel_originalRequest1 =
-      _registerName1("originalRequest");
-  late final ffi.Pointer<ObjCSel> _sel_currentRequest1 =
-      _registerName1("currentRequest");
-  late final ffi.Pointer<ObjCSel> _sel_response1 = _registerName1("response");
-  late final ffi.Pointer<ObjCSel> _sel_progress1 = _registerName1("progress");
-  late final ffi.Pointer<ObjCSel> _sel_earliestBeginDate1 =
-      _registerName1("earliestBeginDate");
-  late final ffi.Pointer<ObjCSel> _sel_setEarliestBeginDate_1 =
+  late final _class_NSURLSessionDataTask1 = _getClass1("NSURLSessionDataTask");
+  late final _class_NSURLSessionTask1 = _getClass1("NSURLSessionTask");
+  late final _sel_taskIdentifier1 = _registerName1("taskIdentifier");
+  late final _sel_originalRequest1 = _registerName1("originalRequest");
+  late final _sel_currentRequest1 = _registerName1("currentRequest");
+  late final _sel_response1 = _registerName1("response");
+  late final _sel_progress1 = _registerName1("progress");
+  late final _sel_earliestBeginDate1 = _registerName1("earliestBeginDate");
+  late final _sel_setEarliestBeginDate_1 =
       _registerName1("setEarliestBeginDate:");
-  late final ffi.Pointer<ObjCSel> _sel_countOfBytesClientExpectsToSend1 =
+  late final _sel_countOfBytesClientExpectsToSend1 =
       _registerName1("countOfBytesClientExpectsToSend");
-  late final ffi.Pointer<ObjCSel> _sel_setCountOfBytesClientExpectsToSend_1 =
+  late final _sel_setCountOfBytesClientExpectsToSend_1 =
       _registerName1("setCountOfBytesClientExpectsToSend:");
-  late final ffi.Pointer<ObjCSel> _sel_countOfBytesClientExpectsToReceive1 =
+  late final _sel_countOfBytesClientExpectsToReceive1 =
       _registerName1("countOfBytesClientExpectsToReceive");
-  late final ffi.Pointer<ObjCSel> _sel_setCountOfBytesClientExpectsToReceive_1 =
+  late final _sel_setCountOfBytesClientExpectsToReceive_1 =
       _registerName1("setCountOfBytesClientExpectsToReceive:");
-  late final ffi.Pointer<ObjCSel> _sel_countOfBytesReceived1 =
+  late final _sel_countOfBytesReceived1 =
       _registerName1("countOfBytesReceived");
-  late final ffi.Pointer<ObjCSel> _sel_countOfBytesSent1 =
-      _registerName1("countOfBytesSent");
-  late final ffi.Pointer<ObjCSel> _sel_countOfBytesExpectedToSend1 =
+  late final _sel_countOfBytesSent1 = _registerName1("countOfBytesSent");
+  late final _sel_countOfBytesExpectedToSend1 =
       _registerName1("countOfBytesExpectedToSend");
-  late final ffi.Pointer<ObjCSel> _sel_countOfBytesExpectedToReceive1 =
+  late final _sel_countOfBytesExpectedToReceive1 =
       _registerName1("countOfBytesExpectedToReceive");
-  late final ffi.Pointer<ObjCSel> _sel_taskDescription1 =
-      _registerName1("taskDescription");
-  late final ffi.Pointer<ObjCSel> _sel_setTaskDescription_1 =
-      _registerName1("setTaskDescription:");
-  late final ffi.Pointer<ObjCSel> _sel_state1 = _registerName1("state");
+  late final _sel_taskDescription1 = _registerName1("taskDescription");
+  late final _sel_setTaskDescription_1 = _registerName1("setTaskDescription:");
+  late final _sel_state1 = _registerName1("state");
   int _objc_msgSend_216(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -32554,11 +32254,10 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_216 = __objc_msgSend_216Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_error1 = _registerName1("error");
-  late final ffi.Pointer<ObjCSel> _sel_suspend1 = _registerName1("suspend");
-  late final ffi.Pointer<ObjCSel> _sel_priority1 = _registerName1("priority");
-  late final ffi.Pointer<ObjCSel> _sel_setPriority_1 =
-      _registerName1("setPriority:");
+  late final _sel_error1 = _registerName1("error");
+  late final _sel_suspend1 = _registerName1("suspend");
+  late final _sel_priority1 = _registerName1("priority");
+  late final _sel_setPriority_1 = _registerName1("setPriority:");
   void _objc_msgSend_217(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -32578,11 +32277,11 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_217 = __objc_msgSend_217Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, double)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_prefersIncrementalDelivery1 =
+  late final _sel_prefersIncrementalDelivery1 =
       _registerName1("prefersIncrementalDelivery");
-  late final ffi.Pointer<ObjCSel> _sel_setPrefersIncrementalDelivery_1 =
+  late final _sel_setPrefersIncrementalDelivery_1 =
       _registerName1("setPrefersIncrementalDelivery:");
-  late final ffi.Pointer<ObjCSel> _sel_dataTaskWithRequest_1 =
+  late final _sel_dataTaskWithRequest_1 =
       _registerName1("dataTaskWithRequest:");
   ffi.Pointer<ObjCObject> _objc_msgSend_218(
     ffi.Pointer<ObjCObject> obj,
@@ -32604,11 +32303,10 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_dataTaskWithURL_1 =
-      _registerName1("dataTaskWithURL:");
-  late final ffi.Pointer<ObjCObject> _class_NSURLSessionUploadTask1 =
+  late final _sel_dataTaskWithURL_1 = _registerName1("dataTaskWithURL:");
+  late final _class_NSURLSessionUploadTask1 =
       _getClass1("NSURLSessionUploadTask");
-  late final ffi.Pointer<ObjCSel> _sel_uploadTaskWithRequest_fromFile_1 =
+  late final _sel_uploadTaskWithRequest_fromFile_1 =
       _registerName1("uploadTaskWithRequest:fromFile:");
   ffi.Pointer<ObjCObject> _objc_msgSend_219(
     ffi.Pointer<ObjCObject> obj,
@@ -32638,9 +32336,9 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_uploadTaskWithRequest_fromData_1 =
+  late final _sel_uploadTaskWithRequest_fromData_1 =
       _registerName1("uploadTaskWithRequest:fromData:");
-  late final ffi.Pointer<ObjCSel> _sel_uploadTaskWithStreamedRequest_1 =
+  late final _sel_uploadTaskWithStreamedRequest_1 =
       _registerName1("uploadTaskWithStreamedRequest:");
   ffi.Pointer<ObjCObject> _objc_msgSend_220(
     ffi.Pointer<ObjCObject> obj,
@@ -32662,11 +32360,11 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSURLSessionDownloadTask1 =
+  late final _class_NSURLSessionDownloadTask1 =
       _getClass1("NSURLSessionDownloadTask");
-  late final ffi.Pointer<ObjCSel> _sel_cancelByProducingResumeData_1 =
+  late final _sel_cancelByProducingResumeData_1 =
       _registerName1("cancelByProducingResumeData:");
-  late final ffi.Pointer<ObjCSel> _sel_downloadTaskWithRequest_1 =
+  late final _sel_downloadTaskWithRequest_1 =
       _registerName1("downloadTaskWithRequest:");
   ffi.Pointer<ObjCObject> _objc_msgSend_221(
     ffi.Pointer<ObjCObject> obj,
@@ -32688,14 +32386,13 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_downloadTaskWithURL_1 =
+  late final _sel_downloadTaskWithURL_1 =
       _registerName1("downloadTaskWithURL:");
-  late final ffi.Pointer<ObjCSel> _sel_downloadTaskWithResumeData_1 =
+  late final _sel_downloadTaskWithResumeData_1 =
       _registerName1("downloadTaskWithResumeData:");
-  late final ffi.Pointer<ObjCObject> _class_NSURLSessionStreamTask1 =
+  late final _class_NSURLSessionStreamTask1 =
       _getClass1("NSURLSessionStreamTask");
-  late final ffi.Pointer<ObjCSel>
-      _sel_readDataOfMinLength_maxLength_timeout_completionHandler_1 =
+  late final _sel_readDataOfMinLength_maxLength_timeout_completionHandler_1 =
       _registerName1(
           "readDataOfMinLength:maxLength:timeout:completionHandler:");
   void _objc_msgSend_222(
@@ -32729,7 +32426,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int, int,
           double, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_writeData_timeout_completionHandler_1 =
+  late final _sel_writeData_timeout_completionHandler_1 =
       _registerName1("writeData:timeout:completionHandler:");
   void _objc_msgSend_223(
     ffi.Pointer<ObjCObject> obj,
@@ -32759,16 +32456,14 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, double, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_captureStreams1 =
-      _registerName1("captureStreams");
-  late final ffi.Pointer<ObjCSel> _sel_closeWrite1 =
-      _registerName1("closeWrite");
-  late final ffi.Pointer<ObjCSel> _sel_closeRead1 = _registerName1("closeRead");
-  late final ffi.Pointer<ObjCSel> _sel_startSecureConnection1 =
+  late final _sel_captureStreams1 = _registerName1("captureStreams");
+  late final _sel_closeWrite1 = _registerName1("closeWrite");
+  late final _sel_closeRead1 = _registerName1("closeRead");
+  late final _sel_startSecureConnection1 =
       _registerName1("startSecureConnection");
-  late final ffi.Pointer<ObjCSel> _sel_stopSecureConnection1 =
+  late final _sel_stopSecureConnection1 =
       _registerName1("stopSecureConnection");
-  late final ffi.Pointer<ObjCSel> _sel_streamTaskWithHostName_port_1 =
+  late final _sel_streamTaskWithHostName_port_1 =
       _registerName1("streamTaskWithHostName:port:");
   ffi.Pointer<ObjCObject> _objc_msgSend_224(
     ffi.Pointer<ObjCObject> obj,
@@ -32795,7 +32490,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_streamTaskWithNetService_1 =
+  late final _sel_streamTaskWithNetService_1 =
       _registerName1("streamTaskWithNetService:");
   ffi.Pointer<ObjCObject> _objc_msgSend_225(
     ffi.Pointer<ObjCObject> obj,
@@ -32817,11 +32512,11 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSURLSessionWebSocketTask1 =
+  late final _class_NSURLSessionWebSocketTask1 =
       _getClass1("NSURLSessionWebSocketTask");
-  late final ffi.Pointer<ObjCSel> _sel_sendMessage_completionHandler_1 =
+  late final _sel_sendMessage_completionHandler_1 =
       _registerName1("sendMessage:completionHandler:");
-  late final ffi.Pointer<ObjCSel> _sel_receiveMessageWithCompletionHandler_1 =
+  late final _sel_receiveMessageWithCompletionHandler_1 =
       _registerName1("receiveMessageWithCompletionHandler:");
   void _objc_msgSend_226(
     ffi.Pointer<ObjCObject> obj,
@@ -32843,9 +32538,9 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_sendPingWithPongReceiveHandler_1 =
+  late final _sel_sendPingWithPongReceiveHandler_1 =
       _registerName1("sendPingWithPongReceiveHandler:");
-  late final ffi.Pointer<ObjCSel> _sel_cancelWithCloseCode_reason_1 =
+  late final _sel_cancelWithCloseCode_reason_1 =
       _registerName1("cancelWithCloseCode:reason:");
   void _objc_msgSend_227(
     ffi.Pointer<ObjCObject> obj,
@@ -32869,11 +32564,10 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_maximumMessageSize1 =
-      _registerName1("maximumMessageSize");
-  late final ffi.Pointer<ObjCSel> _sel_setMaximumMessageSize_1 =
+  late final _sel_maximumMessageSize1 = _registerName1("maximumMessageSize");
+  late final _sel_setMaximumMessageSize_1 =
       _registerName1("setMaximumMessageSize:");
-  late final ffi.Pointer<ObjCSel> _sel_closeCode1 = _registerName1("closeCode");
+  late final _sel_closeCode1 = _registerName1("closeCode");
   int _objc_msgSend_228(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -32891,9 +32585,8 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_228 = __objc_msgSend_228Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_closeReason1 =
-      _registerName1("closeReason");
-  late final ffi.Pointer<ObjCSel> _sel_webSocketTaskWithURL_1 =
+  late final _sel_closeReason1 = _registerName1("closeReason");
+  late final _sel_webSocketTaskWithURL_1 =
       _registerName1("webSocketTaskWithURL:");
   ffi.Pointer<ObjCObject> _objc_msgSend_229(
     ffi.Pointer<ObjCObject> obj,
@@ -32915,7 +32608,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_webSocketTaskWithURL_protocols_1 =
+  late final _sel_webSocketTaskWithURL_protocols_1 =
       _registerName1("webSocketTaskWithURL:protocols:");
   ffi.Pointer<ObjCObject> _objc_msgSend_230(
     ffi.Pointer<ObjCObject> obj,
@@ -32945,9 +32638,9 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_webSocketTaskWithRequest_1 =
+  late final _sel_webSocketTaskWithRequest_1 =
       _registerName1("webSocketTaskWithRequest:");
-  late final ffi.Pointer<ObjCSel> _sel_dataTaskWithRequest_completionHandler_1 =
+  late final _sel_dataTaskWithRequest_completionHandler_1 =
       _registerName1("dataTaskWithRequest:completionHandler:");
   ffi.Pointer<ObjCObject> _objc_msgSend_231(
     ffi.Pointer<ObjCObject> obj,
@@ -32977,10 +32670,9 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_dataTaskWithURL_completionHandler_1 =
+  late final _sel_dataTaskWithURL_completionHandler_1 =
       _registerName1("dataTaskWithURL:completionHandler:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_uploadTaskWithRequest_fromFile_completionHandler_1 =
+  late final _sel_uploadTaskWithRequest_fromFile_completionHandler_1 =
       _registerName1("uploadTaskWithRequest:fromFile:completionHandler:");
   ffi.Pointer<ObjCObject> _objc_msgSend_232(
     ffi.Pointer<ObjCObject> obj,
@@ -33014,11 +32706,9 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_uploadTaskWithRequest_fromData_completionHandler_1 =
+  late final _sel_uploadTaskWithRequest_fromData_completionHandler_1 =
       _registerName1("uploadTaskWithRequest:fromData:completionHandler:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_downloadTaskWithRequest_completionHandler_1 =
+  late final _sel_downloadTaskWithRequest_completionHandler_1 =
       _registerName1("downloadTaskWithRequest:completionHandler:");
   ffi.Pointer<ObjCObject> _objc_msgSend_233(
     ffi.Pointer<ObjCObject> obj,
@@ -33048,10 +32738,9 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_downloadTaskWithURL_completionHandler_1 =
+  late final _sel_downloadTaskWithURL_completionHandler_1 =
       _registerName1("downloadTaskWithURL:completionHandler:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_downloadTaskWithResumeData_completionHandler_1 =
+  late final _sel_downloadTaskWithResumeData_completionHandler_1 =
       _registerName1("downloadTaskWithResumeData:completionHandler:");
   late final ffi.Pointer<ffi.Float> _NSURLSessionTaskPriorityDefault =
       _lookup<ffi.Float>('NSURLSessionTaskPriorityDefault');
@@ -33079,9 +32768,9 @@ class NativeCupertinoHttp {
   set NSURLSessionTaskPriorityHigh(double value) =>
       _NSURLSessionTaskPriorityHigh.value = value;
 
-  late final ffi.Pointer<ObjCObject> _class_NSURLSessionWebSocketMessage1 =
+  late final _class_NSURLSessionWebSocketMessage1 =
       _getClass1("NSURLSessionWebSocketMessage");
-  late final ffi.Pointer<ObjCSel> _sel_type1 = _registerName1("type");
+  late final _sel_type1 = _registerName1("type");
   int _objc_msgSend_234(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -33099,14 +32788,13 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_234 = __objc_msgSend_234Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSURLSessionConfiguration1 =
+  late final _class_NSURLSessionConfiguration1 =
       _getClass1("NSURLSessionConfiguration");
-  late final ffi.Pointer<ObjCSel> _sel_defaultSessionConfiguration1 =
+  late final _sel_defaultSessionConfiguration1 =
       _registerName1("defaultSessionConfiguration");
-  late final ffi.Pointer<ObjCSel> _sel_ephemeralSessionConfiguration1 =
+  late final _sel_ephemeralSessionConfiguration1 =
       _registerName1("ephemeralSessionConfiguration");
-  late final ffi.Pointer<ObjCSel>
-      _sel_backgroundSessionConfigurationWithIdentifier_1 =
+  late final _sel_backgroundSessionConfigurationWithIdentifier_1 =
       _registerName1("backgroundSessionConfigurationWithIdentifier:");
   ffi.Pointer<ObjCObject> _objc_msgSend_235(
     ffi.Pointer<ObjCObject> obj,
@@ -33128,41 +32816,37 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_identifier1 =
-      _registerName1("identifier");
-  late final ffi.Pointer<ObjCSel> _sel_requestCachePolicy1 =
-      _registerName1("requestCachePolicy");
-  late final ffi.Pointer<ObjCSel> _sel_setRequestCachePolicy_1 =
+  late final _sel_identifier1 = _registerName1("identifier");
+  late final _sel_requestCachePolicy1 = _registerName1("requestCachePolicy");
+  late final _sel_setRequestCachePolicy_1 =
       _registerName1("setRequestCachePolicy:");
-  late final ffi.Pointer<ObjCSel> _sel_timeoutIntervalForRequest1 =
+  late final _sel_timeoutIntervalForRequest1 =
       _registerName1("timeoutIntervalForRequest");
-  late final ffi.Pointer<ObjCSel> _sel_setTimeoutIntervalForRequest_1 =
+  late final _sel_setTimeoutIntervalForRequest_1 =
       _registerName1("setTimeoutIntervalForRequest:");
-  late final ffi.Pointer<ObjCSel> _sel_timeoutIntervalForResource1 =
+  late final _sel_timeoutIntervalForResource1 =
       _registerName1("timeoutIntervalForResource");
-  late final ffi.Pointer<ObjCSel> _sel_setTimeoutIntervalForResource_1 =
+  late final _sel_setTimeoutIntervalForResource_1 =
       _registerName1("setTimeoutIntervalForResource:");
-  late final ffi.Pointer<ObjCSel> _sel_waitsForConnectivity1 =
+  late final _sel_waitsForConnectivity1 =
       _registerName1("waitsForConnectivity");
-  late final ffi.Pointer<ObjCSel> _sel_setWaitsForConnectivity_1 =
+  late final _sel_setWaitsForConnectivity_1 =
       _registerName1("setWaitsForConnectivity:");
-  late final ffi.Pointer<ObjCSel> _sel_isDiscretionary1 =
-      _registerName1("isDiscretionary");
-  late final ffi.Pointer<ObjCSel> _sel_setDiscretionary_1 =
-      _registerName1("setDiscretionary:");
-  late final ffi.Pointer<ObjCSel> _sel_sharedContainerIdentifier1 =
+  late final _sel_isDiscretionary1 = _registerName1("isDiscretionary");
+  late final _sel_setDiscretionary_1 = _registerName1("setDiscretionary:");
+  late final _sel_sharedContainerIdentifier1 =
       _registerName1("sharedContainerIdentifier");
-  late final ffi.Pointer<ObjCSel> _sel_setSharedContainerIdentifier_1 =
+  late final _sel_setSharedContainerIdentifier_1 =
       _registerName1("setSharedContainerIdentifier:");
-  late final ffi.Pointer<ObjCSel> _sel_sessionSendsLaunchEvents1 =
+  late final _sel_sessionSendsLaunchEvents1 =
       _registerName1("sessionSendsLaunchEvents");
-  late final ffi.Pointer<ObjCSel> _sel_setSessionSendsLaunchEvents_1 =
+  late final _sel_setSessionSendsLaunchEvents_1 =
       _registerName1("setSessionSendsLaunchEvents:");
-  late final ffi.Pointer<ObjCSel> _sel_connectionProxyDictionary1 =
+  late final _sel_connectionProxyDictionary1 =
       _registerName1("connectionProxyDictionary");
-  late final ffi.Pointer<ObjCSel> _sel_setConnectionProxyDictionary_1 =
+  late final _sel_setConnectionProxyDictionary_1 =
       _registerName1("setConnectionProxyDictionary:");
-  late final ffi.Pointer<ObjCSel> _sel_TLSMinimumSupportedProtocol1 =
+  late final _sel_TLSMinimumSupportedProtocol1 =
       _registerName1("TLSMinimumSupportedProtocol");
   int _objc_msgSend_236(
     ffi.Pointer<ObjCObject> obj,
@@ -33181,7 +32865,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_236 = __objc_msgSend_236Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setTLSMinimumSupportedProtocol_1 =
+  late final _sel_setTLSMinimumSupportedProtocol_1 =
       _registerName1("setTLSMinimumSupportedProtocol:");
   void _objc_msgSend_237(
     ffi.Pointer<ObjCObject> obj,
@@ -33202,11 +32886,11 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_237 = __objc_msgSend_237Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_TLSMaximumSupportedProtocol1 =
+  late final _sel_TLSMaximumSupportedProtocol1 =
       _registerName1("TLSMaximumSupportedProtocol");
-  late final ffi.Pointer<ObjCSel> _sel_setTLSMaximumSupportedProtocol_1 =
+  late final _sel_setTLSMaximumSupportedProtocol_1 =
       _registerName1("setTLSMaximumSupportedProtocol:");
-  late final ffi.Pointer<ObjCSel> _sel_TLSMinimumSupportedProtocolVersion1 =
+  late final _sel_TLSMinimumSupportedProtocolVersion1 =
       _registerName1("TLSMinimumSupportedProtocolVersion");
   int _objc_msgSend_238(
     ffi.Pointer<ObjCObject> obj,
@@ -33225,7 +32909,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_238 = __objc_msgSend_238Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setTLSMinimumSupportedProtocolVersion_1 =
+  late final _sel_setTLSMinimumSupportedProtocolVersion_1 =
       _registerName1("setTLSMinimumSupportedProtocolVersion:");
   void _objc_msgSend_239(
     ffi.Pointer<ObjCObject> obj,
@@ -33246,47 +32930,42 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_239 = __objc_msgSend_239Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_TLSMaximumSupportedProtocolVersion1 =
+  late final _sel_TLSMaximumSupportedProtocolVersion1 =
       _registerName1("TLSMaximumSupportedProtocolVersion");
-  late final ffi.Pointer<ObjCSel> _sel_setTLSMaximumSupportedProtocolVersion_1 =
+  late final _sel_setTLSMaximumSupportedProtocolVersion_1 =
       _registerName1("setTLSMaximumSupportedProtocolVersion:");
-  late final ffi.Pointer<ObjCSel> _sel_HTTPShouldSetCookies1 =
+  late final _sel_HTTPShouldSetCookies1 =
       _registerName1("HTTPShouldSetCookies");
-  late final ffi.Pointer<ObjCSel> _sel_setHTTPShouldSetCookies_1 =
+  late final _sel_setHTTPShouldSetCookies_1 =
       _registerName1("setHTTPShouldSetCookies:");
-  late final ffi.Pointer<ObjCSel> _sel_HTTPCookieAcceptPolicy1 =
+  late final _sel_HTTPCookieAcceptPolicy1 =
       _registerName1("HTTPCookieAcceptPolicy");
-  late final ffi.Pointer<ObjCSel> _sel_setHTTPCookieAcceptPolicy_1 =
+  late final _sel_setHTTPCookieAcceptPolicy_1 =
       _registerName1("setHTTPCookieAcceptPolicy:");
-  late final ffi.Pointer<ObjCSel> _sel_HTTPAdditionalHeaders1 =
+  late final _sel_HTTPAdditionalHeaders1 =
       _registerName1("HTTPAdditionalHeaders");
-  late final ffi.Pointer<ObjCSel> _sel_setHTTPAdditionalHeaders_1 =
+  late final _sel_setHTTPAdditionalHeaders_1 =
       _registerName1("setHTTPAdditionalHeaders:");
-  late final ffi.Pointer<ObjCSel> _sel_HTTPMaximumConnectionsPerHost1 =
+  late final _sel_HTTPMaximumConnectionsPerHost1 =
       _registerName1("HTTPMaximumConnectionsPerHost");
-  late final ffi.Pointer<ObjCSel> _sel_setHTTPMaximumConnectionsPerHost_1 =
+  late final _sel_setHTTPMaximumConnectionsPerHost_1 =
       _registerName1("setHTTPMaximumConnectionsPerHost:");
-  late final ffi.Pointer<ObjCSel> _sel_HTTPCookieStorage1 =
-      _registerName1("HTTPCookieStorage");
-  late final ffi.Pointer<ObjCSel> _sel_setHTTPCookieStorage_1 =
+  late final _sel_HTTPCookieStorage1 = _registerName1("HTTPCookieStorage");
+  late final _sel_setHTTPCookieStorage_1 =
       _registerName1("setHTTPCookieStorage:");
-  late final ffi.Pointer<ObjCSel> _sel_URLCredentialStorage1 =
+  late final _sel_URLCredentialStorage1 =
       _registerName1("URLCredentialStorage");
-  late final ffi.Pointer<ObjCSel> _sel_setURLCredentialStorage_1 =
+  late final _sel_setURLCredentialStorage_1 =
       _registerName1("setURLCredentialStorage:");
-  late final ffi.Pointer<ObjCSel> _sel_URLCache1 = _registerName1("URLCache");
-  late final ffi.Pointer<ObjCSel> _sel_setURLCache_1 =
-      _registerName1("setURLCache:");
-  late final ffi.Pointer<ObjCSel> _sel_shouldUseExtendedBackgroundIdleMode1 =
+  late final _sel_URLCache1 = _registerName1("URLCache");
+  late final _sel_setURLCache_1 = _registerName1("setURLCache:");
+  late final _sel_shouldUseExtendedBackgroundIdleMode1 =
       _registerName1("shouldUseExtendedBackgroundIdleMode");
-  late final ffi.Pointer<ObjCSel>
-      _sel_setShouldUseExtendedBackgroundIdleMode_1 =
+  late final _sel_setShouldUseExtendedBackgroundIdleMode_1 =
       _registerName1("setShouldUseExtendedBackgroundIdleMode:");
-  late final ffi.Pointer<ObjCSel> _sel_protocolClasses1 =
-      _registerName1("protocolClasses");
-  late final ffi.Pointer<ObjCSel> _sel_setProtocolClasses_1 =
-      _registerName1("setProtocolClasses:");
-  late final ffi.Pointer<ObjCSel> _sel_multipathServiceType1 =
+  late final _sel_protocolClasses1 = _registerName1("protocolClasses");
+  late final _sel_setProtocolClasses_1 = _registerName1("setProtocolClasses:");
+  late final _sel_multipathServiceType1 =
       _registerName1("multipathServiceType");
   int _objc_msgSend_240(
     ffi.Pointer<ObjCObject> obj,
@@ -33305,7 +32984,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_240 = __objc_msgSend_240Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setMultipathServiceType_1 =
+  late final _sel_setMultipathServiceType_1 =
       _registerName1("setMultipathServiceType:");
   void _objc_msgSend_241(
     ffi.Pointer<ObjCObject> obj,
@@ -33326,7 +33005,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_241 = __objc_msgSend_241Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_backgroundSessionConfiguration_1 =
+  late final _sel_backgroundSessionConfiguration_1 =
       _registerName1("backgroundSessionConfiguration:");
 
   /// Key in the userInfo dictionary of an NSError received during a failed download.
@@ -33340,40 +33019,27 @@ class NativeCupertinoHttp {
   set NSURLSessionDownloadTaskResumeData(ffi.Pointer<ObjCObject> value) =>
       _NSURLSessionDownloadTaskResumeData.value = value;
 
-  late final ffi.Pointer<ObjCObject>
-      _class_NSURLSessionTaskTransactionMetrics1 =
+  late final _class_NSURLSessionTaskTransactionMetrics1 =
       _getClass1("NSURLSessionTaskTransactionMetrics");
-  late final ffi.Pointer<ObjCSel> _sel_request1 = _registerName1("request");
-  late final ffi.Pointer<ObjCSel> _sel_fetchStartDate1 =
-      _registerName1("fetchStartDate");
-  late final ffi.Pointer<ObjCSel> _sel_domainLookupStartDate1 =
+  late final _sel_request1 = _registerName1("request");
+  late final _sel_fetchStartDate1 = _registerName1("fetchStartDate");
+  late final _sel_domainLookupStartDate1 =
       _registerName1("domainLookupStartDate");
-  late final ffi.Pointer<ObjCSel> _sel_domainLookupEndDate1 =
-      _registerName1("domainLookupEndDate");
-  late final ffi.Pointer<ObjCSel> _sel_connectStartDate1 =
-      _registerName1("connectStartDate");
-  late final ffi.Pointer<ObjCSel> _sel_secureConnectionStartDate1 =
+  late final _sel_domainLookupEndDate1 = _registerName1("domainLookupEndDate");
+  late final _sel_connectStartDate1 = _registerName1("connectStartDate");
+  late final _sel_secureConnectionStartDate1 =
       _registerName1("secureConnectionStartDate");
-  late final ffi.Pointer<ObjCSel> _sel_secureConnectionEndDate1 =
+  late final _sel_secureConnectionEndDate1 =
       _registerName1("secureConnectionEndDate");
-  late final ffi.Pointer<ObjCSel> _sel_connectEndDate1 =
-      _registerName1("connectEndDate");
-  late final ffi.Pointer<ObjCSel> _sel_requestStartDate1 =
-      _registerName1("requestStartDate");
-  late final ffi.Pointer<ObjCSel> _sel_requestEndDate1 =
-      _registerName1("requestEndDate");
-  late final ffi.Pointer<ObjCSel> _sel_responseStartDate1 =
-      _registerName1("responseStartDate");
-  late final ffi.Pointer<ObjCSel> _sel_responseEndDate1 =
-      _registerName1("responseEndDate");
-  late final ffi.Pointer<ObjCSel> _sel_networkProtocolName1 =
-      _registerName1("networkProtocolName");
-  late final ffi.Pointer<ObjCSel> _sel_isProxyConnection1 =
-      _registerName1("isProxyConnection");
-  late final ffi.Pointer<ObjCSel> _sel_isReusedConnection1 =
-      _registerName1("isReusedConnection");
-  late final ffi.Pointer<ObjCSel> _sel_resourceFetchType1 =
-      _registerName1("resourceFetchType");
+  late final _sel_connectEndDate1 = _registerName1("connectEndDate");
+  late final _sel_requestStartDate1 = _registerName1("requestStartDate");
+  late final _sel_requestEndDate1 = _registerName1("requestEndDate");
+  late final _sel_responseStartDate1 = _registerName1("responseStartDate");
+  late final _sel_responseEndDate1 = _registerName1("responseEndDate");
+  late final _sel_networkProtocolName1 = _registerName1("networkProtocolName");
+  late final _sel_isProxyConnection1 = _registerName1("isProxyConnection");
+  late final _sel_isReusedConnection1 = _registerName1("isReusedConnection");
+  late final _sel_resourceFetchType1 = _registerName1("resourceFetchType");
   int _objc_msgSend_242(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -33391,38 +33057,31 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_242 = __objc_msgSend_242Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_countOfRequestHeaderBytesSent1 =
+  late final _sel_countOfRequestHeaderBytesSent1 =
       _registerName1("countOfRequestHeaderBytesSent");
-  late final ffi.Pointer<ObjCSel> _sel_countOfRequestBodyBytesSent1 =
+  late final _sel_countOfRequestBodyBytesSent1 =
       _registerName1("countOfRequestBodyBytesSent");
-  late final ffi.Pointer<ObjCSel> _sel_countOfRequestBodyBytesBeforeEncoding1 =
+  late final _sel_countOfRequestBodyBytesBeforeEncoding1 =
       _registerName1("countOfRequestBodyBytesBeforeEncoding");
-  late final ffi.Pointer<ObjCSel> _sel_countOfResponseHeaderBytesReceived1 =
+  late final _sel_countOfResponseHeaderBytesReceived1 =
       _registerName1("countOfResponseHeaderBytesReceived");
-  late final ffi.Pointer<ObjCSel> _sel_countOfResponseBodyBytesReceived1 =
+  late final _sel_countOfResponseBodyBytesReceived1 =
       _registerName1("countOfResponseBodyBytesReceived");
-  late final ffi.Pointer<ObjCSel> _sel_countOfResponseBodyBytesAfterDecoding1 =
+  late final _sel_countOfResponseBodyBytesAfterDecoding1 =
       _registerName1("countOfResponseBodyBytesAfterDecoding");
-  late final ffi.Pointer<ObjCSel> _sel_localAddress1 =
-      _registerName1("localAddress");
-  late final ffi.Pointer<ObjCSel> _sel_localPort1 = _registerName1("localPort");
-  late final ffi.Pointer<ObjCSel> _sel_remoteAddress1 =
-      _registerName1("remoteAddress");
-  late final ffi.Pointer<ObjCSel> _sel_remotePort1 =
-      _registerName1("remotePort");
-  late final ffi.Pointer<ObjCSel> _sel_negotiatedTLSProtocolVersion1 =
+  late final _sel_localAddress1 = _registerName1("localAddress");
+  late final _sel_localPort1 = _registerName1("localPort");
+  late final _sel_remoteAddress1 = _registerName1("remoteAddress");
+  late final _sel_remotePort1 = _registerName1("remotePort");
+  late final _sel_negotiatedTLSProtocolVersion1 =
       _registerName1("negotiatedTLSProtocolVersion");
-  late final ffi.Pointer<ObjCSel> _sel_negotiatedTLSCipherSuite1 =
+  late final _sel_negotiatedTLSCipherSuite1 =
       _registerName1("negotiatedTLSCipherSuite");
-  late final ffi.Pointer<ObjCSel> _sel_isCellular1 =
-      _registerName1("isCellular");
-  late final ffi.Pointer<ObjCSel> _sel_isExpensive1 =
-      _registerName1("isExpensive");
-  late final ffi.Pointer<ObjCSel> _sel_isConstrained1 =
-      _registerName1("isConstrained");
-  late final ffi.Pointer<ObjCSel> _sel_isMultipath1 =
-      _registerName1("isMultipath");
-  late final ffi.Pointer<ObjCSel> _sel_domainResolutionProtocol1 =
+  late final _sel_isCellular1 = _registerName1("isCellular");
+  late final _sel_isExpensive1 = _registerName1("isExpensive");
+  late final _sel_isConstrained1 = _registerName1("isConstrained");
+  late final _sel_isMultipath1 = _registerName1("isMultipath");
+  late final _sel_domainResolutionProtocol1 =
       _registerName1("domainResolutionProtocol");
   int _objc_msgSend_243(
     ffi.Pointer<ObjCObject> obj,
@@ -33441,14 +33100,11 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_243 = __objc_msgSend_243Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSURLSessionTaskMetrics1 =
+  late final _class_NSURLSessionTaskMetrics1 =
       _getClass1("NSURLSessionTaskMetrics");
-  late final ffi.Pointer<ObjCSel> _sel_transactionMetrics1 =
-      _registerName1("transactionMetrics");
-  late final ffi.Pointer<ObjCSel> _sel_taskInterval1 =
-      _registerName1("taskInterval");
-  late final ffi.Pointer<ObjCSel> _sel_redirectCount1 =
-      _registerName1("redirectCount");
+  late final _sel_transactionMetrics1 = _registerName1("transactionMetrics");
+  late final _sel_taskInterval1 = _registerName1("taskInterval");
+  late final _sel_redirectCount1 = _registerName1("redirectCount");
   ffi.Pointer<ObjCObject> NSStringFromSelector5(
     ffi.Pointer<ObjCSel> aSelector,
   ) {
@@ -33931,16 +33587,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone5(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZone5Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone5 = _NSCreateZone5Ptr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone5(
     ffi.Pointer<NSZone> zone,
@@ -34275,18 +33931,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone5(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZone5Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
   late final _NSShouldRetainWithZone5 = _NSShouldRetainWithZone5Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount5(
     ffi.Pointer<ObjCObject> object,
@@ -34306,17 +33961,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero5(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZero5Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero5 =
       _NSDecrementExtraRefCountWasZero5Ptr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount5(
     ffi.Pointer<ObjCObject> object,
@@ -34392,10 +34046,8 @@ class NativeCupertinoHttp {
   late final _NSRangeFromString2 = _NSRangeFromString2Ptr.asFunction<
       NSRange Function(ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSItemProvider1 =
-      _getClass1("NSItemProvider");
-  late final ffi.Pointer<ObjCSel>
-      _sel_registerDataRepresentationForTypeIdentifier_visibility_loadHandler_1 =
+  late final _class_NSItemProvider1 = _getClass1("NSItemProvider");
+  late final _sel_registerDataRepresentationForTypeIdentifier_visibility_loadHandler_1 =
       _registerName1(
           "registerDataRepresentationForTypeIdentifier:visibility:loadHandler:");
   void _objc_msgSend_244(
@@ -34426,8 +34078,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_registerFileRepresentationForTypeIdentifier_fileOptions_visibility_loadHandler_1 =
+  late final _sel_registerFileRepresentationForTypeIdentifier_fileOptions_visibility_loadHandler_1 =
       _registerName1(
           "registerFileRepresentationForTypeIdentifier:fileOptions:visibility:loadHandler:");
   void _objc_msgSend_245(
@@ -34461,12 +34112,11 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int, int, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_registeredTypeIdentifiers1 =
+  late final _sel_registeredTypeIdentifiers1 =
       _registerName1("registeredTypeIdentifiers");
-  late final ffi.Pointer<ObjCSel> _sel_hasItemConformingToTypeIdentifier_1 =
+  late final _sel_hasItemConformingToTypeIdentifier_1 =
       _registerName1("hasItemConformingToTypeIdentifier:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_hasRepresentationConformingToTypeIdentifier_fileOptions_1 =
+  late final _sel_hasRepresentationConformingToTypeIdentifier_fileOptions_1 =
       _registerName1(
           "hasRepresentationConformingToTypeIdentifier:fileOptions:");
   bool _objc_msgSend_246(
@@ -34476,24 +34126,22 @@ class NativeCupertinoHttp {
     int fileOptions,
   ) {
     return __objc_msgSend_246(
-          obj,
-          sel,
-          typeIdentifier,
-          fileOptions,
-        ) !=
-        0;
+      obj,
+      sel,
+      typeIdentifier,
+      fileOptions,
+    );
   }
 
   late final __objc_msgSend_246Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
               ffi.Pointer<ObjCObject>, ffi.Int32)>>('objc_msgSend');
   late final __objc_msgSend_246 = __objc_msgSend_246Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_loadDataRepresentationForTypeIdentifier_completionHandler_1 =
+  late final _sel_loadDataRepresentationForTypeIdentifier_completionHandler_1 =
       _registerName1(
           "loadDataRepresentationForTypeIdentifier:completionHandler:");
   ffi.Pointer<ObjCObject> _objc_msgSend_247(
@@ -34524,12 +34172,10 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_loadFileRepresentationForTypeIdentifier_completionHandler_1 =
+  late final _sel_loadFileRepresentationForTypeIdentifier_completionHandler_1 =
       _registerName1(
           "loadFileRepresentationForTypeIdentifier:completionHandler:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_loadInPlaceFileRepresentationForTypeIdentifier_completionHandler_1 =
+  late final _sel_loadInPlaceFileRepresentationForTypeIdentifier_completionHandler_1 =
       _registerName1(
           "loadInPlaceFileRepresentationForTypeIdentifier:completionHandler:");
   ffi.Pointer<ObjCObject> _objc_msgSend_248(
@@ -34560,13 +34206,10 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_suggestedName1 =
-      _registerName1("suggestedName");
-  late final ffi.Pointer<ObjCSel> _sel_setSuggestedName_1 =
-      _registerName1("setSuggestedName:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithObject_1 =
-      _registerName1("initWithObject:");
-  late final ffi.Pointer<ObjCSel> _sel_registerObject_visibility_1 =
+  late final _sel_suggestedName1 = _registerName1("suggestedName");
+  late final _sel_setSuggestedName_1 = _registerName1("setSuggestedName:");
+  late final _sel_initWithObject_1 = _registerName1("initWithObject:");
+  late final _sel_registerObject_visibility_1 =
       _registerName1("registerObject:visibility:");
   void _objc_msgSend_249(
     ffi.Pointer<ObjCObject> obj,
@@ -34590,17 +34233,15 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, int)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_registerObjectOfClass_visibility_loadHandler_1 =
+  late final _sel_registerObjectOfClass_visibility_loadHandler_1 =
       _registerName1("registerObjectOfClass:visibility:loadHandler:");
-  late final ffi.Pointer<ObjCSel> _sel_canLoadObjectOfClass_1 =
+  late final _sel_canLoadObjectOfClass_1 =
       _registerName1("canLoadObjectOfClass:");
-  late final ffi.Pointer<ObjCSel> _sel_loadObjectOfClass_completionHandler_1 =
+  late final _sel_loadObjectOfClass_completionHandler_1 =
       _registerName1("loadObjectOfClass:completionHandler:");
-  late final ffi.Pointer<ObjCSel> _sel_initWithItem_typeIdentifier_1 =
+  late final _sel_initWithItem_typeIdentifier_1 =
       _registerName1("initWithItem:typeIdentifier:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_registerItemForTypeIdentifier_loadHandler_1 =
+  late final _sel_registerItemForTypeIdentifier_loadHandler_1 =
       _registerName1("registerItemForTypeIdentifier:loadHandler:");
   void _objc_msgSend_250(
     ffi.Pointer<ObjCObject> obj,
@@ -34627,8 +34268,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, NSItemProviderLoadHandler)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_loadItemForTypeIdentifier_options_completionHandler_1 =
+  late final _sel_loadItemForTypeIdentifier_options_completionHandler_1 =
       _registerName1("loadItemForTypeIdentifier:options:completionHandler:");
   void _objc_msgSend_251(
     ffi.Pointer<ObjCObject> obj,
@@ -34662,8 +34302,7 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           NSItemProviderCompletionHandler)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_previewImageHandler1 =
-      _registerName1("previewImageHandler");
+  late final _sel_previewImageHandler1 = _registerName1("previewImageHandler");
   NSItemProviderLoadHandler _objc_msgSend_252(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -34682,7 +34321,7 @@ class NativeCupertinoHttp {
       NSItemProviderLoadHandler Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setPreviewImageHandler_1 =
+  late final _sel_setPreviewImageHandler_1 =
       _registerName1("setPreviewImageHandler:");
   void _objc_msgSend_253(
     ffi.Pointer<ObjCObject> obj,
@@ -34704,8 +34343,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           NSItemProviderLoadHandler)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_loadPreviewImageWithOptions_completionHandler_1 =
+  late final _sel_loadPreviewImageWithOptions_completionHandler_1 =
       _registerName1("loadPreviewImageWithOptions:completionHandler:");
   void _objc_msgSend_254(
     ffi.Pointer<ObjCObject> obj,
@@ -35012,22 +34650,17 @@ class NativeCupertinoHttp {
           NSStringEncodingDetectionOptionsKey value) =>
       _NSStringEncodingDetectionLikelyLanguageKey.value = value;
 
-  late final ffi.Pointer<ObjCObject> _class_NSMutableString1 =
-      _getClass1("NSMutableString");
-  late final ffi.Pointer<ObjCSel> _sel_replaceCharactersInRange_withString_1 =
+  late final _class_NSMutableString1 = _getClass1("NSMutableString");
+  late final _sel_replaceCharactersInRange_withString_1 =
       _registerName1("replaceCharactersInRange:withString:");
-  late final ffi.Pointer<ObjCSel> _sel_insertString_atIndex_1 =
+  late final _sel_insertString_atIndex_1 =
       _registerName1("insertString:atIndex:");
-  late final ffi.Pointer<ObjCSel> _sel_deleteCharactersInRange_1 =
+  late final _sel_deleteCharactersInRange_1 =
       _registerName1("deleteCharactersInRange:");
-  late final ffi.Pointer<ObjCSel> _sel_appendString_1 =
-      _registerName1("appendString:");
-  late final ffi.Pointer<ObjCSel> _sel_appendFormat_1 =
-      _registerName1("appendFormat:");
-  late final ffi.Pointer<ObjCSel> _sel_setString_1 =
-      _registerName1("setString:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_replaceOccurrencesOfString_withString_options_range_1 =
+  late final _sel_appendString_1 = _registerName1("appendString:");
+  late final _sel_appendFormat_1 = _registerName1("appendFormat:");
+  late final _sel_setString_1 = _registerName1("setString:");
+  late final _sel_replaceOccurrencesOfString_withString_options_range_1 =
       _registerName1("replaceOccurrencesOfString:withString:options:range:");
   int _objc_msgSend_255(
     ffi.Pointer<ObjCObject> obj,
@@ -35060,8 +34693,7 @@ class NativeCupertinoHttp {
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCObject>, int, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_applyTransform_reverse_range_updatedRange_1 =
+  late final _sel_applyTransform_reverse_range_updatedRange_1 =
       _registerName1("applyTransform:reverse:range:updatedRange:");
   bool _objc_msgSend_256(
     ffi.Pointer<ObjCObject> obj,
@@ -35072,28 +34704,27 @@ class NativeCupertinoHttp {
     NSRangePointer resultingRange,
   ) {
     return __objc_msgSend_256(
-          obj,
-          sel,
-          transform,
-          reverse ? 1 : 0,
-          range,
-          resultingRange,
-        ) !=
-        0;
+      obj,
+      sel,
+      transform,
+      reverse,
+      range,
+      resultingRange,
+    );
   }
 
   late final __objc_msgSend_256Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               NSStringTransform,
-              ffi.Uint8,
+              ffi.Bool,
               NSRange,
               NSRangePointer)>>('objc_msgSend');
   late final __objc_msgSend_256 = __objc_msgSend_256Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-          NSStringTransform, int, NSRange, NSRangePointer)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+          NSStringTransform, bool, NSRange, NSRangePointer)>();
 
   ffi.Pointer<ObjCObject> _objc_msgSend_257(
     ffi.Pointer<ObjCObject> obj,
@@ -35115,8 +34746,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_stringWithCapacity_1 =
-      _registerName1("stringWithCapacity:");
+  late final _sel_stringWithCapacity_1 = _registerName1("stringWithCapacity:");
   late final ffi.Pointer<NSExceptionName> _NSCharacterConversionException =
       _lookup<NSExceptionName>('NSCharacterConversionException');
 
@@ -35134,10 +34764,8 @@ class NativeCupertinoHttp {
   set NSParseErrorException(NSExceptionName value) =>
       _NSParseErrorException.value = value;
 
-  late final ffi.Pointer<ObjCObject> _class_NSSimpleCString1 =
-      _getClass1("NSSimpleCString");
-  late final ffi.Pointer<ObjCObject> _class_NSConstantString1 =
-      _getClass1("NSConstantString");
+  late final _class_NSSimpleCString1 = _getClass1("NSSimpleCString");
+  late final _class_NSConstantString1 = _getClass1("NSConstantString");
   int CFDataGetTypeID1() {
     return _CFDataGetTypeID1();
   }
@@ -35766,39 +35394,32 @@ class NativeCupertinoHttp {
   late final _CFCharacterSetInvert1 = _CFCharacterSetInvert1Ptr.asFunction<
       void Function(CFMutableCharacterSetRef)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSCharacterSet1 =
-      _getClass1("NSCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_controlCharacterSet1 =
-      _registerName1("controlCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_whitespaceCharacterSet1 =
+  late final _class_NSCharacterSet1 = _getClass1("NSCharacterSet");
+  late final _sel_controlCharacterSet1 = _registerName1("controlCharacterSet");
+  late final _sel_whitespaceCharacterSet1 =
       _registerName1("whitespaceCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_whitespaceAndNewlineCharacterSet1 =
+  late final _sel_whitespaceAndNewlineCharacterSet1 =
       _registerName1("whitespaceAndNewlineCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_decimalDigitCharacterSet1 =
+  late final _sel_decimalDigitCharacterSet1 =
       _registerName1("decimalDigitCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_letterCharacterSet1 =
-      _registerName1("letterCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_lowercaseLetterCharacterSet1 =
+  late final _sel_letterCharacterSet1 = _registerName1("letterCharacterSet");
+  late final _sel_lowercaseLetterCharacterSet1 =
       _registerName1("lowercaseLetterCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_uppercaseLetterCharacterSet1 =
+  late final _sel_uppercaseLetterCharacterSet1 =
       _registerName1("uppercaseLetterCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_nonBaseCharacterSet1 =
-      _registerName1("nonBaseCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_alphanumericCharacterSet1 =
+  late final _sel_nonBaseCharacterSet1 = _registerName1("nonBaseCharacterSet");
+  late final _sel_alphanumericCharacterSet1 =
       _registerName1("alphanumericCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_decomposableCharacterSet1 =
+  late final _sel_decomposableCharacterSet1 =
       _registerName1("decomposableCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_illegalCharacterSet1 =
-      _registerName1("illegalCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_punctuationCharacterSet1 =
+  late final _sel_illegalCharacterSet1 = _registerName1("illegalCharacterSet");
+  late final _sel_punctuationCharacterSet1 =
       _registerName1("punctuationCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_capitalizedLetterCharacterSet1 =
+  late final _sel_capitalizedLetterCharacterSet1 =
       _registerName1("capitalizedLetterCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_symbolCharacterSet1 =
-      _registerName1("symbolCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_newlineCharacterSet1 =
-      _registerName1("newlineCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_characterSetWithRange_1 =
+  late final _sel_symbolCharacterSet1 = _registerName1("symbolCharacterSet");
+  late final _sel_newlineCharacterSet1 = _registerName1("newlineCharacterSet");
+  late final _sel_characterSetWithRange_1 =
       _registerName1("characterSetWithRange:");
   ffi.Pointer<ObjCObject> _objc_msgSend_258(
     ffi.Pointer<ObjCObject> obj,
@@ -35820,7 +35441,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, NSRange)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_characterSetWithCharactersInString_1 =
+  late final _sel_characterSetWithCharactersInString_1 =
       _registerName1("characterSetWithCharactersInString:");
   ffi.Pointer<ObjCObject> _objc_msgSend_259(
     ffi.Pointer<ObjCObject> obj,
@@ -35842,37 +35463,34 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_characterSetWithBitmapRepresentation_1 =
+  late final _sel_characterSetWithBitmapRepresentation_1 =
       _registerName1("characterSetWithBitmapRepresentation:");
-  late final ffi.Pointer<ObjCSel> _sel_characterSetWithContentsOfFile_1 =
+  late final _sel_characterSetWithContentsOfFile_1 =
       _registerName1("characterSetWithContentsOfFile:");
-  late final ffi.Pointer<ObjCSel> _sel_characterIsMember_1 =
-      _registerName1("characterIsMember:");
+  late final _sel_characterIsMember_1 = _registerName1("characterIsMember:");
   bool _objc_msgSend_260(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
     int aCharacter,
   ) {
     return __objc_msgSend_260(
-          obj,
-          sel,
-          aCharacter,
-        ) !=
-        0;
+      obj,
+      sel,
+      aCharacter,
+    );
   }
 
   late final __objc_msgSend_260Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
               unichar)>>('objc_msgSend');
   late final __objc_msgSend_260 = __objc_msgSend_260Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_bitmapRepresentation1 =
+  late final _sel_bitmapRepresentation1 =
       _registerName1("bitmapRepresentation");
-  late final ffi.Pointer<ObjCSel> _sel_invertedSet1 =
-      _registerName1("invertedSet");
-  late final ffi.Pointer<ObjCSel> _sel_longCharacterIsMember_1 =
+  late final _sel_invertedSet1 = _registerName1("invertedSet");
+  late final _sel_longCharacterIsMember_1 =
       _registerName1("longCharacterIsMember:");
   bool _objc_msgSend_261(
     ffi.Pointer<ObjCObject> obj,
@@ -35880,71 +35498,67 @@ class NativeCupertinoHttp {
     int theLongChar,
   ) {
     return __objc_msgSend_261(
-          obj,
-          sel,
-          theLongChar,
-        ) !=
-        0;
+      obj,
+      sel,
+      theLongChar,
+    );
   }
 
   late final __objc_msgSend_261Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
               UTF32Char)>>('objc_msgSend');
   late final __objc_msgSend_261 = __objc_msgSend_261Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_isSupersetOfSet_1 =
-      _registerName1("isSupersetOfSet:");
-  late final ffi.Pointer<ObjCSel> _sel_hasMemberInPlane_1 =
-      _registerName1("hasMemberInPlane:");
+  late final _sel_isSupersetOfSet_1 = _registerName1("isSupersetOfSet:");
+  late final _sel_hasMemberInPlane_1 = _registerName1("hasMemberInPlane:");
   bool _objc_msgSend_262(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
     int thePlane,
   ) {
     return __objc_msgSend_262(
-          obj,
-          sel,
-          thePlane,
-        ) !=
-        0;
+      obj,
+      sel,
+      thePlane,
+    );
   }
 
   late final __objc_msgSend_262Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
               ffi.Uint8)>>('objc_msgSend');
   late final __objc_msgSend_262 = __objc_msgSend_262Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_URLUserAllowedCharacterSet1 =
+  late final _sel_URLUserAllowedCharacterSet1 =
       _registerName1("URLUserAllowedCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_URLPasswordAllowedCharacterSet1 =
+  late final _sel_URLPasswordAllowedCharacterSet1 =
       _registerName1("URLPasswordAllowedCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_URLHostAllowedCharacterSet1 =
+  late final _sel_URLHostAllowedCharacterSet1 =
       _registerName1("URLHostAllowedCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_URLPathAllowedCharacterSet1 =
+  late final _sel_URLPathAllowedCharacterSet1 =
       _registerName1("URLPathAllowedCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_URLQueryAllowedCharacterSet1 =
+  late final _sel_URLQueryAllowedCharacterSet1 =
       _registerName1("URLQueryAllowedCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_URLFragmentAllowedCharacterSet1 =
+  late final _sel_URLFragmentAllowedCharacterSet1 =
       _registerName1("URLFragmentAllowedCharacterSet");
-  late final ffi.Pointer<ObjCObject> _class_NSMutableCharacterSet1 =
+  late final _class_NSMutableCharacterSet1 =
       _getClass1("NSMutableCharacterSet");
-  late final ffi.Pointer<ObjCSel> _sel_addCharactersInRange_1 =
+  late final _sel_addCharactersInRange_1 =
       _registerName1("addCharactersInRange:");
-  late final ffi.Pointer<ObjCSel> _sel_removeCharactersInRange_1 =
+  late final _sel_removeCharactersInRange_1 =
       _registerName1("removeCharactersInRange:");
-  late final ffi.Pointer<ObjCSel> _sel_addCharactersInString_1 =
+  late final _sel_addCharactersInString_1 =
       _registerName1("addCharactersInString:");
-  late final ffi.Pointer<ObjCSel> _sel_removeCharactersInString_1 =
+  late final _sel_removeCharactersInString_1 =
       _registerName1("removeCharactersInString:");
-  late final ffi.Pointer<ObjCSel> _sel_formUnionWithCharacterSet_1 =
+  late final _sel_formUnionWithCharacterSet_1 =
       _registerName1("formUnionWithCharacterSet:");
-  late final ffi.Pointer<ObjCSel> _sel_formIntersectionWithCharacterSet_1 =
+  late final _sel_formIntersectionWithCharacterSet_1 =
       _registerName1("formIntersectionWithCharacterSet:");
-  late final ffi.Pointer<ObjCSel> _sel_invert1 = _registerName1("invert");
+  late final _sel_invert1 = _registerName1("invert");
   ffi.Pointer<ObjCObject> _objc_msgSend_263(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -36090,13 +35704,12 @@ class NativeCupertinoHttp {
   set NSFTPPropertyFTPProxy(ffi.Pointer<ObjCObject> value) =>
       _NSFTPPropertyFTPProxy.value = value;
 
-  late final ffi.Pointer<ObjCObject> _class_NSURLHandle1 =
-      _getClass1("NSURLHandle");
-  late final ffi.Pointer<ObjCSel> _sel_registerURLHandleClass_1 =
+  late final _class_NSURLHandle1 = _getClass1("NSURLHandle");
+  late final _sel_registerURLHandleClass_1 =
       _registerName1("registerURLHandleClass:");
-  late final ffi.Pointer<ObjCSel> _sel_URLHandleClassForURL_1 =
+  late final _sel_URLHandleClassForURL_1 =
       _registerName1("URLHandleClassForURL:");
-  late final ffi.Pointer<ObjCSel> _sel_status1 = _registerName1("status");
+  late final _sel_status1 = _registerName1("status");
   int _objc_msgSend_265(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -36114,18 +35727,13 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_265 = __objc_msgSend_265Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_failureReason1 =
-      _registerName1("failureReason");
-  late final ffi.Pointer<ObjCSel> _sel_addClient_1 =
-      _registerName1("addClient:");
-  late final ffi.Pointer<ObjCSel> _sel_removeClient_1 =
-      _registerName1("removeClient:");
-  late final ffi.Pointer<ObjCSel> _sel_loadInBackground1 =
-      _registerName1("loadInBackground");
-  late final ffi.Pointer<ObjCSel> _sel_cancelLoadInBackground1 =
+  late final _sel_failureReason1 = _registerName1("failureReason");
+  late final _sel_addClient_1 = _registerName1("addClient:");
+  late final _sel_removeClient_1 = _registerName1("removeClient:");
+  late final _sel_loadInBackground1 = _registerName1("loadInBackground");
+  late final _sel_cancelLoadInBackground1 =
       _registerName1("cancelLoadInBackground");
-  late final ffi.Pointer<ObjCSel> _sel_resourceData1 =
-      _registerName1("resourceData");
+  late final _sel_resourceData1 = _registerName1("resourceData");
   ffi.Pointer<ObjCObject> _objc_msgSend_266(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -36144,15 +35752,14 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_availableResourceData1 =
+  late final _sel_availableResourceData1 =
       _registerName1("availableResourceData");
-  late final ffi.Pointer<ObjCSel> _sel_expectedResourceDataSize1 =
+  late final _sel_expectedResourceDataSize1 =
       _registerName1("expectedResourceDataSize");
-  late final ffi.Pointer<ObjCSel> _sel_flushCachedData1 =
-      _registerName1("flushCachedData");
-  late final ffi.Pointer<ObjCSel> _sel_backgroundLoadDidFailWithReason_1 =
+  late final _sel_flushCachedData1 = _registerName1("flushCachedData");
+  late final _sel_backgroundLoadDidFailWithReason_1 =
       _registerName1("backgroundLoadDidFailWithReason:");
-  late final ffi.Pointer<ObjCSel> _sel_didLoadBytes_loadComplete_1 =
+  late final _sel_didLoadBytes_loadComplete_1 =
       _registerName1("didLoadBytes:loadComplete:");
   void _objc_msgSend_267(
     ffi.Pointer<ObjCObject> obj,
@@ -36164,22 +35771,20 @@ class NativeCupertinoHttp {
       obj,
       sel,
       newBytes,
-      yorn ? 1 : 0,
+      yorn,
     );
   }
 
   late final __objc_msgSend_267Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-              ffi.Pointer<ObjCObject>, ffi.Uint8)>>('objc_msgSend');
+              ffi.Pointer<ObjCObject>, ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_267 = __objc_msgSend_267Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-          ffi.Pointer<ObjCObject>, int)>();
+          ffi.Pointer<ObjCObject>, bool)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_canInitWithURL_1 =
-      _registerName1("canInitWithURL:");
-  late final ffi.Pointer<ObjCSel> _sel_cachedHandleForURL_1 =
-      _registerName1("cachedHandleForURL:");
+  late final _sel_canInitWithURL_1 = _registerName1("canInitWithURL:");
+  late final _sel_cachedHandleForURL_1 = _registerName1("cachedHandleForURL:");
   ffi.Pointer<ObjCObject> _objc_msgSend_268(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -36200,13 +35805,11 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithURL_cached_1 =
-      _registerName1("initWithURL:cached:");
-  late final ffi.Pointer<ObjCSel> _sel_propertyForKey_1 =
-      _registerName1("propertyForKey:");
-  late final ffi.Pointer<ObjCSel> _sel_propertyForKeyIfAvailable_1 =
+  late final _sel_initWithURL_cached_1 = _registerName1("initWithURL:cached:");
+  late final _sel_propertyForKey_1 = _registerName1("propertyForKey:");
+  late final _sel_propertyForKeyIfAvailable_1 =
       _registerName1("propertyForKeyIfAvailable:");
-  late final ffi.Pointer<ObjCSel> _sel_writeProperty_forKey_1 =
+  late final _sel_writeProperty_forKey_1 =
       _registerName1("writeProperty:forKey:");
   bool _objc_msgSend_269(
     ffi.Pointer<ObjCObject> obj,
@@ -36215,38 +35818,33 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> propertyKey,
   ) {
     return __objc_msgSend_269(
-          obj,
-          sel,
-          propertyValue,
-          propertyKey,
-        ) !=
-        0;
+      obj,
+      sel,
+      propertyValue,
+      propertyKey,
+    );
   }
 
   late final __objc_msgSend_269Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCObject>)>>('objc_msgSend');
   late final __objc_msgSend_269 = __objc_msgSend_269Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_writeData_1 =
-      _registerName1("writeData:");
-  late final ffi.Pointer<ObjCSel> _sel_loadInForeground1 =
-      _registerName1("loadInForeground");
-  late final ffi.Pointer<ObjCSel> _sel_beginLoadInBackground1 =
+  late final _sel_writeData_1 = _registerName1("writeData:");
+  late final _sel_loadInForeground1 = _registerName1("loadInForeground");
+  late final _sel_beginLoadInBackground1 =
       _registerName1("beginLoadInBackground");
-  late final ffi.Pointer<ObjCSel> _sel_endLoadInBackground1 =
-      _registerName1("endLoadInBackground");
-  late final ffi.Pointer<ObjCObject> _class_NSURL1 = _getClass1("NSURL");
-  late final ffi.Pointer<ObjCSel> _sel_initWithScheme_host_path_1 =
+  late final _sel_endLoadInBackground1 = _registerName1("endLoadInBackground");
+  late final _class_NSURL1 = _getClass1("NSURL");
+  late final _sel_initWithScheme_host_path_1 =
       _registerName1("initWithScheme:host:path:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_initFileURLWithPath_isDirectory_relativeToURL_1 =
+  late final _sel_initFileURLWithPath_isDirectory_relativeToURL_1 =
       _registerName1("initFileURLWithPath:isDirectory:relativeToURL:");
   instancetype _objc_msgSend_270(
     ffi.Pointer<ObjCObject> obj,
@@ -36259,7 +35857,7 @@ class NativeCupertinoHttp {
       obj,
       sel,
       path,
-      isDir ? 1 : 0,
+      isDir,
       baseURL,
     );
   }
@@ -36270,20 +35868,19 @@ class NativeCupertinoHttp {
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ObjCObject>,
-              ffi.Uint8,
+              ffi.Bool,
               ffi.Pointer<ObjCObject>)>>('objc_msgSend');
   late final __objc_msgSend_270 = __objc_msgSend_270Ptr.asFunction<
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-          ffi.Pointer<ObjCObject>, int, ffi.Pointer<ObjCObject>)>();
+          ffi.Pointer<ObjCObject>, bool, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initFileURLWithPath_relativeToURL_1 =
+  late final _sel_initFileURLWithPath_relativeToURL_1 =
       _registerName1("initFileURLWithPath:relativeToURL:");
-  late final ffi.Pointer<ObjCSel> _sel_initFileURLWithPath_isDirectory_1 =
+  late final _sel_initFileURLWithPath_isDirectory_1 =
       _registerName1("initFileURLWithPath:isDirectory:");
-  late final ffi.Pointer<ObjCSel> _sel_initFileURLWithPath_1 =
+  late final _sel_initFileURLWithPath_1 =
       _registerName1("initFileURLWithPath:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_fileURLWithPath_isDirectory_relativeToURL_1 =
+  late final _sel_fileURLWithPath_isDirectory_relativeToURL_1 =
       _registerName1("fileURLWithPath:isDirectory:relativeToURL:");
   ffi.Pointer<ObjCObject> _objc_msgSend_271(
     ffi.Pointer<ObjCObject> obj,
@@ -36296,7 +35893,7 @@ class NativeCupertinoHttp {
       obj,
       sel,
       path,
-      isDir ? 1 : 0,
+      isDir,
       baseURL,
     );
   }
@@ -36307,17 +35904,17 @@ class NativeCupertinoHttp {
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ObjCObject>,
-              ffi.Uint8,
+              ffi.Bool,
               ffi.Pointer<ObjCObject>)>>('objc_msgSend');
   late final __objc_msgSend_271 = __objc_msgSend_271Ptr.asFunction<
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>,
-          int,
+          bool,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_fileURLWithPath_relativeToURL_1 =
+  late final _sel_fileURLWithPath_relativeToURL_1 =
       _registerName1("fileURLWithPath:relativeToURL:");
   ffi.Pointer<ObjCObject> _objc_msgSend_272(
     ffi.Pointer<ObjCObject> obj,
@@ -36347,7 +35944,7 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_fileURLWithPath_isDirectory_1 =
+  late final _sel_fileURLWithPath_isDirectory_1 =
       _registerName1("fileURLWithPath:isDirectory:");
   ffi.Pointer<ObjCObject> _objc_msgSend_273(
     ffi.Pointer<ObjCObject> obj,
@@ -36359,7 +35956,7 @@ class NativeCupertinoHttp {
       obj,
       sel,
       path,
-      isDir ? 1 : 0,
+      isDir,
     );
   }
 
@@ -36369,13 +35966,12 @@ class NativeCupertinoHttp {
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ObjCObject>,
-              ffi.Uint8)>>('objc_msgSend');
+              ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_273 = __objc_msgSend_273Ptr.asFunction<
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
-          ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>, int)>();
+          ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>, bool)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_fileURLWithPath_1 =
-      _registerName1("fileURLWithPath:");
+  late final _sel_fileURLWithPath_1 = _registerName1("fileURLWithPath:");
   ffi.Pointer<ObjCObject> _objc_msgSend_274(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -36396,8 +35992,7 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_initFileURLWithFileSystemRepresentation_isDirectory_relativeToURL_1 =
+  late final _sel_initFileURLWithFileSystemRepresentation_isDirectory_relativeToURL_1 =
       _registerName1(
           "initFileURLWithFileSystemRepresentation:isDirectory:relativeToURL:");
   instancetype _objc_msgSend_275(
@@ -36411,7 +36006,7 @@ class NativeCupertinoHttp {
       obj,
       sel,
       path,
-      isDir ? 1 : 0,
+      isDir,
       baseURL,
     );
   }
@@ -36422,14 +36017,13 @@ class NativeCupertinoHttp {
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ffi.Char>,
-              ffi.Uint8,
+              ffi.Bool,
               ffi.Pointer<ObjCObject>)>>('objc_msgSend');
   late final __objc_msgSend_275 = __objc_msgSend_275Ptr.asFunction<
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
-          ffi.Pointer<ffi.Char>, int, ffi.Pointer<ObjCObject>)>();
+          ffi.Pointer<ffi.Char>, bool, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_fileURLWithFileSystemRepresentation_isDirectory_relativeToURL_1 =
+  late final _sel_fileURLWithFileSystemRepresentation_isDirectory_relativeToURL_1 =
       _registerName1(
           "fileURLWithFileSystemRepresentation:isDirectory:relativeToURL:");
   ffi.Pointer<ObjCObject> _objc_msgSend_276(
@@ -36443,7 +36037,7 @@ class NativeCupertinoHttp {
       obj,
       sel,
       path,
-      isDir ? 1 : 0,
+      isDir,
       baseURL,
     );
   }
@@ -36454,60 +36048,47 @@ class NativeCupertinoHttp {
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ffi.Char>,
-              ffi.Uint8,
+              ffi.Bool,
               ffi.Pointer<ObjCObject>)>>('objc_msgSend');
   late final __objc_msgSend_276 = __objc_msgSend_276Ptr.asFunction<
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Char>,
-          int,
+          bool,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithString_relativeToURL_1 =
+  late final _sel_initWithString_relativeToURL_1 =
       _registerName1("initWithString:relativeToURL:");
-  late final ffi.Pointer<ObjCSel> _sel_URLWithString_1 =
-      _registerName1("URLWithString:");
-  late final ffi.Pointer<ObjCSel> _sel_URLWithString_relativeToURL_1 =
+  late final _sel_URLWithString_1 = _registerName1("URLWithString:");
+  late final _sel_URLWithString_relativeToURL_1 =
       _registerName1("URLWithString:relativeToURL:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithDataRepresentation_relativeToURL_1 =
+  late final _sel_initWithDataRepresentation_relativeToURL_1 =
       _registerName1("initWithDataRepresentation:relativeToURL:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_URLWithDataRepresentation_relativeToURL_1 =
+  late final _sel_URLWithDataRepresentation_relativeToURL_1 =
       _registerName1("URLWithDataRepresentation:relativeToURL:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_initAbsoluteURLWithDataRepresentation_relativeToURL_1 =
+  late final _sel_initAbsoluteURLWithDataRepresentation_relativeToURL_1 =
       _registerName1("initAbsoluteURLWithDataRepresentation:relativeToURL:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_absoluteURLWithDataRepresentation_relativeToURL_1 =
+  late final _sel_absoluteURLWithDataRepresentation_relativeToURL_1 =
       _registerName1("absoluteURLWithDataRepresentation:relativeToURL:");
-  late final ffi.Pointer<ObjCSel> _sel_dataRepresentation1 =
-      _registerName1("dataRepresentation");
-  late final ffi.Pointer<ObjCSel> _sel_absoluteString1 =
-      _registerName1("absoluteString");
-  late final ffi.Pointer<ObjCSel> _sel_relativeString1 =
-      _registerName1("relativeString");
-  late final ffi.Pointer<ObjCSel> _sel_baseURL1 = _registerName1("baseURL");
-  late final ffi.Pointer<ObjCSel> _sel_absoluteURL1 =
-      _registerName1("absoluteURL");
-  late final ffi.Pointer<ObjCSel> _sel_scheme1 = _registerName1("scheme");
-  late final ffi.Pointer<ObjCSel> _sel_resourceSpecifier1 =
-      _registerName1("resourceSpecifier");
-  late final ffi.Pointer<ObjCSel> _sel_host1 = _registerName1("host");
-  late final ffi.Pointer<ObjCSel> _sel_port1 = _registerName1("port");
-  late final ffi.Pointer<ObjCSel> _sel_user1 = _registerName1("user");
-  late final ffi.Pointer<ObjCSel> _sel_password1 = _registerName1("password");
-  late final ffi.Pointer<ObjCSel> _sel_path1 = _registerName1("path");
-  late final ffi.Pointer<ObjCSel> _sel_fragment1 = _registerName1("fragment");
-  late final ffi.Pointer<ObjCSel> _sel_parameterString1 =
-      _registerName1("parameterString");
-  late final ffi.Pointer<ObjCSel> _sel_query1 = _registerName1("query");
-  late final ffi.Pointer<ObjCSel> _sel_relativePath1 =
-      _registerName1("relativePath");
-  late final ffi.Pointer<ObjCSel> _sel_hasDirectoryPath1 =
-      _registerName1("hasDirectoryPath");
-  late final ffi.Pointer<ObjCSel> _sel_getFileSystemRepresentation_maxLength_1 =
+  late final _sel_dataRepresentation1 = _registerName1("dataRepresentation");
+  late final _sel_absoluteString1 = _registerName1("absoluteString");
+  late final _sel_relativeString1 = _registerName1("relativeString");
+  late final _sel_baseURL1 = _registerName1("baseURL");
+  late final _sel_absoluteURL1 = _registerName1("absoluteURL");
+  late final _sel_scheme1 = _registerName1("scheme");
+  late final _sel_resourceSpecifier1 = _registerName1("resourceSpecifier");
+  late final _sel_host1 = _registerName1("host");
+  late final _sel_port1 = _registerName1("port");
+  late final _sel_user1 = _registerName1("user");
+  late final _sel_password1 = _registerName1("password");
+  late final _sel_path1 = _registerName1("path");
+  late final _sel_fragment1 = _registerName1("fragment");
+  late final _sel_parameterString1 = _registerName1("parameterString");
+  late final _sel_query1 = _registerName1("query");
+  late final _sel_relativePath1 = _registerName1("relativePath");
+  late final _sel_hasDirectoryPath1 = _registerName1("hasDirectoryPath");
+  late final _sel_getFileSystemRepresentation_maxLength_1 =
       _registerName1("getFileSystemRepresentation:maxLength:");
   bool _objc_msgSend_277(
     ffi.Pointer<ObjCObject> obj,
@@ -36516,29 +36097,26 @@ class NativeCupertinoHttp {
     int maxBufferLength,
   ) {
     return __objc_msgSend_277(
-          obj,
-          sel,
-          buffer,
-          maxBufferLength,
-        ) !=
-        0;
+      obj,
+      sel,
+      buffer,
+      maxBufferLength,
+    );
   }
 
   late final __objc_msgSend_277Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
               ffi.Pointer<ffi.Char>, NSUInteger)>>('objc_msgSend');
   late final __objc_msgSend_277 = __objc_msgSend_277Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Char>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_fileSystemRepresentation1 =
+  late final _sel_fileSystemRepresentation1 =
       _registerName1("fileSystemRepresentation");
-  late final ffi.Pointer<ObjCSel> _sel_isFileURL1 = _registerName1("isFileURL");
-  late final ffi.Pointer<ObjCSel> _sel_standardizedURL1 =
-      _registerName1("standardizedURL");
-  late final ffi.Pointer<ObjCSel>
-      _sel_checkResourceIsReachableAndReturnError_1 =
+  late final _sel_isFileURL1 = _registerName1("isFileURL");
+  late final _sel_standardizedURL1 = _registerName1("standardizedURL");
+  late final _sel_checkResourceIsReachableAndReturnError_1 =
       _registerName1("checkResourceIsReachableAndReturnError:");
   bool _objc_msgSend_278(
     ffi.Pointer<ObjCObject> obj,
@@ -36546,25 +36124,22 @@ class NativeCupertinoHttp {
     ffi.Pointer<ffi.Pointer<ObjCObject>> error,
   ) {
     return __objc_msgSend_278(
-          obj,
-          sel,
-          error,
-        ) !=
-        0;
+      obj,
+      sel,
+      error,
+    );
   }
 
   late final __objc_msgSend_278Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
               ffi.Pointer<ffi.Pointer<ObjCObject>>)>>('objc_msgSend');
   late final __objc_msgSend_278 = __objc_msgSend_278Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_isFileReferenceURL1 =
-      _registerName1("isFileReferenceURL");
-  late final ffi.Pointer<ObjCSel> _sel_fileReferenceURL1 =
-      _registerName1("fileReferenceURL");
+  late final _sel_isFileReferenceURL1 = _registerName1("isFileReferenceURL");
+  late final _sel_fileReferenceURL1 = _registerName1("fileReferenceURL");
   ffi.Pointer<ObjCObject> _objc_msgSend_279(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -36583,9 +36158,8 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_filePathURL1 =
-      _registerName1("filePathURL");
-  late final ffi.Pointer<ObjCSel> _sel_getResourceValue_forKey_error_1 =
+  late final _sel_filePathURL1 = _registerName1("filePathURL");
+  late final _sel_getResourceValue_forKey_error_1 =
       _registerName1("getResourceValue:forKey:error:");
   bool _objc_msgSend_280(
     ffi.Pointer<ObjCObject> obj,
@@ -36595,32 +36169,31 @@ class NativeCupertinoHttp {
     ffi.Pointer<ffi.Pointer<ObjCObject>> error,
   ) {
     return __objc_msgSend_280(
-          obj,
-          sel,
-          value,
-          key,
-          error,
-        ) !=
-        0;
+      obj,
+      sel,
+      value,
+      key,
+      error,
+    );
   }
 
   late final __objc_msgSend_280Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ffi.Pointer<ObjCObject>>,
               NSURLResourceKey,
               ffi.Pointer<ffi.Pointer<ObjCObject>>)>>('objc_msgSend');
   late final __objc_msgSend_280 = __objc_msgSend_280Ptr.asFunction<
-      int Function(
+      bool Function(
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>,
           ffi.Pointer<ffi.Pointer<ObjCObject>>,
           NSURLResourceKey,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setResourceValue_forKey_error_1 =
+  late final _sel_setResourceValue_forKey_error_1 =
       _registerName1("setResourceValue:forKey:error:");
   bool _objc_msgSend_281(
     ffi.Pointer<ObjCObject> obj,
@@ -36630,41 +36203,39 @@ class NativeCupertinoHttp {
     ffi.Pointer<ffi.Pointer<ObjCObject>> error,
   ) {
     return __objc_msgSend_281(
-          obj,
-          sel,
-          value,
-          key,
-          error,
-        ) !=
-        0;
+      obj,
+      sel,
+      value,
+      key,
+      error,
+    );
   }
 
   late final __objc_msgSend_281Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ObjCObject>,
               NSURLResourceKey,
               ffi.Pointer<ffi.Pointer<ObjCObject>>)>>('objc_msgSend');
   late final __objc_msgSend_281 = __objc_msgSend_281Ptr.asFunction<
-      int Function(
+      bool Function(
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>,
           NSURLResourceKey,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setResourceValues_error_1 =
+  late final _sel_setResourceValues_error_1 =
       _registerName1("setResourceValues:error:");
-  late final ffi.Pointer<ObjCSel> _sel_removeCachedResourceValueForKey_1 =
+  late final _sel_removeCachedResourceValueForKey_1 =
       _registerName1("removeCachedResourceValueForKey:");
-  late final ffi.Pointer<ObjCSel> _sel_removeAllCachedResourceValues1 =
+  late final _sel_removeAllCachedResourceValues1 =
       _registerName1("removeAllCachedResourceValues");
-  late final ffi.Pointer<ObjCSel> _sel_setTemporaryResourceValue_forKey_1 =
+  late final _sel_setTemporaryResourceValue_forKey_1 =
       _registerName1("setTemporaryResourceValue:forKey:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_bookmarkDataWithOptions_includingResourceValuesForKeys_relativeToURL_error_1 =
+  late final _sel_bookmarkDataWithOptions_includingResourceValuesForKeys_relativeToURL_error_1 =
       _registerName1(
           "bookmarkDataWithOptions:includingResourceValuesForKeys:relativeToURL:error:");
   ffi.Pointer<ObjCObject> _objc_msgSend_282(
@@ -36703,8 +36274,7 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_initByResolvingBookmarkData_options_relativeToURL_bookmarkDataIsStale_error_1 =
+  late final _sel_initByResolvingBookmarkData_options_relativeToURL_bookmarkDataIsStale_error_1 =
       _registerName1(
           "initByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:");
   instancetype _objc_msgSend_283(
@@ -36713,7 +36283,7 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> bookmarkData,
     int options,
     ffi.Pointer<ObjCObject> relativeURL,
-    ffi.Pointer<ffi.Uint8> isStale,
+    ffi.Pointer<ffi.Bool> isStale,
     ffi.Pointer<ffi.Pointer<ObjCObject>> error,
   ) {
     return __objc_msgSend_283(
@@ -36735,7 +36305,7 @@ class NativeCupertinoHttp {
               ffi.Pointer<ObjCObject>,
               ffi.Int32,
               ffi.Pointer<ObjCObject>,
-              ffi.Pointer<ffi.Uint8>,
+              ffi.Pointer<ffi.Bool>,
               ffi.Pointer<ffi.Pointer<ObjCObject>>)>>('objc_msgSend');
   late final __objc_msgSend_283 = __objc_msgSend_283Ptr.asFunction<
       instancetype Function(
@@ -36744,14 +36314,13 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           int,
           ffi.Pointer<ObjCObject>,
-          ffi.Pointer<ffi.Uint8>,
+          ffi.Pointer<ffi.Bool>,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_URLByResolvingBookmarkData_options_relativeToURL_bookmarkDataIsStale_error_1 =
+  late final _sel_URLByResolvingBookmarkData_options_relativeToURL_bookmarkDataIsStale_error_1 =
       _registerName1(
           "URLByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:");
-  late final ffi.Pointer<ObjCSel> _sel_writeBookmarkData_toURL_options_error_1 =
+  late final _sel_writeBookmarkData_toURL_options_error_1 =
       _registerName1("writeBookmarkData:toURL:options:error:");
   bool _objc_msgSend_284(
     ffi.Pointer<ObjCObject> obj,
@@ -36762,19 +36331,18 @@ class NativeCupertinoHttp {
     ffi.Pointer<ffi.Pointer<ObjCObject>> error,
   ) {
     return __objc_msgSend_284(
-          obj,
-          sel,
-          bookmarkData,
-          bookmarkFileURL,
-          options,
-          error,
-        ) !=
-        0;
+      obj,
+      sel,
+      bookmarkData,
+      bookmarkFileURL,
+      options,
+      error,
+    );
   }
 
   late final __objc_msgSend_284Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ObjCObject>,
               ffi.Pointer<ObjCSel>,
               ffi.Pointer<ObjCObject>,
@@ -36782,7 +36350,7 @@ class NativeCupertinoHttp {
               NSURLBookmarkFileCreationOptions,
               ffi.Pointer<ffi.Pointer<ObjCObject>>)>>('objc_msgSend');
   late final __objc_msgSend_284 = __objc_msgSend_284Ptr.asFunction<
-      int Function(
+      bool Function(
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>,
@@ -36790,7 +36358,7 @@ class NativeCupertinoHttp {
           int,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_bookmarkDataWithContentsOfURL_error_1 =
+  late final _sel_bookmarkDataWithContentsOfURL_error_1 =
       _registerName1("bookmarkDataWithContentsOfURL:error:");
   ffi.Pointer<ObjCObject> _objc_msgSend_285(
     ffi.Pointer<ObjCObject> obj,
@@ -36820,8 +36388,7 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_URLByResolvingAliasFileAtURL_options_error_1 =
+  late final _sel_URLByResolvingAliasFileAtURL_options_error_1 =
       _registerName1("URLByResolvingAliasFileAtURL:options:error:");
   instancetype _objc_msgSend_286(
     ffi.Pointer<ObjCObject> obj,
@@ -36855,40 +36422,34 @@ class NativeCupertinoHttp {
           int,
           ffi.Pointer<ffi.Pointer<ObjCObject>>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_startAccessingSecurityScopedResource1 =
+  late final _sel_startAccessingSecurityScopedResource1 =
       _registerName1("startAccessingSecurityScopedResource");
-  late final ffi.Pointer<ObjCSel> _sel_stopAccessingSecurityScopedResource1 =
+  late final _sel_stopAccessingSecurityScopedResource1 =
       _registerName1("stopAccessingSecurityScopedResource");
-  late final ffi.Pointer<ObjCSel>
-      _sel_getPromisedItemResourceValue_forKey_error_1 =
+  late final _sel_getPromisedItemResourceValue_forKey_error_1 =
       _registerName1("getPromisedItemResourceValue:forKey:error:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_checkPromisedItemIsReachableAndReturnError_1 =
+  late final _sel_checkPromisedItemIsReachableAndReturnError_1 =
       _registerName1("checkPromisedItemIsReachableAndReturnError:");
-  late final ffi.Pointer<ObjCSel> _sel_fileURLWithPathComponents_1 =
+  late final _sel_fileURLWithPathComponents_1 =
       _registerName1("fileURLWithPathComponents:");
-  late final ffi.Pointer<ObjCSel> _sel_pathComponents1 =
-      _registerName1("pathComponents");
-  late final ffi.Pointer<ObjCSel> _sel_lastPathComponent1 =
-      _registerName1("lastPathComponent");
-  late final ffi.Pointer<ObjCSel> _sel_pathExtension1 =
-      _registerName1("pathExtension");
-  late final ffi.Pointer<ObjCSel> _sel_URLByAppendingPathComponent_1 =
+  late final _sel_pathComponents1 = _registerName1("pathComponents");
+  late final _sel_lastPathComponent1 = _registerName1("lastPathComponent");
+  late final _sel_pathExtension1 = _registerName1("pathExtension");
+  late final _sel_URLByAppendingPathComponent_1 =
       _registerName1("URLByAppendingPathComponent:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_URLByAppendingPathComponent_isDirectory_1 =
+  late final _sel_URLByAppendingPathComponent_isDirectory_1 =
       _registerName1("URLByAppendingPathComponent:isDirectory:");
-  late final ffi.Pointer<ObjCSel> _sel_URLByDeletingLastPathComponent1 =
+  late final _sel_URLByDeletingLastPathComponent1 =
       _registerName1("URLByDeletingLastPathComponent");
-  late final ffi.Pointer<ObjCSel> _sel_URLByAppendingPathExtension_1 =
+  late final _sel_URLByAppendingPathExtension_1 =
       _registerName1("URLByAppendingPathExtension:");
-  late final ffi.Pointer<ObjCSel> _sel_URLByDeletingPathExtension1 =
+  late final _sel_URLByDeletingPathExtension1 =
       _registerName1("URLByDeletingPathExtension");
-  late final ffi.Pointer<ObjCSel> _sel_URLByStandardizingPath1 =
+  late final _sel_URLByStandardizingPath1 =
       _registerName1("URLByStandardizingPath");
-  late final ffi.Pointer<ObjCSel> _sel_URLByResolvingSymlinksInPath1 =
+  late final _sel_URLByResolvingSymlinksInPath1 =
       _registerName1("URLByResolvingSymlinksInPath");
-  late final ffi.Pointer<ObjCSel> _sel_resourceDataUsingCache_1 =
+  late final _sel_resourceDataUsingCache_1 =
       _registerName1("resourceDataUsingCache:");
   ffi.Pointer<ObjCObject> _objc_msgSend_287(
     ffi.Pointer<ObjCObject> obj,
@@ -36898,26 +36459,23 @@ class NativeCupertinoHttp {
     return __objc_msgSend_287(
       obj,
       sel,
-      shouldUseCache ? 1 : 0,
+      shouldUseCache,
     );
   }
 
   late final __objc_msgSend_287Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
-              ffi.Pointer<ObjCSel>, ffi.Uint8)>>('objc_msgSend');
+              ffi.Pointer<ObjCSel>, ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_287 = __objc_msgSend_287Ptr.asFunction<
       ffi.Pointer<ObjCObject> Function(
-          ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
+          ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, bool)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_loadResourceDataNotifyingClient_usingCache_1 =
+  late final _sel_loadResourceDataNotifyingClient_usingCache_1 =
       _registerName1("loadResourceDataNotifyingClient:usingCache:");
-  late final ffi.Pointer<ObjCSel> _sel_setResourceData_1 =
-      _registerName1("setResourceData:");
-  late final ffi.Pointer<ObjCSel> _sel_setProperty_forKey_1 =
-      _registerName1("setProperty:forKey:");
-  late final ffi.Pointer<ObjCSel> _sel_URLHandleUsingCache_1 =
+  late final _sel_setResourceData_1 = _registerName1("setResourceData:");
+  late final _sel_setProperty_forKey_1 = _registerName1("setProperty:forKey:");
+  late final _sel_URLHandleUsingCache_1 =
       _registerName1("URLHandleUsingCache:");
   ffi.Pointer<ObjCObject> _objc_msgSend_288(
     ffi.Pointer<ObjCObject> obj,
@@ -36927,17 +36485,17 @@ class NativeCupertinoHttp {
     return __objc_msgSend_288(
       obj,
       sel,
-      shouldUseCache ? 1 : 0,
+      shouldUseCache,
     );
   }
 
   late final __objc_msgSend_288Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ObjCObject> Function(ffi.Pointer<ObjCObject>,
-              ffi.Pointer<ObjCSel>, ffi.Uint8)>>('objc_msgSend');
+              ffi.Pointer<ObjCSel>, ffi.Bool)>>('objc_msgSend');
   late final __objc_msgSend_288 = __objc_msgSend_288Ptr.asFunction<
       ffi.Pointer<ObjCObject> Function(
-          ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
+          ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, bool)>();
 
   /// A string constant for the "file" URL scheme. If you are using this to compare to a URL's scheme to see if it is a file URL, you should instead use the NSURL fileURL property -- the fileURL property is much faster.
   late final ffi.Pointer<ffi.Pointer<ObjCObject>> _NSURLFileScheme =
@@ -38377,85 +37935,62 @@ class NativeCupertinoHttp {
           NSURLUbiquitousSharedItemPermissions value) =>
       _NSURLUbiquitousSharedItemPermissionsReadWrite.value = value;
 
-  late final ffi.Pointer<ObjCObject> _class_NSURLQueryItem1 =
-      _getClass1("NSURLQueryItem");
-  late final ffi.Pointer<ObjCSel> _sel_initWithName_value_1 =
-      _registerName1("initWithName:value:");
-  late final ffi.Pointer<ObjCSel> _sel_queryItemWithName_value_1 =
+  late final _class_NSURLQueryItem1 = _getClass1("NSURLQueryItem");
+  late final _sel_initWithName_value_1 = _registerName1("initWithName:value:");
+  late final _sel_queryItemWithName_value_1 =
       _registerName1("queryItemWithName:value:");
-  late final ffi.Pointer<ObjCSel> _sel_value1 = _registerName1("value");
-  late final ffi.Pointer<ObjCObject> _class_NSURLComponents1 =
-      _getClass1("NSURLComponents");
-  late final ffi.Pointer<ObjCSel> _sel_initWithURL_resolvingAgainstBaseURL_1 =
+  late final _sel_value1 = _registerName1("value");
+  late final _class_NSURLComponents1 = _getClass1("NSURLComponents");
+  late final _sel_initWithURL_resolvingAgainstBaseURL_1 =
       _registerName1("initWithURL:resolvingAgainstBaseURL:");
-  late final ffi.Pointer<ObjCSel>
-      _sel_componentsWithURL_resolvingAgainstBaseURL_1 =
+  late final _sel_componentsWithURL_resolvingAgainstBaseURL_1 =
       _registerName1("componentsWithURL:resolvingAgainstBaseURL:");
-  late final ffi.Pointer<ObjCSel> _sel_componentsWithString_1 =
+  late final _sel_componentsWithString_1 =
       _registerName1("componentsWithString:");
-  late final ffi.Pointer<ObjCSel> _sel_URLRelativeToURL_1 =
-      _registerName1("URLRelativeToURL:");
-  late final ffi.Pointer<ObjCSel> _sel_setScheme_1 =
-      _registerName1("setScheme:");
-  late final ffi.Pointer<ObjCSel> _sel_setUser_1 = _registerName1("setUser:");
-  late final ffi.Pointer<ObjCSel> _sel_setPassword_1 =
-      _registerName1("setPassword:");
-  late final ffi.Pointer<ObjCSel> _sel_setHost_1 = _registerName1("setHost:");
-  late final ffi.Pointer<ObjCSel> _sel_setPort_1 = _registerName1("setPort:");
-  late final ffi.Pointer<ObjCSel> _sel_setPath_1 = _registerName1("setPath:");
-  late final ffi.Pointer<ObjCSel> _sel_setQuery_1 = _registerName1("setQuery:");
-  late final ffi.Pointer<ObjCSel> _sel_setFragment_1 =
-      _registerName1("setFragment:");
-  late final ffi.Pointer<ObjCSel> _sel_percentEncodedUser1 =
-      _registerName1("percentEncodedUser");
-  late final ffi.Pointer<ObjCSel> _sel_setPercentEncodedUser_1 =
+  late final _sel_URLRelativeToURL_1 = _registerName1("URLRelativeToURL:");
+  late final _sel_setScheme_1 = _registerName1("setScheme:");
+  late final _sel_setUser_1 = _registerName1("setUser:");
+  late final _sel_setPassword_1 = _registerName1("setPassword:");
+  late final _sel_setHost_1 = _registerName1("setHost:");
+  late final _sel_setPort_1 = _registerName1("setPort:");
+  late final _sel_setPath_1 = _registerName1("setPath:");
+  late final _sel_setQuery_1 = _registerName1("setQuery:");
+  late final _sel_setFragment_1 = _registerName1("setFragment:");
+  late final _sel_percentEncodedUser1 = _registerName1("percentEncodedUser");
+  late final _sel_setPercentEncodedUser_1 =
       _registerName1("setPercentEncodedUser:");
-  late final ffi.Pointer<ObjCSel> _sel_percentEncodedPassword1 =
+  late final _sel_percentEncodedPassword1 =
       _registerName1("percentEncodedPassword");
-  late final ffi.Pointer<ObjCSel> _sel_setPercentEncodedPassword_1 =
+  late final _sel_setPercentEncodedPassword_1 =
       _registerName1("setPercentEncodedPassword:");
-  late final ffi.Pointer<ObjCSel> _sel_percentEncodedHost1 =
-      _registerName1("percentEncodedHost");
-  late final ffi.Pointer<ObjCSel> _sel_setPercentEncodedHost_1 =
+  late final _sel_percentEncodedHost1 = _registerName1("percentEncodedHost");
+  late final _sel_setPercentEncodedHost_1 =
       _registerName1("setPercentEncodedHost:");
-  late final ffi.Pointer<ObjCSel> _sel_percentEncodedPath1 =
-      _registerName1("percentEncodedPath");
-  late final ffi.Pointer<ObjCSel> _sel_setPercentEncodedPath_1 =
+  late final _sel_percentEncodedPath1 = _registerName1("percentEncodedPath");
+  late final _sel_setPercentEncodedPath_1 =
       _registerName1("setPercentEncodedPath:");
-  late final ffi.Pointer<ObjCSel> _sel_percentEncodedQuery1 =
-      _registerName1("percentEncodedQuery");
-  late final ffi.Pointer<ObjCSel> _sel_setPercentEncodedQuery_1 =
+  late final _sel_percentEncodedQuery1 = _registerName1("percentEncodedQuery");
+  late final _sel_setPercentEncodedQuery_1 =
       _registerName1("setPercentEncodedQuery:");
-  late final ffi.Pointer<ObjCSel> _sel_percentEncodedFragment1 =
+  late final _sel_percentEncodedFragment1 =
       _registerName1("percentEncodedFragment");
-  late final ffi.Pointer<ObjCSel> _sel_setPercentEncodedFragment_1 =
+  late final _sel_setPercentEncodedFragment_1 =
       _registerName1("setPercentEncodedFragment:");
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfScheme1 =
-      _registerName1("rangeOfScheme");
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfUser1 =
-      _registerName1("rangeOfUser");
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfPassword1 =
-      _registerName1("rangeOfPassword");
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfHost1 =
-      _registerName1("rangeOfHost");
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfPort1 =
-      _registerName1("rangeOfPort");
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfPath1 =
-      _registerName1("rangeOfPath");
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfQuery1 =
-      _registerName1("rangeOfQuery");
-  late final ffi.Pointer<ObjCSel> _sel_rangeOfFragment1 =
-      _registerName1("rangeOfFragment");
-  late final ffi.Pointer<ObjCSel> _sel_queryItems1 =
-      _registerName1("queryItems");
-  late final ffi.Pointer<ObjCSel> _sel_setQueryItems_1 =
-      _registerName1("setQueryItems:");
-  late final ffi.Pointer<ObjCSel> _sel_percentEncodedQueryItems1 =
+  late final _sel_rangeOfScheme1 = _registerName1("rangeOfScheme");
+  late final _sel_rangeOfUser1 = _registerName1("rangeOfUser");
+  late final _sel_rangeOfPassword1 = _registerName1("rangeOfPassword");
+  late final _sel_rangeOfHost1 = _registerName1("rangeOfHost");
+  late final _sel_rangeOfPort1 = _registerName1("rangeOfPort");
+  late final _sel_rangeOfPath1 = _registerName1("rangeOfPath");
+  late final _sel_rangeOfQuery1 = _registerName1("rangeOfQuery");
+  late final _sel_rangeOfFragment1 = _registerName1("rangeOfFragment");
+  late final _sel_queryItems1 = _registerName1("queryItems");
+  late final _sel_setQueryItems_1 = _registerName1("setQueryItems:");
+  late final _sel_percentEncodedQueryItems1 =
       _registerName1("percentEncodedQueryItems");
-  late final ffi.Pointer<ObjCSel> _sel_setPercentEncodedQueryItems_1 =
+  late final _sel_setPercentEncodedQueryItems_1 =
       _registerName1("setPercentEncodedQueryItems:");
-  late final ffi.Pointer<ObjCObject> _class_NSFileSecurity1 =
-      _getClass1("NSFileSecurity");
+  late final _class_NSFileSecurity1 = _getClass1("NSFileSecurity");
   ffi.Pointer<ObjCObject> NSStringFromSelector6(
     ffi.Pointer<ObjCSel> aSelector,
   ) {
@@ -38938,16 +38473,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone6(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZone6Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone6 = _NSCreateZone6Ptr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone6(
     ffi.Pointer<NSZone> zone,
@@ -39282,18 +38817,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone6(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZone6Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
   late final _NSShouldRetainWithZone6 = _NSShouldRetainWithZone6Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount6(
     ffi.Pointer<ObjCObject> object,
@@ -39313,17 +38847,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero6(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZero6Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero6 =
       _NSDecrementExtraRefCountWasZero6Ptr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount6(
     ffi.Pointer<ObjCObject> object,
@@ -39821,16 +39354,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone7(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZone7Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone7 = _NSCreateZone7Ptr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone7(
     ffi.Pointer<NSZone> zone,
@@ -40165,18 +39698,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone7(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZone7Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
   late final _NSShouldRetainWithZone7 = _NSShouldRetainWithZone7Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount7(
     ffi.Pointer<ObjCObject> object,
@@ -40196,17 +39728,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero7(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZero7Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero7 =
       _NSDecrementExtraRefCountWasZero7Ptr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount7(
     ffi.Pointer<ObjCObject> object,
@@ -40222,10 +39753,8 @@ class NativeCupertinoHttp {
   late final _NSExtraRefCount7 =
       _NSExtraRefCount7Ptr.asFunction<int Function(ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSURLResponse1 =
-      _getClass1("NSURLResponse");
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithURL_MIMEType_expectedContentLength_textEncodingName_1 =
+  late final _class_NSURLResponse1 = _getClass1("NSURLResponse");
+  late final _sel_initWithURL_MIMEType_expectedContentLength_textEncodingName_1 =
       _registerName1(
           "initWithURL:MIMEType:expectedContentLength:textEncodingName:");
   instancetype _objc_msgSend_289(
@@ -40264,17 +39793,13 @@ class NativeCupertinoHttp {
           int,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_MIMEType1 = _registerName1("MIMEType");
-  late final ffi.Pointer<ObjCSel> _sel_expectedContentLength1 =
+  late final _sel_MIMEType1 = _registerName1("MIMEType");
+  late final _sel_expectedContentLength1 =
       _registerName1("expectedContentLength");
-  late final ffi.Pointer<ObjCSel> _sel_textEncodingName1 =
-      _registerName1("textEncodingName");
-  late final ffi.Pointer<ObjCSel> _sel_suggestedFilename1 =
-      _registerName1("suggestedFilename");
-  late final ffi.Pointer<ObjCObject> _class_NSHTTPURLResponse1 =
-      _getClass1("NSHTTPURLResponse");
-  late final ffi.Pointer<ObjCSel>
-      _sel_initWithURL_statusCode_HTTPVersion_headerFields_1 =
+  late final _sel_textEncodingName1 = _registerName1("textEncodingName");
+  late final _sel_suggestedFilename1 = _registerName1("suggestedFilename");
+  late final _class_NSHTTPURLResponse1 = _getClass1("NSHTTPURLResponse");
+  late final _sel_initWithURL_statusCode_HTTPVersion_headerFields_1 =
       _registerName1("initWithURL:statusCode:HTTPVersion:headerFields:");
   instancetype _objc_msgSend_290(
     ffi.Pointer<ObjCObject> obj,
@@ -40312,11 +39837,9 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_statusCode1 =
-      _registerName1("statusCode");
-  late final ffi.Pointer<ObjCSel> _sel_allHeaderFields1 =
-      _registerName1("allHeaderFields");
-  late final ffi.Pointer<ObjCSel> _sel_localizedStringForStatusCode_1 =
+  late final _sel_statusCode1 = _registerName1("statusCode");
+  late final _sel_allHeaderFields1 = _registerName1("allHeaderFields");
+  late final _sel_localizedStringForStatusCode_1 =
       _registerName1("localizedStringForStatusCode:");
   ffi.Pointer<ObjCObject> _objc_msgSend_291(
     ffi.Pointer<ObjCObject> obj,
@@ -40820,16 +40343,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone8(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZone8Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone8 = _NSCreateZone8Ptr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone8(
     ffi.Pointer<NSZone> zone,
@@ -41164,18 +40687,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone8(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZone8Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
   late final _NSShouldRetainWithZone8 = _NSShouldRetainWithZone8Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount8(
     ffi.Pointer<ObjCObject> object,
@@ -41195,17 +40717,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero8(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZero8Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero8 =
       _NSDecrementExtraRefCountWasZero8Ptr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount8(
     ffi.Pointer<ObjCObject> object,
@@ -41703,16 +41224,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone9(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZone9Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone9 = _NSCreateZone9Ptr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone9(
     ffi.Pointer<NSZone> zone,
@@ -42047,18 +41568,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone9(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZone9Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
   late final _NSShouldRetainWithZone9 = _NSShouldRetainWithZone9Ptr.asFunction<
-      int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+      bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount9(
     ffi.Pointer<ObjCObject> object,
@@ -42078,17 +41598,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero9(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZero9Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero9 =
       _NSDecrementExtraRefCountWasZero9Ptr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount9(
     ffi.Pointer<ObjCObject> object,
@@ -42292,9 +41811,8 @@ class NativeCupertinoHttp {
   set NSInconsistentArchiveException(NSExceptionName value) =>
       _NSInconsistentArchiveException.value = value;
 
-  late final ffi.Pointer<ObjCObject> _class_NSException1 =
-      _getClass1("NSException");
-  late final ffi.Pointer<ObjCSel> _sel_exceptionWithName_reason_userInfo_1 =
+  late final _class_NSException1 = _getClass1("NSException");
+  late final _sel_exceptionWithName_reason_userInfo_1 =
       _registerName1("exceptionWithName:reason:userInfo:");
   ffi.Pointer<ObjCObject> _objc_msgSend_292(
     ffi.Pointer<ObjCObject> obj,
@@ -42328,17 +41846,15 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCObject>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithName_reason_userInfo_1 =
+  late final _sel_initWithName_reason_userInfo_1 =
       _registerName1("initWithName:reason:userInfo:");
-  late final ffi.Pointer<ObjCSel> _sel_reason1 = _registerName1("reason");
-  late final ffi.Pointer<ObjCSel> _sel_callStackReturnAddresses1 =
+  late final _sel_reason1 = _registerName1("reason");
+  late final _sel_callStackReturnAddresses1 =
       _registerName1("callStackReturnAddresses");
-  late final ffi.Pointer<ObjCSel> _sel_callStackSymbols1 =
-      _registerName1("callStackSymbols");
-  late final ffi.Pointer<ObjCSel> _sel_raise1 = _registerName1("raise");
-  late final ffi.Pointer<ObjCSel> _sel_raise_format_1 =
-      _registerName1("raise:format:");
-  late final ffi.Pointer<ObjCSel> _sel_raise_format_arguments_1 =
+  late final _sel_callStackSymbols1 = _registerName1("callStackSymbols");
+  late final _sel_raise1 = _registerName1("raise");
+  late final _sel_raise_format_1 = _registerName1("raise:format:");
+  late final _sel_raise_format_arguments_1 =
       _registerName1("raise:format:arguments:");
   void _objc_msgSend_293(
     ffi.Pointer<ObjCObject> obj,
@@ -42403,12 +41919,9 @@ class NativeCupertinoHttp {
   set NSAssertionHandlerKey(ffi.Pointer<ObjCObject> value) =>
       _NSAssertionHandlerKey.value = value;
 
-  late final ffi.Pointer<ObjCObject> _class_NSAssertionHandler1 =
-      _getClass1("NSAssertionHandler");
-  late final ffi.Pointer<ObjCSel> _sel_currentHandler1 =
-      _registerName1("currentHandler");
-  late final ffi.Pointer<ObjCSel>
-      _sel_handleFailureInMethod_object_file_lineNumber_description_1 =
+  late final _class_NSAssertionHandler1 = _getClass1("NSAssertionHandler");
+  late final _sel_currentHandler1 = _registerName1("currentHandler");
+  late final _sel_handleFailureInMethod_object_file_lineNumber_description_1 =
       _registerName1(
           "handleFailureInMethod:object:file:lineNumber:description:");
   void _objc_msgSend_294(
@@ -42451,8 +41964,7 @@ class NativeCupertinoHttp {
           int,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel>
-      _sel_handleFailureInFunction_file_lineNumber_description_1 =
+  late final _sel_handleFailureInFunction_file_lineNumber_description_1 =
       _registerName1("handleFailureInFunction:file:lineNumber:description:");
   void _objc_msgSend_295(
     ffi.Pointer<ObjCObject> obj,
@@ -42490,25 +42002,17 @@ class NativeCupertinoHttp {
           int,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_NSOperation1 =
-      _getClass1("NSOperation");
-  late final ffi.Pointer<ObjCSel> _sel_start1 = _registerName1("start");
-  late final ffi.Pointer<ObjCSel> _sel_main1 = _registerName1("main");
-  late final ffi.Pointer<ObjCSel> _sel_isExecuting1 =
-      _registerName1("isExecuting");
-  late final ffi.Pointer<ObjCSel> _sel_isConcurrent1 =
-      _registerName1("isConcurrent");
-  late final ffi.Pointer<ObjCSel> _sel_isAsynchronous1 =
-      _registerName1("isAsynchronous");
-  late final ffi.Pointer<ObjCSel> _sel_isReady1 = _registerName1("isReady");
-  late final ffi.Pointer<ObjCSel> _sel_addDependency_1 =
-      _registerName1("addDependency:");
-  late final ffi.Pointer<ObjCSel> _sel_removeDependency_1 =
-      _registerName1("removeDependency:");
-  late final ffi.Pointer<ObjCSel> _sel_dependencies1 =
-      _registerName1("dependencies");
-  late final ffi.Pointer<ObjCSel> _sel_queuePriority1 =
-      _registerName1("queuePriority");
+  late final _class_NSOperation1 = _getClass1("NSOperation");
+  late final _sel_start1 = _registerName1("start");
+  late final _sel_main1 = _registerName1("main");
+  late final _sel_isExecuting1 = _registerName1("isExecuting");
+  late final _sel_isConcurrent1 = _registerName1("isConcurrent");
+  late final _sel_isAsynchronous1 = _registerName1("isAsynchronous");
+  late final _sel_isReady1 = _registerName1("isReady");
+  late final _sel_addDependency_1 = _registerName1("addDependency:");
+  late final _sel_removeDependency_1 = _registerName1("removeDependency:");
+  late final _sel_dependencies1 = _registerName1("dependencies");
+  late final _sel_queuePriority1 = _registerName1("queuePriority");
   int _objc_msgSend_296(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -42526,8 +42030,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_296 = __objc_msgSend_296Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setQueuePriority_1 =
-      _registerName1("setQueuePriority:");
+  late final _sel_setQueuePriority_1 = _registerName1("setQueuePriority:");
   void _objc_msgSend_297(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -42547,18 +42050,12 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_297 = __objc_msgSend_297Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_completionBlock1 =
-      _registerName1("completionBlock");
-  late final ffi.Pointer<ObjCSel> _sel_setCompletionBlock_1 =
-      _registerName1("setCompletionBlock:");
-  late final ffi.Pointer<ObjCSel> _sel_waitUntilFinished1 =
-      _registerName1("waitUntilFinished");
-  late final ffi.Pointer<ObjCSel> _sel_threadPriority1 =
-      _registerName1("threadPriority");
-  late final ffi.Pointer<ObjCSel> _sel_setThreadPriority_1 =
-      _registerName1("setThreadPriority:");
-  late final ffi.Pointer<ObjCSel> _sel_qualityOfService1 =
-      _registerName1("qualityOfService");
+  late final _sel_completionBlock1 = _registerName1("completionBlock");
+  late final _sel_setCompletionBlock_1 = _registerName1("setCompletionBlock:");
+  late final _sel_waitUntilFinished1 = _registerName1("waitUntilFinished");
+  late final _sel_threadPriority1 = _registerName1("threadPriority");
+  late final _sel_setThreadPriority_1 = _registerName1("setThreadPriority:");
+  late final _sel_qualityOfService1 = _registerName1("qualityOfService");
   int _objc_msgSend_298(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -42576,7 +42073,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_298 = __objc_msgSend_298Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setQualityOfService_1 =
+  late final _sel_setQualityOfService_1 =
       _registerName1("setQualityOfService:");
   void _objc_msgSend_299(
     ffi.Pointer<ObjCObject> obj,
@@ -42597,10 +42094,9 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_299 = __objc_msgSend_299Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_setName_1 = _registerName1("setName:");
-  late final ffi.Pointer<ObjCObject> _class_NSBlockOperation1 =
-      _getClass1("NSBlockOperation");
-  late final ffi.Pointer<ObjCSel> _sel_blockOperationWithBlock_1 =
+  late final _sel_setName_1 = _registerName1("setName:");
+  late final _class_NSBlockOperation1 = _getClass1("NSBlockOperation");
+  late final _sel_blockOperationWithBlock_1 =
       _registerName1("blockOperationWithBlock:");
   instancetype _objc_msgSend_300(
     ffi.Pointer<ObjCObject> obj,
@@ -42622,13 +42118,11 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_addExecutionBlock_1 =
-      _registerName1("addExecutionBlock:");
-  late final ffi.Pointer<ObjCSel> _sel_executionBlocks1 =
-      _registerName1("executionBlocks");
-  late final ffi.Pointer<ObjCObject> _class_NSInvocationOperation1 =
+  late final _sel_addExecutionBlock_1 = _registerName1("addExecutionBlock:");
+  late final _sel_executionBlocks1 = _registerName1("executionBlocks");
+  late final _class_NSInvocationOperation1 =
       _getClass1("NSInvocationOperation");
-  late final ffi.Pointer<ObjCSel> _sel_initWithTarget_selector_object_1 =
+  late final _sel_initWithTarget_selector_object_1 =
       _registerName1("initWithTarget:selector:object:");
   instancetype _objc_msgSend_301(
     ffi.Pointer<ObjCObject> obj,
@@ -42662,11 +42156,9 @@ class NativeCupertinoHttp {
           ffi.Pointer<ObjCSel>,
           ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_initWithInvocation_1 =
-      _registerName1("initWithInvocation:");
-  late final ffi.Pointer<ObjCSel> _sel_invocation1 =
-      _registerName1("invocation");
-  late final ffi.Pointer<ObjCSel> _sel_result1 = _registerName1("result");
+  late final _sel_initWithInvocation_1 = _registerName1("initWithInvocation:");
+  late final _sel_invocation1 = _registerName1("invocation");
+  late final _sel_result1 = _registerName1("result");
   late final ffi.Pointer<NSExceptionName>
       _NSInvocationOperationVoidResultException =
       _lookup<NSExceptionName>('NSInvocationOperationVoidResultException');
@@ -42697,39 +42189,28 @@ class NativeCupertinoHttp {
   set NSOperationQueueDefaultMaxConcurrentOperationCount(int value) =>
       _NSOperationQueueDefaultMaxConcurrentOperationCount.value = value;
 
-  late final ffi.Pointer<ObjCObject> _class_NSOperationQueue1 =
-      _getClass1("NSOperationQueue");
-  late final ffi.Pointer<ObjCSel> _sel_addOperation_1 =
-      _registerName1("addOperation:");
-  late final ffi.Pointer<ObjCSel> _sel_addOperations_waitUntilFinished_1 =
+  late final _class_NSOperationQueue1 = _getClass1("NSOperationQueue");
+  late final _sel_addOperation_1 = _registerName1("addOperation:");
+  late final _sel_addOperations_waitUntilFinished_1 =
       _registerName1("addOperations:waitUntilFinished:");
-  late final ffi.Pointer<ObjCSel> _sel_addOperationWithBlock_1 =
+  late final _sel_addOperationWithBlock_1 =
       _registerName1("addOperationWithBlock:");
-  late final ffi.Pointer<ObjCSel> _sel_addBarrierBlock_1 =
-      _registerName1("addBarrierBlock:");
-  late final ffi.Pointer<ObjCSel> _sel_maxConcurrentOperationCount1 =
+  late final _sel_addBarrierBlock_1 = _registerName1("addBarrierBlock:");
+  late final _sel_maxConcurrentOperationCount1 =
       _registerName1("maxConcurrentOperationCount");
-  late final ffi.Pointer<ObjCSel> _sel_setMaxConcurrentOperationCount_1 =
+  late final _sel_setMaxConcurrentOperationCount_1 =
       _registerName1("setMaxConcurrentOperationCount:");
-  late final ffi.Pointer<ObjCSel> _sel_isSuspended1 =
-      _registerName1("isSuspended");
-  late final ffi.Pointer<ObjCSel> _sel_setSuspended_1 =
-      _registerName1("setSuspended:");
-  late final ffi.Pointer<ObjCSel> _sel_underlyingQueue1 =
-      _registerName1("underlyingQueue");
-  late final ffi.Pointer<ObjCSel> _sel_setUnderlyingQueue_1 =
-      _registerName1("setUnderlyingQueue:");
-  late final ffi.Pointer<ObjCSel> _sel_cancelAllOperations1 =
-      _registerName1("cancelAllOperations");
-  late final ffi.Pointer<ObjCSel> _sel_waitUntilAllOperationsAreFinished1 =
+  late final _sel_isSuspended1 = _registerName1("isSuspended");
+  late final _sel_setSuspended_1 = _registerName1("setSuspended:");
+  late final _sel_underlyingQueue1 = _registerName1("underlyingQueue");
+  late final _sel_setUnderlyingQueue_1 = _registerName1("setUnderlyingQueue:");
+  late final _sel_cancelAllOperations1 = _registerName1("cancelAllOperations");
+  late final _sel_waitUntilAllOperationsAreFinished1 =
       _registerName1("waitUntilAllOperationsAreFinished");
-  late final ffi.Pointer<ObjCSel> _sel_currentQueue1 =
-      _registerName1("currentQueue");
-  late final ffi.Pointer<ObjCSel> _sel_mainQueue1 = _registerName1("mainQueue");
-  late final ffi.Pointer<ObjCSel> _sel_operations1 =
-      _registerName1("operations");
-  late final ffi.Pointer<ObjCSel> _sel_operationCount1 =
-      _registerName1("operationCount");
+  late final _sel_currentQueue1 = _registerName1("currentQueue");
+  late final _sel_mainQueue1 = _registerName1("mainQueue");
+  late final _sel_operations1 = _registerName1("operations");
+  late final _sel_operationCount1 = _registerName1("operationCount");
   ffi.Pointer<ObjCObject> NSStringFromSelector10(
     ffi.Pointer<ObjCSel> aSelector,
   ) {
@@ -43212,16 +42693,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone10(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZone10Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone10 = _NSCreateZone10Ptr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone10(
     ffi.Pointer<NSZone> zone,
@@ -43557,18 +43038,18 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone10(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZone10Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
-  late final _NSShouldRetainWithZone10 = _NSShouldRetainWithZone10Ptr
-      .asFunction<int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+  late final _NSShouldRetainWithZone10 =
+      _NSShouldRetainWithZone10Ptr.asFunction<
+          bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount10(
     ffi.Pointer<ObjCObject> object,
@@ -43588,17 +43069,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero10(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZero10Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero10 =
       _NSDecrementExtraRefCountWasZero10Ptr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount10(
     ffi.Pointer<ObjCObject> object,
@@ -43775,8 +43255,8 @@ class NativeCupertinoHttp {
   set NSFilePathErrorKey(NSErrorUserInfoKey value) =>
       _NSFilePathErrorKey.value = value;
 
-  late final ffi.Pointer<ObjCObject> _class_NSError1 = _getClass1("NSError");
-  late final ffi.Pointer<ObjCSel> _sel_initWithDomain_code_userInfo_1 =
+  late final _class_NSError1 = _getClass1("NSError");
+  late final _sel_initWithDomain_code_userInfo_1 =
       _registerName1("initWithDomain:code:userInfo:");
   instancetype _objc_msgSend_302(
     ffi.Pointer<ObjCObject> obj,
@@ -43806,24 +43286,20 @@ class NativeCupertinoHttp {
       instancetype Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           NSErrorDomain, int, ffi.Pointer<ObjCObject>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_errorWithDomain_code_userInfo_1 =
+  late final _sel_errorWithDomain_code_userInfo_1 =
       _registerName1("errorWithDomain:code:userInfo:");
-  late final ffi.Pointer<ObjCSel> _sel_domain1 = _registerName1("domain");
-  late final ffi.Pointer<ObjCSel> _sel_code1 = _registerName1("code");
-  late final ffi.Pointer<ObjCSel> _sel_localizedFailureReason1 =
+  late final _sel_domain1 = _registerName1("domain");
+  late final _sel_code1 = _registerName1("code");
+  late final _sel_localizedFailureReason1 =
       _registerName1("localizedFailureReason");
-  late final ffi.Pointer<ObjCSel> _sel_localizedRecoverySuggestion1 =
+  late final _sel_localizedRecoverySuggestion1 =
       _registerName1("localizedRecoverySuggestion");
-  late final ffi.Pointer<ObjCSel> _sel_localizedRecoveryOptions1 =
+  late final _sel_localizedRecoveryOptions1 =
       _registerName1("localizedRecoveryOptions");
-  late final ffi.Pointer<ObjCSel> _sel_recoveryAttempter1 =
-      _registerName1("recoveryAttempter");
-  late final ffi.Pointer<ObjCSel> _sel_helpAnchor1 =
-      _registerName1("helpAnchor");
-  late final ffi.Pointer<ObjCSel> _sel_underlyingErrors1 =
-      _registerName1("underlyingErrors");
-  late final ffi.Pointer<ObjCSel>
-      _sel_setUserInfoValueProviderForDomain_provider_1 =
+  late final _sel_recoveryAttempter1 = _registerName1("recoveryAttempter");
+  late final _sel_helpAnchor1 = _registerName1("helpAnchor");
+  late final _sel_underlyingErrors1 = _registerName1("underlyingErrors");
+  late final _sel_setUserInfoValueProviderForDomain_provider_1 =
       _registerName1("setUserInfoValueProviderForDomain:provider:");
   void _objc_msgSend_303(
     ffi.Pointer<ObjCObject> obj,
@@ -43847,7 +43323,7 @@ class NativeCupertinoHttp {
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>,
           NSErrorDomain, ffi.Pointer<_ObjCBlock>)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_userInfoValueProviderForDomain_1 =
+  late final _sel_userInfoValueProviderForDomain_1 =
       _registerName1("userInfoValueProviderForDomain:");
   ffi.Pointer<ObjCObject> NSStringFromSelector11(
     ffi.Pointer<ObjCSel> aSelector,
@@ -44331,16 +43807,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone11(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZone11Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone11 = _NSCreateZone11Ptr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone11(
     ffi.Pointer<NSZone> zone,
@@ -44676,18 +44152,18 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone11(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZone11Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
-  late final _NSShouldRetainWithZone11 = _NSShouldRetainWithZone11Ptr
-      .asFunction<int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+  late final _NSShouldRetainWithZone11 =
+      _NSShouldRetainWithZone11Ptr.asFunction<
+          bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount11(
     ffi.Pointer<ObjCObject> object,
@@ -44707,17 +44183,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero11(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZero11Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero11 =
       _NSDecrementExtraRefCountWasZero11Ptr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount11(
     ffi.Pointer<ObjCObject> object,
@@ -45215,16 +44690,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone12(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZone12Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone12 = _NSCreateZone12Ptr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone12(
     ffi.Pointer<NSZone> zone,
@@ -45560,18 +45035,18 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone12(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZone12Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
-  late final _NSShouldRetainWithZone12 = _NSShouldRetainWithZone12Ptr
-      .asFunction<int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+  late final _NSShouldRetainWithZone12 =
+      _NSShouldRetainWithZone12Ptr.asFunction<
+          bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount12(
     ffi.Pointer<ObjCObject> object,
@@ -45591,17 +45066,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero12(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZero12Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero12 =
       _NSDecrementExtraRefCountWasZero12Ptr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount12(
     ffi.Pointer<ObjCObject> object,
@@ -60133,18 +59607,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<CFErrorRef> error,
   ) {
     return _SecTrustEvaluateWithError1(
-          trust,
-          error,
-        ) !=
-        0;
+      trust,
+      error,
+    );
   }
 
   late final _SecTrustEvaluateWithError1Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(SecTrustRef,
+          ffi.Bool Function(SecTrustRef,
               ffi.Pointer<CFErrorRef>)>>('SecTrustEvaluateWithError');
   late final _SecTrustEvaluateWithError1 = _SecTrustEvaluateWithError1Ptr
-      .asFunction<int Function(SecTrustRef, ffi.Pointer<CFErrorRef>)>();
+      .asFunction<bool Function(SecTrustRef, ffi.Pointer<CFErrorRef>)>();
 
   int SecTrustEvaluateAsyncWithError1(
     SecTrustRef trust,
@@ -60262,17 +59735,16 @@ class NativeCupertinoHttp {
     CFDataRef exceptions,
   ) {
     return _SecTrustSetExceptions1(
-          trust,
-          exceptions,
-        ) !=
-        0;
+      trust,
+      exceptions,
+    );
   }
 
   late final _SecTrustSetExceptions1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(SecTrustRef, CFDataRef)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(SecTrustRef, CFDataRef)>>(
           'SecTrustSetExceptions');
   late final _SecTrustSetExceptions1 = _SecTrustSetExceptions1Ptr.asFunction<
-      int Function(SecTrustRef, CFDataRef)>();
+      bool Function(SecTrustRef, CFDataRef)>();
 
   CFArrayRef SecTrustCopyProperties1(
     SecTrustRef trust,
@@ -60370,18 +59842,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<CSSM_ALGORITHMS> alg,
   ) {
     return _cssmOidToAlg1(
-          oid,
-          alg,
-        ) !=
-        0;
+      oid,
+      alg,
+    );
   }
 
   late final _cssmOidToAlg1Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<SecAsn1Oid>,
+          ffi.Bool Function(ffi.Pointer<SecAsn1Oid>,
               ffi.Pointer<CSSM_ALGORITHMS>)>>('cssmOidToAlg');
   late final _cssmOidToAlg1 = _cssmOidToAlg1Ptr.asFunction<
-      int Function(ffi.Pointer<SecAsn1Oid>, ffi.Pointer<CSSM_ALGORITHMS>)>();
+      bool Function(ffi.Pointer<SecAsn1Oid>, ffi.Pointer<CSSM_ALGORITHMS>)>();
 
   ffi.Pointer<SecAsn1Oid> cssmAlgToOid1(
     int algId,
@@ -61311,19 +60782,18 @@ class NativeCupertinoHttp {
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_identity_access_certificates1(
-          identity,
-          handler,
-        ) !=
-        0;
+      identity,
+      handler,
+    );
   }
 
   late final _sec_identity_access_certificates1Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(sec_identity_t,
+          ffi.Bool Function(sec_identity_t,
               ffi.Pointer<_ObjCBlock>)>>('sec_identity_access_certificates');
   late final _sec_identity_access_certificates1 =
       _sec_identity_access_certificates1Ptr
-          .asFunction<int Function(sec_identity_t, ffi.Pointer<_ObjCBlock>)>();
+          .asFunction<bool Function(sec_identity_t, ffi.Pointer<_ObjCBlock>)>();
 
   SecIdentityRef sec_identity_copy_ref1(
     sec_identity_t identity,
@@ -61478,119 +60948,114 @@ class NativeCupertinoHttp {
     sec_protocol_metadata_t metadata,
   ) {
     return _sec_protocol_metadata_get_early_data_accepted1(
-          metadata,
-        ) !=
-        0;
+      metadata,
+    );
   }
 
   late final _sec_protocol_metadata_get_early_data_accepted1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(sec_protocol_metadata_t)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(sec_protocol_metadata_t)>>(
           'sec_protocol_metadata_get_early_data_accepted');
   late final _sec_protocol_metadata_get_early_data_accepted1 =
       _sec_protocol_metadata_get_early_data_accepted1Ptr
-          .asFunction<int Function(sec_protocol_metadata_t)>();
+          .asFunction<bool Function(sec_protocol_metadata_t)>();
 
   bool sec_protocol_metadata_access_peer_certificate_chain1(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_peer_certificate_chain1(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_peer_certificate_chain1Ptr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
       'sec_protocol_metadata_access_peer_certificate_chain');
   late final _sec_protocol_metadata_access_peer_certificate_chain1 =
       _sec_protocol_metadata_access_peer_certificate_chain1Ptr.asFunction<
-          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+          bool Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   bool sec_protocol_metadata_access_ocsp_response1(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_ocsp_response1(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_ocsp_response1Ptr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
       'sec_protocol_metadata_access_ocsp_response');
   late final _sec_protocol_metadata_access_ocsp_response1 =
       _sec_protocol_metadata_access_ocsp_response1Ptr.asFunction<
-          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+          bool Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   bool sec_protocol_metadata_access_supported_signature_algorithms1(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_supported_signature_algorithms1(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_supported_signature_algorithms1Ptr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Uint8 Function(
+                  ffi.Bool Function(
                       sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
           'sec_protocol_metadata_access_supported_signature_algorithms');
   late final _sec_protocol_metadata_access_supported_signature_algorithms1 =
       _sec_protocol_metadata_access_supported_signature_algorithms1Ptr
           .asFunction<
-              int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+              bool Function(
+                  sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   bool sec_protocol_metadata_access_distinguished_names1(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_distinguished_names1(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_distinguished_names1Ptr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
       'sec_protocol_metadata_access_distinguished_names');
   late final _sec_protocol_metadata_access_distinguished_names1 =
       _sec_protocol_metadata_access_distinguished_names1Ptr.asFunction<
-          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+          bool Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   bool sec_protocol_metadata_access_pre_shared_keys1(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_pre_shared_keys1(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_pre_shared_keys1Ptr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
       'sec_protocol_metadata_access_pre_shared_keys');
   late final _sec_protocol_metadata_access_pre_shared_keys1 =
       _sec_protocol_metadata_access_pre_shared_keys1Ptr.asFunction<
-          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+          bool Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   ffi.Pointer<ffi.Char> sec_protocol_metadata_get_server_name1(
     sec_protocol_metadata_t metadata,
@@ -61613,41 +61078,39 @@ class NativeCupertinoHttp {
     sec_protocol_metadata_t metadataB,
   ) {
     return _sec_protocol_metadata_peers_are_equal1(
-          metadataA,
-          metadataB,
-        ) !=
-        0;
+      metadataA,
+      metadataB,
+    );
   }
 
   late final _sec_protocol_metadata_peers_are_equal1Ptr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, sec_protocol_metadata_t)>>(
       'sec_protocol_metadata_peers_are_equal');
   late final _sec_protocol_metadata_peers_are_equal1 =
       _sec_protocol_metadata_peers_are_equal1Ptr.asFunction<
-          int Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
+          bool Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
 
   bool sec_protocol_metadata_challenge_parameters_are_equal1(
     sec_protocol_metadata_t metadataA,
     sec_protocol_metadata_t metadataB,
   ) {
     return _sec_protocol_metadata_challenge_parameters_are_equal1(
-          metadataA,
-          metadataB,
-        ) !=
-        0;
+      metadataA,
+      metadataB,
+    );
   }
 
   late final _sec_protocol_metadata_challenge_parameters_are_equal1Ptr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Uint8 Function(
+                  ffi.Bool Function(
                       sec_protocol_metadata_t, sec_protocol_metadata_t)>>(
           'sec_protocol_metadata_challenge_parameters_are_equal');
   late final _sec_protocol_metadata_challenge_parameters_are_equal1 =
       _sec_protocol_metadata_challenge_parameters_are_equal1Ptr.asFunction<
-          int Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
+          bool Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
 
   dispatch_data_t sec_protocol_metadata_create_secret1(
     sec_protocol_metadata_t metadata,
@@ -61712,19 +61175,18 @@ class NativeCupertinoHttp {
     sec_protocol_options_t optionsB,
   ) {
     return _sec_protocol_options_are_equal1(
-          optionsA,
-          optionsB,
-        ) !=
-        0;
+      optionsA,
+      optionsB,
+    );
   }
 
   late final _sec_protocol_options_are_equal1Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(sec_protocol_options_t,
+          ffi.Bool Function(sec_protocol_options_t,
               sec_protocol_options_t)>>('sec_protocol_options_are_equal');
   late final _sec_protocol_options_are_equal1 =
       _sec_protocol_options_are_equal1Ptr.asFunction<
-          int Function(sec_protocol_options_t, sec_protocol_options_t)>();
+          bool Function(sec_protocol_options_t, sec_protocol_options_t)>();
 
   void sec_protocol_options_set_local_identity1(
     sec_protocol_options_t options,
@@ -61936,33 +61398,31 @@ class NativeCupertinoHttp {
     sec_protocol_options_t options,
   ) {
     return _sec_protocol_options_get_enable_encrypted_client_hello1(
-          options,
-        ) !=
-        0;
+      options,
+    );
   }
 
   late final _sec_protocol_options_get_enable_encrypted_client_hello1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(sec_protocol_options_t)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(sec_protocol_options_t)>>(
           'sec_protocol_options_get_enable_encrypted_client_hello');
   late final _sec_protocol_options_get_enable_encrypted_client_hello1 =
       _sec_protocol_options_get_enable_encrypted_client_hello1Ptr
-          .asFunction<int Function(sec_protocol_options_t)>();
+          .asFunction<bool Function(sec_protocol_options_t)>();
 
   bool sec_protocol_options_get_quic_use_legacy_codepoint1(
     sec_protocol_options_t options,
   ) {
     return _sec_protocol_options_get_quic_use_legacy_codepoint1(
-          options,
-        ) !=
-        0;
+      options,
+    );
   }
 
   late final _sec_protocol_options_get_quic_use_legacy_codepoint1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(sec_protocol_options_t)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(sec_protocol_options_t)>>(
           'sec_protocol_options_get_quic_use_legacy_codepoint');
   late final _sec_protocol_options_get_quic_use_legacy_codepoint1 =
       _sec_protocol_options_get_quic_use_legacy_codepoint1Ptr
-          .asFunction<int Function(sec_protocol_options_t)>();
+          .asFunction<bool Function(sec_protocol_options_t)>();
 
   void sec_protocol_options_add_tls_application_protocol1(
     sec_protocol_options_t options,
@@ -62092,17 +61552,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_tickets_enabled1(
       options,
-      tickets_enabled ? 1 : 0,
+      tickets_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_tickets_enabled1Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_tickets_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_tickets_enabled');
   late final _sec_protocol_options_set_tls_tickets_enabled1 =
       _sec_protocol_options_set_tls_tickets_enabled1Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_is_fallback_attempt1(
     sec_protocol_options_t options,
@@ -62110,17 +61570,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_is_fallback_attempt1(
       options,
-      is_fallback_attempt ? 1 : 0,
+      is_fallback_attempt,
     );
   }
 
   late final _sec_protocol_options_set_tls_is_fallback_attempt1Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_is_fallback_attempt');
+              ffi.Bool)>>('sec_protocol_options_set_tls_is_fallback_attempt');
   late final _sec_protocol_options_set_tls_is_fallback_attempt1 =
       _sec_protocol_options_set_tls_is_fallback_attempt1Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_resumption_enabled1(
     sec_protocol_options_t options,
@@ -62128,17 +61588,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_resumption_enabled1(
       options,
-      resumption_enabled ? 1 : 0,
+      resumption_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_resumption_enabled1Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_resumption_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_resumption_enabled');
   late final _sec_protocol_options_set_tls_resumption_enabled1 =
       _sec_protocol_options_set_tls_resumption_enabled1Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_false_start_enabled1(
     sec_protocol_options_t options,
@@ -62146,17 +61606,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_false_start_enabled1(
       options,
-      false_start_enabled ? 1 : 0,
+      false_start_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_false_start_enabled1Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_false_start_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_false_start_enabled');
   late final _sec_protocol_options_set_tls_false_start_enabled1 =
       _sec_protocol_options_set_tls_false_start_enabled1Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_ocsp_enabled1(
     sec_protocol_options_t options,
@@ -62164,17 +61624,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_ocsp_enabled1(
       options,
-      ocsp_enabled ? 1 : 0,
+      ocsp_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_ocsp_enabled1Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_ocsp_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_ocsp_enabled');
   late final _sec_protocol_options_set_tls_ocsp_enabled1 =
       _sec_protocol_options_set_tls_ocsp_enabled1Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_sct_enabled1(
     sec_protocol_options_t options,
@@ -62182,17 +61642,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_sct_enabled1(
       options,
-      sct_enabled ? 1 : 0,
+      sct_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_sct_enabled1Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_sct_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_sct_enabled');
   late final _sec_protocol_options_set_tls_sct_enabled1 =
       _sec_protocol_options_set_tls_sct_enabled1Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_renegotiation_enabled1(
     sec_protocol_options_t options,
@@ -62200,17 +61660,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_renegotiation_enabled1(
       options,
-      renegotiation_enabled ? 1 : 0,
+      renegotiation_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_renegotiation_enabled1Ptr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
-      'sec_protocol_options_set_tls_renegotiation_enabled');
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Bool)>>('sec_protocol_options_set_tls_renegotiation_enabled');
   late final _sec_protocol_options_set_tls_renegotiation_enabled1 =
       _sec_protocol_options_set_tls_renegotiation_enabled1Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_peer_authentication_required1(
     sec_protocol_options_t options,
@@ -62218,18 +61678,18 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_peer_authentication_required1(
       options,
-      peer_authentication_required ? 1 : 0,
+      peer_authentication_required,
     );
   }
 
   late final _sec_protocol_options_set_peer_authentication_required1Ptr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+                  ffi.Void Function(sec_protocol_options_t, ffi.Bool)>>(
           'sec_protocol_options_set_peer_authentication_required');
   late final _sec_protocol_options_set_peer_authentication_required1 =
       _sec_protocol_options_set_peer_authentication_required1Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_peer_authentication_optional1(
     sec_protocol_options_t options,
@@ -62237,18 +61697,18 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_peer_authentication_optional1(
       options,
-      peer_authentication_optional ? 1 : 0,
+      peer_authentication_optional,
     );
   }
 
   late final _sec_protocol_options_set_peer_authentication_optional1Ptr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+                  ffi.Void Function(sec_protocol_options_t, ffi.Bool)>>(
           'sec_protocol_options_set_peer_authentication_optional');
   late final _sec_protocol_options_set_peer_authentication_optional1 =
       _sec_protocol_options_set_peer_authentication_optional1Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_enable_encrypted_client_hello1(
     sec_protocol_options_t options,
@@ -62256,18 +61716,18 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_enable_encrypted_client_hello1(
       options,
-      enable_encrypted_client_hello ? 1 : 0,
+      enable_encrypted_client_hello,
     );
   }
 
   late final _sec_protocol_options_set_enable_encrypted_client_hello1Ptr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+                  ffi.Void Function(sec_protocol_options_t, ffi.Bool)>>(
           'sec_protocol_options_set_enable_encrypted_client_hello');
   late final _sec_protocol_options_set_enable_encrypted_client_hello1 =
       _sec_protocol_options_set_enable_encrypted_client_hello1Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_quic_use_legacy_codepoint1(
     sec_protocol_options_t options,
@@ -62275,17 +61735,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_quic_use_legacy_codepoint1(
       options,
-      quic_use_legacy_codepoint ? 1 : 0,
+      quic_use_legacy_codepoint,
     );
   }
 
   late final _sec_protocol_options_set_quic_use_legacy_codepoint1Ptr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
-      'sec_protocol_options_set_quic_use_legacy_codepoint');
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Bool)>>('sec_protocol_options_set_quic_use_legacy_codepoint');
   late final _sec_protocol_options_set_quic_use_legacy_codepoint1 =
       _sec_protocol_options_set_quic_use_legacy_codepoint1Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_key_update_block1(
     sec_protocol_options_t options,
@@ -63604,16 +63064,15 @@ class NativeCupertinoHttp {
     Object handle,
   ) {
     return _Dart_IsError(
-          handle,
-        ) !=
-        0;
+      handle,
+    );
   }
 
   late final _Dart_IsErrorPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsError');
   late final _Dart_IsError =
-      _Dart_IsErrorPtr.asFunction<int Function(Object)>();
+      _Dart_IsErrorPtr.asFunction<bool Function(Object)>();
 
   /// Is this an api error handle?
   ///
@@ -63626,16 +63085,15 @@ class NativeCupertinoHttp {
     Object handle,
   ) {
     return _Dart_IsApiError(
-          handle,
-        ) !=
-        0;
+      handle,
+    );
   }
 
   late final _Dart_IsApiErrorPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsApiError');
   late final _Dart_IsApiError =
-      _Dart_IsApiErrorPtr.asFunction<int Function(Object)>();
+      _Dart_IsApiErrorPtr.asFunction<bool Function(Object)>();
 
   /// Is this an unhandled exception error handle?
   ///
@@ -63651,16 +63109,15 @@ class NativeCupertinoHttp {
     Object handle,
   ) {
     return _Dart_IsUnhandledExceptionError(
-          handle,
-        ) !=
-        0;
+      handle,
+    );
   }
 
   late final _Dart_IsUnhandledExceptionErrorPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsUnhandledExceptionError');
   late final _Dart_IsUnhandledExceptionError =
-      _Dart_IsUnhandledExceptionErrorPtr.asFunction<int Function(Object)>();
+      _Dart_IsUnhandledExceptionErrorPtr.asFunction<bool Function(Object)>();
 
   /// Is this a compilation error handle?
   ///
@@ -63673,16 +63130,15 @@ class NativeCupertinoHttp {
     Object handle,
   ) {
     return _Dart_IsCompilationError(
-          handle,
-        ) !=
-        0;
+      handle,
+    );
   }
 
   late final _Dart_IsCompilationErrorPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsCompilationError');
   late final _Dart_IsCompilationError =
-      _Dart_IsCompilationErrorPtr.asFunction<int Function(Object)>();
+      _Dart_IsCompilationErrorPtr.asFunction<bool Function(Object)>();
 
   /// Is this a fatal error handle?
   ///
@@ -63694,16 +63150,15 @@ class NativeCupertinoHttp {
     Object handle,
   ) {
     return _Dart_IsFatalError(
-          handle,
-        ) !=
-        0;
+      handle,
+    );
   }
 
   late final _Dart_IsFatalErrorPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsFatalError');
   late final _Dart_IsFatalError =
-      _Dart_IsFatalErrorPtr.asFunction<int Function(Object)>();
+      _Dart_IsFatalErrorPtr.asFunction<bool Function(Object)>();
 
   /// Gets the error message from an error handle.
   ///
@@ -63732,16 +63187,15 @@ class NativeCupertinoHttp {
     Object handle,
   ) {
     return _Dart_ErrorHasException(
-          handle,
-        ) !=
-        0;
+      handle,
+    );
   }
 
   late final _Dart_ErrorHasExceptionPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_ErrorHasException');
   late final _Dart_ErrorHasException =
-      _Dart_ErrorHasExceptionPtr.asFunction<int Function(Object)>();
+      _Dart_ErrorHasExceptionPtr.asFunction<bool Function(Object)>();
 
   /// Gets the exception Object from an unhandled exception error handle.
   Object Dart_ErrorGetException(
@@ -63903,17 +63357,16 @@ class NativeCupertinoHttp {
     Object obj2,
   ) {
     return _Dart_IdentityEquals(
-          obj1,
-          obj2,
-        ) !=
-        0;
+      obj1,
+      obj2,
+    );
   }
 
   late final _Dart_IdentityEqualsPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle, ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle, ffi.Handle)>>(
           'Dart_IdentityEquals');
   late final _Dart_IdentityEquals =
-      _Dart_IdentityEqualsPtr.asFunction<int Function(Object, Object)>();
+      _Dart_IdentityEqualsPtr.asFunction<bool Function(Object, Object)>();
 
   /// Allocates a handle in the current scope from a persistent handle.
   Object Dart_HandleFromPersistent(
@@ -64311,16 +63764,15 @@ class NativeCupertinoHttp {
     ffi.Pointer<ffi.Char> flag_name,
   ) {
     return _Dart_IsVMFlagSet(
-          flag_name,
-        ) !=
-        0;
+      flag_name,
+    );
   }
 
   late final _Dart_IsVMFlagSetPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ffi.Char>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Char>)>>(
           'Dart_IsVMFlagSet');
   late final _Dart_IsVMFlagSet =
-      _Dart_IsVMFlagSetPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+      _Dart_IsVMFlagSetPtr.asFunction<bool Function(ffi.Pointer<ffi.Char>)>();
 
   /// Creates a new isolate. The new isolate becomes the current isolate.
   ///
@@ -64879,7 +64331,7 @@ class NativeCupertinoHttp {
       vm_snapshot_data_size,
       isolate_snapshot_data_buffer,
       isolate_snapshot_data_size,
-      is_core ? 1 : 0,
+      is_core,
     );
   }
 
@@ -64890,14 +64342,14 @@ class NativeCupertinoHttp {
               ffi.Pointer<ffi.IntPtr>,
               ffi.Pointer<ffi.Pointer<ffi.Uint8>>,
               ffi.Pointer<ffi.IntPtr>,
-              ffi.Uint8)>>('Dart_CreateSnapshot');
+              ffi.Bool)>>('Dart_CreateSnapshot');
   late final _Dart_CreateSnapshot = _Dart_CreateSnapshotPtr.asFunction<
       Object Function(
           ffi.Pointer<ffi.Pointer<ffi.Uint8>>,
           ffi.Pointer<ffi.IntPtr>,
           ffi.Pointer<ffi.Pointer<ffi.Uint8>>,
           ffi.Pointer<ffi.IntPtr>,
-          int)>();
+          bool)>();
 
   /// Returns whether the buffer contains a kernel file.
   ///
@@ -64910,18 +64362,17 @@ class NativeCupertinoHttp {
     int buffer_size,
   ) {
     return _Dart_IsKernel(
-          buffer,
-          buffer_size,
-        ) !=
-        0;
+      buffer,
+      buffer_size,
+    );
   }
 
   late final _Dart_IsKernelPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ffi.Uint8>, ffi.IntPtr)>>('Dart_IsKernel');
-  late final _Dart_IsKernel =
-      _Dart_IsKernelPtr.asFunction<int Function(ffi.Pointer<ffi.Uint8>, int)>();
+  late final _Dart_IsKernel = _Dart_IsKernelPtr.asFunction<
+      bool Function(ffi.Pointer<ffi.Uint8>, int)>();
 
   /// Make isolate runnable.
   ///
@@ -64986,14 +64437,14 @@ class NativeCupertinoHttp {
   ///
   /// \return A boolean value indicating if pause on start was requested.
   bool Dart_ShouldPauseOnStart() {
-    return _Dart_ShouldPauseOnStart() != 0;
+    return _Dart_ShouldPauseOnStart();
   }
 
   late final _Dart_ShouldPauseOnStartPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>(
           'Dart_ShouldPauseOnStart');
   late final _Dart_ShouldPauseOnStart =
-      _Dart_ShouldPauseOnStartPtr.asFunction<int Function()>();
+      _Dart_ShouldPauseOnStartPtr.asFunction<bool Function()>();
 
   /// Override the VM flag `--pause-isolates-on-start` for the current isolate.
   ///
@@ -65004,27 +64455,27 @@ class NativeCupertinoHttp {
     bool should_pause,
   ) {
     return _Dart_SetShouldPauseOnStart(
-      should_pause ? 1 : 0,
+      should_pause,
     );
   }
 
   late final _Dart_SetShouldPauseOnStartPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Uint8)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Bool)>>(
           'Dart_SetShouldPauseOnStart');
   late final _Dart_SetShouldPauseOnStart =
-      _Dart_SetShouldPauseOnStartPtr.asFunction<void Function(int)>();
+      _Dart_SetShouldPauseOnStartPtr.asFunction<void Function(bool)>();
 
   /// Is the current isolate paused on start?
   ///
   /// \return A boolean value indicating if the isolate is paused on start.
   bool Dart_IsPausedOnStart() {
-    return _Dart_IsPausedOnStart() != 0;
+    return _Dart_IsPausedOnStart();
   }
 
   late final _Dart_IsPausedOnStartPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('Dart_IsPausedOnStart');
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('Dart_IsPausedOnStart');
   late final _Dart_IsPausedOnStart =
-      _Dart_IsPausedOnStartPtr.asFunction<int Function()>();
+      _Dart_IsPausedOnStartPtr.asFunction<bool Function()>();
 
   /// Called when the embedder has paused the current isolate on start and when
   /// the embedder has resumed the isolate.
@@ -65034,28 +64485,28 @@ class NativeCupertinoHttp {
     bool paused,
   ) {
     return _Dart_SetPausedOnStart(
-      paused ? 1 : 0,
+      paused,
     );
   }
 
   late final _Dart_SetPausedOnStartPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Uint8)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Bool)>>(
           'Dart_SetPausedOnStart');
   late final _Dart_SetPausedOnStart =
-      _Dart_SetPausedOnStartPtr.asFunction<void Function(int)>();
+      _Dart_SetPausedOnStartPtr.asFunction<void Function(bool)>();
 
   /// If the VM flag `--pause-isolates-on-exit` was passed this will be true.
   ///
   /// \return A boolean value indicating if pause on exit was requested.
   bool Dart_ShouldPauseOnExit() {
-    return _Dart_ShouldPauseOnExit() != 0;
+    return _Dart_ShouldPauseOnExit();
   }
 
   late final _Dart_ShouldPauseOnExitPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>(
           'Dart_ShouldPauseOnExit');
   late final _Dart_ShouldPauseOnExit =
-      _Dart_ShouldPauseOnExitPtr.asFunction<int Function()>();
+      _Dart_ShouldPauseOnExitPtr.asFunction<bool Function()>();
 
   /// Override the VM flag `--pause-isolates-on-exit` for the current isolate.
   ///
@@ -65064,27 +64515,27 @@ class NativeCupertinoHttp {
     bool should_pause,
   ) {
     return _Dart_SetShouldPauseOnExit(
-      should_pause ? 1 : 0,
+      should_pause,
     );
   }
 
   late final _Dart_SetShouldPauseOnExitPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Uint8)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Bool)>>(
           'Dart_SetShouldPauseOnExit');
   late final _Dart_SetShouldPauseOnExit =
-      _Dart_SetShouldPauseOnExitPtr.asFunction<void Function(int)>();
+      _Dart_SetShouldPauseOnExitPtr.asFunction<void Function(bool)>();
 
   /// Is the current isolate paused on exit?
   ///
   /// \return A boolean value indicating if the isolate is paused on exit.
   bool Dart_IsPausedOnExit() {
-    return _Dart_IsPausedOnExit() != 0;
+    return _Dart_IsPausedOnExit();
   }
 
   late final _Dart_IsPausedOnExitPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('Dart_IsPausedOnExit');
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('Dart_IsPausedOnExit');
   late final _Dart_IsPausedOnExit =
-      _Dart_IsPausedOnExitPtr.asFunction<int Function()>();
+      _Dart_IsPausedOnExitPtr.asFunction<bool Function()>();
 
   /// Called when the embedder has paused the current isolate on exit and when
   /// the embedder has resumed the isolate.
@@ -65094,15 +64545,15 @@ class NativeCupertinoHttp {
     bool paused,
   ) {
     return _Dart_SetPausedOnExit(
-      paused ? 1 : 0,
+      paused,
     );
   }
 
   late final _Dart_SetPausedOnExitPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Uint8)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Bool)>>(
           'Dart_SetPausedOnExit');
   late final _Dart_SetPausedOnExit =
-      _Dart_SetPausedOnExitPtr.asFunction<void Function(int)>();
+      _Dart_SetPausedOnExitPtr.asFunction<void Function(bool)>();
 
   /// Called when the embedder has caught a top level unhandled exception error
   /// in the current isolate.
@@ -65127,13 +64578,13 @@ class NativeCupertinoHttp {
 
   /// Does the current isolate have a sticky error?
   bool Dart_HasStickyError() {
-    return _Dart_HasStickyError() != 0;
+    return _Dart_HasStickyError();
   }
 
   late final _Dart_HasStickyErrorPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('Dart_HasStickyError');
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('Dart_HasStickyError');
   late final _Dart_HasStickyError =
-      _Dart_HasStickyErrorPtr.asFunction<int Function()>();
+      _Dart_HasStickyErrorPtr.asFunction<bool Function()>();
 
   /// Gets the sticky error for the current isolate.
   ///
@@ -65193,27 +64644,27 @@ class NativeCupertinoHttp {
   /// \return true if the vm service requests the program resume
   /// execution, false otherwise
   bool Dart_HandleServiceMessages() {
-    return _Dart_HandleServiceMessages() != 0;
+    return _Dart_HandleServiceMessages();
   }
 
   late final _Dart_HandleServiceMessagesPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>(
           'Dart_HandleServiceMessages');
   late final _Dart_HandleServiceMessages =
-      _Dart_HandleServiceMessagesPtr.asFunction<int Function()>();
+      _Dart_HandleServiceMessagesPtr.asFunction<bool Function()>();
 
   /// Does the current isolate have pending service messages?
   ///
   /// \return true if the isolate has pending service messages, false otherwise.
   bool Dart_HasServiceMessages() {
-    return _Dart_HasServiceMessages() != 0;
+    return _Dart_HasServiceMessages();
   }
 
   late final _Dart_HasServiceMessagesPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>(
           'Dart_HasServiceMessages');
   late final _Dart_HasServiceMessages =
-      _Dart_HasServiceMessagesPtr.asFunction<int Function()>();
+      _Dart_HasServiceMessagesPtr.asFunction<bool Function()>();
 
   /// Processes any incoming messages for the current isolate.
   ///
@@ -65260,20 +64711,19 @@ class NativeCupertinoHttp {
     ffi.Pointer<ffi.Pointer<ffi.Char>> error,
   ) {
     return _Dart_RunLoopAsync(
-          errors_are_fatal ? 1 : 0,
-          on_error_port,
-          on_exit_port,
-          error,
-        ) !=
-        0;
+      errors_are_fatal,
+      on_error_port,
+      on_exit_port,
+      error,
+    );
   }
 
   late final _Dart_RunLoopAsyncPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Uint8, Dart_Port, Dart_Port,
+          ffi.Bool Function(ffi.Bool, Dart_Port, Dart_Port,
               ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('Dart_RunLoopAsync');
   late final _Dart_RunLoopAsync = _Dart_RunLoopAsyncPtr.asFunction<
-      int Function(int, int, int, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+      bool Function(bool, int, int, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
 
   /// Gets the main port id for the current isolate.
   int Dart_GetMainPortId() {
@@ -65289,13 +64739,13 @@ class NativeCupertinoHttp {
   ///
   /// A ReceivePort is live when it has not been closed.
   bool Dart_HasLivePorts() {
-    return _Dart_HasLivePorts() != 0;
+    return _Dart_HasLivePorts();
   }
 
   late final _Dart_HasLivePortsPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('Dart_HasLivePorts');
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('Dart_HasLivePorts');
   late final _Dart_HasLivePorts =
-      _Dart_HasLivePortsPtr.asFunction<int Function()>();
+      _Dart_HasLivePortsPtr.asFunction<bool Function()>();
 
   /// Posts a message for some isolate. The message is a serialized
   /// object.
@@ -65311,16 +64761,16 @@ class NativeCupertinoHttp {
     Object object,
   ) {
     return _Dart_Post(
-          port_id,
-          object,
-        ) !=
-        0;
+      port_id,
+      object,
+    );
   }
 
   late final _Dart_PostPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Dart_Port, ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Dart_Port, ffi.Handle)>>(
           'Dart_Post');
-  late final _Dart_Post = _Dart_PostPtr.asFunction<int Function(int, Object)>();
+  late final _Dart_Post =
+      _Dart_PostPtr.asFunction<bool Function(int, Object)>();
 
   /// Returns a new SendPort with the provided port id.
   ///
@@ -65443,15 +64893,13 @@ class NativeCupertinoHttp {
     Object object,
   ) {
     return _Dart_IsNull(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsNullPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
-          'Dart_IsNull');
-  late final _Dart_IsNull = _Dart_IsNullPtr.asFunction<int Function(Object)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>('Dart_IsNull');
+  late final _Dart_IsNull = _Dart_IsNullPtr.asFunction<bool Function(Object)>();
 
   /// Returns the empty string object.
   ///
@@ -65511,7 +64959,7 @@ class NativeCupertinoHttp {
   Object Dart_ObjectEquals(
     Object obj1,
     Object obj2,
-    ffi.Pointer<ffi.Uint8> equal,
+    ffi.Pointer<ffi.Bool> equal,
   ) {
     return _Dart_ObjectEquals(
       obj1,
@@ -65523,9 +64971,9 @@ class NativeCupertinoHttp {
   late final _Dart_ObjectEqualsPtr = _lookup<
       ffi.NativeFunction<
           ffi.Handle Function(ffi.Handle, ffi.Handle,
-              ffi.Pointer<ffi.Uint8>)>>('Dart_ObjectEquals');
+              ffi.Pointer<ffi.Bool>)>>('Dart_ObjectEquals');
   late final _Dart_ObjectEquals = _Dart_ObjectEqualsPtr.asFunction<
-      Object Function(Object, Object, ffi.Pointer<ffi.Uint8>)>();
+      Object Function(Object, Object, ffi.Pointer<ffi.Bool>)>();
 
   /// Is this object an instance of some type?
   ///
@@ -65540,7 +64988,7 @@ class NativeCupertinoHttp {
   Object Dart_ObjectIsType(
     Object object,
     Object type,
-    ffi.Pointer<ffi.Uint8> instanceof,
+    ffi.Pointer<ffi.Bool> instanceof,
   ) {
     return _Dart_ObjectIsType(
       object,
@@ -65552,9 +65000,9 @@ class NativeCupertinoHttp {
   late final _Dart_ObjectIsTypePtr = _lookup<
       ffi.NativeFunction<
           ffi.Handle Function(ffi.Handle, ffi.Handle,
-              ffi.Pointer<ffi.Uint8>)>>('Dart_ObjectIsType');
+              ffi.Pointer<ffi.Bool>)>>('Dart_ObjectIsType');
   late final _Dart_ObjectIsType = _Dart_ObjectIsTypePtr.asFunction<
-      Object Function(Object, Object, ffi.Pointer<ffi.Uint8>)>();
+      Object Function(Object, Object, ffi.Pointer<ffi.Bool>)>();
 
   /// Query object type.
   ///
@@ -65565,282 +65013,261 @@ class NativeCupertinoHttp {
     Object object,
   ) {
     return _Dart_IsInstance(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsInstancePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsInstance');
   late final _Dart_IsInstance =
-      _Dart_IsInstancePtr.asFunction<int Function(Object)>();
+      _Dart_IsInstancePtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsNumber(
     Object object,
   ) {
     return _Dart_IsNumber(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsNumberPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsNumber');
   late final _Dart_IsNumber =
-      _Dart_IsNumberPtr.asFunction<int Function(Object)>();
+      _Dart_IsNumberPtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsInteger(
     Object object,
   ) {
     return _Dart_IsInteger(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsIntegerPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsInteger');
   late final _Dart_IsInteger =
-      _Dart_IsIntegerPtr.asFunction<int Function(Object)>();
+      _Dart_IsIntegerPtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsDouble(
     Object object,
   ) {
     return _Dart_IsDouble(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsDoublePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsDouble');
   late final _Dart_IsDouble =
-      _Dart_IsDoublePtr.asFunction<int Function(Object)>();
+      _Dart_IsDoublePtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsBoolean(
     Object object,
   ) {
     return _Dart_IsBoolean(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsBooleanPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsBoolean');
   late final _Dart_IsBoolean =
-      _Dart_IsBooleanPtr.asFunction<int Function(Object)>();
+      _Dart_IsBooleanPtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsString(
     Object object,
   ) {
     return _Dart_IsString(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsStringPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsString');
   late final _Dart_IsString =
-      _Dart_IsStringPtr.asFunction<int Function(Object)>();
+      _Dart_IsStringPtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsStringLatin1(
     Object object,
   ) {
     return _Dart_IsStringLatin1(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsStringLatin1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsStringLatin1');
   late final _Dart_IsStringLatin1 =
-      _Dart_IsStringLatin1Ptr.asFunction<int Function(Object)>();
+      _Dart_IsStringLatin1Ptr.asFunction<bool Function(Object)>();
 
   bool Dart_IsExternalString(
     Object object,
   ) {
     return _Dart_IsExternalString(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsExternalStringPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsExternalString');
   late final _Dart_IsExternalString =
-      _Dart_IsExternalStringPtr.asFunction<int Function(Object)>();
+      _Dart_IsExternalStringPtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsList(
     Object object,
   ) {
     return _Dart_IsList(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsListPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
-          'Dart_IsList');
-  late final _Dart_IsList = _Dart_IsListPtr.asFunction<int Function(Object)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>('Dart_IsList');
+  late final _Dart_IsList = _Dart_IsListPtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsMap(
     Object object,
   ) {
     return _Dart_IsMap(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsMapPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>('Dart_IsMap');
-  late final _Dart_IsMap = _Dart_IsMapPtr.asFunction<int Function(Object)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>('Dart_IsMap');
+  late final _Dart_IsMap = _Dart_IsMapPtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsLibrary(
     Object object,
   ) {
     return _Dart_IsLibrary(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsLibraryPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsLibrary');
   late final _Dart_IsLibrary =
-      _Dart_IsLibraryPtr.asFunction<int Function(Object)>();
+      _Dart_IsLibraryPtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsType(
     Object handle,
   ) {
     return _Dart_IsType(
-          handle,
-        ) !=
-        0;
+      handle,
+    );
   }
 
   late final _Dart_IsTypePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
-          'Dart_IsType');
-  late final _Dart_IsType = _Dart_IsTypePtr.asFunction<int Function(Object)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>('Dart_IsType');
+  late final _Dart_IsType = _Dart_IsTypePtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsFunction(
     Object handle,
   ) {
     return _Dart_IsFunction(
-          handle,
-        ) !=
-        0;
+      handle,
+    );
   }
 
   late final _Dart_IsFunctionPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsFunction');
   late final _Dart_IsFunction =
-      _Dart_IsFunctionPtr.asFunction<int Function(Object)>();
+      _Dart_IsFunctionPtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsVariable(
     Object handle,
   ) {
     return _Dart_IsVariable(
-          handle,
-        ) !=
-        0;
+      handle,
+    );
   }
 
   late final _Dart_IsVariablePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsVariable');
   late final _Dart_IsVariable =
-      _Dart_IsVariablePtr.asFunction<int Function(Object)>();
+      _Dart_IsVariablePtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsTypeVariable(
     Object handle,
   ) {
     return _Dart_IsTypeVariable(
-          handle,
-        ) !=
-        0;
+      handle,
+    );
   }
 
   late final _Dart_IsTypeVariablePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsTypeVariable');
   late final _Dart_IsTypeVariable =
-      _Dart_IsTypeVariablePtr.asFunction<int Function(Object)>();
+      _Dart_IsTypeVariablePtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsClosure(
     Object object,
   ) {
     return _Dart_IsClosure(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsClosurePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsClosure');
   late final _Dart_IsClosure =
-      _Dart_IsClosurePtr.asFunction<int Function(Object)>();
+      _Dart_IsClosurePtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsTypedData(
     Object object,
   ) {
     return _Dart_IsTypedData(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsTypedDataPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsTypedData');
   late final _Dart_IsTypedData =
-      _Dart_IsTypedDataPtr.asFunction<int Function(Object)>();
+      _Dart_IsTypedDataPtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsByteBuffer(
     Object object,
   ) {
     return _Dart_IsByteBuffer(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsByteBufferPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsByteBuffer');
   late final _Dart_IsByteBuffer =
-      _Dart_IsByteBufferPtr.asFunction<int Function(Object)>();
+      _Dart_IsByteBufferPtr.asFunction<bool Function(Object)>();
 
   bool Dart_IsFuture(
     Object object,
   ) {
     return _Dart_IsFuture(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsFuturePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsFuture');
   late final _Dart_IsFuture =
-      _Dart_IsFuturePtr.asFunction<int Function(Object)>();
+      _Dart_IsFuturePtr.asFunction<bool Function(Object)>();
 
   /// Gets the type of a Dart language object.
   ///
@@ -65934,7 +65361,7 @@ class NativeCupertinoHttp {
   /// \return A valid handle if no error occurs during the operation.
   Object Dart_FunctionIsStatic(
     Object function,
-    ffi.Pointer<ffi.Uint8> is_static,
+    ffi.Pointer<ffi.Bool> is_static,
   ) {
     return _Dart_FunctionIsStatic(
       function,
@@ -65945,9 +65372,9 @@ class NativeCupertinoHttp {
   late final _Dart_FunctionIsStaticPtr = _lookup<
       ffi.NativeFunction<
           ffi.Handle Function(
-              ffi.Handle, ffi.Pointer<ffi.Uint8>)>>('Dart_FunctionIsStatic');
+              ffi.Handle, ffi.Pointer<ffi.Bool>)>>('Dart_FunctionIsStatic');
   late final _Dart_FunctionIsStatic = _Dart_FunctionIsStaticPtr.asFunction<
-      Object Function(Object, ffi.Pointer<ffi.Uint8>)>();
+      Object Function(Object, ffi.Pointer<ffi.Bool>)>();
 
   /// Is this object a closure resulting from a tear-off (closurized method)?
   ///
@@ -65962,16 +65389,15 @@ class NativeCupertinoHttp {
     Object object,
   ) {
     return _Dart_IsTearOff(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _Dart_IsTearOffPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>(
           'Dart_IsTearOff');
   late final _Dart_IsTearOff =
-      _Dart_IsTearOffPtr.asFunction<int Function(Object)>();
+      _Dart_IsTearOffPtr.asFunction<bool Function(Object)>();
 
   /// Retrieves the function of a closure.
   ///
@@ -66018,7 +65444,7 @@ class NativeCupertinoHttp {
   /// \return A valid handle if no error occurs during the operation.
   Object Dart_IntegerFitsIntoInt64(
     Object integer,
-    ffi.Pointer<ffi.Uint8> fits,
+    ffi.Pointer<ffi.Bool> fits,
   ) {
     return _Dart_IntegerFitsIntoInt64(
       integer,
@@ -66028,10 +65454,10 @@ class NativeCupertinoHttp {
 
   late final _Dart_IntegerFitsIntoInt64Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Handle Function(ffi.Handle,
-              ffi.Pointer<ffi.Uint8>)>>('Dart_IntegerFitsIntoInt64');
+          ffi.Handle Function(
+              ffi.Handle, ffi.Pointer<ffi.Bool>)>>('Dart_IntegerFitsIntoInt64');
   late final _Dart_IntegerFitsIntoInt64 = _Dart_IntegerFitsIntoInt64Ptr
-      .asFunction<Object Function(Object, ffi.Pointer<ffi.Uint8>)>();
+      .asFunction<Object Function(Object, ffi.Pointer<ffi.Bool>)>();
 
   /// Does this Integer fit into a 64-bit unsigned integer?
   ///
@@ -66041,7 +65467,7 @@ class NativeCupertinoHttp {
   /// \return A valid handle if no error occurs during the operation.
   Object Dart_IntegerFitsIntoUint64(
     Object integer,
-    ffi.Pointer<ffi.Uint8> fits,
+    ffi.Pointer<ffi.Bool> fits,
   ) {
     return _Dart_IntegerFitsIntoUint64(
       integer,
@@ -66052,9 +65478,9 @@ class NativeCupertinoHttp {
   late final _Dart_IntegerFitsIntoUint64Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Handle Function(ffi.Handle,
-              ffi.Pointer<ffi.Uint8>)>>('Dart_IntegerFitsIntoUint64');
+              ffi.Pointer<ffi.Bool>)>>('Dart_IntegerFitsIntoUint64');
   late final _Dart_IntegerFitsIntoUint64 = _Dart_IntegerFitsIntoUint64Ptr
-      .asFunction<Object Function(Object, ffi.Pointer<ffi.Uint8>)>();
+      .asFunction<Object Function(Object, ffi.Pointer<ffi.Bool>)>();
 
   /// Returns an Integer with the provided value.
   ///
@@ -66300,15 +65726,15 @@ class NativeCupertinoHttp {
     bool value,
   ) {
     return _Dart_NewBoolean(
-      value ? 1 : 0,
+      value,
     );
   }
 
   late final _Dart_NewBooleanPtr =
-      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.Uint8)>>(
+      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.Bool)>>(
           'Dart_NewBoolean');
   late final _Dart_NewBoolean =
-      _Dart_NewBooleanPtr.asFunction<Object Function(int)>();
+      _Dart_NewBooleanPtr.asFunction<Object Function(bool)>();
 
   /// Gets the value of a Boolean
   ///
@@ -66318,7 +65744,7 @@ class NativeCupertinoHttp {
   /// \return A valid handle if no error occurs during the operation.
   Object Dart_BooleanValue(
     Object boolean_obj,
-    ffi.Pointer<ffi.Uint8> value,
+    ffi.Pointer<ffi.Bool> value,
   ) {
     return _Dart_BooleanValue(
       boolean_obj,
@@ -66329,9 +65755,9 @@ class NativeCupertinoHttp {
   late final _Dart_BooleanValuePtr = _lookup<
       ffi.NativeFunction<
           ffi.Handle Function(
-              ffi.Handle, ffi.Pointer<ffi.Uint8>)>>('Dart_BooleanValue');
+              ffi.Handle, ffi.Pointer<ffi.Bool>)>>('Dart_BooleanValue');
   late final _Dart_BooleanValue = _Dart_BooleanValuePtr.asFunction<
-      Object Function(Object, ffi.Pointer<ffi.Uint8>)>();
+      Object Function(Object, ffi.Pointer<ffi.Bool>)>();
 
   /// Gets the length of a String.
   ///
@@ -67881,7 +67307,7 @@ class NativeCupertinoHttp {
   Object Dart_GetNativeBooleanArgument(
     Dart_NativeArguments args,
     int index,
-    ffi.Pointer<ffi.Uint8> value,
+    ffi.Pointer<ffi.Bool> value,
   ) {
     return _Dart_GetNativeBooleanArgument(
       args,
@@ -67893,10 +67319,10 @@ class NativeCupertinoHttp {
   late final _Dart_GetNativeBooleanArgumentPtr = _lookup<
       ffi.NativeFunction<
           ffi.Handle Function(Dart_NativeArguments, ffi.Int,
-              ffi.Pointer<ffi.Uint8>)>>('Dart_GetNativeBooleanArgument');
+              ffi.Pointer<ffi.Bool>)>>('Dart_GetNativeBooleanArgument');
   late final _Dart_GetNativeBooleanArgument =
       _Dart_GetNativeBooleanArgumentPtr.asFunction<
-          Object Function(Dart_NativeArguments, int, ffi.Pointer<ffi.Uint8>)>();
+          Object Function(Dart_NativeArguments, int, ffi.Pointer<ffi.Bool>)>();
 
   /// Gets a double native argument at some index.
   /// \param args Native arguments structure.
@@ -67970,16 +67396,16 @@ class NativeCupertinoHttp {
   ) {
     return _Dart_SetBooleanReturnValue(
       args,
-      retval ? 1 : 0,
+      retval,
     );
   }
 
   late final _Dart_SetBooleanReturnValuePtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              Dart_NativeArguments, ffi.Uint8)>>('Dart_SetBooleanReturnValue');
+              Dart_NativeArguments, ffi.Bool)>>('Dart_SetBooleanReturnValue');
   late final _Dart_SetBooleanReturnValue = _Dart_SetBooleanReturnValuePtr
-      .asFunction<void Function(Dart_NativeArguments, int)>();
+      .asFunction<void Function(Dart_NativeArguments, bool)>();
 
   void Dart_SetIntegerReturnValue(
     Dart_NativeArguments args,
@@ -68221,17 +67647,17 @@ class NativeCupertinoHttp {
     return _Dart_DeferredLoadCompleteError(
       loading_unit_id,
       error_message,
-      transient ? 1 : 0,
+      transient,
     );
   }
 
   late final _Dart_DeferredLoadCompleteErrorPtr = _lookup<
       ffi.NativeFunction<
           ffi.Handle Function(ffi.IntPtr, ffi.Pointer<ffi.Char>,
-              ffi.Uint8)>>('Dart_DeferredLoadCompleteError');
+              ffi.Bool)>>('Dart_DeferredLoadCompleteError');
   late final _Dart_DeferredLoadCompleteError =
       _Dart_DeferredLoadCompleteErrorPtr.asFunction<
-          Object Function(int, ffi.Pointer<ffi.Char>, int)>();
+          Object Function(int, ffi.Pointer<ffi.Char>, bool)>();
 
   /// Canonicalizes a url with respect to some library.
   ///
@@ -68471,7 +67897,7 @@ class NativeCupertinoHttp {
   /// \return Returns an error handle if type is not of type Type.
   Object Dart_IsNullableType(
     Object type,
-    ffi.Pointer<ffi.Uint8> result,
+    ffi.Pointer<ffi.Bool> result,
   ) {
     return _Dart_IsNullableType(
       type,
@@ -68482,13 +67908,13 @@ class NativeCupertinoHttp {
   late final _Dart_IsNullableTypePtr = _lookup<
       ffi.NativeFunction<
           ffi.Handle Function(
-              ffi.Handle, ffi.Pointer<ffi.Uint8>)>>('Dart_IsNullableType');
+              ffi.Handle, ffi.Pointer<ffi.Bool>)>>('Dart_IsNullableType');
   late final _Dart_IsNullableType = _Dart_IsNullableTypePtr.asFunction<
-      Object Function(Object, ffi.Pointer<ffi.Uint8>)>();
+      Object Function(Object, ffi.Pointer<ffi.Bool>)>();
 
   Object Dart_IsNonNullableType(
     Object type,
-    ffi.Pointer<ffi.Uint8> result,
+    ffi.Pointer<ffi.Bool> result,
   ) {
     return _Dart_IsNonNullableType(
       type,
@@ -68499,13 +67925,13 @@ class NativeCupertinoHttp {
   late final _Dart_IsNonNullableTypePtr = _lookup<
       ffi.NativeFunction<
           ffi.Handle Function(
-              ffi.Handle, ffi.Pointer<ffi.Uint8>)>>('Dart_IsNonNullableType');
+              ffi.Handle, ffi.Pointer<ffi.Bool>)>>('Dart_IsNonNullableType');
   late final _Dart_IsNonNullableType = _Dart_IsNonNullableTypePtr.asFunction<
-      Object Function(Object, ffi.Pointer<ffi.Uint8>)>();
+      Object Function(Object, ffi.Pointer<ffi.Bool>)>();
 
   Object Dart_IsLegacyType(
     Object type,
-    ffi.Pointer<ffi.Uint8> result,
+    ffi.Pointer<ffi.Bool> result,
   ) {
     return _Dart_IsLegacyType(
       type,
@@ -68516,9 +67942,9 @@ class NativeCupertinoHttp {
   late final _Dart_IsLegacyTypePtr = _lookup<
       ffi.NativeFunction<
           ffi.Handle Function(
-              ffi.Handle, ffi.Pointer<ffi.Uint8>)>>('Dart_IsLegacyType');
+              ffi.Handle, ffi.Pointer<ffi.Bool>)>>('Dart_IsLegacyType');
   late final _Dart_IsLegacyType = _Dart_IsLegacyTypePtr.asFunction<
-      Object Function(Object, ffi.Pointer<ffi.Uint8>)>();
+      Object Function(Object, ffi.Pointer<ffi.Bool>)>();
 
   /// Lookup a class or interface by name from a Library.
   ///
@@ -68663,15 +68089,15 @@ class NativeCupertinoHttp {
     bool complete_futures,
   ) {
     return _Dart_FinalizeLoading(
-      complete_futures ? 1 : 0,
+      complete_futures,
     );
   }
 
   late final _Dart_FinalizeLoadingPtr =
-      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.Uint8)>>(
+      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.Bool)>>(
           'Dart_FinalizeLoading');
   late final _Dart_FinalizeLoading =
-      _Dart_FinalizeLoadingPtr.asFunction<Object Function(int)>();
+      _Dart_FinalizeLoadingPtr.asFunction<Object Function(bool)>();
 
   /// Returns the value of peer field of 'object' in 'peer'.
   ///
@@ -68727,26 +68153,25 @@ class NativeCupertinoHttp {
     Dart_Isolate isolate,
   ) {
     return _Dart_IsKernelIsolate(
-          isolate,
-        ) !=
-        0;
+      isolate,
+    );
   }
 
   late final _Dart_IsKernelIsolatePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Dart_Isolate)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Dart_Isolate)>>(
           'Dart_IsKernelIsolate');
   late final _Dart_IsKernelIsolate =
-      _Dart_IsKernelIsolatePtr.asFunction<int Function(Dart_Isolate)>();
+      _Dart_IsKernelIsolatePtr.asFunction<bool Function(Dart_Isolate)>();
 
   bool Dart_KernelIsolateIsRunning() {
-    return _Dart_KernelIsolateIsRunning() != 0;
+    return _Dart_KernelIsolateIsRunning();
   }
 
   late final _Dart_KernelIsolateIsRunningPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>(
           'Dart_KernelIsolateIsRunning');
   late final _Dart_KernelIsolateIsRunning =
-      _Dart_KernelIsolateIsRunningPtr.asFunction<int Function()>();
+      _Dart_KernelIsolateIsRunningPtr.asFunction<bool Function()>();
 
   int Dart_KernelPort() {
     return _Dart_KernelPort();
@@ -68795,8 +68220,8 @@ class NativeCupertinoHttp {
       script_uri,
       platform_kernel,
       platform_kernel_size,
-      incremental_compile ? 1 : 0,
-      snapshot_compile ? 1 : 0,
+      incremental_compile,
+      snapshot_compile,
       package_config,
       verbosity,
     );
@@ -68808,13 +68233,19 @@ class NativeCupertinoHttp {
               ffi.Pointer<ffi.Char>,
               ffi.Pointer<ffi.Uint8>,
               ffi.IntPtr,
-              ffi.Uint8,
-              ffi.Uint8,
+              ffi.Bool,
+              ffi.Bool,
               ffi.Pointer<ffi.Char>,
               ffi.Int32)>>('Dart_CompileToKernel');
   late final _Dart_CompileToKernel = _Dart_CompileToKernelPtr.asFunction<
-      Dart_KernelCompilationResult Function(ffi.Pointer<ffi.Char>,
-          ffi.Pointer<ffi.Uint8>, int, int, int, ffi.Pointer<ffi.Char>, int)>();
+      Dart_KernelCompilationResult Function(
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Uint8>,
+          int,
+          bool,
+          bool,
+          ffi.Pointer<ffi.Char>,
+          int)>();
 
   Dart_KernelCompilationResult Dart_KernelListDependencies() {
     return _Dart_KernelListDependencies();
@@ -68893,20 +68324,19 @@ class NativeCupertinoHttp {
     int kernel_buffer_size,
   ) {
     return _Dart_DetectNullSafety(
-          script_uri,
-          package_config,
-          original_working_directory,
-          snapshot_data,
-          snapshot_instructions,
-          kernel_buffer,
-          kernel_buffer_size,
-        ) !=
-        0;
+      script_uri,
+      package_config,
+      original_working_directory,
+      snapshot_data,
+      snapshot_instructions,
+      kernel_buffer,
+      kernel_buffer_size,
+    );
   }
 
   late final _Dart_DetectNullSafetyPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               ffi.Pointer<ffi.Char>,
               ffi.Pointer<ffi.Char>,
               ffi.Pointer<ffi.Char>,
@@ -68915,7 +68345,7 @@ class NativeCupertinoHttp {
               ffi.Pointer<ffi.Uint8>,
               ffi.IntPtr)>>('Dart_DetectNullSafety');
   late final _Dart_DetectNullSafety = _Dart_DetectNullSafetyPtr.asFunction<
-      int Function(
+      bool Function(
           ffi.Pointer<ffi.Char>,
           ffi.Pointer<ffi.Char>,
           ffi.Pointer<ffi.Char>,
@@ -68933,16 +68363,15 @@ class NativeCupertinoHttp {
     Dart_Isolate isolate,
   ) {
     return _Dart_IsServiceIsolate(
-          isolate,
-        ) !=
-        0;
+      isolate,
+    );
   }
 
   late final _Dart_IsServiceIsolatePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Dart_Isolate)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Dart_Isolate)>>(
           'Dart_IsServiceIsolate');
   late final _Dart_IsServiceIsolate =
-      _Dart_IsServiceIsolatePtr.asFunction<int Function(Dart_Isolate)>();
+      _Dart_IsServiceIsolatePtr.asFunction<bool Function(Dart_Isolate)>();
 
   /// Writes the CPU profile to the timeline as a series of 'instant' events.
   ///
@@ -68958,19 +68387,18 @@ class NativeCupertinoHttp {
     ffi.Pointer<ffi.Pointer<ffi.Char>> error,
   ) {
     return _Dart_WriteProfileToTimeline(
-          main_port,
-          error,
-        ) !=
-        0;
+      main_port,
+      error,
+    );
   }
 
   late final _Dart_WriteProfileToTimelinePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   Dart_Port, ffi.Pointer<ffi.Pointer<ffi.Char>>)>>(
       'Dart_WriteProfileToTimeline');
   late final _Dart_WriteProfileToTimeline = _Dart_WriteProfileToTimelinePtr
-      .asFunction<int Function(int, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+      .asFunction<bool Function(int, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
 
   /// Compiles all functions reachable from entry points and marks
   /// the isolate to disallow future compilation.
@@ -69035,7 +68463,7 @@ class NativeCupertinoHttp {
     return _Dart_CreateAppAOTSnapshotAsAssembly(
       callback,
       callback_data,
-      stripped ? 1 : 0,
+      stripped,
       debug_callback_data,
     );
   }
@@ -69045,12 +68473,12 @@ class NativeCupertinoHttp {
           ffi.Handle Function(
               Dart_StreamingWriteCallback,
               ffi.Pointer<ffi.Void>,
-              ffi.Uint8,
+              ffi.Bool,
               ffi.Pointer<ffi.Void>)>>('Dart_CreateAppAOTSnapshotAsAssembly');
   late final _Dart_CreateAppAOTSnapshotAsAssembly =
       _Dart_CreateAppAOTSnapshotAsAssemblyPtr.asFunction<
           Object Function(Dart_StreamingWriteCallback, ffi.Pointer<ffi.Void>,
-              int, ffi.Pointer<ffi.Void>)>();
+              bool, ffi.Pointer<ffi.Void>)>();
 
   Object Dart_CreateAppAOTSnapshotAsAssemblies(
     Dart_CreateLoadingUnitCallback next_callback,
@@ -69062,7 +68490,7 @@ class NativeCupertinoHttp {
     return _Dart_CreateAppAOTSnapshotAsAssemblies(
       next_callback,
       next_callback_data,
-      stripped ? 1 : 0,
+      stripped,
       write_callback,
       close_callback,
     );
@@ -69073,14 +68501,18 @@ class NativeCupertinoHttp {
               ffi.Handle Function(
                   Dart_CreateLoadingUnitCallback,
                   ffi.Pointer<ffi.Void>,
-                  ffi.Uint8,
+                  ffi.Bool,
                   Dart_StreamingWriteCallback,
                   Dart_StreamingCloseCallback)>>(
       'Dart_CreateAppAOTSnapshotAsAssemblies');
   late final _Dart_CreateAppAOTSnapshotAsAssemblies =
       _Dart_CreateAppAOTSnapshotAsAssembliesPtr.asFunction<
-          Object Function(Dart_CreateLoadingUnitCallback, ffi.Pointer<ffi.Void>,
-              int, Dart_StreamingWriteCallback, Dart_StreamingCloseCallback)>();
+          Object Function(
+              Dart_CreateLoadingUnitCallback,
+              ffi.Pointer<ffi.Void>,
+              bool,
+              Dart_StreamingWriteCallback,
+              Dart_StreamingCloseCallback)>();
 
   /// Creates a precompiled snapshot.
   /// - A root library must have been loaded.
@@ -69116,7 +68548,7 @@ class NativeCupertinoHttp {
     return _Dart_CreateAppAOTSnapshotAsElf(
       callback,
       callback_data,
-      stripped ? 1 : 0,
+      stripped,
       debug_callback_data,
     );
   }
@@ -69126,12 +68558,12 @@ class NativeCupertinoHttp {
           ffi.Handle Function(
               Dart_StreamingWriteCallback,
               ffi.Pointer<ffi.Void>,
-              ffi.Uint8,
+              ffi.Bool,
               ffi.Pointer<ffi.Void>)>>('Dart_CreateAppAOTSnapshotAsElf');
   late final _Dart_CreateAppAOTSnapshotAsElf =
       _Dart_CreateAppAOTSnapshotAsElfPtr.asFunction<
           Object Function(Dart_StreamingWriteCallback, ffi.Pointer<ffi.Void>,
-              int, ffi.Pointer<ffi.Void>)>();
+              bool, ffi.Pointer<ffi.Void>)>();
 
   Object Dart_CreateAppAOTSnapshotAsElfs(
     Dart_CreateLoadingUnitCallback next_callback,
@@ -69143,7 +68575,7 @@ class NativeCupertinoHttp {
     return _Dart_CreateAppAOTSnapshotAsElfs(
       next_callback,
       next_callback_data,
-      stripped ? 1 : 0,
+      stripped,
       write_callback,
       close_callback,
     );
@@ -69154,13 +68586,17 @@ class NativeCupertinoHttp {
           ffi.Handle Function(
               Dart_CreateLoadingUnitCallback,
               ffi.Pointer<ffi.Void>,
-              ffi.Uint8,
+              ffi.Bool,
               Dart_StreamingWriteCallback,
               Dart_StreamingCloseCallback)>>('Dart_CreateAppAOTSnapshotAsElfs');
   late final _Dart_CreateAppAOTSnapshotAsElfs =
       _Dart_CreateAppAOTSnapshotAsElfsPtr.asFunction<
-          Object Function(Dart_CreateLoadingUnitCallback, ffi.Pointer<ffi.Void>,
-              int, Dart_StreamingWriteCallback, Dart_StreamingCloseCallback)>();
+          Object Function(
+              Dart_CreateLoadingUnitCallback,
+              ffi.Pointer<ffi.Void>,
+              bool,
+              Dart_StreamingWriteCallback,
+              Dart_StreamingCloseCallback)>();
 
   /// Like Dart_CreateAppAOTSnapshotAsAssembly, but only includes
   /// kDartVmSnapshotData and kDartVmSnapshotInstructions. It also does
@@ -69322,14 +68758,14 @@ class NativeCupertinoHttp {
   /// not from any other kind of snapshot or from source (that is, the VM was
   /// compiled with DART_PRECOMPILED_RUNTIME).
   bool Dart_IsPrecompiledRuntime() {
-    return _Dart_IsPrecompiledRuntime() != 0;
+    return _Dart_IsPrecompiledRuntime();
   }
 
   late final _Dart_IsPrecompiledRuntimePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>(
           'Dart_IsPrecompiledRuntime');
   late final _Dart_IsPrecompiledRuntime =
-      _Dart_IsPrecompiledRuntimePtr.asFunction<int Function()>();
+      _Dart_IsPrecompiledRuntimePtr.asFunction<bool Function()>();
 
   /// Print a native stack trace. Used for crash handling.
   ///
@@ -69387,18 +68823,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<Dart_CObject> message,
   ) {
     return _Dart_PostCObject(
-          port_id,
-          message,
-        ) !=
-        0;
+      port_id,
+      message,
+    );
   }
 
   late final _Dart_PostCObjectPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
+          ffi.Bool Function(
               Dart_Port, ffi.Pointer<Dart_CObject>)>>('Dart_PostCObject');
   late final _Dart_PostCObject = _Dart_PostCObjectPtr.asFunction<
-      int Function(int, ffi.Pointer<Dart_CObject>)>();
+      bool Function(int, ffi.Pointer<Dart_CObject>)>();
 
   /// Posts a message on some port. The message will contain the integer 'message'.
   ///
@@ -69411,17 +68846,16 @@ class NativeCupertinoHttp {
     int message,
   ) {
     return _Dart_PostInteger(
-          port_id,
-          message,
-        ) !=
-        0;
+      port_id,
+      message,
+    );
   }
 
   late final _Dart_PostIntegerPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Dart_Port, ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Dart_Port, ffi.Int64)>>(
           'Dart_PostInteger');
   late final _Dart_PostInteger =
-      _Dart_PostIntegerPtr.asFunction<int Function(int, int)>();
+      _Dart_PostIntegerPtr.asFunction<bool Function(int, int)>();
 
   /// Creates a new native port.  When messages are received on this
   /// native port, then they will be dispatched to the provided native
@@ -69442,16 +68876,16 @@ class NativeCupertinoHttp {
     return _Dart_NewNativePort(
       name,
       handler,
-      handle_concurrently ? 1 : 0,
+      handle_concurrently,
     );
   }
 
   late final _Dart_NewNativePortPtr = _lookup<
       ffi.NativeFunction<
           Dart_Port Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler,
-              ffi.Uint8)>>('Dart_NewNativePort');
+              ffi.Bool)>>('Dart_NewNativePort');
   late final _Dart_NewNativePort = _Dart_NewNativePortPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler, int)>();
+      int Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler, bool)>();
 
   /// Closes the native port with the given id.
   ///
@@ -69464,16 +68898,15 @@ class NativeCupertinoHttp {
     int native_port_id,
   ) {
     return _Dart_CloseNativePort(
-          native_port_id,
-        ) !=
-        0;
+      native_port_id,
+    );
   }
 
   late final _Dart_CloseNativePortPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Dart_Port)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Dart_Port)>>(
           'Dart_CloseNativePort');
   late final _Dart_CloseNativePort =
-      _Dart_CloseNativePortPtr.asFunction<int Function(int)>();
+      _Dart_CloseNativePortPtr.asFunction<bool Function(int)>();
 
   /// Forces all loaded classes and functions to be compiled eagerly in
   /// the current isolate..
@@ -69865,10 +69298,9 @@ class NativeCupertinoHttp {
   set Dart_ExitScope_DL(Dart_ExitScope_Type value) =>
       _Dart_ExitScope_DL.value = value;
 
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPTaskConfiguration1 =
+  late final _class_CUPHTTPTaskConfiguration1 =
       _getClass1("CUPHTTPTaskConfiguration");
-  late final ffi.Pointer<ObjCSel> _sel_initWithPort_1 =
-      _registerName1("initWithPort:");
+  late final _sel_initWithPort_1 = _registerName1("initWithPort:");
   ffi.Pointer<ObjCObject> _objc_msgSend_304(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -69889,10 +69321,10 @@ class NativeCupertinoHttp {
       ffi.Pointer<ObjCObject> Function(
           ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_sendPort1 = _registerName1("sendPort");
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPClientDelegate1 =
+  late final _sel_sendPort1 = _registerName1("sendPort");
+  late final _class_CUPHTTPClientDelegate1 =
       _getClass1("CUPHTTPClientDelegate");
-  late final ffi.Pointer<ObjCSel> _sel_registerTask_withConfiguration_1 =
+  late final _sel_registerTask_withConfiguration_1 =
       _registerName1("registerTask:withConfiguration:");
   ffi.Pointer<ObjCObject> NSStringFromSelector13(
     ffi.Pointer<ObjCSel> aSelector,
@@ -70376,16 +69808,16 @@ class NativeCupertinoHttp {
     return _NSCreateZone13(
       startSize,
       granularity,
-      canFree ? 1 : 0,
+      canFree,
     );
   }
 
   late final _NSCreateZone13Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<NSZone> Function(
-              NSUInteger, NSUInteger, ffi.Uint8)>>('NSCreateZone');
+              NSUInteger, NSUInteger, ffi.Bool)>>('NSCreateZone');
   late final _NSCreateZone13 = _NSCreateZone13Ptr.asFunction<
-      ffi.Pointer<NSZone> Function(int, int, int)>();
+      ffi.Pointer<NSZone> Function(int, int, bool)>();
 
   void NSRecycleZone13(
     ffi.Pointer<NSZone> zone,
@@ -70721,18 +70153,18 @@ class NativeCupertinoHttp {
     ffi.Pointer<NSZone> requestedZone,
   ) {
     return _NSShouldRetainWithZone13(
-          anObject,
-          requestedZone,
-        ) !=
-        0;
+      anObject,
+      requestedZone,
+    );
   }
 
   late final _NSShouldRetainWithZone13Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ObjCObject>,
+          ffi.Bool Function(ffi.Pointer<ObjCObject>,
               ffi.Pointer<NSZone>)>>('NSShouldRetainWithZone');
-  late final _NSShouldRetainWithZone13 = _NSShouldRetainWithZone13Ptr
-      .asFunction<int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
+  late final _NSShouldRetainWithZone13 =
+      _NSShouldRetainWithZone13Ptr.asFunction<
+          bool Function(ffi.Pointer<ObjCObject>, ffi.Pointer<NSZone>)>();
 
   void NSIncrementExtraRefCount13(
     ffi.Pointer<ObjCObject> object,
@@ -70752,17 +70184,16 @@ class NativeCupertinoHttp {
     ffi.Pointer<ObjCObject> object,
   ) {
     return _NSDecrementExtraRefCountWasZero13(
-          object,
-        ) !=
-        0;
+      object,
+    );
   }
 
   late final _NSDecrementExtraRefCountWasZero13Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ObjCObject>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ObjCObject>)>>(
           'NSDecrementExtraRefCountWasZero');
   late final _NSDecrementExtraRefCountWasZero13 =
       _NSDecrementExtraRefCountWasZero13Ptr.asFunction<
-          int Function(ffi.Pointer<ObjCObject>)>();
+          bool Function(ffi.Pointer<ObjCObject>)>();
 
   int NSExtraRefCount13(
     ffi.Pointer<ObjCObject> object,
@@ -85294,18 +84725,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<CFErrorRef> error,
   ) {
     return _SecTrustEvaluateWithError2(
-          trust,
-          error,
-        ) !=
-        0;
+      trust,
+      error,
+    );
   }
 
   late final _SecTrustEvaluateWithError2Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(SecTrustRef,
+          ffi.Bool Function(SecTrustRef,
               ffi.Pointer<CFErrorRef>)>>('SecTrustEvaluateWithError');
   late final _SecTrustEvaluateWithError2 = _SecTrustEvaluateWithError2Ptr
-      .asFunction<int Function(SecTrustRef, ffi.Pointer<CFErrorRef>)>();
+      .asFunction<bool Function(SecTrustRef, ffi.Pointer<CFErrorRef>)>();
 
   int SecTrustEvaluateAsyncWithError2(
     SecTrustRef trust,
@@ -85423,17 +84853,16 @@ class NativeCupertinoHttp {
     CFDataRef exceptions,
   ) {
     return _SecTrustSetExceptions2(
-          trust,
-          exceptions,
-        ) !=
-        0;
+      trust,
+      exceptions,
+    );
   }
 
   late final _SecTrustSetExceptions2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(SecTrustRef, CFDataRef)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(SecTrustRef, CFDataRef)>>(
           'SecTrustSetExceptions');
   late final _SecTrustSetExceptions2 = _SecTrustSetExceptions2Ptr.asFunction<
-      int Function(SecTrustRef, CFDataRef)>();
+      bool Function(SecTrustRef, CFDataRef)>();
 
   CFArrayRef SecTrustCopyProperties2(
     SecTrustRef trust,
@@ -85531,18 +84960,17 @@ class NativeCupertinoHttp {
     ffi.Pointer<CSSM_ALGORITHMS> alg,
   ) {
     return _cssmOidToAlg2(
-          oid,
-          alg,
-        ) !=
-        0;
+      oid,
+      alg,
+    );
   }
 
   late final _cssmOidToAlg2Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<SecAsn1Oid>,
+          ffi.Bool Function(ffi.Pointer<SecAsn1Oid>,
               ffi.Pointer<CSSM_ALGORITHMS>)>>('cssmOidToAlg');
   late final _cssmOidToAlg2 = _cssmOidToAlg2Ptr.asFunction<
-      int Function(ffi.Pointer<SecAsn1Oid>, ffi.Pointer<CSSM_ALGORITHMS>)>();
+      bool Function(ffi.Pointer<SecAsn1Oid>, ffi.Pointer<CSSM_ALGORITHMS>)>();
 
   ffi.Pointer<SecAsn1Oid> cssmAlgToOid2(
     int algId,
@@ -86472,19 +85900,18 @@ class NativeCupertinoHttp {
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_identity_access_certificates2(
-          identity,
-          handler,
-        ) !=
-        0;
+      identity,
+      handler,
+    );
   }
 
   late final _sec_identity_access_certificates2Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(sec_identity_t,
+          ffi.Bool Function(sec_identity_t,
               ffi.Pointer<_ObjCBlock>)>>('sec_identity_access_certificates');
   late final _sec_identity_access_certificates2 =
       _sec_identity_access_certificates2Ptr
-          .asFunction<int Function(sec_identity_t, ffi.Pointer<_ObjCBlock>)>();
+          .asFunction<bool Function(sec_identity_t, ffi.Pointer<_ObjCBlock>)>();
 
   SecIdentityRef sec_identity_copy_ref2(
     sec_identity_t identity,
@@ -86639,119 +86066,114 @@ class NativeCupertinoHttp {
     sec_protocol_metadata_t metadata,
   ) {
     return _sec_protocol_metadata_get_early_data_accepted2(
-          metadata,
-        ) !=
-        0;
+      metadata,
+    );
   }
 
   late final _sec_protocol_metadata_get_early_data_accepted2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(sec_protocol_metadata_t)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(sec_protocol_metadata_t)>>(
           'sec_protocol_metadata_get_early_data_accepted');
   late final _sec_protocol_metadata_get_early_data_accepted2 =
       _sec_protocol_metadata_get_early_data_accepted2Ptr
-          .asFunction<int Function(sec_protocol_metadata_t)>();
+          .asFunction<bool Function(sec_protocol_metadata_t)>();
 
   bool sec_protocol_metadata_access_peer_certificate_chain2(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_peer_certificate_chain2(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_peer_certificate_chain2Ptr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
       'sec_protocol_metadata_access_peer_certificate_chain');
   late final _sec_protocol_metadata_access_peer_certificate_chain2 =
       _sec_protocol_metadata_access_peer_certificate_chain2Ptr.asFunction<
-          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+          bool Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   bool sec_protocol_metadata_access_ocsp_response2(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_ocsp_response2(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_ocsp_response2Ptr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
       'sec_protocol_metadata_access_ocsp_response');
   late final _sec_protocol_metadata_access_ocsp_response2 =
       _sec_protocol_metadata_access_ocsp_response2Ptr.asFunction<
-          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+          bool Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   bool sec_protocol_metadata_access_supported_signature_algorithms2(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_supported_signature_algorithms2(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_supported_signature_algorithms2Ptr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Uint8 Function(
+                  ffi.Bool Function(
                       sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
           'sec_protocol_metadata_access_supported_signature_algorithms');
   late final _sec_protocol_metadata_access_supported_signature_algorithms2 =
       _sec_protocol_metadata_access_supported_signature_algorithms2Ptr
           .asFunction<
-              int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+              bool Function(
+                  sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   bool sec_protocol_metadata_access_distinguished_names2(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_distinguished_names2(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_distinguished_names2Ptr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
       'sec_protocol_metadata_access_distinguished_names');
   late final _sec_protocol_metadata_access_distinguished_names2 =
       _sec_protocol_metadata_access_distinguished_names2Ptr.asFunction<
-          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+          bool Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   bool sec_protocol_metadata_access_pre_shared_keys2(
     sec_protocol_metadata_t metadata,
     ffi.Pointer<_ObjCBlock> handler,
   ) {
     return _sec_protocol_metadata_access_pre_shared_keys2(
-          metadata,
-          handler,
-        ) !=
-        0;
+      metadata,
+      handler,
+    );
   }
 
   late final _sec_protocol_metadata_access_pre_shared_keys2Ptr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>>(
       'sec_protocol_metadata_access_pre_shared_keys');
   late final _sec_protocol_metadata_access_pre_shared_keys2 =
       _sec_protocol_metadata_access_pre_shared_keys2Ptr.asFunction<
-          int Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
+          bool Function(sec_protocol_metadata_t, ffi.Pointer<_ObjCBlock>)>();
 
   ffi.Pointer<ffi.Char> sec_protocol_metadata_get_server_name2(
     sec_protocol_metadata_t metadata,
@@ -86774,41 +86196,39 @@ class NativeCupertinoHttp {
     sec_protocol_metadata_t metadataB,
   ) {
     return _sec_protocol_metadata_peers_are_equal2(
-          metadataA,
-          metadataB,
-        ) !=
-        0;
+      metadataA,
+      metadataB,
+    );
   }
 
   late final _sec_protocol_metadata_peers_are_equal2Ptr = _lookup<
           ffi.NativeFunction<
-              ffi.Uint8 Function(
+              ffi.Bool Function(
                   sec_protocol_metadata_t, sec_protocol_metadata_t)>>(
       'sec_protocol_metadata_peers_are_equal');
   late final _sec_protocol_metadata_peers_are_equal2 =
       _sec_protocol_metadata_peers_are_equal2Ptr.asFunction<
-          int Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
+          bool Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
 
   bool sec_protocol_metadata_challenge_parameters_are_equal2(
     sec_protocol_metadata_t metadataA,
     sec_protocol_metadata_t metadataB,
   ) {
     return _sec_protocol_metadata_challenge_parameters_are_equal2(
-          metadataA,
-          metadataB,
-        ) !=
-        0;
+      metadataA,
+      metadataB,
+    );
   }
 
   late final _sec_protocol_metadata_challenge_parameters_are_equal2Ptr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Uint8 Function(
+                  ffi.Bool Function(
                       sec_protocol_metadata_t, sec_protocol_metadata_t)>>(
           'sec_protocol_metadata_challenge_parameters_are_equal');
   late final _sec_protocol_metadata_challenge_parameters_are_equal2 =
       _sec_protocol_metadata_challenge_parameters_are_equal2Ptr.asFunction<
-          int Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
+          bool Function(sec_protocol_metadata_t, sec_protocol_metadata_t)>();
 
   dispatch_data_t sec_protocol_metadata_create_secret2(
     sec_protocol_metadata_t metadata,
@@ -86873,19 +86293,18 @@ class NativeCupertinoHttp {
     sec_protocol_options_t optionsB,
   ) {
     return _sec_protocol_options_are_equal2(
-          optionsA,
-          optionsB,
-        ) !=
-        0;
+      optionsA,
+      optionsB,
+    );
   }
 
   late final _sec_protocol_options_are_equal2Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(sec_protocol_options_t,
+          ffi.Bool Function(sec_protocol_options_t,
               sec_protocol_options_t)>>('sec_protocol_options_are_equal');
   late final _sec_protocol_options_are_equal2 =
       _sec_protocol_options_are_equal2Ptr.asFunction<
-          int Function(sec_protocol_options_t, sec_protocol_options_t)>();
+          bool Function(sec_protocol_options_t, sec_protocol_options_t)>();
 
   void sec_protocol_options_set_local_identity2(
     sec_protocol_options_t options,
@@ -87097,33 +86516,31 @@ class NativeCupertinoHttp {
     sec_protocol_options_t options,
   ) {
     return _sec_protocol_options_get_enable_encrypted_client_hello2(
-          options,
-        ) !=
-        0;
+      options,
+    );
   }
 
   late final _sec_protocol_options_get_enable_encrypted_client_hello2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(sec_protocol_options_t)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(sec_protocol_options_t)>>(
           'sec_protocol_options_get_enable_encrypted_client_hello');
   late final _sec_protocol_options_get_enable_encrypted_client_hello2 =
       _sec_protocol_options_get_enable_encrypted_client_hello2Ptr
-          .asFunction<int Function(sec_protocol_options_t)>();
+          .asFunction<bool Function(sec_protocol_options_t)>();
 
   bool sec_protocol_options_get_quic_use_legacy_codepoint2(
     sec_protocol_options_t options,
   ) {
     return _sec_protocol_options_get_quic_use_legacy_codepoint2(
-          options,
-        ) !=
-        0;
+      options,
+    );
   }
 
   late final _sec_protocol_options_get_quic_use_legacy_codepoint2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(sec_protocol_options_t)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(sec_protocol_options_t)>>(
           'sec_protocol_options_get_quic_use_legacy_codepoint');
   late final _sec_protocol_options_get_quic_use_legacy_codepoint2 =
       _sec_protocol_options_get_quic_use_legacy_codepoint2Ptr
-          .asFunction<int Function(sec_protocol_options_t)>();
+          .asFunction<bool Function(sec_protocol_options_t)>();
 
   void sec_protocol_options_add_tls_application_protocol2(
     sec_protocol_options_t options,
@@ -87253,17 +86670,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_tickets_enabled2(
       options,
-      tickets_enabled ? 1 : 0,
+      tickets_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_tickets_enabled2Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_tickets_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_tickets_enabled');
   late final _sec_protocol_options_set_tls_tickets_enabled2 =
       _sec_protocol_options_set_tls_tickets_enabled2Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_is_fallback_attempt2(
     sec_protocol_options_t options,
@@ -87271,17 +86688,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_is_fallback_attempt2(
       options,
-      is_fallback_attempt ? 1 : 0,
+      is_fallback_attempt,
     );
   }
 
   late final _sec_protocol_options_set_tls_is_fallback_attempt2Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_is_fallback_attempt');
+              ffi.Bool)>>('sec_protocol_options_set_tls_is_fallback_attempt');
   late final _sec_protocol_options_set_tls_is_fallback_attempt2 =
       _sec_protocol_options_set_tls_is_fallback_attempt2Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_resumption_enabled2(
     sec_protocol_options_t options,
@@ -87289,17 +86706,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_resumption_enabled2(
       options,
-      resumption_enabled ? 1 : 0,
+      resumption_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_resumption_enabled2Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_resumption_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_resumption_enabled');
   late final _sec_protocol_options_set_tls_resumption_enabled2 =
       _sec_protocol_options_set_tls_resumption_enabled2Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_false_start_enabled2(
     sec_protocol_options_t options,
@@ -87307,17 +86724,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_false_start_enabled2(
       options,
-      false_start_enabled ? 1 : 0,
+      false_start_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_false_start_enabled2Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_false_start_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_false_start_enabled');
   late final _sec_protocol_options_set_tls_false_start_enabled2 =
       _sec_protocol_options_set_tls_false_start_enabled2Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_ocsp_enabled2(
     sec_protocol_options_t options,
@@ -87325,17 +86742,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_ocsp_enabled2(
       options,
-      ocsp_enabled ? 1 : 0,
+      ocsp_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_ocsp_enabled2Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_ocsp_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_ocsp_enabled');
   late final _sec_protocol_options_set_tls_ocsp_enabled2 =
       _sec_protocol_options_set_tls_ocsp_enabled2Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_sct_enabled2(
     sec_protocol_options_t options,
@@ -87343,17 +86760,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_sct_enabled2(
       options,
-      sct_enabled ? 1 : 0,
+      sct_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_sct_enabled2Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(sec_protocol_options_t,
-              ffi.Uint8)>>('sec_protocol_options_set_tls_sct_enabled');
+              ffi.Bool)>>('sec_protocol_options_set_tls_sct_enabled');
   late final _sec_protocol_options_set_tls_sct_enabled2 =
       _sec_protocol_options_set_tls_sct_enabled2Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_tls_renegotiation_enabled2(
     sec_protocol_options_t options,
@@ -87361,17 +86778,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_tls_renegotiation_enabled2(
       options,
-      renegotiation_enabled ? 1 : 0,
+      renegotiation_enabled,
     );
   }
 
   late final _sec_protocol_options_set_tls_renegotiation_enabled2Ptr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
-      'sec_protocol_options_set_tls_renegotiation_enabled');
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Bool)>>('sec_protocol_options_set_tls_renegotiation_enabled');
   late final _sec_protocol_options_set_tls_renegotiation_enabled2 =
       _sec_protocol_options_set_tls_renegotiation_enabled2Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_peer_authentication_required2(
     sec_protocol_options_t options,
@@ -87379,18 +86796,18 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_peer_authentication_required2(
       options,
-      peer_authentication_required ? 1 : 0,
+      peer_authentication_required,
     );
   }
 
   late final _sec_protocol_options_set_peer_authentication_required2Ptr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+                  ffi.Void Function(sec_protocol_options_t, ffi.Bool)>>(
           'sec_protocol_options_set_peer_authentication_required');
   late final _sec_protocol_options_set_peer_authentication_required2 =
       _sec_protocol_options_set_peer_authentication_required2Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_peer_authentication_optional2(
     sec_protocol_options_t options,
@@ -87398,18 +86815,18 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_peer_authentication_optional2(
       options,
-      peer_authentication_optional ? 1 : 0,
+      peer_authentication_optional,
     );
   }
 
   late final _sec_protocol_options_set_peer_authentication_optional2Ptr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+                  ffi.Void Function(sec_protocol_options_t, ffi.Bool)>>(
           'sec_protocol_options_set_peer_authentication_optional');
   late final _sec_protocol_options_set_peer_authentication_optional2 =
       _sec_protocol_options_set_peer_authentication_optional2Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_enable_encrypted_client_hello2(
     sec_protocol_options_t options,
@@ -87417,18 +86834,18 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_enable_encrypted_client_hello2(
       options,
-      enable_encrypted_client_hello ? 1 : 0,
+      enable_encrypted_client_hello,
     );
   }
 
   late final _sec_protocol_options_set_enable_encrypted_client_hello2Ptr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
+                  ffi.Void Function(sec_protocol_options_t, ffi.Bool)>>(
           'sec_protocol_options_set_enable_encrypted_client_hello');
   late final _sec_protocol_options_set_enable_encrypted_client_hello2 =
       _sec_protocol_options_set_enable_encrypted_client_hello2Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_quic_use_legacy_codepoint2(
     sec_protocol_options_t options,
@@ -87436,17 +86853,17 @@ class NativeCupertinoHttp {
   ) {
     return _sec_protocol_options_set_quic_use_legacy_codepoint2(
       options,
-      quic_use_legacy_codepoint ? 1 : 0,
+      quic_use_legacy_codepoint,
     );
   }
 
   late final _sec_protocol_options_set_quic_use_legacy_codepoint2Ptr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(sec_protocol_options_t, ffi.Uint8)>>(
-      'sec_protocol_options_set_quic_use_legacy_codepoint');
+      ffi.NativeFunction<
+          ffi.Void Function(sec_protocol_options_t,
+              ffi.Bool)>>('sec_protocol_options_set_quic_use_legacy_codepoint');
   late final _sec_protocol_options_set_quic_use_legacy_codepoint2 =
       _sec_protocol_options_set_quic_use_legacy_codepoint2Ptr
-          .asFunction<void Function(sec_protocol_options_t, int)>();
+          .asFunction<void Function(sec_protocol_options_t, bool)>();
 
   void sec_protocol_options_set_key_update_block2(
     sec_protocol_options_t options,
@@ -88758,27 +88175,25 @@ class NativeCupertinoHttp {
   late final _SSLSetError2 =
       _SSLSetError2Ptr.asFunction<int Function(SSLContextRef, int)>();
 
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPForwardedDelegate1 =
+  late final _class_CUPHTTPForwardedDelegate1 =
       _getClass1("CUPHTTPForwardedDelegate");
-  late final ffi.Pointer<ObjCSel> _sel_initWithSession_task_1 =
+  late final _sel_initWithSession_task_1 =
       _registerName1("initWithSession:task:");
-  late final ffi.Pointer<ObjCSel> _sel_finish1 = _registerName1("finish");
-  late final ffi.Pointer<ObjCSel> _sel_session1 = _registerName1("session");
-  late final ffi.Pointer<ObjCSel> _sel_task1 = _registerName1("task");
-  late final ffi.Pointer<ObjCSel> _sel_lock1 = _registerName1("lock");
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPForwardedRedirect1 =
+  late final _sel_finish1 = _registerName1("finish");
+  late final _sel_session1 = _registerName1("session");
+  late final _sel_task1 = _registerName1("task");
+  late final _sel_lock1 = _registerName1("lock");
+  late final _class_CUPHTTPForwardedRedirect1 =
       _getClass1("CUPHTTPForwardedRedirect");
-  late final ffi.Pointer<ObjCSel> _sel_initWithSession_task_response_request_1 =
+  late final _sel_initWithSession_task_response_request_1 =
       _registerName1("initWithSession:task:response:request:");
-  late final ffi.Pointer<ObjCSel> _sel_finishWithRequest_1 =
-      _registerName1("finishWithRequest:");
-  late final ffi.Pointer<ObjCSel> _sel_redirectRequest1 =
-      _registerName1("redirectRequest");
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPForwardedResponse1 =
+  late final _sel_finishWithRequest_1 = _registerName1("finishWithRequest:");
+  late final _sel_redirectRequest1 = _registerName1("redirectRequest");
+  late final _class_CUPHTTPForwardedResponse1 =
       _getClass1("CUPHTTPForwardedResponse");
-  late final ffi.Pointer<ObjCSel> _sel_initWithSession_task_response_1 =
+  late final _sel_initWithSession_task_response_1 =
       _registerName1("initWithSession:task:response:");
-  late final ffi.Pointer<ObjCSel> _sel_finishWithDisposition_1 =
+  late final _sel_finishWithDisposition_1 =
       _registerName1("finishWithDisposition:");
   void _objc_msgSend_305(
     ffi.Pointer<ObjCObject> obj,
@@ -88799,8 +88214,7 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_305 = __objc_msgSend_305Ptr.asFunction<
       void Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>, int)>();
 
-  late final ffi.Pointer<ObjCSel> _sel_disposition1 =
-      _registerName1("disposition");
+  late final _sel_disposition1 = _registerName1("disposition");
   int _objc_msgSend_306(
     ffi.Pointer<ObjCObject> obj,
     ffi.Pointer<ObjCSel> sel,
@@ -88818,13 +88232,12 @@ class NativeCupertinoHttp {
   late final __objc_msgSend_306 = __objc_msgSend_306Ptr.asFunction<
       int Function(ffi.Pointer<ObjCObject>, ffi.Pointer<ObjCSel>)>();
 
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPForwardedData1 =
-      _getClass1("CUPHTTPForwardedData");
-  late final ffi.Pointer<ObjCSel> _sel_initWithSession_task_data_1 =
+  late final _class_CUPHTTPForwardedData1 = _getClass1("CUPHTTPForwardedData");
+  late final _sel_initWithSession_task_data_1 =
       _registerName1("initWithSession:task:data:");
-  late final ffi.Pointer<ObjCObject> _class_CUPHTTPForwardedComplete1 =
+  late final _class_CUPHTTPForwardedComplete1 =
       _getClass1("CUPHTTPForwardedComplete");
-  late final ffi.Pointer<ObjCSel> _sel_initWithSession_task_error_1 =
+  late final _sel_initWithSession_task_error_1 =
       _registerName1("initWithSession:task:error:");
 }
 
@@ -88939,11 +88352,34 @@ typedef NSZone = _NSZone;
 
 class _NSZone extends ffi.Opaque {}
 
-class _ObjCWrapper {
+class _ObjCWrapper implements ffi.Finalizable {
   final ffi.Pointer<ObjCObject> _id;
   final NativeCupertinoHttp _lib;
+  bool _pendingRelease;
 
-  _ObjCWrapper._(this._id, this._lib);
+  _ObjCWrapper._(this._id, this._lib,
+      {bool retain = false, bool release = false})
+      : _pendingRelease = release {
+    if (retain) {
+      _lib._objc_retain(_id);
+    }
+    if (release) {
+      _lib._objc_releaseFinalizer1.attach(this, _id.cast(), detach: this);
+    }
+  }
+
+  /// Releases the reference to the underlying ObjC object held by this wrapper.
+  /// Throws a StateError if this wrapper doesn't currently hold a reference.
+  void release() {
+    if (_pendingRelease) {
+      _pendingRelease = false;
+      _lib._objc_release(_id);
+      _lib._objc_releaseFinalizer1.detach(this);
+    } else {
+      throw StateError(
+          'Released an ObjC object that was unowned or already released.');
+    }
+  }
 
   @override
   bool operator ==(Object other) {
@@ -88955,89 +88391,99 @@ class _ObjCWrapper {
 }
 
 class NSObject extends _ObjCWrapper {
-  NSObject._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSObject._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSObject] that points to the same underlying object as [other].
   static NSObject castFrom<T extends _ObjCWrapper>(T other) {
-    return NSObject._(other._id, other._lib);
+    return NSObject._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSObject] that wraps the given raw object pointer.
   static NSObject castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSObject._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSObject._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSObject].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSObject1);
   }
 
   static void load(NativeCupertinoHttp _lib) {
-    _lib._objc_msgSend_0(_lib._class_NSObject1, _lib._sel_load1);
+    _lib._objc_msgSend_1(_lib._class_NSObject1, _lib._sel_load1);
   }
 
   static void initialize(NativeCupertinoHttp _lib) {
-    _lib._objc_msgSend_0(_lib._class_NSObject1, _lib._sel_initialize1);
+    _lib._objc_msgSend_1(_lib._class_NSObject1, _lib._sel_initialize1);
   }
 
   NSObject init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSObject1, _lib._sel_new1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSObject1, _lib._sel_new1);
+    return NSObject._(_ret, _lib, retain: false, release: true);
   }
 
   static NSObject allocWithZone_(
       NativeCupertinoHttp _lib, ffi.Pointer<_NSZone> zone) {
-    final _ret = _lib._objc_msgSend_2(
+    final _ret = _lib._objc_msgSend_3(
         _lib._class_NSObject1, _lib._sel_allocWithZone_1, zone);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: false, release: true);
   }
 
   static NSObject alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSObject1, _lib._sel_alloc1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSObject1, _lib._sel_alloc1);
+    return NSObject._(_ret, _lib, retain: false, release: true);
   }
 
   void dealloc() {
-    _lib._objc_msgSend_0(_id, _lib._sel_dealloc1);
+    _lib._objc_msgSend_1(_id, _lib._sel_dealloc1);
   }
 
   void finalize() {
-    _lib._objc_msgSend_0(_id, _lib._sel_finalize1);
+    _lib._objc_msgSend_1(_id, _lib._sel_finalize1);
   }
 
   NSObject copy() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_copy1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_copy1);
+    return NSObject._(_ret, _lib, retain: false, release: true);
   }
 
   NSObject mutableCopy() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_mutableCopy1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_mutableCopy1);
+    return NSObject._(_ret, _lib, retain: false, release: true);
   }
 
   static NSObject copyWithZone_(
       NativeCupertinoHttp _lib, ffi.Pointer<_NSZone> zone) {
-    final _ret = _lib._objc_msgSend_2(
+    final _ret = _lib._objc_msgSend_3(
         _lib._class_NSObject1, _lib._sel_copyWithZone_1, zone);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: false, release: true);
   }
 
   static NSObject mutableCopyWithZone_(
       NativeCupertinoHttp _lib, ffi.Pointer<_NSZone> zone) {
-    final _ret = _lib._objc_msgSend_2(
+    final _ret = _lib._objc_msgSend_3(
         _lib._class_NSObject1, _lib._sel_mutableCopyWithZone_1, zone);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: false, release: true);
   }
 
   static bool instancesRespondToSelector_(
       NativeCupertinoHttp _lib, ffi.Pointer<ObjCSel> aSelector) {
-    return _lib._objc_msgSend_3(_lib._class_NSObject1,
+    return _lib._objc_msgSend_4(_lib._class_NSObject1,
         _lib._sel_instancesRespondToSelector_1, aSelector);
   }
 
   static bool conformsToProtocol_(
       NativeCupertinoHttp _lib, NSObject? protocol) {
-    return _lib._objc_msgSend_4(_lib._class_NSObject1,
+    return _lib._objc_msgSend_0(_lib._class_NSObject1,
         _lib._sel_conformsToProtocol_1, protocol?._id ?? ffi.nullptr);
   }
 
@@ -89058,7 +88504,7 @@ class NSObject extends _ObjCWrapper {
   NSObject forwardingTargetForSelector_(ffi.Pointer<ObjCSel> aSelector) {
     final _ret = _lib._objc_msgSend_7(
         _id, _lib._sel_forwardingTargetForSelector_1, aSelector);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   void forwardInvocation_(NSObject? anInvocation) {
@@ -89070,14 +88516,14 @@ class NSObject extends _ObjCWrapper {
       ffi.Pointer<ObjCSel> aSelector) {
     final _ret = _lib._objc_msgSend_9(
         _id, _lib._sel_methodSignatureForSelector_1, aSelector);
-    return NSMethodSignature._(_ret, _lib);
+    return NSMethodSignature._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMethodSignature instanceMethodSignatureForSelector_(
       NativeCupertinoHttp _lib, ffi.Pointer<ObjCSel> aSelector) {
     final _ret = _lib._objc_msgSend_9(_lib._class_NSObject1,
         _lib._sel_instanceMethodSignatureForSelector_1, aSelector);
-    return NSMethodSignature._(_ret, _lib);
+    return NSMethodSignature._(_ret, _lib, retain: true, release: true);
   }
 
   bool allowsWeakReference() {
@@ -89089,19 +88535,19 @@ class NSObject extends _ObjCWrapper {
   }
 
   static bool isSubclassOfClass_(NativeCupertinoHttp _lib, NSObject aClass) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _lib._class_NSObject1, _lib._sel_isSubclassOfClass_1, aClass._id);
   }
 
   static bool resolveClassMethod_(
       NativeCupertinoHttp _lib, ffi.Pointer<ObjCSel> sel) {
-    return _lib._objc_msgSend_3(
+    return _lib._objc_msgSend_4(
         _lib._class_NSObject1, _lib._sel_resolveClassMethod_1, sel);
   }
 
   static bool resolveInstanceMethod_(
       NativeCupertinoHttp _lib, ffi.Pointer<ObjCSel> sel) {
-    return _lib._objc_msgSend_3(
+    return _lib._objc_msgSend_4(
         _lib._class_NSObject1, _lib._sel_resolveInstanceMethod_1, sel);
   }
 
@@ -89111,25 +88557,25 @@ class NSObject extends _ObjCWrapper {
 
   static NSObject superclass(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSObject1, _lib._sel_superclass1);
-    return NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSObject1, _lib._sel_superclass1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject class1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSObject1, _lib._sel_class1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSObject1, _lib._sel_class1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSString description(NativeCupertinoHttp _lib) {
     final _ret =
         _lib._objc_msgSend_55(_lib._class_NSObject1, _lib._sel_description1);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSString debugDescription(NativeCupertinoHttp _lib) {
     final _ret = _lib._objc_msgSend_55(
         _lib._class_NSObject1, _lib._sel_debugDescription1);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static int version(NativeCupertinoHttp _lib) {
@@ -89142,20 +88588,20 @@ class NSObject extends _ObjCWrapper {
   }
 
   NSObject get classForCoder {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_classForCoder1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_classForCoder1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject replacementObjectForCoder_(NSObject? coder) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_replacementObjectForCoder_1, coder?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject awakeAfterUsingCoder_(NSObject? coder) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_awakeAfterUsingCoder_1, coder?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: false, release: true);
   }
 
   static void poseAsClass_(NativeCupertinoHttp _lib, NSObject aClass) {
@@ -89165,8 +88611,8 @@ class NSObject extends _ObjCWrapper {
 
   NSObject get autoContentAccessingProxy {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_autoContentAccessingProxy1);
-    return NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_autoContentAccessingProxy1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   void URL_resourceDataDidBecomeAvailable_(
@@ -89231,30 +88677,51 @@ typedef instancetype = ffi.Pointer<ObjCObject>;
 typedef IMP = ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>;
 
 class NSMethodSignature extends _ObjCWrapper {
-  NSMethodSignature._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSMethodSignature._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSMethodSignature] that points to the same underlying object as [other].
   static NSMethodSignature castFrom<T extends _ObjCWrapper>(T other) {
-    return NSMethodSignature._(other._id, other._lib);
+    return NSMethodSignature._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSMethodSignature] that wraps the given raw object pointer.
   static NSMethodSignature castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSMethodSignature._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSMethodSignature._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSMethodSignature].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSMethodSignature1);
   }
 }
 
 class NSString extends NSObject {
-  NSString._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSString._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSString] that points to the same underlying object as [other].
   static NSString castFrom<T extends _ObjCWrapper>(T other) {
-    return NSString._(other._id, other._lib);
+    return NSString._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSString] that wraps the given raw object pointer.
   static NSString castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSString._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSString._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSString].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSString1);
   }
 
   factory NSString(NativeCupertinoHttp _lib, String str) {
@@ -89277,31 +88744,31 @@ class NSString extends NSObject {
 
   @override
   NSString init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSString._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithCoder_(NSObject? coder) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithCoder_1, coder?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString substringFromIndex_(int from) {
     final _ret =
         _lib._objc_msgSend_14(_id, _lib._sel_substringFromIndex_1, from);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString substringToIndex_(int to) {
     final _ret = _lib._objc_msgSend_14(_id, _lib._sel_substringToIndex_1, to);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString substringWithRange_(NSRange range) {
     final _ret =
         _lib._objc_msgSend_15(_id, _lib._sel_substringWithRange_1, range);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   void getCharacters_range_(ffi.Pointer<unichar> buffer, NSRange range) {
@@ -89353,17 +88820,17 @@ class NSString extends NSObject {
   }
 
   bool isEqualToString_(NSObject? aString) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_isEqualToString_1, aString?._id ?? ffi.nullptr);
   }
 
   bool hasPrefix_(NSObject? str) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_hasPrefix_1, str?._id ?? ffi.nullptr);
   }
 
   bool hasSuffix_(NSObject? str) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_hasSuffix_1, str?._id ?? ffi.nullptr);
   }
 
@@ -89373,23 +88840,23 @@ class NSString extends NSObject {
         _lib._sel_commonPrefixWithString_options_1,
         str?._id ?? ffi.nullptr,
         mask);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   bool containsString_(NSObject? str) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_containsString_1, str?._id ?? ffi.nullptr);
   }
 
   bool localizedCaseInsensitiveContainsString_(NSObject? str) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id,
         _lib._sel_localizedCaseInsensitiveContainsString_1,
         str?._id ?? ffi.nullptr);
   }
 
   bool localizedStandardContainsString_(NSObject? str) {
-    return _lib._objc_msgSend_4(_id,
+    return _lib._objc_msgSend_0(_id,
         _lib._sel_localizedStandardContainsString_1, str?._id ?? ffi.nullptr);
   }
 
@@ -89461,13 +88928,13 @@ class NSString extends NSObject {
   NSString stringByAppendingString_(NSObject? aString) {
     final _ret = _lib._objc_msgSend_28(
         _id, _lib._sel_stringByAppendingString_1, aString?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString stringByAppendingFormat_(NSObject? format) {
     final _ret = _lib._objc_msgSend_28(
         _id, _lib._sel_stringByAppendingFormat_1, format?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   double get doubleValue {
@@ -89495,52 +88962,64 @@ class NSString extends NSObject {
   }
 
   NSObject? get uppercaseString {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_uppercaseString1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_uppercaseString1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get lowercaseString {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_lowercaseString1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_lowercaseString1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get capitalizedString {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_capitalizedString1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_capitalizedString1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get localizedUppercaseString {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_localizedUppercaseString1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_localizedUppercaseString1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get localizedLowercaseString {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_localizedLowercaseString1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_localizedLowercaseString1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get localizedCapitalizedString {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_localizedCapitalizedString1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_localizedCapitalizedString1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSString uppercaseStringWithLocale_(NSObject? locale) {
     final _ret = _lib._objc_msgSend_28(
         _id, _lib._sel_uppercaseStringWithLocale_1, locale?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString lowercaseStringWithLocale_(NSObject? locale) {
     final _ret = _lib._objc_msgSend_28(
         _id, _lib._sel_lowercaseStringWithLocale_1, locale?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString capitalizedStringWithLocale_(NSObject? locale) {
     final _ret = _lib._objc_msgSend_28(_id,
         _lib._sel_capitalizedStringWithLocale_1, locale?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   void getLineStart_end_contentsEnd_forRange_(
@@ -89610,13 +89089,13 @@ class NSString extends NSObject {
   NSData dataUsingEncoding_allowLossyConversion_(int encoding, bool lossy) {
     final _ret = _lib._objc_msgSend_56(_id,
         _lib._sel_dataUsingEncoding_allowLossyConversion_1, encoding, lossy);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   NSData dataUsingEncoding_(int encoding) {
     final _ret =
         _lib._objc_msgSend_57(_id, _lib._sel_dataUsingEncoding_1, encoding);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   bool canBeConvertedToEncoding_(int encoding) {
@@ -89674,7 +89153,7 @@ class NSString extends NSObject {
       NativeCupertinoHttp _lib, int encoding) {
     final _ret = _lib._objc_msgSend_14(_lib._class_NSString1,
         _lib._sel_localizedNameOfStringEncoding_1, encoding);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static int getDefaultCStringEncoding(NativeCupertinoHttp _lib) {
@@ -89683,33 +89162,41 @@ class NSString extends NSObject {
   }
 
   NSObject? get decomposedStringWithCanonicalMapping {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _id, _lib._sel_decomposedStringWithCanonicalMapping1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get precomposedStringWithCanonicalMapping {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _id, _lib._sel_precomposedStringWithCanonicalMapping1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get decomposedStringWithCompatibilityMapping {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _id, _lib._sel_decomposedStringWithCompatibilityMapping1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get precomposedStringWithCompatibilityMapping {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _id, _lib._sel_precomposedStringWithCompatibilityMapping1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSString stringByTrimmingCharactersInSet_(NSObject? set) {
     final _ret = _lib._objc_msgSend_28(_id,
         _lib._sel_stringByTrimmingCharactersInSet_1, set?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString stringByPaddingToLength_withString_startingAtIndex_(
@@ -89720,7 +89207,7 @@ class NSString extends NSObject {
         newLength,
         padString?._id ?? ffi.nullptr,
         padIndex);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString stringByFoldingWithOptions_locale_(int options, NSObject? locale) {
@@ -89729,7 +89216,7 @@ class NSString extends NSObject {
         _lib._sel_stringByFoldingWithOptions_locale_1,
         options,
         locale?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString stringByReplacingOccurrencesOfString_withString_options_range_(
@@ -89744,7 +89231,7 @@ class NSString extends NSObject {
         replacement?._id ?? ffi.nullptr,
         options,
         searchRange);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString stringByReplacingOccurrencesOfString_withString_(
@@ -89754,7 +89241,7 @@ class NSString extends NSObject {
         _lib._sel_stringByReplacingOccurrencesOfString_withString_1,
         target?._id ?? ffi.nullptr,
         replacement?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString stringByReplacingCharactersInRange_withString_(
@@ -89764,14 +89251,14 @@ class NSString extends NSObject {
         _lib._sel_stringByReplacingCharactersInRange_withString_1,
         range,
         replacement?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString stringByApplyingTransform_reverse_(
       NSStringTransform transform, bool reverse) {
     final _ret = _lib._objc_msgSend_69(
         _id, _lib._sel_stringByApplyingTransform_reverse_1, transform, reverse);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   bool writeToURL_atomically_encoding_error_(
@@ -89803,8 +89290,10 @@ class NSString extends NSObject {
   }
 
   NSObject? get description {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_description1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_description1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   int get hash {
@@ -89819,7 +89308,7 @@ class NSString extends NSObject {
         characters,
         length,
         freeBuffer);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: false, release: true);
   }
 
   NSString initWithCharactersNoCopy_length_deallocator_(
@@ -89830,32 +89319,32 @@ class NSString extends NSObject {
         chars,
         len,
         deallocator._impl);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: false, release: true);
   }
 
   NSString initWithCharacters_length_(
       ffi.Pointer<unichar> characters, int length) {
     final _ret = _lib._objc_msgSend_73(
         _id, _lib._sel_initWithCharacters_length_1, characters, length);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithUTF8String_(ffi.Pointer<ffi.Char> nullTerminatedCString) {
     final _ret = _lib._objc_msgSend_74(
         _id, _lib._sel_initWithUTF8String_1, nullTerminatedCString);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithString_(NSObject? aString) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithString_1, aString?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithFormat_(NSObject? format) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithFormat_1, format?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithFormat_arguments_(NSObject? format, va_list argList) {
@@ -89864,13 +89353,13 @@ class NSString extends NSObject {
         _lib._sel_initWithFormat_arguments_1,
         format?._id ?? ffi.nullptr,
         argList);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithFormat_locale_(NSObject? format, NSObject locale) {
     final _ret = _lib._objc_msgSend_76(_id, _lib._sel_initWithFormat_locale_1,
         format?._id ?? ffi.nullptr, locale._id);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithFormat_locale_arguments_(
@@ -89881,20 +89370,20 @@ class NSString extends NSObject {
         format?._id ?? ffi.nullptr,
         locale._id,
         argList);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithData_encoding_(NSObject? data, int encoding) {
     final _ret = _lib._objc_msgSend_78(_id, _lib._sel_initWithData_encoding_1,
         data?._id ?? ffi.nullptr, encoding);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithBytes_length_encoding_(
       ffi.Pointer<ffi.Void> bytes, int len, int encoding) {
     final _ret = _lib._objc_msgSend_79(
         _id, _lib._sel_initWithBytes_length_encoding_1, bytes, len, encoding);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithBytesNoCopy_length_encoding_freeWhenDone_(
@@ -89906,7 +89395,7 @@ class NSString extends NSObject {
         len,
         encoding,
         freeBuffer);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: false, release: true);
   }
 
   NSString initWithBytesNoCopy_length_encoding_deallocator_(
@@ -89921,61 +89410,61 @@ class NSString extends NSObject {
         len,
         encoding,
         deallocator._impl);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: false, release: true);
   }
 
   static NSString string(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSString1, _lib._sel_string1);
-    return NSString._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSString1, _lib._sel_string1);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSString stringWithString_(
       NativeCupertinoHttp _lib, NSObject? string) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSString1,
         _lib._sel_stringWithString_1, string?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSString stringWithCharacters_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<unichar> characters, int length) {
     final _ret = _lib._objc_msgSend_73(_lib._class_NSString1,
         _lib._sel_stringWithCharacters_length_1, characters, length);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSString stringWithUTF8String_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> nullTerminatedCString) {
     final _ret = _lib._objc_msgSend_74(_lib._class_NSString1,
         _lib._sel_stringWithUTF8String_1, nullTerminatedCString);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSString stringWithFormat_(
       NativeCupertinoHttp _lib, NSObject? format) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSString1,
         _lib._sel_stringWithFormat_1, format?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSString localizedStringWithFormat_(
       NativeCupertinoHttp _lib, NSObject? format) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSString1,
         _lib._sel_localizedStringWithFormat_1, format?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithCString_encoding_(
       ffi.Pointer<ffi.Char> nullTerminatedCString, int encoding) {
     final _ret = _lib._objc_msgSend_82(_id,
         _lib._sel_initWithCString_encoding_1, nullTerminatedCString, encoding);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSString stringWithCString_encoding_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> cString, int enc) {
     final _ret = _lib._objc_msgSend_82(_lib._class_NSString1,
         _lib._sel_stringWithCString_encoding_1, cString, enc);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithContentsOfURL_encoding_error_(
@@ -89986,7 +89475,7 @@ class NSString extends NSObject {
         url?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithContentsOfFile_encoding_error_(
@@ -89997,7 +89486,7 @@ class NSString extends NSObject {
         path?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSString stringWithContentsOfURL_encoding_error_(
@@ -90011,7 +89500,7 @@ class NSString extends NSObject {
         url?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSString stringWithContentsOfFile_encoding_error_(
@@ -90025,7 +89514,7 @@ class NSString extends NSObject {
         path?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithContentsOfURL_usedEncoding_error_(
@@ -90038,7 +89527,7 @@ class NSString extends NSObject {
         url?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString initWithContentsOfFile_usedEncoding_error_(
@@ -90051,7 +89540,7 @@ class NSString extends NSObject {
         path?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSString stringWithContentsOfURL_usedEncoding_error_(
@@ -90065,7 +89554,7 @@ class NSString extends NSObject {
         url?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSString stringWithContentsOfFile_usedEncoding_error_(
@@ -90079,7 +89568,7 @@ class NSString extends NSObject {
         path?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static int
@@ -90088,7 +89577,7 @@ class NSString extends NSObject {
           NSObject? data,
           NSObject? opts,
           ffi.Pointer<ffi.Pointer<ObjCObject>> string,
-          ffi.Pointer<ffi.Uint8> usedLossyConversion) {
+          ffi.Pointer<ffi.Bool> usedLossyConversion) {
     return _lib._objc_msgSend_85(
         _lib._class_NSString1,
         _lib._sel_stringEncodingForData_encodingOptions_convertedString_usedLossyConversion_1,
@@ -90099,22 +89588,22 @@ class NSString extends NSObject {
   }
 
   NSObject propertyList() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_propertyList1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_propertyList1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSDictionary propertyListFromStringsFileFormat() {
     final _ret = _lib._objc_msgSend_95(
         _id, _lib._sel_propertyListFromStringsFileFormat1);
-    return NSDictionary._(_ret, _lib);
+    return NSDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   void cString() {
-    _lib._objc_msgSend_0(_id, _lib._sel_cString1);
+    _lib._objc_msgSend_1(_id, _lib._sel_cString1);
   }
 
   void lossyCString() {
-    _lib._objc_msgSend_0(_id, _lib._sel_lossyCString1);
+    _lib._objc_msgSend_1(_id, _lib._sel_lossyCString1);
   }
 
   int cStringLength() {
@@ -90154,27 +89643,27 @@ class NSString extends NSObject {
   NSObject initWithContentsOfFile_(NSObject? path) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithContentsOfFile_1, path?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject initWithContentsOfURL_(NSObject? url) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithContentsOfURL_1, url?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject stringWithContentsOfFile_(
       NativeCupertinoHttp _lib, NSObject? path) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSString1,
         _lib._sel_stringWithContentsOfFile_1, path?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject stringWithContentsOfURL_(
       NativeCupertinoHttp _lib, NSObject? url) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSString1,
         _lib._sel_stringWithContentsOfURL_1, url?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject initWithCStringNoCopy_length_freeWhenDone_(
@@ -90185,32 +89674,32 @@ class NSString extends NSObject {
         bytes,
         length,
         freeBuffer);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: false, release: true);
   }
 
   NSObject initWithCString_length_(ffi.Pointer<ffi.Char> bytes, int length) {
     final _ret = _lib._objc_msgSend_82(
         _id, _lib._sel_initWithCString_length_1, bytes, length);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject initWithCString_(ffi.Pointer<ffi.Char> bytes) {
     final _ret = _lib._objc_msgSend_74(_id, _lib._sel_initWithCString_1, bytes);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject stringWithCString_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> bytes, int length) {
     final _ret = _lib._objc_msgSend_82(_lib._class_NSString1,
         _lib._sel_stringWithCString_length_1, bytes, length);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject stringWithCString_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> bytes) {
     final _ret = _lib._objc_msgSend_74(
         _lib._class_NSString1, _lib._sel_stringWithCString_1, bytes);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   void getCharacters_(ffi.Pointer<unichar> buffer) {
@@ -90224,36 +89713,38 @@ class NSString extends NSObject {
         _id,
         _lib._sel_stringByAddingPercentEncodingWithAllowedCharacters_1,
         allowedCharacters?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a new string made from the receiver by replacing all percent encoded sequences with the matching UTF-8 characters.
   NSObject? get stringByRemovingPercentEncoding {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_stringByRemovingPercentEncoding1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_stringByRemovingPercentEncoding1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSString stringByAddingPercentEscapesUsingEncoding_(int enc) {
     final _ret = _lib._objc_msgSend_14(
         _id, _lib._sel_stringByAddingPercentEscapesUsingEncoding_1, enc);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString stringByReplacingPercentEscapesUsingEncoding_(int enc) {
     final _ret = _lib._objc_msgSend_14(
         _id, _lib._sel_stringByReplacingPercentEscapesUsingEncoding_1, enc);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSString new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSString1, _lib._sel_new1);
-    return NSString._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSString1, _lib._sel_new1);
+    return NSString._(_ret, _lib, retain: false, release: true);
   }
 
   static NSString alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSString1, _lib._sel_alloc1);
-    return NSString._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSString1, _lib._sel_alloc1);
+    return NSString._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -90302,32 +89793,61 @@ void _ObjCBlock_fnPtrTrampoline(
     ffi.Pointer<ObjCObject> arg0,
     NSRange arg1,
     NSRange arg2,
-    ffi.Pointer<ffi.Uint8> arg3) {
+    ffi.Pointer<ffi.Bool> arg3) {
   return block.ref.target
       .cast<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Pointer<ObjCObject> arg0, NSRange arg1,
-                  NSRange arg2, ffi.Pointer<ffi.Uint8> arg3)>>()
+                  NSRange arg2, ffi.Pointer<ffi.Bool> arg3)>>()
       .asFunction<
           void Function(
               ffi.Pointer<ObjCObject> arg0,
               NSRange arg1,
               NSRange arg2,
-              ffi.Pointer<ffi.Uint8> arg3)>()(arg0, arg1, arg2, arg3);
+              ffi.Pointer<ffi.Bool> arg3)>()(arg0, arg1, arg2, arg3);
+}
+
+final _ObjCBlock_closureRegistry = <int, Function>{};
+int _ObjCBlock_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock_registerClosure(Function fn) {
+  final id = ++_ObjCBlock_closureRegistryIndex;
+  _ObjCBlock_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block,
+    ffi.Pointer<ObjCObject> arg0,
+    NSRange arg1,
+    NSRange arg2,
+    ffi.Pointer<ffi.Bool> arg3) {
+  return _ObjCBlock_closureRegistry[block.ref.target.address]!(
+      arg0, arg1, arg2, arg3);
 }
 
 class ObjCBlock {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock._(this._impl, this._lib);
-
   ObjCBlock.fromFunctionPointer(
       this._lib,
-      ffi.Pointer<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Pointer<ObjCObject> arg0, NSRange arg1,
-                      NSRange arg2, ffi.Pointer<ffi.Uint8> arg3)>>
+      ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ObjCObject> arg0, NSRange arg1, NSRange arg2, ffi.Pointer<ffi.Bool> arg3)>>
           ptr)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<_ObjCBlock> block,
+                        ffi.Pointer<ObjCObject> arg0,
+                        NSRange arg1,
+                        NSRange arg2,
+                        ffi.Pointer<ffi.Bool> arg3)>(_ObjCBlock_fnPtrTrampoline)
+                .cast(),
+            ptr.cast());
+  ObjCBlock.fromFunction(
+      this._lib,
+      void Function(ffi.Pointer<ObjCObject> arg0, NSRange arg1, NSRange arg2,
+              ffi.Pointer<ffi.Bool> arg3)
+          fn)
       : _impl = _lib._newBlock1(
             ffi.Pointer.fromFunction<
                         ffi.Void Function(
@@ -90335,10 +89855,10 @@ class ObjCBlock {
                             ffi.Pointer<ObjCObject> arg0,
                             NSRange arg1,
                             NSRange arg2,
-                            ffi.Pointer<ffi.Uint8> arg3)>(
-                    _ObjCBlock_fnPtrTrampoline)
+                            ffi.Pointer<ffi.Bool> arg3)>(
+                    _ObjCBlock_closureTrampoline)
                 .cast(),
-            ptr.cast());
+            _ObjCBlock_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -90373,39 +89893,63 @@ class _ObjCBlock extends ffi.Struct {
 }
 
 void _ObjCBlock1_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block,
-    ffi.Pointer<ObjCObject> arg0, ffi.Pointer<ffi.Uint8> arg1) {
+    ffi.Pointer<ObjCObject> arg0, ffi.Pointer<ffi.Bool> arg1) {
   return block.ref.target
       .cast<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Pointer<ObjCObject> arg0, ffi.Pointer<ffi.Uint8> arg1)>>()
+                  ffi.Pointer<ObjCObject> arg0, ffi.Pointer<ffi.Bool> arg1)>>()
       .asFunction<
           void Function(ffi.Pointer<ObjCObject> arg0,
-              ffi.Pointer<ffi.Uint8> arg1)>()(arg0, arg1);
+              ffi.Pointer<ffi.Bool> arg1)>()(arg0, arg1);
+}
+
+final _ObjCBlock1_closureRegistry = <int, Function>{};
+int _ObjCBlock1_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock1_registerClosure(Function fn) {
+  final id = ++_ObjCBlock1_closureRegistryIndex;
+  _ObjCBlock1_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock1_closureTrampoline(ffi.Pointer<_ObjCBlock> block,
+    ffi.Pointer<ObjCObject> arg0, ffi.Pointer<ffi.Bool> arg1) {
+  return _ObjCBlock1_closureRegistry[block.ref.target.address]!(arg0, arg1);
 }
 
 class ObjCBlock1 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock1._(this._impl, this._lib);
-
   ObjCBlock1.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
               ffi.NativeFunction<
                   ffi.Void Function(ffi.Pointer<ObjCObject> arg0,
-                      ffi.Pointer<ffi.Uint8> arg1)>>
+                      ffi.Pointer<ffi.Bool> arg1)>>
           ptr)
-      : _impl =
-            _lib._newBlock1(
-                ffi.Pointer.fromFunction<
-                            ffi.Void Function(
-                                ffi.Pointer<_ObjCBlock> block,
-                                ffi.Pointer<ObjCObject> arg0,
-                                ffi.Pointer<ffi.Uint8> arg1)>(
-                        _ObjCBlock1_fnPtrTrampoline)
-                    .cast(),
-                ptr.cast());
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ObjCObject> arg0,
+                            ffi.Pointer<ffi.Bool> arg1)>(
+                    _ObjCBlock1_fnPtrTrampoline)
+                .cast(),
+            ptr.cast());
+  ObjCBlock1.fromFunction(
+      this._lib,
+      void Function(ffi.Pointer<ObjCObject> arg0, ffi.Pointer<ffi.Bool> arg1)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ObjCObject> arg0,
+                            ffi.Pointer<ffi.Bool> arg1)>(
+                    _ObjCBlock1_closureTrampoline)
+                .cast(),
+            _ObjCBlock1_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -90413,16 +89957,26 @@ typedef NSStringEncoding = NSUInteger;
 
 /// Immutable Data
 class NSData extends NSObject {
-  NSData._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSData._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSData] that points to the same underlying object as [other].
   static NSData castFrom<T extends _ObjCWrapper>(T other) {
-    return NSData._(other._id, other._lib);
+    return NSData._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSData] that wraps the given raw object pointer.
   static NSData castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSData._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSData._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSData].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSData1);
   }
 
   int get length {
@@ -90437,8 +89991,10 @@ class NSData extends NSObject {
   }
 
   NSObject? get description {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_description1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_description1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   void getBytes_length_(ffi.Pointer<ffi.Void> buffer, int length) {
@@ -90450,14 +90006,14 @@ class NSData extends NSObject {
   }
 
   bool isEqualToData_(NSObject? other) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_isEqualToData_1, other?._id ?? ffi.nullptr);
   }
 
   NSData subdataWithRange_(NSRange range) {
     final _ret =
         _lib._objc_msgSend_41(_id, _lib._sel_subdataWithRange_1, range);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   bool writeToFile_atomically_(NSObject? path, bool useAuxiliaryFile) {
@@ -90496,22 +90052,22 @@ class NSData extends NSObject {
   }
 
   static NSData data(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSData1, _lib._sel_data1);
-    return NSData._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSData1, _lib._sel_data1);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSData dataWithBytes_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Void> bytes, int length) {
     final _ret = _lib._objc_msgSend_46(
         _lib._class_NSData1, _lib._sel_dataWithBytes_length_1, bytes, length);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSData dataWithBytesNoCopy_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Void> bytes, int length) {
     final _ret = _lib._objc_msgSend_46(_lib._class_NSData1,
         _lib._sel_dataWithBytesNoCopy_length_1, bytes, length);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: false, release: true);
   }
 
   static NSData dataWithBytesNoCopy_length_freeWhenDone_(
@@ -90521,7 +90077,7 @@ class NSData extends NSObject {
       bool b) {
     final _ret = _lib._objc_msgSend_47(_lib._class_NSData1,
         _lib._sel_dataWithBytesNoCopy_length_freeWhenDone_1, bytes, length, b);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: false, release: true);
   }
 
   static NSData dataWithContentsOfFile_options_error_(
@@ -90535,7 +90091,7 @@ class NSData extends NSObject {
         path?._id ?? ffi.nullptr,
         readOptionsMask,
         errorPtr);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSData dataWithContentsOfURL_options_error_(
@@ -90549,40 +90105,40 @@ class NSData extends NSObject {
         url?._id ?? ffi.nullptr,
         readOptionsMask,
         errorPtr);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSData dataWithContentsOfFile_(
       NativeCupertinoHttp _lib, NSObject? path) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSData1,
         _lib._sel_dataWithContentsOfFile_1, path?._id ?? ffi.nullptr);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSData dataWithContentsOfURL_(
       NativeCupertinoHttp _lib, NSObject? url) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSData1,
         _lib._sel_dataWithContentsOfURL_1, url?._id ?? ffi.nullptr);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   NSData initWithBytes_length_(ffi.Pointer<ffi.Void> bytes, int length) {
     final _ret = _lib._objc_msgSend_46(
         _id, _lib._sel_initWithBytes_length_1, bytes, length);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   NSData initWithBytesNoCopy_length_(ffi.Pointer<ffi.Void> bytes, int length) {
     final _ret = _lib._objc_msgSend_46(
         _id, _lib._sel_initWithBytesNoCopy_length_1, bytes, length);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: false, release: true);
   }
 
   NSData initWithBytesNoCopy_length_freeWhenDone_(
       ffi.Pointer<ffi.Void> bytes, int length, bool b) {
     final _ret = _lib._objc_msgSend_47(_id,
         _lib._sel_initWithBytesNoCopy_length_freeWhenDone_1, bytes, length, b);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: false, release: true);
   }
 
   NSData initWithBytesNoCopy_length_deallocator_(
@@ -90593,7 +90149,7 @@ class NSData extends NSObject {
         bytes,
         length,
         deallocator._impl);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: false, release: true);
   }
 
   NSData initWithContentsOfFile_options_error_(NSObject? path,
@@ -90604,7 +90160,7 @@ class NSData extends NSObject {
         path?._id ?? ffi.nullptr,
         readOptionsMask,
         errorPtr);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   NSData initWithContentsOfURL_options_error_(NSObject? url,
@@ -90615,31 +90171,31 @@ class NSData extends NSObject {
         url?._id ?? ffi.nullptr,
         readOptionsMask,
         errorPtr);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   NSData initWithContentsOfFile_(NSObject? path) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithContentsOfFile_1, path?._id ?? ffi.nullptr);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   NSData initWithContentsOfURL_(NSObject? url) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithContentsOfURL_1, url?._id ?? ffi.nullptr);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   NSData initWithData_(NSObject? data) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithData_1, data?._id ?? ffi.nullptr);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSData dataWithData_(NativeCupertinoHttp _lib, NSObject? data) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSData1,
         _lib._sel_dataWithData_1, data?._id ?? ffi.nullptr);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   /// Create an NSData from a Base-64 encoded NSString using the given options. By default, returns nil when the input is not recognized as valid Base-64.
@@ -90650,14 +90206,14 @@ class NSData extends NSObject {
         _lib._sel_initWithBase64EncodedString_options_1,
         base64String?._id ?? ffi.nullptr,
         options);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   /// Create a Base-64 encoded NSString from the receiver's contents using the given options.
   NSString base64EncodedStringWithOptions_(int options) {
     final _ret = _lib._objc_msgSend_51(
         _id, _lib._sel_base64EncodedStringWithOptions_1, options);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   /// Create an NSData from a Base-64, UTF-8 encoded NSData. By default, returns nil when the input is not recognized as valid Base-64.
@@ -90667,14 +90223,14 @@ class NSData extends NSObject {
         _lib._sel_initWithBase64EncodedData_options_1,
         base64Data?._id ?? ffi.nullptr,
         options);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   /// Create a Base-64, UTF-8 encoded NSData from the receiver's contents using the given options.
   NSData base64EncodedDataWithOptions_(int options) {
     final _ret = _lib._objc_msgSend_52(
         _id, _lib._sel_base64EncodedDataWithOptions_1, options);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   /// These methods return a compressed or decompressed version of the receiver using the specified algorithm.
@@ -90682,14 +90238,14 @@ class NSData extends NSObject {
       int algorithm, ffi.Pointer<ffi.Pointer<ObjCObject>> error) {
     final _ret = _lib._objc_msgSend_53(_id,
         _lib._sel_decompressedDataUsingAlgorithm_error_1, algorithm, error);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   NSData compressedDataUsingAlgorithm_error_(
       int algorithm, ffi.Pointer<ffi.Pointer<ObjCObject>> error) {
     final _ret = _lib._objc_msgSend_53(
         _id, _lib._sel_compressedDataUsingAlgorithm_error_1, algorithm, error);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   void getBytes_(ffi.Pointer<ffi.Void> buffer) {
@@ -90700,35 +90256,35 @@ class NSData extends NSObject {
       NativeCupertinoHttp _lib, NSObject? path) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSData1,
         _lib._sel_dataWithContentsOfMappedFile_1, path?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject initWithContentsOfMappedFile_(NSObject? path) {
     final _ret = _lib._objc_msgSend_13(_id,
         _lib._sel_initWithContentsOfMappedFile_1, path?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// These methods first appeared in NSData.h on OS X 10.9 and iOS 7.0. They are deprecated in the same releases in favor of the methods in the NSDataBase64Encoding category. However, these methods have existed for several releases, so they may be used for applications targeting releases prior to OS X 10.9 and iOS 7.0.
   NSObject initWithBase64Encoding_(NSObject? base64String) {
     final _ret = _lib._objc_msgSend_13(_id, _lib._sel_initWithBase64Encoding_1,
         base64String?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSString base64Encoding() {
     final _ret = _lib._objc_msgSend_55(_id, _lib._sel_base64Encoding1);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSData new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSData1, _lib._sel_new1);
-    return NSData._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSData1, _lib._sel_new1);
+    return NSData._(_ret, _lib, retain: false, release: true);
   }
 
   static NSData alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSData1, _lib._sel_alloc1);
-    return NSData._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSData1, _lib._sel_alloc1);
+    return NSData._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -90757,41 +90313,67 @@ abstract class NSDataSearchOptions {
 }
 
 void _ObjCBlock2_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block,
-    ffi.Pointer<ffi.Void> arg0, NSRange arg1, ffi.Pointer<ffi.Uint8> arg2) {
+    ffi.Pointer<ffi.Void> arg0, NSRange arg1, ffi.Pointer<ffi.Bool> arg2) {
   return block.ref.target
       .cast<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Pointer<ffi.Void> arg0, NSRange arg1,
-                  ffi.Pointer<ffi.Uint8> arg2)>>()
+                  ffi.Pointer<ffi.Bool> arg2)>>()
       .asFunction<
           void Function(ffi.Pointer<ffi.Void> arg0, NSRange arg1,
-              ffi.Pointer<ffi.Uint8> arg2)>()(arg0, arg1, arg2);
+              ffi.Pointer<ffi.Bool> arg2)>()(arg0, arg1, arg2);
+}
+
+final _ObjCBlock2_closureRegistry = <int, Function>{};
+int _ObjCBlock2_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock2_registerClosure(Function fn) {
+  final id = ++_ObjCBlock2_closureRegistryIndex;
+  _ObjCBlock2_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock2_closureTrampoline(ffi.Pointer<_ObjCBlock> block,
+    ffi.Pointer<ffi.Void> arg0, NSRange arg1, ffi.Pointer<ffi.Bool> arg2) {
+  return _ObjCBlock2_closureRegistry[block.ref.target.address]!(
+      arg0, arg1, arg2);
 }
 
 class ObjCBlock2 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock2._(this._impl, this._lib);
-
   ObjCBlock2.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
               ffi.NativeFunction<
                   ffi.Void Function(ffi.Pointer<ffi.Void> arg0, NSRange arg1,
-                      ffi.Pointer<ffi.Uint8> arg2)>>
+                      ffi.Pointer<ffi.Bool> arg2)>>
           ptr)
-      : _impl =
-            _lib
-                ._newBlock1(
-                    ffi.Pointer.fromFunction<
-                                ffi.Void Function(
-                                    ffi.Pointer<_ObjCBlock> block,
-                                    ffi.Pointer<ffi.Void> arg0,
-                                    NSRange arg1,
-                                    ffi.Pointer<ffi.Uint8> arg2)>(
-                            _ObjCBlock2_fnPtrTrampoline)
-                        .cast(),
-                    ptr.cast());
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ffi.Void> arg0,
+                            NSRange arg1,
+                            ffi.Pointer<ffi.Bool> arg2)>(
+                    _ObjCBlock2_fnPtrTrampoline)
+                .cast(),
+            ptr.cast());
+  ObjCBlock2.fromFunction(
+      this._lib,
+      void Function(ffi.Pointer<ffi.Void> arg0, NSRange arg1,
+              ffi.Pointer<ffi.Bool> arg2)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ffi.Void> arg0,
+                            NSRange arg1,
+                            ffi.Pointer<ffi.Bool> arg2)>(
+                    _ObjCBlock2_closureTrampoline)
+                .cast(),
+            _ObjCBlock2_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -90826,11 +90408,23 @@ void _ObjCBlock3_fnPtrTrampoline(
           void Function(ffi.Pointer<ffi.Void> arg0, int arg1)>()(arg0, arg1);
 }
 
+final _ObjCBlock3_closureRegistry = <int, Function>{};
+int _ObjCBlock3_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock3_registerClosure(Function fn) {
+  final id = ++_ObjCBlock3_closureRegistryIndex;
+  _ObjCBlock3_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock3_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block, ffi.Pointer<ffi.Void> arg0, int arg1) {
+  return _ObjCBlock3_closureRegistry[block.ref.target.address]!(arg0, arg1);
+}
+
 class ObjCBlock3 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock3._(this._impl, this._lib);
-
   ObjCBlock3.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -90846,6 +90440,16 @@ class ObjCBlock3 {
                         NSUInteger arg1)>(_ObjCBlock3_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock3.fromFunction(
+      this._lib, void Function(ffi.Pointer<ffi.Void> arg0, int arg1) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<_ObjCBlock> block,
+                        ffi.Pointer<ffi.Void> arg0,
+                        NSUInteger arg1)>(_ObjCBlock3_closureTrampoline)
+                .cast(),
+            _ObjCBlock3_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -90900,11 +90504,23 @@ void _ObjCBlock4_fnPtrTrampoline(
           void Function(ffi.Pointer<unichar> arg0, int arg1)>()(arg0, arg1);
 }
 
+final _ObjCBlock4_closureRegistry = <int, Function>{};
+int _ObjCBlock4_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock4_registerClosure(Function fn) {
+  final id = ++_ObjCBlock4_closureRegistryIndex;
+  _ObjCBlock4_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock4_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block, ffi.Pointer<unichar> arg0, int arg1) {
+  return _ObjCBlock4_closureRegistry[block.ref.target.address]!(arg0, arg1);
+}
+
 class ObjCBlock4 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock4._(this._impl, this._lib);
-
   ObjCBlock4.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -90920,21 +90536,41 @@ class ObjCBlock4 {
                         NSUInteger arg1)>(_ObjCBlock4_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock4.fromFunction(
+      this._lib, void Function(ffi.Pointer<unichar> arg0, int arg1) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<_ObjCBlock> block,
+                        ffi.Pointer<unichar> arg0,
+                        NSUInteger arg1)>(_ObjCBlock4_closureTrampoline)
+                .cast(),
+            _ObjCBlock4_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
 /// Immutable Dictionary
 class NSDictionary extends NSObject {
-  NSDictionary._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSDictionary._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSDictionary] that points to the same underlying object as [other].
   static NSDictionary castFrom<T extends _ObjCWrapper>(T other) {
-    return NSDictionary._(other._id, other._lib);
+    return NSDictionary._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSDictionary] that wraps the given raw object pointer.
   static NSDictionary castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSDictionary._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSDictionary._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSDictionary].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSDictionary1);
   }
 
   int get count {
@@ -90943,13 +90579,13 @@ class NSDictionary extends NSObject {
 
   NSObject objectForKey_(NSObject aKey) {
     final _ret = _lib._objc_msgSend_13(_id, _lib._sel_objectForKey_1, aKey._id);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   @override
   NSDictionary init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSDictionary._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   NSDictionary initWithObjects_forKeys_count_(
@@ -90958,50 +90594,58 @@ class NSDictionary extends NSObject {
       int cnt) {
     final _ret = _lib._objc_msgSend_86(
         _id, _lib._sel_initWithObjects_forKeys_count_1, objects, keys, cnt);
-    return NSDictionary._(_ret, _lib);
+    return NSDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   NSDictionary initWithCoder_(NSObject? coder) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithCoder_1, coder?._id ?? ffi.nullptr);
-    return NSDictionary._(_ret, _lib);
+    return NSDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get allKeys {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_allKeys1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_allKeys1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get allValues {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_allValues1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_allValues1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get description {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_description1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_description1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get descriptionInStringsFileFormat {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_descriptionInStringsFileFormat1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_descriptionInStringsFileFormat1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSString descriptionWithLocale_(NSObject locale) {
     final _ret = _lib._objc_msgSend_28(
         _id, _lib._sel_descriptionWithLocale_1, locale._id);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString descriptionWithLocale_indent_(NSObject locale, int level) {
     final _ret = _lib._objc_msgSend_87(
         _id, _lib._sel_descriptionWithLocale_indent_1, locale._id, level);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   bool isEqualToDictionary_(NSObject? otherDictionary) {
-    return _lib._objc_msgSend_4(_id, _lib._sel_isEqualToDictionary_1,
+    return _lib._objc_msgSend_0(_id, _lib._sel_isEqualToDictionary_1,
         otherDictionary?._id ?? ffi.nullptr);
   }
 
@@ -91022,7 +90666,7 @@ class NSDictionary extends NSObject {
   NSObject objectForKeyedSubscript_(NSObject key) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_objectForKeyedSubscript_1, key._id);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   void enumerateKeysAndObjectsUsingBlock_(ObjCBlock5 block) {
@@ -91058,15 +90702,15 @@ class NSDictionary extends NSObject {
 
   static NSDictionary dictionary(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSDictionary1, _lib._sel_dictionary1);
-    return NSDictionary._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSDictionary1, _lib._sel_dictionary1);
+    return NSDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   static NSDictionary dictionaryWithObject_forKey_(
       NativeCupertinoHttp _lib, NSObject object, NSObject key) {
     final _ret = _lib._objc_msgSend_76(_lib._class_NSDictionary1,
         _lib._sel_dictionaryWithObject_forKey_1, object._id, key._id);
-    return NSDictionary._(_ret, _lib);
+    return NSDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   static NSDictionary dictionaryWithObjects_forKeys_count_(
@@ -91076,21 +90720,21 @@ class NSDictionary extends NSObject {
       int cnt) {
     final _ret = _lib._objc_msgSend_86(_lib._class_NSDictionary1,
         _lib._sel_dictionaryWithObjects_forKeys_count_1, objects, keys, cnt);
-    return NSDictionary._(_ret, _lib);
+    return NSDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   static NSDictionary dictionaryWithObjectsAndKeys_(
       NativeCupertinoHttp _lib, NSObject firstObject) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSDictionary1,
         _lib._sel_dictionaryWithObjectsAndKeys_1, firstObject._id);
-    return NSDictionary._(_ret, _lib);
+    return NSDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   static NSDictionary dictionaryWithDictionary_(
       NativeCupertinoHttp _lib, NSObject? dict) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSDictionary1,
         _lib._sel_dictionaryWithDictionary_1, dict?._id ?? ffi.nullptr);
-    return NSDictionary._(_ret, _lib);
+    return NSDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   static NSDictionary dictionaryWithObjects_forKeys_(
@@ -91100,19 +90744,19 @@ class NSDictionary extends NSObject {
         _lib._sel_dictionaryWithObjects_forKeys_1,
         objects?._id ?? ffi.nullptr,
         keys?._id ?? ffi.nullptr);
-    return NSDictionary._(_ret, _lib);
+    return NSDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   NSDictionary initWithObjectsAndKeys_(NSObject firstObject) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithObjectsAndKeys_1, firstObject._id);
-    return NSDictionary._(_ret, _lib);
+    return NSDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   NSDictionary initWithDictionary_(NSObject? otherDictionary) {
     final _ret = _lib._objc_msgSend_13(_id, _lib._sel_initWithDictionary_1,
         otherDictionary?._id ?? ffi.nullptr);
-    return NSDictionary._(_ret, _lib);
+    return NSDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   NSDictionary initWithDictionary_copyItems_(
@@ -91122,13 +90766,13 @@ class NSDictionary extends NSObject {
         _lib._sel_initWithDictionary_copyItems_1,
         otherDictionary?._id ?? ffi.nullptr,
         flag);
-    return NSDictionary._(_ret, _lib);
+    return NSDictionary._(_ret, _lib, retain: false, release: true);
   }
 
   NSDictionary initWithObjects_forKeys_(NSObject? objects, NSObject? keys) {
     final _ret = _lib._objc_msgSend_76(_id, _lib._sel_initWithObjects_forKeys_1,
         objects?._id ?? ffi.nullptr, keys?._id ?? ffi.nullptr);
-    return NSDictionary._(_ret, _lib);
+    return NSDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   /// Use this method to create a key set to pass to +dictionaryWithSharedKeySet:.
@@ -91142,7 +90786,7 @@ class NSDictionary extends NSObject {
       NativeCupertinoHttp _lib, NSObject? keys) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSDictionary1,
         _lib._sel_sharedKeySetForKeys_1, keys?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   int countByEnumeratingWithState_objects_count_(
@@ -91159,14 +90803,14 @@ class NSDictionary extends NSObject {
 
   static NSDictionary new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSDictionary1, _lib._sel_new1);
-    return NSDictionary._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSDictionary1, _lib._sel_new1);
+    return NSDictionary._(_ret, _lib, retain: false, release: true);
   }
 
   static NSDictionary alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSDictionary1, _lib._sel_alloc1);
-    return NSDictionary._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSDictionary1, _lib._sel_alloc1);
+    return NSDictionary._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -91174,24 +90818,40 @@ void _ObjCBlock5_fnPtrTrampoline(
     ffi.Pointer<_ObjCBlock> block,
     ffi.Pointer<ObjCObject> arg0,
     ffi.Pointer<ObjCObject> arg1,
-    ffi.Pointer<ffi.Uint8> arg2) {
+    ffi.Pointer<ffi.Bool> arg2) {
   return block.ref.target
       .cast<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Pointer<ObjCObject> arg0,
-                  ffi.Pointer<ObjCObject> arg1, ffi.Pointer<ffi.Uint8> arg2)>>()
+                  ffi.Pointer<ObjCObject> arg1, ffi.Pointer<ffi.Bool> arg2)>>()
       .asFunction<
           void Function(
               ffi.Pointer<ObjCObject> arg0,
               ffi.Pointer<ObjCObject> arg1,
-              ffi.Pointer<ffi.Uint8> arg2)>()(arg0, arg1, arg2);
+              ffi.Pointer<ffi.Bool> arg2)>()(arg0, arg1, arg2);
+}
+
+final _ObjCBlock5_closureRegistry = <int, Function>{};
+int _ObjCBlock5_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock5_registerClosure(Function fn) {
+  final id = ++_ObjCBlock5_closureRegistryIndex;
+  _ObjCBlock5_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock5_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block,
+    ffi.Pointer<ObjCObject> arg0,
+    ffi.Pointer<ObjCObject> arg1,
+    ffi.Pointer<ffi.Bool> arg2) {
+  return _ObjCBlock5_closureRegistry[block.ref.target.address]!(
+      arg0, arg1, arg2);
 }
 
 class ObjCBlock5 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock5._(this._impl, this._lib);
-
   ObjCBlock5.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -91199,7 +90859,7 @@ class ObjCBlock5 {
                   ffi.Void Function(
                       ffi.Pointer<ObjCObject> arg0,
                       ffi.Pointer<ObjCObject> arg1,
-                      ffi.Pointer<ffi.Uint8> arg2)>>
+                      ffi.Pointer<ffi.Bool> arg2)>>
           ptr)
       : _impl = _lib._newBlock1(
             ffi.Pointer.fromFunction<
@@ -91207,10 +90867,25 @@ class ObjCBlock5 {
                             ffi.Pointer<_ObjCBlock> block,
                             ffi.Pointer<ObjCObject> arg0,
                             ffi.Pointer<ObjCObject> arg1,
-                            ffi.Pointer<ffi.Uint8> arg2)>(
+                            ffi.Pointer<ffi.Bool> arg2)>(
                     _ObjCBlock5_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock5.fromFunction(
+      this._lib,
+      void Function(ffi.Pointer<ObjCObject> arg0, ffi.Pointer<ObjCObject> arg1,
+              ffi.Pointer<ffi.Bool> arg2)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ObjCObject> arg0,
+                            ffi.Pointer<ObjCObject> arg1,
+                            ffi.Pointer<ffi.Bool> arg2)>(
+                    _ObjCBlock5_closureTrampoline)
+                .cast(),
+            _ObjCBlock5_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -91227,52 +90902,74 @@ class NSFastEnumerationState extends ffi.Struct {
 }
 
 class NSEnumerator extends NSObject {
-  NSEnumerator._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSEnumerator._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSEnumerator] that points to the same underlying object as [other].
   static NSEnumerator castFrom<T extends _ObjCWrapper>(T other) {
-    return NSEnumerator._(other._id, other._lib);
+    return NSEnumerator._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSEnumerator] that wraps the given raw object pointer.
   static NSEnumerator castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSEnumerator._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSEnumerator._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSEnumerator].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSEnumerator1);
   }
 
   NSObject nextObject() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_nextObject1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_nextObject1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get allObjects {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_allObjects1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_allObjects1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSEnumerator new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSEnumerator1, _lib._sel_new1);
-    return NSEnumerator._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSEnumerator1, _lib._sel_new1);
+    return NSEnumerator._(_ret, _lib, retain: false, release: true);
   }
 
   static NSEnumerator alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSEnumerator1, _lib._sel_alloc1);
-    return NSEnumerator._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSEnumerator1, _lib._sel_alloc1);
+    return NSEnumerator._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class NSValue extends NSObject {
-  NSValue._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSValue._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSValue] that points to the same underlying object as [other].
   static NSValue castFrom<T extends _ObjCWrapper>(T other) {
-    return NSValue._(other._id, other._lib);
+    return NSValue._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSValue] that wraps the given raw object pointer.
   static NSValue castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSValue._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSValue._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSValue].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSValue1);
   }
 
   void getValue_size_(ffi.Pointer<ffi.Void> value, int size) {
@@ -91287,46 +90984,46 @@ class NSValue extends NSObject {
       ffi.Pointer<ffi.Void> value, ffi.Pointer<ffi.Char> type) {
     final _ret = _lib._objc_msgSend_105(
         _id, _lib._sel_initWithBytes_objCType_1, value, type);
-    return NSValue._(_ret, _lib);
+    return NSValue._(_ret, _lib, retain: true, release: true);
   }
 
   NSValue initWithCoder_(NSObject? coder) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithCoder_1, coder?._id ?? ffi.nullptr);
-    return NSValue._(_ret, _lib);
+    return NSValue._(_ret, _lib, retain: true, release: true);
   }
 
   static NSValue valueWithBytes_objCType_(NativeCupertinoHttp _lib,
       ffi.Pointer<ffi.Void> value, ffi.Pointer<ffi.Char> type) {
     final _ret = _lib._objc_msgSend_106(
         _lib._class_NSValue1, _lib._sel_valueWithBytes_objCType_1, value, type);
-    return NSValue._(_ret, _lib);
+    return NSValue._(_ret, _lib, retain: true, release: true);
   }
 
   static NSValue value_withObjCType_(NativeCupertinoHttp _lib,
       ffi.Pointer<ffi.Void> value, ffi.Pointer<ffi.Char> type) {
     final _ret = _lib._objc_msgSend_106(
         _lib._class_NSValue1, _lib._sel_value_withObjCType_1, value, type);
-    return NSValue._(_ret, _lib);
+    return NSValue._(_ret, _lib, retain: true, release: true);
   }
 
   static NSValue valueWithNonretainedObject_(
       NativeCupertinoHttp _lib, NSObject anObject) {
     final _ret = _lib._objc_msgSend_107(_lib._class_NSValue1,
         _lib._sel_valueWithNonretainedObject_1, anObject._id);
-    return NSValue._(_ret, _lib);
+    return NSValue._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject get nonretainedObjectValue {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_nonretainedObjectValue1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_nonretainedObjectValue1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSValue valueWithPointer_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Void> pointer) {
     final _ret = _lib._objc_msgSend_108(
         _lib._class_NSValue1, _lib._sel_valueWithPointer_1, pointer);
-    return NSValue._(_ret, _lib);
+    return NSValue._(_ret, _lib, retain: true, release: true);
   }
 
   ffi.Pointer<ffi.Void> get pointerValue {
@@ -91334,7 +91031,7 @@ class NSValue extends NSObject {
   }
 
   bool isEqualToValue_(NSObject? value) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_isEqualToValue_1, value?._id ?? ffi.nullptr);
   }
 
@@ -91345,7 +91042,7 @@ class NSValue extends NSObject {
   static NSValue valueWithRange_(NativeCupertinoHttp _lib, NSRange range) {
     final _ret = _lib._objc_msgSend_109(
         _lib._class_NSValue1, _lib._sel_valueWithRange_1, range);
-    return NSValue._(_ret, _lib);
+    return NSValue._(_ret, _lib, retain: true, release: true);
   }
 
   NSRange get rangeValue {
@@ -91353,117 +91050,127 @@ class NSValue extends NSObject {
   }
 
   static NSValue new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSValue1, _lib._sel_new1);
-    return NSValue._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSValue1, _lib._sel_new1);
+    return NSValue._(_ret, _lib, retain: false, release: true);
   }
 
   static NSValue alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSValue1, _lib._sel_alloc1);
-    return NSValue._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSValue1, _lib._sel_alloc1);
+    return NSValue._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class NSNumber extends NSValue {
-  NSNumber._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSNumber._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSNumber] that points to the same underlying object as [other].
   static NSNumber castFrom<T extends _ObjCWrapper>(T other) {
-    return NSNumber._(other._id, other._lib);
+    return NSNumber._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSNumber] that wraps the given raw object pointer.
   static NSNumber castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSNumber._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSNumber._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSNumber].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSNumber1);
   }
 
   @override
   NSNumber initWithCoder_(NSObject? coder) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithCoder_1, coder?._id ?? ffi.nullptr);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithChar_(int value) {
     final _ret = _lib._objc_msgSend_111(_id, _lib._sel_initWithChar_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithUnsignedChar_(int value) {
     final _ret =
         _lib._objc_msgSend_112(_id, _lib._sel_initWithUnsignedChar_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithShort_(int value) {
     final _ret = _lib._objc_msgSend_113(_id, _lib._sel_initWithShort_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithUnsignedShort_(int value) {
     final _ret =
         _lib._objc_msgSend_114(_id, _lib._sel_initWithUnsignedShort_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithInt_(int value) {
     final _ret = _lib._objc_msgSend_115(_id, _lib._sel_initWithInt_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithUnsignedInt_(int value) {
     final _ret =
         _lib._objc_msgSend_116(_id, _lib._sel_initWithUnsignedInt_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithLong_(int value) {
     final _ret = _lib._objc_msgSend_117(_id, _lib._sel_initWithLong_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithUnsignedLong_(int value) {
     final _ret =
         _lib._objc_msgSend_118(_id, _lib._sel_initWithUnsignedLong_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithLongLong_(int value) {
     final _ret =
         _lib._objc_msgSend_119(_id, _lib._sel_initWithLongLong_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithUnsignedLongLong_(int value) {
     final _ret = _lib._objc_msgSend_120(
         _id, _lib._sel_initWithUnsignedLongLong_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithFloat_(double value) {
     final _ret = _lib._objc_msgSend_121(_id, _lib._sel_initWithFloat_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithDouble_(double value) {
     final _ret = _lib._objc_msgSend_122(_id, _lib._sel_initWithDouble_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithBool_(bool value) {
     final _ret = _lib._objc_msgSend_123(_id, _lib._sel_initWithBool_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithInteger_(int value) {
     final _ret =
         _lib._objc_msgSend_117(_id, _lib._sel_initWithInteger_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   NSNumber initWithUnsignedInteger_(int value) {
     final _ret =
         _lib._objc_msgSend_118(_id, _lib._sel_initWithUnsignedInteger_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   int get charValue {
@@ -91527,8 +91234,10 @@ class NSNumber extends NSValue {
   }
 
   NSObject? get stringValue {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_stringValue1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_stringValue1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   int compare_(NSObject? otherNumber) {
@@ -91537,151 +91246,151 @@ class NSNumber extends NSValue {
   }
 
   bool isEqualToNumber_(NSObject? number) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_isEqualToNumber_1, number?._id ?? ffi.nullptr);
   }
 
   NSString descriptionWithLocale_(NSObject locale) {
     final _ret = _lib._objc_msgSend_28(
         _id, _lib._sel_descriptionWithLocale_1, locale._id);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithChar_(NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_111(
         _lib._class_NSNumber1, _lib._sel_numberWithChar_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithUnsignedChar_(NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_112(
         _lib._class_NSNumber1, _lib._sel_numberWithUnsignedChar_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithShort_(NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_113(
         _lib._class_NSNumber1, _lib._sel_numberWithShort_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithUnsignedShort_(
       NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_114(
         _lib._class_NSNumber1, _lib._sel_numberWithUnsignedShort_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithInt_(NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_115(
         _lib._class_NSNumber1, _lib._sel_numberWithInt_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithUnsignedInt_(NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_116(
         _lib._class_NSNumber1, _lib._sel_numberWithUnsignedInt_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithLong_(NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_117(
         _lib._class_NSNumber1, _lib._sel_numberWithLong_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithUnsignedLong_(NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_118(
         _lib._class_NSNumber1, _lib._sel_numberWithUnsignedLong_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithLongLong_(NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_119(
         _lib._class_NSNumber1, _lib._sel_numberWithLongLong_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithUnsignedLongLong_(
       NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_120(
         _lib._class_NSNumber1, _lib._sel_numberWithUnsignedLongLong_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithFloat_(NativeCupertinoHttp _lib, double value) {
     final _ret = _lib._objc_msgSend_121(
         _lib._class_NSNumber1, _lib._sel_numberWithFloat_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithDouble_(NativeCupertinoHttp _lib, double value) {
     final _ret = _lib._objc_msgSend_122(
         _lib._class_NSNumber1, _lib._sel_numberWithDouble_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithBool_(NativeCupertinoHttp _lib, bool value) {
     final _ret = _lib._objc_msgSend_123(
         _lib._class_NSNumber1, _lib._sel_numberWithBool_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithInteger_(NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_117(
         _lib._class_NSNumber1, _lib._sel_numberWithInteger_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber numberWithUnsignedInteger_(
       NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_118(
         _lib._class_NSNumber1, _lib._sel_numberWithUnsignedInteger_1, value);
-    return NSNumber._(_ret, _lib);
+    return NSNumber._(_ret, _lib, retain: true, release: true);
   }
 
   static NSValue valueWithBytes_objCType_(NativeCupertinoHttp _lib,
       ffi.Pointer<ffi.Void> value, ffi.Pointer<ffi.Char> type) {
     final _ret = _lib._objc_msgSend_106(_lib._class_NSNumber1,
         _lib._sel_valueWithBytes_objCType_1, value, type);
-    return NSValue._(_ret, _lib);
+    return NSValue._(_ret, _lib, retain: true, release: true);
   }
 
   static NSValue value_withObjCType_(NativeCupertinoHttp _lib,
       ffi.Pointer<ffi.Void> value, ffi.Pointer<ffi.Char> type) {
     final _ret = _lib._objc_msgSend_106(
         _lib._class_NSNumber1, _lib._sel_value_withObjCType_1, value, type);
-    return NSValue._(_ret, _lib);
+    return NSValue._(_ret, _lib, retain: true, release: true);
   }
 
   static NSValue valueWithNonretainedObject_(
       NativeCupertinoHttp _lib, NSObject anObject) {
     final _ret = _lib._objc_msgSend_107(_lib._class_NSNumber1,
         _lib._sel_valueWithNonretainedObject_1, anObject._id);
-    return NSValue._(_ret, _lib);
+    return NSValue._(_ret, _lib, retain: true, release: true);
   }
 
   static NSValue valueWithPointer_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Void> pointer) {
     final _ret = _lib._objc_msgSend_108(
         _lib._class_NSNumber1, _lib._sel_valueWithPointer_1, pointer);
-    return NSValue._(_ret, _lib);
+    return NSValue._(_ret, _lib, retain: true, release: true);
   }
 
   static NSValue valueWithRange_(NativeCupertinoHttp _lib, NSRange range) {
     final _ret = _lib._objc_msgSend_109(
         _lib._class_NSNumber1, _lib._sel_valueWithRange_1, range);
-    return NSValue._(_ret, _lib);
+    return NSValue._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNumber new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSNumber1, _lib._sel_new1);
-    return NSNumber._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSNumber1, _lib._sel_new1);
+    return NSNumber._(_ret, _lib, retain: false, release: true);
   }
 
   static NSNumber alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSNumber1, _lib._sel_alloc1);
-    return NSNumber._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSNumber1, _lib._sel_alloc1);
+    return NSNumber._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -91692,21 +91401,33 @@ abstract class NSCollectionChangeType {
 
 class NSOrderedCollectionChange extends NSObject {
   NSOrderedCollectionChange._(
-      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSOrderedCollectionChange] that points to the same underlying object as [other].
   static NSOrderedCollectionChange castFrom<T extends _ObjCWrapper>(T other) {
-    return NSOrderedCollectionChange._(other._id, other._lib);
+    return NSOrderedCollectionChange._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSOrderedCollectionChange] that wraps the given raw object pointer.
   static NSOrderedCollectionChange castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSOrderedCollectionChange._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSOrderedCollectionChange._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSOrderedCollectionChange].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSOrderedCollectionChange1);
   }
 
   NSObject get object {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_object1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_object1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   int get changeType {
@@ -91723,15 +91444,15 @@ class NSOrderedCollectionChange extends NSObject {
 
   @override
   NSObject init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSOrderedCollectionChange initWithObject_type_index_(
       NSObject anObject, int type, int index) {
     final _ret = _lib._objc_msgSend_131(
         _id, _lib._sel_initWithObject_type_index_1, anObject._id, type, index);
-    return NSOrderedCollectionChange._(_ret, _lib);
+    return NSOrderedCollectionChange._(_ret, _lib, retain: true, release: true);
   }
 
   NSOrderedCollectionChange initWithObject_type_index_associatedIndex_(
@@ -91743,73 +91464,85 @@ class NSOrderedCollectionChange extends NSObject {
         type,
         index,
         associatedIndex);
-    return NSOrderedCollectionChange._(_ret, _lib);
+    return NSOrderedCollectionChange._(_ret, _lib, retain: true, release: true);
   }
 
   static NSOrderedCollectionChange new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSOrderedCollectionChange1, _lib._sel_new1);
-    return NSOrderedCollectionChange._(_ret, _lib);
+    return NSOrderedCollectionChange._(_ret, _lib,
+        retain: false, release: true);
   }
 
   static NSOrderedCollectionChange alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSOrderedCollectionChange1, _lib._sel_alloc1);
-    return NSOrderedCollectionChange._(_ret, _lib);
+    return NSOrderedCollectionChange._(_ret, _lib,
+        retain: false, release: true);
   }
 }
 
 class NSIndexSet extends NSObject {
-  NSIndexSet._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSIndexSet._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSIndexSet] that points to the same underlying object as [other].
   static NSIndexSet castFrom<T extends _ObjCWrapper>(T other) {
-    return NSIndexSet._(other._id, other._lib);
+    return NSIndexSet._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSIndexSet] that wraps the given raw object pointer.
   static NSIndexSet castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSIndexSet._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSIndexSet._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSIndexSet].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSIndexSet1);
   }
 
   static NSIndexSet indexSet(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSIndexSet1, _lib._sel_indexSet1);
-    return NSIndexSet._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSIndexSet1, _lib._sel_indexSet1);
+    return NSIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   static NSIndexSet indexSetWithIndex_(NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_133(
         _lib._class_NSIndexSet1, _lib._sel_indexSetWithIndex_1, value);
-    return NSIndexSet._(_ret, _lib);
+    return NSIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   static NSIndexSet indexSetWithIndexesInRange_(
       NativeCupertinoHttp _lib, NSRange range) {
     final _ret = _lib._objc_msgSend_134(
         _lib._class_NSIndexSet1, _lib._sel_indexSetWithIndexesInRange_1, range);
-    return NSIndexSet._(_ret, _lib);
+    return NSIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   NSIndexSet initWithIndexesInRange_(NSRange range) {
     final _ret =
         _lib._objc_msgSend_134(_id, _lib._sel_initWithIndexesInRange_1, range);
-    return NSIndexSet._(_ret, _lib);
+    return NSIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   NSIndexSet initWithIndexSet_(NSObject? indexSet) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithIndexSet_1, indexSet?._id ?? ffi.nullptr);
-    return NSIndexSet._(_ret, _lib);
+    return NSIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   NSIndexSet initWithIndex_(int value) {
     final _ret = _lib._objc_msgSend_133(_id, _lib._sel_initWithIndex_1, value);
-    return NSIndexSet._(_ret, _lib);
+    return NSIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   bool isEqualToIndexSet_(NSObject? indexSet) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_isEqualToIndexSet_1, indexSet?._id ?? ffi.nullptr);
   }
 
@@ -91868,7 +91601,7 @@ class NSIndexSet extends NSObject {
   }
 
   bool containsIndexes_(NSObject? indexSet) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_containsIndexes_1, indexSet?._id ?? ffi.nullptr);
   }
 
@@ -91920,13 +91653,13 @@ class NSIndexSet extends NSObject {
   NSIndexSet indexesPassingTest_(ObjCBlock7 predicate) {
     final _ret = _lib._objc_msgSend_144(
         _id, _lib._sel_indexesPassingTest_1, predicate._impl);
-    return NSIndexSet._(_ret, _lib);
+    return NSIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   NSIndexSet indexesWithOptions_passingTest_(int opts, ObjCBlock7 predicate) {
     final _ret = _lib._objc_msgSend_145(
         _id, _lib._sel_indexesWithOptions_passingTest_1, opts, predicate._impl);
-    return NSIndexSet._(_ret, _lib);
+    return NSIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   NSIndexSet indexesInRange_options_passingTest_(
@@ -91937,7 +91670,7 @@ class NSIndexSet extends NSObject {
         range,
         opts,
         predicate._impl);
-    return NSIndexSet._(_ret, _lib);
+    return NSIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   void enumerateRangesUsingBlock_(ObjCBlock8 block) {
@@ -91961,126 +91694,198 @@ class NSIndexSet extends NSObject {
   }
 
   static NSIndexSet new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSIndexSet1, _lib._sel_new1);
-    return NSIndexSet._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSIndexSet1, _lib._sel_new1);
+    return NSIndexSet._(_ret, _lib, retain: false, release: true);
   }
 
   static NSIndexSet alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSIndexSet1, _lib._sel_alloc1);
-    return NSIndexSet._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSIndexSet1, _lib._sel_alloc1);
+    return NSIndexSet._(_ret, _lib, retain: false, release: true);
   }
 }
 
 void _ObjCBlock6_fnPtrTrampoline(
-    ffi.Pointer<_ObjCBlock> block, int arg0, ffi.Pointer<ffi.Uint8> arg1) {
+    ffi.Pointer<_ObjCBlock> block, int arg0, ffi.Pointer<ffi.Bool> arg1) {
   return block.ref.target
-          .cast<
-              ffi.NativeFunction<
-                  ffi.Void Function(
-                      NSUInteger arg0, ffi.Pointer<ffi.Uint8> arg1)>>()
-          .asFunction<void Function(int arg0, ffi.Pointer<ffi.Uint8> arg1)>()(
-      arg0, arg1);
+      .cast<
+          ffi.NativeFunction<
+              ffi.Void Function(NSUInteger arg0, ffi.Pointer<ffi.Bool> arg1)>>()
+      .asFunction<
+          void Function(int arg0, ffi.Pointer<ffi.Bool> arg1)>()(arg0, arg1);
+}
+
+final _ObjCBlock6_closureRegistry = <int, Function>{};
+int _ObjCBlock6_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock6_registerClosure(Function fn) {
+  final id = ++_ObjCBlock6_closureRegistryIndex;
+  _ObjCBlock6_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock6_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block, int arg0, ffi.Pointer<ffi.Bool> arg1) {
+  return _ObjCBlock6_closureRegistry[block.ref.target.address]!(arg0, arg1);
 }
 
 class ObjCBlock6 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock6._(this._impl, this._lib);
-
   ObjCBlock6.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
               ffi.NativeFunction<
                   ffi.Void Function(
-                      NSUInteger arg0, ffi.Pointer<ffi.Uint8> arg1)>>
+                      NSUInteger arg0, ffi.Pointer<ffi.Bool> arg1)>>
           ptr)
       : _impl = _lib._newBlock1(
             ffi.Pointer.fromFunction<
                         ffi.Void Function(ffi.Pointer<_ObjCBlock> block,
-                            NSUInteger arg0, ffi.Pointer<ffi.Uint8> arg1)>(
+                            NSUInteger arg0, ffi.Pointer<ffi.Bool> arg1)>(
                     _ObjCBlock6_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock6.fromFunction(
+      this._lib, void Function(int arg0, ffi.Pointer<ffi.Bool> arg1) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(ffi.Pointer<_ObjCBlock> block,
+                            NSUInteger arg0, ffi.Pointer<ffi.Bool> arg1)>(
+                    _ObjCBlock6_closureTrampoline)
+                .cast(),
+            _ObjCBlock6_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
-int _ObjCBlock7_fnPtrTrampoline(
-    ffi.Pointer<_ObjCBlock> block, int arg0, ffi.Pointer<ffi.Uint8> arg1) {
+bool _ObjCBlock7_fnPtrTrampoline(
+    ffi.Pointer<_ObjCBlock> block, int arg0, ffi.Pointer<ffi.Bool> arg1) {
   return block.ref.target
-          .cast<
-              ffi.NativeFunction<
-                  ffi.Uint8 Function(
-                      NSUInteger arg0, ffi.Pointer<ffi.Uint8> arg1)>>()
-          .asFunction<int Function(int arg0, ffi.Pointer<ffi.Uint8> arg1)>()(
-      arg0, arg1);
+      .cast<
+          ffi.NativeFunction<
+              ffi.Bool Function(NSUInteger arg0, ffi.Pointer<ffi.Bool> arg1)>>()
+      .asFunction<
+          bool Function(int arg0, ffi.Pointer<ffi.Bool> arg1)>()(arg0, arg1);
+}
+
+final _ObjCBlock7_closureRegistry = <int, Function>{};
+int _ObjCBlock7_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock7_registerClosure(Function fn) {
+  final id = ++_ObjCBlock7_closureRegistryIndex;
+  _ObjCBlock7_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+bool _ObjCBlock7_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block, int arg0, ffi.Pointer<ffi.Bool> arg1) {
+  return _ObjCBlock7_closureRegistry[block.ref.target.address]!(arg0, arg1);
 }
 
 class ObjCBlock7 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock7._(this._impl, this._lib);
-
   ObjCBlock7.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
               ffi.NativeFunction<
-                  ffi.Uint8 Function(
-                      NSUInteger arg0, ffi.Pointer<ffi.Uint8> arg1)>>
+                  ffi.Bool Function(
+                      NSUInteger arg0, ffi.Pointer<ffi.Bool> arg1)>>
           ptr)
       : _impl = _lib._newBlock1(
             ffi.Pointer.fromFunction<
-                        ffi.Uint8 Function(ffi.Pointer<_ObjCBlock> block,
-                            NSUInteger arg0, ffi.Pointer<ffi.Uint8> arg1)>(
-                    _ObjCBlock7_fnPtrTrampoline, 0)
+                        ffi.Bool Function(ffi.Pointer<_ObjCBlock> block,
+                            NSUInteger arg0, ffi.Pointer<ffi.Bool> arg1)>(
+                    _ObjCBlock7_fnPtrTrampoline, false)
                 .cast(),
             ptr.cast());
+  ObjCBlock7.fromFunction(
+      this._lib, bool Function(int arg0, ffi.Pointer<ffi.Bool> arg1) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Bool Function(ffi.Pointer<_ObjCBlock> block,
+                            NSUInteger arg0, ffi.Pointer<ffi.Bool> arg1)>(
+                    _ObjCBlock7_closureTrampoline, false)
+                .cast(),
+            _ObjCBlock7_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
 void _ObjCBlock8_fnPtrTrampoline(
-    ffi.Pointer<_ObjCBlock> block, NSRange arg0, ffi.Pointer<ffi.Uint8> arg1) {
+    ffi.Pointer<_ObjCBlock> block, NSRange arg0, ffi.Pointer<ffi.Bool> arg1) {
   return block.ref.target
       .cast<
           ffi.NativeFunction<
-              ffi.Void Function(NSRange arg0, ffi.Pointer<ffi.Uint8> arg1)>>()
+              ffi.Void Function(NSRange arg0, ffi.Pointer<ffi.Bool> arg1)>>()
       .asFunction<
           void Function(
-              NSRange arg0, ffi.Pointer<ffi.Uint8> arg1)>()(arg0, arg1);
+              NSRange arg0, ffi.Pointer<ffi.Bool> arg1)>()(arg0, arg1);
+}
+
+final _ObjCBlock8_closureRegistry = <int, Function>{};
+int _ObjCBlock8_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock8_registerClosure(Function fn) {
+  final id = ++_ObjCBlock8_closureRegistryIndex;
+  _ObjCBlock8_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock8_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block, NSRange arg0, ffi.Pointer<ffi.Bool> arg1) {
+  return _ObjCBlock8_closureRegistry[block.ref.target.address]!(arg0, arg1);
 }
 
 class ObjCBlock8 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock8._(this._impl, this._lib);
-
   ObjCBlock8.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
               ffi.NativeFunction<
-                  ffi.Void Function(NSRange arg0, ffi.Pointer<ffi.Uint8> arg1)>>
+                  ffi.Void Function(NSRange arg0, ffi.Pointer<ffi.Bool> arg1)>>
           ptr)
       : _impl = _lib._newBlock1(
             ffi.Pointer.fromFunction<
                         ffi.Void Function(ffi.Pointer<_ObjCBlock> block,
-                            NSRange arg0, ffi.Pointer<ffi.Uint8> arg1)>(
+                            NSRange arg0, ffi.Pointer<ffi.Bool> arg1)>(
                     _ObjCBlock8_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock8.fromFunction(
+      this._lib, void Function(NSRange arg0, ffi.Pointer<ffi.Bool> arg1) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(ffi.Pointer<_ObjCBlock> block,
+                            NSRange arg0, ffi.Pointer<ffi.Bool> arg1)>(
+                    _ObjCBlock8_closureTrampoline)
+                .cast(),
+            _ObjCBlock8_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
 class NSMutableIndexSet extends NSIndexSet {
-  NSMutableIndexSet._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSMutableIndexSet._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSMutableIndexSet] that points to the same underlying object as [other].
   static NSMutableIndexSet castFrom<T extends _ObjCWrapper>(T other) {
-    return NSMutableIndexSet._(other._id, other._lib);
+    return NSMutableIndexSet._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSMutableIndexSet] that wraps the given raw object pointer.
   static NSMutableIndexSet castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSMutableIndexSet._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSMutableIndexSet._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSMutableIndexSet].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSMutableIndexSet1);
   }
 
   void addIndexes_(NSObject? indexSet) {
@@ -92094,7 +91899,7 @@ class NSMutableIndexSet extends NSIndexSet {
   }
 
   void removeAllIndexes() {
-    _lib._objc_msgSend_0(_id, _lib._sel_removeAllIndexes1);
+    _lib._objc_msgSend_1(_id, _lib._sel_removeAllIndexes1);
   }
 
   void addIndex_(int value) {
@@ -92119,35 +91924,35 @@ class NSMutableIndexSet extends NSIndexSet {
   }
 
   static NSMutableIndexSet indexSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableIndexSet1, _lib._sel_indexSet1);
-    return NSMutableIndexSet._(_ret, _lib);
+    return NSMutableIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableIndexSet indexSetWithIndex_(
       NativeCupertinoHttp _lib, int value) {
     final _ret = _lib._objc_msgSend_133(
         _lib._class_NSMutableIndexSet1, _lib._sel_indexSetWithIndex_1, value);
-    return NSMutableIndexSet._(_ret, _lib);
+    return NSMutableIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableIndexSet indexSetWithIndexesInRange_(
       NativeCupertinoHttp _lib, NSRange range) {
     final _ret = _lib._objc_msgSend_134(_lib._class_NSMutableIndexSet1,
         _lib._sel_indexSetWithIndexesInRange_1, range);
-    return NSMutableIndexSet._(_ret, _lib);
+    return NSMutableIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableIndexSet new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSMutableIndexSet1, _lib._sel_new1);
-    return NSMutableIndexSet._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSMutableIndexSet1, _lib._sel_new1);
+    return NSMutableIndexSet._(_ret, _lib, retain: false, release: true);
   }
 
   static NSMutableIndexSet alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSMutableIndexSet1, _lib._sel_alloc1);
-    return NSMutableIndexSet._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSMutableIndexSet1, _lib._sel_alloc1);
+    return NSMutableIndexSet._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -92161,23 +91966,36 @@ abstract class NSOrderedCollectionDifferenceCalculationOptions {
 
 class NSOrderedCollectionDifference extends NSObject {
   NSOrderedCollectionDifference._(
-      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSOrderedCollectionDifference] that points to the same underlying object as [other].
   static NSOrderedCollectionDifference castFrom<T extends _ObjCWrapper>(
       T other) {
-    return NSOrderedCollectionDifference._(other._id, other._lib);
+    return NSOrderedCollectionDifference._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSOrderedCollectionDifference] that wraps the given raw object pointer.
   static NSOrderedCollectionDifference castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSOrderedCollectionDifference._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSOrderedCollectionDifference._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSOrderedCollectionDifference].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSOrderedCollectionDifference1);
   }
 
   NSOrderedCollectionDifference initWithChanges_(NSObject? changes) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithChanges_1, changes?._id ?? ffi.nullptr);
-    return NSOrderedCollectionDifference._(_ret, _lib);
+    return NSOrderedCollectionDifference._(_ret, _lib,
+        retain: true, release: true);
   }
 
   NSOrderedCollectionDifference
@@ -92195,7 +92013,8 @@ class NSOrderedCollectionDifference extends NSObject {
         removes?._id ?? ffi.nullptr,
         removedObjects?._id ?? ffi.nullptr,
         changes?._id ?? ffi.nullptr);
-    return NSOrderedCollectionDifference._(_ret, _lib);
+    return NSOrderedCollectionDifference._(_ret, _lib,
+        retain: true, release: true);
   }
 
   NSOrderedCollectionDifference
@@ -92211,17 +92030,22 @@ class NSOrderedCollectionDifference extends NSObject {
         insertedObjects?._id ?? ffi.nullptr,
         removes?._id ?? ffi.nullptr,
         removedObjects?._id ?? ffi.nullptr);
-    return NSOrderedCollectionDifference._(_ret, _lib);
+    return NSOrderedCollectionDifference._(_ret, _lib,
+        retain: true, release: true);
   }
 
   NSObject? get insertions {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_insertions1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_insertions1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get removals {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_removals1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_removals1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   bool get hasChanges {
@@ -92229,35 +92053,48 @@ class NSOrderedCollectionDifference extends NSObject {
   }
 
   NSOrderedCollectionDifference inverseDifference() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_inverseDifference1);
-    return NSOrderedCollectionDifference._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_inverseDifference1);
+    return NSOrderedCollectionDifference._(_ret, _lib,
+        retain: true, release: true);
   }
 
   static NSOrderedCollectionDifference new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSOrderedCollectionDifference1, _lib._sel_new1);
-    return NSOrderedCollectionDifference._(_ret, _lib);
+    return NSOrderedCollectionDifference._(_ret, _lib,
+        retain: false, release: true);
   }
 
   static NSOrderedCollectionDifference alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSOrderedCollectionDifference1, _lib._sel_alloc1);
-    return NSOrderedCollectionDifference._(_ret, _lib);
+    return NSOrderedCollectionDifference._(_ret, _lib,
+        retain: false, release: true);
   }
 }
 
 /// Immutable Array
 class NSArray extends NSObject {
-  NSArray._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSArray._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSArray] that points to the same underlying object as [other].
   static NSArray castFrom<T extends _ObjCWrapper>(T other) {
-    return NSArray._(other._id, other._lib);
+    return NSArray._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSArray] that wraps the given raw object pointer.
   static NSArray castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSArray._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSArray._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSArray].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSArray1);
   }
 
   int get count {
@@ -92266,59 +92103,61 @@ class NSArray extends NSObject {
 
   NSObject objectAtIndex_(int index) {
     final _ret = _lib._objc_msgSend_133(_id, _lib._sel_objectAtIndex_1, index);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   @override
   NSArray init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSArray._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSArray._(_ret, _lib, retain: true, release: true);
   }
 
   NSArray initWithObjects_count_(
       ffi.Pointer<ffi.Pointer<ObjCObject>> objects, int cnt) {
     final _ret = _lib._objc_msgSend_154(
         _id, _lib._sel_initWithObjects_count_1, objects, cnt);
-    return NSArray._(_ret, _lib);
+    return NSArray._(_ret, _lib, retain: true, release: true);
   }
 
   NSArray initWithCoder_(NSObject? coder) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithCoder_1, coder?._id ?? ffi.nullptr);
-    return NSArray._(_ret, _lib);
+    return NSArray._(_ret, _lib, retain: true, release: true);
   }
 
   NSString componentsJoinedByString_(NSObject? separator) {
     final _ret = _lib._objc_msgSend_28(_id,
         _lib._sel_componentsJoinedByString_1, separator?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   bool containsObject_(NSObject anObject) {
-    return _lib._objc_msgSend_4(_id, _lib._sel_containsObject_1, anObject._id);
+    return _lib._objc_msgSend_0(_id, _lib._sel_containsObject_1, anObject._id);
   }
 
   NSObject? get description {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_description1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_description1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSString descriptionWithLocale_(NSObject locale) {
     final _ret = _lib._objc_msgSend_28(
         _id, _lib._sel_descriptionWithLocale_1, locale._id);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSString descriptionWithLocale_indent_(NSObject locale, int level) {
     final _ret = _lib._objc_msgSend_87(
         _id, _lib._sel_descriptionWithLocale_indent_1, locale._id, level);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject firstObjectCommonWithArray_(NSObject? otherArray) {
     final _ret = _lib._objc_msgSend_13(_id,
         _lib._sel_firstObjectCommonWithArray_1, otherArray?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   void getObjects_range_(
@@ -92346,23 +92185,25 @@ class NSArray extends NSObject {
   }
 
   bool isEqualToArray_(NSObject? otherArray) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_isEqualToArray_1, otherArray?._id ?? ffi.nullptr);
   }
 
   NSObject get firstObject {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_firstObject1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_firstObject1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject get lastObject {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_lastObject1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_lastObject1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get sortedArrayHint {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_sortedArrayHint1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_sortedArrayHint1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Serializes this instance to the specified URL in the NSPropertyList format (using NSPropertyListXMLFormat_v1_0). For other formats use NSPropertyListSerialization directly.
@@ -92389,7 +92230,7 @@ class NSArray extends NSObject {
   NSObject objectAtIndexedSubscript_(int idx) {
     final _ret =
         _lib._objc_msgSend_133(_id, _lib._sel_objectAtIndexedSubscript_1, idx);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   void enumerateObjectsUsingBlock_(ObjCBlock9 block) {
@@ -92438,7 +92279,7 @@ class NSArray extends NSObject {
   NSIndexSet indexesOfObjectsPassingTest_(ObjCBlock10 predicate) {
     final _ret = _lib._objc_msgSend_165(
         _id, _lib._sel_indexesOfObjectsPassingTest_1, predicate._impl);
-    return NSIndexSet._(_ret, _lib);
+    return NSIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   NSIndexSet indexesOfObjectsWithOptions_passingTest_(
@@ -92448,7 +92289,7 @@ class NSArray extends NSObject {
         _lib._sel_indexesOfObjectsWithOptions_passingTest_1,
         opts,
         predicate._impl);
-    return NSIndexSet._(_ret, _lib);
+    return NSIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   NSIndexSet indexesOfObjectsAtIndexes_options_passingTest_(
@@ -92459,7 +92300,7 @@ class NSArray extends NSObject {
         s?._id ?? ffi.nullptr,
         opts,
         predicate._impl);
-    return NSIndexSet._(_ret, _lib);
+    return NSIndexSet._(_ret, _lib, retain: true, release: true);
   }
 
   /// binary search
@@ -92475,52 +92316,52 @@ class NSArray extends NSObject {
   }
 
   static NSArray array(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSArray1, _lib._sel_array1);
-    return NSArray._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSArray1, _lib._sel_array1);
+    return NSArray._(_ret, _lib, retain: true, release: true);
   }
 
   static NSArray arrayWithObject_(NativeCupertinoHttp _lib, NSObject anObject) {
     final _ret = _lib._objc_msgSend_13(
         _lib._class_NSArray1, _lib._sel_arrayWithObject_1, anObject._id);
-    return NSArray._(_ret, _lib);
+    return NSArray._(_ret, _lib, retain: true, release: true);
   }
 
   static NSArray arrayWithObjects_count_(NativeCupertinoHttp _lib,
       ffi.Pointer<ffi.Pointer<ObjCObject>> objects, int cnt) {
     final _ret = _lib._objc_msgSend_154(
         _lib._class_NSArray1, _lib._sel_arrayWithObjects_count_1, objects, cnt);
-    return NSArray._(_ret, _lib);
+    return NSArray._(_ret, _lib, retain: true, release: true);
   }
 
   static NSArray arrayWithObjects_(
       NativeCupertinoHttp _lib, NSObject firstObj) {
     final _ret = _lib._objc_msgSend_13(
         _lib._class_NSArray1, _lib._sel_arrayWithObjects_1, firstObj._id);
-    return NSArray._(_ret, _lib);
+    return NSArray._(_ret, _lib, retain: true, release: true);
   }
 
   static NSArray arrayWithArray_(NativeCupertinoHttp _lib, NSObject? array) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSArray1,
         _lib._sel_arrayWithArray_1, array?._id ?? ffi.nullptr);
-    return NSArray._(_ret, _lib);
+    return NSArray._(_ret, _lib, retain: true, release: true);
   }
 
   NSArray initWithObjects_(NSObject firstObj) {
     final _ret =
         _lib._objc_msgSend_13(_id, _lib._sel_initWithObjects_1, firstObj._id);
-    return NSArray._(_ret, _lib);
+    return NSArray._(_ret, _lib, retain: true, release: true);
   }
 
   NSArray initWithArray_(NSObject? array) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithArray_1, array?._id ?? ffi.nullptr);
-    return NSArray._(_ret, _lib);
+    return NSArray._(_ret, _lib, retain: true, release: true);
   }
 
   NSArray initWithArray_copyItems_(NSObject? array, bool flag) {
     final _ret = _lib._objc_msgSend_93(_id, _lib._sel_initWithArray_copyItems_1,
         array?._id ?? ffi.nullptr, flag);
-    return NSArray._(_ret, _lib);
+    return NSArray._(_ret, _lib, retain: false, release: true);
   }
 
   /// This method is unsafe because it could potentially cause buffer overruns. You should use -getObjects:range: instead.
@@ -92539,39 +92380,52 @@ class NSArray extends NSObject {
   }
 
   static NSArray new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSArray1, _lib._sel_new1);
-    return NSArray._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSArray1, _lib._sel_new1);
+    return NSArray._(_ret, _lib, retain: false, release: true);
   }
 
   static NSArray alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSArray1, _lib._sel_alloc1);
-    return NSArray._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSArray1, _lib._sel_alloc1);
+    return NSArray._(_ret, _lib, retain: false, release: true);
   }
 }
 
 void _ObjCBlock9_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block,
-    ffi.Pointer<ObjCObject> arg0, int arg1, ffi.Pointer<ffi.Uint8> arg2) {
+    ffi.Pointer<ObjCObject> arg0, int arg1, ffi.Pointer<ffi.Bool> arg2) {
   return block.ref.target
       .cast<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Pointer<ObjCObject> arg0, NSUInteger arg1,
-                  ffi.Pointer<ffi.Uint8> arg2)>>()
+                  ffi.Pointer<ffi.Bool> arg2)>>()
       .asFunction<
           void Function(ffi.Pointer<ObjCObject> arg0, int arg1,
-              ffi.Pointer<ffi.Uint8> arg2)>()(arg0, arg1, arg2);
+              ffi.Pointer<ffi.Bool> arg2)>()(arg0, arg1, arg2);
+}
+
+final _ObjCBlock9_closureRegistry = <int, Function>{};
+int _ObjCBlock9_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock9_registerClosure(Function fn) {
+  final id = ++_ObjCBlock9_closureRegistryIndex;
+  _ObjCBlock9_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock9_closureTrampoline(ffi.Pointer<_ObjCBlock> block,
+    ffi.Pointer<ObjCObject> arg0, int arg1, ffi.Pointer<ffi.Bool> arg2) {
+  return _ObjCBlock9_closureRegistry[block.ref.target.address]!(
+      arg0, arg1, arg2);
 }
 
 class ObjCBlock9 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock9._(this._impl, this._lib);
-
   ObjCBlock9.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
               ffi.NativeFunction<
                   ffi.Void Function(ffi.Pointer<ObjCObject> arg0,
-                      NSUInteger arg1, ffi.Pointer<ffi.Uint8> arg2)>>
+                      NSUInteger arg1, ffi.Pointer<ffi.Bool> arg2)>>
           ptr)
       : _impl = _lib._newBlock1(
             ffi.Pointer.fromFunction<
@@ -92579,48 +92433,90 @@ class ObjCBlock9 {
                             ffi.Pointer<_ObjCBlock> block,
                             ffi.Pointer<ObjCObject> arg0,
                             NSUInteger arg1,
-                            ffi.Pointer<ffi.Uint8> arg2)>(
+                            ffi.Pointer<ffi.Bool> arg2)>(
                     _ObjCBlock9_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock9.fromFunction(
+      this._lib,
+      void Function(ffi.Pointer<ObjCObject> arg0, int arg1,
+              ffi.Pointer<ffi.Bool> arg2)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ObjCObject> arg0,
+                            NSUInteger arg1,
+                            ffi.Pointer<ffi.Bool> arg2)>(
+                    _ObjCBlock9_closureTrampoline)
+                .cast(),
+            _ObjCBlock9_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
-int _ObjCBlock10_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block,
-    ffi.Pointer<ObjCObject> arg0, int arg1, ffi.Pointer<ffi.Uint8> arg2) {
+bool _ObjCBlock10_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block,
+    ffi.Pointer<ObjCObject> arg0, int arg1, ffi.Pointer<ffi.Bool> arg2) {
   return block.ref.target
       .cast<
           ffi.NativeFunction<
-              ffi.Uint8 Function(ffi.Pointer<ObjCObject> arg0, NSUInteger arg1,
-                  ffi.Pointer<ffi.Uint8> arg2)>>()
+              ffi.Bool Function(ffi.Pointer<ObjCObject> arg0, NSUInteger arg1,
+                  ffi.Pointer<ffi.Bool> arg2)>>()
       .asFunction<
-          int Function(ffi.Pointer<ObjCObject> arg0, int arg1,
-              ffi.Pointer<ffi.Uint8> arg2)>()(arg0, arg1, arg2);
+          bool Function(ffi.Pointer<ObjCObject> arg0, int arg1,
+              ffi.Pointer<ffi.Bool> arg2)>()(arg0, arg1, arg2);
+}
+
+final _ObjCBlock10_closureRegistry = <int, Function>{};
+int _ObjCBlock10_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock10_registerClosure(Function fn) {
+  final id = ++_ObjCBlock10_closureRegistryIndex;
+  _ObjCBlock10_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+bool _ObjCBlock10_closureTrampoline(ffi.Pointer<_ObjCBlock> block,
+    ffi.Pointer<ObjCObject> arg0, int arg1, ffi.Pointer<ffi.Bool> arg2) {
+  return _ObjCBlock10_closureRegistry[block.ref.target.address]!(
+      arg0, arg1, arg2);
 }
 
 class ObjCBlock10 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock10._(this._impl, this._lib);
-
   ObjCBlock10.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
               ffi.NativeFunction<
-                  ffi.Uint8 Function(ffi.Pointer<ObjCObject> arg0,
-                      NSUInteger arg1, ffi.Pointer<ffi.Uint8> arg2)>>
+                  ffi.Bool Function(ffi.Pointer<ObjCObject> arg0,
+                      NSUInteger arg1, ffi.Pointer<ffi.Bool> arg2)>>
           ptr)
-      : _impl =
-            _lib._newBlock1(
-                ffi.Pointer.fromFunction<
-                            ffi.Uint8 Function(
-                                ffi.Pointer<_ObjCBlock> block,
-                                ffi.Pointer<ObjCObject> arg0,
-                                NSUInteger arg1,
-                                ffi.Pointer<ffi.Uint8> arg2)>(
-                        _ObjCBlock10_fnPtrTrampoline, 0)
-                    .cast(),
-                ptr.cast());
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Bool Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ObjCObject> arg0,
+                            NSUInteger arg1,
+                            ffi.Pointer<ffi.Bool> arg2)>(
+                    _ObjCBlock10_fnPtrTrampoline, false)
+                .cast(),
+            ptr.cast());
+  ObjCBlock10.fromFunction(
+      this._lib,
+      bool Function(ffi.Pointer<ObjCObject> arg0, int arg1,
+              ffi.Pointer<ffi.Bool> arg2)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Bool Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ObjCObject> arg0,
+                            NSUInteger arg1,
+                            ffi.Pointer<ffi.Bool> arg2)>(
+                    _ObjCBlock10_closureTrampoline, false)
+                .cast(),
+            _ObjCBlock10_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -92643,11 +92539,23 @@ int _ObjCBlock11_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block,
               ffi.Pointer<ObjCObject> arg1)>()(arg0, arg1);
 }
 
+final _ObjCBlock11_closureRegistry = <int, Function>{};
+int _ObjCBlock11_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock11_registerClosure(Function fn) {
+  final id = ++_ObjCBlock11_closureRegistryIndex;
+  _ObjCBlock11_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+int _ObjCBlock11_closureTrampoline(ffi.Pointer<_ObjCBlock> block,
+    ffi.Pointer<ObjCObject> arg0, ffi.Pointer<ObjCObject> arg1) {
+  return _ObjCBlock11_closureRegistry[block.ref.target.address]!(arg0, arg1);
+}
+
 class ObjCBlock11 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock11._(this._impl, this._lib);
-
   ObjCBlock11.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -92664,21 +92572,44 @@ class ObjCBlock11 {
                     _ObjCBlock11_fnPtrTrampoline, 0)
                 .cast(),
             ptr.cast());
+  ObjCBlock11.fromFunction(
+      this._lib,
+      int Function(ffi.Pointer<ObjCObject> arg0, ffi.Pointer<ObjCObject> arg1)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Int32 Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ObjCObject> arg0,
+                            ffi.Pointer<ObjCObject> arg1)>(
+                    _ObjCBlock11_closureTrampoline, 0)
+                .cast(),
+            _ObjCBlock11_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
 /// Mutable Array
 class NSMutableArray extends NSArray {
-  NSMutableArray._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSMutableArray._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSMutableArray] that points to the same underlying object as [other].
   static NSMutableArray castFrom<T extends _ObjCWrapper>(T other) {
-    return NSMutableArray._(other._id, other._lib);
+    return NSMutableArray._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSMutableArray] that wraps the given raw object pointer.
   static NSMutableArray castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSMutableArray._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSMutableArray._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSMutableArray].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSMutableArray1);
   }
 
   void addObject_(NSObject anObject) {
@@ -92691,7 +92622,7 @@ class NSMutableArray extends NSArray {
   }
 
   void removeLastObject() {
-    _lib._objc_msgSend_0(_id, _lib._sel_removeLastObject1);
+    _lib._objc_msgSend_1(_id, _lib._sel_removeLastObject1);
   }
 
   void removeObjectAtIndex_(int index) {
@@ -92705,21 +92636,21 @@ class NSMutableArray extends NSArray {
 
   @override
   NSMutableArray init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSMutableArray._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSMutableArray._(_ret, _lib, retain: true, release: true);
   }
 
   NSMutableArray initWithCapacity_(int numItems) {
     final _ret =
         _lib._objc_msgSend_133(_id, _lib._sel_initWithCapacity_1, numItems);
-    return NSMutableArray._(_ret, _lib);
+    return NSMutableArray._(_ret, _lib, retain: true, release: true);
   }
 
   @override
   NSMutableArray initWithCoder_(NSObject? coder) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithCoder_1, coder?._id ?? ffi.nullptr);
-    return NSMutableArray._(_ret, _lib);
+    return NSMutableArray._(_ret, _lib, retain: true, release: true);
   }
 
   void addObjectsFromArray_(NSObject? otherArray) {
@@ -92733,7 +92664,7 @@ class NSMutableArray extends NSArray {
   }
 
   void removeAllObjects() {
-    _lib._objc_msgSend_0(_id, _lib._sel_removeAllObjects1);
+    _lib._objc_msgSend_1(_id, _lib._sel_removeAllObjects1);
   }
 
   void removeObject_inRange_(NSObject anObject, NSRange range) {
@@ -92843,7 +92774,7 @@ class NSMutableArray extends NSArray {
       NativeCupertinoHttp _lib, int numItems) {
     final _ret = _lib._objc_msgSend_133(
         _lib._class_NSMutableArray1, _lib._sel_arrayWithCapacity_1, numItems);
-    return NSMutableArray._(_ret, _lib);
+    return NSMutableArray._(_ret, _lib, retain: true, release: true);
   }
 
   void applyDifference_(NSObject? difference) {
@@ -92853,63 +92784,73 @@ class NSMutableArray extends NSArray {
 
   static NSMutableArray array(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSMutableArray1, _lib._sel_array1);
-    return NSMutableArray._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSMutableArray1, _lib._sel_array1);
+    return NSMutableArray._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableArray arrayWithObject_(
       NativeCupertinoHttp _lib, NSObject anObject) {
     final _ret = _lib._objc_msgSend_13(
         _lib._class_NSMutableArray1, _lib._sel_arrayWithObject_1, anObject._id);
-    return NSMutableArray._(_ret, _lib);
+    return NSMutableArray._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableArray arrayWithObjects_count_(NativeCupertinoHttp _lib,
       ffi.Pointer<ffi.Pointer<ObjCObject>> objects, int cnt) {
     final _ret = _lib._objc_msgSend_154(_lib._class_NSMutableArray1,
         _lib._sel_arrayWithObjects_count_1, objects, cnt);
-    return NSMutableArray._(_ret, _lib);
+    return NSMutableArray._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableArray arrayWithObjects_(
       NativeCupertinoHttp _lib, NSObject firstObj) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableArray1,
         _lib._sel_arrayWithObjects_1, firstObj._id);
-    return NSMutableArray._(_ret, _lib);
+    return NSMutableArray._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableArray arrayWithArray_(
       NativeCupertinoHttp _lib, NSObject? array) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableArray1,
         _lib._sel_arrayWithArray_1, array?._id ?? ffi.nullptr);
-    return NSMutableArray._(_ret, _lib);
+    return NSMutableArray._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableArray new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSMutableArray1, _lib._sel_new1);
-    return NSMutableArray._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSMutableArray1, _lib._sel_new1);
+    return NSMutableArray._(_ret, _lib, retain: false, release: true);
   }
 
   static NSMutableArray alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSMutableArray1, _lib._sel_alloc1);
-    return NSMutableArray._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSMutableArray1, _lib._sel_alloc1);
+    return NSMutableArray._(_ret, _lib, retain: false, release: true);
   }
 }
 
 /// Mutable Data
 class NSMutableData extends NSData {
-  NSMutableData._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSMutableData._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSMutableData] that points to the same underlying object as [other].
   static NSMutableData castFrom<T extends _ObjCWrapper>(T other) {
-    return NSMutableData._(other._id, other._lib);
+    return NSMutableData._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSMutableData] that wraps the given raw object pointer.
   static NSMutableData castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSMutableData._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSMutableData._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSMutableData].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSMutableData1);
   }
 
   ffi.Pointer<ffi.Void> get mutableBytes {
@@ -92966,25 +92907,25 @@ class NSMutableData extends NSData {
       NativeCupertinoHttp _lib, int aNumItems) {
     final _ret = _lib._objc_msgSend_133(
         _lib._class_NSMutableData1, _lib._sel_dataWithCapacity_1, aNumItems);
-    return NSMutableData._(_ret, _lib);
+    return NSMutableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableData dataWithLength_(NativeCupertinoHttp _lib, int length) {
     final _ret = _lib._objc_msgSend_133(
         _lib._class_NSMutableData1, _lib._sel_dataWithLength_1, length);
-    return NSMutableData._(_ret, _lib);
+    return NSMutableData._(_ret, _lib, retain: true, release: true);
   }
 
   NSMutableData initWithCapacity_(int capacity) {
     final _ret =
         _lib._objc_msgSend_133(_id, _lib._sel_initWithCapacity_1, capacity);
-    return NSMutableData._(_ret, _lib);
+    return NSMutableData._(_ret, _lib, retain: true, release: true);
   }
 
   NSMutableData initWithLength_(int length) {
     final _ret =
         _lib._objc_msgSend_133(_id, _lib._sel_initWithLength_1, length);
-    return NSMutableData._(_ret, _lib);
+    return NSMutableData._(_ret, _lib, retain: true, release: true);
   }
 
   /// These methods compress or decompress the receiver's contents in-place using the specified algorithm. If the operation is not successful, these methods leave the receiver unchanged..
@@ -93002,22 +92943,22 @@ class NSMutableData extends NSData {
 
   static NSMutableData data(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSMutableData1, _lib._sel_data1);
-    return NSMutableData._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSMutableData1, _lib._sel_data1);
+    return NSMutableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableData dataWithBytes_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Void> bytes, int length) {
     final _ret = _lib._objc_msgSend_46(_lib._class_NSMutableData1,
         _lib._sel_dataWithBytes_length_1, bytes, length);
-    return NSMutableData._(_ret, _lib);
+    return NSMutableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableData dataWithBytesNoCopy_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Void> bytes, int length) {
     final _ret = _lib._objc_msgSend_46(_lib._class_NSMutableData1,
         _lib._sel_dataWithBytesNoCopy_length_1, bytes, length);
-    return NSMutableData._(_ret, _lib);
+    return NSMutableData._(_ret, _lib, retain: false, release: true);
   }
 
   static NSMutableData dataWithBytesNoCopy_length_freeWhenDone_(
@@ -93027,7 +92968,7 @@ class NSMutableData extends NSData {
       bool b) {
     final _ret = _lib._objc_msgSend_47(_lib._class_NSMutableData1,
         _lib._sel_dataWithBytesNoCopy_length_freeWhenDone_1, bytes, length, b);
-    return NSMutableData._(_ret, _lib);
+    return NSMutableData._(_ret, _lib, retain: false, release: true);
   }
 
   static NSMutableData dataWithContentsOfFile_options_error_(
@@ -93041,7 +92982,7 @@ class NSMutableData extends NSData {
         path?._id ?? ffi.nullptr,
         readOptionsMask,
         errorPtr);
-    return NSMutableData._(_ret, _lib);
+    return NSMutableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableData dataWithContentsOfURL_options_error_(
@@ -93055,94 +92996,105 @@ class NSMutableData extends NSData {
         url?._id ?? ffi.nullptr,
         readOptionsMask,
         errorPtr);
-    return NSMutableData._(_ret, _lib);
+    return NSMutableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableData dataWithContentsOfFile_(
       NativeCupertinoHttp _lib, NSObject? path) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableData1,
         _lib._sel_dataWithContentsOfFile_1, path?._id ?? ffi.nullptr);
-    return NSMutableData._(_ret, _lib);
+    return NSMutableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableData dataWithContentsOfURL_(
       NativeCupertinoHttp _lib, NSObject? url) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableData1,
         _lib._sel_dataWithContentsOfURL_1, url?._id ?? ffi.nullptr);
-    return NSMutableData._(_ret, _lib);
+    return NSMutableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableData dataWithData_(NativeCupertinoHttp _lib, NSObject? data) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableData1,
         _lib._sel_dataWithData_1, data?._id ?? ffi.nullptr);
-    return NSMutableData._(_ret, _lib);
+    return NSMutableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject dataWithContentsOfMappedFile_(
       NativeCupertinoHttp _lib, NSObject? path) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableData1,
         _lib._sel_dataWithContentsOfMappedFile_1, path?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableData new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSMutableData1, _lib._sel_new1);
-    return NSMutableData._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSMutableData1, _lib._sel_new1);
+    return NSMutableData._(_ret, _lib, retain: false, release: true);
   }
 
   static NSMutableData alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSMutableData1, _lib._sel_alloc1);
-    return NSMutableData._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSMutableData1, _lib._sel_alloc1);
+    return NSMutableData._(_ret, _lib, retain: false, release: true);
   }
 }
 
 /// Purgeable Data
 class NSPurgeableData extends NSMutableData {
-  NSPurgeableData._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSPurgeableData._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSPurgeableData] that points to the same underlying object as [other].
   static NSPurgeableData castFrom<T extends _ObjCWrapper>(T other) {
-    return NSPurgeableData._(other._id, other._lib);
+    return NSPurgeableData._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSPurgeableData] that wraps the given raw object pointer.
   static NSPurgeableData castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSPurgeableData._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSPurgeableData._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSPurgeableData].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSPurgeableData1);
   }
 
   static NSPurgeableData dataWithCapacity_(
       NativeCupertinoHttp _lib, int aNumItems) {
     final _ret = _lib._objc_msgSend_133(
         _lib._class_NSPurgeableData1, _lib._sel_dataWithCapacity_1, aNumItems);
-    return NSPurgeableData._(_ret, _lib);
+    return NSPurgeableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSPurgeableData dataWithLength_(NativeCupertinoHttp _lib, int length) {
     final _ret = _lib._objc_msgSend_133(
         _lib._class_NSPurgeableData1, _lib._sel_dataWithLength_1, length);
-    return NSPurgeableData._(_ret, _lib);
+    return NSPurgeableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSPurgeableData data(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSPurgeableData1, _lib._sel_data1);
-    return NSPurgeableData._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSPurgeableData1, _lib._sel_data1);
+    return NSPurgeableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSPurgeableData dataWithBytes_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Void> bytes, int length) {
     final _ret = _lib._objc_msgSend_46(_lib._class_NSPurgeableData1,
         _lib._sel_dataWithBytes_length_1, bytes, length);
-    return NSPurgeableData._(_ret, _lib);
+    return NSPurgeableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSPurgeableData dataWithBytesNoCopy_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Void> bytes, int length) {
     final _ret = _lib._objc_msgSend_46(_lib._class_NSPurgeableData1,
         _lib._sel_dataWithBytesNoCopy_length_1, bytes, length);
-    return NSPurgeableData._(_ret, _lib);
+    return NSPurgeableData._(_ret, _lib, retain: false, release: true);
   }
 
   static NSPurgeableData dataWithBytesNoCopy_length_freeWhenDone_(
@@ -93152,7 +93104,7 @@ class NSPurgeableData extends NSMutableData {
       bool b) {
     final _ret = _lib._objc_msgSend_47(_lib._class_NSPurgeableData1,
         _lib._sel_dataWithBytesNoCopy_length_freeWhenDone_1, bytes, length, b);
-    return NSPurgeableData._(_ret, _lib);
+    return NSPurgeableData._(_ret, _lib, retain: false, release: true);
   }
 
   static NSPurgeableData dataWithContentsOfFile_options_error_(
@@ -93166,7 +93118,7 @@ class NSPurgeableData extends NSMutableData {
         path?._id ?? ffi.nullptr,
         readOptionsMask,
         errorPtr);
-    return NSPurgeableData._(_ret, _lib);
+    return NSPurgeableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSPurgeableData dataWithContentsOfURL_options_error_(
@@ -93180,62 +93132,73 @@ class NSPurgeableData extends NSMutableData {
         url?._id ?? ffi.nullptr,
         readOptionsMask,
         errorPtr);
-    return NSPurgeableData._(_ret, _lib);
+    return NSPurgeableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSPurgeableData dataWithContentsOfFile_(
       NativeCupertinoHttp _lib, NSObject? path) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSPurgeableData1,
         _lib._sel_dataWithContentsOfFile_1, path?._id ?? ffi.nullptr);
-    return NSPurgeableData._(_ret, _lib);
+    return NSPurgeableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSPurgeableData dataWithContentsOfURL_(
       NativeCupertinoHttp _lib, NSObject? url) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSPurgeableData1,
         _lib._sel_dataWithContentsOfURL_1, url?._id ?? ffi.nullptr);
-    return NSPurgeableData._(_ret, _lib);
+    return NSPurgeableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSPurgeableData dataWithData_(
       NativeCupertinoHttp _lib, NSObject? data) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSPurgeableData1,
         _lib._sel_dataWithData_1, data?._id ?? ffi.nullptr);
-    return NSPurgeableData._(_ret, _lib);
+    return NSPurgeableData._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject dataWithContentsOfMappedFile_(
       NativeCupertinoHttp _lib, NSObject? path) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSPurgeableData1,
         _lib._sel_dataWithContentsOfMappedFile_1, path?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSPurgeableData new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSPurgeableData1, _lib._sel_new1);
-    return NSPurgeableData._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSPurgeableData1, _lib._sel_new1);
+    return NSPurgeableData._(_ret, _lib, retain: false, release: true);
   }
 
   static NSPurgeableData alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSPurgeableData1, _lib._sel_alloc1);
-    return NSPurgeableData._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSPurgeableData1, _lib._sel_alloc1);
+    return NSPurgeableData._(_ret, _lib, retain: false, release: true);
   }
 }
 
 /// Mutable Dictionary
 class NSMutableDictionary extends NSDictionary {
-  NSMutableDictionary._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSMutableDictionary._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSMutableDictionary] that points to the same underlying object as [other].
   static NSMutableDictionary castFrom<T extends _ObjCWrapper>(T other) {
-    return NSMutableDictionary._(other._id, other._lib);
+    return NSMutableDictionary._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSMutableDictionary] that wraps the given raw object pointer.
   static NSMutableDictionary castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSMutableDictionary._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSMutableDictionary._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSMutableDictionary].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSMutableDictionary1);
   }
 
   void removeObjectForKey_(NSObject aKey) {
@@ -93249,21 +93212,21 @@ class NSMutableDictionary extends NSDictionary {
 
   @override
   NSMutableDictionary init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSMutableDictionary._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSMutableDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   NSMutableDictionary initWithCapacity_(int numItems) {
     final _ret =
         _lib._objc_msgSend_133(_id, _lib._sel_initWithCapacity_1, numItems);
-    return NSMutableDictionary._(_ret, _lib);
+    return NSMutableDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   @override
   NSMutableDictionary initWithCoder_(NSObject? coder) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithCoder_1, coder?._id ?? ffi.nullptr);
-    return NSMutableDictionary._(_ret, _lib);
+    return NSMutableDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   void addEntriesFromDictionary_(NSObject? otherDictionary) {
@@ -93272,7 +93235,7 @@ class NSMutableDictionary extends NSDictionary {
   }
 
   void removeAllObjects() {
-    _lib._objc_msgSend_0(_id, _lib._sel_removeAllObjects1);
+    _lib._objc_msgSend_1(_id, _lib._sel_removeAllObjects1);
   }
 
   void removeObjectsForKeys_(NSObject? keyArray) {
@@ -93294,20 +93257,20 @@ class NSMutableDictionary extends NSDictionary {
       NativeCupertinoHttp _lib, int numItems) {
     final _ret = _lib._objc_msgSend_133(_lib._class_NSMutableDictionary1,
         _lib._sel_dictionaryWithCapacity_1, numItems);
-    return NSMutableDictionary._(_ret, _lib);
+    return NSMutableDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableDictionary dictionary(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableDictionary1, _lib._sel_dictionary1);
-    return NSMutableDictionary._(_ret, _lib);
+    return NSMutableDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableDictionary dictionaryWithObject_forKey_(
       NativeCupertinoHttp _lib, NSObject object, NSObject key) {
     final _ret = _lib._objc_msgSend_76(_lib._class_NSMutableDictionary1,
         _lib._sel_dictionaryWithObject_forKey_1, object._id, key._id);
-    return NSMutableDictionary._(_ret, _lib);
+    return NSMutableDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableDictionary dictionaryWithObjects_forKeys_count_(
@@ -93317,21 +93280,21 @@ class NSMutableDictionary extends NSDictionary {
       int cnt) {
     final _ret = _lib._objc_msgSend_86(_lib._class_NSMutableDictionary1,
         _lib._sel_dictionaryWithObjects_forKeys_count_1, objects, keys, cnt);
-    return NSMutableDictionary._(_ret, _lib);
+    return NSMutableDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableDictionary dictionaryWithObjectsAndKeys_(
       NativeCupertinoHttp _lib, NSObject firstObject) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableDictionary1,
         _lib._sel_dictionaryWithObjectsAndKeys_1, firstObject._id);
-    return NSMutableDictionary._(_ret, _lib);
+    return NSMutableDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableDictionary dictionaryWithDictionary_(
       NativeCupertinoHttp _lib, NSObject? dict) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableDictionary1,
         _lib._sel_dictionaryWithDictionary_1, dict?._id ?? ffi.nullptr);
-    return NSMutableDictionary._(_ret, _lib);
+    return NSMutableDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableDictionary dictionaryWithObjects_forKeys_(
@@ -93341,7 +93304,7 @@ class NSMutableDictionary extends NSDictionary {
         _lib._sel_dictionaryWithObjects_forKeys_1,
         objects?._id ?? ffi.nullptr,
         keys?._id ?? ffi.nullptr);
-    return NSMutableDictionary._(_ret, _lib);
+    return NSMutableDictionary._(_ret, _lib, retain: true, release: true);
   }
 
   /// Use this method to create a key set to pass to +dictionaryWithSharedKeySet:.
@@ -93355,47 +93318,59 @@ class NSMutableDictionary extends NSDictionary {
       NativeCupertinoHttp _lib, NSObject? keys) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableDictionary1,
         _lib._sel_sharedKeySetForKeys_1, keys?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableDictionary new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSMutableDictionary1, _lib._sel_new1);
-    return NSMutableDictionary._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSMutableDictionary1, _lib._sel_new1);
+    return NSMutableDictionary._(_ret, _lib, retain: false, release: true);
   }
 
   static NSMutableDictionary alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableDictionary1, _lib._sel_alloc1);
-    return NSMutableDictionary._(_ret, _lib);
+    return NSMutableDictionary._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class NSNotification extends NSObject {
-  NSNotification._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSNotification._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSNotification] that points to the same underlying object as [other].
   static NSNotification castFrom<T extends _ObjCWrapper>(T other) {
-    return NSNotification._(other._id, other._lib);
+    return NSNotification._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSNotification] that wraps the given raw object pointer.
   static NSNotification castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSNotification._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSNotification._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSNotification].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSNotification1);
   }
 
   NSNotificationName get name {
-    return _lib._objc_msgSend_1(_id, _lib._sel_name1);
+    return _lib._objc_msgSend_2(_id, _lib._sel_name1);
   }
 
   NSObject get object {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_object1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_object1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get userInfo {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_userInfo1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_userInfo1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSNotification initWithName_object_userInfo_(
@@ -93406,20 +93381,20 @@ class NSNotification extends NSObject {
         name,
         object._id,
         userInfo?._id ?? ffi.nullptr);
-    return NSNotification._(_ret, _lib);
+    return NSNotification._(_ret, _lib, retain: true, release: true);
   }
 
   NSNotification initWithCoder_(NSObject? coder) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithCoder_1, coder?._id ?? ffi.nullptr);
-    return NSNotification._(_ret, _lib);
+    return NSNotification._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNotification notificationWithName_object_(
       NativeCupertinoHttp _lib, NSNotificationName aName, NSObject anObject) {
     final _ret = _lib._objc_msgSend_76(_lib._class_NSNotification1,
         _lib._sel_notificationWithName_object_1, aName, anObject._id);
-    return NSNotification._(_ret, _lib);
+    return NSNotification._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNotification notificationWithName_object_userInfo_(
@@ -93433,47 +93408,60 @@ class NSNotification extends NSObject {
         aName,
         anObject._id,
         aUserInfo?._id ?? ffi.nullptr);
-    return NSNotification._(_ret, _lib);
+    return NSNotification._(_ret, _lib, retain: true, release: true);
   }
 
   @override
   NSNotification init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSNotification._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSNotification._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNotification new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSNotification1, _lib._sel_new1);
-    return NSNotification._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSNotification1, _lib._sel_new1);
+    return NSNotification._(_ret, _lib, retain: false, release: true);
   }
 
   static NSNotification alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSNotification1, _lib._sel_alloc1);
-    return NSNotification._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSNotification1, _lib._sel_alloc1);
+    return NSNotification._(_ret, _lib, retain: false, release: true);
   }
 }
 
 typedef NSNotificationName = ffi.Pointer<ObjCObject>;
 
 class NSNotificationCenter extends NSObject {
-  NSNotificationCenter._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSNotificationCenter._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSNotificationCenter] that points to the same underlying object as [other].
   static NSNotificationCenter castFrom<T extends _ObjCWrapper>(T other) {
-    return NSNotificationCenter._(other._id, other._lib);
+    return NSNotificationCenter._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSNotificationCenter] that wraps the given raw object pointer.
   static NSNotificationCenter castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSNotificationCenter._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSNotificationCenter._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSNotificationCenter].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSNotificationCenter1);
   }
 
   static NSObject? getDefaultCenter(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSNotificationCenter1, _lib._sel_defaultCenter1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   void addObserver_selector_name_object_(
@@ -93525,19 +93513,19 @@ class NSNotificationCenter extends NSObject {
         obj._id,
         queue?._id ?? ffi.nullptr,
         block._impl);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSNotificationCenter new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSNotificationCenter1, _lib._sel_new1);
-    return NSNotificationCenter._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSNotificationCenter1, _lib._sel_new1);
+    return NSNotificationCenter._(_ret, _lib, retain: false, release: true);
   }
 
   static NSNotificationCenter alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSNotificationCenter1, _lib._sel_alloc1);
-    return NSNotificationCenter._(_ret, _lib);
+    return NSNotificationCenter._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -93549,11 +93537,23 @@ void _ObjCBlock12_fnPtrTrampoline(
       .asFunction<void Function(ffi.Pointer<ObjCObject> arg0)>()(arg0);
 }
 
+final _ObjCBlock12_closureRegistry = <int, Function>{};
+int _ObjCBlock12_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock12_registerClosure(Function fn) {
+  final id = ++_ObjCBlock12_closureRegistryIndex;
+  _ObjCBlock12_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock12_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block, ffi.Pointer<ObjCObject> arg0) {
+  return _ObjCBlock12_closureRegistry[block.ref.target.address]!(arg0);
+}
+
 class ObjCBlock12 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock12._(this._impl, this._lib);
-
   ObjCBlock12.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -93567,20 +93567,39 @@ class ObjCBlock12 {
                     _ObjCBlock12_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock12.fromFunction(
+      this._lib, void Function(ffi.Pointer<ObjCObject> arg0) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ObjCObject> arg0)>(
+                    _ObjCBlock12_closureTrampoline)
+                .cast(),
+            _ObjCBlock12_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
 class NSDate extends NSObject {
-  NSDate._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSDate._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSDate] that points to the same underlying object as [other].
   static NSDate castFrom<T extends _ObjCWrapper>(T other) {
-    return NSDate._(other._id, other._lib);
+    return NSDate._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSDate] that wraps the given raw object pointer.
   static NSDate castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSDate._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSDate._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSDate].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSDate1);
   }
 
   double get timeIntervalSinceReferenceDate {
@@ -93590,20 +93609,20 @@ class NSDate extends NSObject {
 
   @override
   NSDate init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSDate._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   NSDate initWithTimeIntervalSinceReferenceDate_(double ti) {
     final _ret = _lib._objc_msgSend_187(
         _id, _lib._sel_initWithTimeIntervalSinceReferenceDate_1, ti);
-    return NSDate._(_ret, _lib);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   NSDate initWithCoder_(NSObject? coder) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithCoder_1, coder?._id ?? ffi.nullptr);
-    return NSDate._(_ret, _lib);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   double timeIntervalSinceDate_(NSObject? anotherDate) {
@@ -93622,25 +93641,25 @@ class NSDate extends NSObject {
   NSObject addTimeInterval_(double seconds) {
     final _ret =
         _lib._objc_msgSend_187(_id, _lib._sel_addTimeInterval_1, seconds);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSDate dateByAddingTimeInterval_(double ti) {
     final _ret =
         _lib._objc_msgSend_187(_id, _lib._sel_dateByAddingTimeInterval_1, ti);
-    return NSDate._(_ret, _lib);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   NSDate earlierDate_(NSObject? anotherDate) {
     final _ret = _lib._objc_msgSend_189(
         _id, _lib._sel_earlierDate_1, anotherDate?._id ?? ffi.nullptr);
-    return NSDate._(_ret, _lib);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   NSDate laterDate_(NSObject? anotherDate) {
     final _ret = _lib._objc_msgSend_189(
         _id, _lib._sel_laterDate_1, anotherDate?._id ?? ffi.nullptr);
-    return NSDate._(_ret, _lib);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   int compare_(NSObject? other) {
@@ -93649,45 +93668,47 @@ class NSDate extends NSObject {
   }
 
   bool isEqualToDate_(NSObject? otherDate) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_isEqualToDate_1, otherDate?._id ?? ffi.nullptr);
   }
 
   NSObject? get description {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_description1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_description1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSString descriptionWithLocale_(NSObject locale) {
     final _ret = _lib._objc_msgSend_28(
         _id, _lib._sel_descriptionWithLocale_1, locale._id);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSDate date(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSDate1, _lib._sel_date1);
-    return NSDate._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSDate1, _lib._sel_date1);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   static NSDate dateWithTimeIntervalSinceNow_(
       NativeCupertinoHttp _lib, double secs) {
     final _ret = _lib._objc_msgSend_187(
         _lib._class_NSDate1, _lib._sel_dateWithTimeIntervalSinceNow_1, secs);
-    return NSDate._(_ret, _lib);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   static NSDate dateWithTimeIntervalSinceReferenceDate_(
       NativeCupertinoHttp _lib, double ti) {
     final _ret = _lib._objc_msgSend_187(_lib._class_NSDate1,
         _lib._sel_dateWithTimeIntervalSinceReferenceDate_1, ti);
-    return NSDate._(_ret, _lib);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   static NSDate dateWithTimeIntervalSince1970_(
       NativeCupertinoHttp _lib, double secs) {
     final _ret = _lib._objc_msgSend_187(
         _lib._class_NSDate1, _lib._sel_dateWithTimeIntervalSince1970_1, secs);
-    return NSDate._(_ret, _lib);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   static NSDate dateWithTimeInterval_sinceDate_(
@@ -93697,36 +93718,42 @@ class NSDate extends NSObject {
         _lib._sel_dateWithTimeInterval_sinceDate_1,
         secsToBeAdded,
         date?._id ?? ffi.nullptr);
-    return NSDate._(_ret, _lib);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getDistantFuture(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSDate1, _lib._sel_distantFuture1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSDate1, _lib._sel_distantFuture1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getDistantPast(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSDate1, _lib._sel_distantPast1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSDate1, _lib._sel_distantPast1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getNow(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSDate1, _lib._sel_now1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSDate1, _lib._sel_now1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSDate initWithTimeIntervalSinceNow_(double secs) {
     final _ret = _lib._objc_msgSend_187(
         _id, _lib._sel_initWithTimeIntervalSinceNow_1, secs);
-    return NSDate._(_ret, _lib);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   NSDate initWithTimeIntervalSince1970_(double secs) {
     final _ret = _lib._objc_msgSend_187(
         _id, _lib._sel_initWithTimeIntervalSince1970_1, secs);
-    return NSDate._(_ret, _lib);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   NSDate initWithTimeInterval_sinceDate_(double secsToBeAdded, NSObject? date) {
@@ -93735,17 +93762,17 @@ class NSDate extends NSObject {
         _lib._sel_initWithTimeInterval_sinceDate_1,
         secsToBeAdded,
         date?._id ?? ffi.nullptr);
-    return NSDate._(_ret, _lib);
+    return NSDate._(_ret, _lib, retain: true, release: true);
   }
 
   static NSDate new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSDate1, _lib._sel_new1);
-    return NSDate._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSDate1, _lib._sel_new1);
+    return NSDate._(_ret, _lib, retain: false, release: true);
   }
 
   static NSDate alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSDate1, _lib._sel_alloc1);
-    return NSDate._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSDate1, _lib._sel_alloc1);
+    return NSDate._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -93896,16 +93923,26 @@ abstract class NSURLRequestNetworkServiceType {
 /// which can are used to perform the load of a URL, or as input to the
 /// NSURLConnection class method which performs synchronous loads.
 class NSURLRequest extends NSObject {
-  NSURLRequest._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSURLRequest._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLRequest] that points to the same underlying object as [other].
   static NSURLRequest castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLRequest._(other._id, other._lib);
+    return NSURLRequest._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSURLRequest] that wraps the given raw object pointer.
   static NSURLRequest castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLRequest._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLRequest._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLRequest].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSURLRequest1);
   }
 
   /// !
@@ -93920,7 +93957,7 @@ class NSURLRequest extends NSObject {
   static NSURLRequest requestWithURL_(NativeCupertinoHttp _lib, NSObject? URL) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSURLRequest1,
         _lib._sel_requestWithURL_1, URL?._id ?? ffi.nullptr);
-    return NSURLRequest._(_ret, _lib);
+    return NSURLRequest._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -93953,7 +93990,7 @@ class NSURLRequest extends NSObject {
         URL?._id ?? ffi.nullptr,
         cachePolicy,
         timeoutInterval);
-    return NSURLRequest._(_ret, _lib);
+    return NSURLRequest._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -93967,7 +94004,7 @@ class NSURLRequest extends NSObject {
   NSURLRequest initWithURL_(NSObject? URL) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithURL_1, URL?._id ?? ffi.nullptr);
-    return NSURLRequest._(_ret, _lib);
+    return NSURLRequest._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -93990,15 +94027,17 @@ class NSURLRequest extends NSObject {
         URL?._id ?? ffi.nullptr,
         cachePolicy,
         timeoutInterval);
-    return NSURLRequest._(_ret, _lib);
+    return NSURLRequest._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
   /// @abstract Returns the URL of the receiver.
   /// @result The URL of the receiver.
   NSObject? get URL {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_URL1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_URL1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94035,8 +94074,10 @@ class NSURLRequest extends NSObject {
   /// in the future.
   /// @result The main document URL.
   NSObject? get mainDocumentURL {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_mainDocumentURL1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_mainDocumentURL1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94089,8 +94130,10 @@ class NSURLRequest extends NSObject {
   /// @abstract Returns the HTTP request method of the receiver.
   /// @result the HTTP request method of the receiver.
   NSObject? get HTTPMethod {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_HTTPMethod1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_HTTPMethod1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94099,8 +94142,10 @@ class NSURLRequest extends NSObject {
   /// @result a dictionary containing all the HTTP header fields of the
   /// receiver.
   NSObject? get allHTTPHeaderFields {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_allHTTPHeaderFields1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_allHTTPHeaderFields1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94115,7 +94160,7 @@ class NSURLRequest extends NSObject {
   NSString valueForHTTPHeaderField_(NSObject? field) {
     final _ret = _lib._objc_msgSend_28(
         _id, _lib._sel_valueForHTTPHeaderField_1, field?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94124,8 +94169,10 @@ class NSURLRequest extends NSObject {
   /// in done in an HTTP POST request.
   /// @result The request body data of the receiver.
   NSObject? get HTTPBody {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_HTTPBody1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_HTTPBody1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94139,8 +94186,10 @@ class NSURLRequest extends NSObject {
   /// NSCoding protocol
   /// @result The request body stream of the receiver.
   NSObject? get HTTPBodyStream {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_HTTPBodyStream1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_HTTPBodyStream1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94165,14 +94214,14 @@ class NSURLRequest extends NSObject {
 
   static NSURLRequest new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLRequest1, _lib._sel_new1);
-    return NSURLRequest._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLRequest1, _lib._sel_new1);
+    return NSURLRequest._(_ret, _lib, retain: false, release: true);
   }
 
   static NSURLRequest alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLRequest1, _lib._sel_alloc1);
-    return NSURLRequest._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLRequest1, _lib._sel_alloc1);
+    return NSURLRequest._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -94205,24 +94254,37 @@ class NSURLRequest extends NSObject {
 /// example.
 /// </ul>
 class NSMutableURLRequest extends NSURLRequest {
-  NSMutableURLRequest._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSMutableURLRequest._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSMutableURLRequest] that points to the same underlying object as [other].
   static NSMutableURLRequest castFrom<T extends _ObjCWrapper>(T other) {
-    return NSMutableURLRequest._(other._id, other._lib);
+    return NSMutableURLRequest._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSMutableURLRequest] that wraps the given raw object pointer.
   static NSMutableURLRequest castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSMutableURLRequest._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSMutableURLRequest._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSMutableURLRequest].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSMutableURLRequest1);
   }
 
   /// !
   /// @abstract The URL of the receiver.
   @override
   NSObject? get URL {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_URL1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_URL1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94290,8 +94352,10 @@ class NSMutableURLRequest extends NSURLRequest {
   /// in the future.
   @override
   NSObject? get mainDocumentURL {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_mainDocumentURL1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_mainDocumentURL1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94410,8 +94474,10 @@ class NSMutableURLRequest extends NSURLRequest {
   /// @abstract Sets the HTTP request method of the receiver.
   @override
   NSObject? get HTTPMethod {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_HTTPMethod1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_HTTPMethod1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94433,8 +94499,10 @@ class NSMutableURLRequest extends NSURLRequest {
   /// message, the key-value pair is skipped.
   @override
   NSObject? get allHTTPHeaderFields {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_allHTTPHeaderFields1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_allHTTPHeaderFields1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94490,8 +94558,10 @@ class NSMutableURLRequest extends NSURLRequest {
   /// in done in an HTTP POST request.
   @override
   NSObject? get HTTPBody {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_HTTPBody1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_HTTPBody1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94512,8 +94582,10 @@ class NSMutableURLRequest extends NSURLRequest {
   /// - setting one will clear the other.
   @override
   NSObject? get HTTPBodyStream {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_HTTPBodyStream1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_HTTPBodyStream1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94603,7 +94675,7 @@ class NSMutableURLRequest extends NSURLRequest {
       NativeCupertinoHttp _lib, NSObject? URL) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableURLRequest1,
         _lib._sel_requestWithURL_1, URL?._id ?? ffi.nullptr);
-    return NSMutableURLRequest._(_ret, _lib);
+    return NSMutableURLRequest._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -94636,19 +94708,19 @@ class NSMutableURLRequest extends NSURLRequest {
         URL?._id ?? ffi.nullptr,
         cachePolicy,
         timeoutInterval);
-    return NSMutableURLRequest._(_ret, _lib);
+    return NSMutableURLRequest._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableURLRequest new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSMutableURLRequest1, _lib._sel_new1);
-    return NSMutableURLRequest._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSMutableURLRequest1, _lib._sel_new1);
+    return NSMutableURLRequest._(_ret, _lib, retain: false, release: true);
   }
 
   static NSMutableURLRequest alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableURLRequest1, _lib._sel_alloc1);
-    return NSMutableURLRequest._(_ret, _lib);
+    return NSMutableURLRequest._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -94664,22 +94736,35 @@ abstract class NSHTTPCookieAcceptPolicy {
 }
 
 class NSHTTPCookieStorage extends NSObject {
-  NSHTTPCookieStorage._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSHTTPCookieStorage._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSHTTPCookieStorage] that points to the same underlying object as [other].
   static NSHTTPCookieStorage castFrom<T extends _ObjCWrapper>(T other) {
-    return NSHTTPCookieStorage._(other._id, other._lib);
+    return NSHTTPCookieStorage._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSHTTPCookieStorage] that wraps the given raw object pointer.
   static NSHTTPCookieStorage castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSHTTPCookieStorage._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSHTTPCookieStorage._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSHTTPCookieStorage].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSHTTPCookieStorage1);
   }
 
   static NSObject? getSharedHTTPCookieStorage(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSHTTPCookieStorage1, _lib._sel_sharedHTTPCookieStorage1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSHTTPCookieStorage sharedCookieStorageForGroupContainerIdentifier_(
@@ -94688,12 +94773,14 @@ class NSHTTPCookieStorage extends NSObject {
         _lib._class_NSHTTPCookieStorage1,
         _lib._sel_sharedCookieStorageForGroupContainerIdentifier_1,
         identifier?._id ?? ffi.nullptr);
-    return NSHTTPCookieStorage._(_ret, _lib);
+    return NSHTTPCookieStorage._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get cookies {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_cookies1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_cookies1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   void setCookie_(NSObject? cookie) {
@@ -94742,48 +94829,58 @@ class NSHTTPCookieStorage extends NSObject {
 
   static NSHTTPCookieStorage new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSHTTPCookieStorage1, _lib._sel_new1);
-    return NSHTTPCookieStorage._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSHTTPCookieStorage1, _lib._sel_new1);
+    return NSHTTPCookieStorage._(_ret, _lib, retain: false, release: true);
   }
 
   static NSHTTPCookieStorage alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSHTTPCookieStorage1, _lib._sel_alloc1);
-    return NSHTTPCookieStorage._(_ret, _lib);
+    return NSHTTPCookieStorage._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class NSProgress extends NSObject {
-  NSProgress._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSProgress._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSProgress] that points to the same underlying object as [other].
   static NSProgress castFrom<T extends _ObjCWrapper>(T other) {
-    return NSProgress._(other._id, other._lib);
+    return NSProgress._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSProgress] that wraps the given raw object pointer.
   static NSProgress castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSProgress._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSProgress._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSProgress].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSProgress1);
   }
 
   static NSProgress currentProgress(NativeCupertinoHttp _lib) {
     final _ret = _lib._objc_msgSend_202(
         _lib._class_NSProgress1, _lib._sel_currentProgress1);
-    return NSProgress._(_ret, _lib);
+    return NSProgress._(_ret, _lib, retain: true, release: true);
   }
 
   static NSProgress progressWithTotalUnitCount_(
       NativeCupertinoHttp _lib, int unitCount) {
     final _ret = _lib._objc_msgSend_203(_lib._class_NSProgress1,
         _lib._sel_progressWithTotalUnitCount_1, unitCount);
-    return NSProgress._(_ret, _lib);
+    return NSProgress._(_ret, _lib, retain: true, release: true);
   }
 
   static NSProgress discreteProgressWithTotalUnitCount_(
       NativeCupertinoHttp _lib, int unitCount) {
     final _ret = _lib._objc_msgSend_203(_lib._class_NSProgress1,
         _lib._sel_discreteProgressWithTotalUnitCount_1, unitCount);
-    return NSProgress._(_ret, _lib);
+    return NSProgress._(_ret, _lib, retain: true, release: true);
   }
 
   static NSProgress progressWithTotalUnitCount_parent_pendingUnitCount_(
@@ -94797,7 +94894,7 @@ class NSProgress extends NSObject {
         unitCount,
         parent?._id ?? ffi.nullptr,
         portionOfParentTotalUnitCount);
-    return NSProgress._(_ret, _lib);
+    return NSProgress._(_ret, _lib, retain: true, release: true);
   }
 
   NSProgress initWithParent_userInfo_(
@@ -94807,7 +94904,7 @@ class NSProgress extends NSObject {
         _lib._sel_initWithParent_userInfo_1,
         parentProgressOrNil?._id ?? ffi.nullptr,
         userInfoOrNil?._id ?? ffi.nullptr);
-    return NSProgress._(_ret, _lib);
+    return NSProgress._(_ret, _lib, retain: true, release: true);
   }
 
   void becomeCurrentWithPendingUnitCount_(int unitCount) {
@@ -94825,7 +94922,7 @@ class NSProgress extends NSObject {
   }
 
   void resignCurrent() {
-    _lib._objc_msgSend_0(_id, _lib._sel_resignCurrent1);
+    _lib._objc_msgSend_1(_id, _lib._sel_resignCurrent1);
   }
 
   void addChild_withPendingUnitCount_(NSObject? child, int inUnitCount) {
@@ -94850,8 +94947,10 @@ class NSProgress extends NSObject {
   }
 
   NSObject? get localizedDescription {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_localizedDescription1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_localizedDescription1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set localizedDescription(NSObject? value) {
@@ -94861,8 +94960,10 @@ class NSProgress extends NSObject {
 
   NSObject? get localizedAdditionalDescription {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_localizedAdditionalDescription1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_localizedAdditionalDescription1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set localizedAdditionalDescription(NSObject? value) {
@@ -94941,24 +95042,26 @@ class NSProgress extends NSObject {
   }
 
   void cancel() {
-    _lib._objc_msgSend_0(_id, _lib._sel_cancel1);
+    _lib._objc_msgSend_1(_id, _lib._sel_cancel1);
   }
 
   void pause() {
-    _lib._objc_msgSend_0(_id, _lib._sel_pause1);
+    _lib._objc_msgSend_1(_id, _lib._sel_pause1);
   }
 
   void resume() {
-    _lib._objc_msgSend_0(_id, _lib._sel_resume1);
+    _lib._objc_msgSend_1(_id, _lib._sel_resume1);
   }
 
   NSObject? get userInfo {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_userInfo1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_userInfo1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSProgressKind get kind {
-    return _lib._objc_msgSend_1(_id, _lib._sel_kind1);
+    return _lib._objc_msgSend_2(_id, _lib._sel_kind1);
   }
 
   set kind(NSProgressKind value) {
@@ -94966,8 +95069,10 @@ class NSProgress extends NSObject {
   }
 
   NSObject? get estimatedTimeRemaining {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_estimatedTimeRemaining1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_estimatedTimeRemaining1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set estimatedTimeRemaining(NSObject? value) {
@@ -94976,8 +95081,10 @@ class NSProgress extends NSObject {
   }
 
   NSObject? get throughput {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_throughput1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_throughput1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set throughput(NSObject? value) {
@@ -94986,7 +95093,7 @@ class NSProgress extends NSObject {
   }
 
   NSProgressFileOperationKind get fileOperationKind {
-    return _lib._objc_msgSend_1(_id, _lib._sel_fileOperationKind1);
+    return _lib._objc_msgSend_2(_id, _lib._sel_fileOperationKind1);
   }
 
   set fileOperationKind(NSProgressFileOperationKind value) {
@@ -94994,8 +95101,10 @@ class NSProgress extends NSObject {
   }
 
   NSObject? get fileURL {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_fileURL1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_fileURL1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set fileURL(NSObject? value) {
@@ -95004,8 +95113,10 @@ class NSProgress extends NSObject {
   }
 
   NSObject? get fileTotalCount {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_fileTotalCount1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_fileTotalCount1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set fileTotalCount(NSObject? value) {
@@ -95014,8 +95125,10 @@ class NSProgress extends NSObject {
   }
 
   NSObject? get fileCompletedCount {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_fileCompletedCount1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_fileCompletedCount1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set fileCompletedCount(NSObject? value) {
@@ -95024,11 +95137,11 @@ class NSProgress extends NSObject {
   }
 
   void publish() {
-    _lib._objc_msgSend_0(_id, _lib._sel_publish1);
+    _lib._objc_msgSend_1(_id, _lib._sel_publish1);
   }
 
   void unpublish() {
-    _lib._objc_msgSend_0(_id, _lib._sel_unpublish1);
+    _lib._objc_msgSend_1(_id, _lib._sel_unpublish1);
   }
 
   static NSObject addSubscriberForFileURL_withPublishingHandler_(
@@ -95040,7 +95153,7 @@ class NSProgress extends NSObject {
         _lib._sel_addSubscriberForFileURL_withPublishingHandler_1,
         url?._id ?? ffi.nullptr,
         publishingHandler);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static void removeSubscriber_(NativeCupertinoHttp _lib, NSObject subscriber) {
@@ -95053,14 +95166,14 @@ class NSProgress extends NSObject {
   }
 
   static NSProgress new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSProgress1, _lib._sel_new1);
-    return NSProgress._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSProgress1, _lib._sel_new1);
+    return NSProgress._(_ret, _lib, retain: false, release: true);
   }
 
   static NSProgress alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSProgress1, _lib._sel_alloc1);
-    return NSProgress._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSProgress1, _lib._sel_alloc1);
+    return NSProgress._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -95070,11 +95183,22 @@ void _ObjCBlock13_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block) {
       .asFunction<void Function()>()();
 }
 
+final _ObjCBlock13_closureRegistry = <int, Function>{};
+int _ObjCBlock13_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock13_registerClosure(Function fn) {
+  final id = ++_ObjCBlock13_closureRegistryIndex;
+  _ObjCBlock13_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock13_closureTrampoline(ffi.Pointer<_ObjCBlock> block) {
+  return _ObjCBlock13_closureRegistry[block.ref.target.address]!();
+}
+
 class ObjCBlock13 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock13._(this._impl, this._lib);
-
   ObjCBlock13.fromFunctionPointer(
       this._lib, ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> ptr)
       : _impl = _lib._newBlock1(
@@ -95083,6 +95207,13 @@ class ObjCBlock13 {
                     _ObjCBlock13_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock13.fromFunction(this._lib, void Function() fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(ffi.Pointer<_ObjCBlock> block)>(
+                    _ObjCBlock13_closureTrampoline)
+                .cast(),
+            _ObjCBlock13_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -95102,11 +95233,23 @@ NSProgressUnpublishingHandler _ObjCBlock14_fnPtrTrampoline(
               ffi.Pointer<ObjCObject> arg0)>()(arg0);
 }
 
+final _ObjCBlock14_closureRegistry = <int, Function>{};
+int _ObjCBlock14_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock14_registerClosure(Function fn) {
+  final id = ++_ObjCBlock14_closureRegistryIndex;
+  _ObjCBlock14_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+NSProgressUnpublishingHandler _ObjCBlock14_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block, ffi.Pointer<ObjCObject> arg0) {
+  return _ObjCBlock14_closureRegistry[block.ref.target.address]!(arg0);
+}
+
 class ObjCBlock14 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock14._(this._impl, this._lib);
-
   ObjCBlock14.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -95122,6 +95265,16 @@ class ObjCBlock14 {
                     _ObjCBlock14_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock14.fromFunction(this._lib,
+      NSProgressUnpublishingHandler Function(ffi.Pointer<ObjCObject> arg0) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        NSProgressUnpublishingHandler Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ObjCObject> arg0)>(
+                    _ObjCBlock14_closureTrampoline)
+                .cast(),
+            _ObjCBlock14_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -95906,11 +96059,23 @@ void _ObjCBlock15_fnPtrTrampoline(
           void Function(CFRunLoopObserverRef arg0, int arg1)>()(arg0, arg1);
 }
 
+final _ObjCBlock15_closureRegistry = <int, Function>{};
+int _ObjCBlock15_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock15_registerClosure(Function fn) {
+  final id = ++_ObjCBlock15_closureRegistryIndex;
+  _ObjCBlock15_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock15_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block, CFRunLoopObserverRef arg0, int arg1) {
+  return _ObjCBlock15_closureRegistry[block.ref.target.address]!(arg0, arg1);
+}
+
 class ObjCBlock15 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock15._(this._impl, this._lib);
-
   ObjCBlock15.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -95925,6 +96090,16 @@ class ObjCBlock15 {
                         ffi.Int32 arg1)>(_ObjCBlock15_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock15.fromFunction(
+      this._lib, void Function(CFRunLoopObserverRef arg0, int arg1) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<_ObjCBlock> block,
+                        CFRunLoopObserverRef arg0,
+                        ffi.Int32 arg1)>(_ObjCBlock15_closureTrampoline)
+                .cast(),
+            _ObjCBlock15_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -95957,11 +96132,23 @@ void _ObjCBlock16_fnPtrTrampoline(
       .asFunction<void Function(CFRunLoopTimerRef arg0)>()(arg0);
 }
 
+final _ObjCBlock16_closureRegistry = <int, Function>{};
+int _ObjCBlock16_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock16_registerClosure(Function fn) {
+  final id = ++_ObjCBlock16_closureRegistryIndex;
+  _ObjCBlock16_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock16_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block, CFRunLoopTimerRef arg0) {
+  return _ObjCBlock16_closureRegistry[block.ref.target.address]!(arg0);
+}
+
 class ObjCBlock16 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock16._(this._impl, this._lib);
-
   ObjCBlock16.fromFunctionPointer(
       this._lib,
       ffi.Pointer<ffi.NativeFunction<ffi.Void Function(CFRunLoopTimerRef arg0)>>
@@ -95972,6 +96159,13 @@ class ObjCBlock16 {
                         CFRunLoopTimerRef arg0)>(_ObjCBlock16_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock16.fromFunction(this._lib, void Function(CFRunLoopTimerRef arg0) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                    ffi.Void Function(ffi.Pointer<_ObjCBlock> block,
+                        CFRunLoopTimerRef arg0)>(_ObjCBlock16_closureTrampoline)
+                .cast(),
+            _ObjCBlock16_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -96772,11 +96966,23 @@ void _ObjCBlock17_fnPtrTrampoline(
       .asFunction<void Function(SecTrustRef arg0, int arg1)>()(arg0, arg1);
 }
 
+final _ObjCBlock17_closureRegistry = <int, Function>{};
+int _ObjCBlock17_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock17_registerClosure(Function fn) {
+  final id = ++_ObjCBlock17_closureRegistryIndex;
+  _ObjCBlock17_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock17_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block, SecTrustRef arg0, int arg1) {
+  return _ObjCBlock17_closureRegistry[block.ref.target.address]!(arg0, arg1);
+}
+
 class ObjCBlock17 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock17._(this._impl, this._lib);
-
   ObjCBlock17.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -96791,43 +96997,77 @@ class ObjCBlock17 {
                         ffi.Int32 arg1)>(_ObjCBlock17_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock17.fromFunction(
+      this._lib, void Function(SecTrustRef arg0, int arg1) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<_ObjCBlock> block,
+                        SecTrustRef arg0,
+                        ffi.Int32 arg1)>(_ObjCBlock17_closureTrampoline)
+                .cast(),
+            _ObjCBlock17_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
 typedef SecTrustWithErrorCallback = ffi.Pointer<_ObjCBlock>;
 void _ObjCBlock18_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block,
-    SecTrustRef arg0, int arg1, CFErrorRef arg2) {
+    SecTrustRef arg0, bool arg1, CFErrorRef arg2) {
   return block.ref.target
-      .cast<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  SecTrustRef arg0, ffi.Uint8 arg1, CFErrorRef arg2)>>()
-      .asFunction<
-          void Function(
-              SecTrustRef arg0, int arg1, CFErrorRef arg2)>()(arg0, arg1, arg2);
+          .cast<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      SecTrustRef arg0, ffi.Bool arg1, CFErrorRef arg2)>>()
+          .asFunction<
+              void Function(SecTrustRef arg0, bool arg1, CFErrorRef arg2)>()(
+      arg0, arg1, arg2);
+}
+
+final _ObjCBlock18_closureRegistry = <int, Function>{};
+int _ObjCBlock18_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock18_registerClosure(Function fn) {
+  final id = ++_ObjCBlock18_closureRegistryIndex;
+  _ObjCBlock18_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock18_closureTrampoline(ffi.Pointer<_ObjCBlock> block,
+    SecTrustRef arg0, bool arg1, CFErrorRef arg2) {
+  return _ObjCBlock18_closureRegistry[block.ref.target.address]!(
+      arg0, arg1, arg2);
 }
 
 class ObjCBlock18 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock18._(this._impl, this._lib);
-
   ObjCBlock18.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
               ffi.NativeFunction<
                   ffi.Void Function(
-                      SecTrustRef arg0, ffi.Uint8 arg1, CFErrorRef arg2)>>
+                      SecTrustRef arg0, ffi.Bool arg1, CFErrorRef arg2)>>
           ptr)
       : _impl = _lib._newBlock1(
             ffi.Pointer.fromFunction<
                     ffi.Void Function(
                         ffi.Pointer<_ObjCBlock> block,
                         SecTrustRef arg0,
-                        ffi.Uint8 arg1,
+                        ffi.Bool arg1,
                         CFErrorRef arg2)>(_ObjCBlock18_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock18.fromFunction(
+      this._lib, void Function(SecTrustRef arg0, bool arg1, CFErrorRef arg2) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<_ObjCBlock> block,
+                        SecTrustRef arg0,
+                        ffi.Bool arg1,
+                        CFErrorRef arg2)>(_ObjCBlock18_closureTrampoline)
+                .cast(),
+            _ObjCBlock18_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -99017,11 +99257,22 @@ void _ObjCBlock19_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block, int arg0) {
       .asFunction<void Function(int arg0)>()(arg0);
 }
 
+final _ObjCBlock19_closureRegistry = <int, Function>{};
+int _ObjCBlock19_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock19_registerClosure(Function fn) {
+  final id = ++_ObjCBlock19_closureRegistryIndex;
+  _ObjCBlock19_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock19_closureTrampoline(ffi.Pointer<_ObjCBlock> block, int arg0) {
+  return _ObjCBlock19_closureRegistry[block.ref.target.address]!(arg0);
+}
+
 class ObjCBlock19 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock19._(this._impl, this._lib);
-
   ObjCBlock19.fromFunctionPointer(this._lib,
       ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Uint16 arg0)>> ptr)
       : _impl = _lib._newBlock1(
@@ -99030,6 +99281,13 @@ class ObjCBlock19 {
                         ffi.Uint16 arg0)>(_ObjCBlock19_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock19.fromFunction(this._lib, void Function(int arg0) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                    ffi.Void Function(ffi.Pointer<_ObjCBlock> block,
+                        ffi.Uint16 arg0)>(_ObjCBlock19_closureTrampoline)
+                .cast(),
+            _ObjCBlock19_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -99044,11 +99302,23 @@ void _ObjCBlock20_fnPtrTrampoline(
               dispatch_data_t arg0, dispatch_data_t arg1)>()(arg0, arg1);
 }
 
+final _ObjCBlock20_closureRegistry = <int, Function>{};
+int _ObjCBlock20_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock20_registerClosure(Function fn) {
+  final id = ++_ObjCBlock20_closureRegistryIndex;
+  _ObjCBlock20_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock20_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block, dispatch_data_t arg0, dispatch_data_t arg1) {
+  return _ObjCBlock20_closureRegistry[block.ref.target.address]!(arg0, arg1);
+}
+
 class ObjCBlock20 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock20._(this._impl, this._lib);
-
   ObjCBlock20.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -99064,6 +99334,16 @@ class ObjCBlock20 {
                         dispatch_data_t arg1)>(_ObjCBlock20_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock20.fromFunction(
+      this._lib, void Function(dispatch_data_t arg0, dispatch_data_t arg1) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<_ObjCBlock> block,
+                        dispatch_data_t arg0,
+                        dispatch_data_t arg1)>(_ObjCBlock20_closureTrampoline)
+                .cast(),
+            _ObjCBlock20_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -99087,11 +99367,27 @@ void _ObjCBlock21_fnPtrTrampoline(
       arg0, arg1, arg2);
 }
 
+final _ObjCBlock21_closureRegistry = <int, Function>{};
+int _ObjCBlock21_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock21_registerClosure(Function fn) {
+  final id = ++_ObjCBlock21_closureRegistryIndex;
+  _ObjCBlock21_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock21_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block,
+    sec_protocol_metadata_t arg0,
+    dispatch_data_t arg1,
+    sec_protocol_pre_shared_key_selection_complete_t arg2) {
+  return _ObjCBlock21_closureRegistry[block.ref.target.address]!(
+      arg0, arg1, arg2);
+}
+
 class ObjCBlock21 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock21._(this._impl, this._lib);
-
   ObjCBlock21.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -99111,6 +99407,21 @@ class ObjCBlock21 {
                             arg2)>(_ObjCBlock21_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock21.fromFunction(
+      this._lib,
+      void Function(sec_protocol_metadata_t arg0, dispatch_data_t arg1,
+              sec_protocol_pre_shared_key_selection_complete_t arg2)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<_ObjCBlock> block,
+                        sec_protocol_metadata_t arg0,
+                        dispatch_data_t arg1,
+                        sec_protocol_pre_shared_key_selection_complete_t
+                            arg2)>(_ObjCBlock21_closureTrampoline)
+                .cast(),
+            _ObjCBlock21_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -99129,11 +99440,23 @@ void _ObjCBlock22_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block,
               sec_protocol_key_update_complete_t arg1)>()(arg0, arg1);
 }
 
+final _ObjCBlock22_closureRegistry = <int, Function>{};
+int _ObjCBlock22_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock22_registerClosure(Function fn) {
+  final id = ++_ObjCBlock22_closureRegistryIndex;
+  _ObjCBlock22_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock22_closureTrampoline(ffi.Pointer<_ObjCBlock> block,
+    sec_protocol_metadata_t arg0, sec_protocol_key_update_complete_t arg1) {
+  return _ObjCBlock22_closureRegistry[block.ref.target.address]!(arg0, arg1);
+}
+
 class ObjCBlock22 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock22._(this._impl, this._lib);
-
   ObjCBlock22.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -99152,6 +99475,20 @@ class ObjCBlock22 {
                             _ObjCBlock22_fnPtrTrampoline)
                         .cast(),
                     ptr.cast());
+  ObjCBlock22.fromFunction(
+      this._lib,
+      void Function(sec_protocol_metadata_t arg0,
+              sec_protocol_key_update_complete_t arg1)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            sec_protocol_metadata_t arg0,
+                            sec_protocol_key_update_complete_t arg1)>(
+                    _ObjCBlock22_closureTrampoline)
+                .cast(),
+            _ObjCBlock22_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -99169,11 +99506,23 @@ void _ObjCBlock23_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block,
               sec_protocol_challenge_complete_t arg1)>()(arg0, arg1);
 }
 
+final _ObjCBlock23_closureRegistry = <int, Function>{};
+int _ObjCBlock23_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock23_registerClosure(Function fn) {
+  final id = ++_ObjCBlock23_closureRegistryIndex;
+  _ObjCBlock23_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock23_closureTrampoline(ffi.Pointer<_ObjCBlock> block,
+    sec_protocol_metadata_t arg0, sec_protocol_challenge_complete_t arg1) {
+  return _ObjCBlock23_closureRegistry[block.ref.target.address]!(arg0, arg1);
+}
+
 class ObjCBlock23 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock23._(this._impl, this._lib);
-
   ObjCBlock23.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -99191,6 +99540,20 @@ class ObjCBlock23 {
                         _ObjCBlock23_fnPtrTrampoline)
                     .cast(),
                 ptr.cast());
+  ObjCBlock23.fromFunction(
+      this._lib,
+      void Function(sec_protocol_metadata_t arg0,
+              sec_protocol_challenge_complete_t arg1)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            sec_protocol_metadata_t arg0,
+                            sec_protocol_challenge_complete_t arg1)>(
+                    _ObjCBlock23_closureTrampoline)
+                .cast(),
+            _ObjCBlock23_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -99211,11 +99574,27 @@ void _ObjCBlock24_fnPtrTrampoline(
               sec_protocol_verify_complete_t arg2)>()(arg0, arg1, arg2);
 }
 
+final _ObjCBlock24_closureRegistry = <int, Function>{};
+int _ObjCBlock24_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock24_registerClosure(Function fn) {
+  final id = ++_ObjCBlock24_closureRegistryIndex;
+  _ObjCBlock24_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock24_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block,
+    sec_protocol_metadata_t arg0,
+    sec_trust_t arg1,
+    sec_protocol_verify_complete_t arg2) {
+  return _ObjCBlock24_closureRegistry[block.ref.target.address]!(
+      arg0, arg1, arg2);
+}
+
 class ObjCBlock24 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock24._(this._impl, this._lib);
-
   ObjCBlock24.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -99233,29 +99612,62 @@ class ObjCBlock24 {
                     _ObjCBlock24_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock24.fromFunction(
+      this._lib,
+      void Function(sec_protocol_metadata_t arg0, sec_trust_t arg1,
+              sec_protocol_verify_complete_t arg2)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            sec_protocol_metadata_t arg0,
+                            sec_trust_t arg1,
+                            sec_protocol_verify_complete_t arg2)>(
+                    _ObjCBlock24_closureTrampoline)
+                .cast(),
+            _ObjCBlock24_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
 typedef sec_protocol_verify_complete_t = ffi.Pointer<_ObjCBlock>;
-void _ObjCBlock25_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block, int arg0) {
+void _ObjCBlock25_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block, bool arg0) {
   return block.ref.target
-      .cast<ffi.NativeFunction<ffi.Void Function(ffi.Uint8 arg0)>>()
-      .asFunction<void Function(int arg0)>()(arg0);
+      .cast<ffi.NativeFunction<ffi.Void Function(ffi.Bool arg0)>>()
+      .asFunction<void Function(bool arg0)>()(arg0);
+}
+
+final _ObjCBlock25_closureRegistry = <int, Function>{};
+int _ObjCBlock25_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock25_registerClosure(Function fn) {
+  final id = ++_ObjCBlock25_closureRegistryIndex;
+  _ObjCBlock25_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock25_closureTrampoline(ffi.Pointer<_ObjCBlock> block, bool arg0) {
+  return _ObjCBlock25_closureRegistry[block.ref.target.address]!(arg0);
 }
 
 class ObjCBlock25 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock25._(this._impl, this._lib);
-
   ObjCBlock25.fromFunctionPointer(this._lib,
-      ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Uint8 arg0)>> ptr)
+      ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Bool arg0)>> ptr)
       : _impl = _lib._newBlock1(
             ffi.Pointer.fromFunction<
                     ffi.Void Function(ffi.Pointer<_ObjCBlock> block,
-                        ffi.Uint8 arg0)>(_ObjCBlock25_fnPtrTrampoline)
+                        ffi.Bool arg0)>(_ObjCBlock25_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock25.fromFunction(this._lib, void Function(bool arg0) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                    ffi.Void Function(ffi.Pointer<_ObjCBlock> block,
+                        ffi.Bool arg0)>(_ObjCBlock25_closureTrampoline)
+                .cast(),
+            _ObjCBlock25_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -99376,24 +99788,36 @@ abstract class SSLAuthenticate {
 /// and once the WebSocket handshake is successful, the client can read and write
 /// messages that will be framed using the WebSocket protocol by the framework.
 class NSURLSession extends NSObject {
-  NSURLSession._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSURLSession._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLSession] that points to the same underlying object as [other].
   static NSURLSession castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLSession._(other._id, other._lib);
+    return NSURLSession._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSURLSession] that wraps the given raw object pointer.
   static NSURLSession castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLSession._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLSession._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLSession].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSURLSession1);
   }
 
   /// The shared session uses the currently set global NSURLCache,
   /// NSHTTPCookieStorage and NSURLCredentialStorage objects.
   static NSObject? getSharedSession(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSession1, _lib._sel_sharedSession1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Customization of NSURLSession occurs during creation of a new session.
@@ -99407,7 +99831,7 @@ class NSURLSession extends NSObject {
         _lib._class_NSURLSession1,
         _lib._sel_sessionWithConfiguration_1,
         configuration?._id ?? ffi.nullptr);
-    return NSURLSession._(_ret, _lib);
+    return NSURLSession._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLSession sessionWithConfiguration_delegate_delegateQueue_(
@@ -99421,29 +99845,37 @@ class NSURLSession extends NSObject {
         configuration?._id ?? ffi.nullptr,
         delegate?._id ?? ffi.nullptr,
         queue?._id ?? ffi.nullptr);
-    return NSURLSession._(_ret, _lib);
+    return NSURLSession._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get delegateQueue {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_delegateQueue1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_delegateQueue1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get delegate {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_delegate1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_delegate1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get configuration {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_configuration1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_configuration1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The sessionDescription property is available for the developer to
   /// provide a descriptive label for the session.
   NSObject? get sessionDescription {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_sessionDescription1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_sessionDescription1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The sessionDescription property is available for the developer to
@@ -99465,7 +99897,7 @@ class NSURLSession extends NSObject {
   /// session with the same identifier until URLSession:didBecomeInvalidWithError: has
   /// been issued.
   void finishTasksAndInvalidate() {
-    _lib._objc_msgSend_0(_id, _lib._sel_finishTasksAndInvalidate1);
+    _lib._objc_msgSend_1(_id, _lib._sel_finishTasksAndInvalidate1);
   }
 
   /// -invalidateAndCancel acts as -finishTasksAndInvalidate, but issues
@@ -99473,7 +99905,7 @@ class NSURLSession extends NSObject {
   /// cancellation is subject to the state of the task, and some tasks may
   /// have already have completed at the time they are sent -cancel.
   void invalidateAndCancel() {
-    _lib._objc_msgSend_0(_id, _lib._sel_invalidateAndCancel1);
+    _lib._objc_msgSend_1(_id, _lib._sel_invalidateAndCancel1);
   }
 
   /// empty all cookies, cache and credential stores, removes disk files, issues -flushWithCompletionHandler:. Invokes completionHandler() on the delegate queue if not nil.
@@ -99504,14 +99936,14 @@ class NSURLSession extends NSObject {
   NSURLSessionDataTask dataTaskWithRequest_(NSObject? request) {
     final _ret = _lib._objc_msgSend_218(
         _id, _lib._sel_dataTaskWithRequest_1, request?._id ?? ffi.nullptr);
-    return NSURLSessionDataTask._(_ret, _lib);
+    return NSURLSessionDataTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates a data task to retrieve the contents of the given URL.
   NSURLSessionDataTask dataTaskWithURL_(NSObject? url) {
     final _ret = _lib._objc_msgSend_218(
         _id, _lib._sel_dataTaskWithURL_1, url?._id ?? ffi.nullptr);
-    return NSURLSessionDataTask._(_ret, _lib);
+    return NSURLSessionDataTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates an upload task with the given request.  The body of the request will be created from the file referenced by fileURL
@@ -99522,7 +99954,7 @@ class NSURLSession extends NSObject {
         _lib._sel_uploadTaskWithRequest_fromFile_1,
         request?._id ?? ffi.nullptr,
         fileURL?._id ?? ffi.nullptr);
-    return NSURLSessionUploadTask._(_ret, _lib);
+    return NSURLSessionUploadTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates an upload task with the given request.  The body of the request is provided from the bodyData.
@@ -99533,35 +99965,35 @@ class NSURLSession extends NSObject {
         _lib._sel_uploadTaskWithRequest_fromData_1,
         request?._id ?? ffi.nullptr,
         bodyData?._id ?? ffi.nullptr);
-    return NSURLSessionUploadTask._(_ret, _lib);
+    return NSURLSessionUploadTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates an upload task with the given request.  The previously set body stream of the request (if any) is ignored and the URLSession:task:needNewBodyStream: delegate will be called when the body payload is required.
   NSURLSessionUploadTask uploadTaskWithStreamedRequest_(NSObject? request) {
     final _ret = _lib._objc_msgSend_220(_id,
         _lib._sel_uploadTaskWithStreamedRequest_1, request?._id ?? ffi.nullptr);
-    return NSURLSessionUploadTask._(_ret, _lib);
+    return NSURLSessionUploadTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates a download task with the given request.
   NSURLSessionDownloadTask downloadTaskWithRequest_(NSObject? request) {
     final _ret = _lib._objc_msgSend_221(
         _id, _lib._sel_downloadTaskWithRequest_1, request?._id ?? ffi.nullptr);
-    return NSURLSessionDownloadTask._(_ret, _lib);
+    return NSURLSessionDownloadTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates a download task to download the contents of the given URL.
   NSURLSessionDownloadTask downloadTaskWithURL_(NSObject? url) {
     final _ret = _lib._objc_msgSend_221(
         _id, _lib._sel_downloadTaskWithURL_1, url?._id ?? ffi.nullptr);
-    return NSURLSessionDownloadTask._(_ret, _lib);
+    return NSURLSessionDownloadTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates a download task with the resume data.  If the download cannot be successfully resumed, URLSession:task:didCompleteWithError: will be called.
   NSURLSessionDownloadTask downloadTaskWithResumeData_(NSObject? resumeData) {
     final _ret = _lib._objc_msgSend_221(_id,
         _lib._sel_downloadTaskWithResumeData_1, resumeData?._id ?? ffi.nullptr);
-    return NSURLSessionDownloadTask._(_ret, _lib);
+    return NSURLSessionDownloadTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates a bidirectional stream task to a given host and port.
@@ -99572,7 +100004,7 @@ class NSURLSession extends NSObject {
         _lib._sel_streamTaskWithHostName_port_1,
         hostname?._id ?? ffi.nullptr,
         port);
-    return NSURLSessionStreamTask._(_ret, _lib);
+    return NSURLSessionStreamTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates a bidirectional stream task with an NSNetService to identify the endpoint.
@@ -99580,14 +100012,14 @@ class NSURLSession extends NSObject {
   NSURLSessionStreamTask streamTaskWithNetService_(NSObject? service) {
     final _ret = _lib._objc_msgSend_225(
         _id, _lib._sel_streamTaskWithNetService_1, service?._id ?? ffi.nullptr);
-    return NSURLSessionStreamTask._(_ret, _lib);
+    return NSURLSessionStreamTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates a WebSocket task given the url. The given url must have a ws or wss scheme.
   NSURLSessionWebSocketTask webSocketTaskWithURL_(NSObject? url) {
     final _ret = _lib._objc_msgSend_229(
         _id, _lib._sel_webSocketTaskWithURL_1, url?._id ?? ffi.nullptr);
-    return NSURLSessionWebSocketTask._(_ret, _lib);
+    return NSURLSessionWebSocketTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates a WebSocket task given the url and an array of protocols. The protocols will be used in the WebSocket handshake to
@@ -99600,7 +100032,7 @@ class NSURLSession extends NSObject {
         _lib._sel_webSocketTaskWithURL_protocols_1,
         url?._id ?? ffi.nullptr,
         protocols?._id ?? ffi.nullptr);
-    return NSURLSessionWebSocketTask._(_ret, _lib);
+    return NSURLSessionWebSocketTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates a WebSocket task given the request. The request properties can be modified and will be used by the task during the HTTP handshake phase.
@@ -99609,19 +100041,19 @@ class NSURLSession extends NSObject {
   NSURLSessionWebSocketTask webSocketTaskWithRequest_(NSObject? request) {
     final _ret = _lib._objc_msgSend_229(
         _id, _lib._sel_webSocketTaskWithRequest_1, request?._id ?? ffi.nullptr);
-    return NSURLSessionWebSocketTask._(_ret, _lib);
+    return NSURLSessionWebSocketTask._(_ret, _lib, retain: true, release: true);
   }
 
   @override
   NSURLSession init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSURLSession._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSURLSession._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLSession new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLSession1, _lib._sel_new1);
-    return NSURLSession._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLSession1, _lib._sel_new1);
+    return NSURLSession._(_ret, _lib, retain: false, release: true);
   }
 
   /// data task convenience methods.  These methods create tasks that
@@ -99637,7 +100069,7 @@ class NSURLSession extends NSObject {
         _lib._sel_dataTaskWithRequest_completionHandler_1,
         request?._id ?? ffi.nullptr,
         completionHandler._impl);
-    return NSURLSessionDataTask._(_ret, _lib);
+    return NSURLSessionDataTask._(_ret, _lib, retain: true, release: true);
   }
 
   NSURLSessionDataTask dataTaskWithURL_completionHandler_(
@@ -99647,7 +100079,7 @@ class NSURLSession extends NSObject {
         _lib._sel_dataTaskWithURL_completionHandler_1,
         url?._id ?? ffi.nullptr,
         completionHandler._impl);
-    return NSURLSessionDataTask._(_ret, _lib);
+    return NSURLSessionDataTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// upload convenience method.
@@ -99659,7 +100091,7 @@ class NSURLSession extends NSObject {
         request?._id ?? ffi.nullptr,
         fileURL?._id ?? ffi.nullptr,
         completionHandler._impl);
-    return NSURLSessionUploadTask._(_ret, _lib);
+    return NSURLSessionUploadTask._(_ret, _lib, retain: true, release: true);
   }
 
   NSURLSessionUploadTask uploadTaskWithRequest_fromData_completionHandler_(
@@ -99670,7 +100102,7 @@ class NSURLSession extends NSObject {
         request?._id ?? ffi.nullptr,
         bodyData?._id ?? ffi.nullptr,
         completionHandler._impl);
-    return NSURLSessionUploadTask._(_ret, _lib);
+    return NSURLSessionUploadTask._(_ret, _lib, retain: true, release: true);
   }
 
   /// download task convenience methods.  When a download successfully
@@ -99684,7 +100116,7 @@ class NSURLSession extends NSObject {
         _lib._sel_downloadTaskWithRequest_completionHandler_1,
         request?._id ?? ffi.nullptr,
         completionHandler._impl);
-    return NSURLSessionDownloadTask._(_ret, _lib);
+    return NSURLSessionDownloadTask._(_ret, _lib, retain: true, release: true);
   }
 
   NSURLSessionDownloadTask downloadTaskWithURL_completionHandler_(
@@ -99694,7 +100126,7 @@ class NSURLSession extends NSObject {
         _lib._sel_downloadTaskWithURL_completionHandler_1,
         url?._id ?? ffi.nullptr,
         completionHandler._impl);
-    return NSURLSessionDownloadTask._(_ret, _lib);
+    return NSURLSessionDownloadTask._(_ret, _lib, retain: true, release: true);
   }
 
   NSURLSessionDownloadTask downloadTaskWithResumeData_completionHandler_(
@@ -99704,13 +100136,13 @@ class NSURLSession extends NSObject {
         _lib._sel_downloadTaskWithResumeData_completionHandler_1,
         resumeData?._id ?? ffi.nullptr,
         completionHandler._impl);
-    return NSURLSessionDownloadTask._(_ret, _lib);
+    return NSURLSessionDownloadTask._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLSession alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLSession1, _lib._sel_alloc1);
-    return NSURLSession._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLSession1, _lib._sel_alloc1);
+    return NSURLSession._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -99733,11 +100165,27 @@ void _ObjCBlock26_fnPtrTrampoline(
               ffi.Pointer<ObjCObject> arg2)>()(arg0, arg1, arg2);
 }
 
+final _ObjCBlock26_closureRegistry = <int, Function>{};
+int _ObjCBlock26_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock26_registerClosure(Function fn) {
+  final id = ++_ObjCBlock26_closureRegistryIndex;
+  _ObjCBlock26_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock26_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block,
+    ffi.Pointer<ObjCObject> arg0,
+    ffi.Pointer<ObjCObject> arg1,
+    ffi.Pointer<ObjCObject> arg2) {
+  return _ObjCBlock26_closureRegistry[block.ref.target.address]!(
+      arg0, arg1, arg2);
+}
+
 class ObjCBlock26 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock26._(this._impl, this._lib);
-
   ObjCBlock26.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -99757,6 +100205,21 @@ class ObjCBlock26 {
                     _ObjCBlock26_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock26.fromFunction(
+      this._lib,
+      void Function(ffi.Pointer<ObjCObject> arg0, ffi.Pointer<ObjCObject> arg1,
+              ffi.Pointer<ObjCObject> arg2)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ObjCObject> arg0,
+                            ffi.Pointer<ObjCObject> arg1,
+                            ffi.Pointer<ObjCObject> arg2)>(
+                    _ObjCBlock26_closureTrampoline)
+                .cast(),
+            _ObjCBlock26_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -99764,50 +100227,72 @@ class ObjCBlock26 {
 /// functionality over an NSURLSessionTask and its presence is merely
 /// to provide lexical differentiation from download and upload tasks.
 class NSURLSessionDataTask extends NSURLSessionTask {
-  NSURLSessionDataTask._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSURLSessionDataTask._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLSessionDataTask] that points to the same underlying object as [other].
   static NSURLSessionDataTask castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLSessionDataTask._(other._id, other._lib);
+    return NSURLSessionDataTask._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSURLSessionDataTask] that wraps the given raw object pointer.
   static NSURLSessionDataTask castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLSessionDataTask._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLSessionDataTask._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLSessionDataTask].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSURLSessionDataTask1);
   }
 
   @override
   NSURLSessionDataTask init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSURLSessionDataTask._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSURLSessionDataTask._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLSessionDataTask new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLSessionDataTask1, _lib._sel_new1);
-    return NSURLSessionDataTask._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLSessionDataTask1, _lib._sel_new1);
+    return NSURLSessionDataTask._(_ret, _lib, retain: false, release: true);
   }
 
   static NSURLSessionDataTask alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionDataTask1, _lib._sel_alloc1);
-    return NSURLSessionDataTask._(_ret, _lib);
+    return NSURLSessionDataTask._(_ret, _lib, retain: false, release: true);
   }
 }
 
 /// NSURLSessionTask - a cancelable object that refers to the lifetime
 /// of processing a given request.
 class NSURLSessionTask extends NSObject {
-  NSURLSessionTask._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSURLSessionTask._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLSessionTask] that points to the same underlying object as [other].
   static NSURLSessionTask castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLSessionTask._(other._id, other._lib);
+    return NSURLSessionTask._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSURLSessionTask] that wraps the given raw object pointer.
   static NSURLSessionTask castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLSessionTask._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLSessionTask._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLSessionTask].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSURLSessionTask1);
   }
 
   /// an identifier for this task, assigned by and unique to the owning session
@@ -99817,27 +100302,35 @@ class NSURLSessionTask extends NSObject {
 
   /// may be nil if this is a stream task
   NSObject? get originalRequest {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_originalRequest1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_originalRequest1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// may differ from originalRequest due to http server redirection
   NSObject? get currentRequest {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_currentRequest1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_currentRequest1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// may be nil if no response has been received
   NSObject? get response {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_response1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_response1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// NSProgress object which represents the task progress.
   /// It can be used for task progress tracking.
   NSObject? get progress {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_progress1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_progress1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Start the network load for this task no earlier than the specified date. If
@@ -99846,8 +100339,10 @@ class NSURLSessionTask extends NSObject {
   /// Only applies to tasks created from background NSURLSession instances; has no
   /// effect for tasks created from other session types.
   NSObject? get earliestBeginDate {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_earliestBeginDate1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_earliestBeginDate1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Start the network load for this task no earlier than the specified date. If
@@ -99910,8 +100405,10 @@ class NSURLSessionTask extends NSObject {
   /// The taskDescription property is available for the developer to
   /// provide a descriptive label for the task.
   NSObject? get taskDescription {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_taskDescription1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_taskDescription1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The taskDescription property is available for the developer to
@@ -99927,7 +100424,7 @@ class NSURLSessionTask extends NSObject {
   /// cases, the task may signal other work before it acknowledges the
   /// cancelation.  -cancel may be sent to a task that has been suspended.
   void cancel() {
-    _lib._objc_msgSend_0(_id, _lib._sel_cancel1);
+    _lib._objc_msgSend_1(_id, _lib._sel_cancel1);
   }
 
   /// The current state of the task within the session.
@@ -99938,8 +100435,10 @@ class NSURLSessionTask extends NSObject {
   /// The error, if any, delivered via -URLSession:task:didCompleteWithError:
   /// This property will be nil in the event that no error occured.
   NSObject? get error {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_error1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_error1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Suspending a task will prevent the NSURLSession from continuing to
@@ -99950,11 +100449,11 @@ class NSURLSessionTask extends NSObject {
   /// will be disabled while a task is suspended. -suspend and -resume are
   /// nestable.
   void suspend() {
-    _lib._objc_msgSend_0(_id, _lib._sel_suspend1);
+    _lib._objc_msgSend_1(_id, _lib._sel_suspend1);
   }
 
   void resume() {
-    _lib._objc_msgSend_0(_id, _lib._sel_resume1);
+    _lib._objc_msgSend_1(_id, _lib._sel_resume1);
   }
 
   /// Sets a scaling factor for the priority of the task. The scaling factor is a
@@ -100018,20 +100517,20 @@ class NSURLSessionTask extends NSObject {
 
   @override
   NSURLSessionTask init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSURLSessionTask._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSURLSessionTask._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLSessionTask new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLSessionTask1, _lib._sel_new1);
-    return NSURLSessionTask._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLSessionTask1, _lib._sel_new1);
+    return NSURLSessionTask._(_ret, _lib, retain: false, release: true);
   }
 
   static NSURLSessionTask alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLSessionTask1, _lib._sel_alloc1);
-    return NSURLSessionTask._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLSessionTask1, _lib._sel_alloc1);
+    return NSURLSessionTask._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -100052,34 +100551,46 @@ abstract class NSURLSessionTaskState {
 /// that may be sent referencing an NSURLSessionDataTask equally apply
 /// to NSURLSessionUploadTasks.
 class NSURLSessionUploadTask extends NSURLSessionDataTask {
-  NSURLSessionUploadTask._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSURLSessionUploadTask._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLSessionUploadTask] that points to the same underlying object as [other].
   static NSURLSessionUploadTask castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLSessionUploadTask._(other._id, other._lib);
+    return NSURLSessionUploadTask._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSURLSessionUploadTask] that wraps the given raw object pointer.
   static NSURLSessionUploadTask castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLSessionUploadTask._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLSessionUploadTask._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLSessionUploadTask].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSURLSessionUploadTask1);
   }
 
   @override
   NSURLSessionUploadTask init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSURLSessionUploadTask._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSURLSessionUploadTask._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLSessionUploadTask new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionUploadTask1, _lib._sel_new1);
-    return NSURLSessionUploadTask._(_ret, _lib);
+    return NSURLSessionUploadTask._(_ret, _lib, retain: false, release: true);
   }
 
   static NSURLSessionUploadTask alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionUploadTask1, _lib._sel_alloc1);
-    return NSURLSessionUploadTask._(_ret, _lib);
+    return NSURLSessionUploadTask._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -100087,16 +100598,28 @@ class NSURLSessionUploadTask extends NSURLSessionDataTask {
 /// local storage.
 class NSURLSessionDownloadTask extends NSURLSessionTask {
   NSURLSessionDownloadTask._(
-      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLSessionDownloadTask] that points to the same underlying object as [other].
   static NSURLSessionDownloadTask castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLSessionDownloadTask._(other._id, other._lib);
+    return NSURLSessionDownloadTask._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSURLSessionDownloadTask] that wraps the given raw object pointer.
   static NSURLSessionDownloadTask castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLSessionDownloadTask._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLSessionDownloadTask._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLSessionDownloadTask].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSURLSessionDownloadTask1);
   }
 
   /// Cancel the download (and calls the superclass -cancel).  If
@@ -100112,20 +100635,20 @@ class NSURLSessionDownloadTask extends NSURLSessionTask {
 
   @override
   NSURLSessionDownloadTask init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSURLSessionDownloadTask._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSURLSessionDownloadTask._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLSessionDownloadTask new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionDownloadTask1, _lib._sel_new1);
-    return NSURLSessionDownloadTask._(_ret, _lib);
+    return NSURLSessionDownloadTask._(_ret, _lib, retain: false, release: true);
   }
 
   static NSURLSessionDownloadTask alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionDownloadTask1, _lib._sel_alloc1);
-    return NSURLSessionDownloadTask._(_ret, _lib);
+    return NSURLSessionDownloadTask._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -100150,16 +100673,28 @@ class NSURLSessionDownloadTask extends NSURLSessionTask {
 /// and will receive no more messsages.  These streams are
 /// disassociated from the underlying session.
 class NSURLSessionStreamTask extends NSURLSessionTask {
-  NSURLSessionStreamTask._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSURLSessionStreamTask._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLSessionStreamTask] that points to the same underlying object as [other].
   static NSURLSessionStreamTask castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLSessionStreamTask._(other._id, other._lib);
+    return NSURLSessionStreamTask._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSURLSessionStreamTask] that wraps the given raw object pointer.
   static NSURLSessionStreamTask castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLSessionStreamTask._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLSessionStreamTask._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLSessionStreamTask].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSURLSessionStreamTask1);
   }
 
   /// Read minBytes, or at most maxBytes bytes and invoke the completion
@@ -100195,7 +100730,7 @@ class NSURLSessionStreamTask extends NSURLSessionTask {
   /// considered completed and will not receive any more delegate
   /// messages.
   void captureStreams() {
-    _lib._objc_msgSend_0(_id, _lib._sel_captureStreams1);
+    _lib._objc_msgSend_1(_id, _lib._sel_captureStreams1);
   }
 
   /// Enqueue a request to close the write end of the underlying socket.
@@ -100204,21 +100739,21 @@ class NSURLSessionStreamTask extends NSURLSessionTask {
   /// back to the client, so best practice is to continue reading from
   /// the server until you receive EOF.
   void closeWrite() {
-    _lib._objc_msgSend_0(_id, _lib._sel_closeWrite1);
+    _lib._objc_msgSend_1(_id, _lib._sel_closeWrite1);
   }
 
   /// Enqueue a request to close the read side of the underlying socket.
   /// All outstanding IO will complete before the read side is closed.
   /// You may continue writing to the server.
   void closeRead() {
-    _lib._objc_msgSend_0(_id, _lib._sel_closeRead1);
+    _lib._objc_msgSend_1(_id, _lib._sel_closeRead1);
   }
 
   /// Begin encrypted handshake.  The hanshake begins after all pending
   /// IO has completed.  TLS authentication callbacks are sent to the
   /// session's -URLSession:task:didReceiveChallenge:completionHandler:
   void startSecureConnection() {
-    _lib._objc_msgSend_0(_id, _lib._sel_startSecureConnection1);
+    _lib._objc_msgSend_1(_id, _lib._sel_startSecureConnection1);
   }
 
   /// Cleanly close a secure connection after all pending secure IO has
@@ -100226,62 +100761,90 @@ class NSURLSessionStreamTask extends NSURLSessionTask {
   ///
   /// @warning This API is non-functional.
   void stopSecureConnection() {
-    _lib._objc_msgSend_0(_id, _lib._sel_stopSecureConnection1);
+    _lib._objc_msgSend_1(_id, _lib._sel_stopSecureConnection1);
   }
 
   @override
   NSURLSessionStreamTask init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSURLSessionStreamTask._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSURLSessionStreamTask._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLSessionStreamTask new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionStreamTask1, _lib._sel_new1);
-    return NSURLSessionStreamTask._(_ret, _lib);
+    return NSURLSessionStreamTask._(_ret, _lib, retain: false, release: true);
   }
 
   static NSURLSessionStreamTask alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionStreamTask1, _lib._sel_alloc1);
-    return NSURLSessionStreamTask._(_ret, _lib);
+    return NSURLSessionStreamTask._(_ret, _lib, retain: false, release: true);
   }
 }
 
 void _ObjCBlock27_fnPtrTrampoline(ffi.Pointer<_ObjCBlock> block,
-    ffi.Pointer<ObjCObject> arg0, int arg1, ffi.Pointer<ObjCObject> arg2) {
+    ffi.Pointer<ObjCObject> arg0, bool arg1, ffi.Pointer<ObjCObject> arg2) {
   return block.ref.target
       .cast<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Pointer<ObjCObject> arg0, ffi.Uint8 arg1,
+              ffi.Void Function(ffi.Pointer<ObjCObject> arg0, ffi.Bool arg1,
                   ffi.Pointer<ObjCObject> arg2)>>()
       .asFunction<
-          void Function(ffi.Pointer<ObjCObject> arg0, int arg1,
+          void Function(ffi.Pointer<ObjCObject> arg0, bool arg1,
               ffi.Pointer<ObjCObject> arg2)>()(arg0, arg1, arg2);
+}
+
+final _ObjCBlock27_closureRegistry = <int, Function>{};
+int _ObjCBlock27_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock27_registerClosure(Function fn) {
+  final id = ++_ObjCBlock27_closureRegistryIndex;
+  _ObjCBlock27_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock27_closureTrampoline(ffi.Pointer<_ObjCBlock> block,
+    ffi.Pointer<ObjCObject> arg0, bool arg1, ffi.Pointer<ObjCObject> arg2) {
+  return _ObjCBlock27_closureRegistry[block.ref.target.address]!(
+      arg0, arg1, arg2);
 }
 
 class ObjCBlock27 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock27._(this._impl, this._lib);
-
   ObjCBlock27.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Pointer<ObjCObject> arg0,
-                      ffi.Uint8 arg1, ffi.Pointer<ObjCObject> arg2)>>
+                  ffi.Void Function(ffi.Pointer<ObjCObject> arg0, ffi.Bool arg1,
+                      ffi.Pointer<ObjCObject> arg2)>>
           ptr)
       : _impl = _lib._newBlock1(
             ffi.Pointer.fromFunction<
                         ffi.Void Function(
                             ffi.Pointer<_ObjCBlock> block,
                             ffi.Pointer<ObjCObject> arg0,
-                            ffi.Uint8 arg1,
+                            ffi.Bool arg1,
                             ffi.Pointer<ObjCObject> arg2)>(
                     _ObjCBlock27_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock27.fromFunction(
+      this._lib,
+      void Function(ffi.Pointer<ObjCObject> arg0, bool arg1,
+              ffi.Pointer<ObjCObject> arg2)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ObjCObject> arg0,
+                            ffi.Bool arg1,
+                            ffi.Pointer<ObjCObject> arg2)>(
+                    _ObjCBlock27_closureTrampoline)
+                .cast(),
+            _ObjCBlock27_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -100295,16 +100858,28 @@ class ObjCBlock27 {
 /// outgoing HTTP handshake requests.
 class NSURLSessionWebSocketTask extends NSURLSessionTask {
   NSURLSessionWebSocketTask._(
-      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLSessionWebSocketTask] that points to the same underlying object as [other].
   static NSURLSessionWebSocketTask castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLSessionWebSocketTask._(other._id, other._lib);
+    return NSURLSessionWebSocketTask._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSURLSessionWebSocketTask] that wraps the given raw object pointer.
   static NSURLSessionWebSocketTask castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLSessionWebSocketTask._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLSessionWebSocketTask._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLSessionWebSocketTask].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSURLSessionWebSocketTask1);
   }
 
   /// Sends a WebSocket message. If an error occurs, any outstanding work will also fail.
@@ -100358,26 +100933,30 @@ class NSURLSessionWebSocketTask extends NSURLSessionTask {
 
   /// A task can be queried for it's close reason at any point. A nil value indicates no closeReason or that the task is still running
   NSObject? get closeReason {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_closeReason1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_closeReason1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   @override
   NSURLSessionWebSocketTask init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSURLSessionWebSocketTask._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSURLSessionWebSocketTask._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLSessionWebSocketTask new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionWebSocketTask1, _lib._sel_new1);
-    return NSURLSessionWebSocketTask._(_ret, _lib);
+    return NSURLSessionWebSocketTask._(_ret, _lib,
+        retain: false, release: true);
   }
 
   static NSURLSessionWebSocketTask alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionWebSocketTask1, _lib._sel_alloc1);
-    return NSURLSessionWebSocketTask._(_ret, _lib);
+    return NSURLSessionWebSocketTask._(_ret, _lib,
+        retain: false, release: true);
   }
 }
 
@@ -100409,31 +100988,45 @@ abstract class NSURLSessionWebSocketMessageType {
 /// If initialized with data, the string property will be nil and vice versa.
 class NSURLSessionWebSocketMessage extends NSObject {
   NSURLSessionWebSocketMessage._(
-      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLSessionWebSocketMessage] that points to the same underlying object as [other].
   static NSURLSessionWebSocketMessage castFrom<T extends _ObjCWrapper>(
       T other) {
-    return NSURLSessionWebSocketMessage._(other._id, other._lib);
+    return NSURLSessionWebSocketMessage._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSURLSessionWebSocketMessage] that wraps the given raw object pointer.
   static NSURLSessionWebSocketMessage castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLSessionWebSocketMessage._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLSessionWebSocketMessage._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLSessionWebSocketMessage].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSURLSessionWebSocketMessage1);
   }
 
   /// Create a message with data type
   NSURLSessionWebSocketMessage initWithData_(NSObject? data) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithData_1, data?._id ?? ffi.nullptr);
-    return NSURLSessionWebSocketMessage._(_ret, _lib);
+    return NSURLSessionWebSocketMessage._(_ret, _lib,
+        retain: true, release: true);
   }
 
   /// Create a message with string type
   NSURLSessionWebSocketMessage initWithString_(NSObject? string) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithString_1, string?._id ?? ffi.nullptr);
-    return NSURLSessionWebSocketMessage._(_ret, _lib);
+    return NSURLSessionWebSocketMessage._(_ret, _lib,
+        retain: true, release: true);
   }
 
   int get type {
@@ -100441,31 +101034,38 @@ class NSURLSessionWebSocketMessage extends NSObject {
   }
 
   NSObject? get data {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_data1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_data1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get string {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_string1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_string1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   @override
   NSURLSessionWebSocketMessage init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSURLSessionWebSocketMessage._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSURLSessionWebSocketMessage._(_ret, _lib,
+        retain: true, release: true);
   }
 
   static NSURLSessionWebSocketMessage new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionWebSocketMessage1, _lib._sel_new1);
-    return NSURLSessionWebSocketMessage._(_ret, _lib);
+    return NSURLSessionWebSocketMessage._(_ret, _lib,
+        retain: false, release: true);
   }
 
   static NSURLSessionWebSocketMessage alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionWebSocketMessage1, _lib._sel_alloc1);
-    return NSURLSessionWebSocketMessage._(_ret, _lib);
+    return NSURLSessionWebSocketMessage._(_ret, _lib,
+        retain: false, release: true);
   }
 }
 
@@ -100519,28 +101119,44 @@ abstract class NSURLSessionMultipathServiceType {
 /// on behalf of a suspended application, within certain constraints.
 class NSURLSessionConfiguration extends NSObject {
   NSURLSessionConfiguration._(
-      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLSessionConfiguration] that points to the same underlying object as [other].
   static NSURLSessionConfiguration castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLSessionConfiguration._(other._id, other._lib);
+    return NSURLSessionConfiguration._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSURLSessionConfiguration] that wraps the given raw object pointer.
   static NSURLSessionConfiguration castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLSessionConfiguration._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLSessionConfiguration._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLSessionConfiguration].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSURLSessionConfiguration1);
   }
 
   static NSObject? getDefaultSessionConfiguration(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSURLSessionConfiguration1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSURLSessionConfiguration1,
         _lib._sel_defaultSessionConfiguration1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getEphemeralSessionConfiguration(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSURLSessionConfiguration1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSURLSessionConfiguration1,
         _lib._sel_ephemeralSessionConfiguration1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLSessionConfiguration
@@ -100550,13 +101166,15 @@ class NSURLSessionConfiguration extends NSObject {
         _lib._class_NSURLSessionConfiguration1,
         _lib._sel_backgroundSessionConfigurationWithIdentifier_1,
         identifier?._id ?? ffi.nullptr);
-    return NSURLSessionConfiguration._(_ret, _lib);
+    return NSURLSessionConfiguration._(_ret, _lib, retain: true, release: true);
   }
 
   /// identifier for the background session configuration
   NSObject? get identifier {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_identifier1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_identifier1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// default cache policy for requests
@@ -100681,8 +101299,10 @@ class NSURLSessionConfiguration extends NSObject {
   /// all transfers in that session will fail with NSURLErrorBackgroundSessionRequiresSharedContainer.
   NSObject? get sharedContainerIdentifier {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_sharedContainerIdentifier1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_sharedContainerIdentifier1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The identifier of the shared data container into which files in background sessions should be downloaded.
@@ -100714,8 +101334,10 @@ class NSURLSessionConfiguration extends NSObject {
   /// The proxy dictionary, as described by <CFNetwork/CFHTTPStream.h>
   NSObject? get connectionProxyDictionary {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_connectionProxyDictionary1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_connectionProxyDictionary1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The proxy dictionary, as described by <CFNetwork/CFHTTPStream.h>
@@ -100803,8 +101425,10 @@ class NSURLSessionConfiguration extends NSObject {
   /// Specifies additional headers which will be set on outgoing requests.
   /// Note that these headers are added to the request only if not already present.
   NSObject? get HTTPAdditionalHeaders {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_HTTPAdditionalHeaders1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_HTTPAdditionalHeaders1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Specifies additional headers which will be set on outgoing requests.
@@ -100827,8 +101451,10 @@ class NSURLSessionConfiguration extends NSObject {
 
   /// The cookie storage object to use, or nil to indicate that no cookies should be handled
   NSObject? get HTTPCookieStorage {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_HTTPCookieStorage1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_HTTPCookieStorage1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The cookie storage object to use, or nil to indicate that no cookies should be handled
@@ -100839,8 +101465,10 @@ class NSURLSessionConfiguration extends NSObject {
 
   /// The credential storage object, or nil to indicate that no credential storage is to be used
   NSObject? get URLCredentialStorage {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_URLCredentialStorage1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_URLCredentialStorage1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The credential storage object, or nil to indicate that no credential storage is to be used
@@ -100851,8 +101479,10 @@ class NSURLSessionConfiguration extends NSObject {
 
   /// The URL resource cache, or nil to indicate that no caching is to be performed
   NSObject? get URLCache {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_URLCache1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_URLCache1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The URL resource cache, or nil to indicate that no caching is to be performed
@@ -100884,8 +101514,10 @@ class NSURLSessionConfiguration extends NSObject {
   /// Custom NSURLProtocol subclasses are not available to background
   /// sessions.
   NSObject? get protocolClasses {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_protocolClasses1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_protocolClasses1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// An optional array of Class objects which subclass NSURLProtocol.
@@ -100913,14 +101545,15 @@ class NSURLSessionConfiguration extends NSObject {
 
   @override
   NSURLSessionConfiguration init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSURLSessionConfiguration._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSURLSessionConfiguration._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLSessionConfiguration new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionConfiguration1, _lib._sel_new1);
-    return NSURLSessionConfiguration._(_ret, _lib);
+    return NSURLSessionConfiguration._(_ret, _lib,
+        retain: false, release: true);
   }
 
   static NSURLSessionConfiguration backgroundSessionConfiguration_(
@@ -100929,13 +101562,14 @@ class NSURLSessionConfiguration extends NSObject {
         _lib._class_NSURLSessionConfiguration1,
         _lib._sel_backgroundSessionConfiguration_1,
         identifier?._id ?? ffi.nullptr);
-    return NSURLSessionConfiguration._(_ret, _lib);
+    return NSURLSessionConfiguration._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLSessionConfiguration alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionConfiguration1, _lib._sel_alloc1);
-    return NSURLSessionConfiguration._(_ret, _lib);
+    return NSURLSessionConfiguration._(_ret, _lib,
+        retain: false, release: true);
   }
 }
 
@@ -101013,29 +101647,45 @@ abstract class NSURLSessionTaskMetricsDomainResolutionProtocol {
 /// This class defines the performance metrics collected for a request/response transaction during the task execution.
 class NSURLSessionTaskTransactionMetrics extends NSObject {
   NSURLSessionTaskTransactionMetrics._(
-      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLSessionTaskTransactionMetrics] that points to the same underlying object as [other].
   static NSURLSessionTaskTransactionMetrics castFrom<T extends _ObjCWrapper>(
       T other) {
-    return NSURLSessionTaskTransactionMetrics._(other._id, other._lib);
+    return NSURLSessionTaskTransactionMetrics._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSURLSessionTaskTransactionMetrics] that wraps the given raw object pointer.
   static NSURLSessionTaskTransactionMetrics castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLSessionTaskTransactionMetrics._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLSessionTaskTransactionMetrics._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLSessionTaskTransactionMetrics].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSURLSessionTaskTransactionMetrics1);
   }
 
   /// Represents the transaction request.
   NSObject? get request {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_request1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_request1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Represents the transaction response. Can be nil if error occurred and no response was generated.
   NSObject? get response {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_response1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_response1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// fetchStartDate returns the time when the user agent started fetching the resource, whether or not the resource was retrieved from the server or local resources.
@@ -101049,28 +101699,36 @@ class NSURLSessionTaskTransactionMetrics extends NSObject {
   /// secureConnectionStartDate
   /// secureConnectionEndDate
   NSObject? get fetchStartDate {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_fetchStartDate1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_fetchStartDate1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// domainLookupStartDate returns the time immediately before the user agent started the name lookup for the resource.
   NSObject? get domainLookupStartDate {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_domainLookupStartDate1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_domainLookupStartDate1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// domainLookupEndDate returns the time after the name lookup was completed.
   NSObject? get domainLookupEndDate {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_domainLookupEndDate1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_domainLookupEndDate1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// connectStartDate is the time immediately before the user agent started establishing the connection to the server.
   ///
   /// For example, this would correspond to the time immediately before the user agent started trying to establish the TCP connection.
   NSObject? get connectStartDate {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_connectStartDate1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_connectStartDate1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// If an encrypted connection was used, secureConnectionStartDate is the time immediately before the user agent started the security handshake to secure the current connection.
@@ -101080,52 +101738,66 @@ class NSURLSessionTaskTransactionMetrics extends NSObject {
   /// If an encrypted connection was not used, this attribute is set to nil.
   NSObject? get secureConnectionStartDate {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_secureConnectionStartDate1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_secureConnectionStartDate1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// If an encrypted connection was used, secureConnectionEndDate is the time immediately after the security handshake completed.
   ///
   /// If an encrypted connection was not used, this attribute is set to nil.
   NSObject? get secureConnectionEndDate {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_secureConnectionEndDate1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_secureConnectionEndDate1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// connectEndDate is the time immediately after the user agent finished establishing the connection to the server, including completion of security-related and other handshakes.
   NSObject? get connectEndDate {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_connectEndDate1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_connectEndDate1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// requestStartDate is the time immediately before the user agent started requesting the source, regardless of whether the resource was retrieved from the server or local resources.
   ///
   /// For example, this would correspond to the time immediately before the user agent sent an HTTP GET request.
   NSObject? get requestStartDate {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_requestStartDate1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_requestStartDate1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// requestEndDate is the time immediately after the user agent finished requesting the source, regardless of whether the resource was retrieved from the server or local resources.
   ///
   /// For example, this would correspond to the time immediately after the user agent finished sending the last byte of the request.
   NSObject? get requestEndDate {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_requestEndDate1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_requestEndDate1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// responseStartDate is the time immediately after the user agent received the first byte of the response from the server or from local resources.
   ///
   /// For example, this would correspond to the time immediately after the user agent received the first byte of an HTTP response.
   NSObject? get responseStartDate {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_responseStartDate1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_responseStartDate1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// responseEndDate is the time immediately after the user agent received the last byte of the resource.
   NSObject? get responseEndDate {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_responseEndDate1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_responseEndDate1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The network protocol used to fetch the resource, as identified by the ALPN Protocol ID Identification Sequence [RFC7301].
@@ -101138,8 +101810,10 @@ class NSURLSessionTaskTransactionMetrics extends NSObject {
   /// If HTTP/1.1 were used to the proxy, and the tunneled connection was HTTP/2, then h2 would be returned.
   /// If HTTP/1.1 were used to the proxy, and there were no tunnel, then http/1.1 would be returned.
   NSObject? get networkProtocolName {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_networkProtocolName1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_networkProtocolName1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// This property is set to YES if a proxy connection was used to fetch the resource.
@@ -101200,8 +101874,10 @@ class NSURLSessionTaskTransactionMetrics extends NSObject {
   ///
   /// If a connection was not used, this attribute is set to nil.
   NSObject? get localAddress {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_localAddress1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_localAddress1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// localPort is the port number of the local interface for the connection.
@@ -101210,8 +101886,10 @@ class NSURLSessionTaskTransactionMetrics extends NSObject {
   ///
   /// If a connection was not used, this attribute is set to nil.
   NSObject? get localPort {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_localPort1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_localPort1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// remoteAddress is the IP address string of the remote interface for the connection.
@@ -101220,8 +101898,10 @@ class NSURLSessionTaskTransactionMetrics extends NSObject {
   ///
   /// If a connection was not used, this attribute is set to nil.
   NSObject? get remoteAddress {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_remoteAddress1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_remoteAddress1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// remotePort is the port number of the remote interface for the connection.
@@ -101230,8 +101910,10 @@ class NSURLSessionTaskTransactionMetrics extends NSObject {
   ///
   /// If a connection was not used, this attribute is set to nil.
   NSObject? get remotePort {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_remotePort1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_remotePort1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// negotiatedTLSProtocolVersion is the TLS protocol version negotiated for the connection.
@@ -101242,8 +101924,10 @@ class NSURLSessionTaskTransactionMetrics extends NSObject {
   /// If an encrypted connection was not used, this attribute is set to nil.
   NSObject? get negotiatedTLSProtocolVersion {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_negotiatedTLSProtocolVersion1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_negotiatedTLSProtocolVersion1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// negotiatedTLSCipherSuite is the TLS cipher suite negotiated for the connection.
@@ -101253,8 +101937,10 @@ class NSURLSessionTaskTransactionMetrics extends NSObject {
   ///
   /// If an encrypted connection was not used, this attribute is set to nil.
   NSObject? get negotiatedTLSCipherSuite {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_negotiatedTLSCipherSuite1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_negotiatedTLSCipherSuite1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Whether the connection is established over a cellular interface.
@@ -101284,48 +101970,67 @@ class NSURLSessionTaskTransactionMetrics extends NSObject {
 
   @override
   NSURLSessionTaskTransactionMetrics init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSURLSessionTaskTransactionMetrics._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSURLSessionTaskTransactionMetrics._(_ret, _lib,
+        retain: true, release: true);
   }
 
   static NSURLSessionTaskTransactionMetrics new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionTaskTransactionMetrics1, _lib._sel_new1);
-    return NSURLSessionTaskTransactionMetrics._(_ret, _lib);
+    return NSURLSessionTaskTransactionMetrics._(_ret, _lib,
+        retain: false, release: true);
   }
 
   static NSURLSessionTaskTransactionMetrics alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionTaskTransactionMetrics1, _lib._sel_alloc1);
-    return NSURLSessionTaskTransactionMetrics._(_ret, _lib);
+    return NSURLSessionTaskTransactionMetrics._(_ret, _lib,
+        retain: false, release: true);
   }
 }
 
 class NSURLSessionTaskMetrics extends NSObject {
-  NSURLSessionTaskMetrics._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSURLSessionTaskMetrics._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLSessionTaskMetrics] that points to the same underlying object as [other].
   static NSURLSessionTaskMetrics castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLSessionTaskMetrics._(other._id, other._lib);
+    return NSURLSessionTaskMetrics._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSURLSessionTaskMetrics] that wraps the given raw object pointer.
   static NSURLSessionTaskMetrics castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLSessionTaskMetrics._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLSessionTaskMetrics._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLSessionTaskMetrics].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSURLSessionTaskMetrics1);
   }
 
   /// transactionMetrics array contains the metrics collected for every request/response transaction created during the task execution.
   NSObject? get transactionMetrics {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_transactionMetrics1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_transactionMetrics1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Interval from the task creation time to the task completion time.
   /// Task creation time is the time when the task was instantiated.
   /// Task completion time is the time when the task is about to change its internal state to completed.
   NSObject? get taskInterval {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_taskInterval1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_taskInterval1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// redirectCount is the number of redirects that were recorded.
@@ -101335,20 +102040,20 @@ class NSURLSessionTaskMetrics extends NSObject {
 
   @override
   NSURLSessionTaskMetrics init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSURLSessionTaskMetrics._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSURLSessionTaskMetrics._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLSessionTaskMetrics new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionTaskMetrics1, _lib._sel_new1);
-    return NSURLSessionTaskMetrics._(_ret, _lib);
+    return NSURLSessionTaskMetrics._(_ret, _lib, retain: false, release: true);
   }
 
   static NSURLSessionTaskMetrics alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSURLSessionTaskMetrics1, _lib._sel_alloc1);
-    return NSURLSessionTaskMetrics._(_ret, _lib);
+    return NSURLSessionTaskMetrics._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -101364,22 +102069,32 @@ abstract class NSItemProviderFileOptions {
 }
 
 class NSItemProvider extends NSObject {
-  NSItemProvider._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSItemProvider._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSItemProvider] that points to the same underlying object as [other].
   static NSItemProvider castFrom<T extends _ObjCWrapper>(T other) {
-    return NSItemProvider._(other._id, other._lib);
+    return NSItemProvider._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSItemProvider] that wraps the given raw object pointer.
   static NSItemProvider castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSItemProvider._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSItemProvider._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSItemProvider].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSItemProvider1);
   }
 
   @override
   NSItemProvider init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSItemProvider._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSItemProvider._(_ret, _lib, retain: true, release: true);
   }
 
   void registerDataRepresentationForTypeIdentifier_visibility_loadHandler_(
@@ -101409,12 +102124,14 @@ class NSItemProvider extends NSObject {
 
   NSObject? get registeredTypeIdentifiers {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_registeredTypeIdentifiers1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_registeredTypeIdentifiers1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   bool hasItemConformingToTypeIdentifier_(NSObject? typeIdentifier) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id,
         _lib._sel_hasItemConformingToTypeIdentifier_1,
         typeIdentifier?._id ?? ffi.nullptr);
@@ -101436,7 +102153,7 @@ class NSItemProvider extends NSObject {
         _lib._sel_loadDataRepresentationForTypeIdentifier_completionHandler_1,
         typeIdentifier?._id ?? ffi.nullptr,
         completionHandler._impl);
-    return NSProgress._(_ret, _lib);
+    return NSProgress._(_ret, _lib, retain: true, release: true);
   }
 
   NSProgress loadFileRepresentationForTypeIdentifier_completionHandler_(
@@ -101446,7 +102163,7 @@ class NSItemProvider extends NSObject {
         _lib._sel_loadFileRepresentationForTypeIdentifier_completionHandler_1,
         typeIdentifier?._id ?? ffi.nullptr,
         completionHandler._impl);
-    return NSProgress._(_ret, _lib);
+    return NSProgress._(_ret, _lib, retain: true, release: true);
   }
 
   NSProgress loadInPlaceFileRepresentationForTypeIdentifier_completionHandler_(
@@ -101456,12 +102173,14 @@ class NSItemProvider extends NSObject {
         _lib._sel_loadInPlaceFileRepresentationForTypeIdentifier_completionHandler_1,
         typeIdentifier?._id ?? ffi.nullptr,
         completionHandler._impl);
-    return NSProgress._(_ret, _lib);
+    return NSProgress._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get suggestedName {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_suggestedName1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_suggestedName1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set suggestedName(NSObject? value) {
@@ -101472,7 +102191,7 @@ class NSItemProvider extends NSObject {
   NSItemProvider initWithObject_(NSObject? object) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithObject_1, object?._id ?? ffi.nullptr);
-    return NSItemProvider._(_ret, _lib);
+    return NSItemProvider._(_ret, _lib, retain: true, release: true);
   }
 
   void registerObject_visibility_(NSObject? object, int visibility) {
@@ -101491,7 +102210,7 @@ class NSItemProvider extends NSObject {
   }
 
   bool canLoadObjectOfClass_(NSObject? aClass) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_canLoadObjectOfClass_1, aClass?._id ?? ffi.nullptr);
   }
 
@@ -101502,7 +102221,7 @@ class NSItemProvider extends NSObject {
         _lib._sel_loadObjectOfClass_completionHandler_1,
         aClass?._id ?? ffi.nullptr,
         completionHandler._impl);
-    return NSProgress._(_ret, _lib);
+    return NSProgress._(_ret, _lib, retain: true, release: true);
   }
 
   NSItemProvider initWithItem_typeIdentifier_(
@@ -101512,13 +102231,13 @@ class NSItemProvider extends NSObject {
         _lib._sel_initWithItem_typeIdentifier_1,
         item?._id ?? ffi.nullptr,
         typeIdentifier?._id ?? ffi.nullptr);
-    return NSItemProvider._(_ret, _lib);
+    return NSItemProvider._(_ret, _lib, retain: true, release: true);
   }
 
   NSItemProvider initWithContentsOfURL_(NSObject? fileURL) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithContentsOfURL_1, fileURL?._id ?? ffi.nullptr);
-    return NSItemProvider._(_ret, _lib);
+    return NSItemProvider._(_ret, _lib, retain: true, release: true);
   }
 
   void registerItemForTypeIdentifier_loadHandler_(
@@ -101561,14 +102280,14 @@ class NSItemProvider extends NSObject {
 
   static NSItemProvider new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSItemProvider1, _lib._sel_new1);
-    return NSItemProvider._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSItemProvider1, _lib._sel_new1);
+    return NSItemProvider._(_ret, _lib, retain: false, release: true);
   }
 
   static NSItemProvider alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSItemProvider1, _lib._sel_alloc1);
-    return NSItemProvider._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSItemProvider1, _lib._sel_alloc1);
+    return NSItemProvider._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -101583,11 +102302,23 @@ ffi.Pointer<ObjCObject> _ObjCBlock28_fnPtrTrampoline(
               ffi.Pointer<_ObjCBlock> arg0)>()(arg0);
 }
 
+final _ObjCBlock28_closureRegistry = <int, Function>{};
+int _ObjCBlock28_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock28_registerClosure(Function fn) {
+  final id = ++_ObjCBlock28_closureRegistryIndex;
+  _ObjCBlock28_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+ffi.Pointer<ObjCObject> _ObjCBlock28_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block, ffi.Pointer<_ObjCBlock> arg0) {
+  return _ObjCBlock28_closureRegistry[block.ref.target.address]!(arg0);
+}
+
 class ObjCBlock28 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock28._(this._impl, this._lib);
-
   ObjCBlock28.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -101603,6 +102334,16 @@ class ObjCBlock28 {
                     _ObjCBlock28_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock28.fromFunction(this._lib,
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<_ObjCBlock> arg0) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Pointer<ObjCObject> Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<_ObjCBlock> arg0)>(
+                    _ObjCBlock28_closureTrampoline)
+                .cast(),
+            _ObjCBlock28_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -101617,11 +102358,23 @@ ffi.Pointer<ObjCObject> _ObjCBlock29_fnPtrTrampoline(
               ffi.Pointer<_ObjCBlock> arg0)>()(arg0);
 }
 
+final _ObjCBlock29_closureRegistry = <int, Function>{};
+int _ObjCBlock29_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock29_registerClosure(Function fn) {
+  final id = ++_ObjCBlock29_closureRegistryIndex;
+  _ObjCBlock29_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+ffi.Pointer<ObjCObject> _ObjCBlock29_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block, ffi.Pointer<_ObjCBlock> arg0) {
+  return _ObjCBlock29_closureRegistry[block.ref.target.address]!(arg0);
+}
+
 class ObjCBlock29 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock29._(this._impl, this._lib);
-
   ObjCBlock29.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -101637,6 +102390,16 @@ class ObjCBlock29 {
                     _ObjCBlock29_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock29.fromFunction(this._lib,
+      ffi.Pointer<ObjCObject> Function(ffi.Pointer<_ObjCBlock> arg0) fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Pointer<ObjCObject> Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<_ObjCBlock> arg0)>(
+                    _ObjCBlock29_closureTrampoline)
+                .cast(),
+            _ObjCBlock29_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -101660,11 +102423,27 @@ void _ObjCBlock30_fnPtrTrampoline(
               ffi.Pointer<ObjCObject> arg2)>()(arg0, arg1, arg2);
 }
 
+final _ObjCBlock30_closureRegistry = <int, Function>{};
+int _ObjCBlock30_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock30_registerClosure(Function fn) {
+  final id = ++_ObjCBlock30_closureRegistryIndex;
+  _ObjCBlock30_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+void _ObjCBlock30_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block,
+    NSItemProviderCompletionHandler arg0,
+    ffi.Pointer<ObjCObject> arg1,
+    ffi.Pointer<ObjCObject> arg2) {
+  return _ObjCBlock30_closureRegistry[block.ref.target.address]!(
+      arg0, arg1, arg2);
+}
+
 class ObjCBlock30 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock30._(this._impl, this._lib);
-
   ObjCBlock30.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -101684,6 +102463,21 @@ class ObjCBlock30 {
                     _ObjCBlock30_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock30.fromFunction(
+      this._lib,
+      void Function(NSItemProviderCompletionHandler arg0,
+              ffi.Pointer<ObjCObject> arg1, ffi.Pointer<ObjCObject> arg2)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Void Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            NSItemProviderCompletionHandler arg0,
+                            ffi.Pointer<ObjCObject> arg1,
+                            ffi.Pointer<ObjCObject> arg2)>(
+                    _ObjCBlock30_closureTrampoline)
+                .cast(),
+            _ObjCBlock30_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -101699,16 +102493,27 @@ abstract class NSItemProviderErrorCode {
 typedef NSStringEncodingDetectionOptionsKey = ffi.Pointer<ObjCObject>;
 
 class NSMutableString extends NSString {
-  NSMutableString._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSMutableString._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSMutableString] that points to the same underlying object as [other].
   static NSMutableString castFrom<T extends _ObjCWrapper>(T other) {
-    return NSMutableString._(other._id, other._lib);
+    return NSMutableString._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSMutableString] that wraps the given raw object pointer.
   static NSMutableString castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSMutableString._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSMutableString._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSMutableString].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSMutableString1);
   }
 
   void replaceCharactersInRange_withString_(NSRange range, NSObject? aString) {
@@ -101765,14 +102570,14 @@ class NSMutableString extends NSString {
   NSMutableString initWithCapacity_(int capacity) {
     final _ret =
         _lib._objc_msgSend_257(_id, _lib._sel_initWithCapacity_1, capacity);
-    return NSMutableString._(_ret, _lib);
+    return NSMutableString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableString stringWithCapacity_(
       NativeCupertinoHttp _lib, int capacity) {
     final _ret = _lib._objc_msgSend_257(
         _lib._class_NSMutableString1, _lib._sel_stringWithCapacity_1, capacity);
-    return NSMutableString._(_ret, _lib);
+    return NSMutableString._(_ret, _lib, retain: true, release: true);
   }
 
   static ffi.Pointer<NSStringEncoding> getAvailableStringEncodings(
@@ -101785,7 +102590,7 @@ class NSMutableString extends NSString {
       NativeCupertinoHttp _lib, int encoding) {
     final _ret = _lib._objc_msgSend_14(_lib._class_NSMutableString1,
         _lib._sel_localizedNameOfStringEncoding_1, encoding);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static int getDefaultCStringEncoding(NativeCupertinoHttp _lib) {
@@ -101795,50 +102600,50 @@ class NSMutableString extends NSString {
 
   static NSMutableString string(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSMutableString1, _lib._sel_string1);
-    return NSMutableString._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSMutableString1, _lib._sel_string1);
+    return NSMutableString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableString stringWithString_(
       NativeCupertinoHttp _lib, NSObject? string) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableString1,
         _lib._sel_stringWithString_1, string?._id ?? ffi.nullptr);
-    return NSMutableString._(_ret, _lib);
+    return NSMutableString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableString stringWithCharacters_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<unichar> characters, int length) {
     final _ret = _lib._objc_msgSend_73(_lib._class_NSMutableString1,
         _lib._sel_stringWithCharacters_length_1, characters, length);
-    return NSMutableString._(_ret, _lib);
+    return NSMutableString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableString stringWithUTF8String_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> nullTerminatedCString) {
     final _ret = _lib._objc_msgSend_74(_lib._class_NSMutableString1,
         _lib._sel_stringWithUTF8String_1, nullTerminatedCString);
-    return NSMutableString._(_ret, _lib);
+    return NSMutableString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableString stringWithFormat_(
       NativeCupertinoHttp _lib, NSObject? format) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableString1,
         _lib._sel_stringWithFormat_1, format?._id ?? ffi.nullptr);
-    return NSMutableString._(_ret, _lib);
+    return NSMutableString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableString localizedStringWithFormat_(
       NativeCupertinoHttp _lib, NSObject? format) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableString1,
         _lib._sel_localizedStringWithFormat_1, format?._id ?? ffi.nullptr);
-    return NSMutableString._(_ret, _lib);
+    return NSMutableString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableString stringWithCString_encoding_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> cString, int enc) {
     final _ret = _lib._objc_msgSend_82(_lib._class_NSMutableString1,
         _lib._sel_stringWithCString_encoding_1, cString, enc);
-    return NSMutableString._(_ret, _lib);
+    return NSMutableString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableString stringWithContentsOfURL_encoding_error_(
@@ -101852,7 +102657,7 @@ class NSMutableString extends NSString {
         url?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSMutableString._(_ret, _lib);
+    return NSMutableString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableString stringWithContentsOfFile_encoding_error_(
@@ -101866,7 +102671,7 @@ class NSMutableString extends NSString {
         path?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSMutableString._(_ret, _lib);
+    return NSMutableString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableString stringWithContentsOfURL_usedEncoding_error_(
@@ -101880,7 +102685,7 @@ class NSMutableString extends NSString {
         url?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSMutableString._(_ret, _lib);
+    return NSMutableString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableString stringWithContentsOfFile_usedEncoding_error_(
@@ -101894,7 +102699,7 @@ class NSMutableString extends NSString {
         path?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSMutableString._(_ret, _lib);
+    return NSMutableString._(_ret, _lib, retain: true, release: true);
   }
 
   static int
@@ -101903,7 +102708,7 @@ class NSMutableString extends NSString {
           NSObject? data,
           NSObject? opts,
           ffi.Pointer<ffi.Pointer<ObjCObject>> string,
-          ffi.Pointer<ffi.Uint8> usedLossyConversion) {
+          ffi.Pointer<ffi.Bool> usedLossyConversion) {
     return _lib._objc_msgSend_85(
         _lib._class_NSMutableString1,
         _lib._sel_stringEncodingForData_encodingOptions_convertedString_usedLossyConversion_1,
@@ -101917,56 +102722,67 @@ class NSMutableString extends NSString {
       NativeCupertinoHttp _lib, NSObject? path) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableString1,
         _lib._sel_stringWithContentsOfFile_1, path?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject stringWithContentsOfURL_(
       NativeCupertinoHttp _lib, NSObject? url) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSMutableString1,
         _lib._sel_stringWithContentsOfURL_1, url?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject stringWithCString_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> bytes, int length) {
     final _ret = _lib._objc_msgSend_82(_lib._class_NSMutableString1,
         _lib._sel_stringWithCString_length_1, bytes, length);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject stringWithCString_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> bytes) {
     final _ret = _lib._objc_msgSend_74(
         _lib._class_NSMutableString1, _lib._sel_stringWithCString_1, bytes);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableString new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSMutableString1, _lib._sel_new1);
-    return NSMutableString._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSMutableString1, _lib._sel_new1);
+    return NSMutableString._(_ret, _lib, retain: false, release: true);
   }
 
   static NSMutableString alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSMutableString1, _lib._sel_alloc1);
-    return NSMutableString._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSMutableString1, _lib._sel_alloc1);
+    return NSMutableString._(_ret, _lib, retain: false, release: true);
   }
 }
 
 typedef NSExceptionName = ffi.Pointer<ObjCObject>;
 
 class NSSimpleCString extends NSString {
-  NSSimpleCString._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSSimpleCString._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSSimpleCString] that points to the same underlying object as [other].
   static NSSimpleCString castFrom<T extends _ObjCWrapper>(T other) {
-    return NSSimpleCString._(other._id, other._lib);
+    return NSSimpleCString._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSSimpleCString] that wraps the given raw object pointer.
   static NSSimpleCString castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSSimpleCString._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSSimpleCString._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSSimpleCString].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSSimpleCString1);
   }
 
   static ffi.Pointer<NSStringEncoding> getAvailableStringEncodings(
@@ -101979,7 +102795,7 @@ class NSSimpleCString extends NSString {
       NativeCupertinoHttp _lib, int encoding) {
     final _ret = _lib._objc_msgSend_14(_lib._class_NSSimpleCString1,
         _lib._sel_localizedNameOfStringEncoding_1, encoding);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static int getDefaultCStringEncoding(NativeCupertinoHttp _lib) {
@@ -101989,50 +102805,50 @@ class NSSimpleCString extends NSString {
 
   static NSSimpleCString string(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSSimpleCString1, _lib._sel_string1);
-    return NSSimpleCString._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSSimpleCString1, _lib._sel_string1);
+    return NSSimpleCString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSSimpleCString stringWithString_(
       NativeCupertinoHttp _lib, NSObject? string) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSSimpleCString1,
         _lib._sel_stringWithString_1, string?._id ?? ffi.nullptr);
-    return NSSimpleCString._(_ret, _lib);
+    return NSSimpleCString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSSimpleCString stringWithCharacters_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<unichar> characters, int length) {
     final _ret = _lib._objc_msgSend_73(_lib._class_NSSimpleCString1,
         _lib._sel_stringWithCharacters_length_1, characters, length);
-    return NSSimpleCString._(_ret, _lib);
+    return NSSimpleCString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSSimpleCString stringWithUTF8String_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> nullTerminatedCString) {
     final _ret = _lib._objc_msgSend_74(_lib._class_NSSimpleCString1,
         _lib._sel_stringWithUTF8String_1, nullTerminatedCString);
-    return NSSimpleCString._(_ret, _lib);
+    return NSSimpleCString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSSimpleCString stringWithFormat_(
       NativeCupertinoHttp _lib, NSObject? format) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSSimpleCString1,
         _lib._sel_stringWithFormat_1, format?._id ?? ffi.nullptr);
-    return NSSimpleCString._(_ret, _lib);
+    return NSSimpleCString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSSimpleCString localizedStringWithFormat_(
       NativeCupertinoHttp _lib, NSObject? format) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSSimpleCString1,
         _lib._sel_localizedStringWithFormat_1, format?._id ?? ffi.nullptr);
-    return NSSimpleCString._(_ret, _lib);
+    return NSSimpleCString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSSimpleCString stringWithCString_encoding_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> cString, int enc) {
     final _ret = _lib._objc_msgSend_82(_lib._class_NSSimpleCString1,
         _lib._sel_stringWithCString_encoding_1, cString, enc);
-    return NSSimpleCString._(_ret, _lib);
+    return NSSimpleCString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSSimpleCString stringWithContentsOfURL_encoding_error_(
@@ -102046,7 +102862,7 @@ class NSSimpleCString extends NSString {
         url?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSSimpleCString._(_ret, _lib);
+    return NSSimpleCString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSSimpleCString stringWithContentsOfFile_encoding_error_(
@@ -102060,7 +102876,7 @@ class NSSimpleCString extends NSString {
         path?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSSimpleCString._(_ret, _lib);
+    return NSSimpleCString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSSimpleCString stringWithContentsOfURL_usedEncoding_error_(
@@ -102074,7 +102890,7 @@ class NSSimpleCString extends NSString {
         url?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSSimpleCString._(_ret, _lib);
+    return NSSimpleCString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSSimpleCString stringWithContentsOfFile_usedEncoding_error_(
@@ -102088,7 +102904,7 @@ class NSSimpleCString extends NSString {
         path?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSSimpleCString._(_ret, _lib);
+    return NSSimpleCString._(_ret, _lib, retain: true, release: true);
   }
 
   static int
@@ -102097,7 +102913,7 @@ class NSSimpleCString extends NSString {
           NSObject? data,
           NSObject? opts,
           ffi.Pointer<ffi.Pointer<ObjCObject>> string,
-          ffi.Pointer<ffi.Uint8> usedLossyConversion) {
+          ffi.Pointer<ffi.Bool> usedLossyConversion) {
     return _lib._objc_msgSend_85(
         _lib._class_NSSimpleCString1,
         _lib._sel_stringEncodingForData_encodingOptions_convertedString_usedLossyConversion_1,
@@ -102111,54 +102927,65 @@ class NSSimpleCString extends NSString {
       NativeCupertinoHttp _lib, NSObject? path) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSSimpleCString1,
         _lib._sel_stringWithContentsOfFile_1, path?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject stringWithContentsOfURL_(
       NativeCupertinoHttp _lib, NSObject? url) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSSimpleCString1,
         _lib._sel_stringWithContentsOfURL_1, url?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject stringWithCString_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> bytes, int length) {
     final _ret = _lib._objc_msgSend_82(_lib._class_NSSimpleCString1,
         _lib._sel_stringWithCString_length_1, bytes, length);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject stringWithCString_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> bytes) {
     final _ret = _lib._objc_msgSend_74(
         _lib._class_NSSimpleCString1, _lib._sel_stringWithCString_1, bytes);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSSimpleCString new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSSimpleCString1, _lib._sel_new1);
-    return NSSimpleCString._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSSimpleCString1, _lib._sel_new1);
+    return NSSimpleCString._(_ret, _lib, retain: false, release: true);
   }
 
   static NSSimpleCString alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSSimpleCString1, _lib._sel_alloc1);
-    return NSSimpleCString._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSSimpleCString1, _lib._sel_alloc1);
+    return NSSimpleCString._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class NSConstantString extends NSSimpleCString {
-  NSConstantString._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSConstantString._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSConstantString] that points to the same underlying object as [other].
   static NSConstantString castFrom<T extends _ObjCWrapper>(T other) {
-    return NSConstantString._(other._id, other._lib);
+    return NSConstantString._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSConstantString] that wraps the given raw object pointer.
   static NSConstantString castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSConstantString._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSConstantString._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSConstantString].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSConstantString1);
   }
 
   static ffi.Pointer<NSStringEncoding> getAvailableStringEncodings(
@@ -102171,7 +102998,7 @@ class NSConstantString extends NSSimpleCString {
       NativeCupertinoHttp _lib, int encoding) {
     final _ret = _lib._objc_msgSend_14(_lib._class_NSConstantString1,
         _lib._sel_localizedNameOfStringEncoding_1, encoding);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static int getDefaultCStringEncoding(NativeCupertinoHttp _lib) {
@@ -102181,50 +103008,50 @@ class NSConstantString extends NSSimpleCString {
 
   static NSConstantString string(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSConstantString1, _lib._sel_string1);
-    return NSConstantString._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSConstantString1, _lib._sel_string1);
+    return NSConstantString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSConstantString stringWithString_(
       NativeCupertinoHttp _lib, NSObject? string) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSConstantString1,
         _lib._sel_stringWithString_1, string?._id ?? ffi.nullptr);
-    return NSConstantString._(_ret, _lib);
+    return NSConstantString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSConstantString stringWithCharacters_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<unichar> characters, int length) {
     final _ret = _lib._objc_msgSend_73(_lib._class_NSConstantString1,
         _lib._sel_stringWithCharacters_length_1, characters, length);
-    return NSConstantString._(_ret, _lib);
+    return NSConstantString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSConstantString stringWithUTF8String_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> nullTerminatedCString) {
     final _ret = _lib._objc_msgSend_74(_lib._class_NSConstantString1,
         _lib._sel_stringWithUTF8String_1, nullTerminatedCString);
-    return NSConstantString._(_ret, _lib);
+    return NSConstantString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSConstantString stringWithFormat_(
       NativeCupertinoHttp _lib, NSObject? format) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSConstantString1,
         _lib._sel_stringWithFormat_1, format?._id ?? ffi.nullptr);
-    return NSConstantString._(_ret, _lib);
+    return NSConstantString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSConstantString localizedStringWithFormat_(
       NativeCupertinoHttp _lib, NSObject? format) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSConstantString1,
         _lib._sel_localizedStringWithFormat_1, format?._id ?? ffi.nullptr);
-    return NSConstantString._(_ret, _lib);
+    return NSConstantString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSConstantString stringWithCString_encoding_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> cString, int enc) {
     final _ret = _lib._objc_msgSend_82(_lib._class_NSConstantString1,
         _lib._sel_stringWithCString_encoding_1, cString, enc);
-    return NSConstantString._(_ret, _lib);
+    return NSConstantString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSConstantString stringWithContentsOfURL_encoding_error_(
@@ -102238,7 +103065,7 @@ class NSConstantString extends NSSimpleCString {
         url?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSConstantString._(_ret, _lib);
+    return NSConstantString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSConstantString stringWithContentsOfFile_encoding_error_(
@@ -102252,7 +103079,7 @@ class NSConstantString extends NSSimpleCString {
         path?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSConstantString._(_ret, _lib);
+    return NSConstantString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSConstantString stringWithContentsOfURL_usedEncoding_error_(
@@ -102266,7 +103093,7 @@ class NSConstantString extends NSSimpleCString {
         url?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSConstantString._(_ret, _lib);
+    return NSConstantString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSConstantString stringWithContentsOfFile_usedEncoding_error_(
@@ -102280,7 +103107,7 @@ class NSConstantString extends NSSimpleCString {
         path?._id ?? ffi.nullptr,
         enc,
         error);
-    return NSConstantString._(_ret, _lib);
+    return NSConstantString._(_ret, _lib, retain: true, release: true);
   }
 
   static int
@@ -102289,7 +103116,7 @@ class NSConstantString extends NSSimpleCString {
           NSObject? data,
           NSObject? opts,
           ffi.Pointer<ffi.Pointer<ObjCObject>> string,
-          ffi.Pointer<ffi.Uint8> usedLossyConversion) {
+          ffi.Pointer<ffi.Bool> usedLossyConversion) {
     return _lib._objc_msgSend_85(
         _lib._class_NSConstantString1,
         _lib._sel_stringEncodingForData_encodingOptions_convertedString_usedLossyConversion_1,
@@ -102303,152 +103130,192 @@ class NSConstantString extends NSSimpleCString {
       NativeCupertinoHttp _lib, NSObject? path) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSConstantString1,
         _lib._sel_stringWithContentsOfFile_1, path?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject stringWithContentsOfURL_(
       NativeCupertinoHttp _lib, NSObject? url) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSConstantString1,
         _lib._sel_stringWithContentsOfURL_1, url?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject stringWithCString_length_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> bytes, int length) {
     final _ret = _lib._objc_msgSend_82(_lib._class_NSConstantString1,
         _lib._sel_stringWithCString_length_1, bytes, length);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject stringWithCString_(
       NativeCupertinoHttp _lib, ffi.Pointer<ffi.Char> bytes) {
     final _ret = _lib._objc_msgSend_74(
         _lib._class_NSConstantString1, _lib._sel_stringWithCString_1, bytes);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSConstantString new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSConstantString1, _lib._sel_new1);
-    return NSConstantString._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSConstantString1, _lib._sel_new1);
+    return NSConstantString._(_ret, _lib, retain: false, release: true);
   }
 
   static NSConstantString alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSConstantString1, _lib._sel_alloc1);
-    return NSConstantString._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSConstantString1, _lib._sel_alloc1);
+    return NSConstantString._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class NSCharacterSet extends NSObject {
-  NSCharacterSet._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSCharacterSet._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSCharacterSet] that points to the same underlying object as [other].
   static NSCharacterSet castFrom<T extends _ObjCWrapper>(T other) {
-    return NSCharacterSet._(other._id, other._lib);
+    return NSCharacterSet._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSCharacterSet] that wraps the given raw object pointer.
   static NSCharacterSet castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSCharacterSet._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSCharacterSet._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSCharacterSet].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSCharacterSet1);
   }
 
   static NSObject? getControlCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_controlCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getWhitespaceCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_whitespaceCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getWhitespaceAndNewlineCharacterSet(
       NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSCharacterSet1,
         _lib._sel_whitespaceAndNewlineCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getDecimalDigitCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_decimalDigitCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getLetterCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_letterCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getLowercaseLetterCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_lowercaseLetterCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getUppercaseLetterCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_uppercaseLetterCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getNonBaseCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_nonBaseCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getAlphanumericCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_alphanumericCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getDecomposableCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_decomposableCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getIllegalCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_illegalCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getPunctuationCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_punctuationCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getCapitalizedLetterCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_capitalizedLetterCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getSymbolCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_symbolCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getNewlineCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_newlineCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: false, release: true);
   }
 
   static NSCharacterSet characterSetWithRange_(
       NativeCupertinoHttp _lib, NSRange aRange) {
     final _ret = _lib._objc_msgSend_258(
         _lib._class_NSCharacterSet1, _lib._sel_characterSetWithRange_1, aRange);
-    return NSCharacterSet._(_ret, _lib);
+    return NSCharacterSet._(_ret, _lib, retain: true, release: true);
   }
 
   static NSCharacterSet characterSetWithCharactersInString_(
@@ -102457,7 +103324,7 @@ class NSCharacterSet extends NSObject {
         _lib._class_NSCharacterSet1,
         _lib._sel_characterSetWithCharactersInString_1,
         aString?._id ?? ffi.nullptr);
-    return NSCharacterSet._(_ret, _lib);
+    return NSCharacterSet._(_ret, _lib, retain: true, release: true);
   }
 
   static NSCharacterSet characterSetWithBitmapRepresentation_(
@@ -102466,20 +103333,20 @@ class NSCharacterSet extends NSObject {
         _lib._class_NSCharacterSet1,
         _lib._sel_characterSetWithBitmapRepresentation_1,
         data?._id ?? ffi.nullptr);
-    return NSCharacterSet._(_ret, _lib);
+    return NSCharacterSet._(_ret, _lib, retain: true, release: true);
   }
 
   static NSCharacterSet characterSetWithContentsOfFile_(
       NativeCupertinoHttp _lib, NSObject? fName) {
     final _ret = _lib._objc_msgSend_259(_lib._class_NSCharacterSet1,
         _lib._sel_characterSetWithContentsOfFile_1, fName?._id ?? ffi.nullptr);
-    return NSCharacterSet._(_ret, _lib);
+    return NSCharacterSet._(_ret, _lib, retain: true, release: true);
   }
 
   NSCharacterSet initWithCoder_(NSObject? coder) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithCoder_1, coder?._id ?? ffi.nullptr);
-    return NSCharacterSet._(_ret, _lib);
+    return NSCharacterSet._(_ret, _lib, retain: true, release: true);
   }
 
   bool characterIsMember_(int aCharacter) {
@@ -102488,13 +103355,17 @@ class NSCharacterSet extends NSObject {
   }
 
   NSObject? get bitmapRepresentation {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_bitmapRepresentation1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_bitmapRepresentation1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get invertedSet {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_invertedSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_invertedSet1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   bool longCharacterIsMember_(int theLongChar) {
@@ -102503,7 +103374,7 @@ class NSCharacterSet extends NSObject {
   }
 
   bool isSupersetOfSet_(NSObject? theOtherSet) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_isSupersetOfSet_1, theOtherSet?._id ?? ffi.nullptr);
   }
 
@@ -102513,70 +103384,94 @@ class NSCharacterSet extends NSObject {
 
   /// Returns a character set containing the characters allowed in an URL's user subcomponent.
   static NSObject? getURLUserAllowedCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_URLUserAllowedCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a character set containing the characters allowed in an URL's password subcomponent.
   static NSObject? getURLPasswordAllowedCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_URLPasswordAllowedCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a character set containing the characters allowed in an URL's host subcomponent.
   static NSObject? getURLHostAllowedCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_URLHostAllowedCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a character set containing the characters allowed in an URL's path component. ';' is a legal path character, but it is recommended that it be percent-encoded for best compatibility with NSURL (-stringByAddingPercentEncodingWithAllowedCharacters: will percent-encode any ';' characters if you pass the URLPathAllowedCharacterSet).
   static NSObject? getURLPathAllowedCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_URLPathAllowedCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a character set containing the characters allowed in an URL's query component.
   static NSObject? getURLQueryAllowedCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_URLQueryAllowedCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a character set containing the characters allowed in an URL's fragment component.
   static NSObject? getURLFragmentAllowedCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSCharacterSet1, _lib._sel_URLFragmentAllowedCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSCharacterSet new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSCharacterSet1, _lib._sel_new1);
-    return NSCharacterSet._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSCharacterSet1, _lib._sel_new1);
+    return NSCharacterSet._(_ret, _lib, retain: false, release: true);
   }
 
   static NSCharacterSet alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSCharacterSet1, _lib._sel_alloc1);
-    return NSCharacterSet._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSCharacterSet1, _lib._sel_alloc1);
+    return NSCharacterSet._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class NSMutableCharacterSet extends NSCharacterSet {
-  NSMutableCharacterSet._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSMutableCharacterSet._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSMutableCharacterSet] that points to the same underlying object as [other].
   static NSMutableCharacterSet castFrom<T extends _ObjCWrapper>(T other) {
-    return NSMutableCharacterSet._(other._id, other._lib);
+    return NSMutableCharacterSet._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSMutableCharacterSet] that wraps the given raw object pointer.
   static NSMutableCharacterSet castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSMutableCharacterSet._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSMutableCharacterSet._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSMutableCharacterSet].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSMutableCharacterSet1);
   }
 
   void addCharactersInRange_(NSRange aRange) {
@@ -102608,105 +103503,135 @@ class NSMutableCharacterSet extends NSCharacterSet {
   }
 
   void invert() {
-    _lib._objc_msgSend_0(_id, _lib._sel_invert1);
+    _lib._objc_msgSend_1(_id, _lib._sel_invert1);
   }
 
   static NSObject? getControlCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableCharacterSet1, _lib._sel_controlCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getWhitespaceCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableCharacterSet1, _lib._sel_whitespaceCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getWhitespaceAndNewlineCharacterSet(
       NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSMutableCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSMutableCharacterSet1,
         _lib._sel_whitespaceAndNewlineCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getDecimalDigitCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSMutableCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSMutableCharacterSet1,
         _lib._sel_decimalDigitCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getLetterCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableCharacterSet1, _lib._sel_letterCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getLowercaseLetterCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSMutableCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSMutableCharacterSet1,
         _lib._sel_lowercaseLetterCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getUppercaseLetterCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSMutableCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSMutableCharacterSet1,
         _lib._sel_uppercaseLetterCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getNonBaseCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableCharacterSet1, _lib._sel_nonBaseCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getAlphanumericCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSMutableCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSMutableCharacterSet1,
         _lib._sel_alphanumericCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getDecomposableCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSMutableCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSMutableCharacterSet1,
         _lib._sel_decomposableCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getIllegalCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableCharacterSet1, _lib._sel_illegalCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getPunctuationCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableCharacterSet1, _lib._sel_punctuationCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getCapitalizedLetterCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSMutableCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSMutableCharacterSet1,
         _lib._sel_capitalizedLetterCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getSymbolCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableCharacterSet1, _lib._sel_symbolCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getNewlineCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableCharacterSet1, _lib._sel_newlineCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: false, release: true);
   }
 
   static NSMutableCharacterSet characterSetWithRange_(
       NativeCupertinoHttp _lib, NSRange aRange) {
     final _ret = _lib._objc_msgSend_263(_lib._class_NSMutableCharacterSet1,
         _lib._sel_characterSetWithRange_1, aRange);
-    return NSMutableCharacterSet._(_ret, _lib);
+    return NSMutableCharacterSet._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableCharacterSet characterSetWithCharactersInString_(
@@ -102715,7 +103640,7 @@ class NSMutableCharacterSet extends NSCharacterSet {
         _lib._class_NSMutableCharacterSet1,
         _lib._sel_characterSetWithCharactersInString_1,
         aString?._id ?? ffi.nullptr);
-    return NSMutableCharacterSet._(_ret, _lib);
+    return NSMutableCharacterSet._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableCharacterSet characterSetWithBitmapRepresentation_(
@@ -102724,68 +103649,80 @@ class NSMutableCharacterSet extends NSCharacterSet {
         _lib._class_NSMutableCharacterSet1,
         _lib._sel_characterSetWithBitmapRepresentation_1,
         data?._id ?? ffi.nullptr);
-    return NSMutableCharacterSet._(_ret, _lib);
+    return NSMutableCharacterSet._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableCharacterSet characterSetWithContentsOfFile_(
       NativeCupertinoHttp _lib, NSObject? fName) {
     final _ret = _lib._objc_msgSend_264(_lib._class_NSMutableCharacterSet1,
         _lib._sel_characterSetWithContentsOfFile_1, fName?._id ?? ffi.nullptr);
-    return NSMutableCharacterSet._(_ret, _lib);
+    return NSMutableCharacterSet._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a character set containing the characters allowed in an URL's user subcomponent.
   static NSObject? getURLUserAllowedCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSMutableCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSMutableCharacterSet1,
         _lib._sel_URLUserAllowedCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a character set containing the characters allowed in an URL's password subcomponent.
   static NSObject? getURLPasswordAllowedCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSMutableCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSMutableCharacterSet1,
         _lib._sel_URLPasswordAllowedCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a character set containing the characters allowed in an URL's host subcomponent.
   static NSObject? getURLHostAllowedCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSMutableCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSMutableCharacterSet1,
         _lib._sel_URLHostAllowedCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a character set containing the characters allowed in an URL's path component. ';' is a legal path character, but it is recommended that it be percent-encoded for best compatibility with NSURL (-stringByAddingPercentEncodingWithAllowedCharacters: will percent-encode any ';' characters if you pass the URLPathAllowedCharacterSet).
   static NSObject? getURLPathAllowedCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSMutableCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSMutableCharacterSet1,
         _lib._sel_URLPathAllowedCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a character set containing the characters allowed in an URL's query component.
   static NSObject? getURLQueryAllowedCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSMutableCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSMutableCharacterSet1,
         _lib._sel_URLQueryAllowedCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a character set containing the characters allowed in an URL's fragment component.
   static NSObject? getURLFragmentAllowedCharacterSet(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSMutableCharacterSet1,
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSMutableCharacterSet1,
         _lib._sel_URLFragmentAllowedCharacterSet1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSMutableCharacterSet new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableCharacterSet1, _lib._sel_new1);
-    return NSMutableCharacterSet._(_ret, _lib);
+    return NSMutableCharacterSet._(_ret, _lib, retain: false, release: true);
   }
 
   static NSMutableCharacterSet alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSMutableCharacterSet1, _lib._sel_alloc1);
-    return NSMutableCharacterSet._(_ret, _lib);
+    return NSMutableCharacterSet._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -102797,16 +103734,26 @@ abstract class NSURLHandleStatus {
 }
 
 class NSURLHandle extends NSObject {
-  NSURLHandle._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSURLHandle._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLHandle] that points to the same underlying object as [other].
   static NSURLHandle castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLHandle._(other._id, other._lib);
+    return NSURLHandle._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSURLHandle] that wraps the given raw object pointer.
   static NSURLHandle castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLHandle._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLHandle._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLHandle].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSURLHandle1);
   }
 
   static void registerURLHandleClass_(
@@ -102819,7 +103766,7 @@ class NSURLHandle extends NSObject {
       NativeCupertinoHttp _lib, NSObject? anURL) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSURLHandle1,
         _lib._sel_URLHandleClassForURL_1, anURL?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   int status() {
@@ -102828,7 +103775,7 @@ class NSURLHandle extends NSObject {
 
   NSString failureReason() {
     final _ret = _lib._objc_msgSend_55(_id, _lib._sel_failureReason1);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   void addClient_(NSObject? client) {
@@ -102842,29 +103789,29 @@ class NSURLHandle extends NSObject {
   }
 
   void loadInBackground() {
-    _lib._objc_msgSend_0(_id, _lib._sel_loadInBackground1);
+    _lib._objc_msgSend_1(_id, _lib._sel_loadInBackground1);
   }
 
   void cancelLoadInBackground() {
-    _lib._objc_msgSend_0(_id, _lib._sel_cancelLoadInBackground1);
+    _lib._objc_msgSend_1(_id, _lib._sel_cancelLoadInBackground1);
   }
 
   NSData resourceData() {
     final _ret = _lib._objc_msgSend_266(_id, _lib._sel_resourceData1);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   NSData availableResourceData() {
     final _ret = _lib._objc_msgSend_266(_id, _lib._sel_availableResourceData1);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   void expectedResourceDataSize() {
-    _lib._objc_msgSend_0(_id, _lib._sel_expectedResourceDataSize1);
+    _lib._objc_msgSend_1(_id, _lib._sel_expectedResourceDataSize1);
   }
 
   void flushCachedData() {
-    _lib._objc_msgSend_0(_id, _lib._sel_flushCachedData1);
+    _lib._objc_msgSend_1(_id, _lib._sel_flushCachedData1);
   }
 
   void backgroundLoadDidFailWithReason_(NSObject? reason) {
@@ -102878,7 +103825,7 @@ class NSURLHandle extends NSObject {
   }
 
   static bool canInitWithURL_(NativeCupertinoHttp _lib, NSObject? anURL) {
-    return _lib._objc_msgSend_4(_lib._class_NSURLHandle1,
+    return _lib._objc_msgSend_0(_lib._class_NSURLHandle1,
         _lib._sel_canInitWithURL_1, anURL?._id ?? ffi.nullptr);
   }
 
@@ -102886,7 +103833,7 @@ class NSURLHandle extends NSObject {
       NativeCupertinoHttp _lib, NSObject? anURL) {
     final _ret = _lib._objc_msgSend_268(_lib._class_NSURLHandle1,
         _lib._sel_cachedHandleForURL_1, anURL?._id ?? ffi.nullptr);
-    return NSURLHandle._(_ret, _lib);
+    return NSURLHandle._(_ret, _lib, retain: true, release: true);
   }
 
   void initWithURL_cached_(NSObject? anURL, bool willCache) {
@@ -102897,13 +103844,13 @@ class NSURLHandle extends NSObject {
   NSObject propertyForKey_(NSObject? propertyKey) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_propertyForKey_1, propertyKey?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject propertyForKeyIfAvailable_(NSObject? propertyKey) {
     final _ret = _lib._objc_msgSend_13(_id,
         _lib._sel_propertyForKeyIfAvailable_1, propertyKey?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   bool writeProperty_forKey_(NSObject propertyValue, NSObject? propertyKey) {
@@ -102912,46 +103859,56 @@ class NSURLHandle extends NSObject {
   }
 
   bool writeData_(NSObject? data) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_writeData_1, data?._id ?? ffi.nullptr);
   }
 
   NSData loadInForeground() {
     final _ret = _lib._objc_msgSend_266(_id, _lib._sel_loadInForeground1);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   void beginLoadInBackground() {
-    _lib._objc_msgSend_0(_id, _lib._sel_beginLoadInBackground1);
+    _lib._objc_msgSend_1(_id, _lib._sel_beginLoadInBackground1);
   }
 
   void endLoadInBackground() {
-    _lib._objc_msgSend_0(_id, _lib._sel_endLoadInBackground1);
+    _lib._objc_msgSend_1(_id, _lib._sel_endLoadInBackground1);
   }
 
   static NSURLHandle new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSURLHandle1, _lib._sel_new1);
-    return NSURLHandle._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSURLHandle1, _lib._sel_new1);
+    return NSURLHandle._(_ret, _lib, retain: false, release: true);
   }
 
   static NSURLHandle alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLHandle1, _lib._sel_alloc1);
-    return NSURLHandle._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLHandle1, _lib._sel_alloc1);
+    return NSURLHandle._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class NSURL extends NSObject {
-  NSURL._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSURL._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURL] that points to the same underlying object as [other].
   static NSURL castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURL._(other._id, other._lib);
+    return NSURL._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSURL] that wraps the given raw object pointer.
   static NSURL castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURL._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURL._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURL].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSURL1);
   }
 
   /// this call percent-encodes both the host and path, so this cannot be used to set a username/password or port in the hostname part or with a IPv6 '[...]' type address. NSURLComponents handles IPv6 addresses correctly.
@@ -102963,7 +103920,7 @@ class NSURL extends NSObject {
         scheme?._id ?? ffi.nullptr,
         host?._id ?? ffi.nullptr,
         path?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Initializes a newly created file NSURL referencing the local file or directory at path, relative to a base URL.
@@ -102975,7 +103932,7 @@ class NSURL extends NSObject {
         path?._id ?? ffi.nullptr,
         isDir,
         baseURL?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Better to use initFileURLWithPath:isDirectory:relativeToURL: if you know if the path is a directory vs non-directory, as it saves an I/O.
@@ -102985,7 +103942,7 @@ class NSURL extends NSObject {
         _lib._sel_initFileURLWithPath_relativeToURL_1,
         path?._id ?? ffi.nullptr,
         baseURL?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   NSURL initFileURLWithPath_isDirectory_(NSObject? path, bool isDir) {
@@ -102994,14 +103951,14 @@ class NSURL extends NSObject {
         _lib._sel_initFileURLWithPath_isDirectory_1,
         path?._id ?? ffi.nullptr,
         isDir);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Better to use initFileURLWithPath:isDirectory: if you know if the path is a directory vs non-directory, as it saves an i/o.
   NSURL initFileURLWithPath_(NSObject? path) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initFileURLWithPath_1, path?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Initializes and returns a newly created file NSURL referencing the local file or directory at path, relative to a base URL.
@@ -103013,7 +103970,7 @@ class NSURL extends NSObject {
         path?._id ?? ffi.nullptr,
         isDir,
         baseURL?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Better to use fileURLWithPath:isDirectory:relativeToURL: if you know if the path is a directory vs non-directory, as it saves an I/O.
@@ -103024,7 +103981,7 @@ class NSURL extends NSObject {
         _lib._sel_fileURLWithPath_relativeToURL_1,
         path?._id ?? ffi.nullptr,
         baseURL?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURL fileURLWithPath_isDirectory_(
@@ -103034,14 +103991,14 @@ class NSURL extends NSObject {
         _lib._sel_fileURLWithPath_isDirectory_1,
         path?._id ?? ffi.nullptr,
         isDir);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Better to use fileURLWithPath:isDirectory: if you know if the path is a directory vs non-directory, as it saves an i/o.
   static NSURL fileURLWithPath_(NativeCupertinoHttp _lib, NSObject? path) {
     final _ret = _lib._objc_msgSend_274(_lib._class_NSURL1,
         _lib._sel_fileURLWithPath_1, path?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Initializes a newly created URL referencing the local file or directory at the file system representation of the path. File system representation is a null-terminated C string with canonical UTF-8 encoding.
@@ -103053,7 +104010,7 @@ class NSURL extends NSObject {
         path,
         isDir,
         baseURL?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Initializes and returns a newly created URL referencing the local file or directory at the file system representation of the path. File system representation is a null-terminated C string with canonical UTF-8 encoding.
@@ -103068,14 +104025,14 @@ class NSURL extends NSObject {
         path,
         isDir,
         baseURL?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// These methods expect their string arguments to contain any percent escape codes that are necessary. It is an error for URLString to be nil.
   NSURL initWithString_(NSObject? URLString) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithString_1, URLString?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   NSURL initWithString_relativeToURL_(NSObject? URLString, NSObject? baseURL) {
@@ -103084,13 +104041,13 @@ class NSURL extends NSObject {
         _lib._sel_initWithString_relativeToURL_1,
         URLString?._id ?? ffi.nullptr,
         baseURL?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURL URLWithString_(NativeCupertinoHttp _lib, NSObject? URLString) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSURL1,
         _lib._sel_URLWithString_1, URLString?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURL URLWithString_relativeToURL_(
@@ -103100,7 +104057,7 @@ class NSURL extends NSObject {
         _lib._sel_URLWithString_relativeToURL_1,
         URLString?._id ?? ffi.nullptr,
         baseURL?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Initializes a newly created NSURL using the contents of the given data, relative to a base URL. If the data representation is not a legal URL string as ASCII bytes, the URL object may not behave as expected.
@@ -103111,7 +104068,7 @@ class NSURL extends NSObject {
         _lib._sel_initWithDataRepresentation_relativeToURL_1,
         data?._id ?? ffi.nullptr,
         baseURL?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Initializes and returns a newly created NSURL using the contents of the given data, relative to a base URL. If the data representation is not a legal URL string as ASCII bytes, the URL object may not behave as expected.
@@ -103122,7 +104079,7 @@ class NSURL extends NSObject {
         _lib._sel_URLWithDataRepresentation_relativeToURL_1,
         data?._id ?? ffi.nullptr,
         baseURL?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Initializes a newly created absolute NSURL using the contents of the given data, relative to a base URL. If the data representation is not a legal URL string as ASCII bytes, the URL object may not behave as expected.
@@ -103133,7 +104090,7 @@ class NSURL extends NSObject {
         _lib._sel_initAbsoluteURLWithDataRepresentation_relativeToURL_1,
         data?._id ?? ffi.nullptr,
         baseURL?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Initializes and returns a newly created absolute NSURL using the contents of the given data, relative to a base URL. If the data representation is not a legal URL string as ASCII bytes, the URL object may not behave as expected.
@@ -103144,94 +104101,126 @@ class NSURL extends NSObject {
         _lib._sel_absoluteURLWithDataRepresentation_relativeToURL_1,
         data?._id ?? ffi.nullptr,
         baseURL?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns the data representation of the URL's relativeString. If the URL was initialized with -initWithData:relativeToURL:, the data representation returned are the same bytes as those used at initialization; otherwise, the data representation returned are the bytes of the relativeString encoded with NSUTF8StringEncoding.
   NSObject? get dataRepresentation {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_dataRepresentation1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_dataRepresentation1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get absoluteString {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_absoluteString1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_absoluteString1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The relative portion of a URL.  If baseURL is nil, or if the receiver is itself absolute, this is the same as absoluteString
   NSObject? get relativeString {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_relativeString1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_relativeString1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// may be nil.
   NSObject? get baseURL {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_baseURL1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_baseURL1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// if the receiver is itself absolute, this will return self.
   NSObject? get absoluteURL {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_absoluteURL1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_absoluteURL1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Any URL is composed of these two basic pieces.  The full URL would be the concatenation of [myURL scheme], ':', [myURL resourceSpecifier]
   NSObject? get scheme {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_scheme1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_scheme1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get resourceSpecifier {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_resourceSpecifier1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_resourceSpecifier1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// If the URL conforms to rfc 1808 (the most common form of URL), the following accessors will return the various components; otherwise they return nil.  The litmus test for conformance is as recommended in RFC 1808 - whether the first two characters of resourceSpecifier is @"//".  In all cases, they return the component's value after resolving the receiver against its base URL.
   NSObject? get host {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_host1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_host1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get port {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_port1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_port1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get user {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_user1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_user1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get password {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_password1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_password1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get path {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_path1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_path1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get fragment {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_fragment1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_fragment1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get parameterString {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_parameterString1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_parameterString1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get query {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_query1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_query1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The same as path if baseURL is nil
   NSObject? get relativePath {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_relativePath1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_relativePath1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Determines if a given URL string's path represents a directory (i.e. the path component in the URL string ends with a '/' character). This does not check the resource the URL refers to.
@@ -103260,8 +104249,10 @@ class NSURL extends NSObject {
   }
 
   NSObject? get standardizedURL {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_standardizedURL1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_standardizedURL1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns whether the URL's resource exists and is reachable. This method synchronously checks if the resource's backing store is reachable. Checking reachability is appropriate when making decisions that do not require other immediate operations on the resource, e.g. periodic maintenance of UI state that depends on the existence of a specific document. When performing operations such as opening a file or copying resource properties, it is more efficient to simply try the operation and handle failures. If this method returns NO, the optional error is populated. This method is currently applicable only to URLs for file system resources. For other URL types, NO is returned. Symbol is present in iOS 4, but performs no operation.
@@ -103279,13 +104270,15 @@ class NSURL extends NSObject {
   /// Returns a file reference URL that refers to the same resource as a specified file URL. File reference URLs use a URL path syntax that identifies a file system object by reference, not by path. This form of file URL remains valid when the file system path of the URL’s underlying resource changes. An error will occur if the url parameter is not a file URL. File reference URLs cannot be created to file system objects which do not exist or are not reachable. In some areas of the file system hierarchy, file reference URLs cannot be generated to the leaf node of the URL path. A file reference URL's path should never be persistently stored because is not valid across system restarts, and across remounts of volumes -- if you want to create a persistent reference to a file system object, use a bookmark (see -bookmarkDataWithOptions:includingResourceValuesForKeys:relativeToURL:error:). Symbol is present in iOS 4, but performs no operation.
   NSURL fileReferenceURL() {
     final _ret = _lib._objc_msgSend_279(_id, _lib._sel_fileReferenceURL1);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a file path URL that refers to the same resource as a specified URL. File path URLs use a file system style path. An error will occur if the url parameter is not a file URL. A file reference URL's resource must exist and be reachable to be converted to a file path URL. Symbol is present in iOS 4, but performs no operation.
   NSObject? get filePathURL {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_filePathURL1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_filePathURL1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns the resource value identified by a given resource key. This method first checks if the URL object already caches the resource value. If so, it returns the cached resource value to the caller. If not, then this method synchronously obtains the resource value from the backing store, adds the resource value to the URL object's cache, and returns the resource value to the caller. The type of the resource value varies by resource property (see resource key definitions). If this method returns YES and value is populated with nil, it means the resource property is not available for the specified resource and no errors occurred when determining the resource property was not available. If this method returns NO, the optional error is populated. This method is currently applicable only to URLs for file system resources. Symbol is present in iOS 4, but performs no operation.
@@ -103318,7 +104311,7 @@ class NSURL extends NSObject {
 
   /// Removes all cached resource values and all temporary resource values from the URL object. This method is currently applicable only to URLs for file system resources.
   void removeAllCachedResourceValues() {
-    _lib._objc_msgSend_0(_id, _lib._sel_removeAllCachedResourceValues1);
+    _lib._objc_msgSend_1(_id, _lib._sel_removeAllCachedResourceValues1);
   }
 
   /// Sets a temporary resource value on the URL object. Temporary resource values are for client use. Temporary resource values exist only in memory and are never written to the resource's backing store. Once set, a temporary resource value can be copied from the URL object with -getResourceValue:forKey:error: or -resourceValuesForKeys:error:. To remove a temporary resource value from the URL object, use -removeCachedResourceValueForKey:. Care should be taken to ensure the key that identifies a temporary resource value is unique and does not conflict with system defined keys (using reverse domain name notation in your temporary resource value keys is recommended). This method is currently applicable only to URLs for file system resources.
@@ -103341,7 +104334,7 @@ class NSURL extends NSObject {
         keys?._id ?? ffi.nullptr,
         relativeURL?._id ?? ffi.nullptr,
         error);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   /// Initializes a newly created NSURL that refers to a location specified by resolving bookmark data. If this method returns nil, the optional error is populated.
@@ -103350,7 +104343,7 @@ class NSURL extends NSObject {
           NSObject? bookmarkData,
           int options,
           NSObject? relativeURL,
-          ffi.Pointer<ffi.Uint8> isStale,
+          ffi.Pointer<ffi.Bool> isStale,
           ffi.Pointer<ffi.Pointer<ObjCObject>> error) {
     final _ret = _lib._objc_msgSend_283(
         _id,
@@ -103360,7 +104353,7 @@ class NSURL extends NSObject {
         relativeURL?._id ?? ffi.nullptr,
         isStale,
         error);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates and Initializes an NSURL that refers to a location specified by resolving bookmark data. If this method returns nil, the optional error is populated.
@@ -103370,7 +104363,7 @@ class NSURL extends NSObject {
           NSObject? bookmarkData,
           int options,
           NSObject? relativeURL,
-          ffi.Pointer<ffi.Uint8> isStale,
+          ffi.Pointer<ffi.Bool> isStale,
           ffi.Pointer<ffi.Pointer<ObjCObject>> error) {
     final _ret = _lib._objc_msgSend_283(
         _lib._class_NSURL1,
@@ -103380,7 +104373,7 @@ class NSURL extends NSObject {
         relativeURL?._id ?? ffi.nullptr,
         isStale,
         error);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates an alias file on disk at a specified location with specified bookmark data. bookmarkData must have been created with the NSURLBookmarkCreationSuitableForBookmarkFile option. bookmarkFileURL must either refer to an existing file (which will be overwritten), or to location in an existing directory. If this method returns NO, the optional error is populated.
@@ -103407,7 +104400,7 @@ class NSURL extends NSObject {
         _lib._sel_bookmarkDataWithContentsOfURL_error_1,
         bookmarkFileURL?._id ?? ffi.nullptr,
         error);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   /// Creates and initializes a NSURL that refers to the location specified by resolving the alias file at url. If the url argument does not refer to an alias file as defined by the NSURLIsAliasFileKey property, the NSURL returned is the same as url argument. This method fails and returns nil if the url argument is unreachable, or if the original file or directory could not be located or is not reachable, or if the original file or directory is on a volume that could not be located or mounted. If this method fails, the optional error is populated. The NSURLBookmarkResolutionWithSecurityScope option is not supported by this method.
@@ -103422,7 +104415,7 @@ class NSURL extends NSObject {
         url?._id ?? ffi.nullptr,
         options,
         error);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Given a NSURL created by resolving a bookmark data created with security scope, make the resource referenced by the url accessible to the process. When access to this resource is no longer needed the client must call stopAccessingSecurityScopedResource. Each call to startAccessingSecurityScopedResource must be balanced with a call to stopAccessingSecurityScopedResource (Note: this is not reference counted).
@@ -103433,7 +104426,7 @@ class NSURL extends NSObject {
 
   /// Revokes the access granted to the url by a prior successful call to startAccessingSecurityScopedResource.
   void stopAccessingSecurityScopedResource() {
-    _lib._objc_msgSend_0(_id, _lib._sel_stopAccessingSecurityScopedResource1);
+    _lib._objc_msgSend_1(_id, _lib._sel_stopAccessingSecurityScopedResource1);
   }
 
   /// Get resource values from URLs of 'promised' items. A promised item is not guaranteed to have its contents in the file system until you use NSFileCoordinator to perform a coordinated read on its URL, which causes the contents to be downloaded or otherwise generated. Promised item URLs are returned by various APIs, including currently:
@@ -103469,22 +104462,28 @@ class NSURL extends NSObject {
       NativeCupertinoHttp _lib, NSObject? components) {
     final _ret = _lib._objc_msgSend_274(_lib._class_NSURL1,
         _lib._sel_fileURLWithPathComponents_1, components?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get pathComponents {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_pathComponents1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_pathComponents1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get lastPathComponent {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_lastPathComponent1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_lastPathComponent1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get pathExtension {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_pathExtension1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_pathExtension1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSURL URLByAppendingPathComponent_(NSObject? pathComponent) {
@@ -103492,7 +104491,7 @@ class NSURL extends NSObject {
         _id,
         _lib._sel_URLByAppendingPathComponent_1,
         pathComponent?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   NSURL URLByAppendingPathComponent_isDirectory_(
@@ -103502,13 +104501,15 @@ class NSURL extends NSObject {
         _lib._sel_URLByAppendingPathComponent_isDirectory_1,
         pathComponent?._id ?? ffi.nullptr,
         isDirectory);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get URLByDeletingLastPathComponent {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_URLByDeletingLastPathComponent1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_URLByDeletingLastPathComponent1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSURL URLByAppendingPathExtension_(NSObject? pathExtension) {
@@ -103516,32 +104517,38 @@ class NSURL extends NSObject {
         _id,
         _lib._sel_URLByAppendingPathExtension_1,
         pathExtension?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get URLByDeletingPathExtension {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_URLByDeletingPathExtension1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_URLByDeletingPathExtension1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The following methods work only on `file:` scheme URLs; for non-`file:` scheme URLs, these methods return the URL unchanged.
   NSObject? get URLByStandardizingPath {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_URLByStandardizingPath1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_URLByStandardizingPath1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get URLByResolvingSymlinksInPath {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_URLByResolvingSymlinksInPath1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_URLByResolvingSymlinksInPath1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Blocks to load the data if necessary.  If shouldUseCache is YES, then if an equivalent URL has already been loaded and cached, its resource data will be returned immediately.  If shouldUseCache is NO, a new load will be started
   NSData resourceDataUsingCache_(bool shouldUseCache) {
     final _ret = _lib._objc_msgSend_287(
         _id, _lib._sel_resourceDataUsingCache_1, shouldUseCache);
-    return NSData._(_ret, _lib);
+    return NSData._(_ret, _lib, retain: true, release: true);
   }
 
   /// Starts an asynchronous load of the data, registering delegate to receive notification.  Only one such background load can proceed at a time.
@@ -103557,12 +104564,12 @@ class NSURL extends NSObject {
   NSObject propertyForKey_(NSObject? propertyKey) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_propertyForKey_1, propertyKey?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// These attempt to write the given arguments for the resource specified by the URL; they return success or failure
   bool setResourceData_(NSObject? data) {
-    return _lib._objc_msgSend_4(
+    return _lib._objc_msgSend_0(
         _id, _lib._sel_setResourceData_1, data?._id ?? ffi.nullptr);
   }
 
@@ -103575,17 +104582,17 @@ class NSURL extends NSObject {
   NSURLHandle URLHandleUsingCache_(bool shouldUseCache) {
     final _ret = _lib._objc_msgSend_288(
         _id, _lib._sel_URLHandleUsingCache_1, shouldUseCache);
-    return NSURLHandle._(_ret, _lib);
+    return NSURLHandle._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURL new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSURL1, _lib._sel_new1);
-    return NSURL._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSURL1, _lib._sel_new1);
+    return NSURL._(_ret, _lib, retain: false, release: true);
   }
 
   static NSURL alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSURL1, _lib._sel_alloc1);
-    return NSURL._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSURL1, _lib._sel_alloc1);
+    return NSURL._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -103630,22 +104637,32 @@ typedef NSURLUbiquitousSharedItemPermissions = ffi.Pointer<ObjCObject>;
 
 /// NSURLQueryItem encapsulates a single query name-value pair. The name and value strings of a query name-value pair are not percent encoded. For use with the NSURLComponents queryItems property.
 class NSURLQueryItem extends NSObject {
-  NSURLQueryItem._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSURLQueryItem._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLQueryItem] that points to the same underlying object as [other].
   static NSURLQueryItem castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLQueryItem._(other._id, other._lib);
+    return NSURLQueryItem._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSURLQueryItem] that wraps the given raw object pointer.
   static NSURLQueryItem castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLQueryItem._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLQueryItem._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLQueryItem].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSURLQueryItem1);
   }
 
   NSURLQueryItem initWithName_value_(NSObject? name, NSObject? value) {
     final _ret = _lib._objc_msgSend_76(_id, _lib._sel_initWithName_value_1,
         name?._id ?? ffi.nullptr, value?._id ?? ffi.nullptr);
-    return NSURLQueryItem._(_ret, _lib);
+    return NSURLQueryItem._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLQueryItem queryItemWithName_value_(
@@ -103655,50 +104672,65 @@ class NSURLQueryItem extends NSObject {
         _lib._sel_queryItemWithName_value_1,
         name?._id ?? ffi.nullptr,
         value?._id ?? ffi.nullptr);
-    return NSURLQueryItem._(_ret, _lib);
+    return NSURLQueryItem._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get name {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_name1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_name1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get value {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_value1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_value1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLQueryItem new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLQueryItem1, _lib._sel_new1);
-    return NSURLQueryItem._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLQueryItem1, _lib._sel_new1);
+    return NSURLQueryItem._(_ret, _lib, retain: false, release: true);
   }
 
   static NSURLQueryItem alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLQueryItem1, _lib._sel_alloc1);
-    return NSURLQueryItem._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLQueryItem1, _lib._sel_alloc1);
+    return NSURLQueryItem._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class NSURLComponents extends NSObject {
-  NSURLComponents._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSURLComponents._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLComponents] that points to the same underlying object as [other].
   static NSURLComponents castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLComponents._(other._id, other._lib);
+    return NSURLComponents._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSURLComponents] that wraps the given raw object pointer.
   static NSURLComponents castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLComponents._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLComponents._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLComponents].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSURLComponents1);
   }
 
   /// Initialize a NSURLComponents with all components undefined. Designated initializer.
   @override
   NSURLComponents init() {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_init1);
-    return NSURLComponents._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_init1);
+    return NSURLComponents._(_ret, _lib, retain: true, release: true);
   }
 
   /// Initialize a NSURLComponents with the components of a URL. If resolvingAgainstBaseURL is YES and url is a relative URL, the components of [url absoluteURL] are used. If the url string from the NSURL is malformed, nil is returned.
@@ -103709,7 +104741,7 @@ class NSURLComponents extends NSObject {
         _lib._sel_initWithURL_resolvingAgainstBaseURL_1,
         url?._id ?? ffi.nullptr,
         resolve);
-    return NSURLComponents._(_ret, _lib);
+    return NSURLComponents._(_ret, _lib, retain: true, release: true);
   }
 
   /// Initializes and returns a newly created NSURLComponents with the components of a URL. If resolvingAgainstBaseURL is YES and url is a relative URL, the components of [url absoluteURL] are used. If the url string from the NSURL is malformed, nil is returned.
@@ -103720,14 +104752,14 @@ class NSURLComponents extends NSObject {
         _lib._sel_componentsWithURL_resolvingAgainstBaseURL_1,
         url?._id ?? ffi.nullptr,
         resolve);
-    return NSURLComponents._(_ret, _lib);
+    return NSURLComponents._(_ret, _lib, retain: true, release: true);
   }
 
   /// Initialize a NSURLComponents with a URL string. If the URLString is malformed, nil is returned.
   NSURLComponents initWithString_(NSObject? URLString) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithString_1, URLString?._id ?? ffi.nullptr);
-    return NSURLComponents._(_ret, _lib);
+    return NSURLComponents._(_ret, _lib, retain: true, release: true);
   }
 
   /// Initializes and returns a newly created NSURLComponents with a URL string. If the URLString is malformed, nil is returned.
@@ -103735,32 +104767,38 @@ class NSURLComponents extends NSObject {
       NativeCupertinoHttp _lib, NSObject? URLString) {
     final _ret = _lib._objc_msgSend_13(_lib._class_NSURLComponents1,
         _lib._sel_componentsWithString_1, URLString?._id ?? ffi.nullptr);
-    return NSURLComponents._(_ret, _lib);
+    return NSURLComponents._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a URL created from the NSURLComponents. If the NSURLComponents has an authority component (user, password, host or port) and a path component, then the path must either begin with "/" or be an empty string. If the NSURLComponents does not have an authority component (user, password, host or port) and has a path component, the path component must not start with "//". If those requirements are not met, nil is returned.
   NSObject? get URL {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_URL1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_URL1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a URL created from the NSURLComponents relative to a base URL. If the NSURLComponents has an authority component (user, password, host or port) and a path component, then the path must either begin with "/" or be an empty string. If the NSURLComponents does not have an authority component (user, password, host or port) and has a path component, the path component must not start with "//". If those requirements are not met, nil is returned.
   NSURL URLRelativeToURL_(NSObject? baseURL) {
     final _ret = _lib._objc_msgSend_274(
         _id, _lib._sel_URLRelativeToURL_1, baseURL?._id ?? ffi.nullptr);
-    return NSURL._(_ret, _lib);
+    return NSURL._(_ret, _lib, retain: true, release: true);
   }
 
   /// Returns a URL string created from the NSURLComponents. If the NSURLComponents has an authority component (user, password, host or port) and a path component, then the path must either begin with "/" or be an empty string. If the NSURLComponents does not have an authority component (user, password, host or port) and has a path component, the path component must not start with "//". If those requirements are not met, nil is returned.
   NSObject? get string {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_string1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_string1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Attempting to set the scheme with an invalid scheme string will cause an exception.
   NSObject? get scheme {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_scheme1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_scheme1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Attempting to set the scheme with an invalid scheme string will cause an exception.
@@ -103769,8 +104807,10 @@ class NSURLComponents extends NSObject {
   }
 
   NSObject? get user {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_user1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_user1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set user(NSObject? value) {
@@ -103778,8 +104818,10 @@ class NSURLComponents extends NSObject {
   }
 
   NSObject? get password {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_password1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_password1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set password(NSObject? value) {
@@ -103788,8 +104830,10 @@ class NSURLComponents extends NSObject {
   }
 
   NSObject? get host {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_host1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_host1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set host(NSObject? value) {
@@ -103798,8 +104842,10 @@ class NSURLComponents extends NSObject {
 
   /// Attempting to set a negative port number will cause an exception.
   NSObject? get port {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_port1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_port1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Attempting to set a negative port number will cause an exception.
@@ -103808,8 +104854,10 @@ class NSURLComponents extends NSObject {
   }
 
   NSObject? get path {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_path1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_path1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set path(NSObject? value) {
@@ -103817,8 +104865,10 @@ class NSURLComponents extends NSObject {
   }
 
   NSObject? get query {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_query1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_query1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set query(NSObject? value) {
@@ -103826,8 +104876,10 @@ class NSURLComponents extends NSObject {
   }
 
   NSObject? get fragment {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_fragment1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_fragment1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set fragment(NSObject? value) {
@@ -103837,8 +104889,10 @@ class NSURLComponents extends NSObject {
 
   /// Getting these properties retains any percent encoding these components may have. Setting these properties assumes the component string is already correctly percent encoded. Attempting to set an incorrectly percent encoded string will cause an exception. Although ';' is a legal path character, it is recommended that it be percent-encoded for best compatibility with NSURL (-stringByAddingPercentEncodingWithAllowedCharacters: will percent-encode any ';' characters if you pass the URLPathAllowedCharacterSet).
   NSObject? get percentEncodedUser {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_percentEncodedUser1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_percentEncodedUser1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Getting these properties retains any percent encoding these components may have. Setting these properties assumes the component string is already correctly percent encoded. Attempting to set an incorrectly percent encoded string will cause an exception. Although ';' is a legal path character, it is recommended that it be percent-encoded for best compatibility with NSURL (-stringByAddingPercentEncodingWithAllowedCharacters: will percent-encode any ';' characters if you pass the URLPathAllowedCharacterSet).
@@ -103848,8 +104902,10 @@ class NSURLComponents extends NSObject {
   }
 
   NSObject? get percentEncodedPassword {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_percentEncodedPassword1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_percentEncodedPassword1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set percentEncodedPassword(NSObject? value) {
@@ -103858,8 +104914,10 @@ class NSURLComponents extends NSObject {
   }
 
   NSObject? get percentEncodedHost {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_percentEncodedHost1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_percentEncodedHost1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set percentEncodedHost(NSObject? value) {
@@ -103868,8 +104926,10 @@ class NSURLComponents extends NSObject {
   }
 
   NSObject? get percentEncodedPath {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_percentEncodedPath1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_percentEncodedPath1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set percentEncodedPath(NSObject? value) {
@@ -103878,8 +104938,10 @@ class NSURLComponents extends NSObject {
   }
 
   NSObject? get percentEncodedQuery {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_percentEncodedQuery1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_percentEncodedQuery1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set percentEncodedQuery(NSObject? value) {
@@ -103888,8 +104950,10 @@ class NSURLComponents extends NSObject {
   }
 
   NSObject? get percentEncodedFragment {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_percentEncodedFragment1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_percentEncodedFragment1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set percentEncodedFragment(NSObject? value) {
@@ -103942,8 +105006,10 @@ class NSURLComponents extends NSObject {
   ///
   /// - note: If a NSURLQueryItem name-value pair is empty (i.e. the query string starts with '&', ends with '&', or has "&&" within it), you get a NSURLQueryItem with a zero-length name and a nil value. If a NSURLQueryItem name-value pair has nothing before the equals sign, you get a zero-length name. If a NSURLQueryItem name-value pair has nothing after the equals sign, you get a zero-length value. If a NSURLQueryItem name-value pair has no equals sign, the NSURLQueryItem name-value pair string is the name and you get a nil value.
   NSObject? get queryItems {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_queryItems1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_queryItems1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The query component as an array of NSURLQueryItems for this NSURLComponents.
@@ -103966,8 +105032,10 @@ class NSURLComponents extends NSObject {
   ///
   /// The percentEncodedQueryItems setter combines an array containing any number of NSURLQueryItems, each of which represents a single key-value pair, into a query string and sets the NSURLComponents query property. This property assumes the NSURLQueryItem names and values are already correctly percent-encoded, and that the NSURLQueryItem names do not contain the query item delimiter characters '&' and '='. Attempting to set an incorrectly percent-encoded NSURLQueryItem or a NSURLQueryItem name with the query item delimiter characters '&' and '=' will cause an exception.
   NSObject? get percentEncodedQueryItems {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_percentEncodedQueryItems1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_percentEncodedQueryItems1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The percentEncodedQueryItems getter returns an array of NSURLQueryItems in the order in which they appear in the original query string. Any percent-encoding in a NSURLQueryItem name or value is retained.
@@ -103980,47 +105048,57 @@ class NSURLComponents extends NSObject {
 
   static NSURLComponents new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLComponents1, _lib._sel_new1);
-    return NSURLComponents._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLComponents1, _lib._sel_new1);
+    return NSURLComponents._(_ret, _lib, retain: false, release: true);
   }
 
   static NSURLComponents alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLComponents1, _lib._sel_alloc1);
-    return NSURLComponents._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLComponents1, _lib._sel_alloc1);
+    return NSURLComponents._(_ret, _lib, retain: false, release: true);
   }
 }
 
 /// NSFileSecurity encapsulates a file system object's security information. NSFileSecurity and CFFileSecurity are toll-free bridged. Use the CFFileSecurity API for access to the low-level file security properties encapsulated by NSFileSecurity.
 class NSFileSecurity extends NSObject {
-  NSFileSecurity._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSFileSecurity._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSFileSecurity] that points to the same underlying object as [other].
   static NSFileSecurity castFrom<T extends _ObjCWrapper>(T other) {
-    return NSFileSecurity._(other._id, other._lib);
+    return NSFileSecurity._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSFileSecurity] that wraps the given raw object pointer.
   static NSFileSecurity castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSFileSecurity._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSFileSecurity._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSFileSecurity].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSFileSecurity1);
   }
 
   NSFileSecurity initWithCoder_(NSObject? coder) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithCoder_1, coder?._id ?? ffi.nullptr);
-    return NSFileSecurity._(_ret, _lib);
+    return NSFileSecurity._(_ret, _lib, retain: true, release: true);
   }
 
   static NSFileSecurity new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSFileSecurity1, _lib._sel_new1);
-    return NSFileSecurity._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSFileSecurity1, _lib._sel_new1);
+    return NSFileSecurity._(_ret, _lib, retain: false, release: true);
   }
 
   static NSFileSecurity alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSFileSecurity1, _lib._sel_alloc1);
-    return NSFileSecurity._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSFileSecurity1, _lib._sel_alloc1);
+    return NSFileSecurity._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -104036,16 +105114,26 @@ class NSFileSecurity extends NSObject {
 /// NSURLConnection and NSURLConnectionDelegate for more information
 /// about receiving the content data for a URL load.
 class NSURLResponse extends NSObject {
-  NSURLResponse._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSURLResponse._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSURLResponse] that points to the same underlying object as [other].
   static NSURLResponse castFrom<T extends _ObjCWrapper>(T other) {
-    return NSURLResponse._(other._id, other._lib);
+    return NSURLResponse._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSURLResponse] that wraps the given raw object pointer.
   static NSURLResponse castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSURLResponse._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSURLResponse._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSURLResponse].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSURLResponse1);
   }
 
   /// !
@@ -104066,15 +105154,17 @@ class NSURLResponse extends NSObject {
         MIMEType?._id ?? ffi.nullptr,
         length,
         name?._id ?? ffi.nullptr);
-    return NSURLResponse._(_ret, _lib);
+    return NSURLResponse._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
   /// @abstract Returns the URL of the receiver.
   /// @result The URL of the receiver.
   NSObject? get URL {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_URL1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_URL1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -104087,8 +105177,10 @@ class NSURLResponse extends NSObject {
   /// be made if the origin source did not report any such information.
   /// @result The MIME type of the receiver.
   NSObject? get MIMEType {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_MIMEType1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_MIMEType1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -104116,8 +105208,10 @@ class NSURLResponse extends NSObject {
   /// @result The name of the text encoding of the receiver, or nil if no
   /// text encoding was specified.
   NSObject? get textEncodingName {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_textEncodingName1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_textEncodingName1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -104131,20 +105225,22 @@ class NSURLResponse extends NSObject {
   /// This method always returns a valid filename.
   /// @result A suggested filename to use if saving the resource to disk.
   NSObject? get suggestedFilename {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_suggestedFilename1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_suggestedFilename1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSURLResponse new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLResponse1, _lib._sel_new1);
-    return NSURLResponse._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLResponse1, _lib._sel_new1);
+    return NSURLResponse._(_ret, _lib, retain: false, release: true);
   }
 
   static NSURLResponse alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSURLResponse1, _lib._sel_alloc1);
-    return NSURLResponse._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSURLResponse1, _lib._sel_alloc1);
+    return NSURLResponse._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -104156,16 +105252,27 @@ class NSURLResponse extends NSObject {
 /// provides conveniences for accessing information specific to HTTP
 /// protocol responses.
 class NSHTTPURLResponse extends NSURLResponse {
-  NSHTTPURLResponse._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSHTTPURLResponse._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSHTTPURLResponse] that points to the same underlying object as [other].
   static NSHTTPURLResponse castFrom<T extends _ObjCWrapper>(T other) {
-    return NSHTTPURLResponse._(other._id, other._lib);
+    return NSHTTPURLResponse._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSHTTPURLResponse] that wraps the given raw object pointer.
   static NSHTTPURLResponse castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSHTTPURLResponse._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSHTTPURLResponse._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSHTTPURLResponse].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSHTTPURLResponse1);
   }
 
   /// !
@@ -104189,7 +105296,7 @@ class NSHTTPURLResponse extends NSURLResponse {
         statusCode,
         HTTPVersion?._id ?? ffi.nullptr,
         headerFields?._id ?? ffi.nullptr);
-    return NSHTTPURLResponse._(_ret, _lib);
+    return NSHTTPURLResponse._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -104209,8 +105316,10 @@ class NSHTTPURLResponse extends NSURLResponse {
   /// @result A dictionary containing all the HTTP header fields of the
   /// receiver.
   NSObject? get allHeaderFields {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_allHeaderFields1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_allHeaderFields1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -104225,7 +105334,7 @@ class NSHTTPURLResponse extends NSURLResponse {
   NSString valueForHTTPHeaderField_(NSObject? field) {
     final _ret = _lib._objc_msgSend_28(
         _id, _lib._sel_valueForHTTPHeaderField_1, field?._id ?? ffi.nullptr);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   /// !
@@ -104238,33 +105347,43 @@ class NSHTTPURLResponse extends NSURLResponse {
       NativeCupertinoHttp _lib, int statusCode) {
     final _ret = _lib._objc_msgSend_291(_lib._class_NSHTTPURLResponse1,
         _lib._sel_localizedStringForStatusCode_1, statusCode);
-    return NSString._(_ret, _lib);
+    return NSString._(_ret, _lib, retain: true, release: true);
   }
 
   static NSHTTPURLResponse new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSHTTPURLResponse1, _lib._sel_new1);
-    return NSHTTPURLResponse._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSHTTPURLResponse1, _lib._sel_new1);
+    return NSHTTPURLResponse._(_ret, _lib, retain: false, release: true);
   }
 
   static NSHTTPURLResponse alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSHTTPURLResponse1, _lib._sel_alloc1);
-    return NSHTTPURLResponse._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSHTTPURLResponse1, _lib._sel_alloc1);
+    return NSHTTPURLResponse._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class NSException extends NSObject {
-  NSException._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSException._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSException] that points to the same underlying object as [other].
   static NSException castFrom<T extends _ObjCWrapper>(T other) {
-    return NSException._(other._id, other._lib);
+    return NSException._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSException] that wraps the given raw object pointer.
   static NSException castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSException._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSException._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSException].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSException1);
   }
 
   static NSException exceptionWithName_reason_userInfo_(
@@ -104278,7 +105397,7 @@ class NSException extends NSObject {
         name,
         reason?._id ?? ffi.nullptr,
         userInfo?._id ?? ffi.nullptr);
-    return NSException._(_ret, _lib);
+    return NSException._(_ret, _lib, retain: true, release: true);
   }
 
   NSException initWithName_reason_userInfo_(
@@ -104289,35 +105408,43 @@ class NSException extends NSObject {
         aName,
         aReason?._id ?? ffi.nullptr,
         aUserInfo?._id ?? ffi.nullptr);
-    return NSException._(_ret, _lib);
+    return NSException._(_ret, _lib, retain: true, release: true);
   }
 
   NSExceptionName get name {
-    return _lib._objc_msgSend_1(_id, _lib._sel_name1);
+    return _lib._objc_msgSend_2(_id, _lib._sel_name1);
   }
 
   NSObject? get reason {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_reason1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_reason1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get userInfo {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_userInfo1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_userInfo1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get callStackReturnAddresses {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_callStackReturnAddresses1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_callStackReturnAddresses1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get callStackSymbols {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_callStackSymbols1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_callStackSymbols1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   void raise() {
-    _lib._objc_msgSend_0(_id, _lib._sel_raise1);
+    _lib._objc_msgSend_1(_id, _lib._sel_raise1);
   }
 
   static void raise_format_(
@@ -104337,14 +105464,14 @@ class NSException extends NSObject {
   }
 
   static NSException new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSException1, _lib._sel_new1);
-    return NSException._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSException1, _lib._sel_new1);
+    return NSException._(_ret, _lib, retain: false, release: true);
   }
 
   static NSException alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSException1, _lib._sel_alloc1);
-    return NSException._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSException1, _lib._sel_alloc1);
+    return NSException._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -104352,22 +105479,35 @@ typedef NSUncaughtExceptionHandler
     = ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ObjCObject>)>;
 
 class NSAssertionHandler extends NSObject {
-  NSAssertionHandler._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSAssertionHandler._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSAssertionHandler] that points to the same underlying object as [other].
   static NSAssertionHandler castFrom<T extends _ObjCWrapper>(T other) {
-    return NSAssertionHandler._(other._id, other._lib);
+    return NSAssertionHandler._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSAssertionHandler] that wraps the given raw object pointer.
   static NSAssertionHandler castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSAssertionHandler._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSAssertionHandler._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSAssertionHandler].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSAssertionHandler1);
   }
 
   static NSObject? getCurrentHandler(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSAssertionHandler1, _lib._sel_currentHandler1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   void handleFailureInMethod_object_file_lineNumber_description_(
@@ -104399,36 +105539,46 @@ class NSAssertionHandler extends NSObject {
 
   static NSAssertionHandler new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSAssertionHandler1, _lib._sel_new1);
-    return NSAssertionHandler._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSAssertionHandler1, _lib._sel_new1);
+    return NSAssertionHandler._(_ret, _lib, retain: false, release: true);
   }
 
   static NSAssertionHandler alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSAssertionHandler1, _lib._sel_alloc1);
-    return NSAssertionHandler._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSAssertionHandler1, _lib._sel_alloc1);
+    return NSAssertionHandler._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class NSOperation extends NSObject {
-  NSOperation._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSOperation._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSOperation] that points to the same underlying object as [other].
   static NSOperation castFrom<T extends _ObjCWrapper>(T other) {
-    return NSOperation._(other._id, other._lib);
+    return NSOperation._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSOperation] that wraps the given raw object pointer.
   static NSOperation castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSOperation._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSOperation._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSOperation].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSOperation1);
   }
 
   void start() {
-    _lib._objc_msgSend_0(_id, _lib._sel_start1);
+    _lib._objc_msgSend_1(_id, _lib._sel_start1);
   }
 
   void main() {
-    _lib._objc_msgSend_0(_id, _lib._sel_main1);
+    _lib._objc_msgSend_1(_id, _lib._sel_main1);
   }
 
   bool get cancelled {
@@ -104436,7 +105586,7 @@ class NSOperation extends NSObject {
   }
 
   void cancel() {
-    _lib._objc_msgSend_0(_id, _lib._sel_cancel1);
+    _lib._objc_msgSend_1(_id, _lib._sel_cancel1);
   }
 
   bool get executing {
@@ -104471,8 +105621,10 @@ class NSOperation extends NSObject {
   }
 
   NSObject? get dependencies {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_dependencies1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_dependencies1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   int get queuePriority {
@@ -104493,7 +105645,7 @@ class NSOperation extends NSObject {
   }
 
   void waitUntilFinished() {
-    _lib._objc_msgSend_0(_id, _lib._sel_waitUntilFinished1);
+    _lib._objc_msgSend_1(_id, _lib._sel_waitUntilFinished1);
   }
 
   double get threadPriority {
@@ -104513,8 +105665,10 @@ class NSOperation extends NSObject {
   }
 
   NSObject? get name {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_name1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_name1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set name(NSObject? value) {
@@ -104522,14 +105676,14 @@ class NSOperation extends NSObject {
   }
 
   static NSOperation new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSOperation1, _lib._sel_new1);
-    return NSOperation._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSOperation1, _lib._sel_new1);
+    return NSOperation._(_ret, _lib, retain: false, release: true);
   }
 
   static NSOperation alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSOperation1, _lib._sel_alloc1);
-    return NSOperation._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSOperation1, _lib._sel_alloc1);
+    return NSOperation._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -104542,23 +105696,34 @@ abstract class NSOperationQueuePriority {
 }
 
 class NSBlockOperation extends NSOperation {
-  NSBlockOperation._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSBlockOperation._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSBlockOperation] that points to the same underlying object as [other].
   static NSBlockOperation castFrom<T extends _ObjCWrapper>(T other) {
-    return NSBlockOperation._(other._id, other._lib);
+    return NSBlockOperation._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSBlockOperation] that wraps the given raw object pointer.
   static NSBlockOperation castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSBlockOperation._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSBlockOperation._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSBlockOperation].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSBlockOperation1);
   }
 
   static NSBlockOperation blockOperationWithBlock_(
       NativeCupertinoHttp _lib, ObjCBlock13 block) {
     final _ret = _lib._objc_msgSend_300(_lib._class_NSBlockOperation1,
         _lib._sel_blockOperationWithBlock_1, block._impl);
-    return NSBlockOperation._(_ret, _lib);
+    return NSBlockOperation._(_ret, _lib, retain: true, release: true);
   }
 
   void addExecutionBlock_(ObjCBlock13 block) {
@@ -104566,83 +105731,110 @@ class NSBlockOperation extends NSOperation {
   }
 
   NSObject? get executionBlocks {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_executionBlocks1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_executionBlocks1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSBlockOperation new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSBlockOperation1, _lib._sel_new1);
-    return NSBlockOperation._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSBlockOperation1, _lib._sel_new1);
+    return NSBlockOperation._(_ret, _lib, retain: false, release: true);
   }
 
   static NSBlockOperation alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSBlockOperation1, _lib._sel_alloc1);
-    return NSBlockOperation._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSBlockOperation1, _lib._sel_alloc1);
+    return NSBlockOperation._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class NSInvocationOperation extends NSOperation {
-  NSInvocationOperation._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSInvocationOperation._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSInvocationOperation] that points to the same underlying object as [other].
   static NSInvocationOperation castFrom<T extends _ObjCWrapper>(T other) {
-    return NSInvocationOperation._(other._id, other._lib);
+    return NSInvocationOperation._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSInvocationOperation] that wraps the given raw object pointer.
   static NSInvocationOperation castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSInvocationOperation._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSInvocationOperation._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSInvocationOperation].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSInvocationOperation1);
   }
 
   NSInvocationOperation initWithTarget_selector_object_(
       NSObject target, ffi.Pointer<ObjCSel> sel, NSObject arg) {
     final _ret = _lib._objc_msgSend_301(_id,
         _lib._sel_initWithTarget_selector_object_1, target._id, sel, arg._id);
-    return NSInvocationOperation._(_ret, _lib);
+    return NSInvocationOperation._(_ret, _lib, retain: true, release: true);
   }
 
   NSInvocationOperation initWithInvocation_(NSObject? inv) {
     final _ret = _lib._objc_msgSend_13(
         _id, _lib._sel_initWithInvocation_1, inv?._id ?? ffi.nullptr);
-    return NSInvocationOperation._(_ret, _lib);
+    return NSInvocationOperation._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get invocation {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_invocation1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_invocation1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject get result {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_result1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_result1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSInvocationOperation new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSInvocationOperation1, _lib._sel_new1);
-    return NSInvocationOperation._(_ret, _lib);
+    return NSInvocationOperation._(_ret, _lib, retain: false, release: true);
   }
 
   static NSInvocationOperation alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSInvocationOperation1, _lib._sel_alloc1);
-    return NSInvocationOperation._(_ret, _lib);
+    return NSInvocationOperation._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class NSOperationQueue extends NSObject {
-  NSOperationQueue._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSOperationQueue._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSOperationQueue] that points to the same underlying object as [other].
   static NSOperationQueue castFrom<T extends _ObjCWrapper>(T other) {
-    return NSOperationQueue._(other._id, other._lib);
+    return NSOperationQueue._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [NSOperationQueue] that wraps the given raw object pointer.
   static NSOperationQueue castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSOperationQueue._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSOperationQueue._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSOperationQueue].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_NSOperationQueue1);
   }
 
   /// @property progress
@@ -104662,8 +105854,10 @@ class NSOperationQueue extends NSObject {
   /// NSOperationQueue *queue = [[NSOperationQueue alloc] init];
   /// queue.progress.totalUnitCount = 10;
   NSObject? get progress {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_progress1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_progress1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   void addOperation_(NSObject? op) {
@@ -104706,8 +105900,10 @@ class NSOperationQueue extends NSObject {
   }
 
   NSObject? get name {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_name1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_name1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   set name(NSObject? value) {
@@ -104724,7 +105920,7 @@ class NSOperationQueue extends NSObject {
 
   /// actually retain
   dispatch_queue_t1 get underlyingQueue {
-    return _lib._objc_msgSend_1(_id, _lib._sel_underlyingQueue1);
+    return _lib._objc_msgSend_2(_id, _lib._sel_underlyingQueue1);
   }
 
   /// actually retain
@@ -104733,29 +105929,35 @@ class NSOperationQueue extends NSObject {
   }
 
   void cancelAllOperations() {
-    _lib._objc_msgSend_0(_id, _lib._sel_cancelAllOperations1);
+    _lib._objc_msgSend_1(_id, _lib._sel_cancelAllOperations1);
   }
 
   void waitUntilAllOperationsAreFinished() {
-    _lib._objc_msgSend_0(_id, _lib._sel_waitUntilAllOperationsAreFinished1);
+    _lib._objc_msgSend_1(_id, _lib._sel_waitUntilAllOperationsAreFinished1);
   }
 
   static NSObject? getCurrentQueue(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSOperationQueue1, _lib._sel_currentQueue1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSObject? getMainQueue(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_NSOperationQueue1, _lib._sel_mainQueue1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// These two functions are inherently a race condition and should be avoided if possible
   NSObject? get operations {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_operations1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_operations1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   int get operationCount {
@@ -104764,14 +105966,14 @@ class NSOperationQueue extends NSObject {
 
   static NSOperationQueue new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSOperationQueue1, _lib._sel_new1);
-    return NSOperationQueue._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSOperationQueue1, _lib._sel_new1);
+    return NSOperationQueue._(_ret, _lib, retain: false, release: true);
   }
 
   static NSOperationQueue alloc(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_NSOperationQueue1, _lib._sel_alloc1);
-    return NSOperationQueue._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_NSOperationQueue1, _lib._sel_alloc1);
+    return NSOperationQueue._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -104780,16 +105982,26 @@ typedef NSErrorDomain = ffi.Pointer<ObjCObject>;
 typedef NSErrorUserInfoKey = ffi.Pointer<ObjCObject>;
 
 class NSError extends NSObject {
-  NSError._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  NSError._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [NSError] that points to the same underlying object as [other].
   static NSError castFrom<T extends _ObjCWrapper>(T other) {
-    return NSError._(other._id, other._lib);
+    return NSError._(other._id, other._lib, retain: true, release: true);
   }
 
+  /// Returns a [NSError] that wraps the given raw object pointer.
   static NSError castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return NSError._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return NSError._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [NSError].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(
+        obj._id, obj._lib._sel_isKindOfClass_1, obj._lib._class_NSError1);
   }
 
   /// Domain cannot be nil; dict may be nil if no userInfo desired.
@@ -104801,7 +106013,7 @@ class NSError extends NSObject {
         domain,
         code,
         dict?._id ?? ffi.nullptr);
-    return NSError._(_ret, _lib);
+    return NSError._(_ret, _lib, retain: true, release: true);
   }
 
   static NSError errorWithDomain_code_userInfo_(NativeCupertinoHttp _lib,
@@ -104812,12 +106024,12 @@ class NSError extends NSObject {
         domain,
         code,
         dict?._id ?? ffi.nullptr);
-    return NSError._(_ret, _lib);
+    return NSError._(_ret, _lib, retain: true, release: true);
   }
 
   /// These define the error. Domains are described by names that are arbitrary strings used to differentiate groups of codes; for custom domain using reverse-DNS naming will help avoid conflicts. Codes are domain-specific.
   NSErrorDomain get domain {
-    return _lib._objc_msgSend_1(_id, _lib._sel_domain1);
+    return _lib._objc_msgSend_2(_id, _lib._sel_domain1);
   }
 
   int get code {
@@ -104826,8 +106038,10 @@ class NSError extends NSObject {
 
   /// Additional info which may be used to describe the error further. Examples of keys that might be included in here are "Line Number", "Failed URL", etc. Embedding other errors in here can also be used as a way to communicate underlying reasons for failures; for instance "File System Error" embedded in the userInfo of an NSError returned from a higher level document object. If the embedded error information is itself NSError, the standard key NSUnderlyingErrorKey can be used.
   NSObject? get userInfo {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_userInfo1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_userInfo1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// The primary user-presentable message for the error, for instance for NSFileReadNoPermissionError: "The file "File Name" couldn't be opened because you don't have permission to view it.". This message should ideally indicate what failed and why it failed. This value either comes from NSLocalizedDescriptionKey, or NSLocalizedFailureErrorKey+NSLocalizedFailureReasonErrorKey, or NSLocalizedFailureErrorKey. The steps this takes to construct the description include:
@@ -104838,45 +106052,57 @@ class NSError extends NSObject {
   /// 5. Look for NSLocalizedFailureReasonErrorKey in userInfo or from userInfoValueProvider; combine with generic "Operation failed" message.
   /// 6. Last resort localized but barely-presentable string manufactured from domain and code. The result is never nil.
   NSObject? get localizedDescription {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_localizedDescription1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_localizedDescription1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Return a complete sentence which describes why the operation failed. For instance, for NSFileReadNoPermissionError: "You don't have permission.". In many cases this will be just the "because" part of the error message (but as a complete sentence, which makes localization easier).  Default implementation of this picks up the value of NSLocalizedFailureReasonErrorKey from the userInfo dictionary. If not present, it consults the userInfoValueProvider for the domain, and if that returns nil, this also returns nil.
   NSObject? get localizedFailureReason {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_localizedFailureReason1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_localizedFailureReason1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Return the string that can be displayed as the "informative" (aka "secondary") message on an alert panel. For instance, for NSFileReadNoPermissionError: "To view or change permissions, select the item in the Finder and choose File > Get Info.". Default implementation of this picks up the value of NSLocalizedRecoverySuggestionErrorKey from the userInfo dictionary. If not present, it consults the userInfoValueProvider for the domain, and if that returns nil, this also returns nil.
   NSObject? get localizedRecoverySuggestion {
     final _ret =
-        _lib._objc_msgSend_1(_id, _lib._sel_localizedRecoverySuggestion1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+        _lib._objc_msgSend_2(_id, _lib._sel_localizedRecoverySuggestion1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Return titles of buttons that are appropriate for displaying in an alert. These should match the string provided as a part of localizedRecoverySuggestion.  The first string would be the title of the right-most and default button, the second one next to it, and so on. If used in an alert the corresponding default return values are NSAlertFirstButtonReturn + n. Default implementation of this picks up the value of NSLocalizedRecoveryOptionsErrorKey from the userInfo dictionary. If not present, it consults the userInfoValueProvider for the domain, and if that returns nil, this also returns nil. nil return usually implies no special suggestion, which would imply a single "OK" button.
   NSObject? get localizedRecoveryOptions {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_localizedRecoveryOptions1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_localizedRecoveryOptions1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Return an object that conforms to the NSErrorRecoveryAttempting informal protocol. The recovery attempter must be an object that can correctly interpret an index into the array returned by localizedRecoveryOptions. The default implementation of this picks up the value of NSRecoveryAttempterErrorKey from the userInfo dictionary. If not present, it consults the userInfoValueProvider for the domain. If that returns nil, this also returns nil.
   NSObject get recoveryAttempter {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_recoveryAttempter1);
-    return NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_recoveryAttempter1);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Return the help anchor that can be used to create a help button to accompany the error when it's displayed to the user.  This is done automatically by +[NSAlert alertWithError:], which the presentError: variants in NSApplication go through. The default implementation of this picks up the value of the NSHelpAnchorErrorKey from the userInfo dictionary. If not present, it consults the userInfoValueProvider for the domain.  If that returns nil, this also returns nil.
   NSObject? get helpAnchor {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_helpAnchor1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_helpAnchor1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Return a list of underlying errors, if any. It includes the values of both NSUnderlyingErrorKey and NSMultipleUnderlyingErrorsKey. If there are no underlying errors, returns an empty array.
   NSObject? get underlyingErrors {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_underlyingErrors1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_underlyingErrors1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Specify a block which will be called from the implementations of localizedDescription, localizedFailureReason, localizedRecoverySuggestion, localizedRecoveryOptions, recoveryAttempter, helpAnchor, and debugDescription when the underlying value for these is not present in the userInfo dictionary of NSError instances with the specified domain.  The provider will be called with the userInfo key corresponding to the queried property: For instance, NSLocalizedDescriptionKey for localizedDescription.  The provider should return nil for any keys it is not able to provide and, very importantly, any keys it does not recognize (since we may extend the list of keys in future releases).
@@ -104910,17 +106136,17 @@ class NSError extends NSObject {
         err?._id ?? ffi.nullptr,
         userInfoKey,
         errorDomain);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static NSError new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSError1, _lib._sel_new1);
-    return NSError._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSError1, _lib._sel_new1);
+    return NSError._(_ret, _lib, retain: false, release: true);
   }
 
   static NSError alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(_lib._class_NSError1, _lib._sel_alloc1);
-    return NSError._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_lib._class_NSError1, _lib._sel_alloc1);
+    return NSError._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -104938,11 +106164,25 @@ ffi.Pointer<ObjCObject> _ObjCBlock31_fnPtrTrampoline(
               NSErrorUserInfoKey arg1)>()(arg0, arg1);
 }
 
+final _ObjCBlock31_closureRegistry = <int, Function>{};
+int _ObjCBlock31_closureRegistryIndex = 0;
+ffi.Pointer<ffi.Void> _ObjCBlock31_registerClosure(Function fn) {
+  final id = ++_ObjCBlock31_closureRegistryIndex;
+  _ObjCBlock31_closureRegistry[id] = fn;
+  return ffi.Pointer<ffi.Void>.fromAddress(id);
+}
+
+ffi.Pointer<ObjCObject> _ObjCBlock31_closureTrampoline(
+    ffi.Pointer<_ObjCBlock> block,
+    ffi.Pointer<ObjCObject> arg0,
+    NSErrorUserInfoKey arg1) {
+  return _ObjCBlock31_closureRegistry[block.ref.target.address]!(arg0, arg1);
+}
+
 class ObjCBlock31 {
   final ffi.Pointer<_ObjCBlock> _impl;
   final NativeCupertinoHttp _lib;
   ObjCBlock31._(this._impl, this._lib);
-
   ObjCBlock31.fromFunctionPointer(
       this._lib,
       ffi.Pointer<
@@ -104958,6 +106198,20 @@ class ObjCBlock31 {
                         NSErrorUserInfoKey arg1)>(_ObjCBlock31_fnPtrTrampoline)
                 .cast(),
             ptr.cast());
+  ObjCBlock31.fromFunction(
+      this._lib,
+      ffi.Pointer<ObjCObject> Function(
+              ffi.Pointer<ObjCObject> arg0, NSErrorUserInfoKey arg1)
+          fn)
+      : _impl = _lib._newBlock1(
+            ffi.Pointer.fromFunction<
+                        ffi.Pointer<ObjCObject> Function(
+                            ffi.Pointer<_ObjCBlock> block,
+                            ffi.Pointer<ObjCObject> arg0,
+                            NSErrorUserInfoKey arg1)>(
+                    _ObjCBlock31_closureTrampoline)
+                .cast(),
+            _ObjCBlock31_registerClosure(fn));
   ffi.Pointer<_ObjCBlock> get pointer => _impl;
 }
 
@@ -104984,29 +106238,29 @@ class Dart_IsolateFlags extends ffi.Struct {
   @ffi.Int32()
   external int version;
 
-  @ffi.Uint8()
-  external int enable_asserts;
+  @ffi.Bool()
+  external bool enable_asserts;
 
-  @ffi.Uint8()
-  external int use_field_guards;
+  @ffi.Bool()
+  external bool use_field_guards;
 
-  @ffi.Uint8()
-  external int use_osr;
+  @ffi.Bool()
+  external bool use_osr;
 
-  @ffi.Uint8()
-  external int obfuscate;
+  @ffi.Bool()
+  external bool obfuscate;
 
-  @ffi.Uint8()
-  external int load_vmservice_library;
+  @ffi.Bool()
+  external bool load_vmservice_library;
 
-  @ffi.Uint8()
-  external int copy_parent_code;
+  @ffi.Bool()
+  external bool copy_parent_code;
 
-  @ffi.Uint8()
-  external int null_safety;
+  @ffi.Bool()
+  external bool null_safety;
 
-  @ffi.Uint8()
-  external int is_system_isolate;
+  @ffi.Bool()
+  external bool is_system_isolate;
 }
 
 /// Forward declaration
@@ -105088,8 +106342,8 @@ class Dart_InitializeParams extends ffi.Struct {
 
   external Dart_GetVMServiceAssetsArchive get_service_assets;
 
-  @ffi.Uint8()
-  external int start_kernel_isolate;
+  @ffi.Bool()
+  external bool start_kernel_isolate;
 
   external ffi.Pointer<Dart_CodeObserver> code_observer;
 }
@@ -105194,7 +106448,7 @@ typedef Dart_Isolate = ffi.Pointer<_Dart_Isolate>;
 /// false otherwise (in which case the VM will terminate the isolate).
 typedef Dart_InitializeIsolateCallback = ffi.Pointer<
     ffi.NativeFunction<
-        ffi.Uint8 Function(ffi.Pointer<ffi.Pointer<ffi.Void>>,
+        ffi.Bool Function(ffi.Pointer<ffi.Pointer<ffi.Void>>,
             ffi.Pointer<ffi.Pointer<ffi.Char>>)>>;
 
 /// An isolate shutdown callback function.
@@ -105278,7 +106532,7 @@ typedef Dart_ThreadExitCallback
 /// \param stream Handle to the opened file.
 typedef Dart_FileOpenCallback = ffi.Pointer<
     ffi.NativeFunction<
-        ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Char>, ffi.Uint8)>>;
+        ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Char>, ffi.Bool)>>;
 typedef Dart_FileReadCallback = ffi.Pointer<
     ffi.NativeFunction<
         ffi.Void Function(ffi.Pointer<ffi.Pointer<ffi.Uint8>>,
@@ -105290,7 +106544,7 @@ typedef Dart_FileWriteCallback = ffi.Pointer<
 typedef Dart_FileCloseCallback
     = ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>;
 typedef Dart_EntropySource = ffi.Pointer<
-    ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ffi.Uint8>, ffi.IntPtr)>>;
+    ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Uint8>, ffi.IntPtr)>>;
 
 /// Callback provided by the embedder that is used by the vmservice isolate
 /// to request the asset archive. The asset archive must be an uncompressed tar
@@ -105414,7 +106668,7 @@ typedef Dart_EnvironmentCallback
 typedef Dart_NativeEntryResolver = ffi.Pointer<
     ffi.NativeFunction<
         Dart_NativeFunction Function(
-            ffi.Handle, ffi.Int, ffi.Pointer<ffi.Uint8>)>>;
+            ffi.Handle, ffi.Int, ffi.Pointer<ffi.Bool>)>>;
 
 /// A native function.
 typedef Dart_NativeFunction
@@ -105513,8 +106767,8 @@ class Dart_KernelCompilationResult extends ffi.Struct {
   @ffi.Int32()
   external int status;
 
-  @ffi.Uint8()
-  external int null_safety;
+  @ffi.Bool()
+  external bool null_safety;
 
   external ffi.Pointer<ffi.Char> error;
 
@@ -105592,8 +106846,8 @@ class _Dart_CObject extends ffi.Struct {
 }
 
 class UnnamedUnion5 extends ffi.Union {
-  @ffi.Uint8()
-  external int as_bool;
+  @ffi.Bool()
+  external bool as_bool;
 
   @ffi.Int32()
   external int as_int32;
@@ -105691,7 +106945,7 @@ typedef Dart_NativeMessageHandler = ffi.Pointer<
         ffi.Void Function(Dart_Port, ffi.Pointer<Dart_CObject>)>>;
 typedef Dart_PostCObject_Type = ffi.Pointer<
     ffi.NativeFunction<
-        ffi.Uint8 Function(Dart_Port_DL, ffi.Pointer<Dart_CObject>)>>;
+        ffi.Bool Function(Dart_Port_DL, ffi.Pointer<Dart_CObject>)>>;
 
 /// ============================================================================
 /// IMPORTANT! Never update these signatures without properly updating
@@ -105706,30 +106960,30 @@ typedef Dart_PostCObject_Type = ffi.Pointer<
 /// comment is added to their definition.
 typedef Dart_Port_DL = ffi.Int64;
 typedef Dart_PostInteger_Type = ffi
-    .Pointer<ffi.NativeFunction<ffi.Uint8 Function(Dart_Port_DL, ffi.Int64)>>;
+    .Pointer<ffi.NativeFunction<ffi.Bool Function(Dart_Port_DL, ffi.Int64)>>;
 typedef Dart_NewNativePort_Type = ffi.Pointer<
     ffi.NativeFunction<
         Dart_Port_DL Function(
-            ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler_DL, ffi.Uint8)>>;
+            ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler_DL, ffi.Bool)>>;
 typedef Dart_NativeMessageHandler_DL = ffi.Pointer<
     ffi.NativeFunction<
         ffi.Void Function(Dart_Port_DL, ffi.Pointer<Dart_CObject>)>>;
 typedef Dart_CloseNativePort_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(Dart_Port_DL)>>;
+    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(Dart_Port_DL)>>;
 typedef Dart_IsError_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>;
+    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>;
 typedef Dart_IsApiError_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>;
+    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>;
 typedef Dart_IsUnhandledExceptionError_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>;
+    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>;
 typedef Dart_IsCompilationError_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>;
+    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>;
 typedef Dart_IsFatalError_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>;
+    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>;
 typedef Dart_GetError_Type = ffi
     .Pointer<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Handle)>>;
 typedef Dart_ErrorHasException_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(ffi.Handle)>>;
+    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle)>>;
 typedef Dart_ErrorGetException_Type
     = ffi.Pointer<ffi.NativeFunction<ffi.Handle Function(ffi.Handle)>>;
 typedef Dart_ErrorGetStackTrace_Type
@@ -105771,7 +107025,7 @@ typedef Dart_UpdateFinalizableExternalSize_Type = ffi.Pointer<
     ffi.NativeFunction<
         ffi.Void Function(Dart_FinalizableHandle, ffi.Handle, ffi.IntPtr)>>;
 typedef Dart_Post_Type = ffi
-    .Pointer<ffi.NativeFunction<ffi.Uint8 Function(Dart_Port_DL, ffi.Handle)>>;
+    .Pointer<ffi.NativeFunction<ffi.Bool Function(Dart_Port_DL, ffi.Handle)>>;
 typedef Dart_NewSendPort_Type
     = ffi.Pointer<ffi.NativeFunction<ffi.Handle Function(Dart_Port_DL)>>;
 typedef Dart_SendPortGetId_Type = ffi.Pointer<
@@ -105794,22 +107048,34 @@ abstract class MessageType {
 /// See CUPHTTPClientDelegate.
 class CUPHTTPTaskConfiguration extends NSObject {
   CUPHTTPTaskConfiguration._(
-      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [CUPHTTPTaskConfiguration] that points to the same underlying object as [other].
   static CUPHTTPTaskConfiguration castFrom<T extends _ObjCWrapper>(T other) {
-    return CUPHTTPTaskConfiguration._(other._id, other._lib);
+    return CUPHTTPTaskConfiguration._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [CUPHTTPTaskConfiguration] that wraps the given raw object pointer.
   static CUPHTTPTaskConfiguration castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return CUPHTTPTaskConfiguration._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return CUPHTTPTaskConfiguration._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [CUPHTTPTaskConfiguration].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_CUPHTTPTaskConfiguration1);
   }
 
   NSObject initWithPort_(int sendPort) {
     final _ret =
         _lib._objc_msgSend_304(_id, _lib._sel_initWithPort_1, sendPort);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   int get sendPort {
@@ -105817,15 +107083,15 @@ class CUPHTTPTaskConfiguration extends NSObject {
   }
 
   static CUPHTTPTaskConfiguration new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_CUPHTTPTaskConfiguration1, _lib._sel_new1);
-    return CUPHTTPTaskConfiguration._(_ret, _lib);
+    return CUPHTTPTaskConfiguration._(_ret, _lib, retain: false, release: true);
   }
 
   static CUPHTTPTaskConfiguration alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_CUPHTTPTaskConfiguration1, _lib._sel_alloc1);
-    return CUPHTTPTaskConfiguration._(_ret, _lib);
+    return CUPHTTPTaskConfiguration._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -105847,16 +107113,28 @@ class CUPHTTPTaskConfiguration extends NSObject {
 /// 4. When the delegate is informed that the response is complete:
 /// [MessageType::CompletedMessage, <int: pointer to CUPHTTPForwardedComplete>]
 class CUPHTTPClientDelegate extends NSObject {
-  CUPHTTPClientDelegate._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  CUPHTTPClientDelegate._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [CUPHTTPClientDelegate] that points to the same underlying object as [other].
   static CUPHTTPClientDelegate castFrom<T extends _ObjCWrapper>(T other) {
-    return CUPHTTPClientDelegate._(other._id, other._lib);
+    return CUPHTTPClientDelegate._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [CUPHTTPClientDelegate] that wraps the given raw object pointer.
   static CUPHTTPClientDelegate castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return CUPHTTPClientDelegate._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return CUPHTTPClientDelegate._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [CUPHTTPClientDelegate].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_CUPHTTPClientDelegate1);
   }
 
   /// Instruct the delegate to forward events for the given task to the port
@@ -105867,15 +107145,15 @@ class CUPHTTPClientDelegate extends NSObject {
   }
 
   static CUPHTTPClientDelegate new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_CUPHTTPClientDelegate1, _lib._sel_new1);
-    return CUPHTTPClientDelegate._(_ret, _lib);
+    return CUPHTTPClientDelegate._(_ret, _lib, retain: false, release: true);
   }
 
   static CUPHTTPClientDelegate alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_CUPHTTPClientDelegate1, _lib._sel_alloc1);
-    return CUPHTTPClientDelegate._(_ret, _lib);
+    return CUPHTTPClientDelegate._(_ret, _lib, retain: false, release: true);
   }
 }
 
@@ -105892,70 +107170,100 @@ class CUPHTTPClientDelegate extends NSObject {
 /// 6. CUPHTTPClientDelegate continues running.
 class CUPHTTPForwardedDelegate extends NSObject {
   CUPHTTPForwardedDelegate._(
-      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [CUPHTTPForwardedDelegate] that points to the same underlying object as [other].
   static CUPHTTPForwardedDelegate castFrom<T extends _ObjCWrapper>(T other) {
-    return CUPHTTPForwardedDelegate._(other._id, other._lib);
+    return CUPHTTPForwardedDelegate._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [CUPHTTPForwardedDelegate] that wraps the given raw object pointer.
   static CUPHTTPForwardedDelegate castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return CUPHTTPForwardedDelegate._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return CUPHTTPForwardedDelegate._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [CUPHTTPForwardedDelegate].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_CUPHTTPForwardedDelegate1);
   }
 
   NSObject initWithSession_task_(NSObject? session, NSObject? task) {
     final _ret = _lib._objc_msgSend_76(_id, _lib._sel_initWithSession_task_1,
         session?._id ?? ffi.nullptr, task?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Indicates that the task should continue executing using the given request.
   void finish() {
-    _lib._objc_msgSend_0(_id, _lib._sel_finish1);
+    _lib._objc_msgSend_1(_id, _lib._sel_finish1);
   }
 
   NSObject? get session {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_session1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_session1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get task {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_task1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_task1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// This property is meant to be used only by CUPHTTPClientDelegate.
   NSObject? get lock {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_lock1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_lock1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static CUPHTTPForwardedDelegate new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_CUPHTTPForwardedDelegate1, _lib._sel_new1);
-    return CUPHTTPForwardedDelegate._(_ret, _lib);
+    return CUPHTTPForwardedDelegate._(_ret, _lib, retain: false, release: true);
   }
 
   static CUPHTTPForwardedDelegate alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_CUPHTTPForwardedDelegate1, _lib._sel_alloc1);
-    return CUPHTTPForwardedDelegate._(_ret, _lib);
+    return CUPHTTPForwardedDelegate._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class CUPHTTPForwardedRedirect extends CUPHTTPForwardedDelegate {
   CUPHTTPForwardedRedirect._(
-      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [CUPHTTPForwardedRedirect] that points to the same underlying object as [other].
   static CUPHTTPForwardedRedirect castFrom<T extends _ObjCWrapper>(T other) {
-    return CUPHTTPForwardedRedirect._(other._id, other._lib);
+    return CUPHTTPForwardedRedirect._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [CUPHTTPForwardedRedirect] that wraps the given raw object pointer.
   static CUPHTTPForwardedRedirect castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return CUPHTTPForwardedRedirect._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return CUPHTTPForwardedRedirect._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [CUPHTTPForwardedRedirect].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_CUPHTTPForwardedRedirect1);
   }
 
   NSObject initWithSession_task_response_request_(NSObject? session,
@@ -105967,7 +107275,7 @@ class CUPHTTPForwardedRedirect extends CUPHTTPForwardedDelegate {
         task?._id ?? ffi.nullptr,
         response?._id ?? ffi.nullptr,
         request?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// Indicates that the task should continue executing using the given request.
@@ -105979,46 +107287,64 @@ class CUPHTTPForwardedRedirect extends CUPHTTPForwardedDelegate {
   }
 
   NSObject? get response {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_response1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_response1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get request {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_request1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_request1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// This property is meant to be used only by CUPHTTPClientDelegate.
   NSObject? get redirectRequest {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_redirectRequest1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_redirectRequest1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static CUPHTTPForwardedRedirect new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_CUPHTTPForwardedRedirect1, _lib._sel_new1);
-    return CUPHTTPForwardedRedirect._(_ret, _lib);
+    return CUPHTTPForwardedRedirect._(_ret, _lib, retain: false, release: true);
   }
 
   static CUPHTTPForwardedRedirect alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_CUPHTTPForwardedRedirect1, _lib._sel_alloc1);
-    return CUPHTTPForwardedRedirect._(_ret, _lib);
+    return CUPHTTPForwardedRedirect._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class CUPHTTPForwardedResponse extends CUPHTTPForwardedDelegate {
   CUPHTTPForwardedResponse._(
-      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [CUPHTTPForwardedResponse] that points to the same underlying object as [other].
   static CUPHTTPForwardedResponse castFrom<T extends _ObjCWrapper>(T other) {
-    return CUPHTTPForwardedResponse._(other._id, other._lib);
+    return CUPHTTPForwardedResponse._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [CUPHTTPForwardedResponse] that wraps the given raw object pointer.
   static CUPHTTPForwardedResponse castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return CUPHTTPForwardedResponse._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return CUPHTTPForwardedResponse._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [CUPHTTPForwardedResponse].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_CUPHTTPForwardedResponse1);
   }
 
   NSObject initWithSession_task_response_(
@@ -106029,7 +107355,7 @@ class CUPHTTPForwardedResponse extends CUPHTTPForwardedDelegate {
         session?._id ?? ffi.nullptr,
         task?._id ?? ffi.nullptr,
         response?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   void finishWithDisposition_(int disposition) {
@@ -106037,8 +107363,10 @@ class CUPHTTPForwardedResponse extends CUPHTTPForwardedDelegate {
   }
 
   NSObject? get response {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_response1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_response1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   /// This property is meant to be used only by CUPHTTPClientDelegate.
@@ -106047,29 +107375,40 @@ class CUPHTTPForwardedResponse extends CUPHTTPForwardedDelegate {
   }
 
   static CUPHTTPForwardedResponse new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_CUPHTTPForwardedResponse1, _lib._sel_new1);
-    return CUPHTTPForwardedResponse._(_ret, _lib);
+    return CUPHTTPForwardedResponse._(_ret, _lib, retain: false, release: true);
   }
 
   static CUPHTTPForwardedResponse alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_CUPHTTPForwardedResponse1, _lib._sel_alloc1);
-    return CUPHTTPForwardedResponse._(_ret, _lib);
+    return CUPHTTPForwardedResponse._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class CUPHTTPForwardedData extends CUPHTTPForwardedDelegate {
-  CUPHTTPForwardedData._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+  CUPHTTPForwardedData._(ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [CUPHTTPForwardedData] that points to the same underlying object as [other].
   static CUPHTTPForwardedData castFrom<T extends _ObjCWrapper>(T other) {
-    return CUPHTTPForwardedData._(other._id, other._lib);
+    return CUPHTTPForwardedData._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [CUPHTTPForwardedData] that wraps the given raw object pointer.
   static CUPHTTPForwardedData castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return CUPHTTPForwardedData._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return CUPHTTPForwardedData._(other, lib, retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [CUPHTTPForwardedData].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_CUPHTTPForwardedData1);
   }
 
   NSObject initWithSession_task_data_(
@@ -106080,39 +107419,53 @@ class CUPHTTPForwardedData extends CUPHTTPForwardedDelegate {
         session?._id ?? ffi.nullptr,
         task?._id ?? ffi.nullptr,
         data?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get data {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_data1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_data1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static CUPHTTPForwardedData new1(NativeCupertinoHttp _lib) {
     final _ret =
-        _lib._objc_msgSend_1(_lib._class_CUPHTTPForwardedData1, _lib._sel_new1);
-    return CUPHTTPForwardedData._(_ret, _lib);
+        _lib._objc_msgSend_2(_lib._class_CUPHTTPForwardedData1, _lib._sel_new1);
+    return CUPHTTPForwardedData._(_ret, _lib, retain: false, release: true);
   }
 
   static CUPHTTPForwardedData alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_CUPHTTPForwardedData1, _lib._sel_alloc1);
-    return CUPHTTPForwardedData._(_ret, _lib);
+    return CUPHTTPForwardedData._(_ret, _lib, retain: false, release: true);
   }
 }
 
 class CUPHTTPForwardedComplete extends CUPHTTPForwardedDelegate {
   CUPHTTPForwardedComplete._(
-      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib)
-      : super._(id, lib);
+      ffi.Pointer<ObjCObject> id, NativeCupertinoHttp lib,
+      {bool retain = false, bool release = false})
+      : super._(id, lib, retain: retain, release: release);
 
+  /// Returns a [CUPHTTPForwardedComplete] that points to the same underlying object as [other].
   static CUPHTTPForwardedComplete castFrom<T extends _ObjCWrapper>(T other) {
-    return CUPHTTPForwardedComplete._(other._id, other._lib);
+    return CUPHTTPForwardedComplete._(other._id, other._lib,
+        retain: true, release: true);
   }
 
+  /// Returns a [CUPHTTPForwardedComplete] that wraps the given raw object pointer.
   static CUPHTTPForwardedComplete castFromPointer(
-      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other) {
-    return CUPHTTPForwardedComplete._(other, lib);
+      NativeCupertinoHttp lib, ffi.Pointer<ObjCObject> other,
+      {bool retain = false, bool release = false}) {
+    return CUPHTTPForwardedComplete._(other, lib,
+        retain: retain, release: release);
+  }
+
+  /// Returns whether [obj] is an instance of [CUPHTTPForwardedComplete].
+  static bool isInstance(_ObjCWrapper obj) {
+    return obj._lib._objc_msgSend_0(obj._id, obj._lib._sel_isKindOfClass_1,
+        obj._lib._class_CUPHTTPForwardedComplete1);
   }
 
   NSObject initWithSession_task_error_(
@@ -106123,24 +107476,26 @@ class CUPHTTPForwardedComplete extends CUPHTTPForwardedDelegate {
         session?._id ?? ffi.nullptr,
         task?._id ?? ffi.nullptr,
         error?._id ?? ffi.nullptr);
-    return NSObject._(_ret, _lib);
+    return NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   NSObject? get error {
-    final _ret = _lib._objc_msgSend_1(_id, _lib._sel_error1);
-    return _ret.address == 0 ? null : NSObject._(_ret, _lib);
+    final _ret = _lib._objc_msgSend_2(_id, _lib._sel_error1);
+    return _ret.address == 0
+        ? null
+        : NSObject._(_ret, _lib, retain: true, release: true);
   }
 
   static CUPHTTPForwardedComplete new1(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_CUPHTTPForwardedComplete1, _lib._sel_new1);
-    return CUPHTTPForwardedComplete._(_ret, _lib);
+    return CUPHTTPForwardedComplete._(_ret, _lib, retain: false, release: true);
   }
 
   static CUPHTTPForwardedComplete alloc(NativeCupertinoHttp _lib) {
-    final _ret = _lib._objc_msgSend_1(
+    final _ret = _lib._objc_msgSend_2(
         _lib._class_CUPHTTPForwardedComplete1, _lib._sel_alloc1);
-    return CUPHTTPForwardedComplete._(_ret, _lib);
+    return CUPHTTPForwardedComplete._(_ret, _lib, retain: false, release: true);
   }
 }
 
