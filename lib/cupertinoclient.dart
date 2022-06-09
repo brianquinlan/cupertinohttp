@@ -156,11 +156,12 @@ class CupertinoClient extends BaseClient {
       throw ClientException('Redirect limit exceeded', request.url);
     }
 
-    final contentLength = response.expectedContentLength;
     return StreamedResponse(
       t.responseController.stream,
       response.statusCode,
-      contentLength: contentLength == -1 ? null : contentLength,
+      contentLength: response.expectedContentLength == -1
+          ? null
+          : response.expectedContentLength,
       isRedirect: !request.followRedirects && t.numRedirects > 0,
       headers: response.allHeaderFields
           .map((key, value) => MapEntry(key.toLowerCase(), value)),
