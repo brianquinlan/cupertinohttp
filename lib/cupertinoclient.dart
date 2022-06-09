@@ -10,7 +10,7 @@ import 'package:http/http.dart';
 import 'cupertinohttp.dart';
 
 class _TaskTracker {
-  final completer = Completer<Object>();
+  final responseCompleter = Completer<URLResponse>();
   final BaseRequest request;
   final responseController = StreamController<Uint8List>();
   var numRedirects = 0;
@@ -62,13 +62,13 @@ class CupertinoClient extends BaseClient {
     if (error != null) {
       final exception =
           ClientException(error.localizedDescription ?? 'Unknown');
-      if (t.completer.isCompleted) {
+      if (t.responseCompleter.isCompleted) {
         t.responseController.addError(exception);
       } else {
-        t.completer.complete(exception);
+        t.responseCompleter.completeError(exception);
       }
-    } else if (!t.completer.isCompleted) {
-      t.completer.complete(
+    } else if (!t.responseCompleter.isCompleted) {
+      t.responseCompleter.completeError(
           new StateError('task completed without an error or response'));
     }
     t.close();
@@ -93,7 +93,7 @@ class CupertinoClient extends BaseClient {
   static URLSessionResponseDisposition _onResponse(
       URLSession session, URLSessionTask task, URLResponse response) {
     final t = _getTracker(task);
-    t.completer.complete(response);
+    t.responseCompleter.complete(response);
     return URLSessionResponseDisposition.urlSessionResponseAllow;
   }
 
@@ -117,6 +117,18 @@ class CupertinoClient extends BaseClient {
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {
+    // The expected sucess case flow (without redirects) is:
+    // 1. send is called by BaseClient
+    // 2. send starts the request with UrlSession.dataTaskWithRequest and waits
+    //    on a Completer
+    // 3. _onResponse is called with the HTTP headers, status code, etc.
+    // 4. _onResponse calls complete on the Completer that send is waiting on.
+    // 5. send continues executing and returns a StreamedResponse.
+    //    StreamedResponse contains a Stream<UInt8List>.
+    // 6. _onData is called one or more times and adds that to the
+    //    StreamController that controls the Stream<UInt8List>
+    // 7. _onComplete is called after all the data is read and closes the
+    //    StreamController
     final stream = request.finalize();
 
     final bytes = await stream.toBytes();
@@ -137,10 +149,7 @@ class CupertinoClient extends BaseClient {
 
     final maxRedirects = request.followRedirects ? request.maxRedirects : 0;
 
-    final result = await t.completer.future;
-    if (result is Exception || result is Error) {
-      throw result;
-    }
+    final result = await t.responseCompleter.future;
     final response = result as HTTPURLResponse;
 
     if (request.followRedirects && t.numRedirects > maxRedirects) {
