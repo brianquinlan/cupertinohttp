@@ -364,6 +364,14 @@ class URLResponse extends _ObjectHolder<ncb.NSURLResponse> {
   ///
   /// See [NSURLResponse.MIMEType](https://developer.apple.com/documentation/foundation/nsurlresponse/1411613-mimetype)
   String? get mimeType => toStringOrNull(_nsObject.MIMEType);
+
+  @override
+  String toString() {
+    return "[HTTPURLResponse " +
+        "mimeType=$mimeType " +
+        "expectedContentLength=$expectedContentLength" +
+        "]";
+  }
 }
 
 /// The response associated with loading a HTTP URL.
