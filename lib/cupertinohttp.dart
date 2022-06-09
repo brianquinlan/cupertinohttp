@@ -367,7 +367,7 @@ class URLResponse extends _ObjectHolder<ncb.NSURLResponse> {
 
   @override
   String toString() {
-    return "[HTTPURLResponse " +
+    return "[URLResponse " +
         "mimeType=$mimeType " +
         "expectedContentLength=$expectedContentLength" +
         "]";
