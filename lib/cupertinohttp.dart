@@ -615,11 +615,12 @@ void _setupDelegation(
     final messageType = message[0];
     final dp = Pointer<ncb.ObjCObject>.fromAddress(message[1]);
 
-    // TODO(https://github.com/dart-lang/ffigen/issues/387): Indicate that
-    // the reference should be released but not retained in
-    // castFromPointer.
     final forwardedDelegate =
-        ncb.CUPHTTPForwardedDelegate.castFromPointer(helperLibs, dp);
+        ncb.CUPHTTPForwardedDelegate.castFromPointer(helperLibs, dp,
+            // `CUPHTTPForwardedDelegate` was retained in the delegate so it
+            // only needs to be released.
+            retain: false,
+            release: true);
 
     switch (messageType) {
       case ncb.MessageType.RedirectMessage:
