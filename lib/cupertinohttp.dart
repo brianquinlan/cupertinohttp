@@ -348,6 +348,13 @@ class MutableData extends Data {
 class URLResponse extends _ObjectHolder<ncb.NSURLResponse> {
   URLResponse._(ncb.NSURLResponse c) : super(c);
 
+  factory URLResponse._exactURLResponseType(ncb.NSURLResponse response) {
+    if (ncb.NSHTTPURLResponse.isInstance(response)) {
+      return HTTPURLResponse._(ncb.NSHTTPURLResponse.castFrom(response));
+    }
+    return URLResponse._(response);
+  }
+
   /// The expected amount of data returned with the response.
   ///
   /// See [NSURLResponse.expectedContentLength](https://developer.apple.com/documentation/foundation/nsurlresponse/1413507-expectedcontentlength)
@@ -442,11 +449,10 @@ class URLSessionTask extends _ObjectHolder<ncb.NSURLSessionTask> {
     if (_nsObject.response == null) {
       return null;
     } else {
-      // TODO(https://github.com/dart-lang/ffigen/issues/374): Check the actual
-      // type of the response instead of assuming that it is a
-      // NSHTTPURLResponse.
-      return HTTPURLResponse._(
-          ncb.NSHTTPURLResponse.castFrom(_nsObject.response!));
+      // TODO(https://github.com/dart-lang/ffigen/issues/373): remove cast
+      // when precise type signatures are generated.
+      return URLResponse._exactURLResponseType(
+          ncb.NSURLResponse.castFrom(_nsObject.response!));
     }
   }
 
@@ -660,11 +666,10 @@ void _setupDelegation(
             disposition = URLSessionResponseDisposition.urlSessionResponseAllow;
             break;
           }
-          // TODO(https://github.com/dart-lang/ffigen/issues/374): Check the
-          // actual type of the response instead of assuming that it is a
-          // NSHTTPURLResponse.
-          final response = HTTPURLResponse._(
-              ncb.NSHTTPURLResponse.castFrom(forwardedResponse.response!));
+          // TODO(https://github.com/dart-lang/ffigen/issues/373): remove cast
+          // when precise type signatures are generated.
+          final response = URLResponse._exactURLResponseType(
+              ncb.NSURLResponse.castFrom(forwardedResponse.response!));
 
           try {
             disposition = onResponse(session, task, response);
